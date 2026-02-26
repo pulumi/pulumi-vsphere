@@ -26,6 +26,7 @@ class FolderArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Folder resource.
+
         :param pulumi.Input[_builtins.str] path: The path of the folder to be created. This is relative to
                the root of the type of folder you are creating, and the supplied datacenter.
                For example, given a default datacenter of `default-dc`, a folder of type
@@ -170,6 +171,7 @@ class _FolderState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for folder. See [here][docs-setting-custom-attributes]
                for a reference on how to set values for custom attributes.
@@ -386,6 +388,7 @@ class Folder(pulumi.CustomResource):
         folder named `example-vm-folder` located in the datacenter named
         `default-dc`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
@@ -496,6 +499,7 @@ class Folder(pulumi.CustomResource):
         The above command would import the folder from our examples above, the VM
         folder named `example-vm-folder` located in the datacenter named
         `default-dc`.
+
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.

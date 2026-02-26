@@ -24,6 +24,7 @@ class ComputeClusterVmGroupArgs:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmGroup resource.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
@@ -115,6 +116,7 @@ class _ComputeClusterVmGroupState:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmGroup resources.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
@@ -288,6 +290,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
           "name": "pulumi-test-cluster-vm-group"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
@@ -396,6 +399,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
           "name": "pulumi-test-cluster-vm-group"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmGroupArgs args: The arguments to use to populate this resource's properties.

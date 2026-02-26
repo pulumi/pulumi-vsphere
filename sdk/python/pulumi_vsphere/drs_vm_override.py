@@ -25,6 +25,7 @@ class DrsVmOverrideArgs:
                  drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DrsVmOverride resource.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
@@ -119,6 +120,7 @@ class _DrsVmOverrideState:
                  virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DrsVmOverride resources.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
@@ -297,6 +299,7 @@ class DrsVmOverride(pulumi.CustomResource):
           "virtual_machine_path": "/dc1/vm/srv1"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
@@ -401,6 +404,7 @@ class DrsVmOverride(pulumi.CustomResource):
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
           "virtual_machine_path": "/dc1/vm/srv1"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DrsVmOverrideArgs args: The arguments to use to populate this resource's properties.

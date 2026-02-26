@@ -36,6 +36,7 @@ class VappContainerArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VappContainer resource.
+
         :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a vApp container
@@ -347,6 +348,7 @@ class _VappContainerState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering VappContainer resources.
+
         :param pulumi.Input[_builtins.bool] cpu_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
@@ -740,6 +742,7 @@ class VappContainer(pulumi.CustomResource):
         located in the resource pool `resource-pool-01` that is part of the host cluster
         `cluster-01` in the `dc-01` datacenter.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] cpu_expandable: Determines if the reservation on a vApp
@@ -874,6 +877,7 @@ class VappContainer(pulumi.CustomResource):
         The example above would import the vApp container named `vapp-01` that is
         located in the resource pool `resource-pool-01` that is part of the host cluster
         `cluster-01` in the `dc-01` datacenter.
+
 
         :param str resource_name: The name of the resource.
         :param VappContainerArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class CustomAttributeArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomAttribute resource.
+
         :param pulumi.Input[_builtins.str] managed_object_type: The object type that this attribute may be
                applied to. If not set, the custom attribute may be applied to any object
                type. For a full list, review the Managed Object Types. Forces a new resource if changed.
@@ -67,6 +68,7 @@ class _CustomAttributeState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomAttribute resources.
+
         :param pulumi.Input[_builtins.str] managed_object_type: The object type that this attribute may be
                applied to. If not set, the custom attribute may be applied to any object
                type. For a full list, review the Managed Object Types. Forces a new resource if changed.
@@ -151,6 +153,7 @@ class CustomAttribute(pulumi.CustomResource):
         $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] managed_object_type: The object type that this attribute may be
@@ -201,6 +204,7 @@ class CustomAttribute(pulumi.CustomResource):
         ```sh
         $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomAttributeArgs args: The arguments to use to populate this resource's properties.

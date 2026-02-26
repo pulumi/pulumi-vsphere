@@ -32,6 +32,7 @@ class NasDatastoreArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NasDatastore resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_hosts: The hostnames or IP addresses of the remote
@@ -283,6 +284,7 @@ class _NasDatastoreState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NasDatastore resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for the mount point. Can be one of
                `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
                that the datastore will be read-write depending on the permissions of the
@@ -723,6 +725,7 @@ class NasDatastore(pulumi.CustomResource):
         Datastore:datastore-123
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for the mount point. Can be one of
@@ -837,6 +840,7 @@ class NasDatastore(pulumi.CustomResource):
         $ govc ls -i /dc/datastore/terraform-test
         Datastore:datastore-123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NasDatastoreArgs args: The arguments to use to populate this resource's properties.

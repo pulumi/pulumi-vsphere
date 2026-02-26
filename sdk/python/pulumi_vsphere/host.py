@@ -38,6 +38,7 @@ class HostArgs:
                  thumbprint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Host resource.
+
         :param pulumi.Input[_builtins.str] hostname: FQDN or IP address of the host to be added.
         :param pulumi.Input[_builtins.str] password: Password that will be used by vSphere to authenticate
                to the host.
@@ -341,6 +342,7 @@ class _HostState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Host resources.
+
         :param pulumi.Input[_builtins.str] cluster: The ID of the Compute Cluster this host should
                be added to. This should not be set if `datacenter` is set. Conflicts with:
                `cluster_managed`.
@@ -766,6 +768,7 @@ class Host(pulumi.CustomResource):
 
         The above would import the host `esxi-01.example.com` with the host ID `host-123`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: The ID of the Compute Cluster this host should
@@ -935,6 +938,7 @@ class Host(pulumi.CustomResource):
         ```
 
         The above would import the host `esxi-01.example.com` with the host ID `host-123`.
+
 
         :param str resource_name: The name of the resource.
         :param HostArgs args: The arguments to use to populate this resource's properties.

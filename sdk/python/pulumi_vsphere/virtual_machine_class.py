@@ -27,6 +27,7 @@ class VirtualMachineClassArgs:
                  vgpu_devices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VirtualMachineClass resource.
+
         :param pulumi.Input[_builtins.int] cpus: The number of CPUs.
         :param pulumi.Input[_builtins.int] memory: The amount of memory in MB.
         :param pulumi.Input[_builtins.int] cpu_reservation: The percentage of the available CPU capacity which will be reserved.
@@ -129,6 +130,7 @@ class _VirtualMachineClassState:
                  vgpu_devices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering VirtualMachineClass resources.
+
         :param pulumi.Input[_builtins.int] cpu_reservation: The percentage of the available CPU capacity which will be reserved.
         :param pulumi.Input[_builtins.int] cpus: The number of CPUs.
         :param pulumi.Input[_builtins.int] memory: The amount of memory in MB.
@@ -268,6 +270,7 @@ class VirtualMachineClass(pulumi.CustomResource):
             vgpu_devices=["vgpu1"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] cpu_reservation: The percentage of the available CPU capacity which will be reserved.
@@ -315,6 +318,7 @@ class VirtualMachineClass(pulumi.CustomResource):
             memory_reservation=100,
             vgpu_devices=["vgpu1"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VirtualMachineClassArgs args: The arguments to use to populate this resource's properties.

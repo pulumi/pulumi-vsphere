@@ -26,6 +26,7 @@ class StorageDrsVmOverrideArgs:
                  sdrs_intra_vm_affinity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageDrsVmOverride resource.
+
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the datastore cluster to put the override in.
                Forces a new resource if changed.
@@ -144,6 +145,7 @@ class _StorageDrsVmOverrideState:
                  virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageDrsVmOverride resources.
+
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the datastore cluster to put the override in.
                Forces a new resource if changed.
@@ -344,6 +346,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
           "virtual_machine_path": "/dc1/vm/srv1"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
@@ -451,6 +454,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
           '{"datastore_cluster_path": "/dc1/datastore/ds-cluster", \\
           "virtual_machine_path": "/dc1/vm/srv1"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageDrsVmOverrideArgs args: The arguments to use to populate this resource's properties.

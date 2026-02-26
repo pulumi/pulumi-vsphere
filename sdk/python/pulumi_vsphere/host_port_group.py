@@ -40,6 +40,7 @@ class HostPortGroupArgs:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HostPortGroup resource.
+
         :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] virtual_switch_name: The name of the virtual switch to bind
@@ -337,6 +338,7 @@ class _HostPortGroupState:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HostPortGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
         :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -768,6 +770,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         The above would import the `management` host port group from host with ID `host-123`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
@@ -885,6 +888,7 @@ class HostPortGroup(pulumi.CustomResource):
         ```
 
         The above would import the `management` host port group from host with ID `host-123`.
+
 
         :param str resource_name: The name of the resource.
         :param HostPortGroupArgs args: The arguments to use to populate this resource's properties.

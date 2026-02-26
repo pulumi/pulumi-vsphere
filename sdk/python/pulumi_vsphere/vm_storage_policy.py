@@ -26,6 +26,7 @@ class VmStoragePolicyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VmStoragePolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         :param pulumi.Input[_builtins.str] description: Description of the storage policy.
         :param pulumi.Input[_builtins.str] name: The name of the storage policy.
@@ -81,6 +82,7 @@ class _VmStoragePolicyState:
                  tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering VmStoragePolicy resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the storage policy.
         :param pulumi.Input[_builtins.str] name: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
@@ -245,6 +247,7 @@ class VmStoragePolicy(pulumi.CustomResource):
         dev_vm = vsphere.VirtualMachine("dev_vm", storage_policy_id=storage_policy["devSilverNonreplicated"]["id"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the storage policy.
@@ -362,6 +365,7 @@ class VmStoragePolicy(pulumi.CustomResource):
         prod_vm = vsphere.VirtualMachine("prod_vm", storage_policy_id=storage_policy["prodPlatinumReplicated"]["id"])
         dev_vm = vsphere.VirtualMachine("dev_vm", storage_policy_id=storage_policy["devSilverNonreplicated"]["id"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VmStoragePolicyArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatastoreClusterVmAntiAffinityRule resource.
+
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
                a new resource if changed.
@@ -134,6 +135,7 @@ class _DatastoreClusterVmAntiAffinityRuleState:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DatastoreClusterVmAntiAffinityRule resources.
+
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
                a new resource if changed.
@@ -326,6 +328,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
           "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
@@ -430,6 +433,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
           '{"compute_cluster_path": "/dc1/datastore/cluster1", \\
           "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatastoreClusterVmAntiAffinityRuleArgs args: The arguments to use to populate this resource's properties.

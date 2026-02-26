@@ -24,6 +24,7 @@ class ComputeClusterHostGroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterHostGroup resource.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
@@ -105,6 +106,7 @@ class _ComputeClusterHostGroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterHostGroup resources.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
@@ -264,6 +266,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
           "name": "pulumi-test-cluster-host-group"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
@@ -363,6 +366,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
           "name": "pulumi-test-cluster-host-group"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ComputeClusterHostGroupArgs args: The arguments to use to populate this resource's properties.

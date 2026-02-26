@@ -42,6 +42,7 @@ class HostVirtualSwitchArgs:
                  teaming_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostVirtualSwitch resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
         :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the virtual switch up on. Forces a new resource if changed.
@@ -401,6 +402,7 @@ class _HostVirtualSwitchState:
                  teaming_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostVirtualSwitch resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
         :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -846,6 +848,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
         vSphere host.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
@@ -965,6 +968,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
         The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
         vSphere host.
+
 
         :param str resource_name: The name of the resource.
         :param HostVirtualSwitchArgs args: The arguments to use to populate this resource's properties.

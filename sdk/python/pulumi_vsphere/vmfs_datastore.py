@@ -28,6 +28,7 @@ class VmfsDatastoreArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VmfsDatastore resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disks: The disks to use with the datastore.
         :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
@@ -203,6 +204,7 @@ class _VmfsDatastoreState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VmfsDatastore resources.
+
         :param pulumi.Input[_builtins.bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[_builtins.int] capacity: Maximum capacity of the datastore, in megabytes.
@@ -619,6 +621,7 @@ class VmfsDatastore(pulumi.CustomResource):
         HostSystem:host-12 /dc/host/cluster1/esxi3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
@@ -792,6 +795,7 @@ class VmfsDatastore(pulumi.CustomResource):
         HostSystem:host-11 /dc/host/cluster1/esxi2
         HostSystem:host-12 /dc/host/cluster1/esxi3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VmfsDatastoreArgs args: The arguments to use to populate this resource's properties.

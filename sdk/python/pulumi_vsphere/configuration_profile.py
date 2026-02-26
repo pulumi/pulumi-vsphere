@@ -24,6 +24,7 @@ class ConfigurationProfileArgs:
                  reference_host_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConfigurationProfile resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The identifier of the cluster.
         :param pulumi.Input[_builtins.str] configuration: The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
         :param pulumi.Input[_builtins.str] reference_host_id: The identifier of the host to use as a configuration source.
@@ -84,6 +85,7 @@ class _ConfigurationProfileState:
                  schema: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConfigurationProfile resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The identifier of the cluster.
         :param pulumi.Input[_builtins.str] configuration: The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
         :param pulumi.Input[_builtins.str] reference_host_id: The identifier of the host to use as a configuration source.
@@ -229,6 +231,7 @@ class ConfigurationProfile(pulumi.CustomResource):
             configuration=std.index.file(input="/path/to/cluster_config_1.json")["result"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The identifier of the cluster.
@@ -310,6 +313,7 @@ class ConfigurationProfile(pulumi.CustomResource):
             cluster_id=cluster1.id,
             configuration=std.index.file(input="/path/to/cluster_config_1.json")["result"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigurationProfileArgs args: The arguments to use to populate this resource's properties.
