@@ -3062,7 +3062,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Remote OVF
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map].apply(lambda entries: [{
+            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [{
                 "networkId": entry["value"],
             } for entry in entries]),
             name="ubuntu-server-cloud-image-01",
@@ -3095,7 +3095,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Local OVF
         vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map].apply(lambda entries: [{
+            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [{
                 "networkId": entry["value"],
             } for entry in entries]),
             name="ubuntu-server-cloud-image-02",
@@ -4134,7 +4134,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Remote OVF
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map].apply(lambda entries: [{
+            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [{
                 "networkId": entry["value"],
             } for entry in entries]),
             name="ubuntu-server-cloud-image-01",
@@ -4167,7 +4167,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Local OVF
         vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map].apply(lambda entries: [{
+            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [{
                 "networkId": entry["value"],
             } for entry in entries]),
             name="ubuntu-server-cloud-image-02",
