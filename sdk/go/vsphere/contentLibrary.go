@@ -51,7 +51,7 @@ import (
 //				Name:        pulumi.String("Publisher Content Library"),
 //				Description: pulumi.String("A publishing content library."),
 //				StorageBackings: pulumi.StringArray{
-//					pulumi.String(publisherDatastore.Id),
+//					pulumi.String(pulumi.String(publisherDatastore.Id)),
 //				},
 //			})
 //			if err != nil {
@@ -94,7 +94,7 @@ import (
 //				Name:        pulumi.String("Subscriber Content Library"),
 //				Description: pulumi.String("A subscribing content library."),
 //				StorageBackings: pulumi.StringArray{
-//					pulumi.String(subscriberDatastore.Id),
+//					pulumi.String(pulumi.String(subscriberDatastore.Id)),
 //				},
 //				Subscription: &vsphere.ContentLibrarySubscriptionArgs{
 //					SubscriptionUrl: pulumi.String("https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json"),

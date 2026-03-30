@@ -90,8 +90,8 @@ import (
 //
 // __res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
 // Name: pulumi.Sprintf("pulumi-test-%v", val0),
-// ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-// DatastoreId: pulumi.String(datastore.Id),
+// ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+// DatastoreId: pulumi.String(pulumi.String(datastore.Id)),
 // NumCpus: pulumi.Int(2),
 // Memory: pulumi.Int(2048),
 // GuestId: pulumi.String("otherLinux64Guest"),
@@ -114,7 +114,7 @@ import (
 // }
 // _, err = vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group", &vsphere.ComputeClusterVmGroupArgs{
 // Name: pulumi.String("pulumi-test-cluster-vm-group"),
-// ComputeClusterId: pulumi.String(cluster.Id),
+// ComputeClusterId: pulumi.String(pulumi.String(cluster.Id)),
 // VirtualMachineIds: pulumi.StringArray{
 // pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:42,27-35)),
 // },

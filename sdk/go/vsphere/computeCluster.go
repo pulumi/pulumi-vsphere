@@ -94,7 +94,7 @@ import (
 //			}
 //			_, err = vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
 //				Name:         pulumi.String("cluster-01"),
-//				DatacenterId: pulumi.String(datacenterGetDatacenter.Id),
+//				DatacenterId: pulumi.String(pulumi.String(datacenterGetDatacenter.Id)),
 //			})
 //			if err != nil {
 //				return err

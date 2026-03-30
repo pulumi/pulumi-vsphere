@@ -84,8 +84,8 @@ import (
 //			}
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("pulumi-test"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(2048),
 //				GuestId:        pulumi.String("otherLinux64Guest"),
@@ -105,7 +105,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewHaVmOverride(ctx, "ha_vm_override", &vsphere.HaVmOverrideArgs{
-//				ComputeClusterId:    pulumi.String(cluster.Id),
+//				ComputeClusterId:    pulumi.String(pulumi.String(cluster.Id)),
 //				VirtualMachineId:    vm.ID(),
 //				HaVmRestartPriority: pulumi.String("highest"),
 //			})

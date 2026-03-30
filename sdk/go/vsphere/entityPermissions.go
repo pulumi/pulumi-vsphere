@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewEntityPermissions(ctx, "p1", &vsphere.EntityPermissionsArgs{
-//				EntityId:   pulumi.String(vm.Id),
+//				EntityId:   pulumi.String(pulumi.String(vm.Id)),
 //				EntityType: pulumi.String("VirtualMachine"),
 //				Permissions: vsphere.EntityPermissionsPermissionArray{
 //					&vsphere.EntityPermissionsPermissionArgs{

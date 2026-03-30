@@ -289,8 +289,8 @@ func main() {
 		}
 		_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 			Name:           pulumi.String("foo"),
-			ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-			DatastoreId:    pulumi.String(datastore.Id),
+			ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+			DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 			NumCpus:        pulumi.Int(1),
 			Memory:         pulumi.Int(1024),
 			GuestId:        pulumi.String("otherLinux64Guest"),

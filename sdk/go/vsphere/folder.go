@@ -48,7 +48,7 @@ import (
 //			_, err = vsphere.NewFolder(ctx, "vm_folder", &vsphere.FolderArgs{
 //				Path:         pulumi.String("example-vm-folder"),
 //				Type:         pulumi.String("vm"),
-//				DatacenterId: pulumi.String(datacenter.Id),
+//				DatacenterId: pulumi.String(pulumi.String(datacenter.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //			parent, err := vsphere.NewFolder(ctx, "parent", &vsphere.FolderArgs{
 //				Path:         pulumi.String("example-parent-vm-folder"),
 //				Type:         pulumi.String("vm"),
-//				DatacenterId: pulumi.String(datacenter.Id),
+//				DatacenterId: pulumi.String(pulumi.String(datacenter.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -103,7 +103,7 @@ import (
 //					return fmt.Sprintf("%v/example-child-vm-folder", path), nil
 //				}).(pulumi.StringOutput),
 //				Type:         pulumi.String("vm"),
-//				DatacenterId: pulumi.String(datacenter.Id),
+//				DatacenterId: pulumi.String(pulumi.String(datacenter.Id)),
 //			})
 //			if err != nil {
 //				return err

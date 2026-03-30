@@ -89,7 +89,7 @@ import (
 //			}
 //			_, err = vsphere.NewVmfsDatastore(ctx, "datastore", &vsphere.VmfsDatastoreArgs{
 //				Name:         pulumi.String("pulumi-test"),
-//				HostSystemId: pulumi.String(host.Id),
+//				HostSystemId: pulumi.String(pulumi.String(host.Id)),
 //				Disks: pulumi.StringArray{
 //					pulumi.String("mpx.vmhba1:C0:T1:L0"),
 //					pulumi.String("mpx.vmhba1:C0:T2:L0"),
@@ -149,7 +149,7 @@ import (
 //			}
 //			_, err = vsphere.NewVmfsDatastore(ctx, "datastore", &vsphere.VmfsDatastoreArgs{
 //				Name:         pulumi.String("pulumi-test"),
-//				HostSystemId: pulumi.String(host.Id),
+//				HostSystemId: pulumi.String(pulumi.String(host.Id)),
 //				Folder:       pulumi.String("datastore-folder"),
 //				Disks: pulumi.StringArray{
 //					interface{}(available.Disks),

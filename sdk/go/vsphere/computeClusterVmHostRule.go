@@ -105,8 +105,8 @@ import (
 //			}
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("pulumi-test"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(2048),
 //				GuestId:        pulumi.String("otherLinux64Guest"),
@@ -127,7 +127,7 @@ import (
 //			}
 //			clusterVmGroup, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group", &vsphere.ComputeClusterVmGroupArgs{
 //				Name:             pulumi.String("pulumi-test-cluster-vm-group"),
-//				ComputeClusterId: pulumi.String(cluster.Id),
+//				ComputeClusterId: pulumi.String(pulumi.String(cluster.Id)),
 //				VirtualMachineIds: pulumi.StringArray{
 //					vm.ID(),
 //				},
@@ -137,16 +137,16 @@ import (
 //			}
 //			clusterHostGroup, err := vsphere.NewComputeClusterHostGroup(ctx, "cluster_host_group", &vsphere.ComputeClusterHostGroupArgs{
 //				Name:             pulumi.String("pulumi-test-cluster-vm-group"),
-//				ComputeClusterId: pulumi.String(cluster.Id),
+//				ComputeClusterId: pulumi.String(pulumi.String(cluster.Id)),
 //				HostSystemIds: pulumi.StringArray{
-//					pulumi.String(host.Id),
+//					pulumi.String(pulumi.String(host.Id)),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "cluster_vm_host_rule", &vsphere.ComputeClusterVmHostRuleArgs{
-//				ComputeClusterId:      pulumi.String(cluster.Id),
+//				ComputeClusterId:      pulumi.String(pulumi.String(cluster.Id)),
 //				Name:                  pulumi.String("pulumi-test-cluster-vm-host-rule"),
 //				VmGroupName:           clusterVmGroup.Name,
 //				AffinityHostGroupName: clusterHostGroup.Name,

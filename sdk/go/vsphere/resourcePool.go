@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = vsphere.NewResourcePool(ctx, "resource_pool", &vsphere.ResourcePoolArgs{
 //				Name:                 pulumi.String("resource-pool-01"),
-//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//				ParentResourcePoolId: pulumi.String(pulumi.String(computeCluster.ResourcePoolId)),
 //			})
 //			if err != nil {
 //				return err
@@ -119,7 +119,7 @@ import (
 //			}
 //			resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resource_pool_parent", &vsphere.ResourcePoolArgs{
 //				Name:                 pulumi.String("parent"),
-//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//				ParentResourcePoolId: pulumi.String(pulumi.String(computeCluster.ResourcePoolId)),
 //			})
 //			if err != nil {
 //				return err
@@ -170,8 +170,8 @@ import (
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
 //				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Thumbprint: pulumi.String(thumbprint.Id),
-//				Datacenter: pulumi.String(datacenter.Id),
+//				Thumbprint: pulumi.String(pulumi.String(thumbprint.Id)),
+//				Datacenter: pulumi.String(pulumi.String(datacenter.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -205,7 +205,7 @@ import (
 //			}
 //			_, err = vsphere.NewResourcePool(ctx, "resource_pool", &vsphere.ResourcePoolArgs{
 //				Name:                 pulumi.String("site1-resource-pool"),
-//				ParentResourcePoolId: pulumi.String(host.ResourcePoolId),
+//				ParentResourcePoolId: pulumi.String(pulumi.String(host.ResourcePoolId)),
 //			})
 //			if err != nil {
 //				return err

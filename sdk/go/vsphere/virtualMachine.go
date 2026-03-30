@@ -114,8 +114,8 @@ import (
 //			}
 //			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("foo"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(1),
 //				Memory:         pulumi.Int(1024),
 //				GuestId:        pulumi.String("otherLinux64Guest"),
@@ -200,12 +200,12 @@ import (
 //			}
 //			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("foo"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(1),
 //				Memory:         pulumi.Int(1024),
-//				GuestId:        pulumi.String(template.GuestId),
-//				ScsiType:       pulumi.String(template.ScsiType),
+//				GuestId:        pulumi.String(pulumi.String(template.GuestId)),
+//				ScsiType:       pulumi.String(pulumi.String(template.ScsiType)),
 //				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
 //					&vsphere.VirtualMachineNetworkInterfaceArgs{
 //						NetworkId:   pulumi.String(network.Id),
@@ -351,9 +351,9 @@ import (
 //			// # Deployment of VM from Remote OVF
 //			_, err = vsphere.NewVirtualMachine(ctx, "vmFromRemoteOvf", &vsphere.VirtualMachineArgs{
 //				Name:                   pulumi.String("remote-foo"),
-//				DatacenterId:           pulumi.String(datacenter.Id),
-//				DatastoreId:            pulumi.Any(datastore.I),
-//				ResourcePoolId:         pulumi.String(_default.Id),
+//				DatacenterId:           pulumi.String(pulumi.String(datacenter.Id)),
+//				DatastoreId:            pulumi.String(pulumi.Any(datastore.I)),
+//				ResourcePoolId:         pulumi.String(pulumi.String(_default.Id)),
 //				WaitForGuestNetTimeout: pulumi.Int(0),
 //				WaitForGuestIpTimeout:  pulumi.Int(0),
 //				OvfDeploy: &vsphere.VirtualMachineOvfDeployArgs{
@@ -387,9 +387,9 @@ import (
 //			// # Deployment of VM from Local OVF
 //			_, err = vsphere.NewVirtualMachine(ctx, "vmFromLocalOvf", &vsphere.VirtualMachineArgs{
 //				Name:                   pulumi.String("local-foo"),
-//				DatacenterId:           pulumi.String(datacenter.Id),
-//				DatastoreId:            pulumi.String(datastore.Id),
-//				ResourcePoolId:         pulumi.String(_default.Id),
+//				DatacenterId:           pulumi.String(pulumi.String(datacenter.Id)),
+//				DatastoreId:            pulumi.String(pulumi.String(datastore.Id)),
+//				ResourcePoolId:         pulumi.String(pulumi.String(_default.Id)),
 //				WaitForGuestNetTimeout: pulumi.Int(0),
 //				WaitForGuestIpTimeout:  pulumi.Int(0),
 //				OvfDeploy: &vsphere.VirtualMachineOvfDeployArgs{
@@ -507,8 +507,8 @@ import (
 //			}
 //			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("foo"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(1024),
 //				GuestId:        pulumi.Any(template.GuestId),
@@ -608,8 +608,8 @@ import (
 //			}
 //			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:               pulumi.String("foo"),
-//				ResourcePoolId:     pulumi.String(cluster.ResourcePoolId),
-//				DatastoreClusterId: pulumi.String(datastoreCluster.Id),
+//				ResourcePoolId:     pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreClusterId: pulumi.String(pulumi.String(datastoreCluster.Id)),
 //				NumCpus:            pulumi.Int(1),
 //				Memory:             pulumi.Int(1024),
 //				GuestId:            pulumi.String("otherLinux64Guest"),
@@ -1096,7 +1096,7 @@ import (
 //			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Vapp: &vsphere.VirtualMachineVappArgs{
 //					Properties: pulumi.StringMap{
-//						"ssh_enabled": pulumi.String(sshEnabled),
+//						"ssh_enabled": pulumi.String(pulumi.String(sshEnabled)),
 //					},
 //				},
 //			})

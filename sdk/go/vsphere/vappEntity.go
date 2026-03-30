@@ -75,7 +75,7 @@ import (
 //			}
 //			vappContainer, err := vsphere.NewVappContainer(ctx, "vapp_container", &vsphere.VappContainerArgs{
 //				Name:                 pulumi.String("pulumi-vapp-container-test"),
-//				ParentResourcePoolId: pulumi.String(computeCluster.Id),
+//				ParentResourcePoolId: pulumi.String(pulumi.String(computeCluster.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("pulumi-virtual-machine-test"),
 //				ResourcePoolId: vappContainer.ID(),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(1024),
 //				GuestId:        pulumi.String("ubuntu64Guest"),

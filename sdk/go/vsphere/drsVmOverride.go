@@ -88,9 +88,9 @@ import (
 //			}
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("pulumi-test"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				HostSystemId:   pulumi.String(host.Id),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				HostSystemId:   pulumi.String(pulumi.String(host.Id)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(2048),
 //				GuestId:        pulumi.String("otherLinux64Guest"),
@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewDrsVmOverride(ctx, "drs_vm_override", &vsphere.DrsVmOverrideArgs{
-//				ComputeClusterId: pulumi.String(cluster.Id),
+//				ComputeClusterId: pulumi.String(pulumi.String(cluster.Id)),
 //				VirtualMachineId: vm.ID(),
 //				DrsEnabled:       pulumi.Bool(false),
 //			})

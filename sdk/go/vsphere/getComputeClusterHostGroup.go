@@ -50,10 +50,10 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "host_rule", &vsphere.ComputeClusterVmHostRuleArgs{
-//				ComputeClusterId:      pulumi.String(cluster.Id),
+//				ComputeClusterId:      pulumi.String(pulumi.String(cluster.Id)),
 //				Name:                  pulumi.String("pulumi-host-rule1"),
 //				VmGroupName:           pulumi.String("vmgroup-01"),
-//				AffinityHostGroupName: pulumi.String(hostGroup.Name),
+//				AffinityHostGroupName: pulumi.String(pulumi.String(hostGroup.Name)),
 //			})
 //			if err != nil {
 //				return err

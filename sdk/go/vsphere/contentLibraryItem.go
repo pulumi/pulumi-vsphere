@@ -52,7 +52,7 @@ import (
 //				Name:        pulumi.String("ovf-linux-ubuntu-server-lts"),
 //				Description: pulumi.String("Ubuntu Server LTS OVF Template"),
 //				FileUrl:     pulumi.String("https://releases.example.com/ubuntu/ubuntu/ubuntu-live-server-amd64.ovf"),
-//				LibraryId:   pulumi.String(contentLibrary.Id),
+//				LibraryId:   pulumi.String(pulumi.String(contentLibrary.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -96,7 +96,7 @@ import (
 //				Description: pulumi.String("Ubuntu Server LTS .iso"),
 //				Type:        pulumi.String("iso"),
 //				FileUrl:     pulumi.String("https://releases.example.com/ubuntu/ubuntu-live-server-amd64.iso"),
-//				LibraryId:   pulumi.String(contentLibrary.Id),
+//				LibraryId:   pulumi.String(pulumi.String(contentLibrary.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -140,7 +140,7 @@ import (
 //				Name:        pulumi.String("tpl-linux-ubuntu-server-lts"),
 //				Description: pulumi.String("Ubuntu Server LTS"),
 //				SourceUuid:  pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				LibraryId:   pulumi.String(contentLibrary.Id),
+//				LibraryId:   pulumi.String(pulumi.String(contentLibrary.Id)),
 //			})
 //			if err != nil {
 //				return err
