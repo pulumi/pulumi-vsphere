@@ -2473,11 +2473,11 @@ class ComputeCluster(pulumi.CustomResource):
             ]
         datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
         host = {__key: vsphere.get_host(name=__value,
-            datacenter_id=datacenter_get_datacenter.id) for __key, __value in std.index.toset(input=hosts)["result"]}
+            datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.index.toset(input=hosts)["result"])}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
             name="pulumi-compute-cluster-test",
             datacenter_id=datacenter_get_datacenter.id,
-            host_system_ids=[host.id for host in host],
+            host_system_ids=[host.id for host in host.values()],
             drs_enabled=True,
             drs_automation_level="fullyAutomated",
             ha_enabled=True)
@@ -2702,11 +2702,11 @@ class ComputeCluster(pulumi.CustomResource):
             ]
         datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
         host = {__key: vsphere.get_host(name=__value,
-            datacenter_id=datacenter_get_datacenter.id) for __key, __value in std.index.toset(input=hosts)["result"]}
+            datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.index.toset(input=hosts)["result"])}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
             name="pulumi-compute-cluster-test",
             datacenter_id=datacenter_get_datacenter.id,
-            host_system_ids=[host.id for host in host],
+            host_system_ids=[host.id for host in host.values()],
             drs_enabled=True,
             drs_automation_level="fullyAutomated",
             ha_enabled=True)

@@ -82,15 +82,15 @@ import (
 //			}
 //			// Configure a profile on "cluster-01" using one of its hosts as a reference
 //			profile1, err := vsphere.NewConfigurationProfile(ctx, "profile1", &vsphere.ConfigurationProfileArgs{
-//				ClusterId:       pulumi.String(cluster1.Id),
-//				ReferenceHostId: pulumi.String(host.Id),
+//				ClusterId:       pulumi.String(pulumi.String(cluster1.Id)),
+//				ReferenceHostId: pulumi.String(pulumi.String(host.Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Copy the configuration of "cluster-01" onto "cluster-02"
 //			_, err = vsphere.NewConfigurationProfile(ctx, "profile2", &vsphere.ConfigurationProfileArgs{
-//				ClusterId:     pulumi.String(cluster2.Id),
+//				ClusterId:     pulumi.String(pulumi.String(cluster2.Id)),
 //				Configuration: profile1.Configuration,
 //			})
 //			if err != nil {
@@ -98,7 +98,7 @@ import (
 //			}
 //			// Copy the configuration of "cluster-01" onto "cluster-03"
 //			_, err = vsphere.NewConfigurationProfile(ctx, "profile3", &vsphere.ConfigurationProfileArgs{
-//				ClusterId:     pulumi.String(cluster3.Id),
+//				ClusterId:     pulumi.String(pulumi.String(cluster3.Id)),
 //				Configuration: profile1.Configuration,
 //			})
 //			if err != nil {
@@ -148,7 +148,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewConfigurationProfile(ctx, "profile1", &vsphere.ConfigurationProfileArgs{
-//				ClusterId:     pulumi.String(cluster1.Id),
+//				ClusterId:     pulumi.String(pulumi.String(cluster1.Id)),
 //				Configuration: invokeFile.Result,
 //			})
 //			if err != nil {

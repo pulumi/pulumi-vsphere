@@ -311,7 +311,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
             name="vm-affinity-rule",
             compute_cluster_id=cluster.id,
-            virtual_machine_ids=[v.id for k, v in vm])
+            virtual_machine_ids=[v.id for k, v in enumerate(vm)])
         ```
 
         The following example creates an affinity rule for a set of virtual machines
@@ -447,7 +447,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
             name="vm-affinity-rule",
             compute_cluster_id=cluster.id,
-            virtual_machine_ids=[v.id for k, v in vm])
+            virtual_machine_ids=[v.id for k, v in enumerate(vm)])
         ```
 
         The following example creates an affinity rule for a set of virtual machines

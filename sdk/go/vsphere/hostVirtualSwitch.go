@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
 //				Name:         pulumi.String("vSwitchTerraformTest"),
-//				HostSystemId: pulumi.String(host.Id),
+//				HostSystemId: pulumi.String(pulumi.String(host.Id)),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
 //					pulumi.String("vmnic1"),
@@ -106,7 +106,7 @@ import (
 //			}
 //			_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
 //				Name:         pulumi.String("vSwitchTerraformTest"),
-//				HostSystemId: pulumi.String(host.Id),
+//				HostSystemId: pulumi.String(pulumi.String(host.Id)),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
 //					pulumi.String("vmnic1"),

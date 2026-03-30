@@ -88,8 +88,8 @@ import (
 //			}
 //			vm1, err := vsphere.NewVirtualMachine(ctx, "vm1", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("pulumi-test1"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(2048),
 //				GuestId:        pulumi.String("otherLinux64Guest"),
@@ -110,8 +110,8 @@ import (
 //			}
 //			vm2, err := vsphere.NewVirtualMachine(ctx, "vm2", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("pulumi-test2"),
-//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-//				DatastoreId:    pulumi.String(datastore.Id),
+//				ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+//				DatastoreId:    pulumi.String(pulumi.String(datastore.Id)),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(2048),
 //				GuestId:        pulumi.String("otherLinux64Guest"),
@@ -132,7 +132,7 @@ import (
 //			}
 //			clusterVmGroup1, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group1", &vsphere.ComputeClusterVmGroupArgs{
 //				Name:             pulumi.String("pulumi-test-cluster-vm-group1"),
-//				ComputeClusterId: pulumi.String(cluster.Id),
+//				ComputeClusterId: pulumi.String(pulumi.String(cluster.Id)),
 //				VirtualMachineIds: pulumi.StringArray{
 //					vm1.ID(),
 //				},
@@ -142,7 +142,7 @@ import (
 //			}
 //			clusterVmGroup2, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group2", &vsphere.ComputeClusterVmGroupArgs{
 //				Name:             pulumi.String("pulumi-test-cluster-vm-group2"),
-//				ComputeClusterId: pulumi.String(cluster.Id),
+//				ComputeClusterId: pulumi.String(pulumi.String(cluster.Id)),
 //				VirtualMachineIds: pulumi.StringArray{
 //					vm2.ID(),
 //				},
@@ -151,7 +151,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewComputeClusterVmDependencyRule(ctx, "cluster_vm_dependency_rule", &vsphere.ComputeClusterVmDependencyRuleArgs{
-//				ComputeClusterId:      pulumi.String(cluster.Id),
+//				ComputeClusterId:      pulumi.String(pulumi.String(cluster.Id)),
 //				Name:                  pulumi.String("pulumi-test-cluster-vm-dependency-rule"),
 //				DependencyVmGroupName: clusterVmGroup1.Name,
 //				VmGroupName:           clusterVmGroup2.Name,

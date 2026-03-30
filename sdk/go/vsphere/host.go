@@ -51,8 +51,8 @@ import (
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
 //				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Thumbprint: pulumi.String(thumbprint.Id),
-//				Datacenter: pulumi.String(datacenter.Id),
+//				Thumbprint: pulumi.String(pulumi.String(thumbprint.Id)),
+//				Datacenter: pulumi.String(pulumi.String(datacenter.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -102,8 +102,8 @@ import (
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
 //				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Thumbprint: pulumi.String(thumbprint.Id),
-//				Cluster:    pulumi.String(cluster.Id),
+//				Thumbprint: pulumi.String(pulumi.String(thumbprint.Id)),
+//				Cluster:    pulumi.String(pulumi.String(cluster.Id)),
 //				Services: vsphere.HostServiceArray{
 //					&vsphere.HostServiceArgs{
 //						Ntpd: &vsphere.HostServiceNtpdArgs{
@@ -197,8 +197,8 @@ import (
 //				Hostname:   pulumi.String("esxi-01.example.com"),
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
-//				Thumbprint: pulumi.String(thumbprint.Id),
-//				Datacenter: pulumi.String(datacenter.Id),
+//				Thumbprint: pulumi.String(pulumi.String(thumbprint.Id)),
+//				Datacenter: pulumi.String(pulumi.String(datacenter.Id)),
 //			})
 //			if err != nil {
 //				return err

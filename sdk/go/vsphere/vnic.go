@@ -47,7 +47,7 @@ import (
 //			}
 //			vds, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
 //				Name:         pulumi.String("vds-01"),
-//				DatacenterId: pulumi.String(datacenter.Id),
+//				DatacenterId: pulumi.String(pulumi.String(datacenter.Id)),
 //				Hosts: vsphere.DistributedVirtualSwitchHostArray{
 //					&vsphere.DistributedVirtualSwitchHostArgs{
 //						HostSystemId: pulumi.String(host.Id),
@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewVnic(ctx, "vnic", &vsphere.VnicArgs{
-//				Host:                  pulumi.String(host.Id),
+//				Host:                  pulumi.String(pulumi.String(host.Id)),
 //				DistributedSwitchPort: vds.ID(),
 //				DistributedPortGroup:  pg.ID(),
 //				Ipv4: &vsphere.VnicIpv4Args{
@@ -115,7 +115,7 @@ import (
 //			}
 //			hvs, err := vsphere.NewHostVirtualSwitch(ctx, "hvs", &vsphere.HostVirtualSwitchArgs{
 //				Name:         pulumi.String("hvs-01"),
-//				HostSystemId: pulumi.String(host.Id),
+//				HostSystemId: pulumi.String(pulumi.String(host.Id)),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic3"),
 //					pulumi.String("vmnic4"),
@@ -133,13 +133,13 @@ import (
 //			pg, err := vsphere.NewHostPortGroup(ctx, "pg", &vsphere.HostPortGroupArgs{
 //				Name:              pulumi.String("pg-01"),
 //				VirtualSwitchName: hvs.Name,
-//				HostSystemId:      pulumi.String(host.Id),
+//				HostSystemId:      pulumi.String(pulumi.String(host.Id)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vsphere.NewVnic(ctx, "vnic", &vsphere.VnicArgs{
-//				Host:      pulumi.String(host.Id),
+//				Host:      pulumi.String(pulumi.String(host.Id)),
 //				Portgroup: pg.Name,
 //				Ipv4: &vsphere.VnicIpv4Args{
 //					Dhcp: pulumi.Bool(true),

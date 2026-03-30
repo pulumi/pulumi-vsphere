@@ -56,12 +56,12 @@ import (
 //			}
 //			_, err = vsphere.NewDistributedPortGroup(ctx, "dvpg", &vsphere.DistributedPortGroupArgs{
 //				Name:                         pulumi.String("dvpg-01"),
-//				DistributedVirtualSwitchUuid: pulumi.String(vds.Id),
+//				DistributedVirtualSwitchUuid: pulumi.String(pulumi.String(vds.Id)),
 //				ActiveUplinks: pulumi.StringArray{
-//					pulumi.String(vds.Uplinks[0]),
+//					pulumi.String(pulumi.String(vds.Uplinks[0])),
 //				},
 //				StandbyUplinks: pulumi.StringArray{
-//					pulumi.String(vds.Uplinks[1]),
+//					pulumi.String(pulumi.String(vds.Uplinks[1])),
 //				},
 //			})
 //			if err != nil {

@@ -91,8 +91,8 @@ import (
 //
 // __res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
 // Name: pulumi.Sprintf("pulumi-test-%v", val0),
-// ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
-// DatastoreClusterId: pulumi.String(datastoreCluster.Id),
+// ResourcePoolId: pulumi.String(pulumi.String(cluster.ResourcePoolId)),
+// DatastoreClusterId: pulumi.String(pulumi.String(datastoreCluster.Id)),
 // NumCpus: pulumi.Int(2),
 // Memory: pulumi.Int(2048),
 // GuestId: pulumi.String("otherLinux64Guest"),
@@ -115,7 +115,7 @@ import (
 // }
 // _, err = vsphere.NewDatastoreClusterVmAntiAffinityRule(ctx, "cluster_vm_anti_affinity_rule", &vsphere.DatastoreClusterVmAntiAffinityRuleArgs{
 // Name: pulumi.String("pulumi-test-datastore-cluster-vm-anti-affinity-rule"),
-// DatastoreClusterId: pulumi.String(datastoreCluster.Id),
+// DatastoreClusterId: pulumi.String(pulumi.String(datastoreCluster.Id)),
 // VirtualMachineIds: pulumi.StringArray{
 // pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:42,28-36)),
 // },

@@ -51,8 +51,8 @@ import (
 //				Type:              pulumi.String("thin"),
 //				VmdkPath:          pulumi.String("/foo/foo.vmdk"),
 //				CreateDirectories: pulumi.Bool(true),
-//				Datacenter:        pulumi.String(datacenter.Name),
-//				Datastore:         pulumi.String(datastore.Name),
+//				Datacenter:        pulumi.String(pulumi.String(datacenter.Name)),
+//				Datastore:         pulumi.String(pulumi.String(datastore.Name)),
 //			})
 //			if err != nil {
 //				return err
