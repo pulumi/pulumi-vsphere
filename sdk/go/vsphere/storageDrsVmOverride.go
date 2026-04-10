@@ -51,13 +51,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			datastoreCluster, err := vsphere.LookupDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
+//			datastoreCluster, err := vsphere.GetDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
 //				Name:         "datastore-cluster1",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -71,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pool, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//			pool, err := vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name:         pulumi.StringRef("cluster1/Resources"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)

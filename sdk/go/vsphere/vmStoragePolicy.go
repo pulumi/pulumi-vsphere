@@ -34,74 +34,74 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+//			_, err := vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 //				Name: "environment",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+//			_, err = vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 //				Name: "service_level",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+//			_, err = vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 //				Name: "replication",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "production",
 //				CategoryId: "data.vsphere_tag_category.environment.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "development",
 //				CategoryId: "data.vsphere_tag_category.environment.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "platinum",
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "platinum",
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "silver",
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "bronze",
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "replicated",
 //				CategoryId: "data.vsphere_tag_category.replication.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "non_replicated",
 //				CategoryId: "data.vsphere_tag_category.replication.id",
 //			}, nil)

@@ -66,7 +66,7 @@ namespace Pulumi.VSphere
     ///         "esxi-02.example.com",
     ///         "esxi-03.example.com",
     ///     };
-    ///     var datacenterGetDatacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenterGetDatacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = datacenter,
     ///     });
@@ -76,14 +76,14 @@ namespace Pulumi.VSphere
     ///         return __key;
     ///     }, item =&gt; {
     ///         var __value = item.Value;
-    ///         return VSphere.GetHost.Invoke(new()
+    ///         return VSphere.Index.GetHost.Invoke(new()
     ///         {
     ///             Name = __value,
     ///             DatacenterId = _arg0_.Id,
     ///         });
     ///     });
     /// 
-    ///     var computeCluster = new VSphere.ComputeCluster("compute_cluster", new()
+    ///     var computeCluster = new VSphere.Index.ComputeCluster("compute_cluster", new()
     ///     {
     ///         Name = "pulumi-compute-cluster-test",
     ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -133,12 +133,12 @@ namespace Pulumi.VSphere
     /// {
     ///     var config = new Config();
     ///     var datacenter = config.Get("datacenter") ?? "dc-01";
-    ///     var datacenterGetDatacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenterGetDatacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = datacenter,
     ///     });
     /// 
-    ///     var computeCluster = new VSphere.ComputeCluster("compute_cluster", new()
+    ///     var computeCluster = new VSphere.Index.ComputeCluster("compute_cluster", new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -157,7 +157,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var computeCluster = new VSphere.ComputeCluster("compute_cluster", new()
+    ///     var computeCluster = new VSphere.Index.ComputeCluster("compute_cluster", new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Id,

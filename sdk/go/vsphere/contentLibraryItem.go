@@ -36,13 +36,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			_, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			contentLibrary, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+//			contentLibrary, err := vsphere.GetContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
 //				Name: "clb-01",
 //			}, nil)
 //			if err != nil {
@@ -79,13 +79,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			_, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			contentLibrary, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+//			contentLibrary, err := vsphere.GetContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
 //				Name: "clb-01",
 //			}, nil)
 //			if err != nil {
@@ -124,13 +124,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			_, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			contentLibrary, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+//			contentLibrary, err := vsphere.GetContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
 //				Name: "clb-01",
 //			}, nil)
 //			if err != nil {

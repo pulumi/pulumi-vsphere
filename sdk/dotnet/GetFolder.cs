@@ -29,18 +29,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenterFolderFolder = new VSphere.Folder("datacenter_folder", new()
+        ///     var datacenterFolderFolder = new VSphere.Index.Folder("datacenter_folder", new()
         ///     {
         ///         Path = "example-datacenter-folder",
         ///         Type = "datacenter",
         ///     });
         /// 
-        ///     var datacenterFolder = VSphere.GetFolder.Invoke(new()
+        ///     var datacenterFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}",
         ///     });
         /// 
-        ///     var datacenterDatacenter = new VSphere.Datacenter("datacenter", new()
+        ///     var datacenterDatacenter = new VSphere.Index.Datacenter("datacenter", new()
         ///     {
         ///         Name = "example-datacenter",
         ///         Folder = datacenterFolder.Apply(getFolderResult =&gt; getFolderResult.Path),
@@ -52,55 +52,55 @@ namespace Pulumi.VSphere
         ///         },
         ///     });
         /// 
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = datacenterDatacenter.Name,
         ///     });
         /// 
-        ///     var vmFolderFolder = new VSphere.Folder("vm_folder", new()
+        ///     var vmFolderFolder = new VSphere.Index.Folder("vm_folder", new()
         ///     {
         ///         Path = "example-vm-folder",
         ///         Type = "vm",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var datastoreFolderFolder = new VSphere.Folder("datastore_folder", new()
+        ///     var datastoreFolderFolder = new VSphere.Index.Folder("datastore_folder", new()
         ///     {
         ///         Path = "example-datastore-folder",
         ///         Type = "datastore",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var networkFolderFolder = new VSphere.Folder("network_folder", new()
+        ///     var networkFolderFolder = new VSphere.Index.Folder("network_folder", new()
         ///     {
         ///         Path = "example-network-folder",
         ///         Type = "network",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var hostFolderFolder = new VSphere.Folder("host_folder", new()
+        ///     var hostFolderFolder = new VSphere.Index.Folder("host_folder", new()
         ///     {
         ///         Path = "example-host-folder",
         ///         Type = "host",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var vmFolder = VSphere.GetFolder.Invoke(new()
+        ///     var vmFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/vm/{vmFolderFolder.Path}",
         ///     });
         /// 
-        ///     var datastoreFolder = VSphere.GetFolder.Invoke(new()
+        ///     var datastoreFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/datastore/{datastoreFolderFolder.Path}",
         ///     });
         /// 
-        ///     var networkFolder = VSphere.GetFolder.Invoke(new()
+        ///     var networkFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/network/{networkFolderFolder.Path}",
         ///     });
         /// 
-        ///     var hostFolder = VSphere.GetFolder.Invoke(new()
+        ///     var hostFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/host/{hostFolderFolder.Path}",
         ///     });
@@ -138,18 +138,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenterFolderFolder = new VSphere.Folder("datacenter_folder", new()
+        ///     var datacenterFolderFolder = new VSphere.Index.Folder("datacenter_folder", new()
         ///     {
         ///         Path = "example-datacenter-folder",
         ///         Type = "datacenter",
         ///     });
         /// 
-        ///     var datacenterFolder = VSphere.GetFolder.Invoke(new()
+        ///     var datacenterFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}",
         ///     });
         /// 
-        ///     var datacenterDatacenter = new VSphere.Datacenter("datacenter", new()
+        ///     var datacenterDatacenter = new VSphere.Index.Datacenter("datacenter", new()
         ///     {
         ///         Name = "example-datacenter",
         ///         Folder = datacenterFolder.Apply(getFolderResult =&gt; getFolderResult.Path),
@@ -161,55 +161,55 @@ namespace Pulumi.VSphere
         ///         },
         ///     });
         /// 
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = datacenterDatacenter.Name,
         ///     });
         /// 
-        ///     var vmFolderFolder = new VSphere.Folder("vm_folder", new()
+        ///     var vmFolderFolder = new VSphere.Index.Folder("vm_folder", new()
         ///     {
         ///         Path = "example-vm-folder",
         ///         Type = "vm",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var datastoreFolderFolder = new VSphere.Folder("datastore_folder", new()
+        ///     var datastoreFolderFolder = new VSphere.Index.Folder("datastore_folder", new()
         ///     {
         ///         Path = "example-datastore-folder",
         ///         Type = "datastore",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var networkFolderFolder = new VSphere.Folder("network_folder", new()
+        ///     var networkFolderFolder = new VSphere.Index.Folder("network_folder", new()
         ///     {
         ///         Path = "example-network-folder",
         ///         Type = "network",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var hostFolderFolder = new VSphere.Folder("host_folder", new()
+        ///     var hostFolderFolder = new VSphere.Index.Folder("host_folder", new()
         ///     {
         ///         Path = "example-host-folder",
         ///         Type = "host",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var vmFolder = VSphere.GetFolder.Invoke(new()
+        ///     var vmFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/vm/{vmFolderFolder.Path}",
         ///     });
         /// 
-        ///     var datastoreFolder = VSphere.GetFolder.Invoke(new()
+        ///     var datastoreFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/datastore/{datastoreFolderFolder.Path}",
         ///     });
         /// 
-        ///     var networkFolder = VSphere.GetFolder.Invoke(new()
+        ///     var networkFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/network/{networkFolderFolder.Path}",
         ///     });
         /// 
-        ///     var hostFolder = VSphere.GetFolder.Invoke(new()
+        ///     var hostFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/host/{hostFolderFolder.Path}",
         ///     });
@@ -247,18 +247,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenterFolderFolder = new VSphere.Folder("datacenter_folder", new()
+        ///     var datacenterFolderFolder = new VSphere.Index.Folder("datacenter_folder", new()
         ///     {
         ///         Path = "example-datacenter-folder",
         ///         Type = "datacenter",
         ///     });
         /// 
-        ///     var datacenterFolder = VSphere.GetFolder.Invoke(new()
+        ///     var datacenterFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}",
         ///     });
         /// 
-        ///     var datacenterDatacenter = new VSphere.Datacenter("datacenter", new()
+        ///     var datacenterDatacenter = new VSphere.Index.Datacenter("datacenter", new()
         ///     {
         ///         Name = "example-datacenter",
         ///         Folder = datacenterFolder.Apply(getFolderResult =&gt; getFolderResult.Path),
@@ -270,55 +270,55 @@ namespace Pulumi.VSphere
         ///         },
         ///     });
         /// 
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = datacenterDatacenter.Name,
         ///     });
         /// 
-        ///     var vmFolderFolder = new VSphere.Folder("vm_folder", new()
+        ///     var vmFolderFolder = new VSphere.Index.Folder("vm_folder", new()
         ///     {
         ///         Path = "example-vm-folder",
         ///         Type = "vm",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var datastoreFolderFolder = new VSphere.Folder("datastore_folder", new()
+        ///     var datastoreFolderFolder = new VSphere.Index.Folder("datastore_folder", new()
         ///     {
         ///         Path = "example-datastore-folder",
         ///         Type = "datastore",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var networkFolderFolder = new VSphere.Folder("network_folder", new()
+        ///     var networkFolderFolder = new VSphere.Index.Folder("network_folder", new()
         ///     {
         ///         Path = "example-network-folder",
         ///         Type = "network",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var hostFolderFolder = new VSphere.Folder("host_folder", new()
+        ///     var hostFolderFolder = new VSphere.Index.Folder("host_folder", new()
         ///     {
         ///         Path = "example-host-folder",
         ///         Type = "host",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var vmFolder = VSphere.GetFolder.Invoke(new()
+        ///     var vmFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/vm/{vmFolderFolder.Path}",
         ///     });
         /// 
-        ///     var datastoreFolder = VSphere.GetFolder.Invoke(new()
+        ///     var datastoreFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/datastore/{datastoreFolderFolder.Path}",
         ///     });
         /// 
-        ///     var networkFolder = VSphere.GetFolder.Invoke(new()
+        ///     var networkFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/network/{networkFolderFolder.Path}",
         ///     });
         /// 
-        ///     var hostFolder = VSphere.GetFolder.Invoke(new()
+        ///     var hostFolder = VSphere.Index.GetFolder.Invoke(new()
         ///     {
         ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/host/{hostFolderFolder.Path}",
         ///     });

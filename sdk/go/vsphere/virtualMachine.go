@@ -85,7 +85,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
@@ -98,7 +98,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//			cluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -164,7 +164,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
@@ -177,7 +177,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//			cluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -191,7 +191,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			template, err := vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
+//			template, err := vsphere.GetVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
 //				Name:         pulumi.StringRef("linux-template"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -253,7 +253,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ... other configuration ...
-//			linux, err := vsphere.LookupGuestOsCustomization(ctx, &vsphere.LookupGuestOsCustomizationArgs{
+//			linux, err := vsphere.GetGuestOsCustomization(ctx, &vsphere.LookupGuestOsCustomizationArgs{
 //				Name: "linux",
 //			}, nil)
 //			if err != nil {
@@ -301,7 +301,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
@@ -314,14 +314,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//			cluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//			_default, err := vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name: pulumi.StringRef(std.Format(ctx, map[string]interface{}{
 //					"input": "%s%s",
 //					"args": []*string{
@@ -334,7 +334,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//			_, err = vsphere.GetHost(ctx, &vsphere.LookupHostArgs{
 //				Name:         pulumi.StringRef("esxi-01.example.com"),
 //				DatacenterId: datacenter.Id,
 //			}, nil)
@@ -451,7 +451,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
@@ -464,14 +464,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//			cluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//			_, err = vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name: pulumi.StringRef(std.Format(ctx, map[string]interface{}{
 //					"input": "%s%s",
 //					"args": []*string{
@@ -484,7 +484,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//			_, err = vsphere.GetHost(ctx, &vsphere.LookupHostArgs{
 //				Name:         pulumi.StringRef("esxi-01.example.com"),
 //				DatacenterId: datacenter.Id,
 //			}, nil)
@@ -498,7 +498,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			templateFromOvf, err := vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
+//			templateFromOvf, err := vsphere.GetVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
 //				Name:         pulumi.StringRef("ubuntu-server-template-from-ova"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -579,20 +579,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			datastoreCluster, err := vsphere.LookupDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
+//			datastoreCluster, err := vsphere.GetDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
 //				Name:         "datastore-cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//			cluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)

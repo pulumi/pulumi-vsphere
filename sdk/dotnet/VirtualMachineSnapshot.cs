@@ -43,7 +43,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var demo1 = new VSphere.VirtualMachineSnapshot("demo1", new()
+    ///     var demo1 = new VSphere.Index.VirtualMachineSnapshot("demo1", new()
     ///     {
     ///         VirtualMachineUuid = "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
     ///         SnapshotName = "Snapshot Name",

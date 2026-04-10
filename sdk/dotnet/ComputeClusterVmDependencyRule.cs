@@ -53,30 +53,30 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "network1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm1 = new VSphere.VirtualMachine("vm1", new()
+    ///     var vm1 = new VSphere.Index.VirtualMachine("vm1", new()
     ///     {
     ///         Name = "pulumi-test1",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var vm2 = new VSphere.VirtualMachine("vm2", new()
+    ///     var vm2 = new VSphere.Index.VirtualMachine("vm2", new()
     ///     {
     ///         Name = "pulumi-test2",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -126,7 +126,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var clusterVmGroup1 = new VSphere.ComputeClusterVmGroup("cluster_vm_group1", new()
+    ///     var clusterVmGroup1 = new VSphere.Index.ComputeClusterVmGroup("cluster_vm_group1", new()
     ///     {
     ///         Name = "pulumi-test-cluster-vm-group1",
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
@@ -136,7 +136,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var clusterVmGroup2 = new VSphere.ComputeClusterVmGroup("cluster_vm_group2", new()
+    ///     var clusterVmGroup2 = new VSphere.Index.ComputeClusterVmGroup("cluster_vm_group2", new()
     ///     {
     ///         Name = "pulumi-test-cluster-vm-group2",
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
@@ -146,7 +146,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var clusterVmDependencyRule = new VSphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", new()
+    ///     var clusterVmDependencyRule = new VSphere.Index.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", new()
     ///     {
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         Name = "pulumi-test-cluster-vm-dependency-rule",

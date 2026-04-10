@@ -32,7 +32,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var role1 = new VSphere.Role("role1", new()
+    ///     var role1 = new VSphere.Index.Role("role1", new()
     ///     {
     ///         Name = "my_terraform_role",
     ///         RolePrivileges = new[]

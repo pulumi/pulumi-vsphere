@@ -48,36 +48,36 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     var host = VSphere.Index.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "network1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
     ///     {
     ///         Name = "pulumi-test",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -103,7 +103,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var drsVmOverride = new VSphere.DrsVmOverride("drs_vm_override", new()
+    ///     var drsVmOverride = new VSphere.Index.DrsVmOverride("drs_vm_override", new()
     ///     {
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         VirtualMachineId = vm.Id,

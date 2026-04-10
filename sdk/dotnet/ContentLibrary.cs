@@ -28,18 +28,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenterA = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenterA = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01-a",
     ///     });
     /// 
-    ///     var publisherDatastore = VSphere.GetDatastore.Invoke(new()
+    ///     var publisherDatastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "publisher-datastore",
     ///         DatacenterId = datacenterA.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var publisherContentLibrary = new VSphere.ContentLibrary("publisher_content_library", new()
+    ///     var publisherContentLibrary = new VSphere.Index.ContentLibrary("publisher_content_library", new()
     ///     {
     ///         Name = "Publisher Content Library",
     ///         Description = "A publishing content library.",
@@ -62,18 +62,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenterB = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenterB = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01-b",
     ///     });
     /// 
-    ///     var subscriberDatastore = VSphere.GetDatastore.Invoke(new()
+    ///     var subscriberDatastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "subscriber-datastore",
     ///         DatacenterId = datacenterB.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var subscriberContentLibrary = new VSphere.ContentLibrary("subscriber_content_library", new()
+    ///     var subscriberContentLibrary = new VSphere.Index.ContentLibrary("subscriber_content_library", new()
     ///     {
     ///         Name = "Subscriber Content Library",
     ///         Description = "A subscribing content library.",

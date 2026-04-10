@@ -35,7 +35,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var attribute = new VSphere.CustomAttribute("attribute", new()
+    ///     var attribute = new VSphere.Index.CustomAttribute("attribute", new()
     ///     {
     ///         Name = "pulumi-test-attribute",
     ///         ManagedObjectType = "VirtualMachine",

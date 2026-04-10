@@ -402,7 +402,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
         datacenter_id=datacenter.id)
     cluster = vsphere.get_compute_cluster(name="cluster-01",
         datacenter_id=datacenter.id)
-    default = vsphere.get_resource_pool(name=std.index.format(input="%s%s",
+    default = vsphere.get_resource_pool(name=std.format(input="%s%s",
             args=[
                 cluster.name,
                 "/Resources",
@@ -463,7 +463,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
                 "instance-id": remote_ovf_uuid,
                 "public-keys": remote_ovf_public_keys,
                 "password": remote_ovf_password,
-                "user-data": std.index.base64encode(input=remote_ovf_user_data)["result"],
+                "user-data": std.base64encode(input=remote_ovf_user_data)["result"],
             },
         })
     ## Deployment of VM from Local OVF
@@ -499,7 +499,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
                 "instance-id": local_ovf_uuid,
                 "public-keys": local_ovf_public_keys,
                 "password": local_ovf_password,
-                "user-data": std.index.base64encode(input=local_ovf_user_data)["result"],
+                "user-data": std.base64encode(input=local_ovf_user_data)["result"],
             },
         })
     ```
@@ -619,7 +619,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
         datacenter_id=datacenter.id)
     cluster = vsphere.get_compute_cluster(name="cluster-01",
         datacenter_id=datacenter.id)
-    default = vsphere.get_resource_pool(name=std.index.format(input="%s%s",
+    default = vsphere.get_resource_pool(name=std.format(input="%s%s",
             args=[
                 cluster.name,
                 "/Resources",
@@ -680,7 +680,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
                 "instance-id": remote_ovf_uuid,
                 "public-keys": remote_ovf_public_keys,
                 "password": remote_ovf_password,
-                "user-data": std.index.base64encode(input=remote_ovf_user_data)["result"],
+                "user-data": std.base64encode(input=remote_ovf_user_data)["result"],
             },
         })
     ## Deployment of VM from Local OVF
@@ -716,7 +716,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
                 "instance-id": local_ovf_uuid,
                 "public-keys": local_ovf_public_keys,
                 "password": local_ovf_password,
-                "user-data": std.index.base64encode(input=local_ovf_user_data)["result"],
+                "user-data": std.base64encode(input=local_ovf_user_data)["result"],
             },
         })
     ```

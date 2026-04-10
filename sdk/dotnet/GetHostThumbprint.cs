@@ -32,7 +32,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+        ///     var thumbprint = VSphere.Index.GetHostThumbprint.Invoke(new()
         ///     {
         ///         Address = "esxi-01.example.com",
         ///     });
@@ -64,7 +64,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+        ///     var thumbprint = VSphere.Index.GetHostThumbprint.Invoke(new()
         ///     {
         ///         Address = "esxi-01.example.com",
         ///     });
@@ -96,7 +96,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+        ///     var thumbprint = VSphere.Index.GetHostThumbprint.Invoke(new()
         ///     {
         ///         Address = "esxi-01.example.com",
         ///     });

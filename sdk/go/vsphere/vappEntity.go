@@ -46,13 +46,13 @@ import (
 //			if param := cfg.Get("cluster"); param != "" {
 //				cluster = param
 //			}
-//			datacenterGetDatacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenterGetDatacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef(datacenter),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//			computeCluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         cluster,
 //				DatacenterId: pulumi.StringRef(datacenterGetDatacenter.Id),
 //			}, nil)

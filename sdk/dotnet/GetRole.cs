@@ -25,7 +25,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var terraformRole = VSphere.GetRole.Invoke(new()
+        ///     var terraformRole = VSphere.Index.GetRole.Invoke(new()
         ///     {
         ///         Label = "Terraform to vSphere Integration Role",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var terraformRole = VSphere.GetRole.Invoke(new()
+        ///     var terraformRole = VSphere.Index.GetRole.Invoke(new()
         ///     {
         ///         Label = "Terraform to vSphere Integration Role",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var terraformRole = VSphere.GetRole.Invoke(new()
+        ///     var terraformRole = VSphere.Index.GetRole.Invoke(new()
         ///     {
         ///         Label = "Terraform to vSphere Integration Role",
         ///     });

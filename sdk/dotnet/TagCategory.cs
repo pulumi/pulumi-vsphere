@@ -33,7 +33,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var category = new VSphere.TagCategory("category", new()
+    ///     var category = new VSphere.Index.TagCategory("category", new()
     ///     {
     ///         Name = "pulumi-test-category",
     ///         Description = "Managed by Pulumi",

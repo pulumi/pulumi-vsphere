@@ -63,7 +63,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+    ///     var vds = new VSphere.Index.DistributedVirtualSwitch("vds", new()
     ///     {
     ///         Name = "vds-01",
     ///         DatacenterId = datacenter.Id,
@@ -82,7 +82,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var pg = new VSphere.DistributedPortGroup("pg", new()
+    ///     var pg = new VSphere.Index.DistributedPortGroup("pg", new()
     ///     {
     ///         Name = "pg-01",
     ///         DistributedVirtualSwitchUuid = vds.Id,

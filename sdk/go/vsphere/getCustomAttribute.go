@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupCustomAttribute(ctx, &vsphere.LookupCustomAttributeArgs{
+//			_, err := vsphere.GetCustomAttribute(ctx, &vsphere.LookupCustomAttributeArgs{
 //				Name: "pulumi-test-attribute",
 //			}, nil)
 //			if err != nil {

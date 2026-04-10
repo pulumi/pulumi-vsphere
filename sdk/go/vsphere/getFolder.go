@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			datacenterFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//			datacenterFolder := vsphere.GetFolderOutput(ctx, vsphere.GetFolderOutputArgs{
 //				Path: datacenterFolderFolder.Path.ApplyT(func(path string) (string, error) {
 //					return fmt.Sprintf("/%v", path), nil
 //				}).(pulumi.StringOutput),
@@ -57,7 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			datacenter := vsphere.LookupDatacenterOutput(ctx, vsphere.GetDatacenterOutputArgs{
+//			datacenter := vsphere.GetDatacenterOutput(ctx, vsphere.GetDatacenterOutputArgs{
 //				Name: datacenterDatacenter.Name,
 //			}, nil)
 //			vmFolderFolder, err := vsphere.NewFolder(ctx, "vm_folder", &vsphere.FolderArgs{
@@ -100,7 +100,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vmFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//			vmFolder := vsphere.GetFolderOutput(ctx, vsphere.GetFolderOutputArgs{
 //				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, vmFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
 //					datacenterFolderFolderPath := _args[0].(string)
 //					name := _args[1].(string)
@@ -108,7 +108,7 @@ import (
 //					return fmt.Sprintf("/%v/%v/vm/%v", datacenterFolderFolderPath, name, vmFolderFolderPath), nil
 //				}).(pulumi.StringOutput),
 //			}, nil)
-//			datastoreFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//			datastoreFolder := vsphere.GetFolderOutput(ctx, vsphere.GetFolderOutputArgs{
 //				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, datastoreFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
 //					datacenterFolderFolderPath := _args[0].(string)
 //					name := _args[1].(string)
@@ -116,7 +116,7 @@ import (
 //					return fmt.Sprintf("/%v/%v/datastore/%v", datacenterFolderFolderPath, name, datastoreFolderFolderPath), nil
 //				}).(pulumi.StringOutput),
 //			}, nil)
-//			networkFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//			networkFolder := vsphere.GetFolderOutput(ctx, vsphere.GetFolderOutputArgs{
 //				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, networkFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
 //					datacenterFolderFolderPath := _args[0].(string)
 //					name := _args[1].(string)
@@ -124,7 +124,7 @@ import (
 //					return fmt.Sprintf("/%v/%v/network/%v", datacenterFolderFolderPath, name, networkFolderFolderPath), nil
 //				}).(pulumi.StringOutput),
 //			}, nil)
-//			hostFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//			hostFolder := vsphere.GetFolderOutput(ctx, vsphere.GetFolderOutputArgs{
 //				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, hostFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
 //					datacenterFolderFolderPath := _args[0].(string)
 //					name := _args[1].(string)

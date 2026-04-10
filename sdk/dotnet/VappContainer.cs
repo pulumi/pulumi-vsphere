@@ -31,18 +31,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     var computeCluster = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vappContainer = new VSphere.VappContainer("vapp_container", new()
+    ///     var vappContainer = new VSphere.Index.VappContainer("vapp_container", new()
     ///     {
     ///         Name = "vapp-01",
     ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -65,36 +65,36 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     var computeCluster = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "VM Network",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vappContainer = new VSphere.VappContainer("vapp_container", new()
+    ///     var vappContainer = new VSphere.Index.VappContainer("vapp_container", new()
     ///     {
     ///         Name = "vapp-01",
     ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///     });
     /// 
-    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
     ///     {
     ///         Name = "foo",
     ///         ResourcePoolId = vappContainerVsphereVappContainer.Id,

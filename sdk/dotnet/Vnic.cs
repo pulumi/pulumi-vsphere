@@ -26,18 +26,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     var host = VSphere.Index.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+    ///     var vds = new VSphere.Index.DistributedVirtualSwitch("vds", new()
     ///     {
     ///         Name = "vds-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -54,14 +54,14 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var pg = new VSphere.DistributedPortGroup("pg", new()
+    ///     var pg = new VSphere.Index.DistributedPortGroup("pg", new()
     ///     {
     ///         Name = "pg-01",
     ///         VlanId = 1234,
     ///         DistributedVirtualSwitchUuid = vds.Id,
     ///     });
     /// 
-    ///     var vnic = new VSphere.Vnic("vnic", new()
+    ///     var vnic = new VSphere.Index.Vnic("vnic", new()
     ///     {
     ///         Host = host.Apply(getHostResult =&gt; getHostResult.Id),
     ///         DistributedSwitchPort = vds.Id,
@@ -86,18 +86,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     var host = VSphere.Index.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var hvs = new VSphere.HostVirtualSwitch("hvs", new()
+    ///     var hvs = new VSphere.Index.HostVirtualSwitch("hvs", new()
     ///     {
     ///         Name = "hvs-01",
     ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
@@ -116,14 +116,14 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var pg = new VSphere.HostPortGroup("pg", new()
+    ///     var pg = new VSphere.Index.HostPortGroup("pg", new()
     ///     {
     ///         Name = "pg-01",
     ///         VirtualSwitchName = hvs.Name,
     ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
     ///     });
     /// 
-    ///     var vnic = new VSphere.Vnic("vnic", new()
+    ///     var vnic = new VSphere.Index.Vnic("vnic", new()
     ///     {
     ///         Host = host.Apply(getHostResult =&gt; getHostResult.Id),
     ///         Portgroup = pg.Name,

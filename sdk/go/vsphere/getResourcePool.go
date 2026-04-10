@@ -34,13 +34,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//			_, err = vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name:         pulumi.StringRef("cluster-01/Resources"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -67,20 +67,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			parentPool, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//			parentPool, err := vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name:         pulumi.StringRef("cluster-01/Resources"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//			_, err = vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name:                 pulumi.StringRef("example"),
 //				ParentResourcePoolId: pulumi.StringRef(parentPool.Id),
 //			}, nil)
@@ -117,7 +117,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//			_, err := vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name:         pulumi.StringRef("esxi-01.example.com/Resources"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)

@@ -29,12 +29,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
+        ///     var prodPlatinumReplicated = VSphere.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "prod_platinum_replicated",
         ///     });
         /// 
-        ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+        ///     var devSilverNonreplicated = VSphere.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "dev_silver_nonreplicated",
         ///     });
@@ -63,12 +63,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
+        ///     var prodPlatinumReplicated = VSphere.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "prod_platinum_replicated",
         ///     });
         /// 
-        ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+        ///     var devSilverNonreplicated = VSphere.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "dev_silver_nonreplicated",
         ///     });
@@ -97,12 +97,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
+        ///     var prodPlatinumReplicated = VSphere.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "prod_platinum_replicated",
         ///     });
         /// 
-        ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+        ///     var devSilverNonreplicated = VSphere.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "dev_silver_nonreplicated",
         ///     });

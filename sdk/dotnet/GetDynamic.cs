@@ -27,24 +27,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "SomeCategory",
         ///     });
         /// 
-        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     var tag1 = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "FirstTag",
         ///         CategoryId = cat.Id,
         ///     });
         /// 
-        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     var tag2 = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "SecondTag",
         ///         CategoryId = cat.Id,
         ///     });
         /// 
-        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     var dyn = VSphere.Index.GetDynamic.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -77,24 +77,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "SomeCategory",
         ///     });
         /// 
-        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     var tag1 = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "FirstTag",
         ///         CategoryId = cat.Id,
         ///     });
         /// 
-        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     var tag2 = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "SecondTag",
         ///         CategoryId = cat.Id,
         ///     });
         /// 
-        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     var dyn = VSphere.Index.GetDynamic.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -127,24 +127,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "SomeCategory",
         ///     });
         /// 
-        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     var tag1 = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "FirstTag",
         ///         CategoryId = cat.Id,
         ///     });
         /// 
-        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     var tag2 = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "SecondTag",
         ///         CategoryId = cat.Id,
         ///     });
         /// 
-        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     var dyn = VSphere.Index.GetDynamic.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

@@ -39,52 +39,52 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var cluster1 = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster1 = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster2 = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster2 = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-02",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster3 = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster3 = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-03",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
     ///     // This host is assumed to be part of "cluster-01"
-    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     var host = VSphere.Index.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
     ///     // Configure a profile on "cluster-01" using one of its hosts as a reference
-    ///     var profile1 = new VSphere.ConfigurationProfile("profile1", new()
+    ///     var profile1 = new VSphere.Index.ConfigurationProfile("profile1", new()
     ///     {
     ///         ClusterId = cluster1.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         ReferenceHostId = host.Apply(getHostResult =&gt; getHostResult.Id),
     ///     });
     /// 
     ///     // Copy the configuration of "cluster-01" onto "cluster-02"
-    ///     var profile2 = new VSphere.ConfigurationProfile("profile2", new()
+    ///     var profile2 = new VSphere.Index.ConfigurationProfile("profile2", new()
     ///     {
     ///         ClusterId = cluster2.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         Configuration = profile1.Configuration,
     ///     });
     /// 
     ///     // Copy the configuration of "cluster-01" onto "cluster-03"
-    ///     var profile3 = new VSphere.ConfigurationProfile("profile3", new()
+    ///     var profile3 = new VSphere.Index.ConfigurationProfile("profile3", new()
     ///     {
     ///         ClusterId = cluster3.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         Configuration = profile1.Configuration,
@@ -107,18 +107,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var cluster1 = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster1 = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var profile1 = new VSphere.ConfigurationProfile("profile1", new()
+    ///     var profile1 = new VSphere.Index.ConfigurationProfile("profile1", new()
     ///     {
     ///         ClusterId = cluster1.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         Configuration = Std.Index.File.Invoke(new()

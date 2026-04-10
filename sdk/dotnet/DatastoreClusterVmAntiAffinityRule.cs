@@ -49,34 +49,34 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
+    ///     var datastoreCluster = VSphere.Index.GetDatastoreCluster.Invoke(new()
     ///     {
     ///         Name = "datastore-cluster1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "network1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm = new List&lt;VSphere.VirtualMachine&gt;();
+    ///     var vm = new List&lt;VSphere.Index.VirtualMachine&gt;();
     ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         vm.Add(new VSphere.VirtualMachine($"vm-{range.Value}", new()
+    ///         vm.Add(new VSphere.Index.VirtualMachine($"vm-{range.Value}", new()
     ///         {
     ///             Name = $"pulumi-test-{range.Value}",
     ///             ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
     ///             },
     ///         }));
     ///     }
-    ///     var clusterVmAntiAffinityRule = new VSphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", new()
+    ///     var clusterVmAntiAffinityRule = new VSphere.Index.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", new()
     ///     {
     ///         Name = "pulumi-test-datastore-cluster-vm-anti-affinity-rule",
     ///         DatastoreClusterId = datastoreCluster.Apply(getDatastoreClusterResult =&gt; getDatastoreClusterResult.Id),

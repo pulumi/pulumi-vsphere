@@ -25,18 +25,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var computeCluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var profile = VSphere.GetConfigurationProfile.Invoke(new()
+        ///     var profile = VSphere.Index.GetConfigurationProfile.Invoke(new()
         ///     {
         ///         ClusterId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });
@@ -61,18 +61,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var computeCluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var profile = VSphere.GetConfigurationProfile.Invoke(new()
+        ///     var profile = VSphere.Index.GetConfigurationProfile.Invoke(new()
         ///     {
         ///         ClusterId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });
@@ -97,18 +97,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var computeCluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var profile = VSphere.GetConfigurationProfile.Invoke(new()
+        ///     var profile = VSphere.Index.GetConfigurationProfile.Invoke(new()
         ///     {
         ///         ClusterId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });

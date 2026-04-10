@@ -24,7 +24,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var windows = new VSphere.GuestOsCustomization("windows", new()
+    ///     var windows = new VSphere.Index.GuestOsCustomization("windows", new()
     ///     {
     ///         Name = "windows",
     ///         Type = "Windows",
