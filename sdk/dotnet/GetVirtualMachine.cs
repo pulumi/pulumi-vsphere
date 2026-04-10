@@ -33,12 +33,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var template = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -58,18 +58,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var productionTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var productionTemplate = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "production/templates/ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var developmentTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var developmentTemplate = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "development/templates/ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -103,12 +103,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var template = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -128,18 +128,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var productionTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var productionTemplate = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "production/templates/ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var developmentTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var developmentTemplate = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "development/templates/ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -173,12 +173,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var template = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -198,18 +198,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var productionTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var productionTemplate = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "production/templates/ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var developmentTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var developmentTemplate = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "development/templates/ubuntu-server-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),

@@ -86,7 +86,7 @@ import * as utilities from "./utilities";
  * }));
  * const profile1 = new vsphere.ConfigurationProfile("profile1", {
  *     clusterId: cluster1.then(cluster1 => cluster1.id),
- *     configuration: std.index.file({
+ *     configuration: std.file({
  *         input: "/path/to/cluster_config_1.json",
  *     }).result,
  * });

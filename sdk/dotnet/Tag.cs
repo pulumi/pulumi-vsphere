@@ -37,7 +37,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var category = new VSphere.TagCategory("category", new()
+    ///     var category = new VSphere.Index.TagCategory("category", new()
     ///     {
     ///         Name = "pulumi-test-category",
     ///         Cardinality = "SINGLE",
@@ -49,7 +49,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var tag = new VSphere.Tag("tag", new()
+    ///     var tag = new VSphere.Index.Tag("tag", new()
     ///     {
     ///         Name = "pulumi-test-tag",
     ///         CategoryId = category.Id,
@@ -78,7 +78,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var category = new VSphere.TagCategory("category", new()
+    ///     var category = new VSphere.Index.TagCategory("category", new()
     ///     {
     ///         Name = "pulumi-test-category",
     ///         Cardinality = "SINGLE",
@@ -90,14 +90,14 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var tag = new VSphere.Tag("tag", new()
+    ///     var tag = new VSphere.Index.Tag("tag", new()
     ///     {
     ///         Name = "pulumi-test-tag",
     ///         CategoryId = category.Id,
     ///         Description = "Managed by Pulumi",
     ///     });
     /// 
-    ///     var web = new VSphere.VirtualMachine("web", new()
+    ///     var web = new VSphere.Index.VirtualMachine("web", new()
     ///     {
     ///         Tags = new[]
     ///         {

@@ -25,7 +25,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var license = VSphere.GetLicense.Invoke(new()
+        ///     var license = VSphere.Index.GetLicense.Invoke(new()
         ///     {
         ///         LicenseKey = "00000-00000-00000-00000-00000",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var license = VSphere.GetLicense.Invoke(new()
+        ///     var license = VSphere.Index.GetLicense.Invoke(new()
         ///     {
         ///         LicenseKey = "00000-00000-00000-00000-00000",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var license = VSphere.GetLicense.Invoke(new()
+        ///     var license = VSphere.Index.GetLicense.Invoke(new()
         ///     {
         ///         LicenseKey = "00000-00000-00000-00000-00000",
         ///     });

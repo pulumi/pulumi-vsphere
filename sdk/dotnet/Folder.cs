@@ -33,12 +33,12 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = vsphereDatacenter,
     ///     });
     /// 
-    ///     var vmFolder = new VSphere.Folder("vm_folder", new()
+    ///     var vmFolder = new VSphere.Index.Folder("vm_folder", new()
     ///     {
     ///         Path = "example-vm-folder",
     ///         Type = "vm",
@@ -67,19 +67,19 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = vsphereDatacenter,
     ///     });
     /// 
-    ///     var parent = new VSphere.Folder("parent", new()
+    ///     var parent = new VSphere.Index.Folder("parent", new()
     ///     {
     ///         Path = "example-parent-vm-folder",
     ///         Type = "vm",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var child = new VSphere.Folder("child", new()
+    ///     var child = new VSphere.Index.Folder("child", new()
     ///     {
     ///         Path = parent.Path.Apply(path =&gt; $"{path}/example-child-vm-folder"),
     ///         Type = "vm",

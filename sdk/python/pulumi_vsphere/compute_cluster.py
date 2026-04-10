@@ -2473,7 +2473,7 @@ class ComputeCluster(pulumi.CustomResource):
             ]
         datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
         host = {__key: vsphere.get_host(name=__value,
-            datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.index.toset(input=hosts)["result"])}
+            datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.toset(input=hosts)["result"])}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
             name="pulumi-compute-cluster-test",
             datacenter_id=datacenter_get_datacenter.id,
@@ -2702,7 +2702,7 @@ class ComputeCluster(pulumi.CustomResource):
             ]
         datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
         host = {__key: vsphere.get_host(name=__value,
-            datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.index.toset(input=hosts)["result"])}
+            datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.toset(input=hosts)["result"])}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
             name="pulumi-compute-cluster-test",
             datacenter_id=datacenter_get_datacenter.id,

@@ -228,7 +228,7 @@ class ConfigurationProfile(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         profile1 = vsphere.ConfigurationProfile("profile1",
             cluster_id=cluster1.id,
-            configuration=std.index.file(input="/path/to/cluster_config_1.json")["result"])
+            configuration=std.file(input="/path/to/cluster_config_1.json")["result"])
         ```
 
 
@@ -311,7 +311,7 @@ class ConfigurationProfile(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         profile1 = vsphere.ConfigurationProfile("profile1",
             cluster_id=cluster1.id,
-            configuration=std.index.file(input="/path/to/cluster_config_1.json")["result"])
+            configuration=std.file(input="/path/to/cluster_config_1.json")["result"])
         ```
 
 

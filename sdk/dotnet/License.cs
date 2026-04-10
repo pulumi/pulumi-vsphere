@@ -22,7 +22,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var licenseKey = new VSphere.License("licenseKey", new()
+    ///     var licenseKey = new VSphere.Index.License("licenseKey", new()
     ///     {
     ///         LicenseKey = "00000-00000-00000-00000-00000",
     ///         Labels = 

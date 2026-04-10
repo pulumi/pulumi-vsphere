@@ -29,20 +29,20 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+// _, err := vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 // Name: "SomeCategory",
 // }, nil);
 // if err != nil {
 // return err
 // }
-// tag1, err := vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+// tag1, err := vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 // Name: "FirstTag",
 // CategoryId: cat.Id,
 // }, nil);
 // if err != nil {
 // return err
 // }
-// _, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+// _, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
 // Name: "SecondTag",
 // CategoryId: cat.Id,
 // }, nil);

@@ -38,18 +38,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var vds = VSphere.GetDistributedVirtualSwitch.Invoke(new()
+        ///     var vds = VSphere.Index.GetDistributedVirtualSwitch.Invoke(new()
         ///     {
         ///         Name = "vds-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
+        ///     var dvpg = new VSphere.Index.DistributedPortGroup("dvpg", new()
         ///     {
         ///         Name = "dvpg-01",
         ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
@@ -96,18 +96,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var vds = VSphere.GetDistributedVirtualSwitch.Invoke(new()
+        ///     var vds = VSphere.Index.GetDistributedVirtualSwitch.Invoke(new()
         ///     {
         ///         Name = "vds-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
+        ///     var dvpg = new VSphere.Index.DistributedPortGroup("dvpg", new()
         ///     {
         ///         Name = "dvpg-01",
         ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
@@ -154,18 +154,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var vds = VSphere.GetDistributedVirtualSwitch.Invoke(new()
+        ///     var vds = VSphere.Index.GetDistributedVirtualSwitch.Invoke(new()
         ///     {
         ///         Name = "vds-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
+        ///     var dvpg = new VSphere.Index.DistributedPortGroup("dvpg", new()
         ///     {
         ///         Name = "dvpg-01",
         ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),

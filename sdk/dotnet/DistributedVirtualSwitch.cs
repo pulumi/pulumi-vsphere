@@ -58,7 +58,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+    ///     var vds = new VSphere.Index.DistributedVirtualSwitch("vds", new()
     ///     {
     ///         Name = "vds-01",
     ///         DatacenterId = datacenter.Id,

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupLicense(ctx, &vsphere.LookupLicenseArgs{
+//			_, err := vsphere.GetLicense(ctx, &vsphere.LookupLicenseArgs{
 //				LicenseKey: "00000-00000-00000-00000-00000",
 //			}, nil)
 //			if err != nil {

@@ -31,12 +31,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     var pool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -55,18 +55,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var parentPool = VSphere.GetResourcePool.Invoke(new()
+        ///     var parentPool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var childPool = VSphere.GetResourcePool.Invoke(new()
+        ///     var childPool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "example",
         ///         ParentResourcePoolId = parentPool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
@@ -95,7 +95,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     var pool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com/Resources",
         ///         DatacenterId = datacenter.Id,
@@ -133,12 +133,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     var pool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -157,18 +157,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var parentPool = VSphere.GetResourcePool.Invoke(new()
+        ///     var parentPool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var childPool = VSphere.GetResourcePool.Invoke(new()
+        ///     var childPool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "example",
         ///         ParentResourcePoolId = parentPool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
@@ -197,7 +197,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     var pool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com/Resources",
         ///         DatacenterId = datacenter.Id,
@@ -235,12 +235,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     var pool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -259,18 +259,18 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var parentPool = VSphere.GetResourcePool.Invoke(new()
+        ///     var parentPool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var childPool = VSphere.GetResourcePool.Invoke(new()
+        ///     var childPool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "example",
         ///         ParentResourcePoolId = parentPool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
@@ -299,7 +299,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     var pool = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com/Resources",
         ///         DatacenterId = datacenter.Id,

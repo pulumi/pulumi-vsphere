@@ -35,36 +35,36 @@ namespace Pulumi.VSphere
     ///     var config = new Config();
     ///     var datacenter = config.Get("datacenter") ?? "dc-01";
     ///     var cluster = config.Get("cluster") ?? "cluster-01";
-    ///     var datacenterGetDatacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenterGetDatacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = datacenter,
     ///     });
     /// 
-    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     var computeCluster = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = cluster,
     ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "network1",
     ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore1",
     ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vappContainer = new VSphere.VappContainer("vapp_container", new()
+    ///     var vappContainer = new VSphere.Index.VappContainer("vapp_container", new()
     ///     {
     ///         Name = "pulumi-vapp-container-test",
     ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///     });
     /// 
-    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
     ///     {
     ///         Name = "pulumi-virtual-machine-test",
     ///         ResourcePoolId = vappContainer.Id,
@@ -89,7 +89,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var vappEntity = new VSphere.VappEntity("vapp_entity", new()
+    ///     var vappEntity = new VSphere.Index.VappEntity("vapp_entity", new()
     ///     {
     ///         TargetId = vm.Moid,
     ///         ContainerId = vappContainer.Id,

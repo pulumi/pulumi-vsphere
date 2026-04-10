@@ -64,7 +64,7 @@ import * as utilities from "./utilities";
  * const host = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: vsphere.getHost({
  *     name: __value,
  *     datacenterId: _arg0_.id,
- * }) }));
+ * }) }), {});
  * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
  *     name: "pulumi-compute-cluster-test",
  *     datacenterId: datacenterGetDatacenter.then(datacenterGetDatacenter => datacenterGetDatacenter.id),

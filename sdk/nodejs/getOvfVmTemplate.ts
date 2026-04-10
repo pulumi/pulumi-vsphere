@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * const _default = Promise.all([cluster, datacenter]).then(([cluster, datacenter]) => vsphere.getResourcePool({
- *     name: std.index.format({
+ *     name: std.format({
  *         input: "%s%s",
  *         args: [
  *             cluster.name,
@@ -100,7 +100,7 @@ import * as utilities from "./utilities";
  *             "instance-id": remoteOvfUuid,
  *             "public-keys": remoteOvfPublicKeys,
  *             password: remoteOvfPassword,
- *             "user-data": std.index.base64encode({
+ *             "user-data": std.base64encode({
  *                 input: remoteOvfUserData,
  *             }).result,
  *         },
@@ -139,7 +139,7 @@ import * as utilities from "./utilities";
  *             "instance-id": localOvfUuid,
  *             "public-keys": localOvfPublicKeys,
  *             password: localOvfPassword,
- *             "user-data": std.index.base64encode({
+ *             "user-data": std.base64encode({
  *                 input: localOvfUserData,
  *             }).result,
  *         },
@@ -351,7 +351,7 @@ export interface GetOvfVmTemplateResult {
  *     datacenterId: datacenter.id,
  * }));
  * const _default = Promise.all([cluster, datacenter]).then(([cluster, datacenter]) => vsphere.getResourcePool({
- *     name: std.index.format({
+ *     name: std.format({
  *         input: "%s%s",
  *         args: [
  *             cluster.name,
@@ -423,7 +423,7 @@ export interface GetOvfVmTemplateResult {
  *             "instance-id": remoteOvfUuid,
  *             "public-keys": remoteOvfPublicKeys,
  *             password: remoteOvfPassword,
- *             "user-data": std.index.base64encode({
+ *             "user-data": std.base64encode({
  *                 input: remoteOvfUserData,
  *             }).result,
  *         },
@@ -462,7 +462,7 @@ export interface GetOvfVmTemplateResult {
  *             "instance-id": localOvfUuid,
  *             "public-keys": localOvfPublicKeys,
  *             password: localOvfPassword,
- *             "user-data": std.index.base64encode({
+ *             "user-data": std.base64encode({
  *                 input: localOvfUserData,
  *             }).result,
  *         },

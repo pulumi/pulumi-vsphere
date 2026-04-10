@@ -26,7 +26,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicClass = new VSphere.VirtualMachineClass("basic_class", new()
+    ///     var basicClass = new VSphere.Index.VirtualMachineClass("basic_class", new()
     ///     {
     ///         Name = "basic-class",
     ///         Cpus = 4,
@@ -46,7 +46,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vgpClass = new VSphere.VirtualMachineClass("vgp_class", new()
+    ///     var vgpClass = new VSphere.Index.VirtualMachineClass("vgp_class", new()
     ///     {
     ///         Name = "vgpu-class",
     ///         Cpus = 4,

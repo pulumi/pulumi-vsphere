@@ -33,7 +33,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
+        ///     var attribute = VSphere.Index.GetCustomAttribute.Invoke(new()
         ///     {
         ///         Name = "pulumi-test-attribute",
         ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
+        ///     var attribute = VSphere.Index.GetCustomAttribute.Invoke(new()
         ///     {
         ///         Name = "pulumi-test-attribute",
         ///     });
@@ -99,7 +99,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
+        ///     var attribute = VSphere.Index.GetCustomAttribute.Invoke(new()
         ///     {
         ///         Name = "pulumi-test-attribute",
         ///     });

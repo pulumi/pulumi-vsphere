@@ -26,14 +26,14 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vmClass = new VSphere.VirtualMachineClass("vm_class", new()
+    ///     var vmClass = new VSphere.Index.VirtualMachineClass("vm_class", new()
     ///     {
     ///         Name = "custom-class",
     ///         Cpus = 4,
     ///         Memory = 4096,
     ///     });
     /// 
-    ///     var supervisor = new VSphere.Supervisor("supervisor", new()
+    ///     var supervisor = new VSphere.Index.Supervisor("supervisor", new()
     ///     {
     ///         Cluster = "&lt;compute_cluster_id&gt;",
     ///         StoragePolicy = "&lt;storage_policy_name&gt;",

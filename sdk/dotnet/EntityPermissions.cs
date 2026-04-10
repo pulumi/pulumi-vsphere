@@ -33,23 +33,23 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "Sample_DC_2",
     ///     });
     /// 
-    ///     var vm = VSphere.GetVirtualMachine.Invoke(new()
+    ///     var vm = VSphere.Index.GetVirtualMachine.Invoke(new()
     ///     {
     ///         Name = "VM1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var role1 = VSphere.GetRole.Invoke(new()
+    ///     var role1 = VSphere.Index.GetRole.Invoke(new()
     ///     {
     ///         Label = "Datastore consumer (sample)",
     ///     });
     /// 
-    ///     var role2 = new VSphere.Role("role2", new()
+    ///     var role2 = new VSphere.Index.Role("role2", new()
     ///     {
     ///         Name = "my_terraform_role",
     ///         RolePrivileges = new[]
@@ -60,7 +60,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var p1 = new VSphere.EntityPermissions("p1", new()
+    ///     var p1 = new VSphere.Index.EntityPermissions("p1", new()
     ///     {
     ///         EntityId = vm.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
     ///         EntityType = "VirtualMachine",

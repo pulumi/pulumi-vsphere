@@ -39,20 +39,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("Sample_DC_2"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vm, err := vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
+//			vm, err := vsphere.GetVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
 //				Name:         pulumi.StringRef("VM1"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			role1, err := vsphere.LookupRole(ctx, &vsphere.LookupRoleArgs{
+//			role1, err := vsphere.GetRole(ctx, &vsphere.LookupRoleArgs{
 //				Label: "Datastore consumer (sample)",
 //			}, nil)
 //			if err != nil {

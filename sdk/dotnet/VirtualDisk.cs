@@ -28,17 +28,17 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///     });
     /// 
-    ///     var virtualDisk = new VSphere.VirtualDisk("virtual_disk", new()
+    ///     var virtualDisk = new VSphere.Index.VirtualDisk("virtual_disk", new()
     ///     {
     ///         Size = 40,
     ///         Type = "thin",

@@ -71,14 +71,14 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke();
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke();
     /// 
-    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     var host = VSphere.Index.GetHost.Invoke(new()
     ///     {
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var datastore = new VSphere.VmfsDatastore("datastore", new()
+    ///     var datastore = new VSphere.Index.VmfsDatastore("datastore", new()
     ///     {
     ///         Name = "pulumi-test",
     ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
@@ -112,25 +112,25 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     var host = VSphere.Index.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var available = VSphere.GetVmfsDisks.Invoke(new()
+    ///     var available = VSphere.Index.GetVmfsDisks.Invoke(new()
     ///     {
     ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
     ///         Rescan = true,
     ///         Filter = "naa.60a98000",
     ///     });
     /// 
-    ///     var datastore = new VSphere.VmfsDatastore("datastore", new()
+    ///     var datastore = new VSphere.Index.VmfsDatastore("datastore", new()
     ///     {
     ///         Name = "pulumi-test",
     ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),

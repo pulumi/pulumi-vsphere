@@ -37,7 +37,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuVmdkUpload = new VSphere.File("ubuntu_vmdk_upload", new()
+    ///     var ubuntuVmdkUpload = new VSphere.Index.File("ubuntu_vmdk_upload", new()
     ///     {
     ///         Datacenter = "dc-01",
     ///         Datastore = "datastore-01",
@@ -59,7 +59,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuCopy = new VSphere.File("ubuntu_copy", new()
+    ///     var ubuntuCopy = new VSphere.Index.File("ubuntu_copy", new()
     ///     {
     ///         SourceDatacenter = "dc-01",
     ///         Datacenter = "dc-01",

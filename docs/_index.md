@@ -178,30 +178,30 @@ using VSphere = Pulumi.VSphere;
 
 return await Deployment.RunAsync(() =>
 {
-    var datacenter = VSphere.GetDatacenter.Invoke(new()
+    var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     {
         Name = "dc-01",
     });
 
-    var datastore = VSphere.GetDatastore.Invoke(new()
+    var datastore = VSphere.Index.GetDatastore.Invoke(new()
     {
         Name = "datastore-01",
         DatacenterId = datacenter.Apply(getDatacenterResult => getDatacenterResult.Id),
     });
 
-    var cluster = VSphere.GetComputeCluster.Invoke(new()
+    var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
     {
         Name = "cluster-01",
         DatacenterId = datacenter.Apply(getDatacenterResult => getDatacenterResult.Id),
     });
 
-    var network = VSphere.GetNetwork.Invoke(new()
+    var network = VSphere.Index.GetNetwork.Invoke(new()
     {
         Name = "VM Network",
         DatacenterId = datacenter.Apply(getDatacenterResult => getDatacenterResult.Id),
     });
 
-    var vm = new VSphere.VirtualMachine("vm", new()
+    var vm = new VSphere.Index.VirtualMachine("vm", new()
     {
         Name = "foo",
         ResourcePoolId = cluster.Apply(getComputeClusterResult => getComputeClusterResult.ResourcePoolId),
@@ -260,7 +260,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+		datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 			Name: pulumi.StringRef("dc-01"),
 		}, nil)
 		if err != nil {
@@ -273,7 +273,7 @@ func main() {
 		if err != nil {
 			return err
 		}
-		cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+		cluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 			Name:         "cluster-01",
 			DatacenterId: pulumi.StringRef(datacenter.Id),
 		}, nil)

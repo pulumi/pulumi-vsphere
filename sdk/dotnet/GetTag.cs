@@ -33,12 +33,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "example-category",
         ///     });
         /// 
-        ///     var tag = VSphere.GetTag.Invoke(new()
+        ///     var tag = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "example-tag",
         ///         CategoryId = category.Apply(getTagCategoryResult =&gt; getTagCategoryResult.Id),
@@ -72,12 +72,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "example-category",
         ///     });
         /// 
-        ///     var tag = VSphere.GetTag.Invoke(new()
+        ///     var tag = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "example-tag",
         ///         CategoryId = category.Apply(getTagCategoryResult =&gt; getTagCategoryResult.Id),
@@ -111,12 +111,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "example-category",
         ///     });
         /// 
-        ///     var tag = VSphere.GetTag.Invoke(new()
+        ///     var tag = VSphere.Index.GetTag.Invoke(new()
         ///     {
         ///         Name = "example-tag",
         ///         CategoryId = category.Apply(getTagCategoryResult =&gt; getTagCategoryResult.Id),

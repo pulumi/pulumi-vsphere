@@ -28,70 +28,70 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var environment = VSphere.GetTagCategory.Invoke(new()
+    ///     var environment = VSphere.Index.GetTagCategory.Invoke(new()
     ///     {
     ///         Name = "environment",
     ///     });
     /// 
-    ///     var serviceLevel = VSphere.GetTagCategory.Invoke(new()
+    ///     var serviceLevel = VSphere.Index.GetTagCategory.Invoke(new()
     ///     {
     ///         Name = "service_level",
     ///     });
     /// 
-    ///     var replication = VSphere.GetTagCategory.Invoke(new()
+    ///     var replication = VSphere.Index.GetTagCategory.Invoke(new()
     ///     {
     ///         Name = "replication",
     ///     });
     /// 
-    ///     var production = VSphere.GetTag.Invoke(new()
+    ///     var production = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "production",
     ///         CategoryId = "data.vsphere_tag_category.environment.id",
     ///     });
     /// 
-    ///     var development = VSphere.GetTag.Invoke(new()
+    ///     var development = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "development",
     ///         CategoryId = "data.vsphere_tag_category.environment.id",
     ///     });
     /// 
-    ///     var platinum = VSphere.GetTag.Invoke(new()
+    ///     var platinum = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "platinum",
     ///         CategoryId = "data.vsphere_tag_category.service_level.id",
     ///     });
     /// 
-    ///     var gold = VSphere.GetTag.Invoke(new()
+    ///     var gold = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "platinum",
     ///         CategoryId = "data.vsphere_tag_category.service_level.id",
     ///     });
     /// 
-    ///     var silver = VSphere.GetTag.Invoke(new()
+    ///     var silver = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "silver",
     ///         CategoryId = "data.vsphere_tag_category.service_level.id",
     ///     });
     /// 
-    ///     var bronze = VSphere.GetTag.Invoke(new()
+    ///     var bronze = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "bronze",
     ///         CategoryId = "data.vsphere_tag_category.service_level.id",
     ///     });
     /// 
-    ///     var replicated = VSphere.GetTag.Invoke(new()
+    ///     var replicated = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "replicated",
     ///         CategoryId = "data.vsphere_tag_category.replication.id",
     ///     });
     /// 
-    ///     var nonReplicated = VSphere.GetTag.Invoke(new()
+    ///     var nonReplicated = VSphere.Index.GetTag.Invoke(new()
     ///     {
     ///         Name = "non_replicated",
     ///         CategoryId = "data.vsphere_tag_category.replication.id",
     ///     });
     /// 
-    ///     var prodDatastore = new VSphere.VmfsDatastore("prod_datastore", new()
+    ///     var prodDatastore = new VSphere.Index.VmfsDatastore("prod_datastore", new()
     ///     {
     ///         Tags = new[]
     ///         {
@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var devDatastore = new VSphere.NasDatastore("dev_datastore", new()
+    ///     var devDatastore = new VSphere.Index.NasDatastore("dev_datastore", new()
     ///     {
     ///         Tags = new[]
     ///         {
@@ -124,7 +124,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var prodPlatinumReplicated = new VSphere.VmStoragePolicy("prod_platinum_replicated", new()
+    ///     var prodPlatinumReplicated = new VSphere.Index.VmStoragePolicy("prod_platinum_replicated", new()
     ///     {
     ///         Name = "prod_platinum_replicated",
     ///         Description = "prod_platinum_replicated",
@@ -160,7 +160,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var devSilverNonreplicated = new VSphere.VmStoragePolicy("dev_silver_nonreplicated", new()
+    ///     var devSilverNonreplicated = new VSphere.Index.VmStoragePolicy("dev_silver_nonreplicated", new()
     ///     {
     ///         Name = "dev_silver_nonreplicated",
     ///         Description = "dev_silver_nonreplicated",
@@ -209,22 +209,22 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
+    ///     var prodPlatinumReplicated = VSphere.Index.GetPolicy.Invoke(new()
     ///     {
     ///         Name = "prod_platinum_replicated",
     ///     });
     /// 
-    ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+    ///     var devSilverNonreplicated = VSphere.Index.GetPolicy.Invoke(new()
     ///     {
     ///         Name = "dev_silver_nonreplicated",
     ///     });
     /// 
-    ///     var prodVm = new VSphere.VirtualMachine("prod_vm", new()
+    ///     var prodVm = new VSphere.Index.VirtualMachine("prod_vm", new()
     ///     {
     ///         StoragePolicyId = storagePolicy.ProdPlatinumReplicated.Id,
     ///     });
     /// 
-    ///     var devVm = new VSphere.VirtualMachine("dev_vm", new()
+    ///     var devVm = new VSphere.Index.VirtualMachine("dev_vm", new()
     ///     {
     ///         StoragePolicyId = storagePolicy.DevSilverNonreplicated.Id,
     ///     });

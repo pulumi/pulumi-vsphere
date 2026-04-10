@@ -30,17 +30,17 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+    ///     var contentLibrary = VSphere.Index.GetContentLibrary.Invoke(new()
     ///     {
     ///         Name = "clb-01",
     ///     });
     /// 
-    ///     var contentLibraryItem = new VSphere.ContentLibraryItem("content_library_item", new()
+    ///     var contentLibraryItem = new VSphere.Index.ContentLibraryItem("content_library_item", new()
     ///     {
     ///         Name = "ovf-linux-ubuntu-server-lts",
     ///         Description = "Ubuntu Server LTS OVF Template",
@@ -63,17 +63,17 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+    ///     var contentLibrary = VSphere.Index.GetContentLibrary.Invoke(new()
     ///     {
     ///         Name = "clb-01",
     ///     });
     /// 
-    ///     var contentLibraryItem = new VSphere.ContentLibraryItem("content_library_item", new()
+    ///     var contentLibraryItem = new VSphere.Index.ContentLibraryItem("content_library_item", new()
     ///     {
     ///         Name = "iso-linux-ubuntu-server-lts",
     ///         Description = "Ubuntu Server LTS .iso",
@@ -98,17 +98,17 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+    ///     var contentLibrary = VSphere.Index.GetContentLibrary.Invoke(new()
     ///     {
     ///         Name = "clb-01",
     ///     });
     /// 
-    ///     var contentLibraryItem = new VSphere.ContentLibraryItem("content_library_item", new()
+    ///     var contentLibraryItem = new VSphere.Index.ContentLibraryItem("content_library_item", new()
     ///     {
     ///         Name = "tpl-linux-ubuntu-server-lts",
     ///         Description = "Ubuntu Server LTS",

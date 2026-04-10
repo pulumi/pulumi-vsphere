@@ -28,7 +28,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+        ///     var contentLibrary = VSphere.Index.GetContentLibrary.Invoke(new()
         ///     {
         ///         Name = "Content Library",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+        ///     var contentLibrary = VSphere.Index.GetContentLibrary.Invoke(new()
         ///     {
         ///         Name = "Content Library",
         ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+        ///     var contentLibrary = VSphere.Index.GetContentLibrary.Invoke(new()
         ///     {
         ///         Name = "Content Library",
         ///     });

@@ -33,7 +33,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "example-category",
         ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "example-category",
         ///     });
@@ -99,7 +99,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     var category = VSphere.Index.GetTagCategory.Invoke(new()
         ///     {
         ///         Name = "example-category",
         ///     });

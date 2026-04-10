@@ -29,12 +29,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var pool = VSphere.GetVappContainer.Invoke(new()
+        ///     var pool = VSphere.Index.GetVappContainer.Invoke(new()
         ///     {
         ///         Name = "vapp-container-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -64,12 +64,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var pool = VSphere.GetVappContainer.Invoke(new()
+        ///     var pool = VSphere.Index.GetVappContainer.Invoke(new()
         ///     {
         ///         Name = "vapp-container-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -99,12 +99,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var pool = VSphere.GetVappContainer.Invoke(new()
+        ///     var pool = VSphere.Index.GetVappContainer.Invoke(new()
         ///     {
         ///         Name = "vapp-container-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),

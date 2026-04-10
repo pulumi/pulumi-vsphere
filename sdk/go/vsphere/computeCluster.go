@@ -86,7 +86,7 @@ import (
 //			if param := cfg.Get("datacenter"); param != "" {
 //				datacenter = param
 //			}
-//			datacenterGetDatacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//			datacenterGetDatacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef(datacenter),
 //			}, nil)
 //			if err != nil {

@@ -47,36 +47,36 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
+    ///     var datastoreCluster = VSphere.Index.GetDatastoreCluster.Invoke(new()
     ///     {
     ///         Name = "datastore-cluster1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var memberDatastore = VSphere.GetDatastore.Invoke(new()
+    ///     var memberDatastore = VSphere.Index.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-cluster1-member1",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var pool = VSphere.GetResourcePool.Invoke(new()
+    ///     var pool = VSphere.Index.GetResourcePool.Invoke(new()
     ///     {
     ///         Name = "cluster1/Resources",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "public",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
     ///     {
     ///         Name = "pulumi-test",
     ///         ResourcePoolId = pool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
     ///         },
     ///     });
     /// 
-    ///     var drsVmOverride = new VSphere.StorageDrsVmOverride("drs_vm_override", new()
+    ///     var drsVmOverride = new VSphere.Index.StorageDrsVmOverride("drs_vm_override", new()
     ///     {
     ///         DatastoreClusterId = datastoreCluster.Apply(getDatastoreClusterResult =&gt; getDatastoreClusterResult.Id),
     ///         VirtualMachineId = vm.Id,

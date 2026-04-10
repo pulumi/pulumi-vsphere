@@ -26,24 +26,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var hostGroup = VSphere.GetComputeClusterHostGroup.Invoke(new()
+        ///     var hostGroup = VSphere.Index.GetComputeClusterHostGroup.Invoke(new()
         ///     {
         ///         Name = "hostgroup-01",
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });
         /// 
-        ///     var hostRule = new VSphere.ComputeClusterVmHostRule("host_rule", new()
+        ///     var hostRule = new VSphere.Index.ComputeClusterVmHostRule("host_rule", new()
         ///     {
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///         Name = "pulumi-host-rule1",
@@ -72,24 +72,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var hostGroup = VSphere.GetComputeClusterHostGroup.Invoke(new()
+        ///     var hostGroup = VSphere.Index.GetComputeClusterHostGroup.Invoke(new()
         ///     {
         ///         Name = "hostgroup-01",
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });
         /// 
-        ///     var hostRule = new VSphere.ComputeClusterVmHostRule("host_rule", new()
+        ///     var hostRule = new VSphere.Index.ComputeClusterVmHostRule("host_rule", new()
         ///     {
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///         Name = "pulumi-host-rule1",
@@ -118,24 +118,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var hostGroup = VSphere.GetComputeClusterHostGroup.Invoke(new()
+        ///     var hostGroup = VSphere.Index.GetComputeClusterHostGroup.Invoke(new()
         ///     {
         ///         Name = "hostgroup-01",
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });
         /// 
-        ///     var hostRule = new VSphere.ComputeClusterVmHostRule("host_rule", new()
+        ///     var hostRule = new VSphere.Index.ComputeClusterVmHostRule("host_rule", new()
         ///     {
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///         Name = "pulumi-host-rule1",

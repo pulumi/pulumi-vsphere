@@ -25,23 +25,23 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var template = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "windows-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var windows = VSphere.GetGuestOsCustomization.Invoke(new()
+        ///     var windows = VSphere.Index.GetGuestOsCustomization.Invoke(new()
         ///     {
         ///         Name = "windows",
         ///     });
         /// 
-        ///     var vm = new VSphere.VirtualMachine("vm", new()
+        ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
         ///     {
         ///         TemplateUuid = template.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
         ///         CustomizationSpec = new[]
@@ -73,23 +73,23 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var template = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "windows-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var windows = VSphere.GetGuestOsCustomization.Invoke(new()
+        ///     var windows = VSphere.Index.GetGuestOsCustomization.Invoke(new()
         ///     {
         ///         Name = "windows",
         ///     });
         /// 
-        ///     var vm = new VSphere.VirtualMachine("vm", new()
+        ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
         ///     {
         ///         TemplateUuid = template.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
         ///         CustomizationSpec = new[]
@@ -121,23 +121,23 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     var template = VSphere.Index.GetVirtualMachine.Invoke(new()
         ///     {
         ///         Name = "windows-template",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var windows = VSphere.GetGuestOsCustomization.Invoke(new()
+        ///     var windows = VSphere.Index.GetGuestOsCustomization.Invoke(new()
         ///     {
         ///         Name = "windows",
         ///     });
         /// 
-        ///     var vm = new VSphere.VirtualMachine("vm", new()
+        ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
         ///     {
         ///         TemplateUuid = template.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
         ///         CustomizationSpec = new[]

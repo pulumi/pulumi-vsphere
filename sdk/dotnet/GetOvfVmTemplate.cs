@@ -27,24 +27,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
         ///     {
         ///         Name = "datastore-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var @default = VSphere.GetResourcePool.Invoke(new()
+        ///     var @default = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = Std.Index.Format.Invoke(new()
         ///         {
@@ -58,20 +58,20 @@ namespace Pulumi.VSphere
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     var host = VSphere.Index.GetHost.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     var network = VSphere.Index.GetNetwork.Invoke(new()
         ///     {
         ///         Name = "172.16.11.0",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
         ///     //# Remote OVF/OVA Source
-        ///     var ovfRemote = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     var ovfRemote = VSphere.Index.GetOvfVmTemplate.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-cloud-image-01",
         ///         DiskProvisioning = "thin",
@@ -86,7 +86,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Local OVF/OVA Source
-        ///     var ovfLocal = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     var ovfLocal = VSphere.Index.GetOvfVmTemplate.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-cloud-image-02",
         ///         DiskProvisioning = "thin",
@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Deployment of VM from Remote OVF
-        ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
+        ///     var vmFromRemoteOvf = new VSphere.Index.VirtualMachine("vmFromRemoteOvf", new()
         ///     {
         ///         NetworkInterfaces = ,
         ///         Name = "ubuntu-server-cloud-image-01",
@@ -146,7 +146,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Deployment of VM from Local OVF
-        ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
+        ///     var vmFromLocalOvf = new VSphere.Index.VirtualMachine("vmFromLocalOvf", new()
         ///     {
         ///         NetworkInterfaces = ,
         ///         Name = "ubuntu-server-cloud-image-02",
@@ -214,24 +214,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
         ///     {
         ///         Name = "datastore-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var @default = VSphere.GetResourcePool.Invoke(new()
+        ///     var @default = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = Std.Index.Format.Invoke(new()
         ///         {
@@ -245,20 +245,20 @@ namespace Pulumi.VSphere
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     var host = VSphere.Index.GetHost.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     var network = VSphere.Index.GetNetwork.Invoke(new()
         ///     {
         ///         Name = "172.16.11.0",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
         ///     //# Remote OVF/OVA Source
-        ///     var ovfRemote = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     var ovfRemote = VSphere.Index.GetOvfVmTemplate.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-cloud-image-01",
         ///         DiskProvisioning = "thin",
@@ -273,7 +273,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Local OVF/OVA Source
-        ///     var ovfLocal = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     var ovfLocal = VSphere.Index.GetOvfVmTemplate.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-cloud-image-02",
         ///         DiskProvisioning = "thin",
@@ -288,7 +288,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Deployment of VM from Remote OVF
-        ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
+        ///     var vmFromRemoteOvf = new VSphere.Index.VirtualMachine("vmFromRemoteOvf", new()
         ///     {
         ///         NetworkInterfaces = ,
         ///         Name = "ubuntu-server-cloud-image-01",
@@ -333,7 +333,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Deployment of VM from Local OVF
-        ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
+        ///     var vmFromLocalOvf = new VSphere.Index.VirtualMachine("vmFromLocalOvf", new()
         ///     {
         ///         NetworkInterfaces = ,
         ///         Name = "ubuntu-server-cloud-image-02",
@@ -401,24 +401,24 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
         ///     {
         ///         Name = "datastore-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
         ///     {
         ///         Name = "cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var @default = VSphere.GetResourcePool.Invoke(new()
+        ///     var @default = VSphere.Index.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = Std.Index.Format.Invoke(new()
         ///         {
@@ -432,20 +432,20 @@ namespace Pulumi.VSphere
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     var host = VSphere.Index.GetHost.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
-        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     var network = VSphere.Index.GetNetwork.Invoke(new()
         ///     {
         ///         Name = "172.16.11.0",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
         ///     //# Remote OVF/OVA Source
-        ///     var ovfRemote = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     var ovfRemote = VSphere.Index.GetOvfVmTemplate.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-cloud-image-01",
         ///         DiskProvisioning = "thin",
@@ -460,7 +460,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Local OVF/OVA Source
-        ///     var ovfLocal = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     var ovfLocal = VSphere.Index.GetOvfVmTemplate.Invoke(new()
         ///     {
         ///         Name = "ubuntu-server-cloud-image-02",
         ///         DiskProvisioning = "thin",
@@ -475,7 +475,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Deployment of VM from Remote OVF
-        ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
+        ///     var vmFromRemoteOvf = new VSphere.Index.VirtualMachine("vmFromRemoteOvf", new()
         ///     {
         ///         NetworkInterfaces = ,
         ///         Name = "ubuntu-server-cloud-image-01",
@@ -520,7 +520,7 @@ namespace Pulumi.VSphere
         ///     });
         /// 
         ///     //# Deployment of VM from Local OVF
-        ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
+        ///     var vmFromLocalOvf = new VSphere.Index.VirtualMachine("vmFromLocalOvf", new()
         ///     {
         ///         NetworkInterfaces = ,
         ///         Name = "ubuntu-server-cloud-image-02",

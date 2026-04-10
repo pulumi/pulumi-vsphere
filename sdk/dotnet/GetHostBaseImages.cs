@@ -25,7 +25,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var baseImages = VSphere.GetHostBaseImages.Invoke();
+        ///     var baseImages = VSphere.Index.GetHostBaseImages.Invoke();
         /// 
         /// });
         /// ```
@@ -47,7 +47,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var baseImages = VSphere.GetHostBaseImages.Invoke();
+        ///     var baseImages = VSphere.Index.GetHostBaseImages.Invoke();
         /// 
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var baseImages = VSphere.GetHostBaseImages.Invoke();
+        ///     var baseImages = VSphere.Index.GetHostBaseImages.Invoke();
         /// 
         /// });
         /// ```

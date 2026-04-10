@@ -27,7 +27,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var prodDatacenter = new VSphere.Datacenter("prod_datacenter", new()
+    ///     var prodDatacenter = new VSphere.Index.Datacenter("prod_datacenter", new()
     ///     {
     ///         Name = "my_prod_datacenter",
     ///     });
@@ -45,7 +45,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var researchDatacenter = new VSphere.Datacenter("research_datacenter", new()
+    ///     var researchDatacenter = new VSphere.Index.Datacenter("research_datacenter", new()
     ///     {
     ///         Name = "my_research_datacenter",
     ///         Folder = "/research/",

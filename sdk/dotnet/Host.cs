@@ -27,18 +27,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     var thumbprint = VSphere.Index.GetHostThumbprint.Invoke(new()
     ///     {
     ///         Address = "esxi-01.example.com",
     ///         Insecure = true,
     ///     });
     /// 
-    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     var esx_01 = new VSphere.Index.Host("esx-01", new()
     ///     {
     ///         Hostname = "esxi-01.example.com",
     ///         Username = "root",
@@ -61,24 +61,24 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     var thumbprint = VSphere.Index.GetHostThumbprint.Invoke(new()
     ///     {
     ///         Address = "esxi-01.example.com",
     ///         Insecure = true,
     ///     });
     /// 
-    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     var esx_01 = new VSphere.Index.Host("esx-01", new()
     ///     {
     ///         Hostname = "esxi-01.example.com",
     ///         Username = "root",
@@ -123,12 +123,12 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     var host = VSphere.Index.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -151,18 +151,18 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     var thumbprint = VSphere.Index.GetHostThumbprint.Invoke(new()
     ///     {
     ///         Address = "esxi-01.example.com",
     ///         Insecure = true,
     ///     });
     /// 
-    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     var esx_01 = new VSphere.Index.Host("esx-01", new()
     ///     {
     ///         Hostname = "esxi-01.example.com",
     ///         Username = "root",
@@ -184,7 +184,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     var esx_01 = new VSphere.Index.Host("esx-01", new()
     ///     {
     ///         Hostname = "esxi-01.example.com",
     ///         Username = "root",
