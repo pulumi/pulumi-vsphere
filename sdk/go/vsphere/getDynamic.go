@@ -27,42 +27,44 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
-// Name: "SomeCategory",
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tag1, err := vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
-// Name: "FirstTag",
-// CategoryId: cat.Id,
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
-// Name: "SecondTag",
-// CategoryId: cat.Id,
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = vsphere.GetDynamic(ctx, &vsphere.GetDynamicArgs{
-// Filters: interface{}{
-// tag1.Id,
-// tag1.Id,
-// },
-// NameRegex: pulumi.StringRef("ubuntu"),
-// Type: pulumi.StringRef("Datacenter"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+//				Name: "SomeCategory",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tag1, err := vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
+//				Name:       "FirstTag",
+//				CategoryId: cat.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetTag(ctx, &vsphere.LookupTagArgs{
+//				Name:       "SecondTag",
+//				CategoryId: cat.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetDynamic(ctx, &vsphere.GetDynamicArgs{
+//				Filters: pulumi.StringArray{
+//					tag1.Id,
+//					tag1.Id,
+//				},
+//				NameRegex: pulumi.StringRef("ubuntu"),
+//				Type:      pulumi.StringRef("Datacenter"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDynamic(ctx *pulumi.Context, args *GetDynamicArgs, opts ...pulumi.InvokeOption) (*GetDynamicResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -105,8 +105,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.VirtualMachineArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -190,8 +190,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeLinuxOptionsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -273,8 +273,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
  * import com.pulumi.vsphere.VirtualMachine;
  * import com.pulumi.vsphere.VirtualMachineArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -293,7 +293,7 @@ import javax.annotation.Nullable;
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .templateUuid(template.id())
- *             .customizationSpec(List.of(Map.of("id", linux.id())))
+ *             .customizationSpec(Arrays.asList(Map.of("id", linux.id())))
  *             .build());
  * 
  *     }
@@ -332,8 +332,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.VirtualMachineArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineOvfDeployArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineVappArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -362,9 +362,9 @@ import javax.annotation.Nullable;
  *         final var default = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
  *             .name(StdFunctions.format(Map.ofEntries(
  *                 Map.entry("input", "%s%s"),
- *                 Map.entry("args",                 
+ *                 Map.entry("args", Arrays.asList(                
  *                     cluster.name(),
- *                     "/Resources")
+ *                     "/Resources"))
  *             )).result())
  *             .datacenterId(datacenter.id())
  *             .build());
@@ -486,8 +486,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineVappArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -516,9 +516,9 @@ import javax.annotation.Nullable;
  *         final var default = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
  *             .name(StdFunctions.format(Map.ofEntries(
  *                 Map.entry("input", "%s%s"),
- *                 Map.entry("args",                 
+ *                 Map.entry("args", Arrays.asList(                
  *                     cluster.name(),
- *                     "/Resources")
+ *                     "/Resources"))
  *             )).result())
  *             .datacenterId(datacenter.id())
  *             .build());
@@ -609,8 +609,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.VirtualMachineArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -715,8 +715,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -775,8 +775,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -866,8 +866,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeLinuxOptionsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -930,8 +930,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeWindowsOptionsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -992,8 +992,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeWindowsOptionsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1062,8 +1062,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCdromArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineVappArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1109,8 +1109,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.VirtualMachineArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineVappArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1149,8 +1149,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1185,8 +1185,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.VirtualMachine;
  * import com.pulumi.vsphere.VirtualMachineArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineVappArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1241,8 +1241,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.VirtualMachine;
  * import com.pulumi.vsphere.VirtualMachineArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineVtpmArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1299,8 +1299,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.VirtualMachine;
  * import com.pulumi.vsphere.VirtualMachineArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

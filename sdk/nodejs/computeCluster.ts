@@ -61,7 +61,7 @@ import * as utilities from "./utilities";
  * const datacenterGetDatacenter = vsphere.getDatacenter({
  *     name: datacenter,
  * });
- * const host = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: vsphere.getHost({
+ * const host = .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: vsphere.getHost({
  *     name: __value,
  *     datacenterId: _arg0_.id,
  * }) }), {});

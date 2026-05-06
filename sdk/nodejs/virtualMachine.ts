@@ -238,7 +238,7 @@ import * as utilities from "./utilities";
  * const vmFromRemoteOvf = new vsphere.VirtualMachine("vmFromRemoteOvf", {
  *     name: "remote-foo",
  *     datacenterId: datacenter.then(datacenter => datacenter.id),
- *     datastoreId: datastore.then(datastore => datastore.i),
+ *     datastoreId: output(datastore.then(datastore => datastore.i)).apply(x =>String(x)),
  *     resourcePoolId: _default.then(_default => _default.id),
  *     waitForGuestNetTimeout: 0,
  *     waitForGuestIpTimeout: 0,

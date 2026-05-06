@@ -2954,7 +2954,7 @@ class VirtualMachine(pulumi.CustomResource):
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
             name="remote-foo",
             datacenter_id=datacenter.id,
-            datastore_id=datastore.i,
+            datastore_id=output(datastore.i).apply(lambda x: str(x)),
             resource_pool_id=default.id,
             wait_for_guest_net_timeout=0,
             wait_for_guest_ip_timeout=0,
@@ -3062,7 +3062,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Remote OVF
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_remote.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-01",
@@ -3095,7 +3095,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Local OVF
         vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_local.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-02",
@@ -4026,7 +4026,7 @@ class VirtualMachine(pulumi.CustomResource):
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
             name="remote-foo",
             datacenter_id=datacenter.id,
-            datastore_id=datastore.i,
+            datastore_id=output(datastore.i).apply(lambda x: str(x)),
             resource_pool_id=default.id,
             wait_for_guest_net_timeout=0,
             wait_for_guest_ip_timeout=0,
@@ -4134,7 +4134,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Remote OVF
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_remote.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-01",
@@ -4167,7 +4167,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Local OVF
         vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_local.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-02",

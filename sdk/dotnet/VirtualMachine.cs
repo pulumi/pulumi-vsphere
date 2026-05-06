@@ -81,30 +81,30 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
+    ///     var network = VSphere.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "VM Network",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Name = "foo",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -152,36 +152,36 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
+    ///     var network = VSphere.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "VM Network",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var template = VSphere.Index.GetVirtualMachine.Invoke(new()
+    ///     var template = VSphere.GetVirtualMachine.Invoke(new()
     ///     {
     ///         Name = "linux-template",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Name = "foo",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -235,12 +235,12 @@ namespace Pulumi.VSphere
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ... other configuration ...
-    ///     var linux = VSphere.Index.GetGuestOsCustomization.Invoke(new()
+    ///     var linux = VSphere.GetGuestOsCustomization.Invoke(new()
     ///     {
     ///         Name = "linux",
     ///     });
     /// 
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         TemplateUuid = template.Id,
     ///         CustomizationSpec = new[]
@@ -276,26 +276,26 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var @default = VSphere.Index.GetResourcePool.Invoke(new()
+    ///     var @default = VSphere.GetResourcePool.Invoke(new()
     ///     {
-    ///         Name = Std.Index.Format.Invoke(new()
+    ///         Name = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -307,20 +307,20 @@ namespace Pulumi.VSphere
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var host = VSphere.Index.GetHost.Invoke(new()
+    ///     var host = VSphere.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
+    ///     var network = VSphere.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "172.16.11.0",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
     ///     //# Deployment of VM from Remote OVF
-    ///     var vmFromRemoteOvf = new VSphere.Index.VirtualMachine("vmFromRemoteOvf", new()
+    ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
     ///     {
     ///         Name = "remote-foo",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -359,7 +359,7 @@ namespace Pulumi.VSphere
     ///     });
     /// 
     ///     //# Deployment of VM from Local OVF
-    ///     var vmFromLocalOvf = new VSphere.Index.VirtualMachine("vmFromLocalOvf", new()
+    ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
     ///     {
     ///         Name = "local-foo",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -415,26 +415,26 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var @default = VSphere.Index.GetResourcePool.Invoke(new()
+    ///     var @default = VSphere.GetResourcePool.Invoke(new()
     ///     {
-    ///         Name = Std.Index.Format.Invoke(new()
+    ///         Name = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -446,20 +446,20 @@ namespace Pulumi.VSphere
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var host = VSphere.Index.GetHost.Invoke(new()
+    ///     var host = VSphere.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
+    ///     var network = VSphere.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "172.16.11.0",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
     ///     //# Remote OVF/OVA Source
-    ///     var ovfRemote = VSphere.Index.GetOvfVmTemplate.Invoke(new()
+    ///     var ovfRemote = VSphere.GetOvfVmTemplate.Invoke(new()
     ///     {
     ///         Name = "ubuntu-xx.xx-server-cloudimg-amd64.ova",
     ///         DiskProvisioning = "thin",
@@ -473,7 +473,7 @@ namespace Pulumi.VSphere
     ///     });
     /// 
     ///     //# Local OVF/OVA Source
-    ///     var ovfLocal = VSphere.Index.GetOvfVmTemplate.Invoke(new()
+    ///     var ovfLocal = VSphere.GetOvfVmTemplate.Invoke(new()
     ///     {
     ///         Name = "ubuntu-xx.xx-server-cloudimg-amd64.ova",
     ///         DiskProvisioning = "thin",
@@ -487,7 +487,7 @@ namespace Pulumi.VSphere
     ///     });
     /// 
     ///     //# Deployment of VM from Remote OVF
-    ///     var vmFromRemoteOvf = new VSphere.Index.VirtualMachine("vmFromRemoteOvf", new()
+    ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
     ///     {
     ///         NetworkInterfaces = ,
     ///         Name = "ubuntu-server-cloud-image-01",
@@ -522,7 +522,7 @@ namespace Pulumi.VSphere
     ///                 { "instance-id", remoteOvfUuid },
     ///                 { "public-keys", remoteOvfPublicKeys },
     ///                 { "password", remoteOvfPassword },
-    ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+    ///                 { "user-data", Std.Base64encode.Invoke(new()
     ///                 {
     ///                     Input = remoteOvfUserData,
     ///                 }).Result },
@@ -531,7 +531,7 @@ namespace Pulumi.VSphere
     ///     });
     /// 
     ///     //# Deployment of VM from Local OVF
-    ///     var vmFromLocalOvf = new VSphere.Index.VirtualMachine("vmFromLocalOvf", new()
+    ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
     ///     {
     ///         NetworkInterfaces = ,
     ///         Name = "ubuntu-server-cloud-image-02",
@@ -568,7 +568,7 @@ namespace Pulumi.VSphere
     ///                 { "instance-id", localOvfUuid },
     ///                 { "public-keys", localOvfPublicKeys },
     ///                 { "password", localOvfPassword },
-    ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+    ///                 { "user-data", Std.Base64encode.Invoke(new()
     ///                 {
     ///                     Input = localOvfUserData,
     ///                 }).Result },
@@ -594,26 +594,26 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.Index.GetDatastore.Invoke(new()
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var @default = VSphere.Index.GetResourcePool.Invoke(new()
+    ///     var @default = VSphere.GetResourcePool.Invoke(new()
     ///     {
-    ///         Name = Std.Index.Format.Invoke(new()
+    ///         Name = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s%s",
     ///             Args = new[]
@@ -625,25 +625,25 @@ namespace Pulumi.VSphere
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var host = VSphere.Index.GetHost.Invoke(new()
+    ///     var host = VSphere.GetHost.Invoke(new()
     ///     {
     ///         Name = "esxi-01.example.com",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
+    ///     var network = VSphere.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "172.16.11.0",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var templateFromOvf = VSphere.Index.GetVirtualMachine.Invoke(new()
+    ///     var templateFromOvf = VSphere.GetVirtualMachine.Invoke(new()
     ///     {
     ///         Name = "ubuntu-server-template-from-ova",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Name = "foo",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -716,30 +716,30 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastoreCluster = VSphere.Index.GetDatastoreCluster.Invoke(new()
+    ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
     ///     {
     ///         Name = "datastore-cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
     ///     {
     ///         Name = "cluster-01",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var network = VSphere.Index.GetNetwork.Invoke(new()
+    ///     var network = VSphere.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "VM Network",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Name = "foo",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
@@ -816,7 +816,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         NetworkInterfaces = new[]
     ///         {
@@ -868,7 +868,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         NetworkInterfaces = new[]
     ///         {
@@ -947,7 +947,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Clone = new VSphere.Inputs.VirtualMachineCloneArgs
     ///         {
@@ -996,7 +996,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Clone = new VSphere.Inputs.VirtualMachineCloneArgs
     ///         {
@@ -1043,7 +1043,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Clone = new VSphere.Inputs.VirtualMachineCloneArgs
     ///         {
@@ -1098,7 +1098,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Clone = new VSphere.Inputs.VirtualMachineCloneArgs
     ///         {
@@ -1137,7 +1137,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Clone = new VSphere.Inputs.VirtualMachineCloneArgs
     ///         {
@@ -1191,7 +1191,7 @@ namespace Pulumi.VSphere
     ///     var config = new Config();
     ///     // Enable SSH on the virtual appliance. One of `True` or `False`.
     ///     var sshEnabled = config.Get("sshEnabled") ?? "False";
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Vapp = new VSphere.Inputs.VirtualMachineVappArgs
     ///         {
@@ -1233,7 +1233,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         Vtpm = new VSphere.Inputs.VirtualMachineVtpmArgs
     ///         {
@@ -1276,7 +1276,7 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vm = new VSphere.Index.VirtualMachine("vm", new()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
     ///         DatastoreId = vmDatastore.Id,
     ///         Disks = new[]
