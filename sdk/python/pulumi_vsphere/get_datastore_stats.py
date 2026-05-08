@@ -146,9 +146,9 @@ def get_datastore_stats(capacity: Optional[Mapping[str, _builtins.str]] = None,
         datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
         free_space=pulumi.get(__ret__, 'free_space'),
         id=pulumi.get(__ret__, 'id'))
-def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                               datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               free_space: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_datastore_stats_output(capacity: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                               datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               free_space: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreStatsResult]:
     """
     The `get_datastore_stats` data source can be used to retrieve the usage

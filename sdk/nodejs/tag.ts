@@ -170,16 +170,16 @@ export interface TagState {
      * The unique identifier of the parent category in
      * which this tag will be created. Forces a new resource if changed.
      */
-    categoryId?: pulumi.Input<string>;
+    categoryId?: pulumi.Input<string | undefined>;
     /**
      * A description for the tag.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the tag. The name must be unique
      * within its category.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,10 +194,10 @@ export interface TagArgs {
     /**
      * A description for the tag.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the tag. The name must be unique
      * within its category.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

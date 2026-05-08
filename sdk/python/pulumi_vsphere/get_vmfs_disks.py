@@ -143,9 +143,9 @@ def get_vmfs_disks(filter: Optional[_builtins.str] = None,
         host_system_id=pulumi.get(__ret__, 'host_system_id'),
         id=pulumi.get(__ret__, 'id'),
         rescan=pulumi.get(__ret__, 'rescan'))
-def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          host_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          rescan: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_vmfs_disks_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          rescan: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmfsDisksResult]:
     """
     The `get_vmfs_disks` data source can be used to discover the storage

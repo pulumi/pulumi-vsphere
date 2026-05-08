@@ -153,11 +153,11 @@ export interface ComputeClusterVmAntiAffinityRuleState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -166,16 +166,16 @@ export interface ComputeClusterVmAntiAffinityRuleState {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUIDs of the virtual machines to run
      * on hosts different from each other.
      */
-    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
+    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -193,7 +193,7 @@ export interface ComputeClusterVmAntiAffinityRuleArgs {
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -202,11 +202,11 @@ export interface ComputeClusterVmAntiAffinityRuleArgs {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUIDs of the virtual machines to run
      * on hosts different from each other.

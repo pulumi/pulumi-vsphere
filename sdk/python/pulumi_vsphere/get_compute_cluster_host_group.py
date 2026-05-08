@@ -123,8 +123,8 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[_builtins.str] =
         host_system_ids=pulumi.get(__ret__, 'host_system_ids'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_compute_cluster_host_group_output(compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          name: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetComputeClusterHostGroupResult]:
     """
     The `ComputeClusterHostGroup` data source can be used to discover

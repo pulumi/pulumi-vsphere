@@ -498,34 +498,34 @@ export interface GetOvfVmTemplateOutputArgs {
      * Allow unverified SSL certificates
      * when deploying OVF/OVA from a URL.
      */
-    allowUnverifiedSslCert?: pulumi.Input<boolean>;
+    allowUnverifiedSslCert?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the virtual machine's datastore. The
      * virtual machine configuration is placed here, along with any virtual disks
      * that are created without datastores.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * The key of the chosen deployment option. If
      * empty, the default option is chosen.
      */
-    deploymentOption?: pulumi.Input<string>;
+    deploymentOption?: pulumi.Input<string | undefined>;
     /**
      * The disk provisioning type. If set, all the
      * disks included in the OVF/OVA will have the same specified policy. Can be
      * one of `thin`, `thick`, or `eagerZeroedThick`.
      */
-    diskProvisioning?: pulumi.Input<string>;
+    diskProvisioning?: pulumi.Input<string | undefined>;
     /**
      * Allow properties with
      * `ovf:userConfigurable=false` to be set.
      */
-    enableHiddenProperties?: pulumi.Input<boolean>;
+    enableHiddenProperties?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the folder in which to place the virtual
      * machine.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ESXi host system to deploy the
      * virtual machine.
@@ -534,17 +534,17 @@ export interface GetOvfVmTemplateOutputArgs {
     /**
      * The IP allocation policy.
      */
-    ipAllocationPolicy?: pulumi.Input<string>;
+    ipAllocationPolicy?: pulumi.Input<string | undefined>;
     /**
      * The IP protocol.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The absolute path to the OVF/OVA file on the
      * local system. When deploying from an OVF, ensure all necessary files such as
      * the `.vmdk` files are present in the same directory as the OVF.
      */
-    localOvfPath?: pulumi.Input<string>;
+    localOvfPath?: pulumi.Input<string | undefined>;
     /**
      * Name of the virtual machine to create.
      */
@@ -553,14 +553,14 @@ export interface GetOvfVmTemplateOutputArgs {
      * The mapping of name of network identifiers
      * from the OVF descriptor to network UUID in the environment.
      */
-    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * URL of the remote OVF/OVA file to be deployed.
      *
      * > **NOTE:** Either `localOvfPath` or `remoteOvfUrl` is required, both can
      * not be empty.
      */
-    remoteOvfUrl?: pulumi.Input<string>;
+    remoteOvfUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID of a resource pool in which to place
      * the virtual machine.

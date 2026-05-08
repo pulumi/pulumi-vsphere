@@ -22,82 +22,82 @@ __all__ = ['VirtualMachineArgs', 'VirtualMachine']
 class VirtualMachineArgs:
     def __init__(__self__, *,
                  resource_pool_id: pulumi.Input[_builtins.str],
-                 alternate_guest_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]] = None,
-                 clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
-                 cpu_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_hot_remove_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_performance_counters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
-                 efi_secure_boot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_disk_uuid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ept_rvi_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 extra_config_reboot_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firmware: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_power_off: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hardware_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hv_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ide_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 latency_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation_locked_to_max: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrate_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_hv_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
-                 num_cores_per_socket: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 nvme_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
-                 pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 poweron_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 replace_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tools_scripts_after_power_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_after_resume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_standby: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sata_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_bus_sharing: Optional[pulumi.Input[_builtins.str]] = None,
-                 scsi_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shutdown_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 swap_placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_time_with_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_time_with_host_periodically: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tools_upgrade_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
-                 vbs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vtpm: Optional[pulumi.Input['VirtualMachineVtpmArgs']] = None,
-                 vvtd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_ip_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_guest_net_routable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_net_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 alternate_guest_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cdroms: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]] = None,
+                 clone: pulumi.Input[Optional['VirtualMachineCloneArgs']] = None,
+                 cpu_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_hot_remove_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_performance_counters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+                 efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firmware: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_power_off: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hardware_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hv_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ide_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignored_guest_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 latency_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation_locked_to_max: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrate_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
+                 num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ovf_deploy: pulumi.Input[Optional['VirtualMachineOvfDeployArgs']] = None,
+                 pci_device_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 poweron_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 replace_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tools_scripts_after_power_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_after_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_standby: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sata_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_bus_sharing: pulumi.Input[Optional[_builtins.str]] = None,
+                 scsi_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shutdown_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 swap_placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_time_with_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_time_with_host_periodically: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 vapp: pulumi.Input[Optional['VirtualMachineVappArgs']] = None,
+                 vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vtpm: pulumi.Input[Optional['VirtualMachineVtpmArgs']] = None,
+                 vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_guest_net_routable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_net_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a VirtualMachine resource.
 
@@ -347,1008 +347,1008 @@ class VirtualMachineArgs:
 
     @_builtins.property
     @pulumi.getter(name="alternateGuestName")
-    def alternate_guest_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alternate_guest_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The guest name for the operating system when guest_id is otherGuest or otherGuest64.
         """
         return pulumi.get(self, "alternate_guest_name")
 
     @alternate_guest_name.setter
-    def alternate_guest_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alternate_guest_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alternate_guest_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def annotation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the virtual machine.
         """
         return pulumi.get(self, "annotation")
 
     @annotation.setter
-    def annotation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def annotation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "annotation", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDelay")
-    def boot_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of milliseconds to wait before starting the boot sequence.
         """
         return pulumi.get(self, "boot_delay")
 
     @boot_delay.setter
-    def boot_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="bootRetryDelay")
-    def boot_retry_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_retry_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
         """
         return pulumi.get(self, "boot_retry_delay")
 
     @boot_retry_delay.setter
-    def boot_retry_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_retry_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_retry_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="bootRetryEnabled")
-    def boot_retry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boot_retry_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
         """
         return pulumi.get(self, "boot_retry_enabled")
 
     @boot_retry_enabled.setter
-    def boot_retry_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boot_retry_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boot_retry_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def cdroms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]:
+    def cdroms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]:
         """
         A specification for a CDROM device on this virtual machine.
         """
         return pulumi.get(self, "cdroms")
 
     @cdroms.setter
-    def cdroms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]):
+    def cdroms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]):
         pulumi.set(self, "cdroms", value)
 
     @_builtins.property
     @pulumi.getter
-    def clone(self) -> Optional[pulumi.Input['VirtualMachineCloneArgs']]:
+    def clone(self) -> pulumi.Input[Optional['VirtualMachineCloneArgs']]:
         """
         A specification for cloning a virtual machine from template.
         """
         return pulumi.get(self, "clone")
 
     @clone.setter
-    def clone(self, value: Optional[pulumi.Input['VirtualMachineCloneArgs']]):
+    def clone(self, value: pulumi.Input[Optional['VirtualMachineCloneArgs']]):
         pulumi.set(self, "clone", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuHotAddEnabled")
-    def cpu_hot_add_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_hot_add_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow CPUs to be added to this virtual machine while it is running.
         """
         return pulumi.get(self, "cpu_hot_add_enabled")
 
     @cpu_hot_add_enabled.setter
-    def cpu_hot_add_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_hot_add_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_hot_add_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuHotRemoveEnabled")
-    def cpu_hot_remove_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_hot_remove_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow CPUs to be added to this virtual machine while it is running.
         """
         return pulumi.get(self, "cpu_hot_remove_enabled")
 
     @cpu_hot_remove_enabled.setter
-    def cpu_hot_remove_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_hot_remove_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_hot_remove_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "cpu_limit")
 
     @cpu_limit.setter
-    def cpu_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuPerformanceCountersEnabled")
-    def cpu_performance_counters_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_performance_counters_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable CPU performance counters on this virtual machine.
         """
         return pulumi.get(self, "cpu_performance_counters_enabled")
 
     @cpu_performance_counters_enabled.setter
-    def cpu_performance_counters_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_performance_counters_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_performance_counters_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         """
         return pulumi.get(self, "cpu_reservation")
 
     @cpu_reservation.setter
-    def cpu_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShareCount")
-    def cpu_share_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_share_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of shares to allocate to cpu for a custom share level.
         """
         return pulumi.get(self, "cpu_share_count")
 
     @cpu_share_count.setter
-    def cpu_share_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_share_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_share_count", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShareLevel")
-    def cpu_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation level for cpu resources. Can be one of high, low, normal, or custom.
         """
         return pulumi.get(self, "cpu_share_level")
 
     @cpu_share_level.setter
-    def cpu_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of custom attributes to set on this resource.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the datacenter where the VM is to be created.
         """
         return pulumi.get(self, "datacenter_id")
 
     @datacenter_id.setter
-    def datacenter_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter_id", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a datastore cluster to put the virtual machine in.
         """
         return pulumi.get(self, "datastore_cluster_id")
 
     @datastore_cluster_id.setter
-    def datastore_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]:
         """
         A specification for a virtual disk device on this virtual machine.
         """
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter(name="efiSecureBootEnabled")
-    def efi_secure_boot_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def efi_secure_boot_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When the boot type set in firmware is efi, this enables EFI secure boot.
         """
         return pulumi.get(self, "efi_secure_boot_enabled")
 
     @efi_secure_boot_enabled.setter
-    def efi_secure_boot_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def efi_secure_boot_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "efi_secure_boot_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDiskUuid")
-    def enable_disk_uuid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_disk_uuid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         """
         return pulumi.get(self, "enable_disk_uuid")
 
     @enable_disk_uuid.setter
-    def enable_disk_uuid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_disk_uuid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_disk_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable logging on this virtual machine.
         """
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="eptRviMode")
-    def ept_rvi_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ept_rvi_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
         """
         return pulumi.get(self, "ept_rvi_mode")
 
     @ept_rvi_mode.setter
-    def ept_rvi_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ept_rvi_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ept_rvi_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfig")
-    def extra_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         """
         return pulumi.get(self, "extra_config")
 
     @extra_config.setter
-    def extra_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_config", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfigRebootRequired")
-    def extra_config_reboot_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def extra_config_reboot_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         """
         return pulumi.get(self, "extra_config_reboot_required")
 
     @extra_config_reboot_required.setter
-    def extra_config_reboot_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def extra_config_reboot_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "extra_config_reboot_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def firmware(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firmware(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The firmware interface to use on the virtual machine. Can be one of bios or efi.
         """
         return pulumi.get(self, "firmware")
 
     @firmware.setter
-    def firmware(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firmware(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firmware", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the folder to locate the virtual machine in.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="forcePowerOff")
-    def force_power_off(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_power_off(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         """
         return pulumi.get(self, "force_power_off")
 
     @force_power_off.setter
-    def force_power_off(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_power_off(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_power_off", value)
 
     @_builtins.property
     @pulumi.getter(name="guestId")
-    def guest_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guest_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The guest ID for the operating system.
         """
         return pulumi.get(self, "guest_id")
 
     @guest_id.setter
-    def guest_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guest_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guest_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hardwareVersion")
-    def hardware_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hardware_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         """
         return pulumi.get(self, "hardware_version")
 
     @hardware_version.setter
-    def hardware_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hardware_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hardware_version", value)
 
     @_builtins.property
     @pulumi.getter(name="hostSystemId")
-    def host_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an optional host system to pin the virtual machine to.
         """
         return pulumi.get(self, "host_system_id")
 
     @host_system_id.setter
-    def host_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hvMode")
-    def hv_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hv_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         """
         return pulumi.get(self, "hv_mode")
 
     @hv_mode.setter
-    def hv_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hv_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hv_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="ideControllerCount")
-    def ide_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ide_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "ide_controller_count")
 
     @ide_controller_count.setter
-    def ide_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ide_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ide_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoredGuestIps")
-    def ignored_guest_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignored_guest_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses and CIDR networks to ignore while waiting for an IP
         """
         return pulumi.get(self, "ignored_guest_ips")
 
     @ignored_guest_ips.setter
-    def ignored_guest_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignored_guest_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignored_guest_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="latencySensitivity")
-    def latency_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latency_sensitivity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         """
         return pulumi.get(self, "latency_sensitivity")
 
     @latency_sensitivity.setter
-    def latency_sensitivity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latency_sensitivity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latency_sensitivity", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the virtual machine's memory, in MB.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryHotAddEnabled")
-    def memory_hot_add_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def memory_hot_add_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow memory to be added to this virtual machine while it is running.
         """
         return pulumi.get(self, "memory_hot_add_enabled")
 
     @memory_hot_add_enabled.setter
-    def memory_hot_add_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def memory_hot_add_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "memory_hot_add_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         """
         return pulumi.get(self, "memory_reservation")
 
     @memory_reservation.setter
-    def memory_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservationLockedToMax")
-    def memory_reservation_locked_to_max(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def memory_reservation_locked_to_max(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
     @memory_reservation_locked_to_max.setter
-    def memory_reservation_locked_to_max(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def memory_reservation_locked_to_max(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "memory_reservation_locked_to_max", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShareCount")
-    def memory_share_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_share_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of shares to allocate to memory for a custom share level.
         """
         return pulumi.get(self, "memory_share_count")
 
     @memory_share_count.setter
-    def memory_share_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_share_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_share_count", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShareLevel")
-    def memory_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation level for memory resources. Can be one of high, low, normal, or custom.
         """
         return pulumi.get(self, "memory_share_level")
 
     @memory_share_level.setter
-    def memory_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="migrateWaitTimeout")
-    def migrate_wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def migrate_wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
         """
         return pulumi.get(self, "migrate_wait_timeout")
 
     @migrate_wait_timeout.setter
-    def migrate_wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def migrate_wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "migrate_wait_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this virtual machine.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nestedHvEnabled")
-    def nested_hv_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nested_hv_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         """
         return pulumi.get(self, "nested_hv_enabled")
 
     @nested_hv_enabled.setter
-    def nested_hv_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nested_hv_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nested_hv_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]:
         """
         A specification for a virtual NIC on this virtual machine.
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="numCoresPerSocket")
-    def num_cores_per_socket(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_cores_per_socket(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         """
         return pulumi.get(self, "num_cores_per_socket")
 
     @num_cores_per_socket.setter
-    def num_cores_per_socket(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_cores_per_socket(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_cores_per_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="numCpus")
-    def num_cpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_cpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of virtual processors to assign to this virtual machine.
         """
         return pulumi.get(self, "num_cpus")
 
     @num_cpus.setter
-    def num_cpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_cpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_cpus", value)
 
     @_builtins.property
     @pulumi.getter(name="nvmeControllerCount")
-    def nvme_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nvme_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "nvme_controller_count")
 
     @nvme_controller_count.setter
-    def nvme_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nvme_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nvme_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ovfDeploy")
-    def ovf_deploy(self) -> Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]:
+    def ovf_deploy(self) -> pulumi.Input[Optional['VirtualMachineOvfDeployArgs']]:
         """
         A specification for deploying a virtual machine from ovf/ova template.
         """
         return pulumi.get(self, "ovf_deploy")
 
     @ovf_deploy.setter
-    def ovf_deploy(self, value: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]):
+    def ovf_deploy(self, value: pulumi.Input[Optional['VirtualMachineOvfDeployArgs']]):
         pulumi.set(self, "ovf_deploy", value)
 
     @_builtins.property
     @pulumi.getter(name="pciDeviceIds")
-    def pci_device_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pci_device_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of PCI passthrough devices
         """
         return pulumi.get(self, "pci_device_ids")
 
     @pci_device_ids.setter
-    def pci_device_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pci_device_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pci_device_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="poweronTimeout")
-    def poweron_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def poweron_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in seconds, that we will be trying to power on a VM
         """
         return pulumi.get(self, "poweron_timeout")
 
     @poweron_timeout.setter
-    def poweron_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def poweron_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "poweron_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="replaceTrigger")
-    def replace_trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replace_trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers replacement of resource whenever it changes.
         """
         return pulumi.get(self, "replace_trigger")
 
     @replace_trigger.setter
-    def replace_trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replace_trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replace_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsAfterPowerOn")
-    def run_tools_scripts_after_power_on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_after_power_on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_after_power_on")
 
     @run_tools_scripts_after_power_on.setter
-    def run_tools_scripts_after_power_on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_after_power_on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_after_power_on", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsAfterResume")
-    def run_tools_scripts_after_resume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_after_resume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_after_resume")
 
     @run_tools_scripts_after_resume.setter
-    def run_tools_scripts_after_resume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_after_resume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_after_resume", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsBeforeGuestReboot")
-    def run_tools_scripts_before_guest_reboot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_before_guest_reboot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_before_guest_reboot")
 
     @run_tools_scripts_before_guest_reboot.setter
-    def run_tools_scripts_before_guest_reboot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_before_guest_reboot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_before_guest_reboot", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsBeforeGuestShutdown")
-    def run_tools_scripts_before_guest_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_before_guest_shutdown(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_before_guest_shutdown")
 
     @run_tools_scripts_before_guest_shutdown.setter
-    def run_tools_scripts_before_guest_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_before_guest_shutdown(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_before_guest_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsBeforeGuestStandby")
-    def run_tools_scripts_before_guest_standby(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_before_guest_standby(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts before guest operating system standby when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_before_guest_standby")
 
     @run_tools_scripts_before_guest_standby.setter
-    def run_tools_scripts_before_guest_standby(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_before_guest_standby(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_before_guest_standby", value)
 
     @_builtins.property
     @pulumi.getter(name="sataControllerCount")
-    def sata_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sata_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "sata_controller_count")
 
     @sata_controller_count.setter
-    def sata_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sata_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sata_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scsiBusSharing")
-    def scsi_bus_sharing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scsi_bus_sharing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
         """
         return pulumi.get(self, "scsi_bus_sharing")
 
     @scsi_bus_sharing.setter
-    def scsi_bus_sharing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scsi_bus_sharing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scsi_bus_sharing", value)
 
     @_builtins.property
     @pulumi.getter(name="scsiControllerCount")
-    def scsi_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scsi_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "scsi_controller_count")
 
     @scsi_controller_count.setter
-    def scsi_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scsi_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scsi_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scsiType")
-    def scsi_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scsi_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
         """
         return pulumi.get(self, "scsi_type")
 
     @scsi_type.setter
-    def scsi_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scsi_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scsi_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownWaitTimeout")
-    def shutdown_wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shutdown_wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         """
         return pulumi.get(self, "shutdown_wait_timeout")
 
     @shutdown_wait_timeout.setter
-    def shutdown_wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shutdown_wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shutdown_wait_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicyId")
-    def storage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the storage policy to assign to the virtual machine home directory.
         """
         return pulumi.get(self, "storage_policy_id")
 
     @storage_policy_id.setter
-    def storage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="swapPlacementPolicy")
-    def swap_placement_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def swap_placement_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
         """
         return pulumi.get(self, "swap_placement_policy")
 
     @swap_placement_policy.setter
-    def swap_placement_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def swap_placement_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "swap_placement_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="syncTimeWithHost")
-    def sync_time_with_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_time_with_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host")
 
     @sync_time_with_host.setter
-    def sync_time_with_host(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_time_with_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_time_with_host", value)
 
     @_builtins.property
     @pulumi.getter(name="syncTimeWithHostPeriodically")
-    def sync_time_with_host_periodically(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_time_with_host_periodically(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host_periodically")
 
     @sync_time_with_host_periodically.setter
-    def sync_time_with_host_periodically(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_time_with_host_periodically(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_time_with_host_periodically", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag IDs to apply to this object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="toolsUpgradePolicy")
-    def tools_upgrade_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tools_upgrade_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         """
         return pulumi.get(self, "tools_upgrade_policy")
 
     @tools_upgrade_policy.setter
-    def tools_upgrade_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tools_upgrade_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tools_upgrade_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def vapp(self) -> Optional[pulumi.Input['VirtualMachineVappArgs']]:
+    def vapp(self) -> pulumi.Input[Optional['VirtualMachineVappArgs']]:
         """
         vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         """
         return pulumi.get(self, "vapp")
 
     @vapp.setter
-    def vapp(self, value: Optional[pulumi.Input['VirtualMachineVappArgs']]):
+    def vapp(self, value: pulumi.Input[Optional['VirtualMachineVappArgs']]):
         pulumi.set(self, "vapp", value)
 
     @_builtins.property
     @pulumi.getter(name="vbsEnabled")
-    def vbs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vbs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to specify if Virtualization-based security is enabled for this virtual machine.
         """
         return pulumi.get(self, "vbs_enabled")
 
     @vbs_enabled.setter
-    def vbs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vbs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vbs_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def vtpm(self) -> Optional[pulumi.Input['VirtualMachineVtpmArgs']]:
+    def vtpm(self) -> pulumi.Input[Optional['VirtualMachineVtpmArgs']]:
         """
         A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         """
         return pulumi.get(self, "vtpm")
 
     @vtpm.setter
-    def vtpm(self, value: Optional[pulumi.Input['VirtualMachineVtpmArgs']]):
+    def vtpm(self, value: pulumi.Input[Optional['VirtualMachineVtpmArgs']]):
         pulumi.set(self, "vtpm", value)
 
     @_builtins.property
     @pulumi.getter(name="vvtdEnabled")
-    def vvtd_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vvtd_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         """
         return pulumi.get(self, "vvtd_enabled")
 
     @vvtd_enabled.setter
-    def vvtd_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vvtd_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vvtd_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuestIpTimeout")
-    def wait_for_guest_ip_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wait_for_guest_ip_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_ip_timeout")
 
     @wait_for_guest_ip_timeout.setter
-    def wait_for_guest_ip_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wait_for_guest_ip_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wait_for_guest_ip_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuestNetRoutable")
-    def wait_for_guest_net_routable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_guest_net_routable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         """
         return pulumi.get(self, "wait_for_guest_net_routable")
 
     @wait_for_guest_net_routable.setter
-    def wait_for_guest_net_routable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_guest_net_routable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_guest_net_routable", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuestNetTimeout")
-    def wait_for_guest_net_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wait_for_guest_net_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_net_timeout")
 
     @wait_for_guest_net_timeout.setter
-    def wait_for_guest_net_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wait_for_guest_net_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wait_for_guest_net_timeout", value)
 
 
 @pulumi.input_type
 class _VirtualMachineState:
     def __init__(__self__, *,
-                 alternate_guest_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]] = None,
-                 change_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
-                 cpu_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_hot_remove_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_performance_counters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
-                 efi_secure_boot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_disk_uuid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ept_rvi_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 extra_config_reboot_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firmware: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_power_off: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hardware_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hv_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ide_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 imported: Optional[pulumi.Input[_builtins.bool]] = None,
-                 latency_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation_locked_to_max: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrate_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 moid: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_hv_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
-                 num_cores_per_socket: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 nvme_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
-                 pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 power_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 poweron_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 reboot_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 replace_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tools_scripts_after_power_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_after_resume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_standby: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sata_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_bus_sharing: Optional[pulumi.Input[_builtins.str]] = None,
-                 scsi_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shutdown_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 swap_placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_time_with_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_time_with_host_periodically: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tools_upgrade_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
-                 vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vbs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vmware_tools_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmx_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vtpm: Optional[pulumi.Input['VirtualMachineVtpmArgs']] = None,
-                 vvtd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_ip_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_guest_net_routable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_net_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 alternate_guest_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cdroms: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]] = None,
+                 change_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 clone: pulumi.Input[Optional['VirtualMachineCloneArgs']] = None,
+                 cpu_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_hot_remove_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_performance_counters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+                 efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firmware: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_power_off: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hardware_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hv_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ide_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignored_guest_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 imported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 latency_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation_locked_to_max: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrate_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 moid: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
+                 num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ovf_deploy: pulumi.Input[Optional['VirtualMachineOvfDeployArgs']] = None,
+                 pci_device_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 power_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 poweron_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 replace_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tools_scripts_after_power_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_after_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_standby: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sata_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_bus_sharing: pulumi.Input[Optional[_builtins.str]] = None,
+                 scsi_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shutdown_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 swap_placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_time_with_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_time_with_host_periodically: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 vapp: pulumi.Input[Optional['VirtualMachineVappArgs']] = None,
+                 vapp_transports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vmware_tools_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmx_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vtpm: pulumi.Input[Optional['VirtualMachineVtpmArgs']] = None,
+                 vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_guest_net_routable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_net_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VirtualMachine resources.
 
@@ -1620,1058 +1620,1058 @@ class _VirtualMachineState:
 
     @_builtins.property
     @pulumi.getter(name="alternateGuestName")
-    def alternate_guest_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alternate_guest_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The guest name for the operating system when guest_id is otherGuest or otherGuest64.
         """
         return pulumi.get(self, "alternate_guest_name")
 
     @alternate_guest_name.setter
-    def alternate_guest_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alternate_guest_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alternate_guest_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def annotation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the virtual machine.
         """
         return pulumi.get(self, "annotation")
 
     @annotation.setter
-    def annotation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def annotation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "annotation", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDelay")
-    def boot_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of milliseconds to wait before starting the boot sequence.
         """
         return pulumi.get(self, "boot_delay")
 
     @boot_delay.setter
-    def boot_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="bootRetryDelay")
-    def boot_retry_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_retry_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
         """
         return pulumi.get(self, "boot_retry_delay")
 
     @boot_retry_delay.setter
-    def boot_retry_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_retry_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_retry_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="bootRetryEnabled")
-    def boot_retry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boot_retry_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
         """
         return pulumi.get(self, "boot_retry_enabled")
 
     @boot_retry_enabled.setter
-    def boot_retry_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boot_retry_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boot_retry_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def cdroms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]:
+    def cdroms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]:
         """
         A specification for a CDROM device on this virtual machine.
         """
         return pulumi.get(self, "cdroms")
 
     @cdroms.setter
-    def cdroms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]):
+    def cdroms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]]):
         pulumi.set(self, "cdroms", value)
 
     @_builtins.property
     @pulumi.getter(name="changeVersion")
-    def change_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def change_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for a given version of the last configuration was applied.
         """
         return pulumi.get(self, "change_version")
 
     @change_version.setter
-    def change_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def change_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "change_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def clone(self) -> Optional[pulumi.Input['VirtualMachineCloneArgs']]:
+    def clone(self) -> pulumi.Input[Optional['VirtualMachineCloneArgs']]:
         """
         A specification for cloning a virtual machine from template.
         """
         return pulumi.get(self, "clone")
 
     @clone.setter
-    def clone(self, value: Optional[pulumi.Input['VirtualMachineCloneArgs']]):
+    def clone(self, value: pulumi.Input[Optional['VirtualMachineCloneArgs']]):
         pulumi.set(self, "clone", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuHotAddEnabled")
-    def cpu_hot_add_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_hot_add_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow CPUs to be added to this virtual machine while it is running.
         """
         return pulumi.get(self, "cpu_hot_add_enabled")
 
     @cpu_hot_add_enabled.setter
-    def cpu_hot_add_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_hot_add_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_hot_add_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuHotRemoveEnabled")
-    def cpu_hot_remove_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_hot_remove_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow CPUs to be added to this virtual machine while it is running.
         """
         return pulumi.get(self, "cpu_hot_remove_enabled")
 
     @cpu_hot_remove_enabled.setter
-    def cpu_hot_remove_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_hot_remove_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_hot_remove_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "cpu_limit")
 
     @cpu_limit.setter
-    def cpu_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuPerformanceCountersEnabled")
-    def cpu_performance_counters_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_performance_counters_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable CPU performance counters on this virtual machine.
         """
         return pulumi.get(self, "cpu_performance_counters_enabled")
 
     @cpu_performance_counters_enabled.setter
-    def cpu_performance_counters_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_performance_counters_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_performance_counters_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         """
         return pulumi.get(self, "cpu_reservation")
 
     @cpu_reservation.setter
-    def cpu_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShareCount")
-    def cpu_share_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_share_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of shares to allocate to cpu for a custom share level.
         """
         return pulumi.get(self, "cpu_share_count")
 
     @cpu_share_count.setter
-    def cpu_share_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_share_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_share_count", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShareLevel")
-    def cpu_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation level for cpu resources. Can be one of high, low, normal, or custom.
         """
         return pulumi.get(self, "cpu_share_level")
 
     @cpu_share_level.setter
-    def cpu_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of custom attributes to set on this resource.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the datacenter where the VM is to be created.
         """
         return pulumi.get(self, "datacenter_id")
 
     @datacenter_id.setter
-    def datacenter_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter_id", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a datastore cluster to put the virtual machine in.
         """
         return pulumi.get(self, "datastore_cluster_id")
 
     @datastore_cluster_id.setter
-    def datastore_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultIpAddress")
-    def default_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         """
         return pulumi.get(self, "default_ip_address")
 
     @default_ip_address.setter
-    def default_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]:
         """
         A specification for a virtual disk device on this virtual machine.
         """
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter(name="efiSecureBootEnabled")
-    def efi_secure_boot_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def efi_secure_boot_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When the boot type set in firmware is efi, this enables EFI secure boot.
         """
         return pulumi.get(self, "efi_secure_boot_enabled")
 
     @efi_secure_boot_enabled.setter
-    def efi_secure_boot_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def efi_secure_boot_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "efi_secure_boot_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDiskUuid")
-    def enable_disk_uuid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_disk_uuid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         """
         return pulumi.get(self, "enable_disk_uuid")
 
     @enable_disk_uuid.setter
-    def enable_disk_uuid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_disk_uuid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_disk_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable logging on this virtual machine.
         """
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="eptRviMode")
-    def ept_rvi_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ept_rvi_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
         """
         return pulumi.get(self, "ept_rvi_mode")
 
     @ept_rvi_mode.setter
-    def ept_rvi_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ept_rvi_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ept_rvi_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfig")
-    def extra_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         """
         return pulumi.get(self, "extra_config")
 
     @extra_config.setter
-    def extra_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_config", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfigRebootRequired")
-    def extra_config_reboot_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def extra_config_reboot_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         """
         return pulumi.get(self, "extra_config_reboot_required")
 
     @extra_config_reboot_required.setter
-    def extra_config_reboot_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def extra_config_reboot_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "extra_config_reboot_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def firmware(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firmware(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The firmware interface to use on the virtual machine. Can be one of bios or efi.
         """
         return pulumi.get(self, "firmware")
 
     @firmware.setter
-    def firmware(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firmware(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firmware", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the folder to locate the virtual machine in.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="forcePowerOff")
-    def force_power_off(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_power_off(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         """
         return pulumi.get(self, "force_power_off")
 
     @force_power_off.setter
-    def force_power_off(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_power_off(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_power_off", value)
 
     @_builtins.property
     @pulumi.getter(name="guestId")
-    def guest_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guest_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The guest ID for the operating system.
         """
         return pulumi.get(self, "guest_id")
 
     @guest_id.setter
-    def guest_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guest_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guest_id", value)
 
     @_builtins.property
     @pulumi.getter(name="guestIpAddresses")
-    def guest_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def guest_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         """
         return pulumi.get(self, "guest_ip_addresses")
 
     @guest_ip_addresses.setter
-    def guest_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def guest_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "guest_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="hardwareVersion")
-    def hardware_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hardware_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         """
         return pulumi.get(self, "hardware_version")
 
     @hardware_version.setter
-    def hardware_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hardware_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hardware_version", value)
 
     @_builtins.property
     @pulumi.getter(name="hostSystemId")
-    def host_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an optional host system to pin the virtual machine to.
         """
         return pulumi.get(self, "host_system_id")
 
     @host_system_id.setter
-    def host_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hvMode")
-    def hv_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hv_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         """
         return pulumi.get(self, "hv_mode")
 
     @hv_mode.setter
-    def hv_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hv_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hv_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="ideControllerCount")
-    def ide_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ide_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "ide_controller_count")
 
     @ide_controller_count.setter
-    def ide_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ide_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ide_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoredGuestIps")
-    def ignored_guest_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignored_guest_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses and CIDR networks to ignore while waiting for an IP
         """
         return pulumi.get(self, "ignored_guest_ips")
 
     @ignored_guest_ips.setter
-    def ignored_guest_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignored_guest_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignored_guest_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def imported(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def imported(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
         """
         return pulumi.get(self, "imported")
 
     @imported.setter
-    def imported(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def imported(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "imported", value)
 
     @_builtins.property
     @pulumi.getter(name="latencySensitivity")
-    def latency_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latency_sensitivity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         """
         return pulumi.get(self, "latency_sensitivity")
 
     @latency_sensitivity.setter
-    def latency_sensitivity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latency_sensitivity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latency_sensitivity", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the virtual machine's memory, in MB.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryHotAddEnabled")
-    def memory_hot_add_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def memory_hot_add_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow memory to be added to this virtual machine while it is running.
         """
         return pulumi.get(self, "memory_hot_add_enabled")
 
     @memory_hot_add_enabled.setter
-    def memory_hot_add_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def memory_hot_add_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "memory_hot_add_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         """
         return pulumi.get(self, "memory_reservation")
 
     @memory_reservation.setter
-    def memory_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservationLockedToMax")
-    def memory_reservation_locked_to_max(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def memory_reservation_locked_to_max(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
     @memory_reservation_locked_to_max.setter
-    def memory_reservation_locked_to_max(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def memory_reservation_locked_to_max(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "memory_reservation_locked_to_max", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShareCount")
-    def memory_share_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_share_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of shares to allocate to memory for a custom share level.
         """
         return pulumi.get(self, "memory_share_count")
 
     @memory_share_count.setter
-    def memory_share_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_share_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_share_count", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShareLevel")
-    def memory_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation level for memory resources. Can be one of high, low, normal, or custom.
         """
         return pulumi.get(self, "memory_share_level")
 
     @memory_share_level.setter
-    def memory_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="migrateWaitTimeout")
-    def migrate_wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def migrate_wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
         """
         return pulumi.get(self, "migrate_wait_timeout")
 
     @migrate_wait_timeout.setter
-    def migrate_wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def migrate_wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "migrate_wait_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def moid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def moid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference ID][docs-about-morefs] of the created virtual machine.
         """
         return pulumi.get(self, "moid")
 
     @moid.setter
-    def moid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def moid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "moid", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this virtual machine.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nestedHvEnabled")
-    def nested_hv_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nested_hv_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         """
         return pulumi.get(self, "nested_hv_enabled")
 
     @nested_hv_enabled.setter
-    def nested_hv_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nested_hv_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nested_hv_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]:
         """
         A specification for a virtual NIC on this virtual machine.
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="numCoresPerSocket")
-    def num_cores_per_socket(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_cores_per_socket(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         """
         return pulumi.get(self, "num_cores_per_socket")
 
     @num_cores_per_socket.setter
-    def num_cores_per_socket(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_cores_per_socket(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_cores_per_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="numCpus")
-    def num_cpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_cpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of virtual processors to assign to this virtual machine.
         """
         return pulumi.get(self, "num_cpus")
 
     @num_cpus.setter
-    def num_cpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_cpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_cpus", value)
 
     @_builtins.property
     @pulumi.getter(name="nvmeControllerCount")
-    def nvme_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nvme_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "nvme_controller_count")
 
     @nvme_controller_count.setter
-    def nvme_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nvme_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nvme_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ovfDeploy")
-    def ovf_deploy(self) -> Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]:
+    def ovf_deploy(self) -> pulumi.Input[Optional['VirtualMachineOvfDeployArgs']]:
         """
         A specification for deploying a virtual machine from ovf/ova template.
         """
         return pulumi.get(self, "ovf_deploy")
 
     @ovf_deploy.setter
-    def ovf_deploy(self, value: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]):
+    def ovf_deploy(self, value: pulumi.Input[Optional['VirtualMachineOvfDeployArgs']]):
         pulumi.set(self, "ovf_deploy", value)
 
     @_builtins.property
     @pulumi.getter(name="pciDeviceIds")
-    def pci_device_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pci_device_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of PCI passthrough devices
         """
         return pulumi.get(self, "pci_device_ids")
 
     @pci_device_ids.setter
-    def pci_device_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pci_device_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pci_device_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="powerState")
-    def power_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def power_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
         """
         return pulumi.get(self, "power_state")
 
     @power_state.setter
-    def power_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def power_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "power_state", value)
 
     @_builtins.property
     @pulumi.getter(name="poweronTimeout")
-    def poweron_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def poweron_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in seconds, that we will be trying to power on a VM
         """
         return pulumi.get(self, "poweron_timeout")
 
     @poweron_timeout.setter
-    def poweron_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def poweron_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "poweron_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="rebootRequired")
-    def reboot_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reboot_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
         """
         return pulumi.get(self, "reboot_required")
 
     @reboot_required.setter
-    def reboot_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reboot_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reboot_required", value)
 
     @_builtins.property
     @pulumi.getter(name="replaceTrigger")
-    def replace_trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replace_trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers replacement of resource whenever it changes.
         """
         return pulumi.get(self, "replace_trigger")
 
     @replace_trigger.setter
-    def replace_trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replace_trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replace_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePoolId")
-    def resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a resource pool to put the virtual machine in.
         """
         return pulumi.get(self, "resource_pool_id")
 
     @resource_pool_id.setter
-    def resource_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsAfterPowerOn")
-    def run_tools_scripts_after_power_on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_after_power_on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_after_power_on")
 
     @run_tools_scripts_after_power_on.setter
-    def run_tools_scripts_after_power_on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_after_power_on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_after_power_on", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsAfterResume")
-    def run_tools_scripts_after_resume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_after_resume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_after_resume")
 
     @run_tools_scripts_after_resume.setter
-    def run_tools_scripts_after_resume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_after_resume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_after_resume", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsBeforeGuestReboot")
-    def run_tools_scripts_before_guest_reboot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_before_guest_reboot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_before_guest_reboot")
 
     @run_tools_scripts_before_guest_reboot.setter
-    def run_tools_scripts_before_guest_reboot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_before_guest_reboot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_before_guest_reboot", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsBeforeGuestShutdown")
-    def run_tools_scripts_before_guest_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_before_guest_shutdown(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_before_guest_shutdown")
 
     @run_tools_scripts_before_guest_shutdown.setter
-    def run_tools_scripts_before_guest_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_before_guest_shutdown(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_before_guest_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="runToolsScriptsBeforeGuestStandby")
-    def run_tools_scripts_before_guest_standby(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tools_scripts_before_guest_standby(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the run of scripts before guest operating system standby when VMware Tools is installed.
         """
         return pulumi.get(self, "run_tools_scripts_before_guest_standby")
 
     @run_tools_scripts_before_guest_standby.setter
-    def run_tools_scripts_before_guest_standby(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tools_scripts_before_guest_standby(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tools_scripts_before_guest_standby", value)
 
     @_builtins.property
     @pulumi.getter(name="sataControllerCount")
-    def sata_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sata_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "sata_controller_count")
 
     @sata_controller_count.setter
-    def sata_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sata_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sata_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scsiBusSharing")
-    def scsi_bus_sharing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scsi_bus_sharing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
         """
         return pulumi.get(self, "scsi_bus_sharing")
 
     @scsi_bus_sharing.setter
-    def scsi_bus_sharing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scsi_bus_sharing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scsi_bus_sharing", value)
 
     @_builtins.property
     @pulumi.getter(name="scsiControllerCount")
-    def scsi_controller_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scsi_controller_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
         """
         return pulumi.get(self, "scsi_controller_count")
 
     @scsi_controller_count.setter
-    def scsi_controller_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scsi_controller_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scsi_controller_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scsiType")
-    def scsi_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scsi_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
         """
         return pulumi.get(self, "scsi_type")
 
     @scsi_type.setter
-    def scsi_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scsi_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scsi_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownWaitTimeout")
-    def shutdown_wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shutdown_wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         """
         return pulumi.get(self, "shutdown_wait_timeout")
 
     @shutdown_wait_timeout.setter
-    def shutdown_wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shutdown_wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shutdown_wait_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicyId")
-    def storage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the storage policy to assign to the virtual machine home directory.
         """
         return pulumi.get(self, "storage_policy_id")
 
     @storage_policy_id.setter
-    def storage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="swapPlacementPolicy")
-    def swap_placement_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def swap_placement_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
         """
         return pulumi.get(self, "swap_placement_policy")
 
     @swap_placement_policy.setter
-    def swap_placement_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def swap_placement_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "swap_placement_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="syncTimeWithHost")
-    def sync_time_with_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_time_with_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host")
 
     @sync_time_with_host.setter
-    def sync_time_with_host(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_time_with_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_time_with_host", value)
 
     @_builtins.property
     @pulumi.getter(name="syncTimeWithHostPeriodically")
-    def sync_time_with_host_periodically(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_time_with_host_periodically(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host_periodically")
 
     @sync_time_with_host_periodically.setter
-    def sync_time_with_host_periodically(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_time_with_host_periodically(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_time_with_host_periodically", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag IDs to apply to this object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="toolsUpgradePolicy")
-    def tools_upgrade_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tools_upgrade_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         """
         return pulumi.get(self, "tools_upgrade_policy")
 
     @tools_upgrade_policy.setter
-    def tools_upgrade_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tools_upgrade_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tools_upgrade_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the virtual machine. Also exposed as the `id` of the resource.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def vapp(self) -> Optional[pulumi.Input['VirtualMachineVappArgs']]:
+    def vapp(self) -> pulumi.Input[Optional['VirtualMachineVappArgs']]:
         """
         vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         """
         return pulumi.get(self, "vapp")
 
     @vapp.setter
-    def vapp(self, value: Optional[pulumi.Input['VirtualMachineVappArgs']]):
+    def vapp(self, value: pulumi.Input[Optional['VirtualMachineVappArgs']]):
         pulumi.set(self, "vapp", value)
 
     @_builtins.property
     @pulumi.getter(name="vappTransports")
-    def vapp_transports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vapp_transports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
         """
         return pulumi.get(self, "vapp_transports")
 
     @vapp_transports.setter
-    def vapp_transports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vapp_transports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vapp_transports", value)
 
     @_builtins.property
     @pulumi.getter(name="vbsEnabled")
-    def vbs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vbs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to specify if Virtualization-based security is enabled for this virtual machine.
         """
         return pulumi.get(self, "vbs_enabled")
 
     @vbs_enabled.setter
-    def vbs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vbs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vbs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vmwareToolsStatus")
-    def vmware_tools_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vmware_tools_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
         """
         return pulumi.get(self, "vmware_tools_status")
 
     @vmware_tools_status.setter
-    def vmware_tools_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vmware_tools_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vmware_tools_status", value)
 
     @_builtins.property
     @pulumi.getter(name="vmxPath")
-    def vmx_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vmx_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
         """
         return pulumi.get(self, "vmx_path")
 
     @vmx_path.setter
-    def vmx_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vmx_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vmx_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def vtpm(self) -> Optional[pulumi.Input['VirtualMachineVtpmArgs']]:
+    def vtpm(self) -> pulumi.Input[Optional['VirtualMachineVtpmArgs']]:
         """
         A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         """
         return pulumi.get(self, "vtpm")
 
     @vtpm.setter
-    def vtpm(self, value: Optional[pulumi.Input['VirtualMachineVtpmArgs']]):
+    def vtpm(self, value: pulumi.Input[Optional['VirtualMachineVtpmArgs']]):
         pulumi.set(self, "vtpm", value)
 
     @_builtins.property
     @pulumi.getter(name="vvtdEnabled")
-    def vvtd_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vvtd_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         """
         return pulumi.get(self, "vvtd_enabled")
 
     @vvtd_enabled.setter
-    def vvtd_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vvtd_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vvtd_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuestIpTimeout")
-    def wait_for_guest_ip_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wait_for_guest_ip_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_ip_timeout")
 
     @wait_for_guest_ip_timeout.setter
-    def wait_for_guest_ip_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wait_for_guest_ip_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wait_for_guest_ip_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuestNetRoutable")
-    def wait_for_guest_net_routable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_guest_net_routable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         """
         return pulumi.get(self, "wait_for_guest_net_routable")
 
     @wait_for_guest_net_routable.setter
-    def wait_for_guest_net_routable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_guest_net_routable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_guest_net_routable", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuestNetTimeout")
-    def wait_for_guest_net_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wait_for_guest_net_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_net_timeout")
 
     @wait_for_guest_net_timeout.setter
-    def wait_for_guest_net_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wait_for_guest_net_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wait_for_guest_net_timeout", value)
 
 
@@ -2681,83 +2681,83 @@ class VirtualMachine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate_guest_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
-                 clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
-                 cpu_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_hot_remove_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_performance_counters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
-                 efi_secure_boot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_disk_uuid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ept_rvi_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 extra_config_reboot_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firmware: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_power_off: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hardware_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hv_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ide_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 latency_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation_locked_to_max: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrate_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_hv_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
-                 num_cores_per_socket: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 nvme_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
-                 pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 poweron_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 replace_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tools_scripts_after_power_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_after_resume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_standby: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sata_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_bus_sharing: Optional[pulumi.Input[_builtins.str]] = None,
-                 scsi_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shutdown_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 swap_placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_time_with_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_time_with_host_periodically: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tools_upgrade_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
-                 vbs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vtpm: Optional[pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
-                 vvtd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_ip_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_guest_net_routable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_net_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 alternate_guest_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cdroms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
+                 clone: pulumi.Input[Optional[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
+                 cpu_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_hot_remove_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_performance_counters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
+                 efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firmware: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_power_off: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hardware_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hv_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ide_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignored_guest_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 latency_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation_locked_to_max: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrate_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
+                 num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ovf_deploy: pulumi.Input[Optional[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
+                 pci_device_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 poweron_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 replace_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tools_scripts_after_power_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_after_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_standby: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sata_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_bus_sharing: pulumi.Input[Optional[_builtins.str]] = None,
+                 scsi_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shutdown_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 swap_placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_time_with_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_time_with_host_periodically: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 vapp: pulumi.Input[Optional[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
+                 vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vtpm: pulumi.Input[Optional[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
+                 vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_guest_net_routable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_net_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `VirtualMachine` resource is used to manage the lifecycle of a virtual machine.
@@ -2954,7 +2954,7 @@ class VirtualMachine(pulumi.CustomResource):
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
             name="remote-foo",
             datacenter_id=datacenter.id,
-            datastore_id=datastore.i,
+            datastore_id=output(datastore.i).apply(lambda x: str(x)),
             resource_pool_id=default.id,
             wait_for_guest_net_timeout=0,
             wait_for_guest_ip_timeout=0,
@@ -3062,7 +3062,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Remote OVF
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_remote.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-01",
@@ -3095,7 +3095,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Local OVF
         vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_local.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-02",
@@ -4026,7 +4026,7 @@ class VirtualMachine(pulumi.CustomResource):
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
             name="remote-foo",
             datacenter_id=datacenter.id,
-            datastore_id=datastore.i,
+            datastore_id=output(datastore.i).apply(lambda x: str(x)),
             resource_pool_id=default.id,
             wait_for_guest_net_timeout=0,
             wait_for_guest_ip_timeout=0,
@@ -4134,7 +4134,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Remote OVF
         vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_remote.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-01",
@@ -4167,7 +4167,7 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ## Deployment of VM from Local OVF
         vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-            network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+            network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_local.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
                 network_id=entry["value"],
             ) for entry in entries]),
             name="ubuntu-server-cloud-image-02",
@@ -4832,83 +4832,83 @@ class VirtualMachine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate_guest_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_retry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
-                 clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
-                 cpu_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_hot_remove_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_performance_counters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
-                 efi_secure_boot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_disk_uuid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ept_rvi_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 extra_config_reboot_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firmware: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_power_off: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hardware_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hv_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ide_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 latency_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation_locked_to_max: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrate_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_hv_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
-                 num_cores_per_socket: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 nvme_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
-                 pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 poweron_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 replace_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tools_scripts_after_power_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_after_resume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_tools_scripts_before_guest_standby: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sata_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_bus_sharing: Optional[pulumi.Input[_builtins.str]] = None,
-                 scsi_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scsi_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shutdown_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 swap_placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_time_with_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_time_with_host_periodically: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tools_upgrade_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
-                 vbs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vtpm: Optional[pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
-                 vvtd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_ip_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_guest_net_routable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_guest_net_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 alternate_guest_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_retry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cdroms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
+                 clone: pulumi.Input[Optional[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
+                 cpu_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_hot_remove_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_performance_counters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
+                 efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firmware: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_power_off: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hardware_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hv_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ide_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignored_guest_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 latency_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation_locked_to_max: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrate_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
+                 num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ovf_deploy: pulumi.Input[Optional[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
+                 pci_device_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 poweron_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 replace_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tools_scripts_after_power_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_after_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_tools_scripts_before_guest_standby: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sata_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_bus_sharing: pulumi.Input[Optional[_builtins.str]] = None,
+                 scsi_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scsi_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shutdown_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 swap_placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_time_with_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_time_with_host_periodically: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 vapp: pulumi.Input[Optional[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
+                 vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vtpm: pulumi.Input[Optional[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
+                 vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_guest_net_routable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_guest_net_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -5018,94 +5018,94 @@ class VirtualMachine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alternate_guest_name: Optional[pulumi.Input[_builtins.str]] = None,
-            annotation: Optional[pulumi.Input[_builtins.str]] = None,
-            boot_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            boot_retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            boot_retry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
-            change_version: Optional[pulumi.Input[_builtins.str]] = None,
-            clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
-            cpu_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cpu_hot_remove_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_performance_counters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-            datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
-            efi_secure_boot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_disk_uuid: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            ept_rvi_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            extra_config_reboot_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            firmware: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            force_power_off: Optional[pulumi.Input[_builtins.bool]] = None,
-            guest_id: Optional[pulumi.Input[_builtins.str]] = None,
-            guest_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hardware_version: Optional[pulumi.Input[_builtins.int]] = None,
-            host_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            hv_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            ide_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            imported: Optional[pulumi.Input[_builtins.bool]] = None,
-            latency_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-            memory: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_hot_add_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_reservation_locked_to_max: Optional[pulumi.Input[_builtins.bool]] = None,
-            memory_share_count: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-            migrate_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            moid: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nested_hv_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
-            num_cores_per_socket: Optional[pulumi.Input[_builtins.int]] = None,
-            num_cpus: Optional[pulumi.Input[_builtins.int]] = None,
-            nvme_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
-            pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            power_state: Optional[pulumi.Input[_builtins.str]] = None,
-            poweron_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            reboot_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            replace_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            run_tools_scripts_after_power_on: Optional[pulumi.Input[_builtins.bool]] = None,
-            run_tools_scripts_after_resume: Optional[pulumi.Input[_builtins.bool]] = None,
-            run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-            run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-            run_tools_scripts_before_guest_standby: Optional[pulumi.Input[_builtins.bool]] = None,
-            sata_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-            scsi_bus_sharing: Optional[pulumi.Input[_builtins.str]] = None,
-            scsi_controller_count: Optional[pulumi.Input[_builtins.int]] = None,
-            scsi_type: Optional[pulumi.Input[_builtins.str]] = None,
-            shutdown_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            storage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            swap_placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_time_with_host: Optional[pulumi.Input[_builtins.bool]] = None,
-            sync_time_with_host_periodically: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tools_upgrade_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
-            vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vbs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vmware_tools_status: Optional[pulumi.Input[_builtins.str]] = None,
-            vmx_path: Optional[pulumi.Input[_builtins.str]] = None,
-            vtpm: Optional[pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
-            vvtd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            wait_for_guest_ip_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            wait_for_guest_net_routable: Optional[pulumi.Input[_builtins.bool]] = None,
-            wait_for_guest_net_timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'VirtualMachine':
+            alternate_guest_name: pulumi.Input[Optional[_builtins.str]] = None,
+            annotation: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            boot_retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            boot_retry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cdroms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
+            change_version: pulumi.Input[Optional[_builtins.str]] = None,
+            clone: pulumi.Input[Optional[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
+            cpu_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cpu_hot_remove_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_performance_counters_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
+            efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            firmware: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            force_power_off: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest_id: pulumi.Input[Optional[_builtins.str]] = None,
+            guest_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hardware_version: pulumi.Input[Optional[_builtins.int]] = None,
+            host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hv_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ide_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ignored_guest_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            imported: pulumi.Input[Optional[_builtins.bool]] = None,
+            latency_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_hot_add_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_reservation_locked_to_max: pulumi.Input[Optional[_builtins.bool]] = None,
+            memory_share_count: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+            migrate_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            moid: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
+            num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
+            num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
+            nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ovf_deploy: pulumi.Input[Optional[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
+            pci_device_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            power_state: pulumi.Input[Optional[_builtins.str]] = None,
+            poweron_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            replace_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            run_tools_scripts_after_power_on: pulumi.Input[Optional[_builtins.bool]] = None,
+            run_tools_scripts_after_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+            run_tools_scripts_before_guest_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+            run_tools_scripts_before_guest_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+            run_tools_scripts_before_guest_standby: pulumi.Input[Optional[_builtins.bool]] = None,
+            sata_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+            scsi_bus_sharing: pulumi.Input[Optional[_builtins.str]] = None,
+            scsi_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
+            scsi_type: pulumi.Input[Optional[_builtins.str]] = None,
+            shutdown_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            swap_placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_time_with_host: pulumi.Input[Optional[_builtins.bool]] = None,
+            sync_time_with_host_periodically: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            vapp: pulumi.Input[Optional[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
+            vapp_transports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vmware_tools_status: pulumi.Input[Optional[_builtins.str]] = None,
+            vmx_path: pulumi.Input[Optional[_builtins.str]] = None,
+            vtpm: pulumi.Input[Optional[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
+            vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            wait_for_guest_net_routable: pulumi.Input[Optional[_builtins.bool]] = None,
+            wait_for_guest_net_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'VirtualMachine':
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

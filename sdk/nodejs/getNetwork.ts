@@ -188,18 +188,18 @@ export interface GetNetworkOutputArgs {
      * absolute path. For default datacenters, use the `id` attribute from an empty
      * `vsphere.Datacenter` data source.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * For distributed port group type
      * network objects, the ID of the distributed virtual switch for which the port
      * group belongs. It is useful to differentiate port groups with same name using
      * the distributed virtual switch ID.
      */
-    distributedVirtualSwitchUuid?: pulumi.Input<string>;
+    distributedVirtualSwitchUuid?: pulumi.Input<string | undefined>;
     /**
      * Apply a filter for the discovered network.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkFilterArgs>[] | undefined>;
     /**
      * The name of the network. This can be a name or path.
      */
@@ -207,14 +207,14 @@ export interface GetNetworkOutputArgs {
     /**
      * The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
      */
-    retryInterval?: pulumi.Input<number>;
+    retryInterval?: pulumi.Input<number | undefined>;
     /**
      * The timeout duration in seconds for the data source to retry read operations.
      */
-    retryTimeout?: pulumi.Input<number>;
+    retryTimeout?: pulumi.Input<number | undefined>;
     /**
      * Select a VPC scope for retrieval of VPC subnets.
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

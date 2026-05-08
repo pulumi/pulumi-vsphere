@@ -160,23 +160,23 @@ export interface ContentLibraryState {
     /**
      * A description for the content library.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the content library.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Options to publish a local content library.
      */
-    publication?: pulumi.Input<inputs.ContentLibraryPublication>;
+    publication?: pulumi.Input<inputs.ContentLibraryPublication | undefined>;
     /**
      * The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      */
-    storageBackings?: pulumi.Input<pulumi.Input<string>[]>;
+    storageBackings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options subscribe to a published content library.
      */
-    subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
+    subscription?: pulumi.Input<inputs.ContentLibrarySubscription | undefined>;
 }
 
 /**
@@ -186,15 +186,15 @@ export interface ContentLibraryArgs {
     /**
      * A description for the content library.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the content library.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Options to publish a local content library.
      */
-    publication?: pulumi.Input<inputs.ContentLibraryPublication>;
+    publication?: pulumi.Input<inputs.ContentLibraryPublication | undefined>;
     /**
      * The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      */
@@ -202,5 +202,5 @@ export interface ContentLibraryArgs {
     /**
      * Options subscribe to a published content library.
      */
-    subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
+    subscription?: pulumi.Input<inputs.ContentLibrarySubscription | undefined>;
 }

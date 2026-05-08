@@ -85,9 +85,9 @@ class EntityPermissionsArgs:
 @pulumi.input_type
 class _EntityPermissionsState:
     def __init__(__self__, *,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]] = None):
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]] = None):
         """
         Input properties used for looking up and filtering EntityPermissions resources.
 
@@ -109,7 +109,7 @@ class _EntityPermissionsState:
 
     @_builtins.property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The managed object id (uuid for some entities) on
         which permissions are to be created.
@@ -117,12 +117,12 @@ class _EntityPermissionsState:
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The managed object type, types can be found in the
         managed object type section
@@ -131,12 +131,12 @@ class _EntityPermissionsState:
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]]:
         """
         The permissions to be given on this entity. Keep
         the permissions sorted alphabetically on `user_or_group` for a better user
@@ -145,7 +145,7 @@ class _EntityPermissionsState:
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
 
@@ -155,9 +155,9 @@ class EntityPermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
                  __props__=None):
         """
         The `EntityPermissions` resource can be used to create and manage
@@ -293,9 +293,9 @@ class EntityPermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -324,9 +324,9 @@ class EntityPermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-            entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None) -> 'EntityPermissions':
+            entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None) -> 'EntityPermissions':
         """
         Get an existing EntityPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

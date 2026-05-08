@@ -120,7 +120,7 @@ export interface GetDatastoreOutputArgs {
      * is an absolute path. For default datacenters, use the `id` attribute from an
      * empty `vsphere.Datacenter` data source.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the datastore. This can be a name or path.
      */
@@ -130,5 +130,5 @@ export interface GetDatastoreOutputArgs {
      * total datastore capacity is represented as `capacity` and the free remaining
      * disk is represented as `free`.
      */
-    stats?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    stats?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

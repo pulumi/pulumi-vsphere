@@ -24,18 +24,18 @@ class HostArgs:
                  hostname: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 lockdown: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 lockdown: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input['HostServiceArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Host resource.
 
@@ -152,7 +152,7 @@ class HostArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Compute Cluster this host should
         be added to. This should not be set if `datacenter` is set. Conflicts with:
@@ -161,12 +161,12 @@ class HostArgs:
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterManaged")
-    def cluster_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cluster_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to `true` if compute cluster
         membership will be managed through the `compute_cluster` resource rather
@@ -175,12 +175,12 @@ class HostArgs:
         return pulumi.get(self, "cluster_managed")
 
     @cluster_managed.setter
-    def cluster_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cluster_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cluster_managed", value)
 
     @_builtins.property
     @pulumi.getter
-    def connected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to false then the host will be disconnected.
         Default is `false`.
@@ -188,12 +188,12 @@ class HostArgs:
         return pulumi.get(self, "connected")
 
     @connected.setter
-    def connected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connected", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute IDs and string
         values to apply to the resource. Please refer to the
@@ -208,12 +208,12 @@ class HostArgs:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the datacenter this host should
         be added to. This should not be set if `cluster` is set.
@@ -221,12 +221,12 @@ class HostArgs:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true` then it will force the host to be added,
         even if the host is already connected to a different vCenter Server instance.
@@ -235,12 +235,12 @@ class HostArgs:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
-    def license(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The license key that will be applied to the host.
         The license key is expected to be present in vSphere.
@@ -248,12 +248,12 @@ class HostArgs:
         return pulumi.get(self, "license")
 
     @license.setter
-    def license(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license", value)
 
     @_builtins.property
     @pulumi.getter
-    def lockdown(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lockdown(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the lockdown state of the host. Valid options are
         `disabled`, `normal`, and `strict`. Default is `disabled`.
@@ -261,12 +261,12 @@ class HostArgs:
         return pulumi.get(self, "lockdown")
 
     @lockdown.setter
-    def lockdown(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lockdown(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lockdown", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def maintenance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set the management state of the host.
         Default is `false`.
@@ -274,24 +274,24 @@ class HostArgs:
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def maintenance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostServiceArgs']]]]:
         """
         Set Services on host, the settings to be set are based on service being set as part of import.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostServiceArgs']]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. Please
         refer to the `Tag` resource for more information on applying
@@ -303,12 +303,12 @@ class HostArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def thumbprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def thumbprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
@@ -318,28 +318,28 @@ class HostArgs:
         return pulumi.get(self, "thumbprint")
 
     @thumbprint.setter
-    def thumbprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def thumbprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "thumbprint", value)
 
 
 @pulumi.input_type
 class _HostState:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 lockdown: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 lockdown: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input['HostServiceArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Host resources.
 
@@ -421,7 +421,7 @@ class _HostState:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Compute Cluster this host should
         be added to. This should not be set if `datacenter` is set. Conflicts with:
@@ -430,12 +430,12 @@ class _HostState:
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterManaged")
-    def cluster_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cluster_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to `true` if compute cluster
         membership will be managed through the `compute_cluster` resource rather
@@ -444,12 +444,12 @@ class _HostState:
         return pulumi.get(self, "cluster_managed")
 
     @cluster_managed.setter
-    def cluster_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cluster_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cluster_managed", value)
 
     @_builtins.property
     @pulumi.getter
-    def connected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to false then the host will be disconnected.
         Default is `false`.
@@ -457,12 +457,12 @@ class _HostState:
         return pulumi.get(self, "connected")
 
     @connected.setter
-    def connected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connected", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute IDs and string
         values to apply to the resource. Please refer to the
@@ -477,12 +477,12 @@ class _HostState:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the datacenter this host should
         be added to. This should not be set if `cluster` is set.
@@ -490,12 +490,12 @@ class _HostState:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true` then it will force the host to be added,
         even if the host is already connected to a different vCenter Server instance.
@@ -504,24 +504,24 @@ class _HostState:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         FQDN or IP address of the host to be added.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def license(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The license key that will be applied to the host.
         The license key is expected to be present in vSphere.
@@ -529,12 +529,12 @@ class _HostState:
         return pulumi.get(self, "license")
 
     @license.setter
-    def license(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license", value)
 
     @_builtins.property
     @pulumi.getter
-    def lockdown(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lockdown(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the lockdown state of the host. Valid options are
         `disabled`, `normal`, and `strict`. Default is `disabled`.
@@ -542,12 +542,12 @@ class _HostState:
         return pulumi.get(self, "lockdown")
 
     @lockdown.setter
-    def lockdown(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lockdown(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lockdown", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def maintenance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set the management state of the host.
         Default is `false`.
@@ -555,12 +555,12 @@ class _HostState:
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def maintenance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password that will be used by vSphere to authenticate
         to the host.
@@ -568,24 +568,24 @@ class _HostState:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostServiceArgs']]]]:
         """
         Set Services on host, the settings to be set are based on service being set as part of import.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostServiceArgs']]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. Please
         refer to the `Tag` resource for more information on applying
@@ -597,12 +597,12 @@ class _HostState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def thumbprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def thumbprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
@@ -612,12 +612,12 @@ class _HostState:
         return pulumi.get(self, "thumbprint")
 
     @thumbprint.setter
-    def thumbprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def thumbprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "thumbprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username that will be used by vSphere to authenticate
         to the host.
@@ -625,7 +625,7 @@ class _HostState:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -635,21 +635,21 @@ class Host(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 lockdown: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 lockdown: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VMware vSphere host resource. This represents an ESXi host that
@@ -955,21 +955,21 @@ class Host(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 lockdown: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 lockdown: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1012,21 +1012,21 @@ class Host(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            connected: Optional[pulumi.Input[_builtins.bool]] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            license: Optional[pulumi.Input[_builtins.str]] = None,
-            lockdown: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            thumbprint: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'Host':
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            connected: pulumi.Input[Optional[_builtins.bool]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            lockdown: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'Host':
         """
         Get an existing Host resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

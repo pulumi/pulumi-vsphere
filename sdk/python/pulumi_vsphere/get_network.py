@@ -207,13 +207,13 @@ def get_network(datacenter_id: Optional[_builtins.str] = None,
         retry_timeout=pulumi.get(__ret__, 'retry_timeout'),
         type=pulumi.get(__ret__, 'type'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       distributed_virtual_switch_uuid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]]]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       retry_interval: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       retry_timeout: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_network_output(datacenter_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       distributed_virtual_switch_uuid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]]]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       retry_interval: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       retry_timeout: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     The `get_network` data source can be used to discover the ID of a network in

@@ -289,16 +289,16 @@ export interface NasDatastoreState {
      * that the datastore will be read-write depending on the permissions of the
      * actual share. Default: `readWrite`. Forces a new resource if changed.
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    accessible?: pulumi.Input<boolean>;
+    accessible?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Map of custom attribute ids to attribute
      * value strings to set on resource. See [here][docs-setting-custom-attributes]
@@ -309,13 +309,13 @@ export interface NasDatastoreState {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string | undefined>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -325,52 +325,52 @@ export interface NasDatastoreState {
      * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
      * `datastoreClusterId`.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    freeSpace?: pulumi.Input<number>;
+    freeSpace?: pulumi.Input<number | undefined>;
     /**
      * The [managed object IDs][docs-about-morefs] of
      * the hosts to mount the datastore on.
      */
-    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    maintenanceMode?: pulumi.Input<string>;
+    maintenanceMode?: pulumi.Input<string | undefined>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    multipleHostAccess?: pulumi.Input<boolean>;
+    multipleHostAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates that this NAS volume is a protocol endpoint.
      * This field is only populated if the host supports virtual datastores.
      */
-    protocolEndpoint?: pulumi.Input<boolean>;
+    protocolEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * The hostnames or IP addresses of the remote
      * servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
-    remoteHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The remote path of the mount point. Forces a new
      * resource if changed.
      */
-    remotePath?: pulumi.Input<string>;
+    remotePath?: pulumi.Input<string | undefined>;
     /**
      * The security type to use when using NFS v4.1.
      * Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
      * if changed.
      */
-    securityType?: pulumi.Input<string>;
+    securityType?: pulumi.Input<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
@@ -378,22 +378,22 @@ export interface NasDatastoreState {
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of NAS volume. Can be one of `NFS` (to denote
      * v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
      * changed.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    uncommittedSpace?: pulumi.Input<number>;
+    uncommittedSpace?: pulumi.Input<number | undefined>;
     /**
      * The unique locator for the datastore.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -406,7 +406,7 @@ export interface NasDatastoreArgs {
      * that the datastore will be read-write depending on the permissions of the
      * actual share. Default: `readWrite`. Forces a new resource if changed.
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * Map of custom attribute ids to attribute
      * value strings to set on resource. See [here][docs-setting-custom-attributes]
@@ -417,13 +417,13 @@ export interface NasDatastoreArgs {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string | undefined>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -433,7 +433,7 @@ export interface NasDatastoreArgs {
      * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
      * `datastoreClusterId`.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * The [managed object IDs][docs-about-morefs] of
      * the hosts to mount the datastore on.
@@ -443,7 +443,7 @@ export interface NasDatastoreArgs {
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The hostnames or IP addresses of the remote
      * servers. Only one element should be present for NFS v3 but multiple
@@ -460,7 +460,7 @@ export interface NasDatastoreArgs {
      * Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
      * if changed.
      */
-    securityType?: pulumi.Input<string>;
+    securityType?: pulumi.Input<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
@@ -468,11 +468,11 @@ export interface NasDatastoreArgs {
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of NAS volume. Can be one of `NFS` (to denote
      * v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
      * changed.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

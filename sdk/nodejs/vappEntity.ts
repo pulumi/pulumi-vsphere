@@ -219,47 +219,47 @@ export interface VappEntityState {
      * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      */
-    containerId?: pulumi.Input<string>;
+    containerId?: pulumi.Input<string | undefined>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
      * Default: powerOn
      */
-    startAction?: pulumi.Input<string>;
+    startAction?: pulumi.Input<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order of entities to be started. Default: 120
      */
-    startDelay?: pulumi.Input<number>;
+    startDelay?: pulumi.Input<number | undefined>;
     /**
      * Order to start and stop target in vApp. Default: 1
      */
-    startOrder?: pulumi.Input<number>;
+    startOrder?: pulumi.Input<number | undefined>;
     /**
      * Defines the stop action for the entity. Can be set
      * to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
      * does not participate in auto-stop. Default: powerOff
      */
-    stopAction?: pulumi.Input<string>;
+    stopAction?: pulumi.Input<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order sequence. This is only used if the stopAction is
      * guestShutdown. Default: 120
      */
-    stopDelay?: pulumi.Input<number>;
+    stopDelay?: pulumi.Input<number | undefined>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
     /**
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
@@ -267,7 +267,7 @@ export interface VappEntityState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    waitForGuest?: pulumi.Input<boolean>;
+    waitForGuest?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -282,38 +282,38 @@ export interface VappEntityArgs {
     /**
      * A list of custom attributes to set on this resource.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
      * Default: powerOn
      */
-    startAction?: pulumi.Input<string>;
+    startAction?: pulumi.Input<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order of entities to be started. Default: 120
      */
-    startDelay?: pulumi.Input<number>;
+    startDelay?: pulumi.Input<number | undefined>;
     /**
      * Order to start and stop target in vApp. Default: 1
      */
-    startOrder?: pulumi.Input<number>;
+    startOrder?: pulumi.Input<number | undefined>;
     /**
      * Defines the stop action for the entity. Can be set
      * to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
      * does not participate in auto-stop. Default: powerOff
      */
-    stopAction?: pulumi.Input<string>;
+    stopAction?: pulumi.Input<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order sequence. This is only used if the stopAction is
      * guestShutdown. Default: 120
      */
-    stopDelay?: pulumi.Input<number>;
+    stopDelay?: pulumi.Input<number | undefined>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
@@ -326,5 +326,5 @@ export interface VappEntityArgs {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    waitForGuest?: pulumi.Input<boolean>;
+    waitForGuest?: pulumi.Input<boolean | undefined>;
 }

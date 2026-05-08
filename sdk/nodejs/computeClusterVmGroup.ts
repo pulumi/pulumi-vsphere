@@ -194,12 +194,12 @@ export interface ComputeClusterVmGroupState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VM group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUIDs of the virtual machines in this
      * group.
@@ -216,7 +216,7 @@ export interface ComputeClusterVmGroupState {
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      */
-    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
+    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -235,7 +235,7 @@ export interface ComputeClusterVmGroupArgs {
      * The name of the VM group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUIDs of the virtual machines in this
      * group.
@@ -252,5 +252,5 @@ export interface ComputeClusterVmGroupArgs {
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      */
-    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
+    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

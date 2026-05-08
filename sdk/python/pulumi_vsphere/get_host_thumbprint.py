@@ -118,9 +118,9 @@ def get_host_thumbprint(address: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         insecure=pulumi.get(__ret__, 'insecure'),
         port=pulumi.get(__ret__, 'port'))
-def get_host_thumbprint_output(address: Optional[pulumi.Input[_builtins.str]] = None,
-                               insecure: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               port: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_host_thumbprint_output(address: pulumi.Input[Optional[_builtins.str]] = None,
+                               insecure: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               port: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostThumbprintResult]:
     """
     The `vsphere_thumbprint` data source can be used to discover the host thumbprint

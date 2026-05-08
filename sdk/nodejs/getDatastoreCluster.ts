@@ -121,7 +121,7 @@ export interface GetDatastoreClusterOutputArgs {
      * For default datacenters, use the id attribute from an empty
      * `vsphere.Datacenter` data source.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * The name or absolute path to the datastore cluster.
      */

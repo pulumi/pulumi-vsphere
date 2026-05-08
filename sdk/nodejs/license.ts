@@ -119,29 +119,29 @@ export interface LicenseState {
     /**
      * The product edition of the license key.
      */
-    editionKey?: pulumi.Input<string>;
+    editionKey?: pulumi.Input<string | undefined>;
     /**
      * A map of labels to be applied to the license key.
      *
      * > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The license key value.
      */
-    licenseKey?: pulumi.Input<string>;
+    licenseKey?: pulumi.Input<string | undefined>;
     /**
      * The display name for the license key.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The total number of units contained in the license key.
      */
-    total?: pulumi.Input<number>;
+    total?: pulumi.Input<number | undefined>;
     /**
      * The number of units assigned to this license key.
      */
-    used?: pulumi.Input<number>;
+    used?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -153,7 +153,7 @@ export interface LicenseArgs {
      *
      * > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The license key value.
      */

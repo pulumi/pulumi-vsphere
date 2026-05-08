@@ -37,7 +37,7 @@ class SupervisorArgs:
                  storage_policy: pulumi.Input[_builtins.str],
                  worker_dns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  worker_ntps: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]] = None):
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]] = None):
         """
         The set of arguments for constructing a Supervisor resource.
 
@@ -282,37 +282,37 @@ class SupervisorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]:
+    def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]:
         """
         The list of namespaces to create in the Supervisor cluster
         """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]):
+    def namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]):
         pulumi.set(self, "namespaces", value)
 
 
 @pulumi.input_type
 class _SupervisorState:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_library: Optional[pulumi.Input[_builtins.str]] = None,
-                 dvs_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]]] = None,
-                 ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]]] = None,
-                 main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 management_network: Optional[pulumi.Input['SupervisorManagementNetworkArgs']] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]] = None,
-                 pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorPodCidrArgs']]]] = None,
-                 search_domains: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input['SupervisorServiceCidrArgs']] = None,
-                 sizing_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_library: pulumi.Input[Optional[_builtins.str]] = None,
+                 dvs_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]]] = None,
+                 ingress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]]] = None,
+                 main_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 main_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 management_network: pulumi.Input[Optional['SupervisorManagementNetworkArgs']] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]] = None,
+                 pod_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorPodCidrArgs']]]] = None,
+                 search_domains: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr: pulumi.Input[Optional['SupervisorServiceCidrArgs']] = None,
+                 sizing_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 worker_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Supervisor resources.
 
@@ -376,103 +376,103 @@ class _SupervisorState:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the compute cluster.
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLibrary")
-    def content_library(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_library(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the subscribed content library.
         """
         return pulumi.get(self, "content_library")
 
     @content_library.setter
-    def content_library(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_library(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_library", value)
 
     @_builtins.property
     @pulumi.getter(name="dvsUuid")
-    def dvs_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dvs_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the distributed switch.
         """
         return pulumi.get(self, "dvs_uuid")
 
     @dvs_uuid.setter
-    def dvs_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dvs_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dvs_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeCluster")
-    def edge_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the NSX Edge Cluster.
         """
         return pulumi.get(self, "edge_cluster")
 
     @edge_cluster.setter
-    def edge_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="egressCidrs")
-    def egress_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]]]:
+    def egress_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]]]:
         """
         CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         """
         return pulumi.get(self, "egress_cidrs")
 
     @egress_cidrs.setter
-    def egress_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]]]):
+    def egress_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]]]):
         pulumi.set(self, "egress_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressCidrs")
-    def ingress_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]]]:
+    def ingress_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]]]:
         """
         CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
         """
         return pulumi.get(self, "ingress_cidrs")
 
     @ingress_cidrs.setter
-    def ingress_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]]]):
+    def ingress_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]]]):
         pulumi.set(self, "ingress_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="mainDns")
-    def main_dns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def main_dns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of addresses of the primary DNS servers.
         """
         return pulumi.get(self, "main_dns")
 
     @main_dns.setter
-    def main_dns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def main_dns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "main_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="mainNtps")
-    def main_ntps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def main_ntps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of addresses of the primary NTP servers.
         """
         return pulumi.get(self, "main_ntps")
 
     @main_ntps.setter
-    def main_ntps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def main_ntps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "main_ntps", value)
 
     @_builtins.property
     @pulumi.getter(name="managementNetwork")
-    def management_network(self) -> Optional[pulumi.Input['SupervisorManagementNetworkArgs']]:
+    def management_network(self) -> pulumi.Input[Optional['SupervisorManagementNetworkArgs']]:
         """
         The configuration for the management network which the control plane VMs will be connected to.
         * * `network` - ID of the network. (e.g. a distributed port group).
@@ -484,103 +484,103 @@ class _SupervisorState:
         return pulumi.get(self, "management_network")
 
     @management_network.setter
-    def management_network(self, value: Optional[pulumi.Input['SupervisorManagementNetworkArgs']]):
+    def management_network(self, value: pulumi.Input[Optional['SupervisorManagementNetworkArgs']]):
         pulumi.set(self, "management_network", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]:
+    def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]:
         """
         The list of namespaces to create in the Supervisor cluster
         """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]):
+    def namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]):
         pulumi.set(self, "namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="podCidrs")
-    def pod_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorPodCidrArgs']]]]:
+    def pod_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorPodCidrArgs']]]]:
         """
         CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
         """
         return pulumi.get(self, "pod_cidrs")
 
     @pod_cidrs.setter
-    def pod_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorPodCidrArgs']]]]):
+    def pod_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorPodCidrArgs']]]]):
         pulumi.set(self, "pod_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="searchDomains")
-    def search_domains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def search_domains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of DNS search domains.
         """
         return pulumi.get(self, "search_domains")
 
     @search_domains.setter
-    def search_domains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def search_domains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "search_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCidr")
-    def service_cidr(self) -> Optional[pulumi.Input['SupervisorServiceCidrArgs']]:
+    def service_cidr(self) -> pulumi.Input[Optional['SupervisorServiceCidrArgs']]:
         """
         CIDR block from which Kubernetes allocates service cluster IP addresses.
         """
         return pulumi.get(self, "service_cidr")
 
     @service_cidr.setter
-    def service_cidr(self, value: Optional[pulumi.Input['SupervisorServiceCidrArgs']]):
+    def service_cidr(self, value: pulumi.Input[Optional['SupervisorServiceCidrArgs']]):
         pulumi.set(self, "service_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="sizingHint")
-    def sizing_hint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sizing_hint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of the Kubernetes API server.
         """
         return pulumi.get(self, "sizing_hint")
 
     @sizing_hint.setter
-    def sizing_hint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sizing_hint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sizing_hint", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicy")
-    def storage_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the storage policy.
         """
         return pulumi.get(self, "storage_policy")
 
     @storage_policy.setter
-    def storage_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="workerDns")
-    def worker_dns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def worker_dns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of addresses of the DNS servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_dns")
 
     @worker_dns.setter
-    def worker_dns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def worker_dns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "worker_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="workerNtps")
-    def worker_ntps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def worker_ntps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of addresses of the NTP servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_ntps")
 
     @worker_ntps.setter
-    def worker_ntps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def worker_ntps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "worker_ntps", value)
 
 
@@ -590,23 +590,23 @@ class Supervisor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_library: Optional[pulumi.Input[_builtins.str]] = None,
-                 dvs_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
-                 ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
-                 main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
-                 pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
-                 search_domains: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
-                 sizing_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_library: pulumi.Input[Optional[_builtins.str]] = None,
+                 dvs_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
+                 ingress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
+                 main_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 main_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 management_network: pulumi.Input[Optional[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
+                 pod_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
+                 search_domains: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr: pulumi.Input[Optional[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
+                 sizing_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 worker_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a resource for configuring Workload Management.
@@ -770,23 +770,23 @@ class Supervisor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_library: Optional[pulumi.Input[_builtins.str]] = None,
-                 dvs_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
-                 ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
-                 main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
-                 pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
-                 search_domains: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
-                 sizing_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_library: pulumi.Input[Optional[_builtins.str]] = None,
+                 dvs_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
+                 ingress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
+                 main_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 main_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 management_network: pulumi.Input[Optional[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
+                 pod_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
+                 search_domains: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr: pulumi.Input[Optional[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
+                 sizing_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 worker_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -855,23 +855,23 @@ class Supervisor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            content_library: Optional[pulumi.Input[_builtins.str]] = None,
-            dvs_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
-            ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
-            main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
-            namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
-            pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
-            search_domains: Optional[pulumi.Input[_builtins.str]] = None,
-            service_cidr: Optional[pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
-            sizing_hint: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Supervisor':
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            content_library: pulumi.Input[Optional[_builtins.str]] = None,
+            dvs_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
+            ingress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
+            main_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            main_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            management_network: pulumi.Input[Optional[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
+            namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
+            pod_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
+            search_domains: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr: pulumi.Input[Optional[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
+            sizing_hint: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            worker_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Supervisor':
         """
         Get an existing Supervisor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

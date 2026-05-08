@@ -168,37 +168,37 @@ export interface FileState {
     /**
      * Specifies whether to create the parent directories of the destination file if they do not exist.
      */
-    createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean | undefined>;
     /**
      * The name of a datacenter to which the file will be
      * uploaded.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the datastore to which to upload the
      * file.
      */
-    datastore?: pulumi.Input<string>;
+    datastore?: pulumi.Input<string | undefined>;
     /**
      * The path to where the file should be uploaded
      * or copied to on the destination datastore.
      */
-    destinationFile?: pulumi.Input<string>;
+    destinationFile?: pulumi.Input<string | undefined>;
     /**
      * The name of a datacenter from which the file
      * will be copied. Forces a new resource if changed.
      */
-    sourceDatacenter?: pulumi.Input<string>;
+    sourceDatacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the datastore from which file will
      * be copied. Forces a new resource if changed.
      */
-    sourceDatastore?: pulumi.Input<string>;
+    sourceDatastore?: pulumi.Input<string | undefined>;
     /**
      * The path to the file being uploaded from or copied.
      * Forces a new resource if changed.
      */
-    sourceFile?: pulumi.Input<string>;
+    sourceFile?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,12 +208,12 @@ export interface FileArgs {
     /**
      * Specifies whether to create the parent directories of the destination file if they do not exist.
      */
-    createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean | undefined>;
     /**
      * The name of a datacenter to which the file will be
      * uploaded.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the datastore to which to upload the
      * file.
@@ -228,12 +228,12 @@ export interface FileArgs {
      * The name of a datacenter from which the file
      * will be copied. Forces a new resource if changed.
      */
-    sourceDatacenter?: pulumi.Input<string>;
+    sourceDatacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the datastore from which file will
      * be copied. Forces a new resource if changed.
      */
-    sourceDatastore?: pulumi.Input<string>;
+    sourceDatastore?: pulumi.Input<string | undefined>;
     /**
      * The path to the file being uploaded from or copied.
      * Forces a new resource if changed.

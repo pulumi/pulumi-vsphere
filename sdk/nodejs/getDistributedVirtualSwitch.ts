@@ -143,7 +143,7 @@ export interface GetDistributedVirtualSwitchOutputArgs {
      * absolute path. For default datacenters, use the `id` attribute from an empty
      * `vsphere.Datacenter` data source.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VDS. This can be a name or path.
      */

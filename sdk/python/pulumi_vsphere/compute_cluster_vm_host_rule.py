@@ -21,11 +21,11 @@ class ComputeClusterVmHostRuleArgs:
     def __init__(__self__, *,
                  compute_cluster_id: pulumi.Input[_builtins.str],
                  vm_group_name: pulumi.Input[_builtins.str],
-                 affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 anti_affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 anti_affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmHostRule resource.
 
@@ -100,7 +100,7 @@ class ComputeClusterVmHostRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="affinityHostGroupName")
-    def affinity_host_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity_host_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this field is used, the virtual
         machines defined in `vm_group_name` will be run on the
@@ -109,12 +109,12 @@ class ComputeClusterVmHostRuleArgs:
         return pulumi.get(self, "affinity_host_group_name")
 
     @affinity_host_group_name.setter
-    def affinity_host_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity_host_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity_host_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="antiAffinityHostGroupName")
-    def anti_affinity_host_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anti_affinity_host_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this field is used, the
         virtual machines defined in `vm_group_name` will _not_ be
@@ -123,24 +123,24 @@ class ComputeClusterVmHostRuleArgs:
         return pulumi.get(self, "anti_affinity_host_group_name")
 
     @anti_affinity_host_group_name.setter
-    def anti_affinity_host_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anti_affinity_host_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anti_affinity_host_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -156,12 +156,12 @@ class ComputeClusterVmHostRuleArgs:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the
         cluster.
@@ -169,20 +169,20 @@ class ComputeClusterVmHostRuleArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ComputeClusterVmHostRuleState:
     def __init__(__self__, *,
-                 affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 anti_affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 anti_affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmHostRule resources.
 
@@ -230,7 +230,7 @@ class _ComputeClusterVmHostRuleState:
 
     @_builtins.property
     @pulumi.getter(name="affinityHostGroupName")
-    def affinity_host_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity_host_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this field is used, the virtual
         machines defined in `vm_group_name` will be run on the
@@ -239,12 +239,12 @@ class _ComputeClusterVmHostRuleState:
         return pulumi.get(self, "affinity_host_group_name")
 
     @affinity_host_group_name.setter
-    def affinity_host_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity_host_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity_host_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="antiAffinityHostGroupName")
-    def anti_affinity_host_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anti_affinity_host_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this field is used, the
         virtual machines defined in `vm_group_name` will _not_ be
@@ -253,12 +253,12 @@ class _ComputeClusterVmHostRuleState:
         return pulumi.get(self, "anti_affinity_host_group_name")
 
     @anti_affinity_host_group_name.setter
-    def anti_affinity_host_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anti_affinity_host_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anti_affinity_host_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference
         ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -269,24 +269,24 @@ class _ComputeClusterVmHostRuleState:
         return pulumi.get(self, "compute_cluster_id")
 
     @compute_cluster_id.setter
-    def compute_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -302,12 +302,12 @@ class _ComputeClusterVmHostRuleState:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the
         cluster.
@@ -315,12 +315,12 @@ class _ComputeClusterVmHostRuleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmGroupName")
-    def vm_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the virtual machine group to use
         with this rule.
@@ -328,7 +328,7 @@ class _ComputeClusterVmHostRuleState:
         return pulumi.get(self, "vm_group_name")
 
     @vm_group_name.setter
-    def vm_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_group_name", value)
 
 
@@ -338,13 +338,13 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 anti_affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 anti_affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ComputeClusterVmHostRule` resource can be used to manage
@@ -604,13 +604,13 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 anti_affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 anti_affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -641,13 +641,13 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            anti_affinity_host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_group_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ComputeClusterVmHostRule':
+            affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            anti_affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ComputeClusterVmHostRule':
         """
         Get an existing ComputeClusterVmHostRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

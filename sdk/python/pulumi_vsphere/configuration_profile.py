@@ -20,8 +20,8 @@ __all__ = ['ConfigurationProfileArgs', 'ConfigurationProfile']
 class ConfigurationProfileArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_host_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_host_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConfigurationProfile resource.
 
@@ -51,19 +51,19 @@ class ConfigurationProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configuration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configuration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="referenceHostId")
-    def reference_host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference_host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the host to use as a configuration source.
         The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
@@ -72,17 +72,17 @@ class ConfigurationProfileArgs:
         return pulumi.get(self, "reference_host_id")
 
     @reference_host_id.setter
-    def reference_host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference_host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference_host_id", value)
 
 
 @pulumi.input_type
 class _ConfigurationProfileState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConfigurationProfile resources.
 
@@ -104,31 +104,31 @@ class _ConfigurationProfileState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configuration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configuration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="referenceHostId")
-    def reference_host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference_host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the host to use as a configuration source.
         The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
@@ -137,19 +137,19 @@ class _ConfigurationProfileState:
         return pulumi.get(self, "reference_host_id")
 
     @reference_host_id.setter
-    def reference_host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference_host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference_host_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JSON schema for the profile.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
 
@@ -159,9 +159,9 @@ class ConfigurationProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_host_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ConfigurationProfile` resource can be used to configure profile-based host management on a vSphere compute cluster.
@@ -330,9 +330,9 @@ class ConfigurationProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_host_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_host_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,10 +358,10 @@ class ConfigurationProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            configuration: Optional[pulumi.Input[_builtins.str]] = None,
-            reference_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConfigurationProfile':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConfigurationProfile':
         """
         Get an existing ConfigurationProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

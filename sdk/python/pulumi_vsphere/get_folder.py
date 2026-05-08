@@ -153,7 +153,7 @@ def get_folder(path: Optional[_builtins.str] = None,
     return AwaitableGetFolderResult(
         id=pulumi.get(__ret__, 'id'),
         path=pulumi.get(__ret__, 'path'))
-def get_folder_output(path: Optional[pulumi.Input[_builtins.str]] = None,
+def get_folder_output(path: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderResult]:
     """
     The `Folder` data source can be used to get the general attributes of a

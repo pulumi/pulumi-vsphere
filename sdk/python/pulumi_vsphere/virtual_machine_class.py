@@ -21,10 +21,10 @@ class VirtualMachineClassArgs:
     def __init__(__self__, *,
                  cpus: pulumi.Input[_builtins.int],
                  memory: pulumi.Input[_builtins.int],
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vgpu_devices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vgpu_devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VirtualMachineClass resource.
 
@@ -72,62 +72,62 @@ class VirtualMachineClassArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of the available CPU capacity which will be reserved.
         """
         return pulumi.get(self, "cpu_reservation")
 
     @cpu_reservation.setter
-    def cpu_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of memory reservation.
         """
         return pulumi.get(self, "memory_reservation")
 
     @memory_reservation.setter
-    def memory_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_reservation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the class.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vgpuDevices")
-    def vgpu_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vgpu_devices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
         """
         return pulumi.get(self, "vgpu_devices")
 
     @vgpu_devices.setter
-    def vgpu_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vgpu_devices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vgpu_devices", value)
 
 
 @pulumi.input_type
 class _VirtualMachineClassState:
     def __init__(__self__, *,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vgpu_devices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vgpu_devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering VirtualMachineClass resources.
 
@@ -153,74 +153,74 @@ class _VirtualMachineClassState:
 
     @_builtins.property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of the available CPU capacity which will be reserved.
         """
         return pulumi.get(self, "cpu_reservation")
 
     @cpu_reservation.setter
-    def cpu_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_reservation", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPUs.
         """
         return pulumi.get(self, "cpus")
 
     @cpus.setter
-    def cpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpus", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of memory in MB.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of memory reservation.
         """
         return pulumi.get(self, "memory_reservation")
 
     @memory_reservation.setter
-    def memory_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_reservation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the class.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vgpuDevices")
-    def vgpu_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vgpu_devices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
         """
         return pulumi.get(self, "vgpu_devices")
 
     @vgpu_devices.setter
-    def vgpu_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vgpu_devices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vgpu_devices", value)
 
 
@@ -230,12 +230,12 @@ class VirtualMachineClass(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vgpu_devices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vgpu_devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a resource for configuring a Virtual Machine class.
@@ -335,12 +335,12 @@ class VirtualMachineClass(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vgpu_devices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vgpu_devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,12 +370,12 @@ class VirtualMachineClass(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-            cpus: Optional[pulumi.Input[_builtins.int]] = None,
-            memory: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            vgpu_devices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'VirtualMachineClass':
+            cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            cpus: pulumi.Input[Optional[_builtins.int]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            vgpu_devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'VirtualMachineClass':
         """
         Get an existing VirtualMachineClass resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

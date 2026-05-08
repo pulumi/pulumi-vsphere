@@ -88,10 +88,10 @@ class DistributedVirtualSwitchPvlanMappingInitArgs:
 @pulumi.input_type
 class _DistributedVirtualSwitchPvlanMappingState:
     def __init__(__self__, *,
-                 distributed_virtual_switch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 pvlan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 distributed_virtual_switch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 pvlan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DistributedVirtualSwitchPvlanMapping resources.
 
@@ -111,50 +111,50 @@ class _DistributedVirtualSwitchPvlanMappingState:
 
     @_builtins.property
     @pulumi.getter(name="distributedVirtualSwitchId")
-    def distributed_virtual_switch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distributed_virtual_switch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the distributed virtual switch to attach this mapping to.
         """
         return pulumi.get(self, "distributed_virtual_switch_id")
 
     @distributed_virtual_switch_id.setter
-    def distributed_virtual_switch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distributed_virtual_switch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distributed_virtual_switch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVlanId")
-    def primary_vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def primary_vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         """
         return pulumi.get(self, "primary_vlan_id")
 
     @primary_vlan_id.setter
-    def primary_vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def primary_vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "primary_vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pvlanType")
-    def pvlan_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pvlan_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private VLAN type. Valid values are promiscuous, community and isolated.
         """
         return pulumi.get(self, "pvlan_type")
 
     @pvlan_type.setter
-    def pvlan_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pvlan_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pvlan_type", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryVlanId")
-    def secondary_vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         """
         return pulumi.get(self, "secondary_vlan_id")
 
     @secondary_vlan_id.setter
-    def secondary_vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_vlan_id", value)
 
 
@@ -164,10 +164,10 @@ class DistributedVirtualSwitchPvlanMapping(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 distributed_virtual_switch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 pvlan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 distributed_virtual_switch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 pvlan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Create a DistributedVirtualSwitchPvlanMapping resource with the given unique name, props, and options.
@@ -203,10 +203,10 @@ class DistributedVirtualSwitchPvlanMapping(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 distributed_virtual_switch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 pvlan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 distributed_virtual_switch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 pvlan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -238,10 +238,10 @@ class DistributedVirtualSwitchPvlanMapping(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            distributed_virtual_switch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-            pvlan_type: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'DistributedVirtualSwitchPvlanMapping':
+            distributed_virtual_switch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+            pvlan_type: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'DistributedVirtualSwitchPvlanMapping':
         """
         Get an existing DistributedVirtualSwitchPvlanMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

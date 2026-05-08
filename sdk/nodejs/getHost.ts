@@ -121,5 +121,5 @@ export interface GetHostOutputArgs {
      * > **NOTE:** When used against an ESXi host directly, this data source _always_
      * returns the ESXi host's object ID, regardless of what is entered into `name`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

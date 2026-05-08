@@ -244,18 +244,18 @@ export interface ComputeClusterVmDependencyRuleState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
      * `vmGroupName` will not be started until the VMs in this
      * group are started.
      */
-    dependencyVmGroupName?: pulumi.Input<string>;
+    dependencyVmGroupName?: pulumi.Input<string | undefined>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -264,19 +264,19 @@ export interface ComputeClusterVmDependencyRuleState {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
      * `dependencyVmGroupName` are started.
      */
-    vmGroupName?: pulumi.Input<string>;
+    vmGroupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -301,7 +301,7 @@ export interface ComputeClusterVmDependencyRuleArgs {
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -310,12 +310,12 @@ export interface ComputeClusterVmDependencyRuleArgs {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in

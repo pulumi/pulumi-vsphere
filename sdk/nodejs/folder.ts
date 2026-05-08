@@ -208,13 +208,13 @@ export interface FolderState {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
      * resource if changed.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * The path of the folder to be created. This is relative to
      * the root of the type of folder you are creating, and the supplied datacenter.
@@ -232,21 +232,21 @@ export interface FolderState {
      * any part before the last `/`), your folder will be moved to that new parent. If
      * modifying the name (the part after the last `/`), your folder will be renamed.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
      *
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of folder to create. Allowed options are
      * `datacenter` for datacenter folders, `host` for host and cluster folders,
      * `vm` for virtual machine folders, `datastore` for datastore folders, and
      * `network` for network folders. Forces a new resource if changed.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,13 +263,13 @@ export interface FolderArgs {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
      * resource if changed.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * The path of the folder to be created. This is relative to
      * the root of the type of folder you are creating, and the supplied datacenter.
@@ -294,7 +294,7 @@ export interface FolderArgs {
      *
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of folder to create. Allowed options are
      * `datacenter` for datacenter folders, `host` for host and cluster folders,

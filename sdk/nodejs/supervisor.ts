@@ -277,35 +277,35 @@ export interface SupervisorState {
     /**
      * The identifier of the compute cluster.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the subscribed content library.
      */
-    contentLibrary?: pulumi.Input<string>;
+    contentLibrary?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the distributed switch.
      */
-    dvsUuid?: pulumi.Input<string>;
+    dvsUuid?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the NSX Edge Cluster.
      */
-    edgeCluster?: pulumi.Input<string>;
+    edgeCluster?: pulumi.Input<string | undefined>;
     /**
      * CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
      */
-    egressCidrs?: pulumi.Input<pulumi.Input<inputs.SupervisorEgressCidr>[]>;
+    egressCidrs?: pulumi.Input<pulumi.Input<inputs.SupervisorEgressCidr>[] | undefined>;
     /**
      * CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
      */
-    ingressCidrs?: pulumi.Input<pulumi.Input<inputs.SupervisorIngressCidr>[]>;
+    ingressCidrs?: pulumi.Input<pulumi.Input<inputs.SupervisorIngressCidr>[] | undefined>;
     /**
      * The list of addresses of the primary DNS servers.
      */
-    mainDns?: pulumi.Input<pulumi.Input<string>[]>;
+    mainDns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of addresses of the primary NTP servers.
      */
-    mainNtps?: pulumi.Input<pulumi.Input<string>[]>;
+    mainNtps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
@@ -314,39 +314,39 @@ export interface SupervisorState {
      * * * `gateway` - Gateway IP address.
      * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      */
-    managementNetwork?: pulumi.Input<inputs.SupervisorManagementNetwork>;
+    managementNetwork?: pulumi.Input<inputs.SupervisorManagementNetwork | undefined>;
     /**
      * The list of namespaces to create in the Supervisor cluster
      */
-    namespaces?: pulumi.Input<pulumi.Input<inputs.SupervisorNamespace>[]>;
+    namespaces?: pulumi.Input<pulumi.Input<inputs.SupervisorNamespace>[] | undefined>;
     /**
      * CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
      */
-    podCidrs?: pulumi.Input<pulumi.Input<inputs.SupervisorPodCidr>[]>;
+    podCidrs?: pulumi.Input<pulumi.Input<inputs.SupervisorPodCidr>[] | undefined>;
     /**
      * List of DNS search domains.
      */
-    searchDomains?: pulumi.Input<string>;
+    searchDomains?: pulumi.Input<string | undefined>;
     /**
      * CIDR block from which Kubernetes allocates service cluster IP addresses.
      */
-    serviceCidr?: pulumi.Input<inputs.SupervisorServiceCidr>;
+    serviceCidr?: pulumi.Input<inputs.SupervisorServiceCidr | undefined>;
     /**
      * The size of the Kubernetes API server.
      */
-    sizingHint?: pulumi.Input<string>;
+    sizingHint?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage policy.
      */
-    storagePolicy?: pulumi.Input<string>;
+    storagePolicy?: pulumi.Input<string | undefined>;
     /**
      * The list of addresses of the DNS servers to use for the worker nodes.
      */
-    workerDns?: pulumi.Input<pulumi.Input<string>[]>;
+    workerDns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of addresses of the NTP servers to use for the worker nodes.
      */
-    workerNtps?: pulumi.Input<pulumi.Input<string>[]>;
+    workerNtps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -397,7 +397,7 @@ export interface SupervisorArgs {
     /**
      * The list of namespaces to create in the Supervisor cluster
      */
-    namespaces?: pulumi.Input<pulumi.Input<inputs.SupervisorNamespace>[]>;
+    namespaces?: pulumi.Input<pulumi.Input<inputs.SupervisorNamespace>[] | undefined>;
     /**
      * CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
      */

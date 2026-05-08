@@ -136,27 +136,27 @@ export interface GuestOsCustomizationState {
     /**
      * The number of last changed version to the customization specification.
      */
-    changeVersion?: pulumi.Input<string>;
+    changeVersion?: pulumi.Input<string | undefined>;
     /**
      * The description for the customization specification.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The time of last modification to the customization specification.
      */
-    lastUpdateTime?: pulumi.Input<string>;
+    lastUpdateTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the customization specification is the unique identifier per vCenter Server instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Container object for the Guest OS properties about to be customized . See virtual machine customizations
      */
-    spec?: pulumi.Input<inputs.GuestOsCustomizationSpec>;
+    spec?: pulumi.Input<inputs.GuestOsCustomizationSpec | undefined>;
     /**
      * The type of customization specification: One among: Windows, Linux.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,11 +166,11 @@ export interface GuestOsCustomizationArgs {
     /**
      * The description for the customization specification.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the customization specification is the unique identifier per vCenter Server instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Container object for the Guest OS properties about to be customized . See virtual machine customizations
      */

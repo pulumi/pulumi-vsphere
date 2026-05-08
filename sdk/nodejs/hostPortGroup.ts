@@ -295,84 +295,84 @@ export interface HostPortGroupState {
     /**
      * List of active network adapters used for load balancing.
      */
-    activeNics?: pulumi.Input<pulumi.Input<string>[]>;
+    activeNics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
-    allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean | undefined>;
     /**
      * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      */
-    checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean | undefined>;
     /**
      * A map with a full set of the [policy
      * options][host-vswitch-policy-options] computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
-    computedPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    computedPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the host to set the port group up on. Forces a new resource if changed.
      */
-    hostSystemId?: pulumi.Input<string>;
+    hostSystemId?: pulumi.Input<string | undefined>;
     /**
      * The key for this port group as returned from the vSphere API.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The name of the port group.  Forces a new resource if
      * changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean | undefined>;
     /**
      * A list of ports that currently exist and are used on this port group.
      */
-    ports?: pulumi.Input<pulumi.Input<inputs.HostPortGroupPort>[]>;
+    ports?: pulumi.Input<pulumi.Input<inputs.HostPortGroupPort>[] | undefined>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */
-    shapingAverageBandwidth?: pulumi.Input<number>;
+    shapingAverageBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
-    shapingBurstSize?: pulumi.Input<number>;
+    shapingBurstSize?: pulumi.Input<number | undefined>;
     /**
      * Enable traffic shaping on this virtual switch or port group.
      */
-    shapingEnabled?: pulumi.Input<boolean>;
+    shapingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
-    shapingPeakBandwidth?: pulumi.Input<number>;
+    shapingPeakBandwidth?: pulumi.Input<number | undefined>;
     /**
      * List of standby network adapters used for failover.
      */
-    standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyNics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      */
-    teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual switch to bind
      * this port group to. Forces a new resource if changed.
      */
-    virtualSwitchName?: pulumi.Input<string>;
+    virtualSwitchName?: pulumi.Input<string | undefined>;
     /**
      * The VLAN ID/trunk mode for this port group.  An ID of
      * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
@@ -381,7 +381,7 @@ export interface HostPortGroupState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -391,27 +391,27 @@ export interface HostPortGroupArgs {
     /**
      * List of active network adapters used for load balancing.
      */
-    activeNics?: pulumi.Input<pulumi.Input<string>[]>;
+    activeNics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
-    allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean | undefined>;
     /**
      * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      */
-    checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean | undefined>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the host to set the port group up on. Forces a new resource if changed.
@@ -421,35 +421,35 @@ export interface HostPortGroupArgs {
      * The name of the port group.  Forces a new resource if
      * changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean | undefined>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */
-    shapingAverageBandwidth?: pulumi.Input<number>;
+    shapingAverageBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
-    shapingBurstSize?: pulumi.Input<number>;
+    shapingBurstSize?: pulumi.Input<number | undefined>;
     /**
      * Enable traffic shaping on this virtual switch or port group.
      */
-    shapingEnabled?: pulumi.Input<boolean>;
+    shapingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
-    shapingPeakBandwidth?: pulumi.Input<number>;
+    shapingPeakBandwidth?: pulumi.Input<number | undefined>;
     /**
      * List of standby network adapters used for failover.
      */
-    standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyNics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      */
-    teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual switch to bind
      * this port group to. Forces a new resource if changed.
@@ -463,5 +463,5 @@ export interface HostPortGroupArgs {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
 }

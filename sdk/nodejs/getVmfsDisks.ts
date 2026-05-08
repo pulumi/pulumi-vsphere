@@ -135,7 +135,7 @@ export interface GetVmfsDisksOutputArgs {
      * will have any specific storage devices added to it that may affect the order of
      * the output `disks` attribute below, which is lexicographically sorted.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the host to look for disks on.
@@ -148,5 +148,5 @@ export interface GetVmfsDisksOutputArgs {
      * searching for disks. This may lengthen the time it takes to perform the
      * search. Default: `false`.
      */
-    rescan?: pulumi.Input<boolean>;
+    rescan?: pulumi.Input<boolean | undefined>;
 }

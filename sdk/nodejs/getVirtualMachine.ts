@@ -526,21 +526,21 @@ export interface GetVirtualMachineOutputArgs {
      * `guestId` is a non-specific operating system, like `otherGuest` or
      * `otherGuest64`.
      */
-    alternateGuestName?: pulumi.Input<string>;
+    alternateGuestName?: pulumi.Input<string | undefined>;
     /**
      * The user-provided description of this virtual machine.
      */
-    annotation?: pulumi.Input<string>;
-    bootDelay?: pulumi.Input<number>;
-    bootRetryDelay?: pulumi.Input<number>;
-    bootRetryEnabled?: pulumi.Input<boolean>;
-    cpuHotAddEnabled?: pulumi.Input<boolean>;
-    cpuHotRemoveEnabled?: pulumi.Input<boolean>;
-    cpuLimit?: pulumi.Input<number>;
-    cpuPerformanceCountersEnabled?: pulumi.Input<boolean>;
-    cpuReservation?: pulumi.Input<number>;
-    cpuShareCount?: pulumi.Input<number>;
-    cpuShareLevel?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
+    bootDelay?: pulumi.Input<number | undefined>;
+    bootRetryDelay?: pulumi.Input<number | undefined>;
+    bootRetryEnabled?: pulumi.Input<boolean | undefined>;
+    cpuHotAddEnabled?: pulumi.Input<boolean | undefined>;
+    cpuHotRemoveEnabled?: pulumi.Input<boolean | undefined>;
+    cpuLimit?: pulumi.Input<number | undefined>;
+    cpuPerformanceCountersEnabled?: pulumi.Input<boolean | undefined>;
+    cpuReservation?: pulumi.Input<number | undefined>;
+    cpuShareCount?: pulumi.Input<number | undefined>;
+    cpuShareLevel?: pulumi.Input<string | undefined>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datacenter the virtual machine is located in.
@@ -548,64 +548,64 @@ export interface GetVirtualMachineOutputArgs {
      * default datacenters, use the `id` attribute from an empty `vsphere.Datacenter`
      * data source.
      */
-    datacenterId?: pulumi.Input<string>;
-    efiSecureBootEnabled?: pulumi.Input<boolean>;
-    enableDiskUuid?: pulumi.Input<boolean>;
-    enableLogging?: pulumi.Input<boolean>;
-    eptRviMode?: pulumi.Input<string>;
-    extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    extraConfigRebootRequired?: pulumi.Input<boolean>;
+    datacenterId?: pulumi.Input<string | undefined>;
+    efiSecureBootEnabled?: pulumi.Input<boolean | undefined>;
+    enableDiskUuid?: pulumi.Input<boolean | undefined>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
+    eptRviMode?: pulumi.Input<string | undefined>;
+    extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    extraConfigRebootRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The firmware type for this virtual machine. Can be `bios` or
      * `efi`.
      */
-    firmware?: pulumi.Input<string>;
+    firmware?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual machine folder where the virtual
      * machine is located. The `name` argument is limited to 80 characters. If the
      * `name` argument includes the full path to the virtual machine and exceeds the
      * 80 characters limit, the `folder` folder argument can be used.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * The guest ID of the virtual machine or template.
      */
-    guestId?: pulumi.Input<string>;
+    guestId?: pulumi.Input<string | undefined>;
     /**
      * The hardware version number on this virtual machine.
      */
-    hardwareVersion?: pulumi.Input<number>;
-    hvMode?: pulumi.Input<string>;
-    ideControllerScanCount?: pulumi.Input<number>;
-    latencySensitivity?: pulumi.Input<string>;
+    hardwareVersion?: pulumi.Input<number | undefined>;
+    hvMode?: pulumi.Input<string | undefined>;
+    ideControllerScanCount?: pulumi.Input<number | undefined>;
+    latencySensitivity?: pulumi.Input<string | undefined>;
     /**
      * The size of the virtual machine's memory, in MB.
      */
-    memory?: pulumi.Input<number>;
-    memoryHotAddEnabled?: pulumi.Input<boolean>;
-    memoryLimit?: pulumi.Input<number>;
-    memoryReservation?: pulumi.Input<number>;
-    memoryReservationLockedToMax?: pulumi.Input<boolean>;
-    memoryShareCount?: pulumi.Input<number>;
-    memoryShareLevel?: pulumi.Input<string>;
-    moid?: pulumi.Input<string>;
+    memory?: pulumi.Input<number | undefined>;
+    memoryHotAddEnabled?: pulumi.Input<boolean | undefined>;
+    memoryLimit?: pulumi.Input<number | undefined>;
+    memoryReservation?: pulumi.Input<number | undefined>;
+    memoryReservationLockedToMax?: pulumi.Input<boolean | undefined>;
+    memoryShareCount?: pulumi.Input<number | undefined>;
+    memoryShareLevel?: pulumi.Input<string | undefined>;
+    moid?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual machine. This can be a name or the
      * full path relative to the datacenter. This is required if a UUID lookup is not
      * performed.
      */
-    name?: pulumi.Input<string>;
-    nestedHvEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string | undefined>;
+    nestedHvEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The number of cores per socket for this virtual
      * machine.
      */
-    numCoresPerSocket?: pulumi.Input<number>;
+    numCoresPerSocket?: pulumi.Input<number | undefined>;
     /**
      * The total number of virtual processor cores assigned to this
      * virtual machine.
      */
-    numCpus?: pulumi.Input<number>;
+    numCpus?: pulumi.Input<number | undefined>;
     /**
      * The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
@@ -622,30 +622,30 @@ export interface GetVirtualMachineOutputArgs {
      *
      * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      */
-    nvmeControllerScanCount?: pulumi.Input<number>;
-    replaceTrigger?: pulumi.Input<string>;
-    runToolsScriptsAfterPowerOn?: pulumi.Input<boolean>;
-    runToolsScriptsAfterResume?: pulumi.Input<boolean>;
-    runToolsScriptsBeforeGuestReboot?: pulumi.Input<boolean>;
-    runToolsScriptsBeforeGuestShutdown?: pulumi.Input<boolean>;
-    runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
-    sataControllerScanCount?: pulumi.Input<number>;
+    nvmeControllerScanCount?: pulumi.Input<number | undefined>;
+    replaceTrigger?: pulumi.Input<string | undefined>;
+    runToolsScriptsAfterPowerOn?: pulumi.Input<boolean | undefined>;
+    runToolsScriptsAfterResume?: pulumi.Input<boolean | undefined>;
+    runToolsScriptsBeforeGuestReboot?: pulumi.Input<boolean | undefined>;
+    runToolsScriptsBeforeGuestShutdown?: pulumi.Input<boolean | undefined>;
+    runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean | undefined>;
+    sataControllerScanCount?: pulumi.Input<number | undefined>;
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      */
-    scsiControllerScanCount?: pulumi.Input<number>;
-    storagePolicyId?: pulumi.Input<string>;
-    swapPlacementPolicy?: pulumi.Input<string>;
-    syncTimeWithHost?: pulumi.Input<boolean>;
-    syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
-    toolsUpgradePolicy?: pulumi.Input<string>;
+    scsiControllerScanCount?: pulumi.Input<number | undefined>;
+    storagePolicyId?: pulumi.Input<string | undefined>;
+    swapPlacementPolicy?: pulumi.Input<string | undefined>;
+    syncTimeWithHost?: pulumi.Input<boolean | undefined>;
+    syncTimeWithHostPeriodically?: pulumi.Input<boolean | undefined>;
+    toolsUpgradePolicy?: pulumi.Input<string | undefined>;
     /**
      * Specify this field for a UUID lookup, `name` and
      * `datacenterId` are not required if this is specified.
      */
-    uuid?: pulumi.Input<string>;
-    vapp?: pulumi.Input<inputs.GetVirtualMachineVappArgs>;
-    vbsEnabled?: pulumi.Input<boolean>;
-    vvtdEnabled?: pulumi.Input<boolean>;
+    uuid?: pulumi.Input<string | undefined>;
+    vapp?: pulumi.Input<inputs.GetVirtualMachineVappArgs | undefined>;
+    vbsEnabled?: pulumi.Input<boolean | undefined>;
+    vvtdEnabled?: pulumi.Input<boolean | undefined>;
 }

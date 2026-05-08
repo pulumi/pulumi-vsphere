@@ -199,7 +199,7 @@ export interface DrsVmOverrideState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -209,17 +209,17 @@ export interface DrsVmOverrideState {
      * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
-    drsAutomationLevel?: pulumi.Input<string>;
+    drsAutomationLevel?: pulumi.Input<string | undefined>;
     /**
      * Overrides the default DRS setting for this virtual
      * machine. Can be either `true` or `false`. Default: `false`.
      */
-    drsEnabled?: pulumi.Input<boolean>;
+    drsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    virtualMachineId?: pulumi.Input<string>;
+    virtualMachineId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -243,12 +243,12 @@ export interface DrsVmOverrideArgs {
      * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
-    drsAutomationLevel?: pulumi.Input<string>;
+    drsAutomationLevel?: pulumi.Input<string | undefined>;
     /**
      * Overrides the default DRS setting for this virtual
      * machine. Can be either `true` or `false`. Default: `false`.
      */
-    drsEnabled?: pulumi.Input<boolean>;
+    drsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.

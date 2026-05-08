@@ -524,19 +524,19 @@ export interface DistributedPortGroupState {
     /**
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    activeUplinks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
-    allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean | undefined>;
     /**
      * Allows the port group to create additional ports
      * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
@@ -545,24 +545,24 @@ export interface DistributedPortGroupState {
      * may lead to errors when the port count grows past the amount specified.  If you
      * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      */
-    autoExpand?: pulumi.Input<boolean>;
+    autoExpand?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to block all ports by default.
      */
-    blockAllPorts?: pulumi.Input<boolean>;
+    blockAllPorts?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the blocked setting of an individual port to override the setting in the portgroup.
      */
-    blockOverrideAllowed?: pulumi.Input<boolean>;
+    blockOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Enable beacon probing on the ports this policy applies to.
      */
-    checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean | undefined>;
     /**
      * The current version of the port group configuration,
      * incremented by subsequent updates to the port group.
      */
-    configVersion?: pulumi.Input<string>;
+    configVersion?: pulumi.Input<string | undefined>;
     /**
      * Map of custom attribute ids to attribute
      * value string to set for port group. See [here][docs-setting-custom-attributes]
@@ -573,107 +573,107 @@ export interface DistributedPortGroupState {
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An optional description for the port group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
-    directpathGen2Allowed?: pulumi.Input<boolean>;
+    directpathGen2Allowed?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VDS to add the
      * port group to. Forces a new resource if changed.
      */
-    distributedVirtualSwitchUuid?: pulumi.Input<string>;
+    distributedVirtualSwitchUuid?: pulumi.Input<string | undefined>;
     /**
      * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
-    egressShapingAverageBandwidth?: pulumi.Input<number>;
+    egressShapingAverageBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
-    egressShapingBurstSize?: pulumi.Input<number>;
+    egressShapingBurstSize?: pulumi.Input<number | undefined>;
     /**
      * True if the traffic shaper is enabled for egress traffic on the port.
      */
-    egressShapingEnabled?: pulumi.Input<boolean>;
+    egressShapingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
-    egressShapingPeakBandwidth?: pulumi.Input<number>;
+    egressShapingPeakBandwidth?: pulumi.Input<number | undefined>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean | undefined>;
     /**
      * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
-    ingressShapingAverageBandwidth?: pulumi.Input<number>;
+    ingressShapingAverageBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
-    ingressShapingBurstSize?: pulumi.Input<number>;
+    ingressShapingBurstSize?: pulumi.Input<number | undefined>;
     /**
      * True if the traffic shaper is enabled for ingress traffic on the port.
      */
-    ingressShapingEnabled?: pulumi.Input<boolean>;
+    ingressShapingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
-    ingressShapingPeakBandwidth?: pulumi.Input<number>;
+    ingressShapingPeakBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The generated UUID of the port group.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to enable LACP on all uplink ports.
      */
-    lacpEnabled?: pulumi.Input<boolean>;
+    lacpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The uplink LACP mode to use. Can be one of active or passive.
      */
-    lacpMode?: pulumi.Input<string>;
+    lacpMode?: pulumi.Input<string | undefined>;
     /**
      * Allow a live port to be moved in and out of the portgroup.
      */
-    livePortMovingAllowed?: pulumi.Input<boolean>;
+    livePortMovingAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the port group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to enable netflow on all ports.
      */
-    netflowEnabled?: pulumi.Input<boolean>;
+    netflowEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
      */
-    netflowOverrideAllowed?: pulumi.Input<boolean>;
+    netflowOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The key of a network resource pool
      * to associate with this port group. The default is `-1`, which implies no
      * association.
      */
-    networkResourcePoolKey?: pulumi.Input<string>;
+    networkResourcePoolKey?: pulumi.Input<string | undefined>;
     /**
      * Allow the network resource pool of an individual port to override the setting in the portgroup.
      */
-    networkResourcePoolOverrideAllowed?: pulumi.Input<boolean>;
+    networkResourcePoolOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean | undefined>;
     /**
      * The number of ports available on this port
      * group. Cannot be decreased below the amount of used ports on the port group.
      */
-    numberOfPorts?: pulumi.Input<number>;
+    numberOfPorts?: pulumi.Input<number | undefined>;
     /**
      * Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
      */
-    portConfigResetAtDisconnect?: pulumi.Input<boolean>;
+    portConfigResetAtDisconnect?: pulumi.Input<boolean | undefined>;
     /**
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
@@ -681,60 +681,60 @@ export interface DistributedPortGroupState {
      *
      * [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
      */
-    portNameFormat?: pulumi.Input<string>;
+    portNameFormat?: pulumi.Input<string | undefined>;
     /**
      * The secondary VLAN ID for this port.
      */
-    portPrivateSecondaryVlanId?: pulumi.Input<number>;
+    portPrivateSecondaryVlanId?: pulumi.Input<number | undefined>;
     /**
      * Allow security policy settings on a port to override those on the portgroup.
      */
-    securityPolicyOverrideAllowed?: pulumi.Input<boolean>;
+    securityPolicyOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
      */
-    shapingOverrideAllowed?: pulumi.Input<boolean>;
+    shapingOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyUplinks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
-    teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string | undefined>;
     /**
      * Allow any filter policies set on the individual port to override those in the portgroup.
      */
-    trafficFilterOverrideAllowed?: pulumi.Input<boolean>;
+    trafficFilterOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
-    txUplink?: pulumi.Input<boolean>;
+    txUplink?: pulumi.Input<boolean | undefined>;
     /**
      * The port group type. Can be one of `earlyBinding` (static
      * binding) or `ephemeral`. Default: `earlyBinding`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Allow the uplink teaming policies on a port to override those on the portgroup.
      */
-    uplinkTeamingOverrideAllowed?: pulumi.Input<boolean>;
+    uplinkTeamingOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
     /**
      * Allow the VLAN configuration on a port to override those on the portgroup.
      */
-    vlanOverrideAllowed?: pulumi.Input<boolean>;
+    vlanOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedPortGroupVlanRange>[]>;
+    vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedPortGroupVlanRange>[] | undefined>;
 }
 
 /**
@@ -744,19 +744,19 @@ export interface DistributedPortGroupArgs {
     /**
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    activeUplinks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
-    allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean | undefined>;
     /**
      * Allows the port group to create additional ports
      * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
@@ -765,19 +765,19 @@ export interface DistributedPortGroupArgs {
      * may lead to errors when the port count grows past the amount specified.  If you
      * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      */
-    autoExpand?: pulumi.Input<boolean>;
+    autoExpand?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to block all ports by default.
      */
-    blockAllPorts?: pulumi.Input<boolean>;
+    blockAllPorts?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the blocked setting of an individual port to override the setting in the portgroup.
      */
-    blockOverrideAllowed?: pulumi.Input<boolean>;
+    blockOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Enable beacon probing on the ports this policy applies to.
      */
-    checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean | undefined>;
     /**
      * Map of custom attribute ids to attribute
      * value string to set for port group. See [here][docs-setting-custom-attributes]
@@ -788,15 +788,15 @@ export interface DistributedPortGroupArgs {
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An optional description for the port group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
-    directpathGen2Allowed?: pulumi.Input<boolean>;
+    directpathGen2Allowed?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VDS to add the
      * port group to. Forces a new resource if changed.
@@ -805,86 +805,86 @@ export interface DistributedPortGroupArgs {
     /**
      * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
-    egressShapingAverageBandwidth?: pulumi.Input<number>;
+    egressShapingAverageBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
-    egressShapingBurstSize?: pulumi.Input<number>;
+    egressShapingBurstSize?: pulumi.Input<number | undefined>;
     /**
      * True if the traffic shaper is enabled for egress traffic on the port.
      */
-    egressShapingEnabled?: pulumi.Input<boolean>;
+    egressShapingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
-    egressShapingPeakBandwidth?: pulumi.Input<number>;
+    egressShapingPeakBandwidth?: pulumi.Input<number | undefined>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean | undefined>;
     /**
      * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
-    ingressShapingAverageBandwidth?: pulumi.Input<number>;
+    ingressShapingAverageBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
-    ingressShapingBurstSize?: pulumi.Input<number>;
+    ingressShapingBurstSize?: pulumi.Input<number | undefined>;
     /**
      * True if the traffic shaper is enabled for ingress traffic on the port.
      */
-    ingressShapingEnabled?: pulumi.Input<boolean>;
+    ingressShapingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
-    ingressShapingPeakBandwidth?: pulumi.Input<number>;
+    ingressShapingPeakBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Whether or not to enable LACP on all uplink ports.
      */
-    lacpEnabled?: pulumi.Input<boolean>;
+    lacpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The uplink LACP mode to use. Can be one of active or passive.
      */
-    lacpMode?: pulumi.Input<string>;
+    lacpMode?: pulumi.Input<string | undefined>;
     /**
      * Allow a live port to be moved in and out of the portgroup.
      */
-    livePortMovingAllowed?: pulumi.Input<boolean>;
+    livePortMovingAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the port group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to enable netflow on all ports.
      */
-    netflowEnabled?: pulumi.Input<boolean>;
+    netflowEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
      */
-    netflowOverrideAllowed?: pulumi.Input<boolean>;
+    netflowOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The key of a network resource pool
      * to associate with this port group. The default is `-1`, which implies no
      * association.
      */
-    networkResourcePoolKey?: pulumi.Input<string>;
+    networkResourcePoolKey?: pulumi.Input<string | undefined>;
     /**
      * Allow the network resource pool of an individual port to override the setting in the portgroup.
      */
-    networkResourcePoolOverrideAllowed?: pulumi.Input<boolean>;
+    networkResourcePoolOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean | undefined>;
     /**
      * The number of ports available on this port
      * group. Cannot be decreased below the amount of used ports on the port group.
      */
-    numberOfPorts?: pulumi.Input<number>;
+    numberOfPorts?: pulumi.Input<number | undefined>;
     /**
      * Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
      */
-    portConfigResetAtDisconnect?: pulumi.Input<boolean>;
+    portConfigResetAtDisconnect?: pulumi.Input<boolean | undefined>;
     /**
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
@@ -892,58 +892,58 @@ export interface DistributedPortGroupArgs {
      *
      * [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
      */
-    portNameFormat?: pulumi.Input<string>;
+    portNameFormat?: pulumi.Input<string | undefined>;
     /**
      * The secondary VLAN ID for this port.
      */
-    portPrivateSecondaryVlanId?: pulumi.Input<number>;
+    portPrivateSecondaryVlanId?: pulumi.Input<number | undefined>;
     /**
      * Allow security policy settings on a port to override those on the portgroup.
      */
-    securityPolicyOverrideAllowed?: pulumi.Input<boolean>;
+    securityPolicyOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
      */
-    shapingOverrideAllowed?: pulumi.Input<boolean>;
+    shapingOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyUplinks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
-    teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string | undefined>;
     /**
      * Allow any filter policies set on the individual port to override those in the portgroup.
      */
-    trafficFilterOverrideAllowed?: pulumi.Input<boolean>;
+    trafficFilterOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
-    txUplink?: pulumi.Input<boolean>;
+    txUplink?: pulumi.Input<boolean | undefined>;
     /**
      * The port group type. Can be one of `earlyBinding` (static
      * binding) or `ephemeral`. Default: `earlyBinding`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Allow the uplink teaming policies on a port to override those on the portgroup.
      */
-    uplinkTeamingOverrideAllowed?: pulumi.Input<boolean>;
+    uplinkTeamingOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
     /**
      * Allow the VLAN configuration on a port to override those on the portgroup.
      */
-    vlanOverrideAllowed?: pulumi.Input<boolean>;
+    vlanOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedPortGroupVlanRange>[]>;
+    vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedPortGroupVlanRange>[] | undefined>;
 }

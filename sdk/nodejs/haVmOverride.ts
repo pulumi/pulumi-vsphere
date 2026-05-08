@@ -247,63 +247,63 @@ export interface HaVmOverrideState {
     /**
      * The managed object ID of the cluster.
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
      */
-    haDatastoreApdRecoveryAction?: pulumi.Input<string>;
+    haDatastoreApdRecoveryAction?: pulumi.Input<string | undefined>;
     /**
      * Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
      */
-    haDatastoreApdResponse?: pulumi.Input<string>;
+    haDatastoreApdResponse?: pulumi.Input<string | undefined>;
     /**
      * Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
      */
-    haDatastoreApdResponseDelay?: pulumi.Input<number>;
+    haDatastoreApdResponseDelay?: pulumi.Input<number | undefined>;
     /**
      * Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
      */
-    haDatastorePdlResponse?: pulumi.Input<string>;
+    haDatastorePdlResponse?: pulumi.Input<string | undefined>;
     /**
      * The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
      */
-    haHostIsolationResponse?: pulumi.Input<string>;
+    haHostIsolationResponse?: pulumi.Input<string | undefined>;
     /**
      * If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      */
-    haVmFailureInterval?: pulumi.Input<number>;
+    haVmFailureInterval?: pulumi.Input<number | undefined>;
     /**
      * The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      */
-    haVmMaximumFailureWindow?: pulumi.Input<number>;
+    haVmMaximumFailureWindow?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
      */
-    haVmMaximumResets?: pulumi.Input<number>;
+    haVmMaximumResets?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
      */
-    haVmMinimumUptime?: pulumi.Input<number>;
+    haVmMinimumUptime?: pulumi.Input<number | undefined>;
     /**
      * The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      */
-    haVmMonitoring?: pulumi.Input<string>;
+    haVmMonitoring?: pulumi.Input<string | undefined>;
     /**
      * Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
      */
-    haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean>;
+    haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean | undefined>;
     /**
      * The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
      */
-    haVmRestartPriority?: pulumi.Input<string>;
+    haVmRestartPriority?: pulumi.Input<string | undefined>;
     /**
      * The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
      */
-    haVmRestartTimeout?: pulumi.Input<number>;
+    haVmRestartTimeout?: pulumi.Input<number | undefined>;
     /**
      * The managed object ID of the virtual machine.
      */
-    virtualMachineId?: pulumi.Input<string>;
+    virtualMachineId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -317,55 +317,55 @@ export interface HaVmOverrideArgs {
     /**
      * Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
      */
-    haDatastoreApdRecoveryAction?: pulumi.Input<string>;
+    haDatastoreApdRecoveryAction?: pulumi.Input<string | undefined>;
     /**
      * Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
      */
-    haDatastoreApdResponse?: pulumi.Input<string>;
+    haDatastoreApdResponse?: pulumi.Input<string | undefined>;
     /**
      * Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
      */
-    haDatastoreApdResponseDelay?: pulumi.Input<number>;
+    haDatastoreApdResponseDelay?: pulumi.Input<number | undefined>;
     /**
      * Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
      */
-    haDatastorePdlResponse?: pulumi.Input<string>;
+    haDatastorePdlResponse?: pulumi.Input<string | undefined>;
     /**
      * The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
      */
-    haHostIsolationResponse?: pulumi.Input<string>;
+    haHostIsolationResponse?: pulumi.Input<string | undefined>;
     /**
      * If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      */
-    haVmFailureInterval?: pulumi.Input<number>;
+    haVmFailureInterval?: pulumi.Input<number | undefined>;
     /**
      * The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      */
-    haVmMaximumFailureWindow?: pulumi.Input<number>;
+    haVmMaximumFailureWindow?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
      */
-    haVmMaximumResets?: pulumi.Input<number>;
+    haVmMaximumResets?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
      */
-    haVmMinimumUptime?: pulumi.Input<number>;
+    haVmMinimumUptime?: pulumi.Input<number | undefined>;
     /**
      * The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      */
-    haVmMonitoring?: pulumi.Input<string>;
+    haVmMonitoring?: pulumi.Input<string | undefined>;
     /**
      * Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
      */
-    haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean>;
+    haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean | undefined>;
     /**
      * The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
      */
-    haVmRestartPriority?: pulumi.Input<string>;
+    haVmRestartPriority?: pulumi.Input<string | undefined>;
     /**
      * The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
      */
-    haVmRestartTimeout?: pulumi.Input<number>;
+    haVmRestartTimeout?: pulumi.Input<number | undefined>;
     /**
      * The managed object ID of the virtual machine.
      */

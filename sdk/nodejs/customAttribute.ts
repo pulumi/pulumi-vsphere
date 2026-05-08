@@ -116,11 +116,11 @@ export interface CustomAttributeState {
      * applied to. If not set, the custom attribute may be applied to any object
      * type. For a full list, review the Managed Object Types. Forces a new resource if changed.
      */
-    managedObjectType?: pulumi.Input<string>;
+    managedObjectType?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom attribute.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,9 +132,9 @@ export interface CustomAttributeArgs {
      * applied to. If not set, the custom attribute may be applied to any object
      * type. For a full list, review the Managed Object Types. Forces a new resource if changed.
      */
-    managedObjectType?: pulumi.Input<string>;
+    managedObjectType?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom attribute.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

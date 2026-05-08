@@ -21,14 +21,14 @@ class VappEntityArgs:
     def __init__(__self__, *,
                  container_id: pulumi.Input[_builtins.str],
                  target_id: pulumi.Input[_builtins.str],
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 start_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_order: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None):
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 start_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_order: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 wait_for_guest: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VappEntity resource.
 
@@ -103,19 +103,19 @@ class VappEntityArgs:
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of custom attributes to set on this resource.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="startAction")
-    def start_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to start the entity. Valid settings are none
         or powerOn. If set to none, then the entity does not participate in auto-start.
@@ -124,12 +124,12 @@ class VappEntityArgs:
         return pulumi.get(self, "start_action")
 
     @start_action.setter
-    def start_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_action", value)
 
     @_builtins.property
     @pulumi.getter(name="startDelay")
-    def start_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay in seconds before continuing with the next
         entity in the order of entities to be started. Default: 120
@@ -137,24 +137,24 @@ class VappEntityArgs:
         return pulumi.get(self, "start_delay")
 
     @start_delay.setter
-    def start_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="startOrder")
-    def start_order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Order to start and stop target in vApp. Default: 1
         """
         return pulumi.get(self, "start_order")
 
     @start_order.setter
-    def start_order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_order", value)
 
     @_builtins.property
     @pulumi.getter(name="stopAction")
-    def stop_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stop_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the stop action for the entity. Can be set
         to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
@@ -163,12 +163,12 @@ class VappEntityArgs:
         return pulumi.get(self, "stop_action")
 
     @stop_action.setter
-    def stop_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stop_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stop_action", value)
 
     @_builtins.property
     @pulumi.getter(name="stopDelay")
-    def stop_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stop_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay in seconds before continuing with the next
         entity in the order sequence. This is only used if the stopAction is
@@ -177,24 +177,24 @@ class VappEntityArgs:
         return pulumi.get(self, "stop_delay")
 
     @stop_delay.setter
-    def stop_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stop_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stop_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag IDs to apply to this object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuest")
-    def wait_for_guest(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_guest(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the VM should be marked as being
         started when VMware Tools are ready instead of waiting for `start_delay`. This
@@ -205,23 +205,23 @@ class VappEntityArgs:
         return pulumi.get(self, "wait_for_guest")
 
     @wait_for_guest.setter
-    def wait_for_guest(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_guest(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_guest", value)
 
 
 @pulumi.input_type
 class _VappEntityState:
     def __init__(__self__, *,
-                 container_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 start_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_order: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None):
+                 container_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 start_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_order: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_guest: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VappEntity resources.
 
@@ -272,7 +272,7 @@ class _VappEntityState:
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Managed object ID|docs-about-morefs] of the vApp
         container the entity is a member of.
@@ -280,24 +280,24 @@ class _VappEntityState:
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of custom attributes to set on this resource.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="startAction")
-    def start_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to start the entity. Valid settings are none
         or powerOn. If set to none, then the entity does not participate in auto-start.
@@ -306,12 +306,12 @@ class _VappEntityState:
         return pulumi.get(self, "start_action")
 
     @start_action.setter
-    def start_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_action", value)
 
     @_builtins.property
     @pulumi.getter(name="startDelay")
-    def start_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay in seconds before continuing with the next
         entity in the order of entities to be started. Default: 120
@@ -319,24 +319,24 @@ class _VappEntityState:
         return pulumi.get(self, "start_delay")
 
     @start_delay.setter
-    def start_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="startOrder")
-    def start_order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Order to start and stop target in vApp. Default: 1
         """
         return pulumi.get(self, "start_order")
 
     @start_order.setter
-    def start_order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_order", value)
 
     @_builtins.property
     @pulumi.getter(name="stopAction")
-    def stop_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stop_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the stop action for the entity. Can be set
         to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
@@ -345,12 +345,12 @@ class _VappEntityState:
         return pulumi.get(self, "stop_action")
 
     @stop_action.setter
-    def stop_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stop_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stop_action", value)
 
     @_builtins.property
     @pulumi.getter(name="stopDelay")
-    def stop_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stop_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay in seconds before continuing with the next
         entity in the order sequence. This is only used if the stopAction is
@@ -359,24 +359,24 @@ class _VappEntityState:
         return pulumi.get(self, "stop_delay")
 
     @stop_delay.setter
-    def stop_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stop_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stop_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag IDs to apply to this object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetId")
-    def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Managed object ID|docs-about-morefs] of the entity
         to power on or power off. This can be a virtual machine or a vApp.
@@ -384,12 +384,12 @@ class _VappEntityState:
         return pulumi.get(self, "target_id")
 
     @target_id.setter
-    def target_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForGuest")
-    def wait_for_guest(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_guest(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the VM should be marked as being
         started when VMware Tools are ready instead of waiting for `start_delay`. This
@@ -400,7 +400,7 @@ class _VappEntityState:
         return pulumi.get(self, "wait_for_guest")
 
     @wait_for_guest.setter
-    def wait_for_guest(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_guest(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_guest", value)
 
 
@@ -410,16 +410,16 @@ class VappEntity(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 start_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_order: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 start_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_order: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_guest: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `VappEntity` resource can be used to describe the behavior of an
@@ -612,16 +612,16 @@ class VappEntity(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 start_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_order: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 start_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_order: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_guest: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -655,16 +655,16 @@ class VappEntity(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_id: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            start_action: Optional[pulumi.Input[_builtins.str]] = None,
-            start_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            start_order: Optional[pulumi.Input[_builtins.int]] = None,
-            stop_action: Optional[pulumi.Input[_builtins.str]] = None,
-            stop_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_id: Optional[pulumi.Input[_builtins.str]] = None,
-            wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None) -> 'VappEntity':
+            container_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            start_action: pulumi.Input[Optional[_builtins.str]] = None,
+            start_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            start_order: pulumi.Input[Optional[_builtins.int]] = None,
+            stop_action: pulumi.Input[Optional[_builtins.str]] = None,
+            stop_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_guest: pulumi.Input[Optional[_builtins.bool]] = None) -> 'VappEntity':
         """
         Get an existing VappEntity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

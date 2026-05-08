@@ -19,8 +19,8 @@ __all__ = ['CustomAttributeArgs', 'CustomAttribute']
 @pulumi.input_type
 class CustomAttributeArgs:
     def __init__(__self__, *,
-                 managed_object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 managed_object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomAttribute resource.
 
@@ -36,7 +36,7 @@ class CustomAttributeArgs:
 
     @_builtins.property
     @pulumi.getter(name="managedObjectType")
-    def managed_object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object type that this attribute may be
         applied to. If not set, the custom attribute may be applied to any object
@@ -45,27 +45,27 @@ class CustomAttributeArgs:
         return pulumi.get(self, "managed_object_type")
 
     @managed_object_type.setter
-    def managed_object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_object_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the custom attribute.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _CustomAttributeState:
     def __init__(__self__, *,
-                 managed_object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 managed_object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomAttribute resources.
 
@@ -81,7 +81,7 @@ class _CustomAttributeState:
 
     @_builtins.property
     @pulumi.getter(name="managedObjectType")
-    def managed_object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object type that this attribute may be
         applied to. If not set, the custom attribute may be applied to any object
@@ -90,19 +90,19 @@ class _CustomAttributeState:
         return pulumi.get(self, "managed_object_type")
 
     @managed_object_type.setter
-    def managed_object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_object_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the custom attribute.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -112,8 +112,8 @@ class CustomAttribute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 managed_object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `CustomAttribute` resource can be used to create and manage custom
@@ -221,8 +221,8 @@ class CustomAttribute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 managed_object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -244,8 +244,8 @@ class CustomAttribute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            managed_object_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomAttribute':
+            managed_object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomAttribute':
         """
         Get an existing CustomAttribute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

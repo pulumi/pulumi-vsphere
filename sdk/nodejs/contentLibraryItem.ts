@@ -189,28 +189,28 @@ export interface ContentLibraryItemState {
     /**
      * A description for the content library item.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * File to import as the content library item.
      */
-    fileUrl?: pulumi.Input<string>;
+    fileUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID of the content library in which to create the item.
      */
-    libraryId?: pulumi.Input<string>;
+    libraryId?: pulumi.Input<string | undefined>;
     /**
      * The name of the item to be created in the content library.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Virtual machine UUID to clone to content library.
      */
-    sourceUuid?: pulumi.Input<string>;
+    sourceUuid?: pulumi.Input<string | undefined>;
     /**
      * Type of content library item.
      * One of "ovf", "iso", or "vm-template". Default: `ovf`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,11 +220,11 @@ export interface ContentLibraryItemArgs {
     /**
      * A description for the content library item.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * File to import as the content library item.
      */
-    fileUrl?: pulumi.Input<string>;
+    fileUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID of the content library in which to create the item.
      */
@@ -232,14 +232,14 @@ export interface ContentLibraryItemArgs {
     /**
      * The name of the item to be created in the content library.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Virtual machine UUID to clone to content library.
      */
-    sourceUuid?: pulumi.Input<string>;
+    sourceUuid?: pulumi.Input<string | undefined>;
     /**
      * Type of content library item.
      * One of "ovf", "iso", or "vm-template". Default: `ovf`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

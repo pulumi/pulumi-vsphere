@@ -218,15 +218,15 @@ export interface VmStoragePolicyState {
     /**
      * Description of the storage policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of tag rules. The tag category and tags to be associated to this storage policy.
      */
-    tagRules?: pulumi.Input<pulumi.Input<inputs.VmStoragePolicyTagRule>[]>;
+    tagRules?: pulumi.Input<pulumi.Input<inputs.VmStoragePolicyTagRule>[] | undefined>;
 }
 
 /**
@@ -236,11 +236,11 @@ export interface VmStoragePolicyArgs {
     /**
      * Description of the storage policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of tag rules. The tag category and tags to be associated to this storage policy.
      */

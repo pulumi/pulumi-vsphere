@@ -21,9 +21,9 @@ class ComputeClusterVmAffinityRuleArgs:
     def __init__(__self__, *,
                  compute_cluster_id: pulumi.Input[_builtins.str],
                  virtual_machine_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmAffinityRule resource.
 
@@ -83,19 +83,19 @@ class ComputeClusterVmAffinityRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -107,30 +107,30 @@ class ComputeClusterVmAffinityRuleArgs:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ComputeClusterVmAffinityRuleState:
     def __init__(__self__, *,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmAffinityRule resources.
 
@@ -163,7 +163,7 @@ class _ComputeClusterVmAffinityRuleState:
 
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference
         ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -174,24 +174,24 @@ class _ComputeClusterVmAffinityRuleState:
         return pulumi.get(self, "compute_cluster_id")
 
     @compute_cluster_id.setter
-    def compute_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -203,24 +203,24 @@ class _ComputeClusterVmAffinityRuleState:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineIds")
-    def virtual_machine_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def virtual_machine_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The UUIDs of the virtual machines to run
         on the same host together.
@@ -228,7 +228,7 @@ class _ComputeClusterVmAffinityRuleState:
         return pulumi.get(self, "virtual_machine_ids")
 
     @virtual_machine_ids.setter
-    def virtual_machine_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def virtual_machine_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "virtual_machine_ids", value)
 
 
@@ -238,11 +238,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `ComputeClusterVmAffinityRule` resource can be used to
@@ -283,6 +283,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
@@ -292,7 +293,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="VM Network",
             datacenter_id=datacenter.id)
-        vm = []
+        vm: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
                 name=f"foo-{range['value']}",
@@ -419,6 +420,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
@@ -428,7 +430,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="VM Network",
             datacenter_id=datacenter.id)
-        vm = []
+        vm: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
                 name=f"foo-{range['value']}",
@@ -507,11 +509,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -540,11 +542,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ComputeClusterVmAffinityRule':
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ComputeClusterVmAffinityRule':
         """
         Get an existing ComputeClusterVmAffinityRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

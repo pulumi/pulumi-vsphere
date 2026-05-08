@@ -138,27 +138,27 @@ export interface VirtualMachineClassState {
     /**
      * The percentage of the available CPU capacity which will be reserved.
      */
-    cpuReservation?: pulumi.Input<number>;
+    cpuReservation?: pulumi.Input<number | undefined>;
     /**
      * The number of CPUs.
      */
-    cpus?: pulumi.Input<number>;
+    cpus?: pulumi.Input<number | undefined>;
     /**
      * The amount of memory in MB.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * The percentage of memory reservation.
      */
-    memoryReservation?: pulumi.Input<number>;
+    memoryReservation?: pulumi.Input<number | undefined>;
     /**
      * The name for the class.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
      */
-    vgpuDevices?: pulumi.Input<pulumi.Input<string>[]>;
+    vgpuDevices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -168,7 +168,7 @@ export interface VirtualMachineClassArgs {
     /**
      * The percentage of the available CPU capacity which will be reserved.
      */
-    cpuReservation?: pulumi.Input<number>;
+    cpuReservation?: pulumi.Input<number | undefined>;
     /**
      * The number of CPUs.
      */
@@ -180,13 +180,13 @@ export interface VirtualMachineClassArgs {
     /**
      * The percentage of memory reservation.
      */
-    memoryReservation?: pulumi.Input<number>;
+    memoryReservation?: pulumi.Input<number | undefined>;
     /**
      * The name for the class.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
      */
-    vgpuDevices?: pulumi.Input<pulumi.Input<string>[]>;
+    vgpuDevices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -22,15 +22,15 @@ __all__ = ['VnicArgs', 'Vnic']
 class VnicArgs:
     def __init__(__self__, *,
                  host: pulumi.Input[_builtins.str],
-                 distributed_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed_switch_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4: Optional[pulumi.Input['VnicIpv4Args']] = None,
-                 ipv6: Optional[pulumi.Input['VnicIpv6Args']] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 netstack: Optional[pulumi.Input[_builtins.str]] = None,
-                 portgroup: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4: pulumi.Input[Optional['VnicIpv4Args']] = None,
+                 ipv6: pulumi.Input[Optional['VnicIpv6Args']] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 netstack: pulumi.Input[Optional[_builtins.str]] = None,
+                 portgroup: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Vnic resource.
 
@@ -79,126 +79,126 @@ class VnicArgs:
 
     @_builtins.property
     @pulumi.getter(name="distributedPortGroup")
-    def distributed_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distributed_port_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key of the distributed portgroup the nic will connect to.
         """
         return pulumi.get(self, "distributed_port_group")
 
     @distributed_port_group.setter
-    def distributed_port_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distributed_port_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distributed_port_group", value)
 
     @_builtins.property
     @pulumi.getter(name="distributedSwitchPort")
-    def distributed_switch_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distributed_switch_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         """
         return pulumi.get(self, "distributed_switch_port")
 
     @distributed_switch_port.setter
-    def distributed_switch_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distributed_switch_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distributed_switch_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input['VnicIpv4Args']]:
+    def ipv4(self) -> pulumi.Input[Optional['VnicIpv4Args']]:
         """
         IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input['VnicIpv4Args']]):
+    def ipv4(self, value: pulumi.Input[Optional['VnicIpv4Args']]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input['VnicIpv6Args']]:
+    def ipv6(self) -> pulumi.Input[Optional['VnicIpv6Args']]:
         """
         IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input['VnicIpv6Args']]):
+    def ipv6(self, value: pulumi.Input[Optional['VnicIpv6Args']]):
         pulumi.set(self, "ipv6", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MAC address of the interface.
         """
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU of the interface.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def netstack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netstack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
         """
         return pulumi.get(self, "netstack")
 
     @netstack.setter
-    def netstack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netstack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netstack", value)
 
     @_builtins.property
     @pulumi.getter
-    def portgroup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def portgroup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
         """
         return pulumi.get(self, "portgroup")
 
     @portgroup.setter
-    def portgroup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def portgroup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "portgroup", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
 
 @pulumi.input_type
 class _VnicState:
     def __init__(__self__, *,
-                 distributed_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed_switch_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4: Optional[pulumi.Input['VnicIpv4Args']] = None,
-                 ipv6: Optional[pulumi.Input['VnicIpv6Args']] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 netstack: Optional[pulumi.Input[_builtins.str]] = None,
-                 portgroup: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4: pulumi.Input[Optional['VnicIpv4Args']] = None,
+                 ipv6: pulumi.Input[Optional['VnicIpv6Args']] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 netstack: pulumi.Input[Optional[_builtins.str]] = None,
+                 portgroup: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Vnic resources.
 
@@ -236,122 +236,122 @@ class _VnicState:
 
     @_builtins.property
     @pulumi.getter(name="distributedPortGroup")
-    def distributed_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distributed_port_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key of the distributed portgroup the nic will connect to.
         """
         return pulumi.get(self, "distributed_port_group")
 
     @distributed_port_group.setter
-    def distributed_port_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distributed_port_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distributed_port_group", value)
 
     @_builtins.property
     @pulumi.getter(name="distributedSwitchPort")
-    def distributed_switch_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distributed_switch_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         """
         return pulumi.get(self, "distributed_switch_port")
 
     @distributed_switch_port.setter
-    def distributed_switch_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distributed_switch_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distributed_switch_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ESX host the interface belongs to
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input['VnicIpv4Args']]:
+    def ipv4(self) -> pulumi.Input[Optional['VnicIpv4Args']]:
         """
         IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input['VnicIpv4Args']]):
+    def ipv4(self, value: pulumi.Input[Optional['VnicIpv4Args']]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input['VnicIpv6Args']]:
+    def ipv6(self) -> pulumi.Input[Optional['VnicIpv6Args']]:
         """
         IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input['VnicIpv6Args']]):
+    def ipv6(self, value: pulumi.Input[Optional['VnicIpv6Args']]):
         pulumi.set(self, "ipv6", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MAC address of the interface.
         """
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU of the interface.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def netstack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netstack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
         """
         return pulumi.get(self, "netstack")
 
     @netstack.setter
-    def netstack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netstack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netstack", value)
 
     @_builtins.property
     @pulumi.getter
-    def portgroup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def portgroup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
         """
         return pulumi.get(self, "portgroup")
 
     @portgroup.setter
-    def portgroup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def portgroup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "portgroup", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
 
@@ -361,16 +361,16 @@ class Vnic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 distributed_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed_switch_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4: Optional[pulumi.Input[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
-                 ipv6: Optional[pulumi.Input[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 netstack: Optional[pulumi.Input[_builtins.str]] = None,
-                 portgroup: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
+                 ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 netstack: pulumi.Input[Optional[_builtins.str]] = None,
+                 portgroup: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a VMware vSphere vnic resource.
@@ -576,16 +576,16 @@ class Vnic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 distributed_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed_switch_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4: Optional[pulumi.Input[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
-                 ipv6: Optional[pulumi.Input[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 netstack: Optional[pulumi.Input[_builtins.str]] = None,
-                 portgroup: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
+                 ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 netstack: pulumi.Input[Optional[_builtins.str]] = None,
+                 portgroup: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -617,16 +617,16 @@ class Vnic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            distributed_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-            distributed_switch_port: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv4: Optional[pulumi.Input[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
-            ipv6: Optional[pulumi.Input[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
-            mac: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            netstack: Optional[pulumi.Input[_builtins.str]] = None,
-            portgroup: Optional[pulumi.Input[_builtins.str]] = None,
-            services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Vnic':
+            distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+            distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
+            ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            netstack: pulumi.Input[Optional[_builtins.str]] = None,
+            portgroup: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Vnic':
         """
         Get an existing Vnic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

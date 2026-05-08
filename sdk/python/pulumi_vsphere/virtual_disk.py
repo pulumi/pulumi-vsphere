@@ -22,10 +22,10 @@ class VirtualDiskArgs:
                  datastore: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
                  vmdk_path: pulumi.Input[_builtins.str],
-                 adapter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 adapter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualDisk resource.
 
@@ -122,7 +122,7 @@ class VirtualDiskArgs:
     @_builtins.property
     @pulumi.getter(name="adapterType")
     @_utilities.deprecated("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
-    def adapter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adapter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The adapter type for this virtual disk. Can be
         one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
@@ -139,12 +139,12 @@ class VirtualDiskArgs:
         return pulumi.get(self, "adapter_type")
 
     @adapter_type.setter
-    def adapter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adapter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adapter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createDirectories")
-    def create_directories(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_directories(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Tells the resource to create any
         directories that are a part of the `vmdk_path` parameter if they are missing.
@@ -157,12 +157,12 @@ class VirtualDiskArgs:
         return pulumi.get(self, "create_directories")
 
     @create_directories.setter
-    def create_directories(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_directories(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_directories", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datacenter in which to create the
         disk. Can be omitted when ESXi or if there is only one datacenter in
@@ -171,12 +171,12 @@ class VirtualDiskArgs:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of disk to create. Can be one of
         `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -188,20 +188,20 @@ class VirtualDiskArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _VirtualDiskState:
     def __init__(__self__, *,
-                 adapter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmdk_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 adapter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmdk_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualDisk resources.
 
@@ -261,7 +261,7 @@ class _VirtualDiskState:
     @_builtins.property
     @pulumi.getter(name="adapterType")
     @_utilities.deprecated("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
-    def adapter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adapter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The adapter type for this virtual disk. Can be
         one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
@@ -278,12 +278,12 @@ class _VirtualDiskState:
         return pulumi.get(self, "adapter_type")
 
     @adapter_type.setter
-    def adapter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adapter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adapter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createDirectories")
-    def create_directories(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_directories(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Tells the resource to create any
         directories that are a part of the `vmdk_path` parameter if they are missing.
@@ -296,12 +296,12 @@ class _VirtualDiskState:
         return pulumi.get(self, "create_directories")
 
     @create_directories.setter
-    def create_directories(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_directories(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_directories", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datacenter in which to create the
         disk. Can be omitted when ESXi or if there is only one datacenter in
@@ -310,12 +310,12 @@ class _VirtualDiskState:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datastore in which to create the
         disk.
@@ -323,12 +323,12 @@ class _VirtualDiskState:
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the disk (in GB). Decreasing the size of a disk is not possible.
         If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
@@ -337,12 +337,12 @@ class _VirtualDiskState:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of disk to create. Can be one of
         `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -354,12 +354,12 @@ class _VirtualDiskState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vmdkPath")
-    def vmdk_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vmdk_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path, including filename, of the virtual disk to
         be created.  This needs to end in `.vmdk`.
@@ -367,7 +367,7 @@ class _VirtualDiskState:
         return pulumi.get(self, "vmdk_path")
 
     @vmdk_path.setter
-    def vmdk_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vmdk_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vmdk_path", value)
 
 
@@ -377,13 +377,13 @@ class VirtualDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adapter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmdk_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 adapter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmdk_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `VirtualDisk` resource can be used to create virtual disks outside
@@ -531,13 +531,13 @@ class VirtualDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adapter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmdk_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 adapter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmdk_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -570,13 +570,13 @@ class VirtualDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            adapter_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            datastore: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vmdk_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualDisk':
+            adapter_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vmdk_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualDisk':
         """
         Get an existing VirtualDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

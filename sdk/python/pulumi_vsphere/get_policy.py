@@ -89,7 +89,7 @@ def get_policy(name: Optional[_builtins.str] = None,
     return AwaitableGetPolicyResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyResult]:
     """
     The `get_policy` data source can be used to discover the UUID of a

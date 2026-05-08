@@ -24,8 +24,8 @@ class VirtualMachineSnapshotArgs:
                  quiesce: pulumi.Input[_builtins.bool],
                  snapshot_name: pulumi.Input[_builtins.str],
                  virtual_machine_uuid: pulumi.Input[_builtins.str],
-                 consolidate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_children: Optional[pulumi.Input[_builtins.bool]] = None):
+                 consolidate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_children: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VirtualMachineSnapshot resource.
 
@@ -118,7 +118,7 @@ class VirtualMachineSnapshotArgs:
 
     @_builtins.property
     @pulumi.getter
-    def consolidate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def consolidate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the delta disks involved in this
         snapshot will be consolidated into the parent when this resource is
@@ -127,12 +127,12 @@ class VirtualMachineSnapshotArgs:
         return pulumi.get(self, "consolidate")
 
     @consolidate.setter
-    def consolidate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def consolidate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "consolidate", value)
 
     @_builtins.property
     @pulumi.getter(name="removeChildren")
-    def remove_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_children(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the entire snapshot subtree
         is removed when this resource is destroyed.
@@ -140,20 +140,20 @@ class VirtualMachineSnapshotArgs:
         return pulumi.get(self, "remove_children")
 
     @remove_children.setter
-    def remove_children(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_children(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_children", value)
 
 
 @pulumi.input_type
 class _VirtualMachineSnapshotState:
     def __init__(__self__, *,
-                 consolidate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quiesce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 consolidate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quiesce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualMachineSnapshot resources.
 
@@ -188,7 +188,7 @@ class _VirtualMachineSnapshotState:
 
     @_builtins.property
     @pulumi.getter
-    def consolidate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def consolidate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the delta disks involved in this
         snapshot will be consolidated into the parent when this resource is
@@ -197,24 +197,24 @@ class _VirtualMachineSnapshotState:
         return pulumi.get(self, "consolidate")
 
     @consolidate.setter
-    def consolidate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def consolidate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "consolidate", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the snapshot.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, a dump of the internal state of the
         virtual machine is included in the snapshot.
@@ -222,12 +222,12 @@ class _VirtualMachineSnapshotState:
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def quiesce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def quiesce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, and the virtual machine is powered
         on when the snapshot is taken, VMware Tools is used to quiesce the file
@@ -236,12 +236,12 @@ class _VirtualMachineSnapshotState:
         return pulumi.get(self, "quiesce")
 
     @quiesce.setter
-    def quiesce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def quiesce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "quiesce", value)
 
     @_builtins.property
     @pulumi.getter(name="removeChildren")
-    def remove_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_children(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the entire snapshot subtree
         is removed when this resource is destroyed.
@@ -249,31 +249,31 @@ class _VirtualMachineSnapshotState:
         return pulumi.get(self, "remove_children")
 
     @remove_children.setter
-    def remove_children(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_children(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_children", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
-    def snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the snapshot.
         """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
-    def snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineUuid")
-    def virtual_machine_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_machine_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual machine UUID.
         """
         return pulumi.get(self, "virtual_machine_uuid")
 
     @virtual_machine_uuid.setter
-    def virtual_machine_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_machine_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_machine_uuid", value)
 
 
@@ -283,13 +283,13 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consolidate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quiesce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 consolidate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quiesce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `VirtualMachineSnapshot` resource can be used to manage snapshots
@@ -410,13 +410,13 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consolidate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quiesce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 consolidate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quiesce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,13 +453,13 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            consolidate: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            memory: Optional[pulumi.Input[_builtins.bool]] = None,
-            quiesce: Optional[pulumi.Input[_builtins.bool]] = None,
-            remove_children: Optional[pulumi.Input[_builtins.bool]] = None,
-            snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_machine_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualMachineSnapshot':
+            consolidate: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[_builtins.bool]] = None,
+            quiesce: pulumi.Input[Optional[_builtins.bool]] = None,
+            remove_children: pulumi.Input[Optional[_builtins.bool]] = None,
+            snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualMachineSnapshot':
         """
         Get an existing VirtualMachineSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

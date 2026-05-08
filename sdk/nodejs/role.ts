@@ -123,15 +123,15 @@ export interface RoleState {
     /**
      * The display label of the role.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The name of the role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The privileges to be associated with this role.
      */
-    rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
+    rolePrivileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -141,9 +141,9 @@ export interface RoleArgs {
     /**
      * The name of the role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The privileges to be associated with this role.
      */
-    rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
+    rolePrivileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

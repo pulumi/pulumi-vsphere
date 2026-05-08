@@ -434,7 +434,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
         })
     ## Deployment of VM from Remote OVF
     vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-        network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+        network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_remote.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
             network_id=entry["value"],
         ) for entry in entries]),
         name="ubuntu-server-cloud-image-01",
@@ -468,7 +468,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
         })
     ## Deployment of VM from Local OVF
     vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-        network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+        network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_local.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
             network_id=entry["value"],
         ) for entry in entries]),
         name="ubuntu-server-cloud-image-02",
@@ -587,20 +587,20 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
         scsi_controller_count=pulumi.get(__ret__, 'scsi_controller_count'),
         scsi_type=pulumi.get(__ret__, 'scsi_type'),
         swap_placement_policy=pulumi.get(__ret__, 'swap_placement_policy'))
-def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               datastore_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               deployment_option: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               disk_provisioning: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               enable_hidden_properties: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               folder: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               host_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               ip_allocation_policy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               ip_protocol: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               local_ovf_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               name: Optional[pulumi.Input[_builtins.str]] = None,
-                               ovf_network_map: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                               remote_ovf_url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ovf_vm_template_output(allow_unverified_ssl_cert: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               datastore_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               deployment_option: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               disk_provisioning: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               enable_hidden_properties: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               folder: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               ip_allocation_policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               ip_protocol: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               local_ovf_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               name: pulumi.Input[Optional[_builtins.str]] = None,
+                               ovf_network_map: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                               remote_ovf_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOvfVmTemplateResult]:
     """
     The `get_ovf_vm_template` data source can be used to submit an OVF to
@@ -651,7 +651,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
         })
     ## Deployment of VM from Remote OVF
     vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
-        network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+        network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_remote.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
             network_id=entry["value"],
         ) for entry in entries]),
         name="ubuntu-server-cloud-image-01",
@@ -685,7 +685,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
         })
     ## Deployment of VM from Local OVF
     vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
-        network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map.items()].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
+        network_interfaces=[{"key": k, "value": v} for k, v in sorted(ovf_local.ovf_network_map.items())].apply(lambda entries: [vsphere.VirtualMachineNetworkInterfaceArgs(
             network_id=entry["value"],
         ) for entry in entries]),
         name="ubuntu-server-cloud-image-02",

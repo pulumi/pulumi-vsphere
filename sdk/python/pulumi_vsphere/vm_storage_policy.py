@@ -22,8 +22,8 @@ __all__ = ['VmStoragePolicyArgs', 'VmStoragePolicy']
 class VmStoragePolicyArgs:
     def __init__(__self__, *,
                  tag_rules: pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VmStoragePolicy resource.
 
@@ -51,35 +51,35 @@ class VmStoragePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the storage policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the storage policy.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _VmStoragePolicyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering VmStoragePolicy resources.
 
@@ -96,38 +96,38 @@ class _VmStoragePolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the storage policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the storage policy.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="tagRules")
-    def tag_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]]:
+    def tag_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]]:
         """
         List of tag rules. The tag category and tags to be associated to this storage policy.
         """
         return pulumi.get(self, "tag_rules")
 
     @tag_rules.setter
-    def tag_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]]):
+    def tag_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]]):
         pulumi.set(self, "tag_rules", value)
 
 
@@ -137,9 +137,9 @@ class VmStoragePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         The `VmStoragePolicy` resource can be used to create and manage storage
@@ -382,9 +382,9 @@ class VmStoragePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -409,9 +409,9 @@ class VmStoragePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None) -> 'VmStoragePolicy':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None) -> 'VmStoragePolicy':
         """
         Get an existing VmStoragePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

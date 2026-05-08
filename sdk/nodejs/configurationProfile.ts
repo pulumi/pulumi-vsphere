@@ -178,21 +178,21 @@ export interface ConfigurationProfileState {
     /**
      * The identifier of the cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
      */
-    configuration?: pulumi.Input<string>;
+    configuration?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the host to use as a configuration source.
      * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
      * `configuration` is not set.
      */
-    referenceHostId?: pulumi.Input<string>;
+    referenceHostId?: pulumi.Input<string | undefined>;
     /**
      * The JSON schema for the profile.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,11 +206,11 @@ export interface ConfigurationProfileArgs {
     /**
      * The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
      */
-    configuration?: pulumi.Input<string>;
+    configuration?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the host to use as a configuration source.
      * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
      * `configuration` is not set.
      */
-    referenceHostId?: pulumi.Input<string>;
+    referenceHostId?: pulumi.Input<string | undefined>;
 }
