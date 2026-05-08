@@ -141,8 +141,8 @@ def get_host_vgpu_profile(host_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         vgpu_profiles=pulumi.get(__ret__, 'vgpu_profiles'))
-def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_host_vgpu_profile_output(host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostVgpuProfileResult]:
     """
     The `get_host_vgpu_profile` data source can be used to discover the

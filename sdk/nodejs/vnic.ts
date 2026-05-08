@@ -224,43 +224,43 @@ export interface VnicState {
     /**
      * Key of the distributed portgroup the nic will connect to.
      */
-    distributedPortGroup?: pulumi.Input<string>;
+    distributedPortGroup?: pulumi.Input<string | undefined>;
     /**
      * UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      */
-    distributedSwitchPort?: pulumi.Input<string>;
+    distributedSwitchPort?: pulumi.Input<string | undefined>;
     /**
      * ESX host the interface belongs to
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      */
-    ipv4?: pulumi.Input<inputs.VnicIpv4>;
+    ipv4?: pulumi.Input<inputs.VnicIpv4 | undefined>;
     /**
      * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      */
-    ipv6?: pulumi.Input<inputs.VnicIpv6>;
+    ipv6?: pulumi.Input<inputs.VnicIpv6 | undefined>;
     /**
      * MAC address of the interface.
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * MTU of the interface.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      */
-    netstack?: pulumi.Input<string>;
+    netstack?: pulumi.Input<string | undefined>;
     /**
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
-    portgroup?: pulumi.Input<string>;
+    portgroup?: pulumi.Input<string | undefined>;
     /**
      * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -270,11 +270,11 @@ export interface VnicArgs {
     /**
      * Key of the distributed portgroup the nic will connect to.
      */
-    distributedPortGroup?: pulumi.Input<string>;
+    distributedPortGroup?: pulumi.Input<string | undefined>;
     /**
      * UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      */
-    distributedSwitchPort?: pulumi.Input<string>;
+    distributedSwitchPort?: pulumi.Input<string | undefined>;
     /**
      * ESX host the interface belongs to
      */
@@ -282,29 +282,29 @@ export interface VnicArgs {
     /**
      * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      */
-    ipv4?: pulumi.Input<inputs.VnicIpv4>;
+    ipv4?: pulumi.Input<inputs.VnicIpv4 | undefined>;
     /**
      * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      */
-    ipv6?: pulumi.Input<inputs.VnicIpv6>;
+    ipv6?: pulumi.Input<inputs.VnicIpv6 | undefined>;
     /**
      * MAC address of the interface.
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * MTU of the interface.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      */
-    netstack?: pulumi.Input<string>;
+    netstack?: pulumi.Input<string | undefined>;
     /**
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
-    portgroup?: pulumi.Input<string>;
+    portgroup?: pulumi.Input<string | undefined>;
     /**
      * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

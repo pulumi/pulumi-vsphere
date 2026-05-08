@@ -45,8 +45,8 @@ class OfflineSoftwareDepotArgs:
 @pulumi.input_type
 class _OfflineSoftwareDepotState:
     def __init__(__self__, *,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input['OfflineSoftwareDepotComponentArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None):
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['OfflineSoftwareDepotComponentArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OfflineSoftwareDepot resources.
 
@@ -60,26 +60,26 @@ class _OfflineSoftwareDepotState:
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OfflineSoftwareDepotComponentArgs']]]]:
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OfflineSoftwareDepotComponentArgs']]]]:
         """
         The list of custom components in the depot.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OfflineSoftwareDepotComponentArgs']]]]):
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OfflineSoftwareDepotComponentArgs']]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL where the depot source is hosted.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
 
@@ -89,7 +89,7 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VMware vSphere offline software depot resource.
@@ -132,7 +132,7 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -156,8 +156,8 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OfflineSoftwareDepotComponentArgs', 'OfflineSoftwareDepotComponentArgsDict']]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None) -> 'OfflineSoftwareDepot':
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OfflineSoftwareDepotComponentArgs', 'OfflineSoftwareDepotComponentArgsDict']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None) -> 'OfflineSoftwareDepot':
         """
         Get an existing OfflineSoftwareDepot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -131,8 +131,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -192,8 +192,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -253,8 +253,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -314,8 +314,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -375,8 +375,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -426,8 +426,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
      * import com.pulumi.vsphere.ComputeClusterVmHostRule;
      * import com.pulumi.vsphere.ComputeClusterVmHostRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -489,8 +489,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
      * import com.pulumi.vsphere.ComputeClusterVmHostRule;
      * import com.pulumi.vsphere.ComputeClusterVmHostRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -552,8 +552,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
      * import com.pulumi.vsphere.ComputeClusterVmHostRule;
      * import com.pulumi.vsphere.ComputeClusterVmHostRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -615,8 +615,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
      * import com.pulumi.vsphere.ComputeClusterVmHostRule;
      * import com.pulumi.vsphere.ComputeClusterVmHostRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -678,8 +678,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
      * import com.pulumi.vsphere.ComputeClusterVmHostRule;
      * import com.pulumi.vsphere.ComputeClusterVmHostRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -738,8 +738,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
      * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -790,8 +790,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
      * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -842,8 +842,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
      * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -894,8 +894,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
      * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -946,8 +946,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
      * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -999,8 +999,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1043,8 +1043,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1087,8 +1087,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1131,8 +1131,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1175,8 +1175,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1279,8 +1279,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetCustomAttributeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1328,8 +1328,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetCustomAttributeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1377,8 +1377,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetCustomAttributeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1426,8 +1426,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetCustomAttributeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1475,8 +1475,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetCustomAttributeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1520,8 +1520,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1565,8 +1565,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1610,8 +1610,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1655,8 +1655,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1700,8 +1700,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1745,8 +1745,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1790,8 +1790,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1836,8 +1836,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1887,8 +1887,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1938,8 +1938,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1989,8 +1989,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2040,8 +2040,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2096,8 +2096,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2152,8 +2152,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2208,8 +2208,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2264,8 +2264,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2320,8 +2320,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2369,8 +2369,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2407,8 +2407,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2451,8 +2451,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2489,8 +2489,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2533,8 +2533,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2571,8 +2571,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2615,8 +2615,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2653,8 +2653,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2697,8 +2697,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2735,8 +2735,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2792,8 +2792,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchArgs;
      * import com.pulumi.vsphere.DistributedPortGroup;
      * import com.pulumi.vsphere.DistributedPortGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2861,8 +2861,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchArgs;
      * import com.pulumi.vsphere.DistributedPortGroup;
      * import com.pulumi.vsphere.DistributedPortGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2930,8 +2930,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchArgs;
      * import com.pulumi.vsphere.DistributedPortGroup;
      * import com.pulumi.vsphere.DistributedPortGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2999,8 +2999,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchArgs;
      * import com.pulumi.vsphere.DistributedPortGroup;
      * import com.pulumi.vsphere.DistributedPortGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3068,8 +3068,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchArgs;
      * import com.pulumi.vsphere.DistributedPortGroup;
      * import com.pulumi.vsphere.DistributedPortGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3125,8 +3125,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
      * import com.pulumi.vsphere.inputs.GetDynamicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3188,8 +3188,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
      * import com.pulumi.vsphere.inputs.GetDynamicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3251,8 +3251,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
      * import com.pulumi.vsphere.inputs.GetDynamicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3314,8 +3314,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
      * import com.pulumi.vsphere.inputs.GetDynamicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3377,8 +3377,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
      * import com.pulumi.vsphere.inputs.GetDynamicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3446,8 +3446,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.DatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3579,8 +3579,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.DatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3712,8 +3712,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.DatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3845,8 +3845,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.DatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3978,8 +3978,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.DatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4105,8 +4105,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
      * import com.pulumi.vsphere.VirtualMachine;
      * import com.pulumi.vsphere.VirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4133,7 +4133,7 @@ public final class VsphereFunctions {
      * 
      *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
      *             .templateUuid(template.id())
-     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .customizationSpec(Arrays.asList(Map.of("id", windows.id())))
      *             .build());
      * 
      *     }
@@ -4164,8 +4164,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
      * import com.pulumi.vsphere.VirtualMachine;
      * import com.pulumi.vsphere.VirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4192,7 +4192,7 @@ public final class VsphereFunctions {
      * 
      *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
      *             .templateUuid(template.id())
-     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .customizationSpec(Arrays.asList(Map.of("id", windows.id())))
      *             .build());
      * 
      *     }
@@ -4223,8 +4223,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
      * import com.pulumi.vsphere.VirtualMachine;
      * import com.pulumi.vsphere.VirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4251,7 +4251,7 @@ public final class VsphereFunctions {
      * 
      *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
      *             .templateUuid(template.id())
-     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .customizationSpec(Arrays.asList(Map.of("id", windows.id())))
      *             .build());
      * 
      *     }
@@ -4282,8 +4282,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
      * import com.pulumi.vsphere.VirtualMachine;
      * import com.pulumi.vsphere.VirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4310,7 +4310,7 @@ public final class VsphereFunctions {
      * 
      *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
      *             .templateUuid(template.id())
-     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .customizationSpec(Arrays.asList(Map.of("id", windows.id())))
      *             .build());
      * 
      *     }
@@ -4341,8 +4341,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
      * import com.pulumi.vsphere.VirtualMachine;
      * import com.pulumi.vsphere.VirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4369,7 +4369,7 @@ public final class VsphereFunctions {
      * 
      *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
      *             .templateUuid(template.id())
-     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .customizationSpec(Arrays.asList(Map.of("id", windows.id())))
      *             .build());
      * 
      *     }
@@ -4400,8 +4400,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4450,8 +4450,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4500,8 +4500,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4550,8 +4550,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4600,8 +4600,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4645,8 +4645,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4683,8 +4683,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4721,8 +4721,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4759,8 +4759,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4797,8 +4797,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4835,8 +4835,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4873,8 +4873,8 @@ public final class VsphereFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4917,8 +4917,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4963,8 +4963,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5019,8 +5019,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5065,8 +5065,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5121,8 +5121,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5167,8 +5167,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5223,8 +5223,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5269,8 +5269,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5325,8 +5325,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5371,8 +5371,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5429,8 +5429,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5477,8 +5477,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5525,8 +5525,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5573,8 +5573,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5621,8 +5621,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5666,8 +5666,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5710,8 +5710,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5765,8 +5765,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5809,8 +5809,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5864,8 +5864,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5908,8 +5908,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5963,8 +5963,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6007,8 +6007,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6062,8 +6062,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6106,8 +6106,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6157,8 +6157,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetLicenseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6198,8 +6198,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetLicenseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6239,8 +6239,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetLicenseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6280,8 +6280,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetLicenseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6321,8 +6321,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetLicenseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6366,8 +6366,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6405,8 +6405,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6458,8 +6458,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6497,8 +6497,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6550,8 +6550,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6589,8 +6589,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6642,8 +6642,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6681,8 +6681,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6734,8 +6734,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6773,8 +6773,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6881,8 +6881,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6930,8 +6930,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6979,8 +6979,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7028,8 +7028,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7077,8 +7077,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7129,8 +7129,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7168,8 +7168,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7221,8 +7221,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7276,8 +7276,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7315,8 +7315,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7368,8 +7368,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7423,8 +7423,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7462,8 +7462,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7515,8 +7515,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7570,8 +7570,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7609,8 +7609,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7662,8 +7662,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7717,8 +7717,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7756,8 +7756,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7809,8 +7809,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7864,8 +7864,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7903,8 +7903,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7956,8 +7956,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8011,8 +8011,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8050,8 +8050,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8103,8 +8103,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8151,8 +8151,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8192,8 +8192,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8233,8 +8233,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8274,8 +8274,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8315,8 +8315,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8365,8 +8365,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8420,8 +8420,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8475,8 +8475,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8530,8 +8530,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8585,8 +8585,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
      * import com.pulumi.vsphere.inputs.GetTagArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8639,8 +8639,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8688,8 +8688,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8737,8 +8737,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8786,8 +8786,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8835,8 +8835,8 @@ public final class VsphereFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8881,8 +8881,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVappContainerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8932,8 +8932,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVappContainerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8983,8 +8983,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVappContainerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9034,8 +9034,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVappContainerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9085,8 +9085,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVappContainerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9140,8 +9140,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9180,8 +9180,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9240,8 +9240,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9280,8 +9280,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9340,8 +9340,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9380,8 +9380,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9440,8 +9440,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9480,8 +9480,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9540,8 +9540,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9580,8 +9580,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9640,8 +9640,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9680,8 +9680,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9740,8 +9740,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9780,8 +9780,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9837,8 +9837,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9895,8 +9895,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9953,8 +9953,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10011,8 +10011,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10069,8 +10069,8 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetHostArgs;
      * import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

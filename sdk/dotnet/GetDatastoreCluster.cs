@@ -34,12 +34,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var datastoreCluster = VSphere.Index.GetDatastoreCluster.Invoke(new()
+        ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
         ///     {
         ///         Name = "datastore-cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -74,12 +74,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var datastoreCluster = VSphere.Index.GetDatastoreCluster.Invoke(new()
+        ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
         ///     {
         ///         Name = "datastore-cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
@@ -114,12 +114,12 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
         ///         Name = "dc-01",
         ///     });
         /// 
-        ///     var datastoreCluster = VSphere.Index.GetDatastoreCluster.Invoke(new()
+        ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
         ///     {
         ///         Name = "datastore-cluster-01",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),

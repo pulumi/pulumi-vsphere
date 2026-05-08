@@ -102,14 +102,14 @@ export interface GetRoleOutputArgs {
     /**
      * The description of the role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The label of the role.
      */
     label: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The privileges associated with the role.
      */
-    rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
+    rolePrivileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

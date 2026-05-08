@@ -126,8 +126,8 @@ def get_datastore_cluster(datacenter_id: Optional[_builtins.str] = None,
         datastores=pulumi.get(__ret__, 'datastores'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_datastore_cluster_output(datacenter_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreClusterResult]:
     """
     The `DatastoreCluster` data source can be used to discover the ID of a

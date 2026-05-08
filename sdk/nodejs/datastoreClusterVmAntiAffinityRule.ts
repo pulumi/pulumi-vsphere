@@ -203,20 +203,20 @@ export interface DatastoreClusterVmAntiAffinityRuleState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string | undefined>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
@@ -226,7 +226,7 @@ export interface DatastoreClusterVmAntiAffinityRuleState {
      * the apply phase, not the validation or plan phases. Ensure proper length of
      * this value to prevent failures mid-apply.
      */
-    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
+    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -244,16 +244,16 @@ export interface DatastoreClusterVmAntiAffinityRuleArgs {
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.

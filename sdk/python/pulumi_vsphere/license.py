@@ -20,7 +20,7 @@ __all__ = ['LicenseArgs', 'License']
 class LicenseArgs:
     def __init__(__self__, *,
                  license_key: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a License resource.
 
@@ -47,7 +47,7 @@ class LicenseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of labels to be applied to the license key.
 
@@ -56,19 +56,19 @@ class LicenseArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 @pulumi.input_type
 class _LicenseState:
     def __init__(__self__, *,
-                 edition_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 license_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 total: Optional[pulumi.Input[_builtins.int]] = None,
-                 used: Optional[pulumi.Input[_builtins.int]] = None):
+                 edition_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 license_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 total: pulumi.Input[Optional[_builtins.int]] = None,
+                 used: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering License resources.
 
@@ -96,19 +96,19 @@ class _LicenseState:
 
     @_builtins.property
     @pulumi.getter(name="editionKey")
-    def edition_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product edition of the license key.
         """
         return pulumi.get(self, "edition_key")
 
     @edition_key.setter
-    def edition_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of labels to be applied to the license key.
 
@@ -117,55 +117,55 @@ class _LicenseState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseKey")
-    def license_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The license key value.
         """
         return pulumi.get(self, "license_key")
 
     @license_key.setter
-    def license_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the license key.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def total(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total number of units contained in the license key.
         """
         return pulumi.get(self, "total")
 
     @total.setter
-    def total(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total", value)
 
     @_builtins.property
     @pulumi.getter
-    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def used(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of units assigned to this license key.
         """
         return pulumi.get(self, "used")
 
     @used.setter
-    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def used(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "used", value)
 
 
@@ -175,8 +175,8 @@ class License(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 license_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 license_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
@@ -240,8 +240,8 @@ class License(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 license_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 license_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -269,12 +269,12 @@ class License(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            edition_key: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            license_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            total: Optional[pulumi.Input[_builtins.int]] = None,
-            used: Optional[pulumi.Input[_builtins.int]] = None) -> 'License':
+            edition_key: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            license_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            total: pulumi.Input[Optional[_builtins.int]] = None,
+            used: pulumi.Input[Optional[_builtins.int]] = None) -> 'License':
         """
         Get an existing License resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

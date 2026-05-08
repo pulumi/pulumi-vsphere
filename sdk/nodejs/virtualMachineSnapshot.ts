@@ -167,35 +167,35 @@ export interface VirtualMachineSnapshotState {
      * snapshot will be consolidated into the parent when this resource is
      * destroyed.
      */
-    consolidate?: pulumi.Input<boolean>;
+    consolidate?: pulumi.Input<boolean | undefined>;
     /**
      * A description for the snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, a dump of the internal state of the
      * virtual machine is included in the snapshot.
      */
-    memory?: pulumi.Input<boolean>;
+    memory?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, and the virtual machine is powered
      * on when the snapshot is taken, VMware Tools is used to quiesce the file
      * system in the virtual machine.
      */
-    quiesce?: pulumi.Input<boolean>;
+    quiesce?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, the entire snapshot subtree
      * is removed when this resource is destroyed.
      */
-    removeChildren?: pulumi.Input<boolean>;
+    removeChildren?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the snapshot.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * The virtual machine UUID.
      */
-    virtualMachineUuid?: pulumi.Input<string>;
+    virtualMachineUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -207,7 +207,7 @@ export interface VirtualMachineSnapshotArgs {
      * snapshot will be consolidated into the parent when this resource is
      * destroyed.
      */
-    consolidate?: pulumi.Input<boolean>;
+    consolidate?: pulumi.Input<boolean | undefined>;
     /**
      * A description for the snapshot.
      */
@@ -227,7 +227,7 @@ export interface VirtualMachineSnapshotArgs {
      * If set to `true`, the entire snapshot subtree
      * is removed when this resource is destroyed.
      */
-    removeChildren?: pulumi.Input<boolean>;
+    removeChildren?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the snapshot.
      */

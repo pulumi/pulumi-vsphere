@@ -87,7 +87,7 @@ def get_content_library(name: Optional[_builtins.str] = None,
     return AwaitableGetContentLibraryResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_content_library_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_content_library_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContentLibraryResult]:
     """
     The `ContentLibrary` data source can be used to discover the ID of a

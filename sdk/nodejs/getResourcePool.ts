@@ -222,12 +222,12 @@ export interface GetResourcePoolOutputArgs {
      * `name` is an absolute path. For default datacenters, use the id attribute from
      * an empty `vsphere.Datacenter` data source.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource pool. This can be a name or
      * path. This is required when using vCenter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. When specified, the `name` parameter is used to find
@@ -239,5 +239,5 @@ export interface GetResourcePoolOutputArgs {
      * to specify either attribute to use this data source. An empty declaration will
      * load the ESXi host's root resource pool.
      */
-    parentResourcePoolId?: pulumi.Input<string>;
+    parentResourcePoolId?: pulumi.Input<string | undefined>;
 }

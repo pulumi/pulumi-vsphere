@@ -163,10 +163,10 @@ def get_host_pci_device(class_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         vendor_id=pulumi.get(__ret__, 'vendor_id'))
-def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               vendor_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_host_pci_device_output(class_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               vendor_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostPciDeviceResult]:
     """
     The `get_host_pci_device` data source can be used to discover the device ID

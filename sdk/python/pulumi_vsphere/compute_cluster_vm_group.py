@@ -20,8 +20,8 @@ __all__ = ['ComputeClusterVmGroupArgs', 'ComputeClusterVmGroup']
 class ComputeClusterVmGroupArgs:
     def __init__(__self__, *,
                  compute_cluster_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmGroup resource.
 
@@ -71,7 +71,7 @@ class ComputeClusterVmGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VM group. This must be unique in the
         cluster. Forces a new resource if changed.
@@ -79,12 +79,12 @@ class ComputeClusterVmGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineIds")
-    def virtual_machine_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def virtual_machine_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The UUIDs of the virtual machines in this
         group.
@@ -104,16 +104,16 @@ class ComputeClusterVmGroupArgs:
         return pulumi.get(self, "virtual_machine_ids")
 
     @virtual_machine_ids.setter
-    def virtual_machine_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def virtual_machine_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "virtual_machine_ids", value)
 
 
 @pulumi.input_type
 class _ComputeClusterVmGroupState:
     def __init__(__self__, *,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmGroup resources.
 
@@ -148,7 +148,7 @@ class _ComputeClusterVmGroupState:
 
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference
         ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -159,12 +159,12 @@ class _ComputeClusterVmGroupState:
         return pulumi.get(self, "compute_cluster_id")
 
     @compute_cluster_id.setter
-    def compute_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VM group. This must be unique in the
         cluster. Forces a new resource if changed.
@@ -172,12 +172,12 @@ class _ComputeClusterVmGroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineIds")
-    def virtual_machine_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def virtual_machine_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The UUIDs of the virtual machines in this
         group.
@@ -197,7 +197,7 @@ class _ComputeClusterVmGroupState:
         return pulumi.get(self, "virtual_machine_ids")
 
     @virtual_machine_ids.setter
-    def virtual_machine_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def virtual_machine_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "virtual_machine_ids", value)
 
 
@@ -207,9 +207,9 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `ComputeClusterVmGroup` resource can be used to manage groups of
@@ -244,6 +244,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
@@ -253,7 +254,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
-        vm = []
+        vm: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
                 name=f"pulumi-test-{range['value']}",
@@ -354,6 +355,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
@@ -363,7 +365,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
-        vm = []
+        vm: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
                 name=f"pulumi-test-{range['value']}",
@@ -416,9 +418,9 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,9 +445,9 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ComputeClusterVmGroup':
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ComputeClusterVmGroup':
         """
         Get an existing ComputeClusterVmGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

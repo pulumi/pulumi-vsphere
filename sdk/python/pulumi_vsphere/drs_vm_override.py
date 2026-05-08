@@ -21,8 +21,8 @@ class DrsVmOverrideArgs:
     def __init__(__self__, *,
                  compute_cluster_id: pulumi.Input[_builtins.str],
                  virtual_machine_id: pulumi.Input[_builtins.str],
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DrsVmOverride resource.
 
@@ -81,7 +81,7 @@ class DrsVmOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="drsAutomationLevel")
-    def drs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the automation level for this virtual
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -94,12 +94,12 @@ class DrsVmOverrideArgs:
         return pulumi.get(self, "drs_automation_level")
 
     @drs_automation_level.setter
-    def drs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnabled")
-    def drs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Overrides the default DRS setting for this virtual
         machine. Can be either `true` or `false`. Default: `false`.
@@ -107,17 +107,17 @@ class DrsVmOverrideArgs:
         return pulumi.get(self, "drs_enabled")
 
     @drs_enabled.setter
-    def drs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enabled", value)
 
 
 @pulumi.input_type
 class _DrsVmOverrideState:
     def __init__(__self__, *,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DrsVmOverride resources.
 
@@ -149,7 +149,7 @@ class _DrsVmOverrideState:
 
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference
         ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
@@ -160,12 +160,12 @@ class _DrsVmOverrideState:
         return pulumi.get(self, "compute_cluster_id")
 
     @compute_cluster_id.setter
-    def compute_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="drsAutomationLevel")
-    def drs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the automation level for this virtual
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -178,12 +178,12 @@ class _DrsVmOverrideState:
         return pulumi.get(self, "drs_automation_level")
 
     @drs_automation_level.setter
-    def drs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnabled")
-    def drs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Overrides the default DRS setting for this virtual
         machine. Can be either `true` or `false`. Default: `false`.
@@ -191,12 +191,12 @@ class _DrsVmOverrideState:
         return pulumi.get(self, "drs_enabled")
 
     @drs_enabled.setter
-    def drs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineId")
-    def virtual_machine_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_machine_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the virtual machine to create
         the override for.  Forces a new resource if changed.
@@ -204,7 +204,7 @@ class _DrsVmOverrideState:
         return pulumi.get(self, "virtual_machine_id")
 
     @virtual_machine_id.setter
-    def virtual_machine_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_machine_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_machine_id", value)
 
 
@@ -214,10 +214,10 @@ class DrsVmOverride(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `DrsVmOverride` resource can be used to add a DRS override to a
@@ -421,10 +421,10 @@ class DrsVmOverride(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -452,10 +452,10 @@ class DrsVmOverride(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DrsVmOverride':
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DrsVmOverride':
         """
         Get an existing DrsVmOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

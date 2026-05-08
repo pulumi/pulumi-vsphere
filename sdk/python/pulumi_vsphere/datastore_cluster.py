@@ -20,30 +20,30 @@ __all__ = ['DatastoreClusterArgs', 'DatastoreCluster']
 class DatastoreClusterArgs:
     def __init__(__self__, *,
                  datacenter_id: pulumi.Input[_builtins.str],
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_default_intra_vm_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_free_space_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_free_space_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_free_space_utilization_difference: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_io_latency_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_load_balance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_load_balance_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_utilization_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_default_intra_vm_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_free_space_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_free_space_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_free_space_utilization_difference: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_io_latency_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_load_balance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_io_load_imbalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_iops_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_load_balance_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_policy_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_rule_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_utilization_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_vm_evacuation_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DatastoreCluster resource.
 
@@ -160,7 +160,7 @@ class DatastoreClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
@@ -175,12 +175,12 @@ class DatastoreClusterArgs:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative path to a folder to put this datastore
         cluster in.  This is a path relative to the datacenter you are deploying the
@@ -193,60 +193,60 @@ class DatastoreClusterArgs:
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datastore cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsAdvancedOptions")
-    def sdrs_advanced_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def sdrs_advanced_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced configuration options for storage DRS.
         """
         return pulumi.get(self, "sdrs_advanced_options")
 
     @sdrs_advanced_options.setter
-    def sdrs_advanced_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def sdrs_advanced_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sdrs_advanced_options", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsAutomationLevel")
-    def sdrs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default automation level for all virtual machines in this storage cluster.
         """
         return pulumi.get(self, "sdrs_automation_level")
 
     @sdrs_automation_level.setter
-    def sdrs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsDefaultIntraVmAffinity")
-    def sdrs_default_intra_vm_affinity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdrs_default_intra_vm_affinity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
         """
         return pulumi.get(self, "sdrs_default_intra_vm_affinity")
 
     @sdrs_default_intra_vm_affinity.setter
-    def sdrs_default_intra_vm_affinity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdrs_default_intra_vm_affinity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdrs_default_intra_vm_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsEnabled")
-    def sdrs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdrs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Storage DRS for this datastore cluster.
         Default: `false`.
@@ -254,204 +254,204 @@ class DatastoreClusterArgs:
         return pulumi.get(self, "sdrs_enabled")
 
     @sdrs_enabled.setter
-    def sdrs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdrs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdrs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsFreeSpaceThreshold")
-    def sdrs_free_space_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_free_space_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         """
         return pulumi.get(self, "sdrs_free_space_threshold")
 
     @sdrs_free_space_threshold.setter
-    def sdrs_free_space_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_free_space_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_free_space_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsFreeSpaceThresholdMode")
-    def sdrs_free_space_threshold_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_free_space_threshold_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         """
         return pulumi.get(self, "sdrs_free_space_threshold_mode")
 
     @sdrs_free_space_threshold_mode.setter
-    def sdrs_free_space_threshold_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_free_space_threshold_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_free_space_threshold_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsFreeSpaceUtilizationDifference")
-    def sdrs_free_space_utilization_difference(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_free_space_utilization_difference(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         """
         return pulumi.get(self, "sdrs_free_space_utilization_difference")
 
     @sdrs_free_space_utilization_difference.setter
-    def sdrs_free_space_utilization_difference(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_free_space_utilization_difference(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_free_space_utilization_difference", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoBalanceAutomationLevel")
-    def sdrs_io_balance_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_io_balance_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting I/O load imbalances.
         """
         return pulumi.get(self, "sdrs_io_balance_automation_level")
 
     @sdrs_io_balance_automation_level.setter
-    def sdrs_io_balance_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_io_balance_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_io_balance_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoLatencyThreshold")
-    def sdrs_io_latency_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_latency_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         """
         return pulumi.get(self, "sdrs_io_latency_threshold")
 
     @sdrs_io_latency_threshold.setter
-    def sdrs_io_latency_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_latency_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_latency_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoLoadBalanceEnabled")
-    def sdrs_io_load_balance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdrs_io_load_balance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable I/O load balancing for this datastore cluster.
         """
         return pulumi.get(self, "sdrs_io_load_balance_enabled")
 
     @sdrs_io_load_balance_enabled.setter
-    def sdrs_io_load_balance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdrs_io_load_balance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdrs_io_load_balance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoLoadImbalanceThreshold")
-    def sdrs_io_load_imbalance_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_load_imbalance_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
         """
         return pulumi.get(self, "sdrs_io_load_imbalance_threshold")
 
     @sdrs_io_load_imbalance_threshold.setter
-    def sdrs_io_load_imbalance_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_load_imbalance_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_load_imbalance_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoReservableIopsThreshold")
-    def sdrs_io_reservable_iops_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_reservable_iops_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 
     @sdrs_io_reservable_iops_threshold.setter
-    def sdrs_io_reservable_iops_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_reservable_iops_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_reservable_iops_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoReservablePercentThreshold")
-    def sdrs_io_reservable_percent_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_reservable_percent_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         """
         return pulumi.get(self, "sdrs_io_reservable_percent_threshold")
 
     @sdrs_io_reservable_percent_threshold.setter
-    def sdrs_io_reservable_percent_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_reservable_percent_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_reservable_percent_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoReservableThresholdMode")
-    def sdrs_io_reservable_threshold_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_io_reservable_threshold_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         """
         return pulumi.get(self, "sdrs_io_reservable_threshold_mode")
 
     @sdrs_io_reservable_threshold_mode.setter
-    def sdrs_io_reservable_threshold_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_io_reservable_threshold_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_io_reservable_threshold_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsLoadBalanceInterval")
-    def sdrs_load_balance_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_load_balance_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage DRS poll interval, in minutes.
         """
         return pulumi.get(self, "sdrs_load_balance_interval")
 
     @sdrs_load_balance_interval.setter
-    def sdrs_load_balance_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_load_balance_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_load_balance_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsPolicyEnforcementAutomationLevel")
-    def sdrs_policy_enforcement_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_policy_enforcement_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting storage and VM policy violations.
         """
         return pulumi.get(self, "sdrs_policy_enforcement_automation_level")
 
     @sdrs_policy_enforcement_automation_level.setter
-    def sdrs_policy_enforcement_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_policy_enforcement_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_policy_enforcement_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsRuleEnforcementAutomationLevel")
-    def sdrs_rule_enforcement_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_rule_enforcement_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting affinity rule violations.
         """
         return pulumi.get(self, "sdrs_rule_enforcement_automation_level")
 
     @sdrs_rule_enforcement_automation_level.setter
-    def sdrs_rule_enforcement_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_rule_enforcement_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_rule_enforcement_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsSpaceBalanceAutomationLevel")
-    def sdrs_space_balance_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_space_balance_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting disk space imbalances.
         """
         return pulumi.get(self, "sdrs_space_balance_automation_level")
 
     @sdrs_space_balance_automation_level.setter
-    def sdrs_space_balance_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_space_balance_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_space_balance_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsSpaceUtilizationThreshold")
-    def sdrs_space_utilization_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_space_utilization_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")
 
     @sdrs_space_utilization_threshold.setter
-    def sdrs_space_utilization_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_space_utilization_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_space_utilization_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsVmEvacuationAutomationLevel")
-    def sdrs_vm_evacuation_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_vm_evacuation_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when generating recommendations for datastore evacuation.
         """
         return pulumi.get(self, "sdrs_vm_evacuation_automation_level")
 
     @sdrs_vm_evacuation_automation_level.setter
-    def sdrs_vm_evacuation_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_vm_evacuation_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_vm_evacuation_automation_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. See
         [here][docs-applying-tags] for a reference on how to apply tags.
@@ -462,38 +462,38 @@ class DatastoreClusterArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DatastoreClusterState:
     def __init__(__self__, *,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_default_intra_vm_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_free_space_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_free_space_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_free_space_utilization_difference: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_io_latency_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_load_balance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_load_balance_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_utilization_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_default_intra_vm_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_free_space_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_free_space_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_free_space_utilization_difference: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_io_latency_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_load_balance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_io_load_imbalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_iops_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_load_balance_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_policy_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_rule_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_utilization_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_vm_evacuation_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DatastoreCluster resources.
 
@@ -597,7 +597,7 @@ class _DatastoreClusterState:
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
@@ -612,12 +612,12 @@ class _DatastoreClusterState:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object ID][docs-about-morefs] of
         the datacenter to create the datastore cluster in. Forces a new resource if
@@ -626,12 +626,12 @@ class _DatastoreClusterState:
         return pulumi.get(self, "datacenter_id")
 
     @datacenter_id.setter
-    def datacenter_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative path to a folder to put this datastore
         cluster in.  This is a path relative to the datacenter you are deploying the
@@ -644,60 +644,60 @@ class _DatastoreClusterState:
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datastore cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsAdvancedOptions")
-    def sdrs_advanced_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def sdrs_advanced_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced configuration options for storage DRS.
         """
         return pulumi.get(self, "sdrs_advanced_options")
 
     @sdrs_advanced_options.setter
-    def sdrs_advanced_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def sdrs_advanced_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sdrs_advanced_options", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsAutomationLevel")
-    def sdrs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default automation level for all virtual machines in this storage cluster.
         """
         return pulumi.get(self, "sdrs_automation_level")
 
     @sdrs_automation_level.setter
-    def sdrs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsDefaultIntraVmAffinity")
-    def sdrs_default_intra_vm_affinity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdrs_default_intra_vm_affinity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
         """
         return pulumi.get(self, "sdrs_default_intra_vm_affinity")
 
     @sdrs_default_intra_vm_affinity.setter
-    def sdrs_default_intra_vm_affinity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdrs_default_intra_vm_affinity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdrs_default_intra_vm_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsEnabled")
-    def sdrs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdrs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Storage DRS for this datastore cluster.
         Default: `false`.
@@ -705,204 +705,204 @@ class _DatastoreClusterState:
         return pulumi.get(self, "sdrs_enabled")
 
     @sdrs_enabled.setter
-    def sdrs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdrs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdrs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsFreeSpaceThreshold")
-    def sdrs_free_space_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_free_space_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         """
         return pulumi.get(self, "sdrs_free_space_threshold")
 
     @sdrs_free_space_threshold.setter
-    def sdrs_free_space_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_free_space_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_free_space_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsFreeSpaceThresholdMode")
-    def sdrs_free_space_threshold_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_free_space_threshold_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         """
         return pulumi.get(self, "sdrs_free_space_threshold_mode")
 
     @sdrs_free_space_threshold_mode.setter
-    def sdrs_free_space_threshold_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_free_space_threshold_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_free_space_threshold_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsFreeSpaceUtilizationDifference")
-    def sdrs_free_space_utilization_difference(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_free_space_utilization_difference(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         """
         return pulumi.get(self, "sdrs_free_space_utilization_difference")
 
     @sdrs_free_space_utilization_difference.setter
-    def sdrs_free_space_utilization_difference(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_free_space_utilization_difference(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_free_space_utilization_difference", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoBalanceAutomationLevel")
-    def sdrs_io_balance_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_io_balance_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting I/O load imbalances.
         """
         return pulumi.get(self, "sdrs_io_balance_automation_level")
 
     @sdrs_io_balance_automation_level.setter
-    def sdrs_io_balance_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_io_balance_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_io_balance_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoLatencyThreshold")
-    def sdrs_io_latency_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_latency_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         """
         return pulumi.get(self, "sdrs_io_latency_threshold")
 
     @sdrs_io_latency_threshold.setter
-    def sdrs_io_latency_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_latency_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_latency_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoLoadBalanceEnabled")
-    def sdrs_io_load_balance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdrs_io_load_balance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable I/O load balancing for this datastore cluster.
         """
         return pulumi.get(self, "sdrs_io_load_balance_enabled")
 
     @sdrs_io_load_balance_enabled.setter
-    def sdrs_io_load_balance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdrs_io_load_balance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdrs_io_load_balance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoLoadImbalanceThreshold")
-    def sdrs_io_load_imbalance_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_load_imbalance_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
         """
         return pulumi.get(self, "sdrs_io_load_imbalance_threshold")
 
     @sdrs_io_load_imbalance_threshold.setter
-    def sdrs_io_load_imbalance_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_load_imbalance_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_load_imbalance_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoReservableIopsThreshold")
-    def sdrs_io_reservable_iops_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_reservable_iops_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 
     @sdrs_io_reservable_iops_threshold.setter
-    def sdrs_io_reservable_iops_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_reservable_iops_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_reservable_iops_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoReservablePercentThreshold")
-    def sdrs_io_reservable_percent_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_io_reservable_percent_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         """
         return pulumi.get(self, "sdrs_io_reservable_percent_threshold")
 
     @sdrs_io_reservable_percent_threshold.setter
-    def sdrs_io_reservable_percent_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_io_reservable_percent_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_io_reservable_percent_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIoReservableThresholdMode")
-    def sdrs_io_reservable_threshold_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_io_reservable_threshold_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         """
         return pulumi.get(self, "sdrs_io_reservable_threshold_mode")
 
     @sdrs_io_reservable_threshold_mode.setter
-    def sdrs_io_reservable_threshold_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_io_reservable_threshold_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_io_reservable_threshold_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsLoadBalanceInterval")
-    def sdrs_load_balance_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_load_balance_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage DRS poll interval, in minutes.
         """
         return pulumi.get(self, "sdrs_load_balance_interval")
 
     @sdrs_load_balance_interval.setter
-    def sdrs_load_balance_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_load_balance_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_load_balance_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsPolicyEnforcementAutomationLevel")
-    def sdrs_policy_enforcement_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_policy_enforcement_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting storage and VM policy violations.
         """
         return pulumi.get(self, "sdrs_policy_enforcement_automation_level")
 
     @sdrs_policy_enforcement_automation_level.setter
-    def sdrs_policy_enforcement_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_policy_enforcement_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_policy_enforcement_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsRuleEnforcementAutomationLevel")
-    def sdrs_rule_enforcement_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_rule_enforcement_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting affinity rule violations.
         """
         return pulumi.get(self, "sdrs_rule_enforcement_automation_level")
 
     @sdrs_rule_enforcement_automation_level.setter
-    def sdrs_rule_enforcement_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_rule_enforcement_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_rule_enforcement_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsSpaceBalanceAutomationLevel")
-    def sdrs_space_balance_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_space_balance_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when correcting disk space imbalances.
         """
         return pulumi.get(self, "sdrs_space_balance_automation_level")
 
     @sdrs_space_balance_automation_level.setter
-    def sdrs_space_balance_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_space_balance_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_space_balance_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsSpaceUtilizationThreshold")
-    def sdrs_space_utilization_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdrs_space_utilization_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")
 
     @sdrs_space_utilization_threshold.setter
-    def sdrs_space_utilization_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdrs_space_utilization_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdrs_space_utilization_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsVmEvacuationAutomationLevel")
-    def sdrs_vm_evacuation_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_vm_evacuation_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default automation settings when generating recommendations for datastore evacuation.
         """
         return pulumi.get(self, "sdrs_vm_evacuation_automation_level")
 
     @sdrs_vm_evacuation_automation_level.setter
-    def sdrs_vm_evacuation_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_vm_evacuation_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_vm_evacuation_automation_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. See
         [here][docs-applying-tags] for a reference on how to apply tags.
@@ -913,7 +913,7 @@ class _DatastoreClusterState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -923,31 +923,31 @@ class DatastoreCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_default_intra_vm_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_free_space_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_free_space_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_free_space_utilization_difference: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_io_latency_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_load_balance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_load_balance_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_utilization_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_default_intra_vm_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_free_space_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_free_space_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_free_space_utilization_difference: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_io_latency_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_load_balance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_io_load_imbalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_iops_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_load_balance_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_policy_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_rule_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_utilization_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_vm_evacuation_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `DatastoreCluster` resource can be used to create and manage
@@ -1169,31 +1169,31 @@ class DatastoreCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_default_intra_vm_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_free_space_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_free_space_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_free_space_utilization_difference: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_io_latency_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_load_balance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_load_balance_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_space_utilization_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_default_intra_vm_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_free_space_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_free_space_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_free_space_utilization_difference: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_io_latency_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_load_balance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sdrs_io_load_imbalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_iops_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_io_reservable_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_load_balance_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_policy_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_rule_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_space_utilization_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdrs_vm_evacuation_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1240,31 +1240,31 @@ class DatastoreCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_default_intra_vm_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-            sdrs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            sdrs_free_space_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_free_space_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_free_space_utilization_difference: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_io_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_io_latency_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_io_load_balance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_load_balance_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_space_balance_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_space_utilization_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DatastoreCluster':
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_default_intra_vm_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+            sdrs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sdrs_free_space_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_free_space_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_free_space_utilization_difference: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_io_latency_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_load_balance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sdrs_io_load_imbalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_reservable_iops_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_reservable_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_reservable_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_load_balance_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_policy_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_rule_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_space_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_space_utilization_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_vm_evacuation_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DatastoreCluster':
         """
         Get an existing DatastoreCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

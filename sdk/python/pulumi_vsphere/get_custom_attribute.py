@@ -102,7 +102,7 @@ def get_custom_attribute(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         managed_object_type=pulumi.get(__ret__, 'managed_object_type'),
         name=pulumi.get(__ret__, 'name'))
-def get_custom_attribute_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_custom_attribute_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomAttributeResult]:
     """
     The `CustomAttribute` data source can be used to reference custom

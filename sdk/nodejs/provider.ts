@@ -104,55 +104,55 @@ export interface ProviderArgs {
     /**
      * If set, VMware vSphere client will permit unverifiable SSL certificates.
      */
-    allowUnverifiedSsl?: pulumi.Input<boolean>;
+    allowUnverifiedSsl?: pulumi.Input<boolean | undefined>;
     /**
      * API timeout in minutes (Default: 5)
      */
-    apiTimeout?: pulumi.Input<number>;
+    apiTimeout?: pulumi.Input<number | undefined>;
     /**
      * govmomi debug
      */
-    clientDebug?: pulumi.Input<boolean>;
+    clientDebug?: pulumi.Input<boolean | undefined>;
     /**
      * govmomi debug path for debug
      */
-    clientDebugPath?: pulumi.Input<string>;
+    clientDebugPath?: pulumi.Input<string | undefined>;
     /**
      * govmomi debug path for a single run
      */
-    clientDebugPathRun?: pulumi.Input<string>;
+    clientDebugPathRun?: pulumi.Input<string | undefined>;
     /**
      * The user password for vSphere API operations.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Persist vSphere client sessions to disk
      */
-    persistSession?: pulumi.Input<boolean>;
+    persistSession?: pulumi.Input<boolean | undefined>;
     /**
      * The directory to save vSphere REST API sessions to
      */
-    restSessionPath?: pulumi.Input<string>;
+    restSessionPath?: pulumi.Input<string | undefined>;
     /**
      * The user name for vSphere API operations.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
     /**
      * @deprecated This field has been renamed to vsphere_server.
      */
-    vcenterServer?: pulumi.Input<string>;
+    vcenterServer?: pulumi.Input<string | undefined>;
     /**
      * Keep alive interval for the VIM session in minutes
      */
-    vimKeepAlive?: pulumi.Input<number>;
+    vimKeepAlive?: pulumi.Input<number | undefined>;
     /**
      * The directory to save vSphere SOAP API sessions to
      */
-    vimSessionPath?: pulumi.Input<string>;
+    vimSessionPath?: pulumi.Input<string | undefined>;
     /**
      * The vSphere Server name for vSphere API operations.
      */
-    vsphereServer?: pulumi.Input<string>;
+    vsphereServer?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

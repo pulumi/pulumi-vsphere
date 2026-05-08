@@ -113,7 +113,7 @@ def get_configuration_profile(cluster_id: Optional[_builtins.str] = None,
         configuration=pulumi.get(__ret__, 'configuration'),
         id=pulumi.get(__ret__, 'id'),
         schema=pulumi.get(__ret__, 'schema'))
-def get_configuration_profile_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_configuration_profile_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigurationProfileResult]:
     """
     The `ConfigurationProfile` data source can be used to export the configuration and schema

@@ -152,7 +152,7 @@ import (
 //				HostSystemId: pulumi.String(pulumi.String(host.Id)),
 //				Folder:       pulumi.String("datastore-folder"),
 //				Disks: pulumi.StringArray{
-//					interface{}(available.Disks),
+//					toPulumiStringArray(available.Disks),
 //				},
 //			})
 //			if err != nil {
@@ -160,6 +160,14 @@ import (
 //			}
 //			return nil
 //		})
+//	}
+//
+//	func toPulumiStringArray(arr []string) pulumi.StringArray {
+//		var pulumiArr pulumi.StringArray
+//		for _, v := range arr {
+//			pulumiArr = append(pulumiArr, pulumi.String(v))
+//		}
+//		return pulumiArr
 //	}
 //
 // ```

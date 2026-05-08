@@ -334,18 +334,18 @@ export interface HostState {
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
      * `clusterManaged`.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * Can be set to `true` if compute cluster
      * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      */
-    clusterManaged?: pulumi.Input<boolean>;
+    clusterManaged?: pulumi.Input<boolean | undefined>;
     /**
      * If set to false then the host will be disconnected.
      * Default is `false`.
      */
-    connected?: pulumi.Input<boolean>;
+    connected?: pulumi.Input<boolean | undefined>;
     /**
      * A map of custom attribute IDs and string
      * values to apply to the resource. Please refer to the
@@ -357,46 +357,46 @@ export interface HostState {
      *
      * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * If set to `true` then it will force the host to be added,
      * even if the host is already connected to a different vCenter Server instance.
      * Default is `false`.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * FQDN or IP address of the host to be added.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The license key that will be applied to the host.
      * The license key is expected to be present in vSphere.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Set the lockdown state of the host. Valid options are
      * `disabled`, `normal`, and `strict`. Default is `disabled`.
      */
-    lockdown?: pulumi.Input<string>;
+    lockdown?: pulumi.Input<string | undefined>;
     /**
      * Set the management state of the host.
      * Default is `false`.
      */
-    maintenance?: pulumi.Input<boolean>;
+    maintenance?: pulumi.Input<boolean | undefined>;
     /**
      * Password that will be used by vSphere to authenticate
      * to the host.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Set Services on host, the settings to be set are based on service being set as part of import.
      */
-    services?: pulumi.Input<pulumi.Input<inputs.HostService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.HostService>[] | undefined>;
     /**
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
@@ -405,19 +405,19 @@ export interface HostState {
      * > **NOTE:** Tagging support is not supported on direct ESXi host
      * connections and require vCenter Server.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
      * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
     /**
      * Username that will be used by vSphere to authenticate
      * to the host.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -429,18 +429,18 @@ export interface HostArgs {
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
      * `clusterManaged`.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * Can be set to `true` if compute cluster
      * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      */
-    clusterManaged?: pulumi.Input<boolean>;
+    clusterManaged?: pulumi.Input<boolean | undefined>;
     /**
      * If set to false then the host will be disconnected.
      * Default is `false`.
      */
-    connected?: pulumi.Input<boolean>;
+    connected?: pulumi.Input<boolean | undefined>;
     /**
      * A map of custom attribute IDs and string
      * values to apply to the resource. Please refer to the
@@ -452,18 +452,18 @@ export interface HostArgs {
      *
      * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * If set to `true` then it will force the host to be added,
      * even if the host is already connected to a different vCenter Server instance.
      * Default is `false`.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * FQDN or IP address of the host to be added.
      */
@@ -472,17 +472,17 @@ export interface HostArgs {
      * The license key that will be applied to the host.
      * The license key is expected to be present in vSphere.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Set the lockdown state of the host. Valid options are
      * `disabled`, `normal`, and `strict`. Default is `disabled`.
      */
-    lockdown?: pulumi.Input<string>;
+    lockdown?: pulumi.Input<string | undefined>;
     /**
      * Set the management state of the host.
      * Default is `false`.
      */
-    maintenance?: pulumi.Input<boolean>;
+    maintenance?: pulumi.Input<boolean | undefined>;
     /**
      * Password that will be used by vSphere to authenticate
      * to the host.
@@ -491,7 +491,7 @@ export interface HostArgs {
     /**
      * Set Services on host, the settings to be set are based on service being set as part of import.
      */
-    services?: pulumi.Input<pulumi.Input<inputs.HostService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.HostService>[] | undefined>;
     /**
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
@@ -500,14 +500,14 @@ export interface HostArgs {
      * > **NOTE:** Tagging support is not supported on direct ESXi host
      * connections and require vCenter Server.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
      * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
     /**
      * Username that will be used by vSphere to authenticate
      * to the host.

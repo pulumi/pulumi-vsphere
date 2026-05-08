@@ -118,8 +118,8 @@ def get_tag(category_id: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_tag_output(category_id: Optional[pulumi.Input[_builtins.str]] = None,
-                   name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_output(category_id: pulumi.Input[Optional[_builtins.str]] = None,
+                   name: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
     The `Tag` data source can be used to reference tags that are not managed

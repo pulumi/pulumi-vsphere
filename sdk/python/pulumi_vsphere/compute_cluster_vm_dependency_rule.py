@@ -22,9 +22,9 @@ class ComputeClusterVmDependencyRuleArgs:
                  compute_cluster_id: pulumi.Input[_builtins.str],
                  dependency_vm_group_name: pulumi.Input[_builtins.str],
                  vm_group_name: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmDependencyRule resource.
 
@@ -109,19 +109,19 @@ class ComputeClusterVmDependencyRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -133,12 +133,12 @@ class ComputeClusterVmDependencyRuleArgs:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the
         cluster.
@@ -146,19 +146,19 @@ class ComputeClusterVmDependencyRuleArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ComputeClusterVmDependencyRuleState:
     def __init__(__self__, *,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependency_vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmDependencyRule resources.
 
@@ -200,7 +200,7 @@ class _ComputeClusterVmDependencyRuleState:
 
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference
         ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -211,12 +211,12 @@ class _ComputeClusterVmDependencyRuleState:
         return pulumi.get(self, "compute_cluster_id")
 
     @compute_cluster_id.setter
-    def compute_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dependencyVmGroupName")
-    def dependency_vm_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dependency_vm_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VM group that this
         rule depends on. The VMs defined in the group specified by
@@ -226,24 +226,24 @@ class _ComputeClusterVmDependencyRuleState:
         return pulumi.get(self, "dependency_vm_group_name")
 
     @dependency_vm_group_name.setter
-    def dependency_vm_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dependency_vm_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dependency_vm_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -255,12 +255,12 @@ class _ComputeClusterVmDependencyRuleState:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the
         cluster.
@@ -268,12 +268,12 @@ class _ComputeClusterVmDependencyRuleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmGroupName")
-    def vm_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VM group that is the subject of
         this rule. The VMs defined in this group will not be started until the VMs in
@@ -283,7 +283,7 @@ class _ComputeClusterVmDependencyRuleState:
         return pulumi.get(self, "vm_group_name")
 
     @vm_group_name.setter
-    def vm_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_group_name", value)
 
 
@@ -293,12 +293,12 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependency_vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ComputeClusterVmDependencyRule` resource can be used to manage
@@ -558,12 +558,12 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependency_vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -595,12 +595,12 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dependency_vm_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_group_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ComputeClusterVmDependencyRule':
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dependency_vm_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ComputeClusterVmDependencyRule':
         """
         Get an existing ComputeClusterVmDependencyRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

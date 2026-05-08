@@ -172,7 +172,7 @@ export interface GetHostPciDeviceOutputArgs {
      *
      * > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
      */
-    classId?: pulumi.Input<string>;
+    classId?: pulumi.Input<string | undefined>;
     /**
      * The [managed object reference ID][docs-about-morefs] of
      * a host.
@@ -182,9 +182,9 @@ export interface GetHostPciDeviceOutputArgs {
      * A regular expression that will be used to match the
      * host PCI device name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The hexadecimal PCI device vendor ID.
      */
-    vendorId?: pulumi.Input<string>;
+    vendorId?: pulumi.Input<string | undefined>;
 }

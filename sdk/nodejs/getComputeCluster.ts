@@ -131,7 +131,7 @@ export interface GetComputeClusterOutputArgs {
      * absolute path. For default datacenters, use the `id` attribute from an empty
      * `vsphere.Datacenter` data source.
      */
-    datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string | undefined>;
     /**
      * The name or absolute path to the cluster.
      */

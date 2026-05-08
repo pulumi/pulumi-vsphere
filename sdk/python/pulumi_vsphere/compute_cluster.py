@@ -22,74 +22,74 @@ __all__ = ['ComputeClusterArgs', 'ComputeCluster']
 class ComputeClusterArgs:
     def __init__(__self__, *,
                  datacenter_id: pulumi.Input[_builtins.str],
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 dpm_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enable_predictive_drs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enable_vm_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_migration_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_evacuate_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_performance_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_heartbeat_datastore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_component_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_dependency_restart_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_additional_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_cluster_exit_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_image: Optional[pulumi.Input['ComputeClusterHostImageArgs']] = None,
-                 host_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proactive_ha_moderate_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proactive_ha_severe_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_compression_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dedup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]] = None,
-                 vsan_dit_encryption_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dit_rekey_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 vsan_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_esa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]] = None,
-                 vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_stretched_cluster: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']] = None,
-                 vsan_unmap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 dpm_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enable_predictive_drs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enable_vm_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_admission_control_host_failure_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_performance_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_admission_control_resource_percentage_auto_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_resource_percentage_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_resource_percentage_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_use_explicit_size: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_heartbeat_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_heartbeat_datastore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_component_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_dependency_restart_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_additional_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_cluster_exit_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_image: pulumi.Input[Optional['ComputeClusterHostImageArgs']] = None,
+                 host_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_ha_moderate_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_provider_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proactive_ha_severe_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_compression_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dedup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_disk_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]] = None,
+                 vsan_dit_encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dit_rekey_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 vsan_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_esa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_fault_domains: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]] = None,
+                 vsan_network_diagnostic_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_remote_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_stretched_cluster: pulumi.Input[Optional['ComputeClusterVsanStretchedClusterArgs']] = None,
+                 vsan_unmap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_verbose_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ComputeCluster resource.
 
@@ -334,7 +334,7 @@ class ComputeClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
@@ -349,132 +349,132 @@ class ComputeClusterArgs:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmAutomationLevel")
-    def dpm_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dpm_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automation level for host power operations in this cluster. Can be one of manual or automated.
         """
         return pulumi.get(self, "dpm_automation_level")
 
     @dpm_automation_level.setter
-    def dpm_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dpm_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dpm_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmEnabled")
-    def dpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dpm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
         """
         return pulumi.get(self, "dpm_enabled")
 
     @dpm_enabled.setter
-    def dpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dpm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dpm_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmThreshold")
-    def dpm_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dpm_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         """
         return pulumi.get(self, "dpm_threshold")
 
     @dpm_threshold.setter
-    def dpm_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dpm_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dpm_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="drsAdvancedOptions")
-    def drs_advanced_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def drs_advanced_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced configuration options for DRS and DPM.
         """
         return pulumi.get(self, "drs_advanced_options")
 
     @drs_advanced_options.setter
-    def drs_advanced_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def drs_advanced_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "drs_advanced_options", value)
 
     @_builtins.property
     @pulumi.getter(name="drsAutomationLevel")
-    def drs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         """
         return pulumi.get(self, "drs_automation_level")
 
     @drs_automation_level.setter
-    def drs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnablePredictiveDrs")
-    def drs_enable_predictive_drs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enable_predictive_drs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, enables DRS to use data from vRealize Operations Manager to make proactive DRS recommendations.
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 
     @drs_enable_predictive_drs.setter
-    def drs_enable_predictive_drs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enable_predictive_drs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enable_predictive_drs", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnableVmOverrides")
-    def drs_enable_vm_overrides(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enable_vm_overrides(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, allows individual VM overrides within this cluster to be set.
         """
         return pulumi.get(self, "drs_enable_vm_overrides")
 
     @drs_enable_vm_overrides.setter
-    def drs_enable_vm_overrides(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enable_vm_overrides(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enable_vm_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnabled")
-    def drs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable DRS for this cluster.
         """
         return pulumi.get(self, "drs_enabled")
 
     @drs_enabled.setter
-    def drs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="drsMigrationThreshold")
-    def drs_migration_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def drs_migration_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         """
         return pulumi.get(self, "drs_migration_threshold")
 
     @drs_migration_threshold.setter
-    def drs_migration_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def drs_migration_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "drs_migration_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="drsScaleDescendantsShares")
-    def drs_scale_descendants_shares(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drs_scale_descendants_shares(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable scalable shares for all descendants of this cluster.
         """
         return pulumi.get(self, "drs_scale_descendants_shares")
 
     @drs_scale_descendants_shares.setter
-    def drs_scale_descendants_shares(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drs_scale_descendants_shares(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_scale_descendants_shares", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative path to a folder to put this cluster in.
         This is a path relative to the datacenter you are deploying the cluster to.
@@ -486,504 +486,504 @@ class ComputeClusterArgs:
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEvacuateOnDestroy")
-    def force_evacuate_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_evacuate_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 
     @force_evacuate_on_destroy.setter
-    def force_evacuate_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_evacuate_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_evacuate_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlFailoverHostSystemIds")
-    def ha_admission_control_failover_host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ha_admission_control_failover_host_system_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         """
         return pulumi.get(self, "ha_admission_control_failover_host_system_ids")
 
     @ha_admission_control_failover_host_system_ids.setter
-    def ha_admission_control_failover_host_system_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ha_admission_control_failover_host_system_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ha_admission_control_failover_host_system_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlHostFailureTolerance")
-    def ha_admission_control_host_failure_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_host_failure_tolerance(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_host_failure_tolerance")
 
     @ha_admission_control_host_failure_tolerance.setter
-    def ha_admission_control_host_failure_tolerance(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_host_failure_tolerance(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_host_failure_tolerance", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlPerformanceTolerance")
-    def ha_admission_control_performance_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_performance_tolerance(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
         """
         return pulumi.get(self, "ha_admission_control_performance_tolerance")
 
     @ha_admission_control_performance_tolerance.setter
-    def ha_admission_control_performance_tolerance(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_performance_tolerance(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_performance_tolerance", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlPolicy")
-    def ha_admission_control_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_admission_control_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
         """
         return pulumi.get(self, "ha_admission_control_policy")
 
     @ha_admission_control_policy.setter
-    def ha_admission_control_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_admission_control_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_admission_control_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlResourcePercentageAutoCompute")
-    def ha_admission_control_resource_percentage_auto_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_admission_control_resource_percentage_auto_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_auto_compute")
 
     @ha_admission_control_resource_percentage_auto_compute.setter
-    def ha_admission_control_resource_percentage_auto_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_admission_control_resource_percentage_auto_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_admission_control_resource_percentage_auto_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlResourcePercentageCpu")
-    def ha_admission_control_resource_percentage_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_resource_percentage_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_cpu")
 
     @ha_admission_control_resource_percentage_cpu.setter
-    def ha_admission_control_resource_percentage_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_resource_percentage_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_resource_percentage_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlResourcePercentageMemory")
-    def ha_admission_control_resource_percentage_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_resource_percentage_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_memory")
 
     @ha_admission_control_resource_percentage_memory.setter
-    def ha_admission_control_resource_percentage_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_resource_percentage_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_resource_percentage_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitCpu")
-    def ha_admission_control_slot_policy_explicit_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_slot_policy_explicit_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_explicit_cpu")
 
     @ha_admission_control_slot_policy_explicit_cpu.setter
-    def ha_admission_control_slot_policy_explicit_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_slot_policy_explicit_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_slot_policy_explicit_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitMemory")
-    def ha_admission_control_slot_policy_explicit_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_slot_policy_explicit_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_explicit_memory")
 
     @ha_admission_control_slot_policy_explicit_memory.setter
-    def ha_admission_control_slot_policy_explicit_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_slot_policy_explicit_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_slot_policy_explicit_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlSlotPolicyUseExplicitSize")
-    def ha_admission_control_slot_policy_use_explicit_size(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_admission_control_slot_policy_use_explicit_size(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_use_explicit_size")
 
     @ha_admission_control_slot_policy_use_explicit_size.setter
-    def ha_admission_control_slot_policy_use_explicit_size(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_admission_control_slot_policy_use_explicit_size(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_admission_control_slot_policy_use_explicit_size", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdvancedOptions")
-    def ha_advanced_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def ha_advanced_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced configuration options for vSphere HA.
         """
         return pulumi.get(self, "ha_advanced_options")
 
     @ha_advanced_options.setter
-    def ha_advanced_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def ha_advanced_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ha_advanced_options", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
-    def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_recovery_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
     @ha_datastore_apd_recovery_action.setter
-    def ha_datastore_apd_recovery_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_recovery_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_recovery_action", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponse")
-    def ha_datastore_apd_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
     @ha_datastore_apd_response.setter
-    def ha_datastore_apd_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponseDelay")
-    def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_datastore_apd_response_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
     @ha_datastore_apd_response_delay.setter
-    def ha_datastore_apd_response_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_datastore_apd_response_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_datastore_apd_response_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastorePdlResponse")
-    def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_pdl_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
     @ha_datastore_pdl_response.setter
-    def ha_datastore_pdl_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_pdl_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_pdl_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haEnabled")
-    def ha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable vSphere HA for this cluster.
         """
         return pulumi.get(self, "ha_enabled")
 
     @ha_enabled.setter
-    def ha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="haHeartbeatDatastoreIds")
-    def ha_heartbeat_datastore_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ha_heartbeat_datastore_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_ids")
 
     @ha_heartbeat_datastore_ids.setter
-    def ha_heartbeat_datastore_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ha_heartbeat_datastore_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ha_heartbeat_datastore_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="haHeartbeatDatastorePolicy")
-    def ha_heartbeat_datastore_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_heartbeat_datastore_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_policy")
 
     @ha_heartbeat_datastore_policy.setter
-    def ha_heartbeat_datastore_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_heartbeat_datastore_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_heartbeat_datastore_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="haHostIsolationResponse")
-    def ha_host_isolation_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_host_isolation_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
     @ha_host_isolation_response.setter
-    def ha_host_isolation_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_host_isolation_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_host_isolation_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haHostMonitoring")
-    def ha_host_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_host_monitoring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global setting that controls whether vSphere HA remediates VMs on host failure. Can be one of enabled or disabled.
         """
         return pulumi.get(self, "ha_host_monitoring")
 
     @ha_host_monitoring.setter
-    def ha_host_monitoring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_host_monitoring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_host_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmComponentProtection")
-    def ha_vm_component_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_component_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
         """
         return pulumi.get(self, "ha_vm_component_protection")
 
     @ha_vm_component_protection.setter
-    def ha_vm_component_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_component_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_component_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmDependencyRestartCondition")
-    def ha_vm_dependency_restart_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_dependency_restart_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
         """
         return pulumi.get(self, "ha_vm_dependency_restart_condition")
 
     @ha_vm_dependency_restart_condition.setter
-    def ha_vm_dependency_restart_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_dependency_restart_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_dependency_restart_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmFailureInterval")
-    def ha_vm_failure_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_failure_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
     @ha_vm_failure_interval.setter
-    def ha_vm_failure_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_failure_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_failure_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumFailureWindow")
-    def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_failure_window(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
     @ha_vm_maximum_failure_window.setter
-    def ha_vm_maximum_failure_window(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_failure_window(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_failure_window", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumResets")
-    def ha_vm_maximum_resets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_resets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of resets that HA will perform to a virtual machine when responding to a failure event.
         """
         return pulumi.get(self, "ha_vm_maximum_resets")
 
     @ha_vm_maximum_resets.setter
-    def ha_vm_maximum_resets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_resets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_resets", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMinimumUptime")
-    def ha_vm_minimum_uptime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_minimum_uptime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, that HA waits after powering on a virtual machine before monitoring for heartbeats.
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
     @ha_vm_minimum_uptime.setter
-    def ha_vm_minimum_uptime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_minimum_uptime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_minimum_uptime", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMonitoring")
-    def ha_vm_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_monitoring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
     @ha_vm_monitoring.setter
-    def ha_vm_monitoring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_monitoring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartAdditionalDelay")
-    def ha_vm_restart_additional_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_restart_additional_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Additional delay in seconds after ready condition is met. A VM is considered ready at this point.
         """
         return pulumi.get(self, "ha_vm_restart_additional_delay")
 
     @ha_vm_restart_additional_delay.setter
-    def ha_vm_restart_additional_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_restart_additional_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_restart_additional_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartPriority")
-    def ha_vm_restart_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_restart_priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
     @ha_vm_restart_priority.setter
-    def ha_vm_restart_priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_restart_priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_restart_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartTimeout")
-    def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_restart_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
     @ha_vm_restart_timeout.setter
-    def ha_vm_restart_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_restart_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_restart_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="hostClusterExitTimeout")
-    def host_cluster_exit_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def host_cluster_exit_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout for each host maintenance mode operation when removing hosts from a cluster.
         """
         return pulumi.get(self, "host_cluster_exit_timeout")
 
     @host_cluster_exit_timeout.setter
-    def host_cluster_exit_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def host_cluster_exit_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "host_cluster_exit_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="hostImage")
-    def host_image(self) -> Optional[pulumi.Input['ComputeClusterHostImageArgs']]:
+    def host_image(self) -> pulumi.Input[Optional['ComputeClusterHostImageArgs']]:
         """
         Details about the host image which should be applied to the cluster.
         """
         return pulumi.get(self, "host_image")
 
     @host_image.setter
-    def host_image(self, value: Optional[pulumi.Input['ComputeClusterHostImageArgs']]):
+    def host_image(self, value: pulumi.Input[Optional['ComputeClusterHostImageArgs']]):
         pulumi.set(self, "host_image", value)
 
     @_builtins.property
     @pulumi.getter(name="hostManaged")
-    def host_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Must be set if cluster enrollment is managed from host resource.
         """
         return pulumi.get(self, "host_managed")
 
     @host_managed.setter
-    def host_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="hostSystemIds")
-    def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def host_system_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The managed object IDs of the hosts to put in the cluster.
         """
         return pulumi.get(self, "host_system_ids")
 
     @host_system_ids.setter
-    def host_system_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def host_system_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "host_system_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaAutomationLevel")
-    def proactive_ha_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proactive_ha_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DRS behavior for proactive HA recommendations. Can be one of Automated or Manual.
         """
         return pulumi.get(self, "proactive_ha_automation_level")
 
     @proactive_ha_automation_level.setter
-    def proactive_ha_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proactive_ha_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proactive_ha_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaEnabled")
-    def proactive_ha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proactive_ha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
         """
         return pulumi.get(self, "proactive_ha_enabled")
 
     @proactive_ha_enabled.setter
-    def proactive_ha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proactive_ha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proactive_ha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaModerateRemediation")
-    def proactive_ha_moderate_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proactive_ha_moderate_remediation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         """
         return pulumi.get(self, "proactive_ha_moderate_remediation")
 
     @proactive_ha_moderate_remediation.setter
-    def proactive_ha_moderate_remediation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proactive_ha_moderate_remediation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proactive_ha_moderate_remediation", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaProviderIds")
-    def proactive_ha_provider_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def proactive_ha_provider_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of IDs for health update providers configured for this cluster.
         """
         return pulumi.get(self, "proactive_ha_provider_ids")
 
     @proactive_ha_provider_ids.setter
-    def proactive_ha_provider_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def proactive_ha_provider_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "proactive_ha_provider_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaSevereRemediation")
-    def proactive_ha_severe_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proactive_ha_severe_remediation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         """
         return pulumi.get(self, "proactive_ha_severe_remediation")
 
     @proactive_ha_severe_remediation.setter
-    def proactive_ha_severe_remediation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proactive_ha_severe_remediation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proactive_ha_severe_remediation", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. See
         [here][docs-applying-tags] for a reference on how to apply tags.
@@ -994,251 +994,251 @@ class ComputeClusterArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanCompressionEnabled")
-    def vsan_compression_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_compression_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN compression service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_compression_enabled")
 
     @vsan_compression_enabled.setter
-    def vsan_compression_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_compression_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_compression_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDedupEnabled")
-    def vsan_dedup_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_dedup_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN deduplication service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_dedup_enabled")
 
     @vsan_dedup_enabled.setter
-    def vsan_dedup_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_dedup_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_dedup_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDiskGroups")
-    def vsan_disk_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]:
+    def vsan_disk_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]:
         """
         A list of disk UUIDs to add to the vSAN cluster.
         """
         return pulumi.get(self, "vsan_disk_groups")
 
     @vsan_disk_groups.setter
-    def vsan_disk_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]):
+    def vsan_disk_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]):
         pulumi.set(self, "vsan_disk_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDitEncryptionEnabled")
-    def vsan_dit_encryption_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_dit_encryption_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN data-in-transit encryption is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_dit_encryption_enabled")
 
     @vsan_dit_encryption_enabled.setter
-    def vsan_dit_encryption_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_dit_encryption_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_dit_encryption_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDitRekeyInterval")
-    def vsan_dit_rekey_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vsan_dit_rekey_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
         """
         return pulumi.get(self, "vsan_dit_rekey_interval")
 
     @vsan_dit_rekey_interval.setter
-    def vsan_dit_rekey_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vsan_dit_rekey_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vsan_dit_rekey_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanEnabled")
-    def vsan_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_enabled")
 
     @vsan_enabled.setter
-    def vsan_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanEsaEnabled")
-    def vsan_esa_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_esa_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN ESA service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_esa_enabled")
 
     @vsan_esa_enabled.setter
-    def vsan_esa_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_esa_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_esa_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanFaultDomains")
-    def vsan_fault_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]:
+    def vsan_fault_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]:
         """
         The configuration for vSAN fault domains.
         """
         return pulumi.get(self, "vsan_fault_domains")
 
     @vsan_fault_domains.setter
-    def vsan_fault_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]):
+    def vsan_fault_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]):
         pulumi.set(self, "vsan_fault_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanNetworkDiagnosticModeEnabled")
-    def vsan_network_diagnostic_mode_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_network_diagnostic_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN network diagnostic mode is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_network_diagnostic_mode_enabled")
 
     @vsan_network_diagnostic_mode_enabled.setter
-    def vsan_network_diagnostic_mode_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_network_diagnostic_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_network_diagnostic_mode_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanPerformanceEnabled")
-    def vsan_performance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_performance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN performance service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_performance_enabled")
 
     @vsan_performance_enabled.setter
-    def vsan_performance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_performance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_performance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanRemoteDatastoreIds")
-    def vsan_remote_datastore_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vsan_remote_datastore_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The managed object IDs of the vSAN datastore to be mounted on the cluster.
         """
         return pulumi.get(self, "vsan_remote_datastore_ids")
 
     @vsan_remote_datastore_ids.setter
-    def vsan_remote_datastore_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vsan_remote_datastore_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vsan_remote_datastore_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanStretchedCluster")
-    def vsan_stretched_cluster(self) -> Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]:
+    def vsan_stretched_cluster(self) -> pulumi.Input[Optional['ComputeClusterVsanStretchedClusterArgs']]:
         """
         The configuration for stretched cluster.
         """
         return pulumi.get(self, "vsan_stretched_cluster")
 
     @vsan_stretched_cluster.setter
-    def vsan_stretched_cluster(self, value: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]):
+    def vsan_stretched_cluster(self, value: pulumi.Input[Optional['ComputeClusterVsanStretchedClusterArgs']]):
         pulumi.set(self, "vsan_stretched_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanUnmapEnabled")
-    def vsan_unmap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_unmap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN unmap service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_unmap_enabled")
 
     @vsan_unmap_enabled.setter
-    def vsan_unmap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_unmap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_unmap_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanVerboseModeEnabled")
-    def vsan_verbose_mode_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_verbose_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN verbose mode is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_verbose_mode_enabled")
 
     @vsan_verbose_mode_enabled.setter
-    def vsan_verbose_mode_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_verbose_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_verbose_mode_enabled", value)
 
 
 @pulumi.input_type
 class _ComputeClusterState:
     def __init__(__self__, *,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpm_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enable_predictive_drs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enable_vm_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_migration_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_evacuate_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_performance_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_heartbeat_datastore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_component_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_dependency_restart_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_additional_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_cluster_exit_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_image: Optional[pulumi.Input['ComputeClusterHostImageArgs']] = None,
-                 host_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proactive_ha_moderate_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proactive_ha_severe_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_compression_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dedup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]] = None,
-                 vsan_dit_encryption_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dit_rekey_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 vsan_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_esa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]] = None,
-                 vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_stretched_cluster: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']] = None,
-                 vsan_unmap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpm_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enable_predictive_drs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enable_vm_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_admission_control_host_failure_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_performance_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_admission_control_resource_percentage_auto_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_resource_percentage_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_resource_percentage_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_use_explicit_size: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_heartbeat_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_heartbeat_datastore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_component_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_dependency_restart_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_additional_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_cluster_exit_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_image: pulumi.Input[Optional['ComputeClusterHostImageArgs']] = None,
+                 host_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_ha_moderate_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_provider_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proactive_ha_severe_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_compression_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dedup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_disk_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]] = None,
+                 vsan_dit_encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dit_rekey_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 vsan_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_esa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_fault_domains: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]] = None,
+                 vsan_network_diagnostic_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_remote_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_stretched_cluster: pulumi.Input[Optional['ComputeClusterVsanStretchedClusterArgs']] = None,
+                 vsan_unmap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_verbose_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ComputeCluster resources.
 
@@ -1478,7 +1478,7 @@ class _ComputeClusterState:
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
@@ -1493,12 +1493,12 @@ class _ComputeClusterState:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object ID][docs-about-morefs] of
         the datacenter to create the cluster in. Forces a new resource if changed.
@@ -1506,132 +1506,132 @@ class _ComputeClusterState:
         return pulumi.get(self, "datacenter_id")
 
     @datacenter_id.setter
-    def datacenter_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmAutomationLevel")
-    def dpm_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dpm_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automation level for host power operations in this cluster. Can be one of manual or automated.
         """
         return pulumi.get(self, "dpm_automation_level")
 
     @dpm_automation_level.setter
-    def dpm_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dpm_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dpm_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmEnabled")
-    def dpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dpm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
         """
         return pulumi.get(self, "dpm_enabled")
 
     @dpm_enabled.setter
-    def dpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dpm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dpm_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmThreshold")
-    def dpm_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dpm_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         """
         return pulumi.get(self, "dpm_threshold")
 
     @dpm_threshold.setter
-    def dpm_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dpm_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dpm_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="drsAdvancedOptions")
-    def drs_advanced_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def drs_advanced_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced configuration options for DRS and DPM.
         """
         return pulumi.get(self, "drs_advanced_options")
 
     @drs_advanced_options.setter
-    def drs_advanced_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def drs_advanced_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "drs_advanced_options", value)
 
     @_builtins.property
     @pulumi.getter(name="drsAutomationLevel")
-    def drs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         """
         return pulumi.get(self, "drs_automation_level")
 
     @drs_automation_level.setter
-    def drs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnablePredictiveDrs")
-    def drs_enable_predictive_drs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enable_predictive_drs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, enables DRS to use data from vRealize Operations Manager to make proactive DRS recommendations.
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 
     @drs_enable_predictive_drs.setter
-    def drs_enable_predictive_drs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enable_predictive_drs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enable_predictive_drs", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnableVmOverrides")
-    def drs_enable_vm_overrides(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enable_vm_overrides(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, allows individual VM overrides within this cluster to be set.
         """
         return pulumi.get(self, "drs_enable_vm_overrides")
 
     @drs_enable_vm_overrides.setter
-    def drs_enable_vm_overrides(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enable_vm_overrides(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enable_vm_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="drsEnabled")
-    def drs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable DRS for this cluster.
         """
         return pulumi.get(self, "drs_enabled")
 
     @drs_enabled.setter
-    def drs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="drsMigrationThreshold")
-    def drs_migration_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def drs_migration_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         """
         return pulumi.get(self, "drs_migration_threshold")
 
     @drs_migration_threshold.setter
-    def drs_migration_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def drs_migration_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "drs_migration_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="drsScaleDescendantsShares")
-    def drs_scale_descendants_shares(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drs_scale_descendants_shares(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable scalable shares for all descendants of this cluster.
         """
         return pulumi.get(self, "drs_scale_descendants_shares")
 
     @drs_scale_descendants_shares.setter
-    def drs_scale_descendants_shares(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drs_scale_descendants_shares(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_scale_descendants_shares", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative path to a folder to put this cluster in.
         This is a path relative to the datacenter you are deploying the cluster to.
@@ -1643,504 +1643,504 @@ class _ComputeClusterState:
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEvacuateOnDestroy")
-    def force_evacuate_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_evacuate_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 
     @force_evacuate_on_destroy.setter
-    def force_evacuate_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_evacuate_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_evacuate_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlFailoverHostSystemIds")
-    def ha_admission_control_failover_host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ha_admission_control_failover_host_system_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         """
         return pulumi.get(self, "ha_admission_control_failover_host_system_ids")
 
     @ha_admission_control_failover_host_system_ids.setter
-    def ha_admission_control_failover_host_system_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ha_admission_control_failover_host_system_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ha_admission_control_failover_host_system_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlHostFailureTolerance")
-    def ha_admission_control_host_failure_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_host_failure_tolerance(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_host_failure_tolerance")
 
     @ha_admission_control_host_failure_tolerance.setter
-    def ha_admission_control_host_failure_tolerance(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_host_failure_tolerance(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_host_failure_tolerance", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlPerformanceTolerance")
-    def ha_admission_control_performance_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_performance_tolerance(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
         """
         return pulumi.get(self, "ha_admission_control_performance_tolerance")
 
     @ha_admission_control_performance_tolerance.setter
-    def ha_admission_control_performance_tolerance(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_performance_tolerance(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_performance_tolerance", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlPolicy")
-    def ha_admission_control_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_admission_control_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
         """
         return pulumi.get(self, "ha_admission_control_policy")
 
     @ha_admission_control_policy.setter
-    def ha_admission_control_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_admission_control_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_admission_control_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlResourcePercentageAutoCompute")
-    def ha_admission_control_resource_percentage_auto_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_admission_control_resource_percentage_auto_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_auto_compute")
 
     @ha_admission_control_resource_percentage_auto_compute.setter
-    def ha_admission_control_resource_percentage_auto_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_admission_control_resource_percentage_auto_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_admission_control_resource_percentage_auto_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlResourcePercentageCpu")
-    def ha_admission_control_resource_percentage_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_resource_percentage_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_cpu")
 
     @ha_admission_control_resource_percentage_cpu.setter
-    def ha_admission_control_resource_percentage_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_resource_percentage_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_resource_percentage_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlResourcePercentageMemory")
-    def ha_admission_control_resource_percentage_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_resource_percentage_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_memory")
 
     @ha_admission_control_resource_percentage_memory.setter
-    def ha_admission_control_resource_percentage_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_resource_percentage_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_resource_percentage_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitCpu")
-    def ha_admission_control_slot_policy_explicit_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_slot_policy_explicit_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_explicit_cpu")
 
     @ha_admission_control_slot_policy_explicit_cpu.setter
-    def ha_admission_control_slot_policy_explicit_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_slot_policy_explicit_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_slot_policy_explicit_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitMemory")
-    def ha_admission_control_slot_policy_explicit_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_admission_control_slot_policy_explicit_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_explicit_memory")
 
     @ha_admission_control_slot_policy_explicit_memory.setter
-    def ha_admission_control_slot_policy_explicit_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_admission_control_slot_policy_explicit_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_admission_control_slot_policy_explicit_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdmissionControlSlotPolicyUseExplicitSize")
-    def ha_admission_control_slot_policy_use_explicit_size(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_admission_control_slot_policy_use_explicit_size(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_use_explicit_size")
 
     @ha_admission_control_slot_policy_use_explicit_size.setter
-    def ha_admission_control_slot_policy_use_explicit_size(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_admission_control_slot_policy_use_explicit_size(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_admission_control_slot_policy_use_explicit_size", value)
 
     @_builtins.property
     @pulumi.getter(name="haAdvancedOptions")
-    def ha_advanced_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def ha_advanced_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced configuration options for vSphere HA.
         """
         return pulumi.get(self, "ha_advanced_options")
 
     @ha_advanced_options.setter
-    def ha_advanced_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def ha_advanced_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ha_advanced_options", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
-    def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_recovery_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
     @ha_datastore_apd_recovery_action.setter
-    def ha_datastore_apd_recovery_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_recovery_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_recovery_action", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponse")
-    def ha_datastore_apd_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
     @ha_datastore_apd_response.setter
-    def ha_datastore_apd_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponseDelay")
-    def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_datastore_apd_response_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
     @ha_datastore_apd_response_delay.setter
-    def ha_datastore_apd_response_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_datastore_apd_response_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_datastore_apd_response_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastorePdlResponse")
-    def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_pdl_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
     @ha_datastore_pdl_response.setter
-    def ha_datastore_pdl_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_pdl_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_pdl_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haEnabled")
-    def ha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable vSphere HA for this cluster.
         """
         return pulumi.get(self, "ha_enabled")
 
     @ha_enabled.setter
-    def ha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="haHeartbeatDatastoreIds")
-    def ha_heartbeat_datastore_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ha_heartbeat_datastore_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_ids")
 
     @ha_heartbeat_datastore_ids.setter
-    def ha_heartbeat_datastore_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ha_heartbeat_datastore_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ha_heartbeat_datastore_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="haHeartbeatDatastorePolicy")
-    def ha_heartbeat_datastore_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_heartbeat_datastore_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_policy")
 
     @ha_heartbeat_datastore_policy.setter
-    def ha_heartbeat_datastore_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_heartbeat_datastore_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_heartbeat_datastore_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="haHostIsolationResponse")
-    def ha_host_isolation_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_host_isolation_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
     @ha_host_isolation_response.setter
-    def ha_host_isolation_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_host_isolation_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_host_isolation_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haHostMonitoring")
-    def ha_host_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_host_monitoring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global setting that controls whether vSphere HA remediates VMs on host failure. Can be one of enabled or disabled.
         """
         return pulumi.get(self, "ha_host_monitoring")
 
     @ha_host_monitoring.setter
-    def ha_host_monitoring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_host_monitoring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_host_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmComponentProtection")
-    def ha_vm_component_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_component_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
         """
         return pulumi.get(self, "ha_vm_component_protection")
 
     @ha_vm_component_protection.setter
-    def ha_vm_component_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_component_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_component_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmDependencyRestartCondition")
-    def ha_vm_dependency_restart_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_dependency_restart_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
         """
         return pulumi.get(self, "ha_vm_dependency_restart_condition")
 
     @ha_vm_dependency_restart_condition.setter
-    def ha_vm_dependency_restart_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_dependency_restart_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_dependency_restart_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmFailureInterval")
-    def ha_vm_failure_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_failure_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
     @ha_vm_failure_interval.setter
-    def ha_vm_failure_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_failure_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_failure_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumFailureWindow")
-    def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_failure_window(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
     @ha_vm_maximum_failure_window.setter
-    def ha_vm_maximum_failure_window(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_failure_window(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_failure_window", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumResets")
-    def ha_vm_maximum_resets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_resets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of resets that HA will perform to a virtual machine when responding to a failure event.
         """
         return pulumi.get(self, "ha_vm_maximum_resets")
 
     @ha_vm_maximum_resets.setter
-    def ha_vm_maximum_resets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_resets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_resets", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMinimumUptime")
-    def ha_vm_minimum_uptime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_minimum_uptime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, that HA waits after powering on a virtual machine before monitoring for heartbeats.
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
     @ha_vm_minimum_uptime.setter
-    def ha_vm_minimum_uptime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_minimum_uptime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_minimum_uptime", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMonitoring")
-    def ha_vm_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_monitoring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
     @ha_vm_monitoring.setter
-    def ha_vm_monitoring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_monitoring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartAdditionalDelay")
-    def ha_vm_restart_additional_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_restart_additional_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Additional delay in seconds after ready condition is met. A VM is considered ready at this point.
         """
         return pulumi.get(self, "ha_vm_restart_additional_delay")
 
     @ha_vm_restart_additional_delay.setter
-    def ha_vm_restart_additional_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_restart_additional_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_restart_additional_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartPriority")
-    def ha_vm_restart_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_restart_priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
     @ha_vm_restart_priority.setter
-    def ha_vm_restart_priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_restart_priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_restart_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartTimeout")
-    def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_restart_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
     @ha_vm_restart_timeout.setter
-    def ha_vm_restart_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_restart_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_restart_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="hostClusterExitTimeout")
-    def host_cluster_exit_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def host_cluster_exit_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout for each host maintenance mode operation when removing hosts from a cluster.
         """
         return pulumi.get(self, "host_cluster_exit_timeout")
 
     @host_cluster_exit_timeout.setter
-    def host_cluster_exit_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def host_cluster_exit_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "host_cluster_exit_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="hostImage")
-    def host_image(self) -> Optional[pulumi.Input['ComputeClusterHostImageArgs']]:
+    def host_image(self) -> pulumi.Input[Optional['ComputeClusterHostImageArgs']]:
         """
         Details about the host image which should be applied to the cluster.
         """
         return pulumi.get(self, "host_image")
 
     @host_image.setter
-    def host_image(self, value: Optional[pulumi.Input['ComputeClusterHostImageArgs']]):
+    def host_image(self, value: pulumi.Input[Optional['ComputeClusterHostImageArgs']]):
         pulumi.set(self, "host_image", value)
 
     @_builtins.property
     @pulumi.getter(name="hostManaged")
-    def host_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Must be set if cluster enrollment is managed from host resource.
         """
         return pulumi.get(self, "host_managed")
 
     @host_managed.setter
-    def host_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="hostSystemIds")
-    def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def host_system_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The managed object IDs of the hosts to put in the cluster.
         """
         return pulumi.get(self, "host_system_ids")
 
     @host_system_ids.setter
-    def host_system_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def host_system_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "host_system_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaAutomationLevel")
-    def proactive_ha_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proactive_ha_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DRS behavior for proactive HA recommendations. Can be one of Automated or Manual.
         """
         return pulumi.get(self, "proactive_ha_automation_level")
 
     @proactive_ha_automation_level.setter
-    def proactive_ha_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proactive_ha_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proactive_ha_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaEnabled")
-    def proactive_ha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proactive_ha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
         """
         return pulumi.get(self, "proactive_ha_enabled")
 
     @proactive_ha_enabled.setter
-    def proactive_ha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proactive_ha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proactive_ha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaModerateRemediation")
-    def proactive_ha_moderate_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proactive_ha_moderate_remediation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         """
         return pulumi.get(self, "proactive_ha_moderate_remediation")
 
     @proactive_ha_moderate_remediation.setter
-    def proactive_ha_moderate_remediation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proactive_ha_moderate_remediation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proactive_ha_moderate_remediation", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaProviderIds")
-    def proactive_ha_provider_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def proactive_ha_provider_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of IDs for health update providers configured for this cluster.
         """
         return pulumi.get(self, "proactive_ha_provider_ids")
 
     @proactive_ha_provider_ids.setter
-    def proactive_ha_provider_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def proactive_ha_provider_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "proactive_ha_provider_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="proactiveHaSevereRemediation")
-    def proactive_ha_severe_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proactive_ha_severe_remediation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         """
         return pulumi.get(self, "proactive_ha_severe_remediation")
 
     @proactive_ha_severe_remediation.setter
-    def proactive_ha_severe_remediation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proactive_ha_severe_remediation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proactive_ha_severe_remediation", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePoolId")
-    def resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object ID][docs-about-morefs] of the primary
         resource pool for this cluster. This can be passed directly to the
@@ -2151,12 +2151,12 @@ class _ComputeClusterState:
         return pulumi.get(self, "resource_pool_id")
 
     @resource_pool_id.setter
-    def resource_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. See
         [here][docs-applying-tags] for a reference on how to apply tags.
@@ -2167,175 +2167,175 @@ class _ComputeClusterState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanCompressionEnabled")
-    def vsan_compression_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_compression_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN compression service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_compression_enabled")
 
     @vsan_compression_enabled.setter
-    def vsan_compression_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_compression_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_compression_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDedupEnabled")
-    def vsan_dedup_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_dedup_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN deduplication service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_dedup_enabled")
 
     @vsan_dedup_enabled.setter
-    def vsan_dedup_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_dedup_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_dedup_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDiskGroups")
-    def vsan_disk_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]:
+    def vsan_disk_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]:
         """
         A list of disk UUIDs to add to the vSAN cluster.
         """
         return pulumi.get(self, "vsan_disk_groups")
 
     @vsan_disk_groups.setter
-    def vsan_disk_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]):
+    def vsan_disk_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]]):
         pulumi.set(self, "vsan_disk_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDitEncryptionEnabled")
-    def vsan_dit_encryption_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_dit_encryption_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN data-in-transit encryption is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_dit_encryption_enabled")
 
     @vsan_dit_encryption_enabled.setter
-    def vsan_dit_encryption_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_dit_encryption_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_dit_encryption_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanDitRekeyInterval")
-    def vsan_dit_rekey_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vsan_dit_rekey_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
         """
         return pulumi.get(self, "vsan_dit_rekey_interval")
 
     @vsan_dit_rekey_interval.setter
-    def vsan_dit_rekey_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vsan_dit_rekey_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vsan_dit_rekey_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanEnabled")
-    def vsan_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_enabled")
 
     @vsan_enabled.setter
-    def vsan_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanEsaEnabled")
-    def vsan_esa_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_esa_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN ESA service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_esa_enabled")
 
     @vsan_esa_enabled.setter
-    def vsan_esa_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_esa_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_esa_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanFaultDomains")
-    def vsan_fault_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]:
+    def vsan_fault_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]:
         """
         The configuration for vSAN fault domains.
         """
         return pulumi.get(self, "vsan_fault_domains")
 
     @vsan_fault_domains.setter
-    def vsan_fault_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]):
+    def vsan_fault_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]):
         pulumi.set(self, "vsan_fault_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanNetworkDiagnosticModeEnabled")
-    def vsan_network_diagnostic_mode_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_network_diagnostic_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN network diagnostic mode is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_network_diagnostic_mode_enabled")
 
     @vsan_network_diagnostic_mode_enabled.setter
-    def vsan_network_diagnostic_mode_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_network_diagnostic_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_network_diagnostic_mode_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanPerformanceEnabled")
-    def vsan_performance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_performance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN performance service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_performance_enabled")
 
     @vsan_performance_enabled.setter
-    def vsan_performance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_performance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_performance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanRemoteDatastoreIds")
-    def vsan_remote_datastore_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vsan_remote_datastore_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The managed object IDs of the vSAN datastore to be mounted on the cluster.
         """
         return pulumi.get(self, "vsan_remote_datastore_ids")
 
     @vsan_remote_datastore_ids.setter
-    def vsan_remote_datastore_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vsan_remote_datastore_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vsan_remote_datastore_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanStretchedCluster")
-    def vsan_stretched_cluster(self) -> Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]:
+    def vsan_stretched_cluster(self) -> pulumi.Input[Optional['ComputeClusterVsanStretchedClusterArgs']]:
         """
         The configuration for stretched cluster.
         """
         return pulumi.get(self, "vsan_stretched_cluster")
 
     @vsan_stretched_cluster.setter
-    def vsan_stretched_cluster(self, value: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]):
+    def vsan_stretched_cluster(self, value: pulumi.Input[Optional['ComputeClusterVsanStretchedClusterArgs']]):
         pulumi.set(self, "vsan_stretched_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanUnmapEnabled")
-    def vsan_unmap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_unmap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN unmap service is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_unmap_enabled")
 
     @vsan_unmap_enabled.setter
-    def vsan_unmap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_unmap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_unmap_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vsanVerboseModeEnabled")
-    def vsan_verbose_mode_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vsan_verbose_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the vSAN verbose mode is enabled for the cluster.
         """
         return pulumi.get(self, "vsan_verbose_mode_enabled")
 
     @vsan_verbose_mode_enabled.setter
-    def vsan_verbose_mode_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vsan_verbose_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vsan_verbose_mode_enabled", value)
 
 
@@ -2345,75 +2345,75 @@ class ComputeCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpm_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enable_predictive_drs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enable_vm_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_migration_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_evacuate_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_performance_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_heartbeat_datastore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_component_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_dependency_restart_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_additional_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_cluster_exit_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_image: Optional[pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
-                 host_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proactive_ha_moderate_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proactive_ha_severe_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_compression_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dedup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
-                 vsan_dit_encryption_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dit_rekey_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 vsan_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_esa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
-                 vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_stretched_cluster: Optional[pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
-                 vsan_unmap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpm_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enable_predictive_drs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enable_vm_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_admission_control_host_failure_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_performance_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_admission_control_resource_percentage_auto_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_resource_percentage_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_resource_percentage_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_use_explicit_size: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_heartbeat_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_heartbeat_datastore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_component_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_dependency_restart_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_additional_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_cluster_exit_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_image: pulumi.Input[Optional[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
+                 host_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_ha_moderate_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_provider_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proactive_ha_severe_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_compression_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dedup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_disk_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
+                 vsan_dit_encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dit_rekey_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 vsan_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_esa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_fault_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
+                 vsan_network_diagnostic_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_remote_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_stretched_cluster: pulumi.Input[Optional[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
+                 vsan_unmap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_verbose_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         > **A note on the naming of this resource:** VMware refers to clusters of
@@ -2472,7 +2472,7 @@ class ComputeCluster(pulumi.CustomResource):
                 "esxi-03.example.com",
             ]
         datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
-        host = {__key: vsphere.get_host(name=__value,
+        host = {str(__key): vsphere.get_host(name=__value,
             datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.toset(input=hosts)["result"])}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
             name="pulumi-compute-cluster-test",
@@ -2701,7 +2701,7 @@ class ComputeCluster(pulumi.CustomResource):
                 "esxi-03.example.com",
             ]
         datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
-        host = {__key: vsphere.get_host(name=__value,
+        host = {str(__key): vsphere.get_host(name=__value,
             datacenter_id=datacenter_get_datacenter.id) for __key, __value in enumerate(std.toset(input=hosts)["result"])}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
             name="pulumi-compute-cluster-test",
@@ -2792,75 +2792,75 @@ class ComputeCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpm_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 drs_enable_predictive_drs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enable_vm_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 drs_migration_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 drs_scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_evacuate_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_performance_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ha_heartbeat_datastore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_component_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_dependency_restart_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_additional_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_cluster_exit_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_image: Optional[pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
-                 host_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proactive_ha_moderate_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proactive_ha_severe_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_compression_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dedup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
-                 vsan_dit_encryption_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_dit_rekey_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 vsan_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_esa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
-                 vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vsan_stretched_cluster: Optional[pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
-                 vsan_unmap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpm_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 drs_enable_predictive_drs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enable_vm_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_admission_control_host_failure_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_performance_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_admission_control_resource_percentage_auto_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_admission_control_resource_percentage_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_resource_percentage_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_explicit_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_admission_control_slot_policy_use_explicit_size: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_heartbeat_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ha_heartbeat_datastore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_component_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_dependency_restart_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_additional_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_cluster_exit_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_image: pulumi.Input[Optional[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
+                 host_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_ha_moderate_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 proactive_ha_provider_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proactive_ha_severe_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_compression_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dedup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_disk_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
+                 vsan_dit_encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_dit_rekey_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 vsan_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_esa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_fault_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
+                 vsan_network_diagnostic_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_remote_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vsan_stretched_cluster: pulumi.Input[Optional[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
+                 vsan_unmap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vsan_verbose_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2952,76 +2952,76 @@ class ComputeCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dpm_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            dpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            dpm_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            drs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            drs_enable_predictive_drs: Optional[pulumi.Input[_builtins.bool]] = None,
-            drs_enable_vm_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-            drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            drs_migration_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            drs_scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            force_evacuate_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_admission_control_performance_tolerance: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_admission_control_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-            ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[_builtins.bool]] = None,
-            ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ha_heartbeat_datastore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_host_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_component_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_dependency_restart_condition: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_restart_additional_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            host_cluster_exit_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            host_image: Optional[pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
-            host_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            proactive_ha_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            proactive_ha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            proactive_ha_moderate_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-            proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            proactive_ha_severe_remediation: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vsan_compression_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_dedup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
-            vsan_dit_encryption_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_dit_rekey_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            vsan_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_esa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
-            vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vsan_stretched_cluster: Optional[pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
-            vsan_unmap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ComputeCluster':
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dpm_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            dpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            dpm_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            drs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            drs_enable_predictive_drs: pulumi.Input[Optional[_builtins.bool]] = None,
+            drs_enable_vm_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+            drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ha_admission_control_host_failure_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_admission_control_performance_tolerance: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_admission_control_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_admission_control_resource_percentage_auto_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_admission_control_resource_percentage_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_admission_control_resource_percentage_memory: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_admission_control_slot_policy_explicit_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_admission_control_slot_policy_explicit_memory: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_admission_control_slot_policy_use_explicit_size: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_heartbeat_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ha_heartbeat_datastore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_host_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_component_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_dependency_restart_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_restart_additional_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            host_cluster_exit_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            host_image: pulumi.Input[Optional[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
+            host_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            proactive_ha_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            proactive_ha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            proactive_ha_moderate_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+            proactive_ha_provider_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            proactive_ha_severe_remediation: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vsan_compression_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_dedup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_disk_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
+            vsan_dit_encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_dit_rekey_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            vsan_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_esa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_fault_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
+            vsan_network_diagnostic_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_remote_datastore_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vsan_stretched_cluster: pulumi.Input[Optional[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
+            vsan_unmap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vsan_verbose_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ComputeCluster':
         """
         Get an existing ComputeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

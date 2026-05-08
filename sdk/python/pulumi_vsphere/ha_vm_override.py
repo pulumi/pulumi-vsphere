@@ -21,19 +21,19 @@ class HaVmOverrideArgs:
     def __init__(__self__, *,
                  compute_cluster_id: pulumi.Input[_builtins.str],
                  virtual_machine_id: pulumi.Input[_builtins.str],
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_monitoring_use_cluster_defaults: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_monitoring_use_cluster_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HaVmOverride resource.
 
@@ -108,179 +108,179 @@ class HaVmOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
-    def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_recovery_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
     @ha_datastore_apd_recovery_action.setter
-    def ha_datastore_apd_recovery_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_recovery_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_recovery_action", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponse")
-    def ha_datastore_apd_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
     @ha_datastore_apd_response.setter
-    def ha_datastore_apd_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponseDelay")
-    def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_datastore_apd_response_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
     @ha_datastore_apd_response_delay.setter
-    def ha_datastore_apd_response_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_datastore_apd_response_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_datastore_apd_response_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastorePdlResponse")
-    def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_pdl_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
     @ha_datastore_pdl_response.setter
-    def ha_datastore_pdl_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_pdl_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_pdl_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haHostIsolationResponse")
-    def ha_host_isolation_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_host_isolation_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
     @ha_host_isolation_response.setter
-    def ha_host_isolation_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_host_isolation_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_host_isolation_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmFailureInterval")
-    def ha_vm_failure_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_failure_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
     @ha_vm_failure_interval.setter
-    def ha_vm_failure_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_failure_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_failure_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumFailureWindow")
-    def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_failure_window(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
     @ha_vm_maximum_failure_window.setter
-    def ha_vm_maximum_failure_window(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_failure_window(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_failure_window", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumResets")
-    def ha_vm_maximum_resets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_resets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
         """
         return pulumi.get(self, "ha_vm_maximum_resets")
 
     @ha_vm_maximum_resets.setter
-    def ha_vm_maximum_resets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_resets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_resets", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMinimumUptime")
-    def ha_vm_minimum_uptime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_minimum_uptime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
     @ha_vm_minimum_uptime.setter
-    def ha_vm_minimum_uptime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_minimum_uptime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_minimum_uptime", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMonitoring")
-    def ha_vm_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_monitoring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
     @ha_vm_monitoring.setter
-    def ha_vm_monitoring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_monitoring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMonitoringUseClusterDefaults")
-    def ha_vm_monitoring_use_cluster_defaults(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_vm_monitoring_use_cluster_defaults(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
         """
         return pulumi.get(self, "ha_vm_monitoring_use_cluster_defaults")
 
     @ha_vm_monitoring_use_cluster_defaults.setter
-    def ha_vm_monitoring_use_cluster_defaults(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_vm_monitoring_use_cluster_defaults(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_vm_monitoring_use_cluster_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartPriority")
-    def ha_vm_restart_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_restart_priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
     @ha_vm_restart_priority.setter
-    def ha_vm_restart_priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_restart_priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_restart_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartTimeout")
-    def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_restart_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
     @ha_vm_restart_timeout.setter
-    def ha_vm_restart_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_restart_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_restart_timeout", value)
 
 
 @pulumi.input_type
 class _HaVmOverrideState:
     def __init__(__self__, *,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_monitoring_use_cluster_defaults: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_monitoring_use_cluster_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HaVmOverride resources.
 
@@ -333,182 +333,182 @@ class _HaVmOverrideState:
 
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The managed object ID of the cluster.
         """
         return pulumi.get(self, "compute_cluster_id")
 
     @compute_cluster_id.setter
-    def compute_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
-    def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_recovery_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
     @ha_datastore_apd_recovery_action.setter
-    def ha_datastore_apd_recovery_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_recovery_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_recovery_action", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponse")
-    def ha_datastore_apd_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_apd_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
     @ha_datastore_apd_response.setter
-    def ha_datastore_apd_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_apd_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_apd_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastoreApdResponseDelay")
-    def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_datastore_apd_response_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
     @ha_datastore_apd_response_delay.setter
-    def ha_datastore_apd_response_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_datastore_apd_response_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_datastore_apd_response_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="haDatastorePdlResponse")
-    def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_datastore_pdl_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
     @ha_datastore_pdl_response.setter
-    def ha_datastore_pdl_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_datastore_pdl_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_datastore_pdl_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haHostIsolationResponse")
-    def ha_host_isolation_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_host_isolation_response(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
     @ha_host_isolation_response.setter
-    def ha_host_isolation_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_host_isolation_response(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_host_isolation_response", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmFailureInterval")
-    def ha_vm_failure_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_failure_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
     @ha_vm_failure_interval.setter
-    def ha_vm_failure_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_failure_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_failure_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumFailureWindow")
-    def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_failure_window(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
     @ha_vm_maximum_failure_window.setter
-    def ha_vm_maximum_failure_window(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_failure_window(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_failure_window", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMaximumResets")
-    def ha_vm_maximum_resets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_maximum_resets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
         """
         return pulumi.get(self, "ha_vm_maximum_resets")
 
     @ha_vm_maximum_resets.setter
-    def ha_vm_maximum_resets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_maximum_resets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_maximum_resets", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMinimumUptime")
-    def ha_vm_minimum_uptime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_minimum_uptime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
     @ha_vm_minimum_uptime.setter
-    def ha_vm_minimum_uptime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_minimum_uptime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_minimum_uptime", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMonitoring")
-    def ha_vm_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_monitoring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
     @ha_vm_monitoring.setter
-    def ha_vm_monitoring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_monitoring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmMonitoringUseClusterDefaults")
-    def ha_vm_monitoring_use_cluster_defaults(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_vm_monitoring_use_cluster_defaults(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
         """
         return pulumi.get(self, "ha_vm_monitoring_use_cluster_defaults")
 
     @ha_vm_monitoring_use_cluster_defaults.setter
-    def ha_vm_monitoring_use_cluster_defaults(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_vm_monitoring_use_cluster_defaults(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_vm_monitoring_use_cluster_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartPriority")
-    def ha_vm_restart_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vm_restart_priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
     @ha_vm_restart_priority.setter
-    def ha_vm_restart_priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vm_restart_priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vm_restart_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="haVmRestartTimeout")
-    def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ha_vm_restart_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
     @ha_vm_restart_timeout.setter
-    def ha_vm_restart_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ha_vm_restart_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ha_vm_restart_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineId")
-    def virtual_machine_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_machine_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The managed object ID of the virtual machine.
         """
         return pulumi.get(self, "virtual_machine_id")
 
     @virtual_machine_id.setter
-    def virtual_machine_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_machine_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_machine_id", value)
 
 
@@ -518,21 +518,21 @@ class HaVmOverride(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_monitoring_use_cluster_defaults: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_monitoring_use_cluster_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `HaVmOverride` resource can be used to add an override for
@@ -735,21 +735,21 @@ class HaVmOverride(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_monitoring_use_cluster_defaults: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_monitoring_use_cluster_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -788,21 +788,21 @@ class HaVmOverride(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_datastore_apd_recovery_action: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_datastore_apd_response: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_datastore_apd_response_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_datastore_pdl_response: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_host_isolation_response: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_failure_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_maximum_failure_window: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_maximum_resets: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_minimum_uptime: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_vm_monitoring: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_monitoring_use_cluster_defaults: Optional[pulumi.Input[_builtins.bool]] = None,
-            ha_vm_restart_priority: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HaVmOverride':
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_monitoring_use_cluster_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HaVmOverride':
         """
         Get an existing HaVmOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

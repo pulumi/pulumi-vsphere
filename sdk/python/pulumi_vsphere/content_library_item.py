@@ -20,11 +20,11 @@ __all__ = ['ContentLibraryItemArgs', 'ContentLibraryItem']
 class ContentLibraryItemArgs:
     def __init__(__self__, *,
                  library_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContentLibraryItem resource.
 
@@ -62,55 +62,55 @@ class ContentLibraryItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the content library item.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileUrl")
-    def file_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File to import as the content library item.
         """
         return pulumi.get(self, "file_url")
 
     @file_url.setter
-    def file_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the item to be created in the content library.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceUuid")
-    def source_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Virtual machine UUID to clone to content library.
         """
         return pulumi.get(self, "source_uuid")
 
     @source_uuid.setter
-    def source_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of content library item.
         One of "ovf", "iso", or "vm-template". Default: `ovf`.
@@ -118,19 +118,19 @@ class ContentLibraryItemArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _ContentLibraryItemState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 library_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 library_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentLibraryItem resources.
 
@@ -157,67 +157,67 @@ class _ContentLibraryItemState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the content library item.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileUrl")
-    def file_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File to import as the content library item.
         """
         return pulumi.get(self, "file_url")
 
     @file_url.setter
-    def file_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_url", value)
 
     @_builtins.property
     @pulumi.getter(name="libraryId")
-    def library_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def library_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the content library in which to create the item.
         """
         return pulumi.get(self, "library_id")
 
     @library_id.setter
-    def library_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def library_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "library_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the item to be created in the content library.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceUuid")
-    def source_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Virtual machine UUID to clone to content library.
         """
         return pulumi.get(self, "source_uuid")
 
     @source_uuid.setter
-    def source_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of content library item.
         One of "ovf", "iso", or "vm-template". Default: `ovf`.
@@ -225,7 +225,7 @@ class _ContentLibraryItemState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -235,12 +235,12 @@ class ContentLibraryItem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 library_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 library_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ContentLibraryItem` resource can be used to create items in a
@@ -421,12 +421,12 @@ class ContentLibraryItem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 library_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 library_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -454,12 +454,12 @@ class ContentLibraryItem(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_url: Optional[pulumi.Input[_builtins.str]] = None,
-            library_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'ContentLibraryItem':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_url: pulumi.Input[Optional[_builtins.str]] = None,
+            library_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContentLibraryItem':
         """
         Get an existing ContentLibraryItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

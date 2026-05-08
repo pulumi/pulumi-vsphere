@@ -170,9 +170,9 @@ def get_resource_pool(datacenter_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent_resource_pool_id=pulumi.get(__ret__, 'parent_resource_pool_id'))
-def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             parent_resource_pool_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resource_pool_output(datacenter_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             parent_resource_pool_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcePoolResult]:
     """
     The `ResourcePool` data source can be used to discover the ID of a

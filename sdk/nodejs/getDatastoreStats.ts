@@ -147,7 +147,7 @@ export interface GetDatastoreStatsOutputArgs {
      * A mapping of the capacity for all datastore in the datacenter,
      * where the name of the datastore is used as key and the capacity as value.
      */
-    capacity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    capacity?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The
      * [managed object reference ID][docs-about-morefs] of the datacenter the
@@ -160,5 +160,5 @@ export interface GetDatastoreStatsOutputArgs {
      * datacenter, where the name of the datastore is used as key and the free space
      * as value.
      */
-    freeSpace?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    freeSpace?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

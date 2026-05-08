@@ -178,30 +178,30 @@ using VSphere = Pulumi.VSphere;
 
 return await Deployment.RunAsync(() =>
 {
-    var datacenter = VSphere.Index.GetDatacenter.Invoke(new()
+    var datacenter = VSphere.GetDatacenter.Invoke(new()
     {
         Name = "dc-01",
     });
 
-    var datastore = VSphere.Index.GetDatastore.Invoke(new()
+    var datastore = VSphere.GetDatastore.Invoke(new()
     {
         Name = "datastore-01",
         DatacenterId = datacenter.Apply(getDatacenterResult => getDatacenterResult.Id),
     });
 
-    var cluster = VSphere.Index.GetComputeCluster.Invoke(new()
+    var cluster = VSphere.GetComputeCluster.Invoke(new()
     {
         Name = "cluster-01",
         DatacenterId = datacenter.Apply(getDatacenterResult => getDatacenterResult.Id),
     });
 
-    var network = VSphere.Index.GetNetwork.Invoke(new()
+    var network = VSphere.GetNetwork.Invoke(new()
     {
         Name = "VM Network",
         DatacenterId = datacenter.Apply(getDatacenterResult => getDatacenterResult.Id),
     });
 
-    var vm = new VSphere.Index.VirtualMachine("vm", new()
+    var vm = new VSphere.VirtualMachine("vm", new()
     {
         Name = "foo",
         ResourcePoolId = cluster.Apply(getComputeClusterResult => getComputeClusterResult.ResourcePoolId),
@@ -411,8 +411,8 @@ import com.pulumi.vsphere.VirtualMachine;
 import com.pulumi.vsphere.VirtualMachineArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

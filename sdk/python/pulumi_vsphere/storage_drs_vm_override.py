@@ -21,9 +21,9 @@ class StorageDrsVmOverrideArgs:
     def __init__(__self__, *,
                  datastore_cluster_id: pulumi.Input[_builtins.str],
                  virtual_machine_id: pulumi.Input[_builtins.str],
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_intra_vm_affinity: Optional[pulumi.Input[_builtins.str]] = None):
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_intra_vm_affinity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageDrsVmOverride resource.
 
@@ -89,7 +89,7 @@ class StorageDrsVmOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="sdrsAutomationLevel")
-    def sdrs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides any Storage DRS automation
         levels for this virtual machine. Can be one of `automated` or `manual`. When
@@ -101,12 +101,12 @@ class StorageDrsVmOverrideArgs:
         return pulumi.get(self, "sdrs_automation_level")
 
     @sdrs_automation_level.setter
-    def sdrs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsEnabled")
-    def sdrs_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default Storage DRS setting for
         this virtual machine. When not specified, the datastore cluster setting is
@@ -115,12 +115,12 @@ class StorageDrsVmOverrideArgs:
         return pulumi.get(self, "sdrs_enabled")
 
     @sdrs_enabled.setter
-    def sdrs_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIntraVmAffinity")
-    def sdrs_intra_vm_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_intra_vm_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the intra-VM affinity setting
         for this virtual machine. When `true`, all disks for this virtual machine
@@ -131,18 +131,18 @@ class StorageDrsVmOverrideArgs:
         return pulumi.get(self, "sdrs_intra_vm_affinity")
 
     @sdrs_intra_vm_affinity.setter
-    def sdrs_intra_vm_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_intra_vm_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_intra_vm_affinity", value)
 
 
 @pulumi.input_type
 class _StorageDrsVmOverrideState:
     def __init__(__self__, *,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_intra_vm_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_intra_vm_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageDrsVmOverride resources.
 
@@ -181,7 +181,7 @@ class _StorageDrsVmOverrideState:
 
     @_builtins.property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference
         ID][docs-about-morefs] of the datastore cluster to put the override in.
@@ -192,12 +192,12 @@ class _StorageDrsVmOverrideState:
         return pulumi.get(self, "datastore_cluster_id")
 
     @datastore_cluster_id.setter
-    def datastore_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsAutomationLevel")
-    def sdrs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_automation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides any Storage DRS automation
         levels for this virtual machine. Can be one of `automated` or `manual`. When
@@ -209,12 +209,12 @@ class _StorageDrsVmOverrideState:
         return pulumi.get(self, "sdrs_automation_level")
 
     @sdrs_automation_level.setter
-    def sdrs_automation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_automation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_automation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsEnabled")
-    def sdrs_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the default Storage DRS setting for
         this virtual machine. When not specified, the datastore cluster setting is
@@ -223,12 +223,12 @@ class _StorageDrsVmOverrideState:
         return pulumi.get(self, "sdrs_enabled")
 
     @sdrs_enabled.setter
-    def sdrs_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sdrsIntraVmAffinity")
-    def sdrs_intra_vm_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdrs_intra_vm_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overrides the intra-VM affinity setting
         for this virtual machine. When `true`, all disks for this virtual machine
@@ -239,12 +239,12 @@ class _StorageDrsVmOverrideState:
         return pulumi.get(self, "sdrs_intra_vm_affinity")
 
     @sdrs_intra_vm_affinity.setter
-    def sdrs_intra_vm_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdrs_intra_vm_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdrs_intra_vm_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineId")
-    def virtual_machine_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_machine_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the virtual machine to create
         the override for.  Forces a new resource if changed.
@@ -252,7 +252,7 @@ class _StorageDrsVmOverrideState:
         return pulumi.get(self, "virtual_machine_id")
 
     @virtual_machine_id.setter
-    def virtual_machine_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_machine_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_machine_id", value)
 
 
@@ -262,11 +262,11 @@ class StorageDrsVmOverride(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_intra_vm_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_intra_vm_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `StorageDrsVmOverride` resource can be used to add a Storage DRS
@@ -471,11 +471,11 @@ class StorageDrsVmOverride(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdrs_intra_vm_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdrs_intra_vm_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -504,11 +504,11 @@ class StorageDrsVmOverride(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_automation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-            sdrs_intra_vm_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'StorageDrsVmOverride':
+            datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_intra_vm_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageDrsVmOverride':
         """
         Get an existing StorageDrsVmOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

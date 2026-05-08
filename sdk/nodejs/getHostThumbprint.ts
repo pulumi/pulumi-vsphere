@@ -109,9 +109,9 @@ export interface GetHostThumbprintOutputArgs {
     /**
      * Disables SSL certificate verification. Default: `false`
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The port to use connecting to the ESXi host. Default: 443
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
 }

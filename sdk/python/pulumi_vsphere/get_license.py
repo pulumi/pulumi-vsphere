@@ -149,7 +149,7 @@ def get_license(license_key: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         total=pulumi.get(__ret__, 'total'),
         used=pulumi.get(__ret__, 'used'))
-def get_license_output(license_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_license_output(license_key: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLicenseResult]:
     """
     The `License` data source can be used to get the general attributes of

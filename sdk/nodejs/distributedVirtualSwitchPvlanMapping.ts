@@ -97,19 +97,19 @@ export interface DistributedVirtualSwitchPvlanMappingState {
     /**
      * The ID of the distributed virtual switch to attach this mapping to.
      */
-    distributedVirtualSwitchId?: pulumi.Input<string>;
+    distributedVirtualSwitchId?: pulumi.Input<string | undefined>;
     /**
      * The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      */
-    primaryVlanId?: pulumi.Input<number>;
+    primaryVlanId?: pulumi.Input<number | undefined>;
     /**
      * The private VLAN type. Valid values are promiscuous, community and isolated.
      */
-    pvlanType?: pulumi.Input<string>;
+    pvlanType?: pulumi.Input<string | undefined>;
     /**
      * The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      */
-    secondaryVlanId?: pulumi.Input<number>;
+    secondaryVlanId?: pulumi.Input<number | undefined>;
 }
 
 /**

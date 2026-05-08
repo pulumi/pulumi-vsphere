@@ -19,19 +19,19 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 allow_unverified_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_debug_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_debug_path_run: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 persist_session: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rest_session_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
-                 vcenter_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 vim_keep_alive: Optional[pulumi.Input[_builtins.int]] = None,
-                 vim_session_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsphere_server: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_unverified_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_debug_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_debug_path_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 persist_session: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rest_session_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
+                 vcenter_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 vim_keep_alive: pulumi.Input[Optional[_builtins.int]] = None,
+                 vim_session_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsphere_server: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -96,156 +96,156 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowUnverifiedSsl")
-    def allow_unverified_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_unverified_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, VMware vSphere client will permit unverifiable SSL certificates.
         """
         return pulumi.get(self, "allow_unverified_ssl")
 
     @allow_unverified_ssl.setter
-    def allow_unverified_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_unverified_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_unverified_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="apiTimeout")
-    def api_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def api_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         API timeout in minutes (Default: 5)
         """
         return pulumi.get(self, "api_timeout")
 
     @api_timeout.setter
-    def api_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def api_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "api_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="clientDebug")
-    def client_debug(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def client_debug(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         govmomi debug
         """
         return pulumi.get(self, "client_debug")
 
     @client_debug.setter
-    def client_debug(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def client_debug(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_debug", value)
 
     @_builtins.property
     @pulumi.getter(name="clientDebugPath")
-    def client_debug_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_debug_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         govmomi debug path for debug
         """
         return pulumi.get(self, "client_debug_path")
 
     @client_debug_path.setter
-    def client_debug_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_debug_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_debug_path", value)
 
     @_builtins.property
     @pulumi.getter(name="clientDebugPathRun")
-    def client_debug_path_run(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_debug_path_run(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         govmomi debug path for a single run
         """
         return pulumi.get(self, "client_debug_path_run")
 
     @client_debug_path_run.setter
-    def client_debug_path_run(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_debug_path_run(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_debug_path_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user password for vSphere API operations.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="persistSession")
-    def persist_session(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def persist_session(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Persist vSphere client sessions to disk
         """
         return pulumi.get(self, "persist_session")
 
     @persist_session.setter
-    def persist_session(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def persist_session(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "persist_session", value)
 
     @_builtins.property
     @pulumi.getter(name="restSessionPath")
-    def rest_session_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rest_session_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The directory to save vSphere REST API sessions to
         """
         return pulumi.get(self, "rest_session_path")
 
     @rest_session_path.setter
-    def rest_session_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rest_session_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rest_session_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name for vSphere API operations.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
     @_builtins.property
     @pulumi.getter(name="vcenterServer")
     @_utilities.deprecated("""This field has been renamed to vsphere_server.""")
-    def vcenter_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vcenter_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vcenter_server")
 
     @vcenter_server.setter
-    def vcenter_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vcenter_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vcenter_server", value)
 
     @_builtins.property
     @pulumi.getter(name="vimKeepAlive")
-    def vim_keep_alive(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vim_keep_alive(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Keep alive interval for the VIM session in minutes
         """
         return pulumi.get(self, "vim_keep_alive")
 
     @vim_keep_alive.setter
-    def vim_keep_alive(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vim_keep_alive(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vim_keep_alive", value)
 
     @_builtins.property
     @pulumi.getter(name="vimSessionPath")
-    def vim_session_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vim_session_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The directory to save vSphere SOAP API sessions to
         """
         return pulumi.get(self, "vim_session_path")
 
     @vim_session_path.setter
-    def vim_session_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vim_session_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vim_session_path", value)
 
     @_builtins.property
     @pulumi.getter(name="vsphereServer")
-    def vsphere_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsphere_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vSphere Server name for vSphere API operations.
         """
         return pulumi.get(self, "vsphere_server")
 
     @vsphere_server.setter
-    def vsphere_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsphere_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsphere_server", value)
 
 
@@ -255,19 +255,19 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_unverified_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_debug_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_debug_path_run: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 persist_session: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rest_session_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
-                 vcenter_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 vim_keep_alive: Optional[pulumi.Input[_builtins.int]] = None,
-                 vim_session_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsphere_server: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_unverified_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_debug_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_debug_path_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 persist_session: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rest_session_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
+                 vcenter_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 vim_keep_alive: pulumi.Input[Optional[_builtins.int]] = None,
+                 vim_session_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsphere_server: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the vsphere package. By default, resources use package-wide configuration
@@ -319,19 +319,19 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_unverified_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_debug_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_debug_path_run: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 persist_session: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rest_session_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
-                 vcenter_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 vim_keep_alive: Optional[pulumi.Input[_builtins.int]] = None,
-                 vim_session_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsphere_server: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_unverified_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_debug_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_debug_path_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 persist_session: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rest_session_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
+                 vcenter_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 vim_keep_alive: pulumi.Input[Optional[_builtins.int]] = None,
+                 vim_session_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsphere_server: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

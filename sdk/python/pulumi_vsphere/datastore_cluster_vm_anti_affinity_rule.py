@@ -21,9 +21,9 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
     def __init__(__self__, *,
                  datastore_cluster_id: pulumi.Input[_builtins.str],
                  virtual_machine_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatastoreClusterVmAntiAffinityRule resource.
 
@@ -89,19 +89,19 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -109,30 +109,30 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _DatastoreClusterVmAntiAffinityRuleState:
     def __init__(__self__, *,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DatastoreClusterVmAntiAffinityRule resources.
 
@@ -166,7 +166,7 @@ class _DatastoreClusterVmAntiAffinityRuleState:
 
     @_builtins.property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object reference
         ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
@@ -177,24 +177,24 @@ class _DatastoreClusterVmAntiAffinityRuleState:
         return pulumi.get(self, "datastore_cluster_id")
 
     @datastore_cluster_id.setter
-    def datastore_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -202,24 +202,24 @@ class _DatastoreClusterVmAntiAffinityRuleState:
         return pulumi.get(self, "mandatory")
 
     @mandatory.setter
-    def mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mandatory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule. This must be unique in the cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineIds")
-    def virtual_machine_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def virtual_machine_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The UUIDs of the virtual machines to run
         on different datastores from each other.
@@ -232,7 +232,7 @@ class _DatastoreClusterVmAntiAffinityRuleState:
         return pulumi.get(self, "virtual_machine_ids")
 
     @virtual_machine_ids.setter
-    def virtual_machine_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def virtual_machine_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "virtual_machine_ids", value)
 
 
@@ -242,11 +242,11 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `DatastoreClusterVmAntiAffinityRule` resource can be used to
@@ -282,6 +282,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
@@ -291,7 +292,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
-        vm = []
+        vm: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
                 name=f"pulumi-test-{range['value']}",
@@ -388,6 +389,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
@@ -397,7 +399,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
-        vm = []
+        vm: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
                 name=f"pulumi-test-{range['value']}",
@@ -450,11 +452,11 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -483,11 +485,11 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            datastore_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DatastoreClusterVmAntiAffinityRule':
+            datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DatastoreClusterVmAntiAffinityRule':
         """
         Get an existing DatastoreClusterVmAntiAffinityRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

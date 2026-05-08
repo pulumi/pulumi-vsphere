@@ -143,25 +143,25 @@ export interface TagCategoryState {
      * valid to be assigned to. For a full list, click
      * here.
      */
-    associableTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    associableTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of tags that can be assigned from this
      * category to a single object at once. Can be one of `SINGLE` (object can only
      * be assigned one tag in this category), to `MULTIPLE` (object can be assigned
      * multiple tags in this category). Forces a new resource if changed.
      */
-    cardinality?: pulumi.Input<string>;
+    cardinality?: pulumi.Input<string | undefined>;
     /**
      * A description for the category.
      *
      * > **NOTE:** You can add associable types to a category, but you cannot remove
      * them. Attempting to do so will result in an error.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the category.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,9 +187,9 @@ export interface TagCategoryArgs {
      * > **NOTE:** You can add associable types to a category, but you cannot remove
      * them. Attempting to do so will result in an error.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the category.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

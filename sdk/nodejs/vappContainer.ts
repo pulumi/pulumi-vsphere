@@ -282,19 +282,19 @@ export interface VappContainerState {
      * container can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    cpuExpandable?: pulumi.Input<boolean>;
+    cpuExpandable?: pulumi.Input<boolean | undefined>;
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited.
      * Default: `-1`
      */
-    cpuLimit?: pulumi.Input<number>;
+    cpuLimit?: pulumi.Input<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the vApp container. Default: `0`
      */
-    cpuReservation?: pulumi.Input<number>;
+    cpuReservation?: pulumi.Input<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -302,34 +302,34 @@ export interface VappContainerState {
      * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
-    cpuShareLevel?: pulumi.Input<string>;
+    cpuShareLevel?: pulumi.Input<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `cpuShareLevel` must be `custom`.
      */
-    cpuShares?: pulumi.Input<number>;
+    cpuShares?: pulumi.Input<number | undefined>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Determines if the reservation on a vApp
      * container can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    memoryExpandable?: pulumi.Input<boolean>;
+    memoryExpandable?: pulumi.Input<boolean | undefined>;
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      */
-    memoryLimit?: pulumi.Input<number>;
+    memoryLimit?: pulumi.Input<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the vApp container. Default: `0`
      */
-    memoryReservation?: pulumi.Input<number>;
+    memoryReservation?: pulumi.Input<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -337,22 +337,22 @@ export interface VappContainerState {
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
-    memoryShareLevel?: pulumi.Input<string>;
+    memoryShareLevel?: pulumi.Input<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `memoryShareLevel` must be `custom`.
      */
-    memoryShares?: pulumi.Input<number>;
+    memoryShares?: pulumi.Input<number | undefined>;
     /**
      * The name of the vApp container.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the vApp container's parent folder.
      */
-    parentFolderId?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
@@ -360,7 +360,7 @@ export interface VappContainerState {
      * from one parent resource pool to another, both must share a common root
      * resource pool or the move will fail.
      */
-    parentResourcePoolId?: pulumi.Input<string>;
+    parentResourcePoolId?: pulumi.Input<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
@@ -368,7 +368,7 @@ export interface VappContainerState {
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -380,19 +380,19 @@ export interface VappContainerArgs {
      * container can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    cpuExpandable?: pulumi.Input<boolean>;
+    cpuExpandable?: pulumi.Input<boolean | undefined>;
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited.
      * Default: `-1`
      */
-    cpuLimit?: pulumi.Input<number>;
+    cpuLimit?: pulumi.Input<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the vApp container. Default: `0`
      */
-    cpuReservation?: pulumi.Input<number>;
+    cpuReservation?: pulumi.Input<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -400,34 +400,34 @@ export interface VappContainerArgs {
      * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
-    cpuShareLevel?: pulumi.Input<string>;
+    cpuShareLevel?: pulumi.Input<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `cpuShareLevel` must be `custom`.
      */
-    cpuShares?: pulumi.Input<number>;
+    cpuShares?: pulumi.Input<number | undefined>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Determines if the reservation on a vApp
      * container can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    memoryExpandable?: pulumi.Input<boolean>;
+    memoryExpandable?: pulumi.Input<boolean | undefined>;
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      */
-    memoryLimit?: pulumi.Input<number>;
+    memoryLimit?: pulumi.Input<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the vApp container. Default: `0`
      */
-    memoryReservation?: pulumi.Input<number>;
+    memoryReservation?: pulumi.Input<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -435,22 +435,22 @@ export interface VappContainerArgs {
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
-    memoryShareLevel?: pulumi.Input<string>;
+    memoryShareLevel?: pulumi.Input<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `memoryShareLevel` must be `custom`.
      */
-    memoryShares?: pulumi.Input<number>;
+    memoryShares?: pulumi.Input<number | undefined>;
     /**
      * The name of the vApp container.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the vApp container's parent folder.
      */
-    parentFolderId?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
@@ -466,5 +466,5 @@ export interface VappContainerArgs {
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

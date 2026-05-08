@@ -22,10 +22,10 @@ class FileArgs:
                  datastore: pulumi.Input[_builtins.str],
                  destination_file: pulumi.Input[_builtins.str],
                  source_file: pulumi.Input[_builtins.str],
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datastore: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datastore: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a File resource.
 
@@ -96,19 +96,19 @@ class FileArgs:
 
     @_builtins.property
     @pulumi.getter(name="createDirectories")
-    def create_directories(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_directories(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to create the parent directories of the destination file if they do not exist.
         """
         return pulumi.get(self, "create_directories")
 
     @create_directories.setter
-    def create_directories(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_directories(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_directories", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a datacenter to which the file will be
         uploaded.
@@ -116,12 +116,12 @@ class FileArgs:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDatacenter")
-    def source_datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a datacenter from which the file
         will be copied. Forces a new resource if changed.
@@ -129,12 +129,12 @@ class FileArgs:
         return pulumi.get(self, "source_datacenter")
 
     @source_datacenter.setter
-    def source_datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_datacenter", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDatastore")
-    def source_datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datastore from which file will
         be copied. Forces a new resource if changed.
@@ -142,20 +142,20 @@ class FileArgs:
         return pulumi.get(self, "source_datastore")
 
     @source_datastore.setter
-    def source_datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_datastore", value)
 
 
 @pulumi.input_type
 class _FileState:
     def __init__(__self__, *,
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering File resources.
 
@@ -190,19 +190,19 @@ class _FileState:
 
     @_builtins.property
     @pulumi.getter(name="createDirectories")
-    def create_directories(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_directories(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to create the parent directories of the destination file if they do not exist.
         """
         return pulumi.get(self, "create_directories")
 
     @create_directories.setter
-    def create_directories(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_directories(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_directories", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a datacenter to which the file will be
         uploaded.
@@ -210,12 +210,12 @@ class _FileState:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datastore to which to upload the
         file.
@@ -223,12 +223,12 @@ class _FileState:
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationFile")
-    def destination_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to where the file should be uploaded
         or copied to on the destination datastore.
@@ -236,12 +236,12 @@ class _FileState:
         return pulumi.get(self, "destination_file")
 
     @destination_file.setter
-    def destination_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_file", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDatacenter")
-    def source_datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a datacenter from which the file
         will be copied. Forces a new resource if changed.
@@ -249,12 +249,12 @@ class _FileState:
         return pulumi.get(self, "source_datacenter")
 
     @source_datacenter.setter
-    def source_datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_datacenter", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDatastore")
-    def source_datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datastore from which file will
         be copied. Forces a new resource if changed.
@@ -262,12 +262,12 @@ class _FileState:
         return pulumi.get(self, "source_datastore")
 
     @source_datastore.setter
-    def source_datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_datastore", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFile")
-    def source_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the file being uploaded from or copied.
         Forces a new resource if changed.
@@ -275,7 +275,7 @@ class _FileState:
         return pulumi.get(self, "source_file")
 
     @source_file.setter
-    def source_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_file", value)
 
 
@@ -285,13 +285,13 @@ class File(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_file: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `File` resource can be used to upload files (such as ISOs and
@@ -428,13 +428,13 @@ class File(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_file: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,13 +467,13 @@ class File(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_directories: Optional[pulumi.Input[_builtins.bool]] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            datastore: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_file: Optional[pulumi.Input[_builtins.str]] = None,
-            source_datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            source_datastore: Optional[pulumi.Input[_builtins.str]] = None,
-            source_file: Optional[pulumi.Input[_builtins.str]] = None) -> 'File':
+            create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_file: pulumi.Input[Optional[_builtins.str]] = None,
+            source_datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            source_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            source_file: pulumi.Input[Optional[_builtins.str]] = None) -> 'File':
         """
         Get an existing File resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

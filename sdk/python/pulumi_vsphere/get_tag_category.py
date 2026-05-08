@@ -122,7 +122,7 @@ def get_tag_category(name: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_tag_category_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_category_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagCategoryResult]:
     """
     The `TagCategory` data source can be used to reference tag categories

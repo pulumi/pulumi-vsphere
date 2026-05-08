@@ -163,7 +163,7 @@ def get_guest_os_customization(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         specs=pulumi.get(__ret__, 'specs'),
         type=pulumi.get(__ret__, 'type'))
-def get_guest_os_customization_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_guest_os_customization_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGuestOsCustomizationResult]:
     """
     The `GuestOsCustomization` data source can be used to discover the

@@ -126,9 +126,9 @@ def get_dynamic(filters: Optional[Sequence[_builtins.str]] = None,
         id=pulumi.get(__ret__, 'id'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         type=pulumi.get(__ret__, 'type'))
-def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                       name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dynamic_output(filters: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDynamicResult]:
     """
     The `get_dynamic` data source can be used to get the

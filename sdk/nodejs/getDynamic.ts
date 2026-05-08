@@ -135,11 +135,11 @@ export interface GetDynamicOutputArgs {
      * A regular expression that will be used to match the
      * object's name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The managed object type the returned object must match.
      * The managed object types can be found in the managed object type section
      * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -22,10 +22,10 @@ __all__ = ['ContentLibraryArgs', 'ContentLibrary']
 class ContentLibraryArgs:
     def __init__(__self__, *,
                  storage_backings: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
-                 subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publication: pulumi.Input[Optional['ContentLibraryPublicationArgs']] = None,
+                 subscription: pulumi.Input[Optional['ContentLibrarySubscriptionArgs']] = None):
         """
         The set of arguments for constructing a ContentLibrary resource.
 
@@ -59,61 +59,61 @@ class ContentLibraryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the content library.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the content library.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def publication(self) -> Optional[pulumi.Input['ContentLibraryPublicationArgs']]:
+    def publication(self) -> pulumi.Input[Optional['ContentLibraryPublicationArgs']]:
         """
         Options to publish a local content library.
         """
         return pulumi.get(self, "publication")
 
     @publication.setter
-    def publication(self, value: Optional[pulumi.Input['ContentLibraryPublicationArgs']]):
+    def publication(self, value: pulumi.Input[Optional['ContentLibraryPublicationArgs']]):
         pulumi.set(self, "publication", value)
 
     @_builtins.property
     @pulumi.getter
-    def subscription(self) -> Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]:
+    def subscription(self) -> pulumi.Input[Optional['ContentLibrarySubscriptionArgs']]:
         """
         Options subscribe to a published content library.
         """
         return pulumi.get(self, "subscription")
 
     @subscription.setter
-    def subscription(self, value: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]):
+    def subscription(self, value: pulumi.Input[Optional['ContentLibrarySubscriptionArgs']]):
         pulumi.set(self, "subscription", value)
 
 
 @pulumi.input_type
 class _ContentLibraryState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
-                 storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publication: pulumi.Input[Optional['ContentLibraryPublicationArgs']] = None,
+                 storage_backings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subscription: pulumi.Input[Optional['ContentLibrarySubscriptionArgs']] = None):
         """
         Input properties used for looking up and filtering ContentLibrary resources.
 
@@ -136,62 +136,62 @@ class _ContentLibraryState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the content library.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the content library.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def publication(self) -> Optional[pulumi.Input['ContentLibraryPublicationArgs']]:
+    def publication(self) -> pulumi.Input[Optional['ContentLibraryPublicationArgs']]:
         """
         Options to publish a local content library.
         """
         return pulumi.get(self, "publication")
 
     @publication.setter
-    def publication(self, value: Optional[pulumi.Input['ContentLibraryPublicationArgs']]):
+    def publication(self, value: pulumi.Input[Optional['ContentLibraryPublicationArgs']]):
         pulumi.set(self, "publication", value)
 
     @_builtins.property
     @pulumi.getter(name="storageBackings")
-    def storage_backings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def storage_backings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         """
         return pulumi.get(self, "storage_backings")
 
     @storage_backings.setter
-    def storage_backings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def storage_backings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "storage_backings", value)
 
     @_builtins.property
     @pulumi.getter
-    def subscription(self) -> Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]:
+    def subscription(self) -> pulumi.Input[Optional['ContentLibrarySubscriptionArgs']]:
         """
         Options subscribe to a published content library.
         """
         return pulumi.get(self, "subscription")
 
     @subscription.setter
-    def subscription(self, value: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]):
+    def subscription(self, value: pulumi.Input[Optional['ContentLibrarySubscriptionArgs']]):
         pulumi.set(self, "subscription", value)
 
 
@@ -201,11 +201,11 @@ class ContentLibrary(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publication: Optional[pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
-                 storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subscription: Optional[pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publication: pulumi.Input[Optional[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
+                 storage_backings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subscription: pulumi.Input[Optional[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None,
                  __props__=None):
         """
         The `ContentLibrary` resource can be used to manage content libraries.
@@ -346,11 +346,11 @@ class ContentLibrary(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publication: Optional[pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
-                 storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subscription: Optional[pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publication: pulumi.Input[Optional[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
+                 storage_backings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subscription: pulumi.Input[Optional[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -377,11 +377,11 @@ class ContentLibrary(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            publication: Optional[pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
-            storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subscription: Optional[pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None) -> 'ContentLibrary':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            publication: pulumi.Input[Optional[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
+            storage_backings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subscription: pulumi.Input[Optional[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None) -> 'ContentLibrary':
         """
         Get an existing ContentLibrary resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

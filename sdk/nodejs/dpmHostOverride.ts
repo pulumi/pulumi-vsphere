@@ -181,7 +181,7 @@ export interface DpmHostOverrideState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * The automation level for host power
      * operations on this host. Can be one of `manual` or `automated`. Default:
@@ -191,16 +191,16 @@ export interface DpmHostOverrideState {
      * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
-    dpmAutomationLevel?: pulumi.Input<string>;
+    dpmAutomationLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable DPM support for this host. Default:
      * `false`.
      */
-    dpmEnabled?: pulumi.Input<boolean>;
+    dpmEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The managed object ID of the host.
      */
-    hostSystemId?: pulumi.Input<string>;
+    hostSystemId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -224,12 +224,12 @@ export interface DpmHostOverrideArgs {
      * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
-    dpmAutomationLevel?: pulumi.Input<string>;
+    dpmAutomationLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable DPM support for this host. Default:
      * `false`.
      */
-    dpmEnabled?: pulumi.Input<boolean>;
+    dpmEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The managed object ID of the host.
      */

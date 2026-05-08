@@ -20,20 +20,20 @@ __all__ = ['ResourcePoolArgs', 'ResourcePool']
 class ResourcePoolArgs:
     def __init__(__self__, *,
                  parent_resource_pool_id: pulumi.Input[_builtins.str],
-                 cpu_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 memory_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cpu_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 memory_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourcePool resource.
 
@@ -134,7 +134,7 @@ class ResourcePoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuExpandable")
-    def cpu_expandable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_expandable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the reservation on a resource
         pool can grow beyond the specified value if the parent resource pool has
@@ -143,12 +143,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "cpu_expandable")
 
     @cpu_expandable.setter
-    def cpu_expandable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_expandable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_expandable", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU utilization of a resource pool will not
         exceed this limit, even if there are available resources. Set to `-1` for
@@ -157,12 +157,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "cpu_limit")
 
     @cpu_limit.setter
-    def cpu_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -170,12 +170,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "cpu_reservation")
 
     @cpu_reservation.setter
-    def cpu_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShareLevel")
-    def cpu_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
@@ -186,12 +186,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "cpu_share_level")
 
     @cpu_share_level.setter
-    def cpu_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShares")
-    def cpu_shares(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_shares(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -200,24 +200,24 @@ class ResourcePoolArgs:
         return pulumi.get(self, "cpu_shares")
 
     @cpu_shares.setter
-    def cpu_shares(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_shares(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_shares", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of custom attributes to set on this resource.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryExpandable")
-    def memory_expandable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def memory_expandable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the reservation on a resource
         pool can grow beyond the specified value if the parent resource pool has
@@ -226,12 +226,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "memory_expandable")
 
     @memory_expandable.setter
-    def memory_expandable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def memory_expandable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "memory_expandable", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU utilization of a resource pool will not
         exceed this limit, even if there are available resources. Set to `-1` for
@@ -240,12 +240,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -253,12 +253,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "memory_reservation")
 
     @memory_reservation.setter
-    def memory_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShareLevel")
-    def memory_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
@@ -269,12 +269,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "memory_share_level")
 
     @memory_share_level.setter
-    def memory_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShares")
-    def memory_shares(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_shares(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -283,24 +283,24 @@ class ResourcePoolArgs:
         return pulumi.get(self, "memory_shares")
 
     @memory_shares.setter
-    def memory_shares(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_shares(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_shares", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleDescendantsShares")
-    def scale_descendants_shares(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_descendants_shares(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines if the shares of all
         descendants of the resource pool are scaled up or down when the shares
@@ -310,12 +310,12 @@ class ResourcePoolArgs:
         return pulumi.get(self, "scale_descendants_shares")
 
     @scale_descendants_shares.setter
-    def scale_descendants_shares(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_descendants_shares(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_descendants_shares", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. See
         [here][docs-applying-tags] for a reference on how to apply tags.
@@ -326,28 +326,28 @@ class ResourcePoolArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ResourcePoolState:
     def __init__(__self__, *,
-                 cpu_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 memory_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cpu_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 memory_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourcePool resources.
 
@@ -433,7 +433,7 @@ class _ResourcePoolState:
 
     @_builtins.property
     @pulumi.getter(name="cpuExpandable")
-    def cpu_expandable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_expandable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the reservation on a resource
         pool can grow beyond the specified value if the parent resource pool has
@@ -442,12 +442,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "cpu_expandable")
 
     @cpu_expandable.setter
-    def cpu_expandable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_expandable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_expandable", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU utilization of a resource pool will not
         exceed this limit, even if there are available resources. Set to `-1` for
@@ -456,12 +456,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "cpu_limit")
 
     @cpu_limit.setter
-    def cpu_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -469,12 +469,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "cpu_reservation")
 
     @cpu_reservation.setter
-    def cpu_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShareLevel")
-    def cpu_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
@@ -485,12 +485,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "cpu_share_level")
 
     @cpu_share_level.setter
-    def cpu_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuShares")
-    def cpu_shares(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_shares(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -499,24 +499,24 @@ class _ResourcePoolState:
         return pulumi.get(self, "cpu_shares")
 
     @cpu_shares.setter
-    def cpu_shares(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_shares(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_shares", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of custom attributes to set on this resource.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryExpandable")
-    def memory_expandable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def memory_expandable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the reservation on a resource
         pool can grow beyond the specified value if the parent resource pool has
@@ -525,12 +525,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "memory_expandable")
 
     @memory_expandable.setter
-    def memory_expandable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def memory_expandable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "memory_expandable", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU utilization of a resource pool will not
         exceed this limit, even if there are available resources. Set to `-1` for
@@ -539,12 +539,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -552,12 +552,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "memory_reservation")
 
     @memory_reservation.setter
-    def memory_reservation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShareLevel")
-    def memory_share_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
@@ -568,12 +568,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "memory_share_level")
 
     @memory_share_level.setter
-    def memory_share_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_share_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_share_level", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryShares")
-    def memory_shares(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_shares(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -582,24 +582,24 @@ class _ResourcePoolState:
         return pulumi.get(self, "memory_shares")
 
     @memory_shares.setter
-    def memory_shares(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_shares(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_shares", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentResourcePoolId")
-    def parent_resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_resource_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [managed object ID][docs-about-morefs]
         of the parent resource pool. This can be the root resource pool for a cluster
@@ -610,12 +610,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "parent_resource_pool_id")
 
     @parent_resource_pool_id.setter
-    def parent_resource_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_resource_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_resource_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleDescendantsShares")
-    def scale_descendants_shares(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_descendants_shares(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines if the shares of all
         descendants of the resource pool are scaled up or down when the shares
@@ -625,12 +625,12 @@ class _ResourcePoolState:
         return pulumi.get(self, "scale_descendants_shares")
 
     @scale_descendants_shares.setter
-    def scale_descendants_shares(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_descendants_shares(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_descendants_shares", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of any tags to attach to this resource. See
         [here][docs-applying-tags] for a reference on how to apply tags.
@@ -641,7 +641,7 @@ class _ResourcePoolState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -651,21 +651,21 @@ class ResourcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cpu_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 memory_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 memory_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `ResourcePool` resource can be used to create and manage
@@ -955,21 +955,21 @@ class ResourcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cpu_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 memory_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_shares: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 memory_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_shares: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1006,21 +1006,21 @@ class ResourcePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cpu_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-            cpu_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-            cpu_shares: Optional[pulumi.Input[_builtins.int]] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            memory_expandable: Optional[pulumi.Input[_builtins.bool]] = None,
-            memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_reservation: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_share_level: Optional[pulumi.Input[_builtins.str]] = None,
-            memory_shares: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scale_descendants_shares: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourcePool':
+            cpu_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+            cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu_shares: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            memory_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+            memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+            memory_shares: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourcePool':
         """
         Get an existing ResourcePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

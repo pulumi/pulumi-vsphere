@@ -176,7 +176,7 @@ export interface ComputeClusterHostGroupState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster.
@@ -188,12 +188,12 @@ export interface ComputeClusterHostGroupState {
      *
      * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
      */
-    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the host group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -219,10 +219,10 @@ export interface ComputeClusterHostGroupArgs {
      *
      * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
      */
-    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the host group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

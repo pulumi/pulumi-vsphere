@@ -85,11 +85,11 @@ export interface OfflineSoftwareDepotState {
     /**
      * The list of custom components in the depot.
      */
-    components?: pulumi.Input<pulumi.Input<inputs.OfflineSoftwareDepotComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.OfflineSoftwareDepotComponent>[] | undefined>;
     /**
      * The URL where the depot source is hosted.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 
 /**

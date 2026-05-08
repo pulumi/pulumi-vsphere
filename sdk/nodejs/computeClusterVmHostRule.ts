@@ -247,13 +247,13 @@ export interface ComputeClusterVmHostRuleState {
      * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
-    affinityHostGroupName?: pulumi.Input<string>;
+    affinityHostGroupName?: pulumi.Input<string | undefined>;
     /**
      * When this field is used, the
      * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
-    antiAffinityHostGroupName?: pulumi.Input<string>;
+    antiAffinityHostGroupName?: pulumi.Input<string | undefined>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -261,11 +261,11 @@ export interface ComputeClusterVmHostRuleState {
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string | undefined>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -278,17 +278,17 @@ export interface ComputeClusterVmHostRuleState {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual machine group to use
      * with this rule.
      */
-    vmGroupName?: pulumi.Input<string>;
+    vmGroupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -300,13 +300,13 @@ export interface ComputeClusterVmHostRuleArgs {
      * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
-    affinityHostGroupName?: pulumi.Input<string>;
+    affinityHostGroupName?: pulumi.Input<string | undefined>;
     /**
      * When this field is used, the
      * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
-    antiAffinityHostGroupName?: pulumi.Input<string>;
+    antiAffinityHostGroupName?: pulumi.Input<string | undefined>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -318,7 +318,7 @@ export interface ComputeClusterVmHostRuleArgs {
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -331,12 +331,12 @@ export interface ComputeClusterVmHostRuleArgs {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual machine group to use
      * with this rule.

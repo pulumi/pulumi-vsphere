@@ -22,51 +22,51 @@ __all__ = ['DistributedPortGroupArgs', 'DistributedPortGroup']
 class DistributedPortGroupArgs:
     def __init__(__self__, *,
                  distributed_virtual_switch_uuid: pulumi.Input[_builtins.str],
-                 active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allow_forged_transmits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_mac_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_promiscuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_beacon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directpath_gen2_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 lacp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lacp_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 live_port_moving_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 netflow_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_resource_pool_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_resource_pool_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_switches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_of_ports: Optional[pulumi.Input[_builtins.int]] = None,
-                 port_config_reset_at_disconnect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_name_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_private_secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shaping_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teaming_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_filter_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tx_uplink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uplink_teaming_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None):
+                 active_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_forged_transmits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_mac_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_promiscuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_beacon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directpath_gen2_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 lacp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lacp_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 live_port_moving_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 netflow_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_resource_pool_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_resource_pool_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_of_ports: pulumi.Input[Optional[_builtins.int]] = None,
+                 port_config_reset_at_disconnect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_name_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shaping_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_filter_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tx_uplink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None):
         """
         The set of arguments for constructing a DistributedPortGroup resource.
 
@@ -245,55 +245,55 @@ class DistributedPortGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="activeUplinks")
-    def active_uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def active_uplinks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
         return pulumi.get(self, "active_uplinks")
 
     @active_uplinks.setter
-    def active_uplinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def active_uplinks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "active_uplinks", value)
 
     @_builtins.property
     @pulumi.getter(name="allowForgedTransmits")
-    def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_forged_transmits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
     @allow_forged_transmits.setter
-    def allow_forged_transmits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_forged_transmits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_forged_transmits", value)
 
     @_builtins.property
     @pulumi.getter(name="allowMacChanges")
-    def allow_mac_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_mac_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not the Media Access Control (MAC) address can be changed.
         """
         return pulumi.get(self, "allow_mac_changes")
 
     @allow_mac_changes.setter
-    def allow_mac_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_mac_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_mac_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="allowPromiscuous")
-    def allow_promiscuous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_promiscuous(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         """
         return pulumi.get(self, "allow_promiscuous")
 
     @allow_promiscuous.setter
-    def allow_promiscuous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_promiscuous(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_promiscuous", value)
 
     @_builtins.property
     @pulumi.getter(name="autoExpand")
-    def auto_expand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_expand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows the port group to create additional ports
         past the limit specified in `number_of_ports` if necessary. Default: `true`.
@@ -305,48 +305,48 @@ class DistributedPortGroupArgs:
         return pulumi.get(self, "auto_expand")
 
     @auto_expand.setter
-    def auto_expand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_expand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_expand", value)
 
     @_builtins.property
     @pulumi.getter(name="blockAllPorts")
-    def block_all_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def block_all_ports(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to block all ports by default.
         """
         return pulumi.get(self, "block_all_ports")
 
     @block_all_ports.setter
-    def block_all_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def block_all_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "block_all_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="blockOverrideAllowed")
-    def block_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def block_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the blocked setting of an individual port to override the setting in the portgroup.
         """
         return pulumi.get(self, "block_override_allowed")
 
     @block_override_allowed.setter
-    def block_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def block_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "block_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="checkBeacon")
-    def check_beacon(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_beacon(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable beacon probing on the ports this policy applies to.
         """
         return pulumi.get(self, "check_beacon")
 
     @check_beacon.setter
-    def check_beacon(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_beacon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_beacon", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of custom attribute ids to attribute
         value string to set for port group. See [here][docs-setting-custom-attributes]
@@ -360,216 +360,216 @@ class DistributedPortGroupArgs:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description for the port group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="directpathGen2Allowed")
-    def directpath_gen2_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def directpath_gen2_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow VMDirectPath Gen2 on the ports this policy applies to.
         """
         return pulumi.get(self, "directpath_gen2_allowed")
 
     @directpath_gen2_allowed.setter
-    def directpath_gen2_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def directpath_gen2_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "directpath_gen2_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingAverageBandwidth")
-    def egress_shaping_average_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def egress_shaping_average_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The average egress bandwidth in bits per second if egress shaping is enabled on the port.
         """
         return pulumi.get(self, "egress_shaping_average_bandwidth")
 
     @egress_shaping_average_bandwidth.setter
-    def egress_shaping_average_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def egress_shaping_average_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "egress_shaping_average_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingBurstSize")
-    def egress_shaping_burst_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def egress_shaping_burst_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         """
         return pulumi.get(self, "egress_shaping_burst_size")
 
     @egress_shaping_burst_size.setter
-    def egress_shaping_burst_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def egress_shaping_burst_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "egress_shaping_burst_size", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingEnabled")
-    def egress_shaping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def egress_shaping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the traffic shaper is enabled for egress traffic on the port.
         """
         return pulumi.get(self, "egress_shaping_enabled")
 
     @egress_shaping_enabled.setter
-    def egress_shaping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def egress_shaping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "egress_shaping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingPeakBandwidth")
-    def egress_shaping_peak_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def egress_shaping_peak_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         """
         return pulumi.get(self, "egress_shaping_peak_bandwidth")
 
     @egress_shaping_peak_bandwidth.setter
-    def egress_shaping_peak_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def egress_shaping_peak_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "egress_shaping_peak_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def failback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def failback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         """
         return pulumi.get(self, "failback")
 
     @failback.setter
-    def failback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def failback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "failback", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingAverageBandwidth")
-    def ingress_shaping_average_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_shaping_average_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         """
         return pulumi.get(self, "ingress_shaping_average_bandwidth")
 
     @ingress_shaping_average_bandwidth.setter
-    def ingress_shaping_average_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_shaping_average_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_shaping_average_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingBurstSize")
-    def ingress_shaping_burst_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_shaping_burst_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         """
         return pulumi.get(self, "ingress_shaping_burst_size")
 
     @ingress_shaping_burst_size.setter
-    def ingress_shaping_burst_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_shaping_burst_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_shaping_burst_size", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingEnabled")
-    def ingress_shaping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ingress_shaping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the traffic shaper is enabled for ingress traffic on the port.
         """
         return pulumi.get(self, "ingress_shaping_enabled")
 
     @ingress_shaping_enabled.setter
-    def ingress_shaping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ingress_shaping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ingress_shaping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingPeakBandwidth")
-    def ingress_shaping_peak_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_shaping_peak_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         """
         return pulumi.get(self, "ingress_shaping_peak_bandwidth")
 
     @ingress_shaping_peak_bandwidth.setter
-    def ingress_shaping_peak_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_shaping_peak_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_shaping_peak_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="lacpEnabled")
-    def lacp_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lacp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to enable LACP on all uplink ports.
         """
         return pulumi.get(self, "lacp_enabled")
 
     @lacp_enabled.setter
-    def lacp_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lacp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lacp_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="lacpMode")
-    def lacp_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lacp_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uplink LACP mode to use. Can be one of active or passive.
         """
         return pulumi.get(self, "lacp_mode")
 
     @lacp_mode.setter
-    def lacp_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lacp_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lacp_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="livePortMovingAllowed")
-    def live_port_moving_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def live_port_moving_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow a live port to be moved in and out of the portgroup.
         """
         return pulumi.get(self, "live_port_moving_allowed")
 
     @live_port_moving_allowed.setter
-    def live_port_moving_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def live_port_moving_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "live_port_moving_allowed", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the port group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowEnabled")
-    def netflow_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def netflow_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable netflow on all ports.
         """
         return pulumi.get(self, "netflow_enabled")
 
     @netflow_enabled.setter
-    def netflow_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def netflow_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "netflow_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowOverrideAllowed")
-    def netflow_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def netflow_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
         """
         return pulumi.get(self, "netflow_override_allowed")
 
     @netflow_override_allowed.setter
-    def netflow_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def netflow_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "netflow_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="networkResourcePoolKey")
-    def network_resource_pool_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_resource_pool_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of a network resource pool
         to associate with this port group. The default is `-1`, which implies no
@@ -578,36 +578,36 @@ class DistributedPortGroupArgs:
         return pulumi.get(self, "network_resource_pool_key")
 
     @network_resource_pool_key.setter
-    def network_resource_pool_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_resource_pool_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_resource_pool_key", value)
 
     @_builtins.property
     @pulumi.getter(name="networkResourcePoolOverrideAllowed")
-    def network_resource_pool_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def network_resource_pool_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the network resource pool of an individual port to override the setting in the portgroup.
         """
         return pulumi.get(self, "network_resource_pool_override_allowed")
 
     @network_resource_pool_override_allowed.setter
-    def network_resource_pool_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def network_resource_pool_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "network_resource_pool_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="notifySwitches")
-    def notify_switches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_switches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         """
         return pulumi.get(self, "notify_switches")
 
     @notify_switches.setter
-    def notify_switches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_switches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_switches", value)
 
     @_builtins.property
     @pulumi.getter(name="numberOfPorts")
-    def number_of_ports(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number_of_ports(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of ports available on this port
         group. Cannot be decreased below the amount of used ports on the port group.
@@ -615,24 +615,24 @@ class DistributedPortGroupArgs:
         return pulumi.get(self, "number_of_ports")
 
     @number_of_ports.setter
-    def number_of_ports(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number_of_ports(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number_of_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfigResetAtDisconnect")
-    def port_config_reset_at_disconnect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_config_reset_at_disconnect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
         """
         return pulumi.get(self, "port_config_reset_at_disconnect")
 
     @port_config_reset_at_disconnect.setter
-    def port_config_reset_at_disconnect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_config_reset_at_disconnect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_config_reset_at_disconnect", value)
 
     @_builtins.property
     @pulumi.getter(name="portNameFormat")
-    def port_name_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_name_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional formatting policy for naming of
         the ports in this port group. See the `portNameFormat` attribute listed
@@ -643,108 +643,108 @@ class DistributedPortGroupArgs:
         return pulumi.get(self, "port_name_format")
 
     @port_name_format.setter
-    def port_name_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_name_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_name_format", value)
 
     @_builtins.property
     @pulumi.getter(name="portPrivateSecondaryVlanId")
-    def port_private_secondary_vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port_private_secondary_vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The secondary VLAN ID for this port.
         """
         return pulumi.get(self, "port_private_secondary_vlan_id")
 
     @port_private_secondary_vlan_id.setter
-    def port_private_secondary_vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port_private_secondary_vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port_private_secondary_vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyOverrideAllowed")
-    def security_policy_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_policy_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow security policy settings on a port to override those on the portgroup.
         """
         return pulumi.get(self, "security_policy_override_allowed")
 
     @security_policy_override_allowed.setter
-    def security_policy_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_policy_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_policy_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="shapingOverrideAllowed")
-    def shaping_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shaping_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
         """
         return pulumi.get(self, "shaping_override_allowed")
 
     @shaping_override_allowed.setter
-    def shaping_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shaping_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shaping_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyUplinks")
-    def standby_uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def standby_uplinks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
         return pulumi.get(self, "standby_uplinks")
 
     @standby_uplinks.setter
-    def standby_uplinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def standby_uplinks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "standby_uplinks", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag IDs to apply to this object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="teamingPolicy")
-    def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def teaming_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
     @teaming_policy.setter
-    def teaming_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def teaming_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "teaming_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficFilterOverrideAllowed")
-    def traffic_filter_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def traffic_filter_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow any filter policies set on the individual port to override those in the portgroup.
         """
         return pulumi.get(self, "traffic_filter_override_allowed")
 
     @traffic_filter_override_allowed.setter
-    def traffic_filter_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def traffic_filter_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "traffic_filter_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="txUplink")
-    def tx_uplink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tx_uplink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 
     @tx_uplink.setter
-    def tx_uplink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tx_uplink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tx_uplink", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port group type. Can be one of `earlyBinding` (static
         binding) or `ephemeral`. Default: `earlyBinding`.
@@ -752,109 +752,109 @@ class DistributedPortGroupArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="uplinkTeamingOverrideAllowed")
-    def uplink_teaming_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def uplink_teaming_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the uplink teaming policies on a port to override those on the portgroup.
         """
         return pulumi.get(self, "uplink_teaming_override_allowed")
 
     @uplink_teaming_override_allowed.setter
-    def uplink_teaming_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def uplink_teaming_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "uplink_teaming_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanOverrideAllowed")
-    def vlan_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vlan_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the VLAN configuration on a port to override those on the portgroup.
         """
         return pulumi.get(self, "vlan_override_allowed")
 
     @vlan_override_allowed.setter
-    def vlan_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vlan_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vlan_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanRanges")
-    def vlan_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]:
+    def vlan_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         return pulumi.get(self, "vlan_ranges")
 
     @vlan_ranges.setter
-    def vlan_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]):
+    def vlan_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]):
         pulumi.set(self, "vlan_ranges", value)
 
 
 @pulumi.input_type
 class _DistributedPortGroupState:
     def __init__(__self__, *,
-                 active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allow_forged_transmits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_mac_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_promiscuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_beacon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 config_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directpath_gen2_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 distributed_virtual_switch_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 lacp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lacp_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 live_port_moving_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 netflow_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_resource_pool_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_resource_pool_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_switches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_of_ports: Optional[pulumi.Input[_builtins.int]] = None,
-                 port_config_reset_at_disconnect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_name_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_private_secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shaping_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teaming_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_filter_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tx_uplink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uplink_teaming_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None):
+                 active_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_forged_transmits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_mac_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_promiscuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_beacon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 config_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directpath_gen2_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 distributed_virtual_switch_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 lacp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lacp_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 live_port_moving_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 netflow_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_resource_pool_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_resource_pool_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_of_ports: pulumi.Input[Optional[_builtins.int]] = None,
+                 port_config_reset_at_disconnect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_name_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shaping_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_filter_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tx_uplink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None):
         """
         Input properties used for looking up and filtering DistributedPortGroup resources.
 
@@ -1028,55 +1028,55 @@ class _DistributedPortGroupState:
 
     @_builtins.property
     @pulumi.getter(name="activeUplinks")
-    def active_uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def active_uplinks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
         return pulumi.get(self, "active_uplinks")
 
     @active_uplinks.setter
-    def active_uplinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def active_uplinks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "active_uplinks", value)
 
     @_builtins.property
     @pulumi.getter(name="allowForgedTransmits")
-    def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_forged_transmits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
     @allow_forged_transmits.setter
-    def allow_forged_transmits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_forged_transmits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_forged_transmits", value)
 
     @_builtins.property
     @pulumi.getter(name="allowMacChanges")
-    def allow_mac_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_mac_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not the Media Access Control (MAC) address can be changed.
         """
         return pulumi.get(self, "allow_mac_changes")
 
     @allow_mac_changes.setter
-    def allow_mac_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_mac_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_mac_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="allowPromiscuous")
-    def allow_promiscuous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_promiscuous(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         """
         return pulumi.get(self, "allow_promiscuous")
 
     @allow_promiscuous.setter
-    def allow_promiscuous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_promiscuous(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_promiscuous", value)
 
     @_builtins.property
     @pulumi.getter(name="autoExpand")
-    def auto_expand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_expand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows the port group to create additional ports
         past the limit specified in `number_of_ports` if necessary. Default: `true`.
@@ -1088,48 +1088,48 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "auto_expand")
 
     @auto_expand.setter
-    def auto_expand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_expand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_expand", value)
 
     @_builtins.property
     @pulumi.getter(name="blockAllPorts")
-    def block_all_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def block_all_ports(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to block all ports by default.
         """
         return pulumi.get(self, "block_all_ports")
 
     @block_all_ports.setter
-    def block_all_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def block_all_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "block_all_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="blockOverrideAllowed")
-    def block_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def block_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the blocked setting of an individual port to override the setting in the portgroup.
         """
         return pulumi.get(self, "block_override_allowed")
 
     @block_override_allowed.setter
-    def block_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def block_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "block_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="checkBeacon")
-    def check_beacon(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_beacon(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable beacon probing on the ports this policy applies to.
         """
         return pulumi.get(self, "check_beacon")
 
     @check_beacon.setter
-    def check_beacon(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_beacon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_beacon", value)
 
     @_builtins.property
     @pulumi.getter(name="configVersion")
-    def config_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current version of the port group configuration,
         incremented by subsequent updates to the port group.
@@ -1137,12 +1137,12 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "config_version")
 
     @config_version.setter
-    def config_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_version", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of custom attribute ids to attribute
         value string to set for port group. See [here][docs-setting-custom-attributes]
@@ -1156,36 +1156,36 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description for the port group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="directpathGen2Allowed")
-    def directpath_gen2_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def directpath_gen2_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow VMDirectPath Gen2 on the ports this policy applies to.
         """
         return pulumi.get(self, "directpath_gen2_allowed")
 
     @directpath_gen2_allowed.setter
-    def directpath_gen2_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def directpath_gen2_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "directpath_gen2_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="distributedVirtualSwitchUuid")
-    def distributed_virtual_switch_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distributed_virtual_switch_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VDS to add the
         port group to. Forces a new resource if changed.
@@ -1193,204 +1193,204 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "distributed_virtual_switch_uuid")
 
     @distributed_virtual_switch_uuid.setter
-    def distributed_virtual_switch_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distributed_virtual_switch_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distributed_virtual_switch_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingAverageBandwidth")
-    def egress_shaping_average_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def egress_shaping_average_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The average egress bandwidth in bits per second if egress shaping is enabled on the port.
         """
         return pulumi.get(self, "egress_shaping_average_bandwidth")
 
     @egress_shaping_average_bandwidth.setter
-    def egress_shaping_average_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def egress_shaping_average_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "egress_shaping_average_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingBurstSize")
-    def egress_shaping_burst_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def egress_shaping_burst_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         """
         return pulumi.get(self, "egress_shaping_burst_size")
 
     @egress_shaping_burst_size.setter
-    def egress_shaping_burst_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def egress_shaping_burst_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "egress_shaping_burst_size", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingEnabled")
-    def egress_shaping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def egress_shaping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the traffic shaper is enabled for egress traffic on the port.
         """
         return pulumi.get(self, "egress_shaping_enabled")
 
     @egress_shaping_enabled.setter
-    def egress_shaping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def egress_shaping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "egress_shaping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="egressShapingPeakBandwidth")
-    def egress_shaping_peak_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def egress_shaping_peak_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         """
         return pulumi.get(self, "egress_shaping_peak_bandwidth")
 
     @egress_shaping_peak_bandwidth.setter
-    def egress_shaping_peak_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def egress_shaping_peak_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "egress_shaping_peak_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def failback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def failback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         """
         return pulumi.get(self, "failback")
 
     @failback.setter
-    def failback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def failback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "failback", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingAverageBandwidth")
-    def ingress_shaping_average_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_shaping_average_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         """
         return pulumi.get(self, "ingress_shaping_average_bandwidth")
 
     @ingress_shaping_average_bandwidth.setter
-    def ingress_shaping_average_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_shaping_average_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_shaping_average_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingBurstSize")
-    def ingress_shaping_burst_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_shaping_burst_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         """
         return pulumi.get(self, "ingress_shaping_burst_size")
 
     @ingress_shaping_burst_size.setter
-    def ingress_shaping_burst_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_shaping_burst_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_shaping_burst_size", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingEnabled")
-    def ingress_shaping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ingress_shaping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the traffic shaper is enabled for ingress traffic on the port.
         """
         return pulumi.get(self, "ingress_shaping_enabled")
 
     @ingress_shaping_enabled.setter
-    def ingress_shaping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ingress_shaping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ingress_shaping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressShapingPeakBandwidth")
-    def ingress_shaping_peak_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_shaping_peak_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         """
         return pulumi.get(self, "ingress_shaping_peak_bandwidth")
 
     @ingress_shaping_peak_bandwidth.setter
-    def ingress_shaping_peak_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_shaping_peak_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_shaping_peak_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The generated UUID of the port group.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="lacpEnabled")
-    def lacp_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lacp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to enable LACP on all uplink ports.
         """
         return pulumi.get(self, "lacp_enabled")
 
     @lacp_enabled.setter
-    def lacp_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lacp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lacp_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="lacpMode")
-    def lacp_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lacp_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uplink LACP mode to use. Can be one of active or passive.
         """
         return pulumi.get(self, "lacp_mode")
 
     @lacp_mode.setter
-    def lacp_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lacp_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lacp_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="livePortMovingAllowed")
-    def live_port_moving_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def live_port_moving_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow a live port to be moved in and out of the portgroup.
         """
         return pulumi.get(self, "live_port_moving_allowed")
 
     @live_port_moving_allowed.setter
-    def live_port_moving_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def live_port_moving_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "live_port_moving_allowed", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the port group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowEnabled")
-    def netflow_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def netflow_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable netflow on all ports.
         """
         return pulumi.get(self, "netflow_enabled")
 
     @netflow_enabled.setter
-    def netflow_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def netflow_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "netflow_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowOverrideAllowed")
-    def netflow_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def netflow_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
         """
         return pulumi.get(self, "netflow_override_allowed")
 
     @netflow_override_allowed.setter
-    def netflow_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def netflow_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "netflow_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="networkResourcePoolKey")
-    def network_resource_pool_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_resource_pool_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of a network resource pool
         to associate with this port group. The default is `-1`, which implies no
@@ -1399,36 +1399,36 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "network_resource_pool_key")
 
     @network_resource_pool_key.setter
-    def network_resource_pool_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_resource_pool_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_resource_pool_key", value)
 
     @_builtins.property
     @pulumi.getter(name="networkResourcePoolOverrideAllowed")
-    def network_resource_pool_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def network_resource_pool_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the network resource pool of an individual port to override the setting in the portgroup.
         """
         return pulumi.get(self, "network_resource_pool_override_allowed")
 
     @network_resource_pool_override_allowed.setter
-    def network_resource_pool_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def network_resource_pool_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "network_resource_pool_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="notifySwitches")
-    def notify_switches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_switches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         """
         return pulumi.get(self, "notify_switches")
 
     @notify_switches.setter
-    def notify_switches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_switches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_switches", value)
 
     @_builtins.property
     @pulumi.getter(name="numberOfPorts")
-    def number_of_ports(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number_of_ports(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of ports available on this port
         group. Cannot be decreased below the amount of used ports on the port group.
@@ -1436,24 +1436,24 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "number_of_ports")
 
     @number_of_ports.setter
-    def number_of_ports(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number_of_ports(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number_of_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfigResetAtDisconnect")
-    def port_config_reset_at_disconnect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_config_reset_at_disconnect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
         """
         return pulumi.get(self, "port_config_reset_at_disconnect")
 
     @port_config_reset_at_disconnect.setter
-    def port_config_reset_at_disconnect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_config_reset_at_disconnect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_config_reset_at_disconnect", value)
 
     @_builtins.property
     @pulumi.getter(name="portNameFormat")
-    def port_name_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_name_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional formatting policy for naming of
         the ports in this port group. See the `portNameFormat` attribute listed
@@ -1464,108 +1464,108 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "port_name_format")
 
     @port_name_format.setter
-    def port_name_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_name_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_name_format", value)
 
     @_builtins.property
     @pulumi.getter(name="portPrivateSecondaryVlanId")
-    def port_private_secondary_vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port_private_secondary_vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The secondary VLAN ID for this port.
         """
         return pulumi.get(self, "port_private_secondary_vlan_id")
 
     @port_private_secondary_vlan_id.setter
-    def port_private_secondary_vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port_private_secondary_vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port_private_secondary_vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyOverrideAllowed")
-    def security_policy_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_policy_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow security policy settings on a port to override those on the portgroup.
         """
         return pulumi.get(self, "security_policy_override_allowed")
 
     @security_policy_override_allowed.setter
-    def security_policy_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_policy_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_policy_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="shapingOverrideAllowed")
-    def shaping_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shaping_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
         """
         return pulumi.get(self, "shaping_override_allowed")
 
     @shaping_override_allowed.setter
-    def shaping_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shaping_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shaping_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyUplinks")
-    def standby_uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def standby_uplinks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
         return pulumi.get(self, "standby_uplinks")
 
     @standby_uplinks.setter
-    def standby_uplinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def standby_uplinks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "standby_uplinks", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag IDs to apply to this object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="teamingPolicy")
-    def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def teaming_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
     @teaming_policy.setter
-    def teaming_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def teaming_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "teaming_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficFilterOverrideAllowed")
-    def traffic_filter_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def traffic_filter_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow any filter policies set on the individual port to override those in the portgroup.
         """
         return pulumi.get(self, "traffic_filter_override_allowed")
 
     @traffic_filter_override_allowed.setter
-    def traffic_filter_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def traffic_filter_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "traffic_filter_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="txUplink")
-    def tx_uplink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tx_uplink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 
     @tx_uplink.setter
-    def tx_uplink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tx_uplink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tx_uplink", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port group type. Can be one of `earlyBinding` (static
         binding) or `ephemeral`. Default: `earlyBinding`.
@@ -1573,55 +1573,55 @@ class _DistributedPortGroupState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="uplinkTeamingOverrideAllowed")
-    def uplink_teaming_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def uplink_teaming_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the uplink teaming policies on a port to override those on the portgroup.
         """
         return pulumi.get(self, "uplink_teaming_override_allowed")
 
     @uplink_teaming_override_allowed.setter
-    def uplink_teaming_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def uplink_teaming_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "uplink_teaming_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanOverrideAllowed")
-    def vlan_override_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vlan_override_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the VLAN configuration on a port to override those on the portgroup.
         """
         return pulumi.get(self, "vlan_override_allowed")
 
     @vlan_override_allowed.setter
-    def vlan_override_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vlan_override_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vlan_override_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanRanges")
-    def vlan_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]:
+    def vlan_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         return pulumi.get(self, "vlan_ranges")
 
     @vlan_ranges.setter
-    def vlan_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]):
+    def vlan_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]]):
         pulumi.set(self, "vlan_ranges", value)
 
 
@@ -1631,52 +1631,52 @@ class DistributedPortGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allow_forged_transmits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_mac_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_promiscuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_beacon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directpath_gen2_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 distributed_virtual_switch_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 lacp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lacp_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 live_port_moving_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 netflow_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_resource_pool_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_resource_pool_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_switches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_of_ports: Optional[pulumi.Input[_builtins.int]] = None,
-                 port_config_reset_at_disconnect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_name_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_private_secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shaping_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teaming_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_filter_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tx_uplink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uplink_teaming_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
+                 active_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_forged_transmits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_mac_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_promiscuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_beacon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directpath_gen2_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 distributed_virtual_switch_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 lacp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lacp_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 live_port_moving_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 netflow_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_resource_pool_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_resource_pool_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_of_ports: pulumi.Input[Optional[_builtins.int]] = None,
+                 port_config_reset_at_disconnect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_name_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shaping_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_filter_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tx_uplink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
                  __props__=None):
         """
         The `DistributedPortGroup` resource can be used to manage
@@ -2059,52 +2059,52 @@ class DistributedPortGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allow_forged_transmits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_mac_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_promiscuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_beacon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directpath_gen2_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 distributed_virtual_switch_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 lacp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lacp_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 live_port_moving_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 netflow_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_resource_pool_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_resource_pool_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_switches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_of_ports: Optional[pulumi.Input[_builtins.int]] = None,
-                 port_config_reset_at_disconnect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_name_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_private_secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shaping_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teaming_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_filter_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tx_uplink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uplink_teaming_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
+                 active_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_forged_transmits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_mac_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_promiscuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_beacon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directpath_gen2_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 distributed_virtual_switch_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 lacp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lacp_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 live_port_moving_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 netflow_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_resource_pool_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_resource_pool_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_of_ports: pulumi.Input[Optional[_builtins.int]] = None,
+                 port_config_reset_at_disconnect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_name_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shaping_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_filter_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tx_uplink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2174,54 +2174,54 @@ class DistributedPortGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            allow_forged_transmits: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_mac_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_promiscuous: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_expand: Optional[pulumi.Input[_builtins.bool]] = None,
-            block_all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-            block_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            check_beacon: Optional[pulumi.Input[_builtins.bool]] = None,
-            config_version: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            directpath_gen2_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            distributed_virtual_switch_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            egress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            egress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-            egress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            egress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            failback: Optional[pulumi.Input[_builtins.bool]] = None,
-            ingress_shaping_average_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            ingress_shaping_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-            ingress_shaping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ingress_shaping_peak_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            lacp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            lacp_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            live_port_moving_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            netflow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            netflow_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            network_resource_pool_key: Optional[pulumi.Input[_builtins.str]] = None,
-            network_resource_pool_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            notify_switches: Optional[pulumi.Input[_builtins.bool]] = None,
-            number_of_ports: Optional[pulumi.Input[_builtins.int]] = None,
-            port_config_reset_at_disconnect: Optional[pulumi.Input[_builtins.bool]] = None,
-            port_name_format: Optional[pulumi.Input[_builtins.str]] = None,
-            port_private_secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-            security_policy_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            shaping_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            teaming_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_filter_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            tx_uplink: Optional[pulumi.Input[_builtins.bool]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            uplink_teaming_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-            vlan_override_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None) -> 'DistributedPortGroup':
+            active_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allow_forged_transmits: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_mac_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_promiscuous: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_expand: pulumi.Input[Optional[_builtins.bool]] = None,
+            block_all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+            block_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            check_beacon: pulumi.Input[Optional[_builtins.bool]] = None,
+            config_version: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directpath_gen2_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            distributed_virtual_switch_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            egress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+            egress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            egress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            failback: pulumi.Input[Optional[_builtins.bool]] = None,
+            ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+            ingress_shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ingress_shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            lacp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            lacp_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            live_port_moving_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            netflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            netflow_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            network_resource_pool_key: pulumi.Input[Optional[_builtins.str]] = None,
+            network_resource_pool_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
+            number_of_ports: pulumi.Input[Optional[_builtins.int]] = None,
+            port_config_reset_at_disconnect: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_name_format: pulumi.Input[Optional[_builtins.str]] = None,
+            port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+            security_policy_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            shaping_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_filter_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            tx_uplink: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+            vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None) -> 'DistributedPortGroup':
         """
         Get an existing DistributedPortGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

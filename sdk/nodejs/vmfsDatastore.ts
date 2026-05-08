@@ -323,11 +323,11 @@ export interface VmfsDatastoreState {
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    accessible?: pulumi.Input<boolean>;
+    accessible?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Map of custom attribute ids to attribute
      * value string to set on datastore resource. See
@@ -339,17 +339,17 @@ export interface VmfsDatastoreState {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string | undefined>;
     /**
      * The disks to use with the datastore.
      */
-    disks?: pulumi.Input<pulumi.Input<string>[]>;
+    disks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -359,11 +359,11 @@ export interface VmfsDatastoreState {
      * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
      * `datastoreClusterId`.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    freeSpace?: pulumi.Input<number>;
+    freeSpace?: pulumi.Input<number | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the host to set the datastore up on. Note that this is not necessarily the
@@ -371,21 +371,21 @@ export interface VmfsDatastoreState {
      * here for more info. Forces a
      * new resource if changed.
      */
-    hostSystemId?: pulumi.Input<string>;
+    hostSystemId?: pulumi.Input<string | undefined>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    maintenanceMode?: pulumi.Input<string>;
+    maintenanceMode?: pulumi.Input<string | undefined>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    multipleHostAccess?: pulumi.Input<boolean>;
+    multipleHostAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
@@ -393,16 +393,16 @@ export interface VmfsDatastoreState {
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    uncommittedSpace?: pulumi.Input<number>;
+    uncommittedSpace?: pulumi.Input<number | undefined>;
     /**
      * The unique locator for the datastore.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -420,13 +420,13 @@ export interface VmfsDatastoreArgs {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string | undefined>;
     /**
      * The disks to use with the datastore.
      */
@@ -440,7 +440,7 @@ export interface VmfsDatastoreArgs {
      * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
      * `datastoreClusterId`.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the host to set the datastore up on. Note that this is not necessarily the
@@ -453,7 +453,7 @@ export interface VmfsDatastoreArgs {
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
@@ -461,5 +461,5 @@ export interface VmfsDatastoreArgs {
      * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

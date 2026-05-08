@@ -9,40 +9,40 @@ export interface ComputeClusterHostImage {
     /**
      * List of custom components.
      */
-    components?: pulumi.Input<pulumi.Input<inputs.ComputeClusterHostImageComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.ComputeClusterHostImageComponent>[] | undefined>;
     /**
      * The ESXi version which the image is based on.
      */
-    esxVersion?: pulumi.Input<string>;
+    esxVersion?: pulumi.Input<string | undefined>;
 }
 
 export interface ComputeClusterHostImageComponent {
     /**
      * The identifier for the component.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The version to use.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface ComputeClusterVsanDiskGroup {
     /**
      * Cache disk.
      */
-    cache?: pulumi.Input<string>;
+    cache?: pulumi.Input<string | undefined>;
     /**
      * List of storage disks.
      */
-    storages?: pulumi.Input<pulumi.Input<string>[]>;
+    storages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ComputeClusterVsanFaultDomain {
     /**
      * The configuration for single fault domain.
      */
-    faultDomains?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanFaultDomainFaultDomain>[]>;
+    faultDomains?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanFaultDomainFaultDomain>[] | undefined>;
 }
 
 export interface ComputeClusterVsanFaultDomainFaultDomain {
@@ -64,7 +64,7 @@ export interface ComputeClusterVsanStretchedCluster {
     /**
      * The name of prepferred fault domain.
      */
-    preferredFaultDomainName?: pulumi.Input<string>;
+    preferredFaultDomainName?: pulumi.Input<string | undefined>;
     /**
      * The managed object IDs of the hosts to put in the second fault domain.
      */
@@ -72,7 +72,7 @@ export interface ComputeClusterVsanStretchedCluster {
     /**
      * The name of secondary fault domain.
      */
-    secondaryFaultDomainName?: pulumi.Input<string>;
+    secondaryFaultDomainName?: pulumi.Input<string | undefined>;
     /**
      * The managed object IDs of the host selected as witness node when enable stretched cluster.
      */
@@ -83,52 +83,52 @@ export interface ContentLibraryPublication {
     /**
      * Method to authenticate users. Must be `NONE` or `BASIC`.
      */
-    authenticationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * Password used by subscribers to authenticate.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The URL of the published content library.
      */
-    publishUrl?: pulumi.Input<string>;
+    publishUrl?: pulumi.Input<string | undefined>;
     /**
      * Publish the content library. Default `false`.
      */
-    published?: pulumi.Input<boolean>;
+    published?: pulumi.Input<boolean | undefined>;
     /**
      * Username used by subscribers to authenticate. Currently can only be `vcsp`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface ContentLibrarySubscription {
     /**
      * Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
      */
-    authenticationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * Enable automatic synchronization with the published library. Default `false`.
      */
-    automaticSync?: pulumi.Input<boolean>;
+    automaticSync?: pulumi.Input<boolean | undefined>;
     /**
      * Download the library from a content only when needed. Default `true`.
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
-    onDemand?: pulumi.Input<boolean>;
+    onDemand?: pulumi.Input<boolean | undefined>;
     /**
      * Password used for authentication.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * URL of the published content library.
      */
-    subscriptionUrl?: pulumi.Input<string>;
+    subscriptionUrl?: pulumi.Input<string | undefined>;
     /**
      * Username used for authentication.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface DistributedPortGroupVlanRange {
@@ -146,7 +146,7 @@ export interface DistributedVirtualSwitchHost {
     /**
      * Name of the physical NIC to be added to the proxy switch.
      */
-    devices?: pulumi.Input<pulumi.Input<string>[]>;
+    devices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The managed object ID of the host this specification applies to.
      */
@@ -212,7 +212,7 @@ export interface GetNetworkFilterArgs {
     /**
      * This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
 }
 
 export interface GetVirtualMachineVapp {
@@ -226,42 +226,42 @@ export interface GetVirtualMachineVappArgs {
     /**
      * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface GuestOsCustomizationSpec {
     /**
      * The list of DNS servers for a virtual network adapter with a static IP address.
      */
-    dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServerLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of DNS search domains to add to the DNS configuration on the virtual machine.
      */
-    dnsSuffixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      */
-    ipv4Gateway?: pulumi.Input<string>;
+    ipv4Gateway?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      */
-    ipv6Gateway?: pulumi.Input<string>;
+    ipv6Gateway?: pulumi.Input<string | undefined>;
     /**
      * A list of configuration options specific to Linux virtual machines.
      */
-    linuxOptions?: pulumi.Input<inputs.GuestOsCustomizationSpecLinuxOptions>;
+    linuxOptions?: pulumi.Input<inputs.GuestOsCustomizationSpecLinuxOptions | undefined>;
     /**
      * A specification of network interface configuration options.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.GuestOsCustomizationSpecNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.GuestOsCustomizationSpecNetworkInterface>[] | undefined>;
     /**
      * A list of configuration options specific to Windows virtual machines.
      */
-    windowsOptions?: pulumi.Input<inputs.GuestOsCustomizationSpecWindowsOptions>;
+    windowsOptions?: pulumi.Input<inputs.GuestOsCustomizationSpecWindowsOptions | undefined>;
     /**
      * Use this option to specify a windows sysprep file directly.
      */
-    windowsSysprepText?: pulumi.Input<string>;
+    windowsSysprepText?: pulumi.Input<string | undefined>;
 }
 
 export interface GuestOsCustomizationSpecLinuxOptions {
@@ -276,57 +276,57 @@ export interface GuestOsCustomizationSpecLinuxOptions {
     /**
      * Specifies whether or not the hardware clock should be in UTC or not.
      */
-    hwClockUtc?: pulumi.Input<boolean>;
+    hwClockUtc?: pulumi.Input<boolean | undefined>;
     /**
      * The customization script to run before and or after guest customization
      */
-    scriptText?: pulumi.Input<string>;
+    scriptText?: pulumi.Input<string | undefined>;
     /**
      * Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 export interface GuestOsCustomizationSpecNetworkInterface {
     /**
      * A DNS search domain to add to the DNS configuration on the virtual machine.
      */
-    dnsDomain?: pulumi.Input<string>;
+    dnsDomain?: pulumi.Input<string | undefined>;
     /**
      * Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
      */
-    dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServerLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
      */
-    ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
      */
-    ipv4Netmask?: pulumi.Input<number>;
+    ipv4Netmask?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
      */
-    ipv6Netmask?: pulumi.Input<number>;
+    ipv6Netmask?: pulumi.Input<number | undefined>;
 }
 
 export interface GuestOsCustomizationSpecWindowsOptions {
     /**
      * The new administrator password for this virtual machine.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether or not the VM automatically logs on as Administrator.
      */
-    autoLogon?: pulumi.Input<boolean>;
+    autoLogon?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
      */
-    autoLogonCount?: pulumi.Input<number>;
+    autoLogonCount?: pulumi.Input<number | undefined>;
     /**
      * The host name for this virtual machine.
      */
@@ -334,58 +334,58 @@ export interface GuestOsCustomizationSpecWindowsOptions {
     /**
      * The password of the domain administrator used to join this virtual machine to the domain.
      */
-    domainAdminPassword?: pulumi.Input<string>;
+    domainAdminPassword?: pulumi.Input<string | undefined>;
     /**
      * The user account of the domain administrator used to join this virtual machine to the domain.
      */
-    domainAdminUser?: pulumi.Input<string>;
+    domainAdminUser?: pulumi.Input<string | undefined>;
     /**
      * The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
      */
-    domainOu?: pulumi.Input<string>;
+    domainOu?: pulumi.Input<string | undefined>;
     /**
      * The full name of the user of this virtual machine.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * The domain that the virtual machine should join.
      */
-    joinDomain?: pulumi.Input<string>;
+    joinDomain?: pulumi.Input<string | undefined>;
     /**
      * The organization name this virtual machine is being installed for.
      */
-    organizationName?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string | undefined>;
     /**
      * The product key for this virtual machine.
      */
-    productKey?: pulumi.Input<string>;
+    productKey?: pulumi.Input<string | undefined>;
     /**
      * A list of commands to run at first user logon, after guest customization.
      */
-    runOnceCommandLists?: pulumi.Input<pulumi.Input<string>[]>;
+    runOnceCommandLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
      */
-    timeZone?: pulumi.Input<number>;
+    timeZone?: pulumi.Input<number | undefined>;
     /**
      * The workgroup for this virtual machine if not joining a domain.
      */
-    workgroup?: pulumi.Input<string>;
+    workgroup?: pulumi.Input<string | undefined>;
 }
 
 export interface HostPortGroupPort {
     /**
      * The key for this port group as returned from the vSphere API.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The MAC addresses of the network service of the virtual machine connected on this port.
      */
-    macAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    macAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface HostService {
@@ -394,34 +394,34 @@ export interface HostService {
      *
      * > **NOTE:** `services` only supports ntpd service today.
      */
-    ntpd?: pulumi.Input<inputs.HostServiceNtpd>;
+    ntpd?: pulumi.Input<inputs.HostServiceNtpd | undefined>;
 }
 
 export interface HostServiceNtpd {
     /**
      * Whether the NTP service is enabled. Default is false.
      */
-    enabled?: pulumi.Input<boolean>;
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 export interface OfflineSoftwareDepotComponent {
     /**
      * The name of the component. Useful for easier identification.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the component.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The list of available versions of the component.
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SupervisorEgressCidr {
@@ -473,7 +473,7 @@ export interface SupervisorNamespace {
     /**
      * A list of content libraries.
      */
-    contentLibraries?: pulumi.Input<pulumi.Input<string>[]>;
+    contentLibraries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the namespace.
      */
@@ -481,7 +481,7 @@ export interface SupervisorNamespace {
     /**
      * A list of virtual machine classes.
      */
-    vmClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    vmClasses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SupervisorPodCidr {
@@ -510,46 +510,46 @@ export interface VirtualMachineCdrom {
     /**
      * Indicates whether the device should be mapped to a remote client device
      */
-    clientDevice?: pulumi.Input<boolean>;
+    clientDevice?: pulumi.Input<boolean | undefined>;
     /**
      * The datastore ID the ISO is located on.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
-    deviceAddress?: pulumi.Input<string>;
+    deviceAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the device within the virtual machine.
      */
-    key?: pulumi.Input<number>;
+    key?: pulumi.Input<number | undefined>;
     /**
      * The path to the ISO file on the datastore.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualMachineClone {
     /**
      * The customization specification for the virtual machine post-clone.
      */
-    customizationSpec?: pulumi.Input<inputs.VirtualMachineCloneCustomizationSpec>;
+    customizationSpec?: pulumi.Input<inputs.VirtualMachineCloneCustomizationSpec | undefined>;
     /**
      * The customization specification for the virtual machine post-clone.
      */
-    customize?: pulumi.Input<inputs.VirtualMachineCloneCustomize>;
+    customize?: pulumi.Input<inputs.VirtualMachineCloneCustomize | undefined>;
     /**
      * Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
      */
-    linkedClone?: pulumi.Input<boolean>;
+    linkedClone?: pulumi.Input<boolean | undefined>;
     /**
      * Mapping of ovf networks to the networks to use in vSphere.
      */
-    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Mapping of ovf storage to the datastores to use in vSphere.
      */
-    ovfStorageMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ovfStorageMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The UUID of the source virtual machine or template.
      */
@@ -557,7 +557,7 @@ export interface VirtualMachineClone {
     /**
      * The timeout, in minutes, to wait for the virtual machine clone to complete.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }
 
 export interface VirtualMachineCloneCustomizationSpec {
@@ -568,46 +568,46 @@ export interface VirtualMachineCloneCustomizationSpec {
     /**
      * The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }
 
 export interface VirtualMachineCloneCustomize {
     /**
      * The list of DNS servers for a virtual network adapter with a static IP address.
      */
-    dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServerLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of DNS search domains to add to the DNS configuration on the virtual machine.
      */
-    dnsSuffixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      */
-    ipv4Gateway?: pulumi.Input<string>;
+    ipv4Gateway?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      */
-    ipv6Gateway?: pulumi.Input<string>;
+    ipv6Gateway?: pulumi.Input<string | undefined>;
     /**
      * A list of configuration options specific to Linux virtual machines.
      */
-    linuxOptions?: pulumi.Input<inputs.VirtualMachineCloneCustomizeLinuxOptions>;
+    linuxOptions?: pulumi.Input<inputs.VirtualMachineCloneCustomizeLinuxOptions | undefined>;
     /**
      * A specification of network interface configuration options.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineCloneCustomizeNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineCloneCustomizeNetworkInterface>[] | undefined>;
     /**
      * The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * A list of configuration options specific to Windows virtual machines.
      */
-    windowsOptions?: pulumi.Input<inputs.VirtualMachineCloneCustomizeWindowsOptions>;
+    windowsOptions?: pulumi.Input<inputs.VirtualMachineCloneCustomizeWindowsOptions | undefined>;
     /**
      * Use this option to specify a windows sysprep file directly.
      */
-    windowsSysprepText?: pulumi.Input<string>;
+    windowsSysprepText?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualMachineCloneCustomizeLinuxOptions {
@@ -622,57 +622,57 @@ export interface VirtualMachineCloneCustomizeLinuxOptions {
     /**
      * Specifies whether or not the hardware clock should be in UTC or not.
      */
-    hwClockUtc?: pulumi.Input<boolean>;
+    hwClockUtc?: pulumi.Input<boolean | undefined>;
     /**
      * The customization script to run before and or after guest customization
      */
-    scriptText?: pulumi.Input<string>;
+    scriptText?: pulumi.Input<string | undefined>;
     /**
      * Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualMachineCloneCustomizeNetworkInterface {
     /**
      * A DNS search domain to add to the DNS configuration on the virtual machine.
      */
-    dnsDomain?: pulumi.Input<string>;
+    dnsDomain?: pulumi.Input<string | undefined>;
     /**
      * Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
      */
-    dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServerLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
      */
-    ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
      */
-    ipv4Netmask?: pulumi.Input<number>;
+    ipv4Netmask?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
      */
-    ipv6Netmask?: pulumi.Input<number>;
+    ipv6Netmask?: pulumi.Input<number | undefined>;
 }
 
 export interface VirtualMachineCloneCustomizeWindowsOptions {
     /**
      * The new administrator password for this virtual machine.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether or not the VM automatically logs on as Administrator.
      */
-    autoLogon?: pulumi.Input<boolean>;
+    autoLogon?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
      */
-    autoLogonCount?: pulumi.Input<number>;
+    autoLogonCount?: pulumi.Input<number | undefined>;
     /**
      * The host name for this virtual machine.
      */
@@ -680,98 +680,98 @@ export interface VirtualMachineCloneCustomizeWindowsOptions {
     /**
      * The password of the domain administrator used to join this virtual machine to the domain.
      */
-    domainAdminPassword?: pulumi.Input<string>;
+    domainAdminPassword?: pulumi.Input<string | undefined>;
     /**
      * The user account of the domain administrator used to join this virtual machine to the domain.
      */
-    domainAdminUser?: pulumi.Input<string>;
+    domainAdminUser?: pulumi.Input<string | undefined>;
     /**
      * The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
      */
-    domainOu?: pulumi.Input<string>;
+    domainOu?: pulumi.Input<string | undefined>;
     /**
      * The full name of the user of this virtual machine.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * The domain that the virtual machine should join.
      */
-    joinDomain?: pulumi.Input<string>;
+    joinDomain?: pulumi.Input<string | undefined>;
     /**
      * The organization name this virtual machine is being installed for.
      */
-    organizationName?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string | undefined>;
     /**
      * The product key for this virtual machine.
      */
-    productKey?: pulumi.Input<string>;
+    productKey?: pulumi.Input<string | undefined>;
     /**
      * A list of commands to run at first user logon, after guest customization.
      */
-    runOnceCommandLists?: pulumi.Input<pulumi.Input<string>[]>;
+    runOnceCommandLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
      */
-    timeZone?: pulumi.Input<number>;
+    timeZone?: pulumi.Input<number | undefined>;
     /**
      * The workgroup for this virtual machine if not joining a domain.
      */
-    workgroup?: pulumi.Input<string>;
+    workgroup?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualMachineDisk {
     /**
      * If this is true, the disk is attached instead of created. Implies keep_on_remove.
      */
-    attach?: pulumi.Input<boolean>;
+    attach?: pulumi.Input<boolean | undefined>;
     /**
      * The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
      */
-    controllerType?: pulumi.Input<string>;
+    controllerType?: pulumi.Input<string | undefined>;
     /**
      * The datastore ID for this virtual disk, if different than the virtual machine.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
-    deviceAddress?: pulumi.Input<string>;
+    deviceAddress?: pulumi.Input<string | undefined>;
     /**
      * The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
      */
-    diskMode?: pulumi.Input<string>;
+    diskMode?: pulumi.Input<string | undefined>;
     /**
      * The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
      */
-    diskSharing?: pulumi.Input<string>;
+    diskSharing?: pulumi.Input<string | undefined>;
     /**
      * The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      */
-    eagerlyScrub?: pulumi.Input<boolean>;
+    eagerlyScrub?: pulumi.Input<boolean | undefined>;
     /**
      * The upper limit of IOPS that this disk can use.
      */
-    ioLimit?: pulumi.Input<number>;
+    ioLimit?: pulumi.Input<number | undefined>;
     /**
      * The I/O guarantee that this disk has, in IOPS.
      */
-    ioReservation?: pulumi.Input<number>;
+    ioReservation?: pulumi.Input<number | undefined>;
     /**
      * The share count for this disk when the share level is custom.
      */
-    ioShareCount?: pulumi.Input<number>;
+    ioShareCount?: pulumi.Input<number | undefined>;
     /**
      * The share allocation level for this disk. Can be one of low, normal, high, or custom.
      */
-    ioShareLevel?: pulumi.Input<string>;
+    ioShareLevel?: pulumi.Input<string | undefined>;
     /**
      * Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
      */
-    keepOnRemove?: pulumi.Input<boolean>;
+    keepOnRemove?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the device within the virtual machine.
      */
-    key?: pulumi.Input<number>;
+    key?: pulumi.Input<number | undefined>;
     /**
      * A unique label for this disk.
      */
@@ -779,66 +779,66 @@ export interface VirtualMachineDisk {
     /**
      * The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The size of the disk, in GB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of the storage policy to assign to the virtual disk in VM.
      */
-    storagePolicyId?: pulumi.Input<string>;
+    storagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
      */
-    thinProvisioned?: pulumi.Input<boolean>;
+    thinProvisioned?: pulumi.Input<boolean | undefined>;
     /**
      * The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
      */
-    unitNumber?: pulumi.Input<number>;
+    unitNumber?: pulumi.Input<number | undefined>;
     /**
      * The UUID of the virtual machine. Also exposed as the `id` of the resource.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
      */
-    writeThrough?: pulumi.Input<boolean>;
+    writeThrough?: pulumi.Input<boolean | undefined>;
 }
 
 export interface VirtualMachineNetworkInterface {
     /**
      * The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
      */
-    adapterType?: pulumi.Input<string>;
+    adapterType?: pulumi.Input<string | undefined>;
     /**
      * The upper bandwidth limit of this network interface, in Mbits/sec.
      */
-    bandwidthLimit?: pulumi.Input<number>;
+    bandwidthLimit?: pulumi.Input<number | undefined>;
     /**
      * The bandwidth reservation of this network interface, in Mbits/sec.
      */
-    bandwidthReservation?: pulumi.Input<number>;
+    bandwidthReservation?: pulumi.Input<number | undefined>;
     /**
      * The share count for this network interface when the share level is custom.
      */
-    bandwidthShareCount?: pulumi.Input<number>;
+    bandwidthShareCount?: pulumi.Input<number | undefined>;
     /**
      * The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
      */
-    bandwidthShareLevel?: pulumi.Input<string>;
+    bandwidthShareLevel?: pulumi.Input<string | undefined>;
     /**
      * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
-    deviceAddress?: pulumi.Input<string>;
+    deviceAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the device within the virtual machine.
      */
-    key?: pulumi.Input<number>;
+    key?: pulumi.Input<number | undefined>;
     /**
      * The MAC address of this network interface. Can only be manually set if useStaticMac is true.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network to connect this network interface to.
      */
@@ -846,75 +846,75 @@ export interface VirtualMachineNetworkInterface {
     /**
      * Mapping of network interface to OVF network.
      */
-    ovfMapping?: pulumi.Input<string>;
+    ovfMapping?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
      */
-    physicalFunction?: pulumi.Input<string>;
+    physicalFunction?: pulumi.Input<string | undefined>;
     /**
      * If true, the macAddress field is treated as a static MAC address and set accordingly.
      */
-    useStaticMac?: pulumi.Input<boolean>;
+    useStaticMac?: pulumi.Input<boolean | undefined>;
 }
 
 export interface VirtualMachineOvfDeploy {
     /**
      * Allow unverified ssl certificates while deploying ovf/ova from url.
      */
-    allowUnverifiedSslCert?: pulumi.Input<boolean>;
+    allowUnverifiedSslCert?: pulumi.Input<boolean | undefined>;
     /**
      * The Deployment option to be chosen. If empty, the default option is used.
      */
-    deploymentOption?: pulumi.Input<string>;
+    deploymentOption?: pulumi.Input<string | undefined>;
     /**
      * An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
      */
-    diskProvisioning?: pulumi.Input<string>;
+    diskProvisioning?: pulumi.Input<string | undefined>;
     /**
      * Allow properties with ovf:userConfigurable=false to be set.
      */
-    enableHiddenProperties?: pulumi.Input<boolean>;
+    enableHiddenProperties?: pulumi.Input<boolean | undefined>;
     /**
      * The IP allocation policy.
      */
-    ipAllocationPolicy?: pulumi.Input<string>;
+    ipAllocationPolicy?: pulumi.Input<string | undefined>;
     /**
      * The IP protocol.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The absolute path to the ovf/ova file in the local system.
      */
-    localOvfPath?: pulumi.Input<string>;
+    localOvfPath?: pulumi.Input<string | undefined>;
     /**
      * The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
      */
-    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * URL to the remote ovf/ova file to be deployed.
      */
-    remoteOvfUrl?: pulumi.Input<string>;
+    remoteOvfUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualMachineVapp {
     /**
      * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface VirtualMachineVtpm {
     /**
      * The version of the TPM device. Default is 2.0.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface VmStoragePolicyTagRule {
     /**
      * Include datastores with the given tags or exclude. Default `true`.
      */
-    includeDatastoresWithTags?: pulumi.Input<boolean>;
+    includeDatastoresWithTags?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the tag category.
      */
@@ -929,36 +929,36 @@ export interface VnicIpv4 {
     /**
      * Use DHCP to configure the interface's IPv4 stack.
      */
-    dhcp?: pulumi.Input<boolean>;
+    dhcp?: pulumi.Input<boolean | undefined>;
     /**
      * IP address of the default gateway, if DHCP is not set.
      */
-    gw?: pulumi.Input<string>;
+    gw?: pulumi.Input<string | undefined>;
     /**
      * address of the interface, if DHCP is not set.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * netmask of the interface, if DHCP is not set.
      */
-    netmask?: pulumi.Input<string>;
+    netmask?: pulumi.Input<string | undefined>;
 }
 
 export interface VnicIpv6 {
     /**
      * List of IPv6 addresses
      */
-    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Use IPv6 Autoconfiguration (RFC2462).
      */
-    autoconfig?: pulumi.Input<boolean>;
+    autoconfig?: pulumi.Input<boolean | undefined>;
     /**
      * Use DHCP to configure the interface's IPv4 stack.
      */
-    dhcp?: pulumi.Input<boolean>;
+    dhcp?: pulumi.Input<boolean | undefined>;
     /**
      * IP address of the default gateway, if DHCP or autoconfig is not set.
      */
-    gw?: pulumi.Input<string>;
+    gw?: pulumi.Input<string | undefined>;
 }

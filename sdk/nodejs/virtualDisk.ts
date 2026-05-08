@@ -201,7 +201,7 @@ export interface VirtualDiskState {
      *
      * @deprecated this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      */
-    adapterType?: pulumi.Input<string>;
+    adapterType?: pulumi.Input<string | undefined>;
     /**
      * Tells the resource to create any
      * directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -211,24 +211,24 @@ export interface VirtualDiskState {
      * `createDirectories` is enabled will not be deleted when the resource is
      * destroyed.
      */
-    createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the datacenter in which to create the
      * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the datastore in which to create the
      * disk.
      */
-    datastore?: pulumi.Input<string>;
+    datastore?: pulumi.Input<string | undefined>;
     /**
      * Size of the disk (in GB). Decreasing the size of a disk is not possible.
      * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
      * created.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The type of disk to create. Can be one of
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -237,12 +237,12 @@ export interface VirtualDiskState {
      *
      * [docs-vmware-vm-disk-provisioning]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-single-host-management-vmware-host-client-8-0/virtual-machine-management-with-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/configuring-virtual-machines-in-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/virtual-disk-configuration-vSphereSingleHostManagementVMwareHostClient/about-virtual-disk-provisioning-policies-vSphereSingleHostManagementVMwareHostClient.html
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The path, including filename, of the virtual disk to
      * be created.  This needs to end in `.vmdk`.
      */
-    vmdkPath?: pulumi.Input<string>;
+    vmdkPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -264,7 +264,7 @@ export interface VirtualDiskArgs {
      *
      * @deprecated this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      */
-    adapterType?: pulumi.Input<string>;
+    adapterType?: pulumi.Input<string | undefined>;
     /**
      * Tells the resource to create any
      * directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -274,13 +274,13 @@ export interface VirtualDiskArgs {
      * `createDirectories` is enabled will not be deleted when the resource is
      * destroyed.
      */
-    createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the datacenter in which to create the
      * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the datastore in which to create the
      * disk.
@@ -300,7 +300,7 @@ export interface VirtualDiskArgs {
      *
      * [docs-vmware-vm-disk-provisioning]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-single-host-management-vmware-host-client-8-0/virtual-machine-management-with-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/configuring-virtual-machines-in-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/virtual-disk-configuration-vSphereSingleHostManagementVMwareHostClient/about-virtual-disk-provisioning-policies-vSphereSingleHostManagementVMwareHostClient.html
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The path, including filename, of the virtual disk to
      * be created.  This needs to end in `.vmdk`.

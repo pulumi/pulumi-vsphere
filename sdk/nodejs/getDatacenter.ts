@@ -101,5 +101,5 @@ export interface GetDatacenterOutputArgs {
      * datacenters that exist in the vSphere inventory when managed by a vCenter Server
      * instance. Hence, the `name` attribute is completely ignored.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

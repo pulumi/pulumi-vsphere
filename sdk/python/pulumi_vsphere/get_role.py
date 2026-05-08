@@ -131,10 +131,10 @@ def get_role(description: Optional[_builtins.str] = None,
         label=pulumi.get(__ret__, 'label'),
         name=pulumi.get(__ret__, 'name'),
         role_privileges=pulumi.get(__ret__, 'role_privileges'))
-def get_role_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    label: Optional[pulumi.Input[_builtins.str]] = None,
-                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    role_privileges: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_role_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    label: pulumi.Input[Optional[_builtins.str]] = None,
+                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    role_privileges: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleResult]:
     """
     The `Role` data source can be used to discover the `id` and privileges
