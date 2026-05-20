@@ -25,6 +25,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Lookup by Name
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +42,26 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Id = "urn:vmomi:InventoryServiceCategory:xxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetTagCategoryResult> InvokeAsync(GetTagCategoryArgs args, InvokeOptions? options = null)
+        public static Task<GetTagCategoryResult> InvokeAsync(GetTagCategoryArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryArgs(), options.WithDefaults());
 
         /// <summary>
@@ -58,6 +78,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Lookup by Name
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +95,26 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Id = "urn:vmomi:InventoryServiceCategory:xxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetTagCategoryResult> Invoke(GetTagCategoryInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetTagCategoryResult> Invoke(GetTagCategoryInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -91,6 +131,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Lookup by Name
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,6 +148,24 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Id = "urn:vmomi:InventoryServiceCategory:xxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagCategoryResult> Invoke(GetTagCategoryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithDefaults());
@@ -115,10 +175,16 @@ namespace Pulumi.VSphere
     public sealed class GetTagCategoryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the tag category.
+        /// The unique identifier of the tag category. If specified, `Name` must not be set.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// The name of the tag category. Required if `Id` is not set.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetTagCategoryArgs()
         {
@@ -129,10 +195,16 @@ namespace Pulumi.VSphere
     public sealed class GetTagCategoryInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the tag category.
+        /// The unique identifier of the tag category. If specified, `Name` must not be set.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the tag category. Required if `Id` is not set.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetTagCategoryInvokeArgs()
         {
@@ -147,11 +219,8 @@ namespace Pulumi.VSphere
         public readonly ImmutableArray<string> AssociableTypes;
         public readonly string Cardinality;
         public readonly string Description;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        public readonly string Name;
+        public readonly string? Id;
+        public readonly string? Name;
 
         [OutputConstructor]
         private GetTagCategoryResult(
@@ -161,9 +230,9 @@ namespace Pulumi.VSphere
 
             string description,
 
-            string id,
+            string? id,
 
-            string name)
+            string? name)
         {
             AssociableTypes = associableTypes;
             Cardinality = cardinality;

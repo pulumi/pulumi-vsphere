@@ -121,7 +121,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? ThinProvisioned { get; set; }
 
         /// <summary>
-        /// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+        /// The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
         /// </summary>
         [Input("unitNumber")]
         public Input<int>? UnitNumber { get; set; }

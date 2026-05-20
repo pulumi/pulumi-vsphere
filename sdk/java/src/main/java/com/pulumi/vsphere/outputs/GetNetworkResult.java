@@ -35,6 +35,7 @@ public final class GetNetworkResult {
      */
     private String type;
     private @Nullable String vpcId;
+    private @Nullable String vpcProjectId;
 
     private GetNetworkResult() {}
     public Optional<String> datacenterId() {
@@ -75,6 +76,9 @@ public final class GetNetworkResult {
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
+    public Optional<String> vpcProjectId() {
+        return Optional.ofNullable(this.vpcProjectId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -94,6 +98,7 @@ public final class GetNetworkResult {
         private @Nullable Integer retryTimeout;
         private String type;
         private @Nullable String vpcId;
+        private @Nullable String vpcProjectId;
         public Builder() {}
         public Builder(GetNetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -106,6 +111,7 @@ public final class GetNetworkResult {
     	      this.retryTimeout = defaults.retryTimeout;
     	      this.type = defaults.type;
     	      this.vpcId = defaults.vpcId;
+    	      this.vpcProjectId = defaults.vpcProjectId;
         }
 
         @CustomType.Setter
@@ -171,6 +177,12 @@ public final class GetNetworkResult {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcProjectId(@Nullable String vpcProjectId) {
+
+            this.vpcProjectId = vpcProjectId;
+            return this;
+        }
         public GetNetworkResult build() {
             final var _resultValue = new GetNetworkResult();
             _resultValue.datacenterId = datacenterId;
@@ -182,6 +194,7 @@ public final class GetNetworkResult {
             _resultValue.retryTimeout = retryTimeout;
             _resultValue.type = type;
             _resultValue.vpcId = vpcId;
+            _resultValue.vpcProjectId = vpcProjectId;
             return _resultValue;
         }
     }

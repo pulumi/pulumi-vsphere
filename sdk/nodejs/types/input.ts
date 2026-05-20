@@ -5,6 +5,165 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AlarmAdvancedAction {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: pulumi.Input<string>;
+    /**
+     * The name of the alarm. This name needs to be unique
+     * within the vCenter. Forces a new resource if changed.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: pulumi.Input<boolean | undefined>;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: pulumi.Input<string>;
+}
+
+export interface AlarmEmailAction {
+    /**
+     * Email body.
+     */
+    body?: pulumi.Input<string | undefined>;
+    /**
+     * Email destination cc.
+     */
+    cc?: pulumi.Input<string | undefined>;
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: pulumi.Input<string>;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: pulumi.Input<boolean | undefined>;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: pulumi.Input<string>;
+    /**
+     * Email subject.
+     */
+    subject?: pulumi.Input<string | undefined>;
+    /**
+     * Email destination.
+     */
+    to?: pulumi.Input<string | undefined>;
+}
+
+export interface AlarmEventExpression {
+    /**
+     * Additional check that allows adding threshold on the given object attribute.
+     */
+    comparisons?: pulumi.Input<pulumi.Input<inputs.AlarmEventExpressionComparison>[] | undefined>;
+    /**
+     * Type of Event (vim.event.Event).
+     */
+    eventType?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the event (vim.event).
+     */
+    eventTypeId: pulumi.Input<string>;
+    /**
+     * Type of object where the event applies on.
+     */
+    objectType: pulumi.Input<string>;
+    /**
+     * Alarm status once triggered.
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface AlarmEventExpressionComparison {
+    /**
+     * Name of the attribute to compare.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * Comparison operator.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * Value to compare.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface AlarmMetricExpression {
+    /**
+     * ID of the metric.
+     */
+    metricCounterId: pulumi.Input<number>;
+    metricInstance?: pulumi.Input<string | undefined>;
+    /**
+     * Type of object of the metric, ie: HostSystem.
+     */
+    objectType: pulumi.Input<string>;
+    /**
+     * Whether the metric is below or above the given threshold.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * Critical threshold, for percentage, 9900 is 99%.
+     */
+    red?: pulumi.Input<number | undefined>;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the critical alarm.
+     */
+    redInterval?: pulumi.Input<number | undefined>;
+    /**
+     * Warning threshold, for percentage, 9900 is 99%.
+     */
+    yellow?: pulumi.Input<number | undefined>;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the warning alarm.
+     */
+    yellowInterval?: pulumi.Input<number | undefined>;
+}
+
+export interface AlarmSnmpAction {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: pulumi.Input<string>;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: pulumi.Input<boolean | undefined>;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: pulumi.Input<string>;
+}
+
+export interface AlarmStateExpression {
+    /**
+     * Type of object where the event applies on, ie: HostSystem.
+     */
+    objectType: pulumi.Input<string>;
+    /**
+     * Check if state is equal or unequal.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * State value to trigger critical alarm.
+     */
+    red?: pulumi.Input<string | undefined>;
+    /**
+     * State path: ie. runtime.connectionState.
+     */
+    statePath: pulumi.Input<string>;
+    /**
+     * State value to trigger warning alarm.
+     */
+    yellow?: pulumi.Input<string | undefined>;
+}
+
 export interface ComputeClusterHostImage {
     /**
      * List of custom components.
@@ -199,6 +358,146 @@ export interface EntityPermissionsPermission {
      * The user/group getting the permission.
      */
     userOrGroup: pulumi.Input<string>;
+}
+
+export interface GetAlarmMetricExpression {
+    /**
+     * ID of the metric.
+     */
+    metricCounterId?: number;
+    metricInstance?: string;
+    /**
+     * Type of object of the metric, ie: HostSystem.
+     */
+    objectType?: string;
+    /**
+     * Whether the metric is below or above the given threshold.
+     */
+    operator?: string;
+    /**
+     * Critical threshold, for percentage, 9900 is 99%.
+     */
+    red?: number;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the critical alarm.
+     */
+    redInterval?: number;
+    /**
+     * Warning threshold, for percentage, 9900 is 99%.
+     */
+    yellow?: number;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the warning alarm.
+     */
+    yellowInterval?: number;
+}
+
+export interface GetAlarmMetricExpressionArgs {
+    /**
+     * ID of the metric.
+     */
+    metricCounterId?: pulumi.Input<number | undefined>;
+    metricInstance?: pulumi.Input<string | undefined>;
+    /**
+     * Type of object of the metric, ie: HostSystem.
+     */
+    objectType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the metric is below or above the given threshold.
+     */
+    operator?: pulumi.Input<string | undefined>;
+    /**
+     * Critical threshold, for percentage, 9900 is 99%.
+     */
+    red?: pulumi.Input<number | undefined>;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the critical alarm.
+     */
+    redInterval?: pulumi.Input<number | undefined>;
+    /**
+     * Warning threshold, for percentage, 9900 is 99%.
+     */
+    yellow?: pulumi.Input<number | undefined>;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the warning alarm.
+     */
+    yellowInterval?: pulumi.Input<number | undefined>;
+}
+
+export interface GetAlarmSnmpAction {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState?: string;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: boolean;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState?: string;
+}
+
+export interface GetAlarmSnmpActionArgs {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: pulumi.Input<boolean | undefined>;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAlarmStateExpression {
+    /**
+     * Type of object where the event applies on, ie: HostSystem.
+     */
+    objectType?: string;
+    /**
+     * Check if state is equal or unequal.
+     */
+    operator?: string;
+    /**
+     * State value to trigger critical alarm.
+     */
+    red?: string;
+    /**
+     * State path: ie. runtime.connectionState.
+     */
+    statePath?: string;
+    /**
+     * State value to trigger warning alarm.
+     */
+    yellow?: string;
+}
+
+export interface GetAlarmStateExpressionArgs {
+    /**
+     * Type of object where the event applies on, ie: HostSystem.
+     */
+    objectType?: pulumi.Input<string | undefined>;
+    /**
+     * Check if state is equal or unequal.
+     */
+    operator?: pulumi.Input<string | undefined>;
+    /**
+     * State value to trigger critical alarm.
+     */
+    red?: pulumi.Input<string | undefined>;
+    /**
+     * State path: ie. runtime.connectionState.
+     */
+    statePath?: pulumi.Input<string | undefined>;
+    /**
+     * State value to trigger warning alarm.
+     */
+    yellow?: pulumi.Input<string | undefined>;
 }
 
 export interface GetNetworkFilter {
@@ -409,6 +708,17 @@ export interface HostServiceNtpd {
     policy?: pulumi.Input<string | undefined>;
 }
 
+export interface NamespaceVmService {
+    /**
+     * The list of content libraries to associate with the VM Service.
+     */
+    contentLibraries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The list of VM Classes to associate with the VM Service.
+     */
+    vmClasses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface OfflineSoftwareDepotComponent {
     /**
      * The name of the component. Useful for easier identification.
@@ -448,7 +758,7 @@ export interface SupervisorIngressCidr {
 
 export interface SupervisorManagementNetwork {
     /**
-     * Number of addresses to allocate. Starts from 'starting_address'
+     * Number of addresses to allocate. Starts from `startingAddress`
      */
     addressCount: pulumi.Input<number>;
     /**
@@ -456,7 +766,7 @@ export interface SupervisorManagementNetwork {
      */
     gateway: pulumi.Input<string>;
     /**
-     * ID of the network. (e.g. a distributed port group).
+     * ID of the network. (_e.g._, a distributed port group).
      */
     network: pulumi.Input<string>;
     /**
@@ -504,6 +814,683 @@ export interface SupervisorServiceCidr {
      * Subnet prefix.
      */
     prefix: pulumi.Input<number>;
+}
+
+export interface SupervisorV2ControlPlane {
+    /**
+     * The number of control plane VMs to deploy.
+     */
+    count?: pulumi.Input<number | undefined>;
+    /**
+     * The network configuration for the control plane VM(s).
+     */
+    network: pulumi.Input<inputs.SupervisorV2ControlPlaneNetwork>;
+    /**
+     * The size preset for the control plane VM(s).
+     */
+    size?: pulumi.Input<string | undefined>;
+    /**
+     * The storage policy for the control plane VM(s).
+     */
+    storagePolicy?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorV2ControlPlaneNetwork {
+    /**
+     * Backing network configuration.
+     */
+    backing: pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkBacking>;
+    /**
+     * Floating IP address.
+     */
+    floatingIp?: pulumi.Input<string | undefined>;
+    /**
+     * IP Management configuration.
+     */
+    ipManagement?: pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkIpManagement | undefined>;
+    /**
+     * The network identifier for the management network.
+     */
+    network?: pulumi.Input<string | undefined>;
+    /**
+     * Proxy server configuration.
+     */
+    proxy?: pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkProxy | undefined>;
+    /**
+     * Network services (e.g DNS, NTP) configuration.
+     */
+    services?: pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkServices | undefined>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkBacking {
+    /**
+     * The Managed Object ID of the Network object.
+     */
+    network?: pulumi.Input<string | undefined>;
+    /**
+     * The backing network segment.
+     */
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkIpManagement {
+    /**
+     * Whether to use DHCP or not.
+     */
+    dhcpEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The IP address of the network gateway.
+     */
+    gatewayAddress?: pulumi.Input<string | undefined>;
+    /**
+     * IP assignment configuration.
+     */
+    ipAssignments?: pulumi.Input<pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignment>[] | undefined>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkIpManagementIpAssignment {
+    /**
+     * The type of the assignee.
+     */
+    assignee?: pulumi.Input<string | undefined>;
+    /**
+     * The available IP addresses that can be consumed by Supervisor to run the cluster.
+     */
+    ranges?: pulumi.Input<pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange>[] | undefined>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: pulumi.Input<number>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkProxy {
+    /**
+     * HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`.
+     */
+    httpConfig?: pulumi.Input<string | undefined>;
+    /**
+     * HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+     */
+    httpsConfig?: pulumi.Input<string | undefined>;
+    /**
+     * List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+     */
+    noProxyConfigs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The source of the proxy settings.
+     */
+    settingsSource: pulumi.Input<string>;
+    /**
+     * Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+     */
+    tlsRootCaBundle?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkServices {
+    /**
+     * The DNS configuration.
+     */
+    dns?: pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkServicesDns | undefined>;
+    /**
+     * The NTP configuration.
+     */
+    ntp?: pulumi.Input<inputs.SupervisorV2ControlPlaneNetworkServicesNtp | undefined>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkServicesDns {
+    /**
+     * The list of search domains.
+     */
+    searchDomains: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of DNS servers.
+     */
+    servers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2ControlPlaneNetworkServicesNtp {
+    /**
+     * The list of NTP servers.
+     */
+    servers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2Workloads {
+    /**
+     * Edge configuration
+     */
+    edge: pulumi.Input<inputs.SupervisorV2WorkloadsEdge>;
+    /**
+     * Configuration for storing and pulling images into the cluster.
+     */
+    images?: pulumi.Input<inputs.SupervisorV2WorkloadsImages | undefined>;
+    /**
+     * Kubernetes API Server options
+     */
+    kubeApiServerOptions: pulumi.Input<inputs.SupervisorV2WorkloadsKubeApiServerOptions>;
+    /**
+     * The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+     */
+    network: pulumi.Input<inputs.SupervisorV2WorkloadsNetwork>;
+    /**
+     * Persistent storage configuration.
+     */
+    storage?: pulumi.Input<inputs.SupervisorV2WorkloadsStorage | undefined>;
+}
+
+export interface SupervisorV2WorkloadsEdge {
+    /**
+     * Configuration for the vSphere Foundation Load Balancer.
+     */
+    foundation?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundation | undefined>;
+    /**
+     * Configuration for the HAProxy Load Balancer.
+     */
+    haproxy?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeHaproxy | undefined>;
+    /**
+     * The unique identifier of this edge.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The list of addresses that a load balancer can consume to publish Kubernetes services.
+     */
+    lbAddressRanges?: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsEdgeLbAddressRange>[] | undefined>;
+    /**
+     * Configuration for the NSX Load Balancer.
+     */
+    nsx?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeNsx | undefined>;
+    /**
+     * Configuration for the NSX Advanced Load Balancer.
+     */
+    nsxAdvanced?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeNsxAdvanced | undefined>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundation {
+    /**
+     * The configuration for the Load Balancer placement.
+     */
+    deploymentTarget?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationDeploymentTarget | undefined>;
+    /**
+     * Configuration for the Load Balancer network interfaces.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationInterface>[] | undefined>;
+    /**
+     * Configuration for the Load Balancer network services.
+     */
+    networkServices?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationNetworkServices | undefined>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationDeploymentTarget {
+    /**
+     * Configures the availability level for the load balancer.
+     */
+    availability?: pulumi.Input<string | undefined>;
+    /**
+     * Determines the CPU/memory resource size of the load balancer deployment.
+     */
+    deploymentSize?: pulumi.Input<string | undefined>;
+    /**
+     * Storage Policy containing datastores hosting the load balancer nodes.
+     */
+    storagePolicy?: pulumi.Input<string | undefined>;
+    /**
+     * A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+     *
+     * <a id="nestedblock--control-plane"></a>
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterface {
+    /**
+     * Network configuration for this interface.
+     */
+    network: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork>;
+    /**
+     * Determines the type of traffic that passes through a network interface.
+     */
+    personas: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork {
+    /**
+     * Identifier of the Distributed Virtual Portgroup.
+     */
+    dvpgNetwork?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork | undefined>;
+    /**
+     * The type of network interface.
+     */
+    networkType: pulumi.Input<string>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork {
+    /**
+     * Static IP Configuration for this network.
+     */
+    ipConfig?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig | undefined>;
+    /**
+     * IP Address management scheme for this network.
+     */
+    ipam: pulumi.Input<string>;
+    /**
+     * The name of the Supervisor cluster.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The identifier of the Distributed Virtual Portgroup.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig {
+    /**
+     * Gateway address.
+     */
+    gateway: pulumi.Input<string>;
+    /**
+     * IP range configuration.
+     */
+    ipRanges: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange>[]>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: pulumi.Input<number>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServices {
+    /**
+     * DNS configuration.
+     */
+    dns?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns | undefined>;
+    /**
+     * NTP configuration.
+     */
+    ntp?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp | undefined>;
+    /**
+     * Remote log forwarding configuration.
+     */
+    syslog?: pulumi.Input<inputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog | undefined>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns {
+    /**
+     * The list of search domains.
+     */
+    searchDomains: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of DNS servers.
+     */
+    servers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp {
+    /**
+     * The list of NTP servers.
+     */
+    servers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog {
+    /**
+     * Certificate authority PEM.
+     */
+    caCert?: pulumi.Input<string | undefined>;
+    /**
+     * FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+     */
+    endpoint?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorV2WorkloadsEdgeHaproxy {
+    /**
+     * The CA chain for the data plane API server.
+     */
+    caChain: pulumi.Input<string>;
+    /**
+     * The password for the data plane API server.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The servers for the data plane API server.
+     */
+    servers: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsEdgeHaproxyServer>[]>;
+    /**
+     * The username for the data plane API server.
+     */
+    username: pulumi.Input<string>;
+}
+
+export interface SupervisorV2WorkloadsEdgeHaproxyServer {
+    /**
+     * The IP address of the API server.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * The port of the API server.
+     */
+    port: pulumi.Input<number>;
+}
+
+export interface SupervisorV2WorkloadsEdgeLbAddressRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: pulumi.Input<number>;
+}
+
+export interface SupervisorV2WorkloadsEdgeNsx {
+    /**
+     * The default certificate that is served on Ingress services, when another certificate is not presented.
+     */
+    defaultIngressTlsCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * The identifier of the edge cluster.
+     */
+    edgeCluster?: pulumi.Input<string | undefined>;
+    /**
+     * An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+     */
+    egressIpRanges?: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsEdgeNsxEgressIpRange>[] | undefined>;
+    /**
+     * The size of the load balancer node.
+     */
+    loadBalancerSize?: pulumi.Input<string | undefined>;
+    /**
+     * Routing mode.
+     */
+    routingMode?: pulumi.Input<string | undefined>;
+    /**
+     * Tier-0 gateway ID for the namespaces configuration.
+     */
+    t0Gateway?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorV2WorkloadsEdgeNsxAdvanced {
+    /**
+     * Certificate authority chain.
+     */
+    caChain: pulumi.Input<string>;
+    /**
+     * Cloud Name.
+     */
+    cloudName?: pulumi.Input<string | undefined>;
+    /**
+     * The IP address of the AVI controller.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Password
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The port of the AVI controller.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Username
+     */
+    username: pulumi.Input<string>;
+}
+
+export interface SupervisorV2WorkloadsEdgeNsxEgressIpRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: pulumi.Input<number>;
+}
+
+export interface SupervisorV2WorkloadsImages {
+    /**
+     * Content library associated with the Supervisor.
+     */
+    contentLibraries: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsImagesContentLibrary>[]>;
+    /**
+     * The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+     */
+    kubernetesContentLibrary: pulumi.Input<string>;
+    /**
+     * Configuration for the container image registry endpoint.
+     */
+    registry: pulumi.Input<inputs.SupervisorV2WorkloadsImagesRegistry>;
+    /**
+     * The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+     */
+    repository: pulumi.Input<string>;
+}
+
+export interface SupervisorV2WorkloadsImagesContentLibrary {
+    /**
+     * Content library identifier.
+     */
+    contentLibrary: pulumi.Input<string>;
+    /**
+     * The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+     */
+    resourceNamingStrategy?: pulumi.Input<string | undefined>;
+    /**
+     * A list of Supervisor Service IDs that are currently making use of the Content Library.
+     */
+    supervisorServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface SupervisorV2WorkloadsImagesRegistry {
+    /**
+     * The certificate authority chain of the image registry.
+     */
+    caChain: pulumi.Input<string>;
+    /**
+     * The IP address of the image registry.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * The password of the image registry.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The port of the image registry.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The username of the image registry.
+     */
+    username: pulumi.Input<string>;
+}
+
+export interface SupervisorV2WorkloadsKubeApiServerOptions {
+    /**
+     * Security configuration.
+     *
+     * <a id="nestedblock--workloads-images"></a>
+     */
+    security?: pulumi.Input<inputs.SupervisorV2WorkloadsKubeApiServerOptionsSecurity | undefined>;
+}
+
+export interface SupervisorV2WorkloadsKubeApiServerOptionsSecurity {
+    /**
+     * List of DNS names to include in the certificate.
+     */
+    certificateDnsNames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2WorkloadsNetwork {
+    /**
+     * IP Management configuration.
+     */
+    ipManagement?: pulumi.Input<inputs.SupervisorV2WorkloadsNetworkIpManagement | undefined>;
+    /**
+     * A unique identifier for the workload network.
+     */
+    network?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for NSX-T backing.
+     */
+    nsx?: pulumi.Input<inputs.SupervisorV2WorkloadsNetworkNsx | undefined>;
+    /**
+     * Configuration for NSX VPC backing.
+     */
+    nsxVpc?: pulumi.Input<inputs.SupervisorV2WorkloadsNetworkNsxVpc | undefined>;
+    /**
+     * Network services (e.g DNS, NTP) configuration.
+     */
+    services?: pulumi.Input<inputs.SupervisorV2WorkloadsNetworkServices | undefined>;
+    /**
+     * Configuration for vSphere network backing.
+     */
+    vsphere?: pulumi.Input<inputs.SupervisorV2WorkloadsNetworkVsphere | undefined>;
+}
+
+export interface SupervisorV2WorkloadsNetworkIpManagement {
+    /**
+     * Whether to use DHCP or not.
+     */
+    dhcpEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The IP address of the network gateway.
+     */
+    gatewayAddress?: pulumi.Input<string | undefined>;
+    /**
+     * IP assignment configuration.
+     */
+    ipAssignments?: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignment>[] | undefined>;
+}
+
+export interface SupervisorV2WorkloadsNetworkIpManagementIpAssignment {
+    /**
+     * The type of the assignee.
+     */
+    assignee?: pulumi.Input<string | undefined>;
+    /**
+     * The available IP addresses that can be consumed by Supervisor to run the cluster.
+     */
+    ranges?: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange>[] | undefined>;
+}
+
+export interface SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: pulumi.Input<number>;
+}
+
+export interface SupervisorV2WorkloadsNetworkNsx {
+    /**
+     * The identifier of the vSphere Distributed Switch.
+     */
+    dvs: pulumi.Input<string>;
+    /**
+     * The size of the subnet reserved for namespace segments.
+     */
+    namespaceSubnetPrefix?: pulumi.Input<number | undefined>;
+}
+
+export interface SupervisorV2WorkloadsNetworkNsxVpc {
+    /**
+     * Specifies CIDR blocks from which private subnets are allocated.
+     */
+    defaultPrivateCidrs: pulumi.Input<pulumi.Input<inputs.SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr>[]>;
+    /**
+     * The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+     */
+    nsxProject?: pulumi.Input<string | undefined>;
+    /**
+     * The identifier of the VPC Connectivity Profile.
+     */
+    vpcConnectivityProfile?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr {
+    /**
+     * The starting IPv4 address of the CIDR block.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The number of addresses in the CIDR block.
+     */
+    prefix: pulumi.Input<number>;
+}
+
+export interface SupervisorV2WorkloadsNetworkServices {
+    /**
+     * The DNS configuration.
+     */
+    dns?: pulumi.Input<inputs.SupervisorV2WorkloadsNetworkServicesDns | undefined>;
+    /**
+     * The NTP configuration.
+     */
+    ntp?: pulumi.Input<inputs.SupervisorV2WorkloadsNetworkServicesNtp | undefined>;
+}
+
+export interface SupervisorV2WorkloadsNetworkServicesDns {
+    /**
+     * The list of search domains.
+     */
+    searchDomains: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of DNS servers.
+     */
+    servers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2WorkloadsNetworkServicesNtp {
+    /**
+     * The list of NTP servers.
+     */
+    servers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SupervisorV2WorkloadsNetworkVsphere {
+    /**
+     * The identifier of the Distributed Virtual Portgroup.
+     */
+    dvpg: pulumi.Input<string>;
+}
+
+export interface SupervisorV2WorkloadsStorage {
+    /**
+     * Specifies the Cloud Native Storage file volume.
+     */
+    cloudNativeFileVolume?: pulumi.Input<inputs.SupervisorV2WorkloadsStorageCloudNativeFileVolume | undefined>;
+    /**
+     * The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+     */
+    ephemeralStoragePolicy?: pulumi.Input<string | undefined>;
+    /**
+     * The specification required to configure storage used for Pod VM container images.
+     */
+    imageStoragePolicy?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorV2WorkloadsStorageCloudNativeFileVolume {
+    /**
+     * A list of cluster identifiers.
+     */
+    vsanClusters: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface VirtualMachineCdrom {
@@ -793,7 +1780,7 @@ export interface VirtualMachineDisk {
      */
     thinProvisioned?: pulumi.Input<boolean | undefined>;
     /**
-     * The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+     * The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
      */
     unitNumber?: pulumi.Input<number | undefined>;
     /**
@@ -831,6 +1818,10 @@ export interface VirtualMachineNetworkInterface {
      * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress?: pulumi.Input<string | undefined>;
+    /**
+     * The external port id to be bound to the VM port.
+     */
+    externalPortId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the device within the virtual machine.
      */
@@ -901,6 +1892,40 @@ export interface VirtualMachineVapp {
      * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+}
+
+export interface VirtualMachineVideoCard {
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     */
+    deviceAddress?: pulumi.Input<string | undefined>;
+    /**
+     * 3D graphics options.
+     */
+    graphics3ds?: pulumi.Input<pulumi.Input<inputs.VirtualMachineVideoCardGraphics3d>[] | undefined>;
+    /**
+     * The unique device ID for this device within its virtual machine.
+     */
+    key?: pulumi.Input<number | undefined>;
+    /**
+     * Number of supported displays
+     */
+    numDisplays: pulumi.Input<number>;
+    /**
+     * Video RAM size in megabytes
+     */
+    totalVideoMemory: pulumi.Input<number>;
+}
+
+export interface VirtualMachineVideoCardGraphics3d {
+    /**
+     * The amount of dedicated graphics memory in megabytes
+     */
+    memory?: pulumi.Input<number | undefined>;
+    /**
+     * Indicates how the virtual device renders 3D graphics
+     */
+    renderer?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualMachineVtpm {

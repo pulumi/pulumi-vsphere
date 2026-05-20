@@ -227,6 +227,10 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     declare public readonly drsScaleDescendantsShares: pulumi.Output<string | undefined>;
     /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    declare public readonly evcMode: pulumi.Output<string | undefined>;
+    /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
      * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -497,6 +501,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["drsEnabled"] = state?.drsEnabled;
             resourceInputs["drsMigrationThreshold"] = state?.drsMigrationThreshold;
             resourceInputs["drsScaleDescendantsShares"] = state?.drsScaleDescendantsShares;
+            resourceInputs["evcMode"] = state?.evcMode;
             resourceInputs["folder"] = state?.folder;
             resourceInputs["forceEvacuateOnDestroy"] = state?.forceEvacuateOnDestroy;
             resourceInputs["haAdmissionControlFailoverHostSystemIds"] = state?.haAdmissionControlFailoverHostSystemIds;
@@ -572,6 +577,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["drsEnabled"] = args?.drsEnabled;
             resourceInputs["drsMigrationThreshold"] = args?.drsMigrationThreshold;
             resourceInputs["drsScaleDescendantsShares"] = args?.drsScaleDescendantsShares;
+            resourceInputs["evcMode"] = args?.evcMode;
             resourceInputs["folder"] = args?.folder;
             resourceInputs["forceEvacuateOnDestroy"] = args?.forceEvacuateOnDestroy;
             resourceInputs["haAdmissionControlFailoverHostSystemIds"] = args?.haAdmissionControlFailoverHostSystemIds;
@@ -697,6 +703,10 @@ export interface ComputeClusterState {
      * Enable scalable shares for all descendants of this cluster.
      */
     drsScaleDescendantsShares?: pulumi.Input<string | undefined>;
+    /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    evcMode?: pulumi.Input<string | undefined>;
     /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
@@ -1005,6 +1015,10 @@ export interface ComputeClusterArgs {
      * Enable scalable shares for all descendants of this cluster.
      */
     drsScaleDescendantsShares?: pulumi.Input<string | undefined>;
+    /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    evcMode?: pulumi.Input<string | undefined>;
     /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.

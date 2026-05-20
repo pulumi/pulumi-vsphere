@@ -109,6 +109,21 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
+     * The external port id to be bound to the VM port.
+     * 
+     */
+    @Import(name="externalPortId")
+    private @Nullable Output<String> externalPortId;
+
+    /**
+     * @return The external port id to be bound to the VM port.
+     * 
+     */
+    public Optional<Output<String>> externalPortId() {
+        return Optional.ofNullable(this.externalPortId);
+    }
+
+    /**
      * The ID of the device within the virtual machine.
      * 
      */
@@ -207,6 +222,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         this.bandwidthShareCount = $.bandwidthShareCount;
         this.bandwidthShareLevel = $.bandwidthShareLevel;
         this.deviceAddress = $.deviceAddress;
+        this.externalPortId = $.externalPortId;
         this.key = $.key;
         this.macAddress = $.macAddress;
         this.networkId = $.networkId;
@@ -357,6 +373,27 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
          */
         public Builder deviceAddress(String deviceAddress) {
             return deviceAddress(Output.of(deviceAddress));
+        }
+
+        /**
+         * @param externalPortId The external port id to be bound to the VM port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPortId(@Nullable Output<String> externalPortId) {
+            $.externalPortId = externalPortId;
+            return this;
+        }
+
+        /**
+         * @param externalPortId The external port id to be bound to the VM port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPortId(String externalPortId) {
+            return externalPortId(Output.of(externalPortId));
         }
 
         /**

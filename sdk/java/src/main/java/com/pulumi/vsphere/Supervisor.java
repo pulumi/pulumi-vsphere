@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a resource for configuring Workload Management.
  * 
+ * &gt; **NOTE:** This resource is deprecated and will be removed in a future major version of the provider. Use `vsphere.SupervisorV2` instead.
+ * 
  * ## Example Usage
  * 
  * ### S
@@ -199,28 +201,28 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
         return this.ingressCidrs;
     }
     /**
-     * The list of addresses of the primary DNS servers.
+     * The list of addresses for the primary DNS servers.
      * 
      */
     @Export(name="mainDns", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> mainDns;
 
     /**
-     * @return The list of addresses of the primary DNS servers.
+     * @return The list of addresses for the primary DNS servers.
      * 
      */
     public Output<List<String>> mainDns() {
         return this.mainDns;
     }
     /**
-     * The list of addresses of the primary NTP servers.
+     * The list of addresses for the primary NTP servers.
      * 
      */
     @Export(name="mainNtps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> mainNtps;
 
     /**
-     * @return The list of addresses of the primary NTP servers.
+     * @return The list of addresses for the primary NTP servers.
      * 
      */
     public Output<List<String>> mainNtps() {
@@ -228,11 +230,6 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
-     * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `startingAddress` - Starting address of the management network range.
-     * * * `subnetMask` - Subnet mask.
-     * * * `gateway` - Gateway IP address.
-     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     @Export(name="managementNetwork", refs={SupervisorManagementNetwork.class}, tree="[0]")
@@ -240,11 +237,6 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The configuration for the management network which the control plane VMs will be connected to.
-     * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `startingAddress` - Starting address of the management network range.
-     * * * `subnetMask` - Subnet mask.
-     * * * `gateway` - Gateway IP address.
-     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     public Output<SupervisorManagementNetwork> managementNetwork() {
@@ -335,28 +327,28 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
         return this.storagePolicy;
     }
     /**
-     * The list of addresses of the DNS servers to use for the worker nodes.
+     * The list of addresses for the DNS servers to use for the worker nodes.
      * 
      */
     @Export(name="workerDns", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> workerDns;
 
     /**
-     * @return The list of addresses of the DNS servers to use for the worker nodes.
+     * @return The list of addresses for the DNS servers to use for the worker nodes.
      * 
      */
     public Output<List<String>> workerDns() {
         return this.workerDns;
     }
     /**
-     * The list of addresses of the NTP servers to use for the worker nodes.
+     * The list of addresses for the NTP servers to use for the worker nodes.
      * 
      */
     @Export(name="workerNtps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> workerNtps;
 
     /**
-     * @return The list of addresses of the NTP servers to use for the worker nodes.
+     * @return The list of addresses for the NTP servers to use for the worker nodes.
      * 
      */
     public Output<List<String>> workerNtps() {

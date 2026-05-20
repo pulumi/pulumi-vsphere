@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.outputs.GetVirtualMachineDisk;
 import com.pulumi.vsphere.outputs.GetVirtualMachineNetworkInterface;
 import com.pulumi.vsphere.outputs.GetVirtualMachineVapp;
+import com.pulumi.vsphere.outputs.GetVirtualMachineVideoCard;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -42,6 +43,7 @@ public final class GetVirtualMachineResult {
     private @Nullable Integer cpuReservation;
     private Integer cpuShareCount;
     private @Nullable String cpuShareLevel;
+    private Map<String,String> customAttributes;
     private @Nullable String datacenterId;
     /**
      * @return Whenever possible, this is the first IPv4 address that
@@ -68,6 +70,11 @@ public final class GetVirtualMachineResult {
     private @Nullable Boolean enableDiskUuid;
     private @Nullable Boolean enableLogging;
     private String eptRviMode;
+    /**
+     * @return Enhanced vMotion Compatibility mode.
+     * 
+     */
+    private @Nullable String evcMode;
     private @Nullable Map<String,String> extraConfig;
     private @Nullable Boolean extraConfigRebootRequired;
     /**
@@ -106,7 +113,7 @@ public final class GetVirtualMachineResult {
     private String instanceUuid;
     private @Nullable String latencySensitivity;
     /**
-     * @return The size of the virtual machine&#39;s memory, in MB.
+     * @return The dedicated 3D graphics memory in megabytes.
      * 
      */
     private @Nullable Integer memory;
@@ -139,6 +146,11 @@ public final class GetVirtualMachineResult {
      */
     private List<GetVirtualMachineNetworkInterface> networkInterfaces;
     /**
+     * @return The number of cores per NUMA node for this virtual machine.
+     * 
+     */
+    private @Nullable Integer numCoresPerNumaNode;
+    /**
      * @return The number of cores per socket for this virtual
      * machine.
      * 
@@ -160,7 +172,8 @@ public final class GetVirtualMachineResult {
     private @Nullable Integer sataControllerScanCount;
     /**
      * @return Mode for sharing the SCSI bus. The modes are
-     * physicalSharing, virtualSharing, and noSharing. Only the first number of
+     * `physicalSharing`, `virtualSharing`, `noSharing`, or `mixed` when
+     * there are multiple sharing types across controllers. Only the first number of
      * controllers defined by `scsiControllerScanCount` are scanned.
      * 
      */
@@ -179,11 +192,17 @@ public final class GetVirtualMachineResult {
     private @Nullable String swapPlacementPolicy;
     private @Nullable Boolean syncTimeWithHost;
     private @Nullable Boolean syncTimeWithHostPeriodically;
+    private List<String> tags;
     private @Nullable String toolsUpgradePolicy;
     private String uuid;
     private @Nullable GetVirtualMachineVapp vapp;
     private List<String> vappTransports;
     private @Nullable Boolean vbsEnabled;
+    /**
+     * @return Information about the virtual video card
+     * 
+     */
+    private List<GetVirtualMachineVideoCard> videoCards;
     /**
      * @return Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
      * 
@@ -241,6 +260,9 @@ public final class GetVirtualMachineResult {
     public Optional<String> cpuShareLevel() {
         return Optional.ofNullable(this.cpuShareLevel);
     }
+    public Map<String,String> customAttributes() {
+        return this.customAttributes;
+    }
     public Optional<String> datacenterId() {
         return Optional.ofNullable(this.datacenterId);
     }
@@ -280,6 +302,13 @@ public final class GetVirtualMachineResult {
     }
     public String eptRviMode() {
         return this.eptRviMode;
+    }
+    /**
+     * @return Enhanced vMotion Compatibility mode.
+     * 
+     */
+    public Optional<String> evcMode() {
+        return Optional.ofNullable(this.evcMode);
     }
     public Map<String,String> extraConfig() {
         return this.extraConfig == null ? Map.of() : this.extraConfig;
@@ -343,7 +372,7 @@ public final class GetVirtualMachineResult {
         return Optional.ofNullable(this.latencySensitivity);
     }
     /**
-     * @return The size of the virtual machine&#39;s memory, in MB.
+     * @return The dedicated 3D graphics memory in megabytes.
      * 
      */
     public Optional<Integer> memory() {
@@ -400,6 +429,13 @@ public final class GetVirtualMachineResult {
         return this.networkInterfaces;
     }
     /**
+     * @return The number of cores per NUMA node for this virtual machine.
+     * 
+     */
+    public Optional<Integer> numCoresPerNumaNode() {
+        return Optional.ofNullable(this.numCoresPerNumaNode);
+    }
+    /**
      * @return The number of cores per socket for this virtual
      * machine.
      * 
@@ -441,7 +477,8 @@ public final class GetVirtualMachineResult {
     }
     /**
      * @return Mode for sharing the SCSI bus. The modes are
-     * physicalSharing, virtualSharing, and noSharing. Only the first number of
+     * `physicalSharing`, `virtualSharing`, `noSharing`, or `mixed` when
+     * there are multiple sharing types across controllers. Only the first number of
      * controllers defined by `scsiControllerScanCount` are scanned.
      * 
      */
@@ -474,6 +511,9 @@ public final class GetVirtualMachineResult {
     public Optional<Boolean> syncTimeWithHostPeriodically() {
         return Optional.ofNullable(this.syncTimeWithHostPeriodically);
     }
+    public List<String> tags() {
+        return this.tags;
+    }
     public Optional<String> toolsUpgradePolicy() {
         return Optional.ofNullable(this.toolsUpgradePolicy);
     }
@@ -488,6 +528,13 @@ public final class GetVirtualMachineResult {
     }
     public Optional<Boolean> vbsEnabled() {
         return Optional.ofNullable(this.vbsEnabled);
+    }
+    /**
+     * @return Information about the virtual video card
+     * 
+     */
+    public List<GetVirtualMachineVideoCard> videoCards() {
+        return this.videoCards;
     }
     /**
      * @return Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
@@ -522,6 +569,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Integer cpuReservation;
         private Integer cpuShareCount;
         private @Nullable String cpuShareLevel;
+        private Map<String,String> customAttributes;
         private @Nullable String datacenterId;
         private String defaultIpAddress;
         private List<GetVirtualMachineDisk> disks;
@@ -529,6 +577,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Boolean enableDiskUuid;
         private @Nullable Boolean enableLogging;
         private String eptRviMode;
+        private @Nullable String evcMode;
         private @Nullable Map<String,String> extraConfig;
         private @Nullable Boolean extraConfigRebootRequired;
         private @Nullable String firmware;
@@ -553,6 +602,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Boolean nestedHvEnabled;
         private List<String> networkInterfaceTypes;
         private List<GetVirtualMachineNetworkInterface> networkInterfaces;
+        private @Nullable Integer numCoresPerNumaNode;
         private @Nullable Integer numCoresPerSocket;
         private @Nullable Integer numCpus;
         private @Nullable Integer nvmeControllerScanCount;
@@ -570,11 +620,13 @@ public final class GetVirtualMachineResult {
         private @Nullable String swapPlacementPolicy;
         private @Nullable Boolean syncTimeWithHost;
         private @Nullable Boolean syncTimeWithHostPeriodically;
+        private List<String> tags;
         private @Nullable String toolsUpgradePolicy;
         private String uuid;
         private @Nullable GetVirtualMachineVapp vapp;
         private List<String> vappTransports;
         private @Nullable Boolean vbsEnabled;
+        private List<GetVirtualMachineVideoCard> videoCards;
         private Boolean vtpm;
         private @Nullable Boolean vvtdEnabled;
         public Builder() {}
@@ -593,6 +645,7 @@ public final class GetVirtualMachineResult {
     	      this.cpuReservation = defaults.cpuReservation;
     	      this.cpuShareCount = defaults.cpuShareCount;
     	      this.cpuShareLevel = defaults.cpuShareLevel;
+    	      this.customAttributes = defaults.customAttributes;
     	      this.datacenterId = defaults.datacenterId;
     	      this.defaultIpAddress = defaults.defaultIpAddress;
     	      this.disks = defaults.disks;
@@ -600,6 +653,7 @@ public final class GetVirtualMachineResult {
     	      this.enableDiskUuid = defaults.enableDiskUuid;
     	      this.enableLogging = defaults.enableLogging;
     	      this.eptRviMode = defaults.eptRviMode;
+    	      this.evcMode = defaults.evcMode;
     	      this.extraConfig = defaults.extraConfig;
     	      this.extraConfigRebootRequired = defaults.extraConfigRebootRequired;
     	      this.firmware = defaults.firmware;
@@ -624,6 +678,7 @@ public final class GetVirtualMachineResult {
     	      this.nestedHvEnabled = defaults.nestedHvEnabled;
     	      this.networkInterfaceTypes = defaults.networkInterfaceTypes;
     	      this.networkInterfaces = defaults.networkInterfaces;
+    	      this.numCoresPerNumaNode = defaults.numCoresPerNumaNode;
     	      this.numCoresPerSocket = defaults.numCoresPerSocket;
     	      this.numCpus = defaults.numCpus;
     	      this.nvmeControllerScanCount = defaults.nvmeControllerScanCount;
@@ -641,11 +696,13 @@ public final class GetVirtualMachineResult {
     	      this.swapPlacementPolicy = defaults.swapPlacementPolicy;
     	      this.syncTimeWithHost = defaults.syncTimeWithHost;
     	      this.syncTimeWithHostPeriodically = defaults.syncTimeWithHostPeriodically;
+    	      this.tags = defaults.tags;
     	      this.toolsUpgradePolicy = defaults.toolsUpgradePolicy;
     	      this.uuid = defaults.uuid;
     	      this.vapp = defaults.vapp;
     	      this.vappTransports = defaults.vappTransports;
     	      this.vbsEnabled = defaults.vbsEnabled;
+    	      this.videoCards = defaults.videoCards;
     	      this.vtpm = defaults.vtpm;
     	      this.vvtdEnabled = defaults.vvtdEnabled;
         }
@@ -735,6 +792,14 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder customAttributes(Map<String,String> customAttributes) {
+            if (customAttributes == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "customAttributes");
+            }
+            this.customAttributes = customAttributes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder datacenterId(@Nullable String datacenterId) {
 
             this.datacenterId = datacenterId;
@@ -783,6 +848,12 @@ public final class GetVirtualMachineResult {
               throw new MissingRequiredPropertyException("GetVirtualMachineResult", "eptRviMode");
             }
             this.eptRviMode = eptRviMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder evcMode(@Nullable String evcMode) {
+
+            this.evcMode = evcMode;
             return this;
         }
         @CustomType.Setter
@@ -959,6 +1030,12 @@ public final class GetVirtualMachineResult {
             return networkInterfaces(List.of(networkInterfaces));
         }
         @CustomType.Setter
+        public Builder numCoresPerNumaNode(@Nullable Integer numCoresPerNumaNode) {
+
+            this.numCoresPerNumaNode = numCoresPerNumaNode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder numCoresPerSocket(@Nullable Integer numCoresPerSocket) {
 
             this.numCoresPerSocket = numCoresPerSocket;
@@ -1067,6 +1144,17 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(List<String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+        @CustomType.Setter
         public Builder toolsUpgradePolicy(@Nullable String toolsUpgradePolicy) {
 
             this.toolsUpgradePolicy = toolsUpgradePolicy;
@@ -1104,6 +1192,17 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder videoCards(List<GetVirtualMachineVideoCard> videoCards) {
+            if (videoCards == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "videoCards");
+            }
+            this.videoCards = videoCards;
+            return this;
+        }
+        public Builder videoCards(GetVirtualMachineVideoCard... videoCards) {
+            return videoCards(List.of(videoCards));
+        }
+        @CustomType.Setter
         public Builder vtpm(Boolean vtpm) {
             if (vtpm == null) {
               throw new MissingRequiredPropertyException("GetVirtualMachineResult", "vtpm");
@@ -1132,6 +1231,7 @@ public final class GetVirtualMachineResult {
             _resultValue.cpuReservation = cpuReservation;
             _resultValue.cpuShareCount = cpuShareCount;
             _resultValue.cpuShareLevel = cpuShareLevel;
+            _resultValue.customAttributes = customAttributes;
             _resultValue.datacenterId = datacenterId;
             _resultValue.defaultIpAddress = defaultIpAddress;
             _resultValue.disks = disks;
@@ -1139,6 +1239,7 @@ public final class GetVirtualMachineResult {
             _resultValue.enableDiskUuid = enableDiskUuid;
             _resultValue.enableLogging = enableLogging;
             _resultValue.eptRviMode = eptRviMode;
+            _resultValue.evcMode = evcMode;
             _resultValue.extraConfig = extraConfig;
             _resultValue.extraConfigRebootRequired = extraConfigRebootRequired;
             _resultValue.firmware = firmware;
@@ -1163,6 +1264,7 @@ public final class GetVirtualMachineResult {
             _resultValue.nestedHvEnabled = nestedHvEnabled;
             _resultValue.networkInterfaceTypes = networkInterfaceTypes;
             _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.numCoresPerNumaNode = numCoresPerNumaNode;
             _resultValue.numCoresPerSocket = numCoresPerSocket;
             _resultValue.numCpus = numCpus;
             _resultValue.nvmeControllerScanCount = nvmeControllerScanCount;
@@ -1180,11 +1282,13 @@ public final class GetVirtualMachineResult {
             _resultValue.swapPlacementPolicy = swapPlacementPolicy;
             _resultValue.syncTimeWithHost = syncTimeWithHost;
             _resultValue.syncTimeWithHostPeriodically = syncTimeWithHostPeriodically;
+            _resultValue.tags = tags;
             _resultValue.toolsUpgradePolicy = toolsUpgradePolicy;
             _resultValue.uuid = uuid;
             _resultValue.vapp = vapp;
             _resultValue.vappTransports = vappTransports;
             _resultValue.vbsEnabled = vbsEnabled;
+            _resultValue.videoCards = videoCards;
             _resultValue.vtpm = vtpm;
             _resultValue.vvtdEnabled = vvtdEnabled;
             return _resultValue;

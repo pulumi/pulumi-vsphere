@@ -269,6 +269,12 @@ namespace Pulumi.VSphere
         [Input("vpcId")]
         public string? VpcId { get; set; }
 
+        /// <summary>
+        /// Select a project scope for retrieval of VPC subnets.
+        /// </summary>
+        [Input("vpcProjectId")]
+        public string? VpcProjectId { get; set; }
+
         public GetNetworkArgs()
         {
         }
@@ -333,6 +339,12 @@ namespace Pulumi.VSphere
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
+        /// <summary>
+        /// Select a project scope for retrieval of VPC subnets.
+        /// </summary>
+        [Input("vpcProjectId")]
+        public Input<string>? VpcProjectId { get; set; }
+
         public GetNetworkInvokeArgs()
         {
         }
@@ -361,6 +373,7 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Type;
         public readonly string? VpcId;
+        public readonly string? VpcProjectId;
 
         [OutputConstructor]
         private GetNetworkResult(
@@ -380,7 +393,9 @@ namespace Pulumi.VSphere
 
             string type,
 
-            string? vpcId)
+            string? vpcId,
+
+            string? vpcProjectId)
         {
             DatacenterId = datacenterId;
             DistributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
@@ -391,6 +406,7 @@ namespace Pulumi.VSphere
             RetryTimeout = retryTimeout;
             Type = type;
             VpcId = vpcId;
+            VpcProjectId = vpcProjectId;
         }
     }
 }

@@ -33,6 +33,7 @@ class ComputeClusterArgs:
                  drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -114,6 +115,7 @@ class ComputeClusterArgs:
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -204,6 +206,8 @@ class ComputeClusterArgs:
             pulumi.set(__self__, "drs_migration_threshold", drs_migration_threshold)
         if drs_scale_descendants_shares is not None:
             pulumi.set(__self__, "drs_scale_descendants_shares", drs_scale_descendants_shares)
+        if evc_mode is not None:
+            pulumi.set(__self__, "evc_mode", evc_mode)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
         if force_evacuate_on_destroy is not None:
@@ -471,6 +475,18 @@ class ComputeClusterArgs:
     @drs_scale_descendants_shares.setter
     def drs_scale_descendants_shares(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_scale_descendants_shares", value)
+
+    @_builtins.property
+    @pulumi.getter(name="evcMode")
+    def evc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Enhanced vMotion Compatibility mode.
+        """
+        return pulumi.get(self, "evc_mode")
+
+    @evc_mode.setter
+    def evc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "evc_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1181,6 +1197,7 @@ class _ComputeClusterState:
                  drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1263,6 +1280,7 @@ class _ComputeClusterState:
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -1359,6 +1377,8 @@ class _ComputeClusterState:
             pulumi.set(__self__, "drs_migration_threshold", drs_migration_threshold)
         if drs_scale_descendants_shares is not None:
             pulumi.set(__self__, "drs_scale_descendants_shares", drs_scale_descendants_shares)
+        if evc_mode is not None:
+            pulumi.set(__self__, "evc_mode", evc_mode)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
         if force_evacuate_on_destroy is not None:
@@ -1628,6 +1648,18 @@ class _ComputeClusterState:
     @drs_scale_descendants_shares.setter
     def drs_scale_descendants_shares(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drs_scale_descendants_shares", value)
+
+    @_builtins.property
+    @pulumi.getter(name="evcMode")
+    def evc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Enhanced vMotion Compatibility mode.
+        """
+        return pulumi.get(self, "evc_mode")
+
+    @evc_mode.setter
+    def evc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "evc_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2357,6 +2389,7 @@ class ComputeCluster(pulumi.CustomResource):
                  drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2571,6 +2604,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -2804,6 +2838,7 @@ class ComputeCluster(pulumi.CustomResource):
                  drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2884,6 +2919,7 @@ class ComputeCluster(pulumi.CustomResource):
             __props__.__dict__["drs_enabled"] = drs_enabled
             __props__.__dict__["drs_migration_threshold"] = drs_migration_threshold
             __props__.__dict__["drs_scale_descendants_shares"] = drs_scale_descendants_shares
+            __props__.__dict__["evc_mode"] = evc_mode
             __props__.__dict__["folder"] = folder
             __props__.__dict__["force_evacuate_on_destroy"] = force_evacuate_on_destroy
             __props__.__dict__["ha_admission_control_failover_host_system_ids"] = ha_admission_control_failover_host_system_ids
@@ -2964,6 +3000,7 @@ class ComputeCluster(pulumi.CustomResource):
             drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             drs_migration_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             drs_scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+            evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
             folder: pulumi.Input[Optional[_builtins.str]] = None,
             force_evacuate_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             ha_admission_control_failover_host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -3050,6 +3087,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -3138,6 +3176,7 @@ class ComputeCluster(pulumi.CustomResource):
         __props__.__dict__["drs_enabled"] = drs_enabled
         __props__.__dict__["drs_migration_threshold"] = drs_migration_threshold
         __props__.__dict__["drs_scale_descendants_shares"] = drs_scale_descendants_shares
+        __props__.__dict__["evc_mode"] = evc_mode
         __props__.__dict__["folder"] = folder
         __props__.__dict__["force_evacuate_on_destroy"] = force_evacuate_on_destroy
         __props__.__dict__["ha_admission_control_failover_host_system_ids"] = ha_admission_control_failover_host_system_ids
@@ -3302,6 +3341,14 @@ class ComputeCluster(pulumi.CustomResource):
         Enable scalable shares for all descendants of this cluster.
         """
         return pulumi.get(self, "drs_scale_descendants_shares")
+
+    @_builtins.property
+    @pulumi.getter(name="evcMode")
+    def evc_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Enhanced vMotion Compatibility mode.
+        """
+        return pulumi.get(self, "evc_mode")
 
     @_builtins.property
     @pulumi.getter

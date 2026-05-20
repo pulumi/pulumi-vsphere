@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource for configuring Workload Management.
  *
+ * > **NOTE:** This resource is deprecated and will be removed in a future major version of the provider. Use `vsphere.SupervisorV2` instead.
+ *
  * ## Example Usage
  *
  * ### S
@@ -118,20 +120,15 @@ export class Supervisor extends pulumi.CustomResource {
      */
     declare public readonly ingressCidrs: pulumi.Output<outputs.SupervisorIngressCidr[]>;
     /**
-     * The list of addresses of the primary DNS servers.
+     * The list of addresses for the primary DNS servers.
      */
     declare public readonly mainDns: pulumi.Output<string[]>;
     /**
-     * The list of addresses of the primary NTP servers.
+     * The list of addresses for the primary NTP servers.
      */
     declare public readonly mainNtps: pulumi.Output<string[]>;
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
-     * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `startingAddress` - Starting address of the management network range.
-     * * * `subnetMask` - Subnet mask.
-     * * * `gateway` - Gateway IP address.
-     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      */
     declare public readonly managementNetwork: pulumi.Output<outputs.SupervisorManagementNetwork>;
     /**
@@ -159,11 +156,11 @@ export class Supervisor extends pulumi.CustomResource {
      */
     declare public readonly storagePolicy: pulumi.Output<string>;
     /**
-     * The list of addresses of the DNS servers to use for the worker nodes.
+     * The list of addresses for the DNS servers to use for the worker nodes.
      */
     declare public readonly workerDns: pulumi.Output<string[]>;
     /**
-     * The list of addresses of the NTP servers to use for the worker nodes.
+     * The list of addresses for the NTP servers to use for the worker nodes.
      */
     declare public readonly workerNtps: pulumi.Output<string[]>;
 
@@ -299,20 +296,15 @@ export interface SupervisorState {
      */
     ingressCidrs?: pulumi.Input<pulumi.Input<inputs.SupervisorIngressCidr>[] | undefined>;
     /**
-     * The list of addresses of the primary DNS servers.
+     * The list of addresses for the primary DNS servers.
      */
     mainDns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The list of addresses of the primary NTP servers.
+     * The list of addresses for the primary NTP servers.
      */
     mainNtps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
-     * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `startingAddress` - Starting address of the management network range.
-     * * * `subnetMask` - Subnet mask.
-     * * * `gateway` - Gateway IP address.
-     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      */
     managementNetwork?: pulumi.Input<inputs.SupervisorManagementNetwork | undefined>;
     /**
@@ -340,11 +332,11 @@ export interface SupervisorState {
      */
     storagePolicy?: pulumi.Input<string | undefined>;
     /**
-     * The list of addresses of the DNS servers to use for the worker nodes.
+     * The list of addresses for the DNS servers to use for the worker nodes.
      */
     workerDns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The list of addresses of the NTP servers to use for the worker nodes.
+     * The list of addresses for the NTP servers to use for the worker nodes.
      */
     workerNtps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -378,20 +370,15 @@ export interface SupervisorArgs {
      */
     ingressCidrs: pulumi.Input<pulumi.Input<inputs.SupervisorIngressCidr>[]>;
     /**
-     * The list of addresses of the primary DNS servers.
+     * The list of addresses for the primary DNS servers.
      */
     mainDns: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of addresses of the primary NTP servers.
+     * The list of addresses for the primary NTP servers.
      */
     mainNtps: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
-     * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `startingAddress` - Starting address of the management network range.
-     * * * `subnetMask` - Subnet mask.
-     * * * `gateway` - Gateway IP address.
-     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      */
     managementNetwork: pulumi.Input<inputs.SupervisorManagementNetwork>;
     /**
@@ -419,11 +406,11 @@ export interface SupervisorArgs {
      */
     storagePolicy: pulumi.Input<string>;
     /**
-     * The list of addresses of the DNS servers to use for the worker nodes.
+     * The list of addresses for the DNS servers to use for the worker nodes.
      */
     workerDns: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of addresses of the NTP servers to use for the worker nodes.
+     * The list of addresses for the NTP servers to use for the worker nodes.
      */
     workerNtps: pulumi.Input<pulumi.Input<string>[]>;
 }
