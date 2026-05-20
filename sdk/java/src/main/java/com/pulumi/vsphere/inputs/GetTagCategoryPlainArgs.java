@@ -4,9 +4,10 @@
 package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTagCategoryPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,23 +15,39 @@ public final class GetTagCategoryPlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetTagCategoryPlainArgs Empty = new GetTagCategoryPlainArgs();
 
     /**
-     * The name of the tag category.
+     * The unique identifier of the tag category. If specified, `name` must not be set.
      * 
      */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="id")
+    private @Nullable String id;
 
     /**
-     * @return The name of the tag category.
+     * @return The unique identifier of the tag category. If specified, `name` must not be set.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * The name of the tag category. Required if `id` is not set.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return The name of the tag category. Required if `id` is not set.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetTagCategoryPlainArgs() {}
 
     private GetTagCategoryPlainArgs(GetTagCategoryPlainArgs $) {
+        this.id = $.id;
         this.name = $.name;
     }
 
@@ -53,20 +70,28 @@ public final class GetTagCategoryPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name The name of the tag category.
+         * @param id The unique identifier of the tag category. If specified, `name` must not be set.
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param name The name of the tag category. Required if `id` is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
         public GetTagCategoryPlainArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetTagCategoryPlainArgs", "name");
-            }
             return $;
         }
     }

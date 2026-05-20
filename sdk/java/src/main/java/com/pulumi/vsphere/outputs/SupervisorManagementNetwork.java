@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class SupervisorManagementNetwork {
     /**
-     * @return Number of addresses to allocate. Starts from &#39;starting_address&#39;
+     * @return Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     private Integer addressCount;
@@ -22,7 +22,7 @@ public final class SupervisorManagementNetwork {
      */
     private String gateway;
     /**
-     * @return ID of the network. (e.g. a distributed port group).
+     * @return ID of the network. (_e.g._, a distributed port group).
      * 
      */
     private String network;
@@ -39,7 +39,7 @@ public final class SupervisorManagementNetwork {
 
     private SupervisorManagementNetwork() {}
     /**
-     * @return Number of addresses to allocate. Starts from &#39;starting_address&#39;
+     * @return Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     public Integer addressCount() {
@@ -53,7 +53,7 @@ public final class SupervisorManagementNetwork {
         return this.gateway;
     }
     /**
-     * @return ID of the network. (e.g. a distributed port group).
+     * @return ID of the network. (_e.g._, a distributed port group).
      * 
      */
     public String network() {

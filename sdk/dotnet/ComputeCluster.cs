@@ -269,6 +269,12 @@ namespace Pulumi.VSphere
         public Output<string?> DrsScaleDescendantsShares { get; private set; } = null!;
 
         /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Output("evcMode")]
+        public Output<string?> EvcMode { get; private set; } = null!;
+
+        /// <summary>
         /// The relative path to a folder to put this cluster in.
         /// This is a path relative to the datacenter you are deploying the cluster to.
         /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
@@ -767,6 +773,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("drsScaleDescendantsShares")]
         public Input<string>? DrsScaleDescendantsShares { get; set; }
+
+        /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Input("evcMode")]
+        public Input<string>? EvcMode { get; set; }
 
         /// <summary>
         /// The relative path to a folder to put this cluster in.
@@ -1273,6 +1285,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("drsScaleDescendantsShares")]
         public Input<string>? DrsScaleDescendantsShares { get; set; }
+
+        /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Input("evcMode")]
+        public Input<string>? EvcMode { get; set; }
 
         /// <summary>
         /// The relative path to a folder to put this cluster in.

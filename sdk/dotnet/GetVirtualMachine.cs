@@ -291,6 +291,12 @@ namespace Pulumi.VSphere
         [Input("eptRviMode")]
         public string? EptRviMode { get; set; }
 
+        /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Input("evcMode")]
+        public string? EvcMode { get; set; }
+
         [Input("extraConfig")]
         private Dictionary<string, string>? _extraConfig;
         public Dictionary<string, string> ExtraConfig
@@ -340,7 +346,7 @@ namespace Pulumi.VSphere
         public string? LatencySensitivity { get; set; }
 
         /// <summary>
-        /// The size of the virtual machine's memory, in MB.
+        /// The dedicated 3D graphics memory in megabytes.
         /// </summary>
         [Input("memory")]
         public int? Memory { get; set; }
@@ -378,6 +384,12 @@ namespace Pulumi.VSphere
         public bool? NestedHvEnabled { get; set; }
 
         /// <summary>
+        /// The number of cores per NUMA node for this virtual machine.
+        /// </summary>
+        [Input("numCoresPerNumaNode")]
+        public int? NumCoresPerNumaNode { get; set; }
+
+        /// <summary>
         /// The number of cores per socket for this virtual
         /// machine.
         /// </summary>
@@ -394,18 +406,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of NVMe controllers to
         /// scan for disk attributes and controller types on. Default: `1`.
-        /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-        /// 
-        /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-        /// use with this data source reside on the primary controller, and leave this value
-        /// at the default. See the
-        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-        /// documentation for the significance of this setting, specifically the
-        /// [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-        /// section.
-        /// 
-        /// [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
         /// </summary>
         [Input("nvmeControllerScanCount")]
         public int? NvmeControllerScanCount { get; set; }
@@ -543,6 +543,12 @@ namespace Pulumi.VSphere
         [Input("eptRviMode")]
         public Input<string>? EptRviMode { get; set; }
 
+        /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Input("evcMode")]
+        public Input<string>? EvcMode { get; set; }
+
         [Input("extraConfig")]
         private InputMap<string>? _extraConfig;
         public InputMap<string> ExtraConfig
@@ -592,7 +598,7 @@ namespace Pulumi.VSphere
         public Input<string>? LatencySensitivity { get; set; }
 
         /// <summary>
-        /// The size of the virtual machine's memory, in MB.
+        /// The dedicated 3D graphics memory in megabytes.
         /// </summary>
         [Input("memory")]
         public Input<int>? Memory { get; set; }
@@ -630,6 +636,12 @@ namespace Pulumi.VSphere
         public Input<bool>? NestedHvEnabled { get; set; }
 
         /// <summary>
+        /// The number of cores per NUMA node for this virtual machine.
+        /// </summary>
+        [Input("numCoresPerNumaNode")]
+        public Input<int>? NumCoresPerNumaNode { get; set; }
+
+        /// <summary>
         /// The number of cores per socket for this virtual
         /// machine.
         /// </summary>
@@ -646,18 +658,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of NVMe controllers to
         /// scan for disk attributes and controller types on. Default: `1`.
-        /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-        /// 
-        /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-        /// use with this data source reside on the primary controller, and leave this value
-        /// at the default. See the
-        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-        /// documentation for the significance of this setting, specifically the
-        /// [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-        /// section.
-        /// 
-        /// [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
         /// </summary>
         [Input("nvmeControllerScanCount")]
         public Input<int>? NvmeControllerScanCount { get; set; }
@@ -752,6 +752,7 @@ namespace Pulumi.VSphere
         public readonly int? CpuReservation;
         public readonly int CpuShareCount;
         public readonly string? CpuShareLevel;
+        public readonly ImmutableDictionary<string, string> CustomAttributes;
         public readonly string? DatacenterId;
         /// <summary>
         /// Whenever possible, this is the first IPv4 address that
@@ -776,6 +777,10 @@ namespace Pulumi.VSphere
         public readonly bool? EnableDiskUuid;
         public readonly bool? EnableLogging;
         public readonly string EptRviMode;
+        /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        public readonly string? EvcMode;
         public readonly ImmutableDictionary<string, string>? ExtraConfig;
         public readonly bool? ExtraConfigRebootRequired;
         /// <summary>
@@ -808,7 +813,7 @@ namespace Pulumi.VSphere
         public readonly string InstanceUuid;
         public readonly string? LatencySensitivity;
         /// <summary>
-        /// The size of the virtual machine's memory, in MB.
+        /// The dedicated 3D graphics memory in megabytes.
         /// </summary>
         public readonly int? Memory;
         public readonly bool? MemoryHotAddEnabled;
@@ -838,6 +843,10 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualMachineNetworkInterfaceResult> NetworkInterfaces;
         /// <summary>
+        /// The number of cores per NUMA node for this virtual machine.
+        /// </summary>
+        public readonly int? NumCoresPerNumaNode;
+        /// <summary>
         /// The number of cores per socket for this virtual
         /// machine.
         /// </summary>
@@ -857,7 +866,8 @@ namespace Pulumi.VSphere
         public readonly int? SataControllerScanCount;
         /// <summary>
         /// Mode for sharing the SCSI bus. The modes are
-        /// physicalSharing, virtualSharing, and noSharing. Only the first number of
+        /// `physicalSharing`, `virtualSharing`, `noSharing`, or `Mixed` when
+        /// there are multiple sharing types across controllers. Only the first number of
         /// controllers defined by `ScsiControllerScanCount` are scanned.
         /// </summary>
         public readonly string ScsiBusSharing;
@@ -874,11 +884,16 @@ namespace Pulumi.VSphere
         public readonly string? SwapPlacementPolicy;
         public readonly bool? SyncTimeWithHost;
         public readonly bool? SyncTimeWithHostPeriodically;
+        public readonly ImmutableArray<string> Tags;
         public readonly string? ToolsUpgradePolicy;
         public readonly string Uuid;
         public readonly Outputs.GetVirtualMachineVappResult? Vapp;
         public readonly ImmutableArray<string> VappTransports;
         public readonly bool? VbsEnabled;
+        /// <summary>
+        /// Information about the virtual video card
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVirtualMachineVideoCardResult> VideoCards;
         /// <summary>
         /// Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
         /// </summary>
@@ -913,6 +928,8 @@ namespace Pulumi.VSphere
 
             string? cpuShareLevel,
 
+            ImmutableDictionary<string, string> customAttributes,
+
             string? datacenterId,
 
             string defaultIpAddress,
@@ -926,6 +943,8 @@ namespace Pulumi.VSphere
             bool? enableLogging,
 
             string eptRviMode,
+
+            string? evcMode,
 
             ImmutableDictionary<string, string>? extraConfig,
 
@@ -975,6 +994,8 @@ namespace Pulumi.VSphere
 
             ImmutableArray<Outputs.GetVirtualMachineNetworkInterfaceResult> networkInterfaces,
 
+            int? numCoresPerNumaNode,
+
             int? numCoresPerSocket,
 
             int? numCpus,
@@ -1009,6 +1030,8 @@ namespace Pulumi.VSphere
 
             bool? syncTimeWithHostPeriodically,
 
+            ImmutableArray<string> tags,
+
             string? toolsUpgradePolicy,
 
             string uuid,
@@ -1018,6 +1041,8 @@ namespace Pulumi.VSphere
             ImmutableArray<string> vappTransports,
 
             bool? vbsEnabled,
+
+            ImmutableArray<Outputs.GetVirtualMachineVideoCardResult> videoCards,
 
             bool vtpm,
 
@@ -1036,6 +1061,7 @@ namespace Pulumi.VSphere
             CpuReservation = cpuReservation;
             CpuShareCount = cpuShareCount;
             CpuShareLevel = cpuShareLevel;
+            CustomAttributes = customAttributes;
             DatacenterId = datacenterId;
             DefaultIpAddress = defaultIpAddress;
             Disks = disks;
@@ -1043,6 +1069,7 @@ namespace Pulumi.VSphere
             EnableDiskUuid = enableDiskUuid;
             EnableLogging = enableLogging;
             EptRviMode = eptRviMode;
+            EvcMode = evcMode;
             ExtraConfig = extraConfig;
             ExtraConfigRebootRequired = extraConfigRebootRequired;
             Firmware = firmware;
@@ -1067,6 +1094,7 @@ namespace Pulumi.VSphere
             NestedHvEnabled = nestedHvEnabled;
             NetworkInterfaceTypes = networkInterfaceTypes;
             NetworkInterfaces = networkInterfaces;
+            NumCoresPerNumaNode = numCoresPerNumaNode;
             NumCoresPerSocket = numCoresPerSocket;
             NumCpus = numCpus;
             NvmeControllerScanCount = nvmeControllerScanCount;
@@ -1084,11 +1112,13 @@ namespace Pulumi.VSphere
             SwapPlacementPolicy = swapPlacementPolicy;
             SyncTimeWithHost = syncTimeWithHost;
             SyncTimeWithHostPeriodically = syncTimeWithHostPeriodically;
+            Tags = tags;
             ToolsUpgradePolicy = toolsUpgradePolicy;
             Uuid = uuid;
             Vapp = vapp;
             VappTransports = vappTransports;
             VbsEnabled = vbsEnabled;
+            VideoCards = videoCards;
             Vtpm = vtpm;
             VvtdEnabled = vvtdEnabled;
         }

@@ -14,7 +14,7 @@ namespace Pulumi.VSphere.Outputs
     public sealed class SupervisorManagementNetwork
     {
         /// <summary>
-        /// Number of addresses to allocate. Starts from 'starting_address'
+        /// Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         public readonly int AddressCount;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string Gateway;
         /// <summary>
-        /// ID of the network. (e.g. a distributed port group).
+        /// ID of the network. (_e.g._, a distributed port group).
         /// </summary>
         public readonly string Network;
         /// <summary>

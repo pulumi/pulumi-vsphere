@@ -13,6 +13,937 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlarmAdvancedAction struct {
+	// Triggers the action only for this final state.
+	FinalState string `pulumi:"finalState"`
+	// The name of the alarm. This name needs to be unique
+	// within the vCenter. Forces a new resource if changed.
+	Name *string `pulumi:"name"`
+	// Whether or not the action should be repeated.
+	Repeat *bool `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState string `pulumi:"startState"`
+}
+
+// AlarmAdvancedActionInput is an input type that accepts AlarmAdvancedActionArgs and AlarmAdvancedActionOutput values.
+// You can construct a concrete instance of `AlarmAdvancedActionInput` via:
+//
+//	AlarmAdvancedActionArgs{...}
+type AlarmAdvancedActionInput interface {
+	pulumi.Input
+
+	ToAlarmAdvancedActionOutput() AlarmAdvancedActionOutput
+	ToAlarmAdvancedActionOutputWithContext(context.Context) AlarmAdvancedActionOutput
+}
+
+type AlarmAdvancedActionArgs struct {
+	// Triggers the action only for this final state.
+	FinalState pulumi.StringInput `pulumi:"finalState"`
+	// The name of the alarm. This name needs to be unique
+	// within the vCenter. Forces a new resource if changed.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether or not the action should be repeated.
+	Repeat pulumi.BoolPtrInput `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState pulumi.StringInput `pulumi:"startState"`
+}
+
+func (AlarmAdvancedActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmAdvancedAction)(nil)).Elem()
+}
+
+func (i AlarmAdvancedActionArgs) ToAlarmAdvancedActionOutput() AlarmAdvancedActionOutput {
+	return i.ToAlarmAdvancedActionOutputWithContext(context.Background())
+}
+
+func (i AlarmAdvancedActionArgs) ToAlarmAdvancedActionOutputWithContext(ctx context.Context) AlarmAdvancedActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmAdvancedActionOutput)
+}
+
+// AlarmAdvancedActionArrayInput is an input type that accepts AlarmAdvancedActionArray and AlarmAdvancedActionArrayOutput values.
+// You can construct a concrete instance of `AlarmAdvancedActionArrayInput` via:
+//
+//	AlarmAdvancedActionArray{ AlarmAdvancedActionArgs{...} }
+type AlarmAdvancedActionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmAdvancedActionArrayOutput() AlarmAdvancedActionArrayOutput
+	ToAlarmAdvancedActionArrayOutputWithContext(context.Context) AlarmAdvancedActionArrayOutput
+}
+
+type AlarmAdvancedActionArray []AlarmAdvancedActionInput
+
+func (AlarmAdvancedActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmAdvancedAction)(nil)).Elem()
+}
+
+func (i AlarmAdvancedActionArray) ToAlarmAdvancedActionArrayOutput() AlarmAdvancedActionArrayOutput {
+	return i.ToAlarmAdvancedActionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmAdvancedActionArray) ToAlarmAdvancedActionArrayOutputWithContext(ctx context.Context) AlarmAdvancedActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmAdvancedActionArrayOutput)
+}
+
+type AlarmAdvancedActionOutput struct{ *pulumi.OutputState }
+
+func (AlarmAdvancedActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmAdvancedAction)(nil)).Elem()
+}
+
+func (o AlarmAdvancedActionOutput) ToAlarmAdvancedActionOutput() AlarmAdvancedActionOutput {
+	return o
+}
+
+func (o AlarmAdvancedActionOutput) ToAlarmAdvancedActionOutputWithContext(ctx context.Context) AlarmAdvancedActionOutput {
+	return o
+}
+
+// Triggers the action only for this final state.
+func (o AlarmAdvancedActionOutput) FinalState() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmAdvancedAction) string { return v.FinalState }).(pulumi.StringOutput)
+}
+
+// The name of the alarm. This name needs to be unique
+// within the vCenter. Forces a new resource if changed.
+func (o AlarmAdvancedActionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmAdvancedAction) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not the action should be repeated.
+func (o AlarmAdvancedActionOutput) Repeat() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmAdvancedAction) *bool { return v.Repeat }).(pulumi.BoolPtrOutput)
+}
+
+// Triggers the action only for this initial state.
+func (o AlarmAdvancedActionOutput) StartState() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmAdvancedAction) string { return v.StartState }).(pulumi.StringOutput)
+}
+
+type AlarmAdvancedActionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmAdvancedActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmAdvancedAction)(nil)).Elem()
+}
+
+func (o AlarmAdvancedActionArrayOutput) ToAlarmAdvancedActionArrayOutput() AlarmAdvancedActionArrayOutput {
+	return o
+}
+
+func (o AlarmAdvancedActionArrayOutput) ToAlarmAdvancedActionArrayOutputWithContext(ctx context.Context) AlarmAdvancedActionArrayOutput {
+	return o
+}
+
+func (o AlarmAdvancedActionArrayOutput) Index(i pulumi.IntInput) AlarmAdvancedActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmAdvancedAction {
+		return vs[0].([]AlarmAdvancedAction)[vs[1].(int)]
+	}).(AlarmAdvancedActionOutput)
+}
+
+type AlarmEmailAction struct {
+	// Email body.
+	Body *string `pulumi:"body"`
+	// Email destination cc.
+	Cc *string `pulumi:"cc"`
+	// Triggers the action only for this final state.
+	FinalState string `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat *bool `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState string `pulumi:"startState"`
+	// Email subject.
+	Subject *string `pulumi:"subject"`
+	// Email destination.
+	To *string `pulumi:"to"`
+}
+
+// AlarmEmailActionInput is an input type that accepts AlarmEmailActionArgs and AlarmEmailActionOutput values.
+// You can construct a concrete instance of `AlarmEmailActionInput` via:
+//
+//	AlarmEmailActionArgs{...}
+type AlarmEmailActionInput interface {
+	pulumi.Input
+
+	ToAlarmEmailActionOutput() AlarmEmailActionOutput
+	ToAlarmEmailActionOutputWithContext(context.Context) AlarmEmailActionOutput
+}
+
+type AlarmEmailActionArgs struct {
+	// Email body.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// Email destination cc.
+	Cc pulumi.StringPtrInput `pulumi:"cc"`
+	// Triggers the action only for this final state.
+	FinalState pulumi.StringInput `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat pulumi.BoolPtrInput `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState pulumi.StringInput `pulumi:"startState"`
+	// Email subject.
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
+	// Email destination.
+	To pulumi.StringPtrInput `pulumi:"to"`
+}
+
+func (AlarmEmailActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEmailAction)(nil)).Elem()
+}
+
+func (i AlarmEmailActionArgs) ToAlarmEmailActionOutput() AlarmEmailActionOutput {
+	return i.ToAlarmEmailActionOutputWithContext(context.Background())
+}
+
+func (i AlarmEmailActionArgs) ToAlarmEmailActionOutputWithContext(ctx context.Context) AlarmEmailActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEmailActionOutput)
+}
+
+// AlarmEmailActionArrayInput is an input type that accepts AlarmEmailActionArray and AlarmEmailActionArrayOutput values.
+// You can construct a concrete instance of `AlarmEmailActionArrayInput` via:
+//
+//	AlarmEmailActionArray{ AlarmEmailActionArgs{...} }
+type AlarmEmailActionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmEmailActionArrayOutput() AlarmEmailActionArrayOutput
+	ToAlarmEmailActionArrayOutputWithContext(context.Context) AlarmEmailActionArrayOutput
+}
+
+type AlarmEmailActionArray []AlarmEmailActionInput
+
+func (AlarmEmailActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmEmailAction)(nil)).Elem()
+}
+
+func (i AlarmEmailActionArray) ToAlarmEmailActionArrayOutput() AlarmEmailActionArrayOutput {
+	return i.ToAlarmEmailActionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmEmailActionArray) ToAlarmEmailActionArrayOutputWithContext(ctx context.Context) AlarmEmailActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEmailActionArrayOutput)
+}
+
+type AlarmEmailActionOutput struct{ *pulumi.OutputState }
+
+func (AlarmEmailActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEmailAction)(nil)).Elem()
+}
+
+func (o AlarmEmailActionOutput) ToAlarmEmailActionOutput() AlarmEmailActionOutput {
+	return o
+}
+
+func (o AlarmEmailActionOutput) ToAlarmEmailActionOutputWithContext(ctx context.Context) AlarmEmailActionOutput {
+	return o
+}
+
+// Email body.
+func (o AlarmEmailActionOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEmailAction) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+// Email destination cc.
+func (o AlarmEmailActionOutput) Cc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEmailAction) *string { return v.Cc }).(pulumi.StringPtrOutput)
+}
+
+// Triggers the action only for this final state.
+func (o AlarmEmailActionOutput) FinalState() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEmailAction) string { return v.FinalState }).(pulumi.StringOutput)
+}
+
+// Whether or not the action should be repeated.
+func (o AlarmEmailActionOutput) Repeat() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmEmailAction) *bool { return v.Repeat }).(pulumi.BoolPtrOutput)
+}
+
+// Triggers the action only for this initial state.
+func (o AlarmEmailActionOutput) StartState() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEmailAction) string { return v.StartState }).(pulumi.StringOutput)
+}
+
+// Email subject.
+func (o AlarmEmailActionOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEmailAction) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+// Email destination.
+func (o AlarmEmailActionOutput) To() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEmailAction) *string { return v.To }).(pulumi.StringPtrOutput)
+}
+
+type AlarmEmailActionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmEmailActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmEmailAction)(nil)).Elem()
+}
+
+func (o AlarmEmailActionArrayOutput) ToAlarmEmailActionArrayOutput() AlarmEmailActionArrayOutput {
+	return o
+}
+
+func (o AlarmEmailActionArrayOutput) ToAlarmEmailActionArrayOutputWithContext(ctx context.Context) AlarmEmailActionArrayOutput {
+	return o
+}
+
+func (o AlarmEmailActionArrayOutput) Index(i pulumi.IntInput) AlarmEmailActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmEmailAction {
+		return vs[0].([]AlarmEmailAction)[vs[1].(int)]
+	}).(AlarmEmailActionOutput)
+}
+
+type AlarmEventExpression struct {
+	// Additional check that allows adding threshold on the given object attribute.
+	Comparisons []AlarmEventExpressionComparison `pulumi:"comparisons"`
+	// Type of Event (vim.event.Event).
+	EventType *string `pulumi:"eventType"`
+	// Name of the event (vim.event).
+	EventTypeId string `pulumi:"eventTypeId"`
+	// Type of object where the event applies on.
+	ObjectType string `pulumi:"objectType"`
+	// Alarm status once triggered.
+	Status string `pulumi:"status"`
+}
+
+// AlarmEventExpressionInput is an input type that accepts AlarmEventExpressionArgs and AlarmEventExpressionOutput values.
+// You can construct a concrete instance of `AlarmEventExpressionInput` via:
+//
+//	AlarmEventExpressionArgs{...}
+type AlarmEventExpressionInput interface {
+	pulumi.Input
+
+	ToAlarmEventExpressionOutput() AlarmEventExpressionOutput
+	ToAlarmEventExpressionOutputWithContext(context.Context) AlarmEventExpressionOutput
+}
+
+type AlarmEventExpressionArgs struct {
+	// Additional check that allows adding threshold on the given object attribute.
+	Comparisons AlarmEventExpressionComparisonArrayInput `pulumi:"comparisons"`
+	// Type of Event (vim.event.Event).
+	EventType pulumi.StringPtrInput `pulumi:"eventType"`
+	// Name of the event (vim.event).
+	EventTypeId pulumi.StringInput `pulumi:"eventTypeId"`
+	// Type of object where the event applies on.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Alarm status once triggered.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (AlarmEventExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEventExpression)(nil)).Elem()
+}
+
+func (i AlarmEventExpressionArgs) ToAlarmEventExpressionOutput() AlarmEventExpressionOutput {
+	return i.ToAlarmEventExpressionOutputWithContext(context.Background())
+}
+
+func (i AlarmEventExpressionArgs) ToAlarmEventExpressionOutputWithContext(ctx context.Context) AlarmEventExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEventExpressionOutput)
+}
+
+// AlarmEventExpressionArrayInput is an input type that accepts AlarmEventExpressionArray and AlarmEventExpressionArrayOutput values.
+// You can construct a concrete instance of `AlarmEventExpressionArrayInput` via:
+//
+//	AlarmEventExpressionArray{ AlarmEventExpressionArgs{...} }
+type AlarmEventExpressionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmEventExpressionArrayOutput() AlarmEventExpressionArrayOutput
+	ToAlarmEventExpressionArrayOutputWithContext(context.Context) AlarmEventExpressionArrayOutput
+}
+
+type AlarmEventExpressionArray []AlarmEventExpressionInput
+
+func (AlarmEventExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmEventExpression)(nil)).Elem()
+}
+
+func (i AlarmEventExpressionArray) ToAlarmEventExpressionArrayOutput() AlarmEventExpressionArrayOutput {
+	return i.ToAlarmEventExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmEventExpressionArray) ToAlarmEventExpressionArrayOutputWithContext(ctx context.Context) AlarmEventExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEventExpressionArrayOutput)
+}
+
+type AlarmEventExpressionOutput struct{ *pulumi.OutputState }
+
+func (AlarmEventExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEventExpression)(nil)).Elem()
+}
+
+func (o AlarmEventExpressionOutput) ToAlarmEventExpressionOutput() AlarmEventExpressionOutput {
+	return o
+}
+
+func (o AlarmEventExpressionOutput) ToAlarmEventExpressionOutputWithContext(ctx context.Context) AlarmEventExpressionOutput {
+	return o
+}
+
+// Additional check that allows adding threshold on the given object attribute.
+func (o AlarmEventExpressionOutput) Comparisons() AlarmEventExpressionComparisonArrayOutput {
+	return o.ApplyT(func(v AlarmEventExpression) []AlarmEventExpressionComparison { return v.Comparisons }).(AlarmEventExpressionComparisonArrayOutput)
+}
+
+// Type of Event (vim.event.Event).
+func (o AlarmEventExpressionOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEventExpression) *string { return v.EventType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the event (vim.event).
+func (o AlarmEventExpressionOutput) EventTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEventExpression) string { return v.EventTypeId }).(pulumi.StringOutput)
+}
+
+// Type of object where the event applies on.
+func (o AlarmEventExpressionOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEventExpression) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Alarm status once triggered.
+func (o AlarmEventExpressionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEventExpression) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type AlarmEventExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmEventExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmEventExpression)(nil)).Elem()
+}
+
+func (o AlarmEventExpressionArrayOutput) ToAlarmEventExpressionArrayOutput() AlarmEventExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmEventExpressionArrayOutput) ToAlarmEventExpressionArrayOutputWithContext(ctx context.Context) AlarmEventExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmEventExpressionArrayOutput) Index(i pulumi.IntInput) AlarmEventExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmEventExpression {
+		return vs[0].([]AlarmEventExpression)[vs[1].(int)]
+	}).(AlarmEventExpressionOutput)
+}
+
+type AlarmEventExpressionComparison struct {
+	// Name of the attribute to compare.
+	AttributeName string `pulumi:"attributeName"`
+	// Comparison operator.
+	Operator string `pulumi:"operator"`
+	// Value to compare.
+	Value string `pulumi:"value"`
+}
+
+// AlarmEventExpressionComparisonInput is an input type that accepts AlarmEventExpressionComparisonArgs and AlarmEventExpressionComparisonOutput values.
+// You can construct a concrete instance of `AlarmEventExpressionComparisonInput` via:
+//
+//	AlarmEventExpressionComparisonArgs{...}
+type AlarmEventExpressionComparisonInput interface {
+	pulumi.Input
+
+	ToAlarmEventExpressionComparisonOutput() AlarmEventExpressionComparisonOutput
+	ToAlarmEventExpressionComparisonOutputWithContext(context.Context) AlarmEventExpressionComparisonOutput
+}
+
+type AlarmEventExpressionComparisonArgs struct {
+	// Name of the attribute to compare.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// Comparison operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Value to compare.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AlarmEventExpressionComparisonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (i AlarmEventExpressionComparisonArgs) ToAlarmEventExpressionComparisonOutput() AlarmEventExpressionComparisonOutput {
+	return i.ToAlarmEventExpressionComparisonOutputWithContext(context.Background())
+}
+
+func (i AlarmEventExpressionComparisonArgs) ToAlarmEventExpressionComparisonOutputWithContext(ctx context.Context) AlarmEventExpressionComparisonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEventExpressionComparisonOutput)
+}
+
+// AlarmEventExpressionComparisonArrayInput is an input type that accepts AlarmEventExpressionComparisonArray and AlarmEventExpressionComparisonArrayOutput values.
+// You can construct a concrete instance of `AlarmEventExpressionComparisonArrayInput` via:
+//
+//	AlarmEventExpressionComparisonArray{ AlarmEventExpressionComparisonArgs{...} }
+type AlarmEventExpressionComparisonArrayInput interface {
+	pulumi.Input
+
+	ToAlarmEventExpressionComparisonArrayOutput() AlarmEventExpressionComparisonArrayOutput
+	ToAlarmEventExpressionComparisonArrayOutputWithContext(context.Context) AlarmEventExpressionComparisonArrayOutput
+}
+
+type AlarmEventExpressionComparisonArray []AlarmEventExpressionComparisonInput
+
+func (AlarmEventExpressionComparisonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (i AlarmEventExpressionComparisonArray) ToAlarmEventExpressionComparisonArrayOutput() AlarmEventExpressionComparisonArrayOutput {
+	return i.ToAlarmEventExpressionComparisonArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmEventExpressionComparisonArray) ToAlarmEventExpressionComparisonArrayOutputWithContext(ctx context.Context) AlarmEventExpressionComparisonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEventExpressionComparisonArrayOutput)
+}
+
+type AlarmEventExpressionComparisonOutput struct{ *pulumi.OutputState }
+
+func (AlarmEventExpressionComparisonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (o AlarmEventExpressionComparisonOutput) ToAlarmEventExpressionComparisonOutput() AlarmEventExpressionComparisonOutput {
+	return o
+}
+
+func (o AlarmEventExpressionComparisonOutput) ToAlarmEventExpressionComparisonOutputWithContext(ctx context.Context) AlarmEventExpressionComparisonOutput {
+	return o
+}
+
+// Name of the attribute to compare.
+func (o AlarmEventExpressionComparisonOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEventExpressionComparison) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// Comparison operator.
+func (o AlarmEventExpressionComparisonOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEventExpressionComparison) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Value to compare.
+func (o AlarmEventExpressionComparisonOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmEventExpressionComparison) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AlarmEventExpressionComparisonArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmEventExpressionComparisonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (o AlarmEventExpressionComparisonArrayOutput) ToAlarmEventExpressionComparisonArrayOutput() AlarmEventExpressionComparisonArrayOutput {
+	return o
+}
+
+func (o AlarmEventExpressionComparisonArrayOutput) ToAlarmEventExpressionComparisonArrayOutputWithContext(ctx context.Context) AlarmEventExpressionComparisonArrayOutput {
+	return o
+}
+
+func (o AlarmEventExpressionComparisonArrayOutput) Index(i pulumi.IntInput) AlarmEventExpressionComparisonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmEventExpressionComparison {
+		return vs[0].([]AlarmEventExpressionComparison)[vs[1].(int)]
+	}).(AlarmEventExpressionComparisonOutput)
+}
+
+type AlarmMetricExpression struct {
+	// ID of the metric.
+	MetricCounterId int     `pulumi:"metricCounterId"`
+	MetricInstance  *string `pulumi:"metricInstance"`
+	// Type of object of the metric, ie: HostSystem.
+	ObjectType string `pulumi:"objectType"`
+	// Whether the metric is below or above the given threshold.
+	Operator string `pulumi:"operator"`
+	// Critical threshold, for percentage, 9900 is 99%.
+	Red *int `pulumi:"red"`
+	// Amount of seconds the threshold must be crossed to trigger the critical alarm.
+	RedInterval *int `pulumi:"redInterval"`
+	// Warning threshold, for percentage, 9900 is 99%.
+	Yellow *int `pulumi:"yellow"`
+	// Amount of seconds the threshold must be crossed to trigger the warning alarm.
+	YellowInterval *int `pulumi:"yellowInterval"`
+}
+
+// AlarmMetricExpressionInput is an input type that accepts AlarmMetricExpressionArgs and AlarmMetricExpressionOutput values.
+// You can construct a concrete instance of `AlarmMetricExpressionInput` via:
+//
+//	AlarmMetricExpressionArgs{...}
+type AlarmMetricExpressionInput interface {
+	pulumi.Input
+
+	ToAlarmMetricExpressionOutput() AlarmMetricExpressionOutput
+	ToAlarmMetricExpressionOutputWithContext(context.Context) AlarmMetricExpressionOutput
+}
+
+type AlarmMetricExpressionArgs struct {
+	// ID of the metric.
+	MetricCounterId pulumi.IntInput       `pulumi:"metricCounterId"`
+	MetricInstance  pulumi.StringPtrInput `pulumi:"metricInstance"`
+	// Type of object of the metric, ie: HostSystem.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Whether the metric is below or above the given threshold.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Critical threshold, for percentage, 9900 is 99%.
+	Red pulumi.IntPtrInput `pulumi:"red"`
+	// Amount of seconds the threshold must be crossed to trigger the critical alarm.
+	RedInterval pulumi.IntPtrInput `pulumi:"redInterval"`
+	// Warning threshold, for percentage, 9900 is 99%.
+	Yellow pulumi.IntPtrInput `pulumi:"yellow"`
+	// Amount of seconds the threshold must be crossed to trigger the warning alarm.
+	YellowInterval pulumi.IntPtrInput `pulumi:"yellowInterval"`
+}
+
+func (AlarmMetricExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmMetricExpression)(nil)).Elem()
+}
+
+func (i AlarmMetricExpressionArgs) ToAlarmMetricExpressionOutput() AlarmMetricExpressionOutput {
+	return i.ToAlarmMetricExpressionOutputWithContext(context.Background())
+}
+
+func (i AlarmMetricExpressionArgs) ToAlarmMetricExpressionOutputWithContext(ctx context.Context) AlarmMetricExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmMetricExpressionOutput)
+}
+
+// AlarmMetricExpressionArrayInput is an input type that accepts AlarmMetricExpressionArray and AlarmMetricExpressionArrayOutput values.
+// You can construct a concrete instance of `AlarmMetricExpressionArrayInput` via:
+//
+//	AlarmMetricExpressionArray{ AlarmMetricExpressionArgs{...} }
+type AlarmMetricExpressionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmMetricExpressionArrayOutput() AlarmMetricExpressionArrayOutput
+	ToAlarmMetricExpressionArrayOutputWithContext(context.Context) AlarmMetricExpressionArrayOutput
+}
+
+type AlarmMetricExpressionArray []AlarmMetricExpressionInput
+
+func (AlarmMetricExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmMetricExpression)(nil)).Elem()
+}
+
+func (i AlarmMetricExpressionArray) ToAlarmMetricExpressionArrayOutput() AlarmMetricExpressionArrayOutput {
+	return i.ToAlarmMetricExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmMetricExpressionArray) ToAlarmMetricExpressionArrayOutputWithContext(ctx context.Context) AlarmMetricExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmMetricExpressionArrayOutput)
+}
+
+type AlarmMetricExpressionOutput struct{ *pulumi.OutputState }
+
+func (AlarmMetricExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmMetricExpression)(nil)).Elem()
+}
+
+func (o AlarmMetricExpressionOutput) ToAlarmMetricExpressionOutput() AlarmMetricExpressionOutput {
+	return o
+}
+
+func (o AlarmMetricExpressionOutput) ToAlarmMetricExpressionOutputWithContext(ctx context.Context) AlarmMetricExpressionOutput {
+	return o
+}
+
+// ID of the metric.
+func (o AlarmMetricExpressionOutput) MetricCounterId() pulumi.IntOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) int { return v.MetricCounterId }).(pulumi.IntOutput)
+}
+
+func (o AlarmMetricExpressionOutput) MetricInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) *string { return v.MetricInstance }).(pulumi.StringPtrOutput)
+}
+
+// Type of object of the metric, ie: HostSystem.
+func (o AlarmMetricExpressionOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Whether the metric is below or above the given threshold.
+func (o AlarmMetricExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Critical threshold, for percentage, 9900 is 99%.
+func (o AlarmMetricExpressionOutput) Red() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) *int { return v.Red }).(pulumi.IntPtrOutput)
+}
+
+// Amount of seconds the threshold must be crossed to trigger the critical alarm.
+func (o AlarmMetricExpressionOutput) RedInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) *int { return v.RedInterval }).(pulumi.IntPtrOutput)
+}
+
+// Warning threshold, for percentage, 9900 is 99%.
+func (o AlarmMetricExpressionOutput) Yellow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) *int { return v.Yellow }).(pulumi.IntPtrOutput)
+}
+
+// Amount of seconds the threshold must be crossed to trigger the warning alarm.
+func (o AlarmMetricExpressionOutput) YellowInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmMetricExpression) *int { return v.YellowInterval }).(pulumi.IntPtrOutput)
+}
+
+type AlarmMetricExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmMetricExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmMetricExpression)(nil)).Elem()
+}
+
+func (o AlarmMetricExpressionArrayOutput) ToAlarmMetricExpressionArrayOutput() AlarmMetricExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmMetricExpressionArrayOutput) ToAlarmMetricExpressionArrayOutputWithContext(ctx context.Context) AlarmMetricExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmMetricExpressionArrayOutput) Index(i pulumi.IntInput) AlarmMetricExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmMetricExpression {
+		return vs[0].([]AlarmMetricExpression)[vs[1].(int)]
+	}).(AlarmMetricExpressionOutput)
+}
+
+type AlarmSnmpAction struct {
+	// Triggers the action only for this final state.
+	FinalState string `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat *bool `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState string `pulumi:"startState"`
+}
+
+// AlarmSnmpActionInput is an input type that accepts AlarmSnmpActionArgs and AlarmSnmpActionOutput values.
+// You can construct a concrete instance of `AlarmSnmpActionInput` via:
+//
+//	AlarmSnmpActionArgs{...}
+type AlarmSnmpActionInput interface {
+	pulumi.Input
+
+	ToAlarmSnmpActionOutput() AlarmSnmpActionOutput
+	ToAlarmSnmpActionOutputWithContext(context.Context) AlarmSnmpActionOutput
+}
+
+type AlarmSnmpActionArgs struct {
+	// Triggers the action only for this final state.
+	FinalState pulumi.StringInput `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat pulumi.BoolPtrInput `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState pulumi.StringInput `pulumi:"startState"`
+}
+
+func (AlarmSnmpActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmSnmpAction)(nil)).Elem()
+}
+
+func (i AlarmSnmpActionArgs) ToAlarmSnmpActionOutput() AlarmSnmpActionOutput {
+	return i.ToAlarmSnmpActionOutputWithContext(context.Background())
+}
+
+func (i AlarmSnmpActionArgs) ToAlarmSnmpActionOutputWithContext(ctx context.Context) AlarmSnmpActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmSnmpActionOutput)
+}
+
+// AlarmSnmpActionArrayInput is an input type that accepts AlarmSnmpActionArray and AlarmSnmpActionArrayOutput values.
+// You can construct a concrete instance of `AlarmSnmpActionArrayInput` via:
+//
+//	AlarmSnmpActionArray{ AlarmSnmpActionArgs{...} }
+type AlarmSnmpActionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmSnmpActionArrayOutput() AlarmSnmpActionArrayOutput
+	ToAlarmSnmpActionArrayOutputWithContext(context.Context) AlarmSnmpActionArrayOutput
+}
+
+type AlarmSnmpActionArray []AlarmSnmpActionInput
+
+func (AlarmSnmpActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmSnmpAction)(nil)).Elem()
+}
+
+func (i AlarmSnmpActionArray) ToAlarmSnmpActionArrayOutput() AlarmSnmpActionArrayOutput {
+	return i.ToAlarmSnmpActionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmSnmpActionArray) ToAlarmSnmpActionArrayOutputWithContext(ctx context.Context) AlarmSnmpActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmSnmpActionArrayOutput)
+}
+
+type AlarmSnmpActionOutput struct{ *pulumi.OutputState }
+
+func (AlarmSnmpActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmSnmpAction)(nil)).Elem()
+}
+
+func (o AlarmSnmpActionOutput) ToAlarmSnmpActionOutput() AlarmSnmpActionOutput {
+	return o
+}
+
+func (o AlarmSnmpActionOutput) ToAlarmSnmpActionOutputWithContext(ctx context.Context) AlarmSnmpActionOutput {
+	return o
+}
+
+// Triggers the action only for this final state.
+func (o AlarmSnmpActionOutput) FinalState() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmSnmpAction) string { return v.FinalState }).(pulumi.StringOutput)
+}
+
+// Whether or not the action should be repeated.
+func (o AlarmSnmpActionOutput) Repeat() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmSnmpAction) *bool { return v.Repeat }).(pulumi.BoolPtrOutput)
+}
+
+// Triggers the action only for this initial state.
+func (o AlarmSnmpActionOutput) StartState() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmSnmpAction) string { return v.StartState }).(pulumi.StringOutput)
+}
+
+type AlarmSnmpActionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmSnmpActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmSnmpAction)(nil)).Elem()
+}
+
+func (o AlarmSnmpActionArrayOutput) ToAlarmSnmpActionArrayOutput() AlarmSnmpActionArrayOutput {
+	return o
+}
+
+func (o AlarmSnmpActionArrayOutput) ToAlarmSnmpActionArrayOutputWithContext(ctx context.Context) AlarmSnmpActionArrayOutput {
+	return o
+}
+
+func (o AlarmSnmpActionArrayOutput) Index(i pulumi.IntInput) AlarmSnmpActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmSnmpAction {
+		return vs[0].([]AlarmSnmpAction)[vs[1].(int)]
+	}).(AlarmSnmpActionOutput)
+}
+
+type AlarmStateExpression struct {
+	// Type of object where the event applies on, ie: HostSystem.
+	ObjectType string `pulumi:"objectType"`
+	// Check if state is equal or unequal.
+	Operator string `pulumi:"operator"`
+	// State value to trigger critical alarm.
+	Red *string `pulumi:"red"`
+	// State path: ie. runtime.connectionState.
+	StatePath string `pulumi:"statePath"`
+	// State value to trigger warning alarm.
+	Yellow *string `pulumi:"yellow"`
+}
+
+// AlarmStateExpressionInput is an input type that accepts AlarmStateExpressionArgs and AlarmStateExpressionOutput values.
+// You can construct a concrete instance of `AlarmStateExpressionInput` via:
+//
+//	AlarmStateExpressionArgs{...}
+type AlarmStateExpressionInput interface {
+	pulumi.Input
+
+	ToAlarmStateExpressionOutput() AlarmStateExpressionOutput
+	ToAlarmStateExpressionOutputWithContext(context.Context) AlarmStateExpressionOutput
+}
+
+type AlarmStateExpressionArgs struct {
+	// Type of object where the event applies on, ie: HostSystem.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Check if state is equal or unequal.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// State value to trigger critical alarm.
+	Red pulumi.StringPtrInput `pulumi:"red"`
+	// State path: ie. runtime.connectionState.
+	StatePath pulumi.StringInput `pulumi:"statePath"`
+	// State value to trigger warning alarm.
+	Yellow pulumi.StringPtrInput `pulumi:"yellow"`
+}
+
+func (AlarmStateExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmStateExpression)(nil)).Elem()
+}
+
+func (i AlarmStateExpressionArgs) ToAlarmStateExpressionOutput() AlarmStateExpressionOutput {
+	return i.ToAlarmStateExpressionOutputWithContext(context.Background())
+}
+
+func (i AlarmStateExpressionArgs) ToAlarmStateExpressionOutputWithContext(ctx context.Context) AlarmStateExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmStateExpressionOutput)
+}
+
+// AlarmStateExpressionArrayInput is an input type that accepts AlarmStateExpressionArray and AlarmStateExpressionArrayOutput values.
+// You can construct a concrete instance of `AlarmStateExpressionArrayInput` via:
+//
+//	AlarmStateExpressionArray{ AlarmStateExpressionArgs{...} }
+type AlarmStateExpressionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmStateExpressionArrayOutput() AlarmStateExpressionArrayOutput
+	ToAlarmStateExpressionArrayOutputWithContext(context.Context) AlarmStateExpressionArrayOutput
+}
+
+type AlarmStateExpressionArray []AlarmStateExpressionInput
+
+func (AlarmStateExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmStateExpression)(nil)).Elem()
+}
+
+func (i AlarmStateExpressionArray) ToAlarmStateExpressionArrayOutput() AlarmStateExpressionArrayOutput {
+	return i.ToAlarmStateExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmStateExpressionArray) ToAlarmStateExpressionArrayOutputWithContext(ctx context.Context) AlarmStateExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmStateExpressionArrayOutput)
+}
+
+type AlarmStateExpressionOutput struct{ *pulumi.OutputState }
+
+func (AlarmStateExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmStateExpression)(nil)).Elem()
+}
+
+func (o AlarmStateExpressionOutput) ToAlarmStateExpressionOutput() AlarmStateExpressionOutput {
+	return o
+}
+
+func (o AlarmStateExpressionOutput) ToAlarmStateExpressionOutputWithContext(ctx context.Context) AlarmStateExpressionOutput {
+	return o
+}
+
+// Type of object where the event applies on, ie: HostSystem.
+func (o AlarmStateExpressionOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmStateExpression) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Check if state is equal or unequal.
+func (o AlarmStateExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmStateExpression) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// State value to trigger critical alarm.
+func (o AlarmStateExpressionOutput) Red() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmStateExpression) *string { return v.Red }).(pulumi.StringPtrOutput)
+}
+
+// State path: ie. runtime.connectionState.
+func (o AlarmStateExpressionOutput) StatePath() pulumi.StringOutput {
+	return o.ApplyT(func(v AlarmStateExpression) string { return v.StatePath }).(pulumi.StringOutput)
+}
+
+// State value to trigger warning alarm.
+func (o AlarmStateExpressionOutput) Yellow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmStateExpression) *string { return v.Yellow }).(pulumi.StringPtrOutput)
+}
+
+type AlarmStateExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmStateExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmStateExpression)(nil)).Elem()
+}
+
+func (o AlarmStateExpressionArrayOutput) ToAlarmStateExpressionArrayOutput() AlarmStateExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmStateExpressionArrayOutput) ToAlarmStateExpressionArrayOutputWithContext(ctx context.Context) AlarmStateExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmStateExpressionArrayOutput) Index(i pulumi.IntInput) AlarmStateExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmStateExpression {
+		return vs[0].([]AlarmStateExpression)[vs[1].(int)]
+	}).(AlarmStateExpressionOutput)
+}
+
 type ComputeClusterHostImage struct {
 	// List of custom components.
 	Components []ComputeClusterHostImageComponent `pulumi:"components"`
@@ -3218,6 +4149,112 @@ func (o HostServiceNtpdPtrOutput) Policy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type NamespaceVmService struct {
+	// The list of content libraries to associate with the VM Service.
+	ContentLibraries []string `pulumi:"contentLibraries"`
+	// The list of VM Classes to associate with the VM Service.
+	VmClasses []string `pulumi:"vmClasses"`
+}
+
+// NamespaceVmServiceInput is an input type that accepts NamespaceVmServiceArgs and NamespaceVmServiceOutput values.
+// You can construct a concrete instance of `NamespaceVmServiceInput` via:
+//
+//	NamespaceVmServiceArgs{...}
+type NamespaceVmServiceInput interface {
+	pulumi.Input
+
+	ToNamespaceVmServiceOutput() NamespaceVmServiceOutput
+	ToNamespaceVmServiceOutputWithContext(context.Context) NamespaceVmServiceOutput
+}
+
+type NamespaceVmServiceArgs struct {
+	// The list of content libraries to associate with the VM Service.
+	ContentLibraries pulumi.StringArrayInput `pulumi:"contentLibraries"`
+	// The list of VM Classes to associate with the VM Service.
+	VmClasses pulumi.StringArrayInput `pulumi:"vmClasses"`
+}
+
+func (NamespaceVmServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVmService)(nil)).Elem()
+}
+
+func (i NamespaceVmServiceArgs) ToNamespaceVmServiceOutput() NamespaceVmServiceOutput {
+	return i.ToNamespaceVmServiceOutputWithContext(context.Background())
+}
+
+func (i NamespaceVmServiceArgs) ToNamespaceVmServiceOutputWithContext(ctx context.Context) NamespaceVmServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVmServiceOutput)
+}
+
+// NamespaceVmServiceArrayInput is an input type that accepts NamespaceVmServiceArray and NamespaceVmServiceArrayOutput values.
+// You can construct a concrete instance of `NamespaceVmServiceArrayInput` via:
+//
+//	NamespaceVmServiceArray{ NamespaceVmServiceArgs{...} }
+type NamespaceVmServiceArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceVmServiceArrayOutput() NamespaceVmServiceArrayOutput
+	ToNamespaceVmServiceArrayOutputWithContext(context.Context) NamespaceVmServiceArrayOutput
+}
+
+type NamespaceVmServiceArray []NamespaceVmServiceInput
+
+func (NamespaceVmServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceVmService)(nil)).Elem()
+}
+
+func (i NamespaceVmServiceArray) ToNamespaceVmServiceArrayOutput() NamespaceVmServiceArrayOutput {
+	return i.ToNamespaceVmServiceArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceVmServiceArray) ToNamespaceVmServiceArrayOutputWithContext(ctx context.Context) NamespaceVmServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVmServiceArrayOutput)
+}
+
+type NamespaceVmServiceOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVmServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVmService)(nil)).Elem()
+}
+
+func (o NamespaceVmServiceOutput) ToNamespaceVmServiceOutput() NamespaceVmServiceOutput {
+	return o
+}
+
+func (o NamespaceVmServiceOutput) ToNamespaceVmServiceOutputWithContext(ctx context.Context) NamespaceVmServiceOutput {
+	return o
+}
+
+// The list of content libraries to associate with the VM Service.
+func (o NamespaceVmServiceOutput) ContentLibraries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NamespaceVmService) []string { return v.ContentLibraries }).(pulumi.StringArrayOutput)
+}
+
+// The list of VM Classes to associate with the VM Service.
+func (o NamespaceVmServiceOutput) VmClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NamespaceVmService) []string { return v.VmClasses }).(pulumi.StringArrayOutput)
+}
+
+type NamespaceVmServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVmServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceVmService)(nil)).Elem()
+}
+
+func (o NamespaceVmServiceArrayOutput) ToNamespaceVmServiceArrayOutput() NamespaceVmServiceArrayOutput {
+	return o
+}
+
+func (o NamespaceVmServiceArrayOutput) ToNamespaceVmServiceArrayOutputWithContext(ctx context.Context) NamespaceVmServiceArrayOutput {
+	return o
+}
+
+func (o NamespaceVmServiceArrayOutput) Index(i pulumi.IntInput) NamespaceVmServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceVmService {
+		return vs[0].([]NamespaceVmService)[vs[1].(int)]
+	}).(NamespaceVmServiceOutput)
+}
+
 type OfflineSoftwareDepotComponent struct {
 	// The name of the component. Useful for easier identification.
 	DisplayName *string `pulumi:"displayName"`
@@ -3546,11 +4583,11 @@ func (o SupervisorIngressCidrArrayOutput) Index(i pulumi.IntInput) SupervisorIng
 }
 
 type SupervisorManagementNetwork struct {
-	// Number of addresses to allocate. Starts from 'starting_address'
+	// Number of addresses to allocate. Starts from `startingAddress`
 	AddressCount int `pulumi:"addressCount"`
 	// Gateway IP address.
 	Gateway string `pulumi:"gateway"`
-	// ID of the network. (e.g. a distributed port group).
+	// ID of the network. (_e.g._, a distributed port group).
 	Network string `pulumi:"network"`
 	// Starting address of the management network range.
 	StartingAddress string `pulumi:"startingAddress"`
@@ -3570,11 +4607,11 @@ type SupervisorManagementNetworkInput interface {
 }
 
 type SupervisorManagementNetworkArgs struct {
-	// Number of addresses to allocate. Starts from 'starting_address'
+	// Number of addresses to allocate. Starts from `startingAddress`
 	AddressCount pulumi.IntInput `pulumi:"addressCount"`
 	// Gateway IP address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
-	// ID of the network. (e.g. a distributed port group).
+	// ID of the network. (_e.g._, a distributed port group).
 	Network pulumi.StringInput `pulumi:"network"`
 	// Starting address of the management network range.
 	StartingAddress pulumi.StringInput `pulumi:"startingAddress"`
@@ -3659,7 +4696,7 @@ func (o SupervisorManagementNetworkOutput) ToSupervisorManagementNetworkPtrOutpu
 	}).(SupervisorManagementNetworkPtrOutput)
 }
 
-// Number of addresses to allocate. Starts from 'starting_address'
+// Number of addresses to allocate. Starts from `startingAddress`
 func (o SupervisorManagementNetworkOutput) AddressCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SupervisorManagementNetwork) int { return v.AddressCount }).(pulumi.IntOutput)
 }
@@ -3669,7 +4706,7 @@ func (o SupervisorManagementNetworkOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v SupervisorManagementNetwork) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
-// ID of the network. (e.g. a distributed port group).
+// ID of the network. (_e.g._, a distributed port group).
 func (o SupervisorManagementNetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v SupervisorManagementNetwork) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -3708,7 +4745,7 @@ func (o SupervisorManagementNetworkPtrOutput) Elem() SupervisorManagementNetwork
 	}).(SupervisorManagementNetworkOutput)
 }
 
-// Number of addresses to allocate. Starts from 'starting_address'
+// Number of addresses to allocate. Starts from `startingAddress`
 func (o SupervisorManagementNetworkPtrOutput) AddressCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SupervisorManagementNetwork) *int {
 		if v == nil {
@@ -3728,7 +4765,7 @@ func (o SupervisorManagementNetworkPtrOutput) Gateway() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// ID of the network. (e.g. a distributed port group).
+// ID of the network. (_e.g._, a distributed port group).
 func (o SupervisorManagementNetworkPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SupervisorManagementNetwork) *string {
 		if v == nil {
@@ -4133,6 +5170,7490 @@ func (o SupervisorServiceCidrPtrOutput) Prefix() pulumi.IntPtrOutput {
 		}
 		return &v.Prefix
 	}).(pulumi.IntPtrOutput)
+}
+
+type SupervisorV2ControlPlane struct {
+	// The number of control plane VMs to deploy.
+	Count *int `pulumi:"count"`
+	// The network configuration for the control plane VM(s).
+	Network SupervisorV2ControlPlaneNetwork `pulumi:"network"`
+	// The size preset for the control plane VM(s).
+	Size *string `pulumi:"size"`
+	// The storage policy for the control plane VM(s).
+	StoragePolicy *string `pulumi:"storagePolicy"`
+}
+
+// SupervisorV2ControlPlaneInput is an input type that accepts SupervisorV2ControlPlaneArgs and SupervisorV2ControlPlaneOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneInput` via:
+//
+//	SupervisorV2ControlPlaneArgs{...}
+type SupervisorV2ControlPlaneInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneOutput() SupervisorV2ControlPlaneOutput
+	ToSupervisorV2ControlPlaneOutputWithContext(context.Context) SupervisorV2ControlPlaneOutput
+}
+
+type SupervisorV2ControlPlaneArgs struct {
+	// The number of control plane VMs to deploy.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// The network configuration for the control plane VM(s).
+	Network SupervisorV2ControlPlaneNetworkInput `pulumi:"network"`
+	// The size preset for the control plane VM(s).
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// The storage policy for the control plane VM(s).
+	StoragePolicy pulumi.StringPtrInput `pulumi:"storagePolicy"`
+}
+
+func (SupervisorV2ControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlane)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneArgs) ToSupervisorV2ControlPlaneOutput() SupervisorV2ControlPlaneOutput {
+	return i.ToSupervisorV2ControlPlaneOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneArgs) ToSupervisorV2ControlPlaneOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneOutput)
+}
+
+func (i SupervisorV2ControlPlaneArgs) ToSupervisorV2ControlPlanePtrOutput() SupervisorV2ControlPlanePtrOutput {
+	return i.ToSupervisorV2ControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneArgs) ToSupervisorV2ControlPlanePtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneOutput).ToSupervisorV2ControlPlanePtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlanePtrInput is an input type that accepts SupervisorV2ControlPlaneArgs, SupervisorV2ControlPlanePtr and SupervisorV2ControlPlanePtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlanePtrInput` via:
+//
+//	        SupervisorV2ControlPlaneArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlanePtrOutput() SupervisorV2ControlPlanePtrOutput
+	ToSupervisorV2ControlPlanePtrOutputWithContext(context.Context) SupervisorV2ControlPlanePtrOutput
+}
+
+type supervisorV2ControlPlanePtrType SupervisorV2ControlPlaneArgs
+
+func SupervisorV2ControlPlanePtr(v *SupervisorV2ControlPlaneArgs) SupervisorV2ControlPlanePtrInput {
+	return (*supervisorV2ControlPlanePtrType)(v)
+}
+
+func (*supervisorV2ControlPlanePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlane)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlanePtrType) ToSupervisorV2ControlPlanePtrOutput() SupervisorV2ControlPlanePtrOutput {
+	return i.ToSupervisorV2ControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlanePtrType) ToSupervisorV2ControlPlanePtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlanePtrOutput)
+}
+
+type SupervisorV2ControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlane)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneOutput) ToSupervisorV2ControlPlaneOutput() SupervisorV2ControlPlaneOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneOutput) ToSupervisorV2ControlPlaneOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneOutput) ToSupervisorV2ControlPlanePtrOutput() SupervisorV2ControlPlanePtrOutput {
+	return o.ToSupervisorV2ControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneOutput) ToSupervisorV2ControlPlanePtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlane) *SupervisorV2ControlPlane {
+		return &v
+	}).(SupervisorV2ControlPlanePtrOutput)
+}
+
+// The number of control plane VMs to deploy.
+func (o SupervisorV2ControlPlaneOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlane) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// The network configuration for the control plane VM(s).
+func (o SupervisorV2ControlPlaneOutput) Network() SupervisorV2ControlPlaneNetworkOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlane) SupervisorV2ControlPlaneNetwork { return v.Network }).(SupervisorV2ControlPlaneNetworkOutput)
+}
+
+// The size preset for the control plane VM(s).
+func (o SupervisorV2ControlPlaneOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlane) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// The storage policy for the control plane VM(s).
+func (o SupervisorV2ControlPlaneOutput) StoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlane) *string { return v.StoragePolicy }).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2ControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlane)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlanePtrOutput) ToSupervisorV2ControlPlanePtrOutput() SupervisorV2ControlPlanePtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlanePtrOutput) ToSupervisorV2ControlPlanePtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlanePtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlanePtrOutput) Elem() SupervisorV2ControlPlaneOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlane) SupervisorV2ControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlane
+		return ret
+	}).(SupervisorV2ControlPlaneOutput)
+}
+
+// The number of control plane VMs to deploy.
+func (o SupervisorV2ControlPlanePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlane) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// The network configuration for the control plane VM(s).
+func (o SupervisorV2ControlPlanePtrOutput) Network() SupervisorV2ControlPlaneNetworkPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlane) *SupervisorV2ControlPlaneNetwork {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(SupervisorV2ControlPlaneNetworkPtrOutput)
+}
+
+// The size preset for the control plane VM(s).
+func (o SupervisorV2ControlPlanePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage policy for the control plane VM(s).
+func (o SupervisorV2ControlPlanePtrOutput) StoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetwork struct {
+	// Backing network configuration.
+	Backing SupervisorV2ControlPlaneNetworkBacking `pulumi:"backing"`
+	// Floating IP address.
+	FloatingIp *string `pulumi:"floatingIp"`
+	// IP Management configuration.
+	IpManagement *SupervisorV2ControlPlaneNetworkIpManagement `pulumi:"ipManagement"`
+	// The network identifier for the management network.
+	Network *string `pulumi:"network"`
+	// Proxy server configuration.
+	Proxy *SupervisorV2ControlPlaneNetworkProxy `pulumi:"proxy"`
+	// Network services (e.g DNS, NTP) configuration.
+	Services *SupervisorV2ControlPlaneNetworkServices `pulumi:"services"`
+}
+
+// SupervisorV2ControlPlaneNetworkInput is an input type that accepts SupervisorV2ControlPlaneNetworkArgs and SupervisorV2ControlPlaneNetworkOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkArgs{...}
+type SupervisorV2ControlPlaneNetworkInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkOutput() SupervisorV2ControlPlaneNetworkOutput
+	ToSupervisorV2ControlPlaneNetworkOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkOutput
+}
+
+type SupervisorV2ControlPlaneNetworkArgs struct {
+	// Backing network configuration.
+	Backing SupervisorV2ControlPlaneNetworkBackingInput `pulumi:"backing"`
+	// Floating IP address.
+	FloatingIp pulumi.StringPtrInput `pulumi:"floatingIp"`
+	// IP Management configuration.
+	IpManagement SupervisorV2ControlPlaneNetworkIpManagementPtrInput `pulumi:"ipManagement"`
+	// The network identifier for the management network.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Proxy server configuration.
+	Proxy SupervisorV2ControlPlaneNetworkProxyPtrInput `pulumi:"proxy"`
+	// Network services (e.g DNS, NTP) configuration.
+	Services SupervisorV2ControlPlaneNetworkServicesPtrInput `pulumi:"services"`
+}
+
+func (SupervisorV2ControlPlaneNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetwork)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkArgs) ToSupervisorV2ControlPlaneNetworkOutput() SupervisorV2ControlPlaneNetworkOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkArgs) ToSupervisorV2ControlPlaneNetworkOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkOutput)
+}
+
+func (i SupervisorV2ControlPlaneNetworkArgs) ToSupervisorV2ControlPlaneNetworkPtrOutput() SupervisorV2ControlPlaneNetworkPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkArgs) ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkOutput).ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlaneNetworkPtrInput is an input type that accepts SupervisorV2ControlPlaneNetworkArgs, SupervisorV2ControlPlaneNetworkPtr and SupervisorV2ControlPlaneNetworkPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkPtrInput` via:
+//
+//	        SupervisorV2ControlPlaneNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlaneNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkPtrOutput() SupervisorV2ControlPlaneNetworkPtrOutput
+	ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkPtrOutput
+}
+
+type supervisorV2ControlPlaneNetworkPtrType SupervisorV2ControlPlaneNetworkArgs
+
+func SupervisorV2ControlPlaneNetworkPtr(v *SupervisorV2ControlPlaneNetworkArgs) SupervisorV2ControlPlaneNetworkPtrInput {
+	return (*supervisorV2ControlPlaneNetworkPtrType)(v)
+}
+
+func (*supervisorV2ControlPlaneNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetwork)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlaneNetworkPtrType) ToSupervisorV2ControlPlaneNetworkPtrOutput() SupervisorV2ControlPlaneNetworkPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlaneNetworkPtrType) ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetwork)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkOutput) ToSupervisorV2ControlPlaneNetworkOutput() SupervisorV2ControlPlaneNetworkOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkOutput) ToSupervisorV2ControlPlaneNetworkOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkOutput) ToSupervisorV2ControlPlaneNetworkPtrOutput() SupervisorV2ControlPlaneNetworkPtrOutput {
+	return o.ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneNetworkOutput) ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetwork {
+		return &v
+	}).(SupervisorV2ControlPlaneNetworkPtrOutput)
+}
+
+// Backing network configuration.
+func (o SupervisorV2ControlPlaneNetworkOutput) Backing() SupervisorV2ControlPlaneNetworkBackingOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetwork) SupervisorV2ControlPlaneNetworkBacking { return v.Backing }).(SupervisorV2ControlPlaneNetworkBackingOutput)
+}
+
+// Floating IP address.
+func (o SupervisorV2ControlPlaneNetworkOutput) FloatingIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetwork) *string { return v.FloatingIp }).(pulumi.StringPtrOutput)
+}
+
+// IP Management configuration.
+func (o SupervisorV2ControlPlaneNetworkOutput) IpManagement() SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetworkIpManagement {
+		return v.IpManagement
+	}).(SupervisorV2ControlPlaneNetworkIpManagementPtrOutput)
+}
+
+// The network identifier for the management network.
+func (o SupervisorV2ControlPlaneNetworkOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetwork) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Proxy server configuration.
+func (o SupervisorV2ControlPlaneNetworkOutput) Proxy() SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetworkProxy { return v.Proxy }).(SupervisorV2ControlPlaneNetworkProxyPtrOutput)
+}
+
+// Network services (e.g DNS, NTP) configuration.
+func (o SupervisorV2ControlPlaneNetworkOutput) Services() SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetworkServices { return v.Services }).(SupervisorV2ControlPlaneNetworkServicesPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetwork)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) ToSupervisorV2ControlPlaneNetworkPtrOutput() SupervisorV2ControlPlaneNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) ToSupervisorV2ControlPlaneNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) Elem() SupervisorV2ControlPlaneNetworkOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetwork) SupervisorV2ControlPlaneNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlaneNetwork
+		return ret
+	}).(SupervisorV2ControlPlaneNetworkOutput)
+}
+
+// Backing network configuration.
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) Backing() SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetworkBacking {
+		if v == nil {
+			return nil
+		}
+		return &v.Backing
+	}).(SupervisorV2ControlPlaneNetworkBackingPtrOutput)
+}
+
+// Floating IP address.
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) FloatingIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FloatingIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP Management configuration.
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) IpManagement() SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetworkIpManagement {
+		if v == nil {
+			return nil
+		}
+		return v.IpManagement
+	}).(SupervisorV2ControlPlaneNetworkIpManagementPtrOutput)
+}
+
+// The network identifier for the management network.
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Proxy server configuration.
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) Proxy() SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetworkProxy {
+		if v == nil {
+			return nil
+		}
+		return v.Proxy
+	}).(SupervisorV2ControlPlaneNetworkProxyPtrOutput)
+}
+
+// Network services (e.g DNS, NTP) configuration.
+func (o SupervisorV2ControlPlaneNetworkPtrOutput) Services() SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetwork) *SupervisorV2ControlPlaneNetworkServices {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(SupervisorV2ControlPlaneNetworkServicesPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkBacking struct {
+	// The Managed Object ID of the Network object.
+	Network *string `pulumi:"network"`
+	// The backing network segment.
+	Segments []string `pulumi:"segments"`
+}
+
+// SupervisorV2ControlPlaneNetworkBackingInput is an input type that accepts SupervisorV2ControlPlaneNetworkBackingArgs and SupervisorV2ControlPlaneNetworkBackingOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkBackingInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkBackingArgs{...}
+type SupervisorV2ControlPlaneNetworkBackingInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkBackingOutput() SupervisorV2ControlPlaneNetworkBackingOutput
+	ToSupervisorV2ControlPlaneNetworkBackingOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkBackingOutput
+}
+
+type SupervisorV2ControlPlaneNetworkBackingArgs struct {
+	// The Managed Object ID of the Network object.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The backing network segment.
+	Segments pulumi.StringArrayInput `pulumi:"segments"`
+}
+
+func (SupervisorV2ControlPlaneNetworkBackingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkBacking)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkBackingArgs) ToSupervisorV2ControlPlaneNetworkBackingOutput() SupervisorV2ControlPlaneNetworkBackingOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkBackingOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkBackingArgs) ToSupervisorV2ControlPlaneNetworkBackingOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkBackingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkBackingOutput)
+}
+
+func (i SupervisorV2ControlPlaneNetworkBackingArgs) ToSupervisorV2ControlPlaneNetworkBackingPtrOutput() SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkBackingArgs) ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkBackingOutput).ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlaneNetworkBackingPtrInput is an input type that accepts SupervisorV2ControlPlaneNetworkBackingArgs, SupervisorV2ControlPlaneNetworkBackingPtr and SupervisorV2ControlPlaneNetworkBackingPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkBackingPtrInput` via:
+//
+//	        SupervisorV2ControlPlaneNetworkBackingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlaneNetworkBackingPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkBackingPtrOutput() SupervisorV2ControlPlaneNetworkBackingPtrOutput
+	ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkBackingPtrOutput
+}
+
+type supervisorV2ControlPlaneNetworkBackingPtrType SupervisorV2ControlPlaneNetworkBackingArgs
+
+func SupervisorV2ControlPlaneNetworkBackingPtr(v *SupervisorV2ControlPlaneNetworkBackingArgs) SupervisorV2ControlPlaneNetworkBackingPtrInput {
+	return (*supervisorV2ControlPlaneNetworkBackingPtrType)(v)
+}
+
+func (*supervisorV2ControlPlaneNetworkBackingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkBacking)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlaneNetworkBackingPtrType) ToSupervisorV2ControlPlaneNetworkBackingPtrOutput() SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlaneNetworkBackingPtrType) ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkBackingPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkBackingOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkBackingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkBacking)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkBackingOutput) ToSupervisorV2ControlPlaneNetworkBackingOutput() SupervisorV2ControlPlaneNetworkBackingOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkBackingOutput) ToSupervisorV2ControlPlaneNetworkBackingOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkBackingOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkBackingOutput) ToSupervisorV2ControlPlaneNetworkBackingPtrOutput() SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return o.ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneNetworkBackingOutput) ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlaneNetworkBacking) *SupervisorV2ControlPlaneNetworkBacking {
+		return &v
+	}).(SupervisorV2ControlPlaneNetworkBackingPtrOutput)
+}
+
+// The Managed Object ID of the Network object.
+func (o SupervisorV2ControlPlaneNetworkBackingOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkBacking) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The backing network segment.
+func (o SupervisorV2ControlPlaneNetworkBackingOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkBacking) []string { return v.Segments }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkBackingPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkBackingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkBacking)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkBackingPtrOutput) ToSupervisorV2ControlPlaneNetworkBackingPtrOutput() SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkBackingPtrOutput) ToSupervisorV2ControlPlaneNetworkBackingPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkBackingPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkBackingPtrOutput) Elem() SupervisorV2ControlPlaneNetworkBackingOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkBacking) SupervisorV2ControlPlaneNetworkBacking {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlaneNetworkBacking
+		return ret
+	}).(SupervisorV2ControlPlaneNetworkBackingOutput)
+}
+
+// The Managed Object ID of the Network object.
+func (o SupervisorV2ControlPlaneNetworkBackingPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkBacking) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The backing network segment.
+func (o SupervisorV2ControlPlaneNetworkBackingPtrOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkBacking) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Segments
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagement struct {
+	// Whether to use DHCP or not.
+	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
+	// The IP address of the network gateway.
+	GatewayAddress *string `pulumi:"gatewayAddress"`
+	// IP assignment configuration.
+	IpAssignments []SupervisorV2ControlPlaneNetworkIpManagementIpAssignment `pulumi:"ipAssignments"`
+}
+
+// SupervisorV2ControlPlaneNetworkIpManagementInput is an input type that accepts SupervisorV2ControlPlaneNetworkIpManagementArgs and SupervisorV2ControlPlaneNetworkIpManagementOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkIpManagementInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkIpManagementArgs{...}
+type SupervisorV2ControlPlaneNetworkIpManagementInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkIpManagementOutput() SupervisorV2ControlPlaneNetworkIpManagementOutput
+	ToSupervisorV2ControlPlaneNetworkIpManagementOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkIpManagementOutput
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementArgs struct {
+	// Whether to use DHCP or not.
+	DhcpEnabled pulumi.BoolPtrInput `pulumi:"dhcpEnabled"`
+	// The IP address of the network gateway.
+	GatewayAddress pulumi.StringPtrInput `pulumi:"gatewayAddress"`
+	// IP assignment configuration.
+	IpAssignments SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayInput `pulumi:"ipAssignments"`
+}
+
+func (SupervisorV2ControlPlaneNetworkIpManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagement)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementArgs) ToSupervisorV2ControlPlaneNetworkIpManagementOutput() SupervisorV2ControlPlaneNetworkIpManagementOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkIpManagementOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementArgs) ToSupervisorV2ControlPlaneNetworkIpManagementOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkIpManagementOutput)
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementArgs) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutput() SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementArgs) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkIpManagementOutput).ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlaneNetworkIpManagementPtrInput is an input type that accepts SupervisorV2ControlPlaneNetworkIpManagementArgs, SupervisorV2ControlPlaneNetworkIpManagementPtr and SupervisorV2ControlPlaneNetworkIpManagementPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkIpManagementPtrInput` via:
+//
+//	        SupervisorV2ControlPlaneNetworkIpManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlaneNetworkIpManagementPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutput() SupervisorV2ControlPlaneNetworkIpManagementPtrOutput
+	ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkIpManagementPtrOutput
+}
+
+type supervisorV2ControlPlaneNetworkIpManagementPtrType SupervisorV2ControlPlaneNetworkIpManagementArgs
+
+func SupervisorV2ControlPlaneNetworkIpManagementPtr(v *SupervisorV2ControlPlaneNetworkIpManagementArgs) SupervisorV2ControlPlaneNetworkIpManagementPtrInput {
+	return (*supervisorV2ControlPlaneNetworkIpManagementPtrType)(v)
+}
+
+func (*supervisorV2ControlPlaneNetworkIpManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkIpManagement)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlaneNetworkIpManagementPtrType) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutput() SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlaneNetworkIpManagementPtrType) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkIpManagementPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkIpManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagement)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementOutput) ToSupervisorV2ControlPlaneNetworkIpManagementOutput() SupervisorV2ControlPlaneNetworkIpManagementOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementOutput) ToSupervisorV2ControlPlaneNetworkIpManagementOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementOutput) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutput() SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return o.ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementOutput) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlaneNetworkIpManagement) *SupervisorV2ControlPlaneNetworkIpManagement {
+		return &v
+	}).(SupervisorV2ControlPlaneNetworkIpManagementPtrOutput)
+}
+
+// Whether to use DHCP or not.
+func (o SupervisorV2ControlPlaneNetworkIpManagementOutput) DhcpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkIpManagement) *bool { return v.DhcpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The IP address of the network gateway.
+func (o SupervisorV2ControlPlaneNetworkIpManagementOutput) GatewayAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkIpManagement) *string { return v.GatewayAddress }).(pulumi.StringPtrOutput)
+}
+
+// IP assignment configuration.
+func (o SupervisorV2ControlPlaneNetworkIpManagementOutput) IpAssignments() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkIpManagement) []SupervisorV2ControlPlaneNetworkIpManagementIpAssignment {
+		return v.IpAssignments
+	}).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkIpManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkIpManagement)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementPtrOutput) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutput() SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementPtrOutput) ToSupervisorV2ControlPlaneNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementPtrOutput) Elem() SupervisorV2ControlPlaneNetworkIpManagementOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkIpManagement) SupervisorV2ControlPlaneNetworkIpManagement {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlaneNetworkIpManagement
+		return ret
+	}).(SupervisorV2ControlPlaneNetworkIpManagementOutput)
+}
+
+// Whether to use DHCP or not.
+func (o SupervisorV2ControlPlaneNetworkIpManagementPtrOutput) DhcpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkIpManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The IP address of the network gateway.
+func (o SupervisorV2ControlPlaneNetworkIpManagementPtrOutput) GatewayAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkIpManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP assignment configuration.
+func (o SupervisorV2ControlPlaneNetworkIpManagementPtrOutput) IpAssignments() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkIpManagement) []SupervisorV2ControlPlaneNetworkIpManagementIpAssignment {
+		if v == nil {
+			return nil
+		}
+		return v.IpAssignments
+	}).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignment struct {
+	// The type of the assignee.
+	Assignee *string `pulumi:"assignee"`
+	// The available IP addresses that can be consumed by Supervisor to run the cluster.
+	Ranges []SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange `pulumi:"ranges"`
+}
+
+// SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentInput is an input type that accepts SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs and SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs{...}
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs struct {
+	// The type of the assignee.
+	Assignee pulumi.StringPtrInput `pulumi:"assignee"`
+	// The available IP addresses that can be consumed by Supervisor to run the cluster.
+	Ranges SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayInput `pulumi:"ranges"`
+}
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput)
+}
+
+// SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayInput is an input type that accepts SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArray and SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArray{ SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs{...} }
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArray []SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentInput
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2ControlPlaneNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArray) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArray) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput {
+	return o
+}
+
+// The type of the assignee.
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput) Assignee() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkIpManagementIpAssignment) *string { return v.Assignee }).(pulumi.StringPtrOutput)
+}
+
+// The available IP addresses that can be consumed by Supervisor to run the cluster.
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput) Ranges() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkIpManagementIpAssignment) []SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange {
+		return v.Ranges
+	}).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2ControlPlaneNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput) Index(i pulumi.IntInput) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2ControlPlaneNetworkIpManagementIpAssignment {
+		return vs[0].([]SupervisorV2ControlPlaneNetworkIpManagementIpAssignment)[vs[1].(int)]
+	}).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange struct {
+	// The starting IP address of the range.
+	Address string `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count int `pulumi:"count"`
+}
+
+// SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeInput is an input type that accepts SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs and SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs{...}
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs struct {
+	// The starting IP address of the range.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput)
+}
+
+// SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayInput is an input type that accepts SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArray and SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArray{ SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs{...} }
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput
+	ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArray []SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeInput
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArray) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArray) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput {
+	return o
+}
+
+// The starting IP address of the range.
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The number of IP addresses in the range.
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput() SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput) ToSupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput) Index(i pulumi.IntInput) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange {
+		return vs[0].([]SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange)[vs[1].(int)]
+	}).(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkProxy struct {
+	// HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`.
+	HttpConfig *string `pulumi:"httpConfig"`
+	// HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+	HttpsConfig *string `pulumi:"httpsConfig"`
+	// List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+	NoProxyConfigs []string `pulumi:"noProxyConfigs"`
+	// The source of the proxy settings.
+	SettingsSource string `pulumi:"settingsSource"`
+	// Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+	TlsRootCaBundle *string `pulumi:"tlsRootCaBundle"`
+}
+
+// SupervisorV2ControlPlaneNetworkProxyInput is an input type that accepts SupervisorV2ControlPlaneNetworkProxyArgs and SupervisorV2ControlPlaneNetworkProxyOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkProxyInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkProxyArgs{...}
+type SupervisorV2ControlPlaneNetworkProxyInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkProxyOutput() SupervisorV2ControlPlaneNetworkProxyOutput
+	ToSupervisorV2ControlPlaneNetworkProxyOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkProxyOutput
+}
+
+type SupervisorV2ControlPlaneNetworkProxyArgs struct {
+	// HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`.
+	HttpConfig pulumi.StringPtrInput `pulumi:"httpConfig"`
+	// HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+	HttpsConfig pulumi.StringPtrInput `pulumi:"httpsConfig"`
+	// List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+	NoProxyConfigs pulumi.StringArrayInput `pulumi:"noProxyConfigs"`
+	// The source of the proxy settings.
+	SettingsSource pulumi.StringInput `pulumi:"settingsSource"`
+	// Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+	TlsRootCaBundle pulumi.StringPtrInput `pulumi:"tlsRootCaBundle"`
+}
+
+func (SupervisorV2ControlPlaneNetworkProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkProxy)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkProxyArgs) ToSupervisorV2ControlPlaneNetworkProxyOutput() SupervisorV2ControlPlaneNetworkProxyOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkProxyOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkProxyArgs) ToSupervisorV2ControlPlaneNetworkProxyOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkProxyOutput)
+}
+
+func (i SupervisorV2ControlPlaneNetworkProxyArgs) ToSupervisorV2ControlPlaneNetworkProxyPtrOutput() SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkProxyArgs) ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkProxyOutput).ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlaneNetworkProxyPtrInput is an input type that accepts SupervisorV2ControlPlaneNetworkProxyArgs, SupervisorV2ControlPlaneNetworkProxyPtr and SupervisorV2ControlPlaneNetworkProxyPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkProxyPtrInput` via:
+//
+//	        SupervisorV2ControlPlaneNetworkProxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlaneNetworkProxyPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkProxyPtrOutput() SupervisorV2ControlPlaneNetworkProxyPtrOutput
+	ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkProxyPtrOutput
+}
+
+type supervisorV2ControlPlaneNetworkProxyPtrType SupervisorV2ControlPlaneNetworkProxyArgs
+
+func SupervisorV2ControlPlaneNetworkProxyPtr(v *SupervisorV2ControlPlaneNetworkProxyArgs) SupervisorV2ControlPlaneNetworkProxyPtrInput {
+	return (*supervisorV2ControlPlaneNetworkProxyPtrType)(v)
+}
+
+func (*supervisorV2ControlPlaneNetworkProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkProxy)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlaneNetworkProxyPtrType) ToSupervisorV2ControlPlaneNetworkProxyPtrOutput() SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlaneNetworkProxyPtrType) ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkProxyPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkProxyOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkProxy)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) ToSupervisorV2ControlPlaneNetworkProxyOutput() SupervisorV2ControlPlaneNetworkProxyOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) ToSupervisorV2ControlPlaneNetworkProxyOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkProxyOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) ToSupervisorV2ControlPlaneNetworkProxyPtrOutput() SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return o.ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlaneNetworkProxy) *SupervisorV2ControlPlaneNetworkProxy {
+		return &v
+	}).(SupervisorV2ControlPlaneNetworkProxyPtrOutput)
+}
+
+// HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`.
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) HttpConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkProxy) *string { return v.HttpConfig }).(pulumi.StringPtrOutput)
+}
+
+// HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) HttpsConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkProxy) *string { return v.HttpsConfig }).(pulumi.StringPtrOutput)
+}
+
+// List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) NoProxyConfigs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkProxy) []string { return v.NoProxyConfigs }).(pulumi.StringArrayOutput)
+}
+
+// The source of the proxy settings.
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) SettingsSource() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkProxy) string { return v.SettingsSource }).(pulumi.StringOutput)
+}
+
+// Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+func (o SupervisorV2ControlPlaneNetworkProxyOutput) TlsRootCaBundle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkProxy) *string { return v.TlsRootCaBundle }).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkProxyPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkProxy)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) ToSupervisorV2ControlPlaneNetworkProxyPtrOutput() SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) ToSupervisorV2ControlPlaneNetworkProxyPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkProxyPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) Elem() SupervisorV2ControlPlaneNetworkProxyOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkProxy) SupervisorV2ControlPlaneNetworkProxy {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlaneNetworkProxy
+		return ret
+	}).(SupervisorV2ControlPlaneNetworkProxyOutput)
+}
+
+// HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`.
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) HttpConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) HttpsConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) NoProxyConfigs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkProxy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NoProxyConfigs
+	}).(pulumi.StringArrayOutput)
+}
+
+// The source of the proxy settings.
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) SettingsSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SettingsSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+func (o SupervisorV2ControlPlaneNetworkProxyPtrOutput) TlsRootCaBundle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRootCaBundle
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServices struct {
+	// The DNS configuration.
+	Dns *SupervisorV2ControlPlaneNetworkServicesDns `pulumi:"dns"`
+	// The NTP configuration.
+	Ntp *SupervisorV2ControlPlaneNetworkServicesNtp `pulumi:"ntp"`
+}
+
+// SupervisorV2ControlPlaneNetworkServicesInput is an input type that accepts SupervisorV2ControlPlaneNetworkServicesArgs and SupervisorV2ControlPlaneNetworkServicesOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkServicesInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkServicesArgs{...}
+type SupervisorV2ControlPlaneNetworkServicesInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkServicesOutput() SupervisorV2ControlPlaneNetworkServicesOutput
+	ToSupervisorV2ControlPlaneNetworkServicesOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkServicesOutput
+}
+
+type SupervisorV2ControlPlaneNetworkServicesArgs struct {
+	// The DNS configuration.
+	Dns SupervisorV2ControlPlaneNetworkServicesDnsPtrInput `pulumi:"dns"`
+	// The NTP configuration.
+	Ntp SupervisorV2ControlPlaneNetworkServicesNtpPtrInput `pulumi:"ntp"`
+}
+
+func (SupervisorV2ControlPlaneNetworkServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServices)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesArgs) ToSupervisorV2ControlPlaneNetworkServicesOutput() SupervisorV2ControlPlaneNetworkServicesOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesArgs) ToSupervisorV2ControlPlaneNetworkServicesOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesOutput)
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesArgs) ToSupervisorV2ControlPlaneNetworkServicesPtrOutput() SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesArgs) ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesOutput).ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlaneNetworkServicesPtrInput is an input type that accepts SupervisorV2ControlPlaneNetworkServicesArgs, SupervisorV2ControlPlaneNetworkServicesPtr and SupervisorV2ControlPlaneNetworkServicesPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkServicesPtrInput` via:
+//
+//	        SupervisorV2ControlPlaneNetworkServicesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlaneNetworkServicesPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkServicesPtrOutput() SupervisorV2ControlPlaneNetworkServicesPtrOutput
+	ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkServicesPtrOutput
+}
+
+type supervisorV2ControlPlaneNetworkServicesPtrType SupervisorV2ControlPlaneNetworkServicesArgs
+
+func SupervisorV2ControlPlaneNetworkServicesPtr(v *SupervisorV2ControlPlaneNetworkServicesArgs) SupervisorV2ControlPlaneNetworkServicesPtrInput {
+	return (*supervisorV2ControlPlaneNetworkServicesPtrType)(v)
+}
+
+func (*supervisorV2ControlPlaneNetworkServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkServices)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlaneNetworkServicesPtrType) ToSupervisorV2ControlPlaneNetworkServicesPtrOutput() SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlaneNetworkServicesPtrType) ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServices)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesOutput) ToSupervisorV2ControlPlaneNetworkServicesOutput() SupervisorV2ControlPlaneNetworkServicesOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesOutput) ToSupervisorV2ControlPlaneNetworkServicesOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesOutput) ToSupervisorV2ControlPlaneNetworkServicesPtrOutput() SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return o.ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesOutput) ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlaneNetworkServices) *SupervisorV2ControlPlaneNetworkServices {
+		return &v
+	}).(SupervisorV2ControlPlaneNetworkServicesPtrOutput)
+}
+
+// The DNS configuration.
+func (o SupervisorV2ControlPlaneNetworkServicesOutput) Dns() SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkServices) *SupervisorV2ControlPlaneNetworkServicesDns {
+		return v.Dns
+	}).(SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput)
+}
+
+// The NTP configuration.
+func (o SupervisorV2ControlPlaneNetworkServicesOutput) Ntp() SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkServices) *SupervisorV2ControlPlaneNetworkServicesNtp {
+		return v.Ntp
+	}).(SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkServices)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesPtrOutput) ToSupervisorV2ControlPlaneNetworkServicesPtrOutput() SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesPtrOutput) ToSupervisorV2ControlPlaneNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesPtrOutput) Elem() SupervisorV2ControlPlaneNetworkServicesOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServices) SupervisorV2ControlPlaneNetworkServices {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlaneNetworkServices
+		return ret
+	}).(SupervisorV2ControlPlaneNetworkServicesOutput)
+}
+
+// The DNS configuration.
+func (o SupervisorV2ControlPlaneNetworkServicesPtrOutput) Dns() SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServices) *SupervisorV2ControlPlaneNetworkServicesDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput)
+}
+
+// The NTP configuration.
+func (o SupervisorV2ControlPlaneNetworkServicesPtrOutput) Ntp() SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServices) *SupervisorV2ControlPlaneNetworkServicesNtp {
+		if v == nil {
+			return nil
+		}
+		return v.Ntp
+	}).(SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesDns struct {
+	// The list of search domains.
+	SearchDomains []string `pulumi:"searchDomains"`
+	// The list of DNS servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// SupervisorV2ControlPlaneNetworkServicesDnsInput is an input type that accepts SupervisorV2ControlPlaneNetworkServicesDnsArgs and SupervisorV2ControlPlaneNetworkServicesDnsOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkServicesDnsInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkServicesDnsArgs{...}
+type SupervisorV2ControlPlaneNetworkServicesDnsInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkServicesDnsOutput() SupervisorV2ControlPlaneNetworkServicesDnsOutput
+	ToSupervisorV2ControlPlaneNetworkServicesDnsOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkServicesDnsOutput
+}
+
+type SupervisorV2ControlPlaneNetworkServicesDnsArgs struct {
+	// The list of search domains.
+	SearchDomains pulumi.StringArrayInput `pulumi:"searchDomains"`
+	// The list of DNS servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (SupervisorV2ControlPlaneNetworkServicesDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesDns)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesDnsArgs) ToSupervisorV2ControlPlaneNetworkServicesDnsOutput() SupervisorV2ControlPlaneNetworkServicesDnsOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesDnsOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesDnsArgs) ToSupervisorV2ControlPlaneNetworkServicesDnsOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesDnsOutput)
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesDnsArgs) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutput() SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesDnsArgs) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesDnsOutput).ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlaneNetworkServicesDnsPtrInput is an input type that accepts SupervisorV2ControlPlaneNetworkServicesDnsArgs, SupervisorV2ControlPlaneNetworkServicesDnsPtr and SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkServicesDnsPtrInput` via:
+//
+//	        SupervisorV2ControlPlaneNetworkServicesDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlaneNetworkServicesDnsPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutput() SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput
+	ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput
+}
+
+type supervisorV2ControlPlaneNetworkServicesDnsPtrType SupervisorV2ControlPlaneNetworkServicesDnsArgs
+
+func SupervisorV2ControlPlaneNetworkServicesDnsPtr(v *SupervisorV2ControlPlaneNetworkServicesDnsArgs) SupervisorV2ControlPlaneNetworkServicesDnsPtrInput {
+	return (*supervisorV2ControlPlaneNetworkServicesDnsPtrType)(v)
+}
+
+func (*supervisorV2ControlPlaneNetworkServicesDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkServicesDns)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlaneNetworkServicesDnsPtrType) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutput() SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlaneNetworkServicesDnsPtrType) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesDnsOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkServicesDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesDns)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesDnsOutput) ToSupervisorV2ControlPlaneNetworkServicesDnsOutput() SupervisorV2ControlPlaneNetworkServicesDnsOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesDnsOutput) ToSupervisorV2ControlPlaneNetworkServicesDnsOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesDnsOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesDnsOutput) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutput() SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return o.ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesDnsOutput) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlaneNetworkServicesDns) *SupervisorV2ControlPlaneNetworkServicesDns {
+		return &v
+	}).(SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput)
+}
+
+// The list of search domains.
+func (o SupervisorV2ControlPlaneNetworkServicesDnsOutput) SearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkServicesDns) []string { return v.SearchDomains }).(pulumi.StringArrayOutput)
+}
+
+// The list of DNS servers.
+func (o SupervisorV2ControlPlaneNetworkServicesDnsOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkServicesDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkServicesDns)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutput() SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput) ToSupervisorV2ControlPlaneNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput) Elem() SupervisorV2ControlPlaneNetworkServicesDnsOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServicesDns) SupervisorV2ControlPlaneNetworkServicesDns {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlaneNetworkServicesDns
+		return ret
+	}).(SupervisorV2ControlPlaneNetworkServicesDnsOutput)
+}
+
+// The list of search domains.
+func (o SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput) SearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServicesDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SearchDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of DNS servers.
+func (o SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServicesDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesNtp struct {
+	// The list of NTP servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// SupervisorV2ControlPlaneNetworkServicesNtpInput is an input type that accepts SupervisorV2ControlPlaneNetworkServicesNtpArgs and SupervisorV2ControlPlaneNetworkServicesNtpOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkServicesNtpInput` via:
+//
+//	SupervisorV2ControlPlaneNetworkServicesNtpArgs{...}
+type SupervisorV2ControlPlaneNetworkServicesNtpInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkServicesNtpOutput() SupervisorV2ControlPlaneNetworkServicesNtpOutput
+	ToSupervisorV2ControlPlaneNetworkServicesNtpOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkServicesNtpOutput
+}
+
+type SupervisorV2ControlPlaneNetworkServicesNtpArgs struct {
+	// The list of NTP servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (SupervisorV2ControlPlaneNetworkServicesNtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesNtp)(nil)).Elem()
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesNtpArgs) ToSupervisorV2ControlPlaneNetworkServicesNtpOutput() SupervisorV2ControlPlaneNetworkServicesNtpOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesNtpOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesNtpArgs) ToSupervisorV2ControlPlaneNetworkServicesNtpOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesNtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesNtpOutput)
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesNtpArgs) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutput() SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2ControlPlaneNetworkServicesNtpArgs) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesNtpOutput).ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2ControlPlaneNetworkServicesNtpPtrInput is an input type that accepts SupervisorV2ControlPlaneNetworkServicesNtpArgs, SupervisorV2ControlPlaneNetworkServicesNtpPtr and SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2ControlPlaneNetworkServicesNtpPtrInput` via:
+//
+//	        SupervisorV2ControlPlaneNetworkServicesNtpArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2ControlPlaneNetworkServicesNtpPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutput() SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput
+	ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(context.Context) SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput
+}
+
+type supervisorV2ControlPlaneNetworkServicesNtpPtrType SupervisorV2ControlPlaneNetworkServicesNtpArgs
+
+func SupervisorV2ControlPlaneNetworkServicesNtpPtr(v *SupervisorV2ControlPlaneNetworkServicesNtpArgs) SupervisorV2ControlPlaneNetworkServicesNtpPtrInput {
+	return (*supervisorV2ControlPlaneNetworkServicesNtpPtrType)(v)
+}
+
+func (*supervisorV2ControlPlaneNetworkServicesNtpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkServicesNtp)(nil)).Elem()
+}
+
+func (i *supervisorV2ControlPlaneNetworkServicesNtpPtrType) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutput() SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return i.ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2ControlPlaneNetworkServicesNtpPtrType) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesNtpOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkServicesNtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesNtp)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesNtpOutput) ToSupervisorV2ControlPlaneNetworkServicesNtpOutput() SupervisorV2ControlPlaneNetworkServicesNtpOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesNtpOutput) ToSupervisorV2ControlPlaneNetworkServicesNtpOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesNtpOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesNtpOutput) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutput() SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return o.ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesNtpOutput) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2ControlPlaneNetworkServicesNtp) *SupervisorV2ControlPlaneNetworkServicesNtp {
+		return &v
+	}).(SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput)
+}
+
+// The list of NTP servers.
+func (o SupervisorV2ControlPlaneNetworkServicesNtpOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2ControlPlaneNetworkServicesNtp) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2ControlPlaneNetworkServicesNtp)(nil)).Elem()
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutput() SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput) ToSupervisorV2ControlPlaneNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput {
+	return o
+}
+
+func (o SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput) Elem() SupervisorV2ControlPlaneNetworkServicesNtpOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServicesNtp) SupervisorV2ControlPlaneNetworkServicesNtp {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2ControlPlaneNetworkServicesNtp
+		return ret
+	}).(SupervisorV2ControlPlaneNetworkServicesNtpOutput)
+}
+
+// The list of NTP servers.
+func (o SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2ControlPlaneNetworkServicesNtp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2Workloads struct {
+	// Edge configuration
+	Edge SupervisorV2WorkloadsEdge `pulumi:"edge"`
+	// Configuration for storing and pulling images into the cluster.
+	Images *SupervisorV2WorkloadsImages `pulumi:"images"`
+	// Kubernetes API Server options
+	KubeApiServerOptions SupervisorV2WorkloadsKubeApiServerOptions `pulumi:"kubeApiServerOptions"`
+	// The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+	Network SupervisorV2WorkloadsNetwork `pulumi:"network"`
+	// Persistent storage configuration.
+	Storage *SupervisorV2WorkloadsStorage `pulumi:"storage"`
+}
+
+// SupervisorV2WorkloadsInput is an input type that accepts SupervisorV2WorkloadsArgs and SupervisorV2WorkloadsOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsInput` via:
+//
+//	SupervisorV2WorkloadsArgs{...}
+type SupervisorV2WorkloadsInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsOutput() SupervisorV2WorkloadsOutput
+	ToSupervisorV2WorkloadsOutputWithContext(context.Context) SupervisorV2WorkloadsOutput
+}
+
+type SupervisorV2WorkloadsArgs struct {
+	// Edge configuration
+	Edge SupervisorV2WorkloadsEdgeInput `pulumi:"edge"`
+	// Configuration for storing and pulling images into the cluster.
+	Images SupervisorV2WorkloadsImagesPtrInput `pulumi:"images"`
+	// Kubernetes API Server options
+	KubeApiServerOptions SupervisorV2WorkloadsKubeApiServerOptionsInput `pulumi:"kubeApiServerOptions"`
+	// The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+	Network SupervisorV2WorkloadsNetworkInput `pulumi:"network"`
+	// Persistent storage configuration.
+	Storage SupervisorV2WorkloadsStoragePtrInput `pulumi:"storage"`
+}
+
+func (SupervisorV2WorkloadsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2Workloads)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsArgs) ToSupervisorV2WorkloadsOutput() SupervisorV2WorkloadsOutput {
+	return i.ToSupervisorV2WorkloadsOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsArgs) ToSupervisorV2WorkloadsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsOutput)
+}
+
+func (i SupervisorV2WorkloadsArgs) ToSupervisorV2WorkloadsPtrOutput() SupervisorV2WorkloadsPtrOutput {
+	return i.ToSupervisorV2WorkloadsPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsArgs) ToSupervisorV2WorkloadsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsOutput).ToSupervisorV2WorkloadsPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsPtrInput is an input type that accepts SupervisorV2WorkloadsArgs, SupervisorV2WorkloadsPtr and SupervisorV2WorkloadsPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsPtrInput` via:
+//
+//	        SupervisorV2WorkloadsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsPtrOutput() SupervisorV2WorkloadsPtrOutput
+	ToSupervisorV2WorkloadsPtrOutputWithContext(context.Context) SupervisorV2WorkloadsPtrOutput
+}
+
+type supervisorV2WorkloadsPtrType SupervisorV2WorkloadsArgs
+
+func SupervisorV2WorkloadsPtr(v *SupervisorV2WorkloadsArgs) SupervisorV2WorkloadsPtrInput {
+	return (*supervisorV2WorkloadsPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2Workloads)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsPtrType) ToSupervisorV2WorkloadsPtrOutput() SupervisorV2WorkloadsPtrOutput {
+	return i.ToSupervisorV2WorkloadsPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsPtrType) ToSupervisorV2WorkloadsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsPtrOutput)
+}
+
+type SupervisorV2WorkloadsOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2Workloads)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsOutput) ToSupervisorV2WorkloadsOutput() SupervisorV2WorkloadsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsOutput) ToSupervisorV2WorkloadsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsOutput) ToSupervisorV2WorkloadsPtrOutput() SupervisorV2WorkloadsPtrOutput {
+	return o.ToSupervisorV2WorkloadsPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsOutput) ToSupervisorV2WorkloadsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2Workloads) *SupervisorV2Workloads {
+		return &v
+	}).(SupervisorV2WorkloadsPtrOutput)
+}
+
+// Edge configuration
+func (o SupervisorV2WorkloadsOutput) Edge() SupervisorV2WorkloadsEdgeOutput {
+	return o.ApplyT(func(v SupervisorV2Workloads) SupervisorV2WorkloadsEdge { return v.Edge }).(SupervisorV2WorkloadsEdgeOutput)
+}
+
+// Configuration for storing and pulling images into the cluster.
+func (o SupervisorV2WorkloadsOutput) Images() SupervisorV2WorkloadsImagesPtrOutput {
+	return o.ApplyT(func(v SupervisorV2Workloads) *SupervisorV2WorkloadsImages { return v.Images }).(SupervisorV2WorkloadsImagesPtrOutput)
+}
+
+// Kubernetes API Server options
+func (o SupervisorV2WorkloadsOutput) KubeApiServerOptions() SupervisorV2WorkloadsKubeApiServerOptionsOutput {
+	return o.ApplyT(func(v SupervisorV2Workloads) SupervisorV2WorkloadsKubeApiServerOptions { return v.KubeApiServerOptions }).(SupervisorV2WorkloadsKubeApiServerOptionsOutput)
+}
+
+// The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+func (o SupervisorV2WorkloadsOutput) Network() SupervisorV2WorkloadsNetworkOutput {
+	return o.ApplyT(func(v SupervisorV2Workloads) SupervisorV2WorkloadsNetwork { return v.Network }).(SupervisorV2WorkloadsNetworkOutput)
+}
+
+// Persistent storage configuration.
+func (o SupervisorV2WorkloadsOutput) Storage() SupervisorV2WorkloadsStoragePtrOutput {
+	return o.ApplyT(func(v SupervisorV2Workloads) *SupervisorV2WorkloadsStorage { return v.Storage }).(SupervisorV2WorkloadsStoragePtrOutput)
+}
+
+type SupervisorV2WorkloadsPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2Workloads)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsPtrOutput) ToSupervisorV2WorkloadsPtrOutput() SupervisorV2WorkloadsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsPtrOutput) ToSupervisorV2WorkloadsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsPtrOutput) Elem() SupervisorV2WorkloadsOutput {
+	return o.ApplyT(func(v *SupervisorV2Workloads) SupervisorV2Workloads {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2Workloads
+		return ret
+	}).(SupervisorV2WorkloadsOutput)
+}
+
+// Edge configuration
+func (o SupervisorV2WorkloadsPtrOutput) Edge() SupervisorV2WorkloadsEdgePtrOutput {
+	return o.ApplyT(func(v *SupervisorV2Workloads) *SupervisorV2WorkloadsEdge {
+		if v == nil {
+			return nil
+		}
+		return &v.Edge
+	}).(SupervisorV2WorkloadsEdgePtrOutput)
+}
+
+// Configuration for storing and pulling images into the cluster.
+func (o SupervisorV2WorkloadsPtrOutput) Images() SupervisorV2WorkloadsImagesPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2Workloads) *SupervisorV2WorkloadsImages {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(SupervisorV2WorkloadsImagesPtrOutput)
+}
+
+// Kubernetes API Server options
+func (o SupervisorV2WorkloadsPtrOutput) KubeApiServerOptions() SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2Workloads) *SupervisorV2WorkloadsKubeApiServerOptions {
+		if v == nil {
+			return nil
+		}
+		return &v.KubeApiServerOptions
+	}).(SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput)
+}
+
+// The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+func (o SupervisorV2WorkloadsPtrOutput) Network() SupervisorV2WorkloadsNetworkPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2Workloads) *SupervisorV2WorkloadsNetwork {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(SupervisorV2WorkloadsNetworkPtrOutput)
+}
+
+// Persistent storage configuration.
+func (o SupervisorV2WorkloadsPtrOutput) Storage() SupervisorV2WorkloadsStoragePtrOutput {
+	return o.ApplyT(func(v *SupervisorV2Workloads) *SupervisorV2WorkloadsStorage {
+		if v == nil {
+			return nil
+		}
+		return v.Storage
+	}).(SupervisorV2WorkloadsStoragePtrOutput)
+}
+
+type SupervisorV2WorkloadsEdge struct {
+	// Configuration for the vSphere Foundation Load Balancer.
+	Foundation *SupervisorV2WorkloadsEdgeFoundation `pulumi:"foundation"`
+	// Configuration for the HAProxy Load Balancer.
+	Haproxy *SupervisorV2WorkloadsEdgeHaproxy `pulumi:"haproxy"`
+	// The unique identifier of this edge.
+	Id *string `pulumi:"id"`
+	// The list of addresses that a load balancer can consume to publish Kubernetes services.
+	LbAddressRanges []SupervisorV2WorkloadsEdgeLbAddressRange `pulumi:"lbAddressRanges"`
+	// Configuration for the NSX Load Balancer.
+	Nsx *SupervisorV2WorkloadsEdgeNsx `pulumi:"nsx"`
+	// Configuration for the NSX Advanced Load Balancer.
+	NsxAdvanced *SupervisorV2WorkloadsEdgeNsxAdvanced `pulumi:"nsxAdvanced"`
+}
+
+// SupervisorV2WorkloadsEdgeInput is an input type that accepts SupervisorV2WorkloadsEdgeArgs and SupervisorV2WorkloadsEdgeOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeInput` via:
+//
+//	SupervisorV2WorkloadsEdgeArgs{...}
+type SupervisorV2WorkloadsEdgeInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeOutput() SupervisorV2WorkloadsEdgeOutput
+	ToSupervisorV2WorkloadsEdgeOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeOutput
+}
+
+type SupervisorV2WorkloadsEdgeArgs struct {
+	// Configuration for the vSphere Foundation Load Balancer.
+	Foundation SupervisorV2WorkloadsEdgeFoundationPtrInput `pulumi:"foundation"`
+	// Configuration for the HAProxy Load Balancer.
+	Haproxy SupervisorV2WorkloadsEdgeHaproxyPtrInput `pulumi:"haproxy"`
+	// The unique identifier of this edge.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The list of addresses that a load balancer can consume to publish Kubernetes services.
+	LbAddressRanges SupervisorV2WorkloadsEdgeLbAddressRangeArrayInput `pulumi:"lbAddressRanges"`
+	// Configuration for the NSX Load Balancer.
+	Nsx SupervisorV2WorkloadsEdgeNsxPtrInput `pulumi:"nsx"`
+	// Configuration for the NSX Advanced Load Balancer.
+	NsxAdvanced SupervisorV2WorkloadsEdgeNsxAdvancedPtrInput `pulumi:"nsxAdvanced"`
+}
+
+func (SupervisorV2WorkloadsEdgeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdge)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeArgs) ToSupervisorV2WorkloadsEdgeOutput() SupervisorV2WorkloadsEdgeOutput {
+	return i.ToSupervisorV2WorkloadsEdgeOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeArgs) ToSupervisorV2WorkloadsEdgeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeArgs) ToSupervisorV2WorkloadsEdgePtrOutput() SupervisorV2WorkloadsEdgePtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgePtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeArgs) ToSupervisorV2WorkloadsEdgePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeOutput).ToSupervisorV2WorkloadsEdgePtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgePtrInput is an input type that accepts SupervisorV2WorkloadsEdgeArgs, SupervisorV2WorkloadsEdgePtr and SupervisorV2WorkloadsEdgePtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgePtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgePtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgePtrOutput() SupervisorV2WorkloadsEdgePtrOutput
+	ToSupervisorV2WorkloadsEdgePtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgePtrOutput
+}
+
+type supervisorV2WorkloadsEdgePtrType SupervisorV2WorkloadsEdgeArgs
+
+func SupervisorV2WorkloadsEdgePtr(v *SupervisorV2WorkloadsEdgeArgs) SupervisorV2WorkloadsEdgePtrInput {
+	return (*supervisorV2WorkloadsEdgePtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdge)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgePtrType) ToSupervisorV2WorkloadsEdgePtrOutput() SupervisorV2WorkloadsEdgePtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgePtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgePtrType) ToSupervisorV2WorkloadsEdgePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgePtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdge)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeOutput) ToSupervisorV2WorkloadsEdgeOutput() SupervisorV2WorkloadsEdgeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeOutput) ToSupervisorV2WorkloadsEdgeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeOutput) ToSupervisorV2WorkloadsEdgePtrOutput() SupervisorV2WorkloadsEdgePtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgePtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeOutput) ToSupervisorV2WorkloadsEdgePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdge {
+		return &v
+	}).(SupervisorV2WorkloadsEdgePtrOutput)
+}
+
+// Configuration for the vSphere Foundation Load Balancer.
+func (o SupervisorV2WorkloadsEdgeOutput) Foundation() SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeFoundation { return v.Foundation }).(SupervisorV2WorkloadsEdgeFoundationPtrOutput)
+}
+
+// Configuration for the HAProxy Load Balancer.
+func (o SupervisorV2WorkloadsEdgeOutput) Haproxy() SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeHaproxy { return v.Haproxy }).(SupervisorV2WorkloadsEdgeHaproxyPtrOutput)
+}
+
+// The unique identifier of this edge.
+func (o SupervisorV2WorkloadsEdgeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdge) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The list of addresses that a load balancer can consume to publish Kubernetes services.
+func (o SupervisorV2WorkloadsEdgeOutput) LbAddressRanges() SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdge) []SupervisorV2WorkloadsEdgeLbAddressRange { return v.LbAddressRanges }).(SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput)
+}
+
+// Configuration for the NSX Load Balancer.
+func (o SupervisorV2WorkloadsEdgeOutput) Nsx() SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeNsx { return v.Nsx }).(SupervisorV2WorkloadsEdgeNsxPtrOutput)
+}
+
+// Configuration for the NSX Advanced Load Balancer.
+func (o SupervisorV2WorkloadsEdgeOutput) NsxAdvanced() SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeNsxAdvanced { return v.NsxAdvanced }).(SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgePtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdge)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgePtrOutput) ToSupervisorV2WorkloadsEdgePtrOutput() SupervisorV2WorkloadsEdgePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgePtrOutput) ToSupervisorV2WorkloadsEdgePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgePtrOutput) Elem() SupervisorV2WorkloadsEdgeOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdge) SupervisorV2WorkloadsEdge {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdge
+		return ret
+	}).(SupervisorV2WorkloadsEdgeOutput)
+}
+
+// Configuration for the vSphere Foundation Load Balancer.
+func (o SupervisorV2WorkloadsEdgePtrOutput) Foundation() SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeFoundation {
+		if v == nil {
+			return nil
+		}
+		return v.Foundation
+	}).(SupervisorV2WorkloadsEdgeFoundationPtrOutput)
+}
+
+// Configuration for the HAProxy Load Balancer.
+func (o SupervisorV2WorkloadsEdgePtrOutput) Haproxy() SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeHaproxy {
+		if v == nil {
+			return nil
+		}
+		return v.Haproxy
+	}).(SupervisorV2WorkloadsEdgeHaproxyPtrOutput)
+}
+
+// The unique identifier of this edge.
+func (o SupervisorV2WorkloadsEdgePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdge) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of addresses that a load balancer can consume to publish Kubernetes services.
+func (o SupervisorV2WorkloadsEdgePtrOutput) LbAddressRanges() SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdge) []SupervisorV2WorkloadsEdgeLbAddressRange {
+		if v == nil {
+			return nil
+		}
+		return v.LbAddressRanges
+	}).(SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput)
+}
+
+// Configuration for the NSX Load Balancer.
+func (o SupervisorV2WorkloadsEdgePtrOutput) Nsx() SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeNsx {
+		if v == nil {
+			return nil
+		}
+		return v.Nsx
+	}).(SupervisorV2WorkloadsEdgeNsxPtrOutput)
+}
+
+// Configuration for the NSX Advanced Load Balancer.
+func (o SupervisorV2WorkloadsEdgePtrOutput) NsxAdvanced() SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdge) *SupervisorV2WorkloadsEdgeNsxAdvanced {
+		if v == nil {
+			return nil
+		}
+		return v.NsxAdvanced
+	}).(SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundation struct {
+	// The configuration for the Load Balancer placement.
+	DeploymentTarget *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget `pulumi:"deploymentTarget"`
+	// Configuration for the Load Balancer network interfaces.
+	Interfaces []SupervisorV2WorkloadsEdgeFoundationInterface `pulumi:"interfaces"`
+	// Configuration for the Load Balancer network services.
+	NetworkServices *SupervisorV2WorkloadsEdgeFoundationNetworkServices `pulumi:"networkServices"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationArgs and SupervisorV2WorkloadsEdgeFoundationOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationOutput() SupervisorV2WorkloadsEdgeFoundationOutput
+	ToSupervisorV2WorkloadsEdgeFoundationOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationArgs struct {
+	// The configuration for the Load Balancer placement.
+	DeploymentTarget SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrInput `pulumi:"deploymentTarget"`
+	// Configuration for the Load Balancer network interfaces.
+	Interfaces SupervisorV2WorkloadsEdgeFoundationInterfaceArrayInput `pulumi:"interfaces"`
+	// Configuration for the Load Balancer network services.
+	NetworkServices SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrInput `pulumi:"networkServices"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundation)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationArgs) ToSupervisorV2WorkloadsEdgeFoundationOutput() SupervisorV2WorkloadsEdgeFoundationOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationArgs) ToSupervisorV2WorkloadsEdgeFoundationOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationArgs) ToSupervisorV2WorkloadsEdgeFoundationPtrOutput() SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationArgs) ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationOutput).ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationArgs, SupervisorV2WorkloadsEdgeFoundationPtr and SupervisorV2WorkloadsEdgeFoundationPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationPtrOutput() SupervisorV2WorkloadsEdgeFoundationPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationPtrType SupervisorV2WorkloadsEdgeFoundationArgs
+
+func SupervisorV2WorkloadsEdgeFoundationPtr(v *SupervisorV2WorkloadsEdgeFoundationArgs) SupervisorV2WorkloadsEdgeFoundationPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundation)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationPtrType) ToSupervisorV2WorkloadsEdgeFoundationPtrOutput() SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationPtrType) ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundation)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationOutput) ToSupervisorV2WorkloadsEdgeFoundationOutput() SupervisorV2WorkloadsEdgeFoundationOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationOutput) ToSupervisorV2WorkloadsEdgeFoundationOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationOutput) ToSupervisorV2WorkloadsEdgeFoundationPtrOutput() SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationOutput) ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundation) *SupervisorV2WorkloadsEdgeFoundation {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationPtrOutput)
+}
+
+// The configuration for the Load Balancer placement.
+func (o SupervisorV2WorkloadsEdgeFoundationOutput) DeploymentTarget() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundation) *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget {
+		return v.DeploymentTarget
+	}).(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput)
+}
+
+// Configuration for the Load Balancer network interfaces.
+func (o SupervisorV2WorkloadsEdgeFoundationOutput) Interfaces() SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundation) []SupervisorV2WorkloadsEdgeFoundationInterface {
+		return v.Interfaces
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput)
+}
+
+// Configuration for the Load Balancer network services.
+func (o SupervisorV2WorkloadsEdgeFoundationOutput) NetworkServices() SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundation) *SupervisorV2WorkloadsEdgeFoundationNetworkServices {
+		return v.NetworkServices
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundation)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationPtrOutput() SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundation) SupervisorV2WorkloadsEdgeFoundation {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundation
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationOutput)
+}
+
+// The configuration for the Load Balancer placement.
+func (o SupervisorV2WorkloadsEdgeFoundationPtrOutput) DeploymentTarget() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundation) *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentTarget
+	}).(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput)
+}
+
+// Configuration for the Load Balancer network interfaces.
+func (o SupervisorV2WorkloadsEdgeFoundationPtrOutput) Interfaces() SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundation) []SupervisorV2WorkloadsEdgeFoundationInterface {
+		if v == nil {
+			return nil
+		}
+		return v.Interfaces
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput)
+}
+
+// Configuration for the Load Balancer network services.
+func (o SupervisorV2WorkloadsEdgeFoundationPtrOutput) NetworkServices() SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundation) *SupervisorV2WorkloadsEdgeFoundationNetworkServices {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkServices
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationDeploymentTarget struct {
+	// Configures the availability level for the load balancer.
+	Availability *string `pulumi:"availability"`
+	// Determines the CPU/memory resource size of the load balancer deployment.
+	DeploymentSize *string `pulumi:"deploymentSize"`
+	// Storage Policy containing datastores hosting the load balancer nodes.
+	StoragePolicy *string `pulumi:"storagePolicy"`
+	// A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+	//
+	// <a id="nestedblock--control-plane"></a>
+	Zones []string `pulumi:"zones"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationDeploymentTargetInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs and SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationDeploymentTargetInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationDeploymentTargetInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput
+	ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs struct {
+	// Configures the availability level for the load balancer.
+	Availability pulumi.StringPtrInput `pulumi:"availability"`
+	// Determines the CPU/memory resource size of the load balancer deployment.
+	DeploymentSize pulumi.StringPtrInput `pulumi:"deploymentSize"`
+	// Storage Policy containing datastores hosting the load balancer nodes.
+	StoragePolicy pulumi.StringPtrInput `pulumi:"storagePolicy"`
+	// A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+	//
+	// <a id="nestedblock--control-plane"></a>
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationDeploymentTarget)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput).ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs, SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtr and SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrType SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs
+
+func SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtr(v *SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationDeploymentTarget)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrType) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrType) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationDeploymentTarget)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput)
+}
+
+// Configures the availability level for the load balancer.
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) *string { return v.Availability }).(pulumi.StringPtrOutput)
+}
+
+// Determines the CPU/memory resource size of the load balancer deployment.
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) DeploymentSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) *string { return v.DeploymentSize }).(pulumi.StringPtrOutput)
+}
+
+// Storage Policy containing datastores hosting the load balancer nodes.
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) StoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) *string { return v.StoragePolicy }).(pulumi.StringPtrOutput)
+}
+
+// A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+//
+// <a id="nestedblock--control-plane"></a>
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationDeploymentTarget)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) SupervisorV2WorkloadsEdgeFoundationDeploymentTarget {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundationDeploymentTarget
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput)
+}
+
+// Configures the availability level for the load balancer.
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines the CPU/memory resource size of the load balancer deployment.
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) DeploymentSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Policy containing datastores hosting the load balancer nodes.
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) StoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+//
+// <a id="nestedblock--control-plane"></a>
+func (o SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationDeploymentTarget) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterface struct {
+	// Network configuration for this interface.
+	Network SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork `pulumi:"network"`
+	// Determines the type of traffic that passes through a network interface.
+	Personas []string `pulumi:"personas"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceArgs and SupervisorV2WorkloadsEdgeFoundationInterfaceOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationInterfaceArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationInterfaceInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceArgs struct {
+	// Network configuration for this interface.
+	Network SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkInput `pulumi:"network"`
+	// Determines the type of traffic that passes through a network interface.
+	Personas pulumi.StringArrayInput `pulumi:"personas"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterface)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceOutput)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceArrayInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceArray and SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceArrayInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationInterfaceArray{ SupervisorV2WorkloadsEdgeFoundationInterfaceArgs{...} }
+type SupervisorV2WorkloadsEdgeFoundationInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceArray []SupervisorV2WorkloadsEdgeFoundationInterfaceInput
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeFoundationInterface)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceArray) ToSupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceArray) ToSupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterface)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceOutput {
+	return o
+}
+
+// Network configuration for this interface.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceOutput) Network() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterface) SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork {
+		return v.Network
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput)
+}
+
+// Determines the type of traffic that passes through a network interface.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceOutput) Personas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterface) []string { return v.Personas }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeFoundationInterface)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsEdgeFoundationInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsEdgeFoundationInterface {
+		return vs[0].([]SupervisorV2WorkloadsEdgeFoundationInterface)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork struct {
+	// Identifier of the Distributed Virtual Portgroup.
+	DvpgNetwork *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork `pulumi:"dvpgNetwork"`
+	// The type of network interface.
+	NetworkType string `pulumi:"networkType"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs and SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs struct {
+	// Identifier of the Distributed Virtual Portgroup.
+	DvpgNetwork SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrInput `pulumi:"dvpgNetwork"`
+	// The type of network interface.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput {
+	return o
+}
+
+// Identifier of the Distributed Virtual Portgroup.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput) DvpgNetwork() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork) *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork {
+		return v.DvpgNetwork
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput)
+}
+
+// The type of network interface.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork struct {
+	// Static IP Configuration for this network.
+	IpConfig *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig `pulumi:"ipConfig"`
+	// IP Address management scheme for this network.
+	Ipam string `pulumi:"ipam"`
+	// The name of the Supervisor cluster.
+	Name string `pulumi:"name"`
+	// The identifier of the Distributed Virtual Portgroup.
+	Network string `pulumi:"network"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs and SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs struct {
+	// Static IP Configuration for this network.
+	IpConfig SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrInput `pulumi:"ipConfig"`
+	// IP Address management scheme for this network.
+	Ipam pulumi.StringInput `pulumi:"ipam"`
+	// The name of the Supervisor cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The identifier of the Distributed Virtual Portgroup.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput).ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs, SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtr and SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrType SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs
+
+func SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtr(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrType) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrType) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput)
+}
+
+// Static IP Configuration for this network.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) IpConfig() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig {
+		return v.IpConfig
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput)
+}
+
+// IP Address management scheme for this network.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) Ipam() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) string { return v.Ipam }).(pulumi.StringOutput)
+}
+
+// The name of the Supervisor cluster.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The identifier of the Distributed Virtual Portgroup.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput)
+}
+
+// Static IP Configuration for this network.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) IpConfig() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfig
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput)
+}
+
+// IP Address management scheme for this network.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) Ipam() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ipam
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Supervisor cluster.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the Distributed Virtual Portgroup.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig struct {
+	// Gateway address.
+	Gateway string `pulumi:"gateway"`
+	// IP range configuration.
+	IpRanges []SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange `pulumi:"ipRanges"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs and SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs struct {
+	// Gateway address.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// IP range configuration.
+	IpRanges SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayInput `pulumi:"ipRanges"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput).ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs, SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtr and SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrType SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs
+
+func SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtr(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrType) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrType) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig) *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput)
+}
+
+// Gateway address.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig) string {
+		return v.Gateway
+	}).(pulumi.StringOutput)
+}
+
+// IP range configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput) IpRanges() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig) []SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange {
+		return v.IpRanges
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput)
+}
+
+// Gateway address.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP range configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput) IpRanges() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig) []SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange {
+		if v == nil {
+			return nil
+		}
+		return v.IpRanges
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange struct {
+	// The starting IP address of the range.
+	Address string `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count int `pulumi:"count"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs and SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs struct {
+	// The starting IP address of the range.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArray and SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArray{ SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs{...} }
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput
+	ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArray []SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeInput
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArray) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArray) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput {
+	return o
+}
+
+// The starting IP address of the range.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange) string {
+		return v.Address
+	}).(pulumi.StringOutput)
+}
+
+// The number of IP addresses in the range.
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange) int {
+		return v.Count
+	}).(pulumi.IntOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput() SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput) ToSupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange {
+		return vs[0].([]SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServices struct {
+	// DNS configuration.
+	Dns *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns `pulumi:"dns"`
+	// NTP configuration.
+	Ntp *SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp `pulumi:"ntp"`
+	// Remote log forwarding configuration.
+	Syslog *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog `pulumi:"syslog"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs and SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs struct {
+	// DNS configuration.
+	Dns SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrInput `pulumi:"dns"`
+	// NTP configuration.
+	Ntp SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrInput `pulumi:"ntp"`
+	// Remote log forwarding configuration.
+	Syslog SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrInput `pulumi:"syslog"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServices)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput).ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs, SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtr and SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationNetworkServicesPtrType SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs
+
+func SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtr(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs) SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationNetworkServicesPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationNetworkServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServices)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServices)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundationNetworkServices) *SupervisorV2WorkloadsEdgeFoundationNetworkServices {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput)
+}
+
+// DNS configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) Dns() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServices) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns {
+		return v.Dns
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput)
+}
+
+// NTP configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) Ntp() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServices) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp {
+		return v.Ntp
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput)
+}
+
+// Remote log forwarding configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput) Syslog() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServices) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog {
+		return v.Syslog
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServices)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServices) SupervisorV2WorkloadsEdgeFoundationNetworkServices {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundationNetworkServices
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput)
+}
+
+// DNS configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput) Dns() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServices) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput)
+}
+
+// NTP configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput) Ntp() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServices) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp {
+		if v == nil {
+			return nil
+		}
+		return v.Ntp
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput)
+}
+
+// Remote log forwarding configuration.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput) Syslog() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServices) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog {
+		if v == nil {
+			return nil
+		}
+		return v.Syslog
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns struct {
+	// The list of search domains.
+	SearchDomains []string `pulumi:"searchDomains"`
+	// The list of DNS servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs and SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs struct {
+	// The list of search domains.
+	SearchDomains pulumi.StringArrayInput `pulumi:"searchDomains"`
+	// The list of DNS servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput).ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs, SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtr and SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrType SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs
+
+func SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtr(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput)
+}
+
+// The list of search domains.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput) SearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns) []string { return v.SearchDomains }).(pulumi.StringArrayOutput)
+}
+
+// The list of DNS servers.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns) SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput)
+}
+
+// The list of search domains.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput) SearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SearchDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of DNS servers.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp struct {
+	// The list of NTP servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs and SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs struct {
+	// The list of NTP servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput).ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs, SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtr and SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrType SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs
+
+func SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtr(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput)
+}
+
+// The list of NTP servers.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp) SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput)
+}
+
+// The list of NTP servers.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog struct {
+	// Certificate authority PEM.
+	CaCert *string `pulumi:"caCert"`
+	// FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs and SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogInput` via:
+//
+//	SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs{...}
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs struct {
+	// Certificate authority PEM.
+	CaCert pulumi.StringPtrInput `pulumi:"caCert"`
+	// FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput).ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs, SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtr and SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput
+	ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrType SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs
+
+func SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtr(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrInput {
+	return (*supervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrType) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog) *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput)
+}
+
+// Certificate authority PEM.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput) CaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog) *string { return v.CaCert }).(pulumi.StringPtrOutput)
+}
+
+// FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput) ToSupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput) Elem() SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog) SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog
+		return ret
+	}).(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput)
+}
+
+// Certificate authority PEM.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput) CaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+func (o SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeHaproxy struct {
+	// The CA chain for the data plane API server.
+	CaChain string `pulumi:"caChain"`
+	// The password for the data plane API server.
+	Password string `pulumi:"password"`
+	// The servers for the data plane API server.
+	Servers []SupervisorV2WorkloadsEdgeHaproxyServer `pulumi:"servers"`
+	// The username for the data plane API server.
+	Username string `pulumi:"username"`
+}
+
+// SupervisorV2WorkloadsEdgeHaproxyInput is an input type that accepts SupervisorV2WorkloadsEdgeHaproxyArgs and SupervisorV2WorkloadsEdgeHaproxyOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeHaproxyInput` via:
+//
+//	SupervisorV2WorkloadsEdgeHaproxyArgs{...}
+type SupervisorV2WorkloadsEdgeHaproxyInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeHaproxyOutput() SupervisorV2WorkloadsEdgeHaproxyOutput
+	ToSupervisorV2WorkloadsEdgeHaproxyOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeHaproxyOutput
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyArgs struct {
+	// The CA chain for the data plane API server.
+	CaChain pulumi.StringInput `pulumi:"caChain"`
+	// The password for the data plane API server.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The servers for the data plane API server.
+	Servers SupervisorV2WorkloadsEdgeHaproxyServerArrayInput `pulumi:"servers"`
+	// The username for the data plane API server.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SupervisorV2WorkloadsEdgeHaproxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxy)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyArgs) ToSupervisorV2WorkloadsEdgeHaproxyOutput() SupervisorV2WorkloadsEdgeHaproxyOutput {
+	return i.ToSupervisorV2WorkloadsEdgeHaproxyOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyArgs) ToSupervisorV2WorkloadsEdgeHaproxyOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeHaproxyOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyArgs) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutput() SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyArgs) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeHaproxyOutput).ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeHaproxyPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeHaproxyArgs, SupervisorV2WorkloadsEdgeHaproxyPtr and SupervisorV2WorkloadsEdgeHaproxyPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeHaproxyPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeHaproxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeHaproxyPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeHaproxyPtrOutput() SupervisorV2WorkloadsEdgeHaproxyPtrOutput
+	ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeHaproxyPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeHaproxyPtrType SupervisorV2WorkloadsEdgeHaproxyArgs
+
+func SupervisorV2WorkloadsEdgeHaproxyPtr(v *SupervisorV2WorkloadsEdgeHaproxyArgs) SupervisorV2WorkloadsEdgeHaproxyPtrInput {
+	return (*supervisorV2WorkloadsEdgeHaproxyPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeHaproxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeHaproxy)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeHaproxyPtrType) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutput() SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeHaproxyPtrType) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeHaproxyPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeHaproxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxy)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) ToSupervisorV2WorkloadsEdgeHaproxyOutput() SupervisorV2WorkloadsEdgeHaproxyOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) ToSupervisorV2WorkloadsEdgeHaproxyOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutput() SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeHaproxy) *SupervisorV2WorkloadsEdgeHaproxy {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeHaproxyPtrOutput)
+}
+
+// The CA chain for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) CaChain() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeHaproxy) string { return v.CaChain }).(pulumi.StringOutput)
+}
+
+// The password for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeHaproxy) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The servers for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) Servers() SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeHaproxy) []SupervisorV2WorkloadsEdgeHaproxyServer { return v.Servers }).(SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput)
+}
+
+// The username for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeHaproxy) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeHaproxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeHaproxy)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyPtrOutput) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutput() SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyPtrOutput) ToSupervisorV2WorkloadsEdgeHaproxyPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyPtrOutput) Elem() SupervisorV2WorkloadsEdgeHaproxyOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeHaproxy) SupervisorV2WorkloadsEdgeHaproxy {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeHaproxy
+		return ret
+	}).(SupervisorV2WorkloadsEdgeHaproxyOutput)
+}
+
+// The CA chain for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyPtrOutput) CaChain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeHaproxy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaChain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeHaproxy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The servers for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyPtrOutput) Servers() SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeHaproxy) []SupervisorV2WorkloadsEdgeHaproxyServer {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput)
+}
+
+// The username for the data plane API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeHaproxy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyServer struct {
+	// The IP address of the API server.
+	Host string `pulumi:"host"`
+	// The port of the API server.
+	Port int `pulumi:"port"`
+}
+
+// SupervisorV2WorkloadsEdgeHaproxyServerInput is an input type that accepts SupervisorV2WorkloadsEdgeHaproxyServerArgs and SupervisorV2WorkloadsEdgeHaproxyServerOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeHaproxyServerInput` via:
+//
+//	SupervisorV2WorkloadsEdgeHaproxyServerArgs{...}
+type SupervisorV2WorkloadsEdgeHaproxyServerInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeHaproxyServerOutput() SupervisorV2WorkloadsEdgeHaproxyServerOutput
+	ToSupervisorV2WorkloadsEdgeHaproxyServerOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeHaproxyServerOutput
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyServerArgs struct {
+	// The IP address of the API server.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The port of the API server.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (SupervisorV2WorkloadsEdgeHaproxyServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxyServer)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyServerArgs) ToSupervisorV2WorkloadsEdgeHaproxyServerOutput() SupervisorV2WorkloadsEdgeHaproxyServerOutput {
+	return i.ToSupervisorV2WorkloadsEdgeHaproxyServerOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyServerArgs) ToSupervisorV2WorkloadsEdgeHaproxyServerOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeHaproxyServerOutput)
+}
+
+// SupervisorV2WorkloadsEdgeHaproxyServerArrayInput is an input type that accepts SupervisorV2WorkloadsEdgeHaproxyServerArray and SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeHaproxyServerArrayInput` via:
+//
+//	SupervisorV2WorkloadsEdgeHaproxyServerArray{ SupervisorV2WorkloadsEdgeHaproxyServerArgs{...} }
+type SupervisorV2WorkloadsEdgeHaproxyServerArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeHaproxyServerArrayOutput() SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput
+	ToSupervisorV2WorkloadsEdgeHaproxyServerArrayOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyServerArray []SupervisorV2WorkloadsEdgeHaproxyServerInput
+
+func (SupervisorV2WorkloadsEdgeHaproxyServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeHaproxyServer)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyServerArray) ToSupervisorV2WorkloadsEdgeHaproxyServerArrayOutput() SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput {
+	return i.ToSupervisorV2WorkloadsEdgeHaproxyServerArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeHaproxyServerArray) ToSupervisorV2WorkloadsEdgeHaproxyServerArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyServerOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeHaproxyServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxyServer)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyServerOutput) ToSupervisorV2WorkloadsEdgeHaproxyServerOutput() SupervisorV2WorkloadsEdgeHaproxyServerOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyServerOutput) ToSupervisorV2WorkloadsEdgeHaproxyServerOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyServerOutput {
+	return o
+}
+
+// The IP address of the API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeHaproxyServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The port of the API server.
+func (o SupervisorV2WorkloadsEdgeHaproxyServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeHaproxyServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeHaproxyServer)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput) ToSupervisorV2WorkloadsEdgeHaproxyServerArrayOutput() SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput) ToSupervisorV2WorkloadsEdgeHaproxyServerArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsEdgeHaproxyServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsEdgeHaproxyServer {
+		return vs[0].([]SupervisorV2WorkloadsEdgeHaproxyServer)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsEdgeHaproxyServerOutput)
+}
+
+type SupervisorV2WorkloadsEdgeLbAddressRange struct {
+	// The starting IP address of the range.
+	Address string `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count int `pulumi:"count"`
+}
+
+// SupervisorV2WorkloadsEdgeLbAddressRangeInput is an input type that accepts SupervisorV2WorkloadsEdgeLbAddressRangeArgs and SupervisorV2WorkloadsEdgeLbAddressRangeOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeLbAddressRangeInput` via:
+//
+//	SupervisorV2WorkloadsEdgeLbAddressRangeArgs{...}
+type SupervisorV2WorkloadsEdgeLbAddressRangeInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeLbAddressRangeOutput() SupervisorV2WorkloadsEdgeLbAddressRangeOutput
+	ToSupervisorV2WorkloadsEdgeLbAddressRangeOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeLbAddressRangeOutput
+}
+
+type SupervisorV2WorkloadsEdgeLbAddressRangeArgs struct {
+	// The starting IP address of the range.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (SupervisorV2WorkloadsEdgeLbAddressRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeLbAddressRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeLbAddressRangeArgs) ToSupervisorV2WorkloadsEdgeLbAddressRangeOutput() SupervisorV2WorkloadsEdgeLbAddressRangeOutput {
+	return i.ToSupervisorV2WorkloadsEdgeLbAddressRangeOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeLbAddressRangeArgs) ToSupervisorV2WorkloadsEdgeLbAddressRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeLbAddressRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeLbAddressRangeOutput)
+}
+
+// SupervisorV2WorkloadsEdgeLbAddressRangeArrayInput is an input type that accepts SupervisorV2WorkloadsEdgeLbAddressRangeArray and SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeLbAddressRangeArrayInput` via:
+//
+//	SupervisorV2WorkloadsEdgeLbAddressRangeArray{ SupervisorV2WorkloadsEdgeLbAddressRangeArgs{...} }
+type SupervisorV2WorkloadsEdgeLbAddressRangeArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput() SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput
+	ToSupervisorV2WorkloadsEdgeLbAddressRangeArrayOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput
+}
+
+type SupervisorV2WorkloadsEdgeLbAddressRangeArray []SupervisorV2WorkloadsEdgeLbAddressRangeInput
+
+func (SupervisorV2WorkloadsEdgeLbAddressRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeLbAddressRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeLbAddressRangeArray) ToSupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput() SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput {
+	return i.ToSupervisorV2WorkloadsEdgeLbAddressRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeLbAddressRangeArray) ToSupervisorV2WorkloadsEdgeLbAddressRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeLbAddressRangeOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeLbAddressRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeLbAddressRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeLbAddressRangeOutput) ToSupervisorV2WorkloadsEdgeLbAddressRangeOutput() SupervisorV2WorkloadsEdgeLbAddressRangeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeLbAddressRangeOutput) ToSupervisorV2WorkloadsEdgeLbAddressRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeLbAddressRangeOutput {
+	return o
+}
+
+// The starting IP address of the range.
+func (o SupervisorV2WorkloadsEdgeLbAddressRangeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeLbAddressRange) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The number of IP addresses in the range.
+func (o SupervisorV2WorkloadsEdgeLbAddressRangeOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeLbAddressRange) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeLbAddressRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput) ToSupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput() SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput) ToSupervisorV2WorkloadsEdgeLbAddressRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsEdgeLbAddressRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsEdgeLbAddressRange {
+		return vs[0].([]SupervisorV2WorkloadsEdgeLbAddressRange)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsEdgeLbAddressRangeOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsx struct {
+	// The default certificate that is served on Ingress services, when another certificate is not presented.
+	DefaultIngressTlsCertificate *string `pulumi:"defaultIngressTlsCertificate"`
+	// The identifier of the edge cluster.
+	EdgeCluster *string `pulumi:"edgeCluster"`
+	// An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+	EgressIpRanges []SupervisorV2WorkloadsEdgeNsxEgressIpRange `pulumi:"egressIpRanges"`
+	// The size of the load balancer node.
+	LoadBalancerSize *string `pulumi:"loadBalancerSize"`
+	// Routing mode.
+	RoutingMode *string `pulumi:"routingMode"`
+	// Tier-0 gateway ID for the namespaces configuration.
+	T0Gateway *string `pulumi:"t0Gateway"`
+}
+
+// SupervisorV2WorkloadsEdgeNsxInput is an input type that accepts SupervisorV2WorkloadsEdgeNsxArgs and SupervisorV2WorkloadsEdgeNsxOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeNsxInput` via:
+//
+//	SupervisorV2WorkloadsEdgeNsxArgs{...}
+type SupervisorV2WorkloadsEdgeNsxInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeNsxOutput() SupervisorV2WorkloadsEdgeNsxOutput
+	ToSupervisorV2WorkloadsEdgeNsxOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeNsxOutput
+}
+
+type SupervisorV2WorkloadsEdgeNsxArgs struct {
+	// The default certificate that is served on Ingress services, when another certificate is not presented.
+	DefaultIngressTlsCertificate pulumi.StringPtrInput `pulumi:"defaultIngressTlsCertificate"`
+	// The identifier of the edge cluster.
+	EdgeCluster pulumi.StringPtrInput `pulumi:"edgeCluster"`
+	// An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+	EgressIpRanges SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayInput `pulumi:"egressIpRanges"`
+	// The size of the load balancer node.
+	LoadBalancerSize pulumi.StringPtrInput `pulumi:"loadBalancerSize"`
+	// Routing mode.
+	RoutingMode pulumi.StringPtrInput `pulumi:"routingMode"`
+	// Tier-0 gateway ID for the namespaces configuration.
+	T0Gateway pulumi.StringPtrInput `pulumi:"t0Gateway"`
+}
+
+func (SupervisorV2WorkloadsEdgeNsxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsx)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxArgs) ToSupervisorV2WorkloadsEdgeNsxOutput() SupervisorV2WorkloadsEdgeNsxOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxArgs) ToSupervisorV2WorkloadsEdgeNsxOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxArgs) ToSupervisorV2WorkloadsEdgeNsxPtrOutput() SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxArgs) ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxOutput).ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeNsxPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeNsxArgs, SupervisorV2WorkloadsEdgeNsxPtr and SupervisorV2WorkloadsEdgeNsxPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeNsxPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeNsxArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeNsxPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeNsxPtrOutput() SupervisorV2WorkloadsEdgeNsxPtrOutput
+	ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeNsxPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeNsxPtrType SupervisorV2WorkloadsEdgeNsxArgs
+
+func SupervisorV2WorkloadsEdgeNsxPtr(v *SupervisorV2WorkloadsEdgeNsxArgs) SupervisorV2WorkloadsEdgeNsxPtrInput {
+	return (*supervisorV2WorkloadsEdgeNsxPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeNsxPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeNsx)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeNsxPtrType) ToSupervisorV2WorkloadsEdgeNsxPtrOutput() SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeNsxPtrType) ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeNsxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsx)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxOutput) ToSupervisorV2WorkloadsEdgeNsxOutput() SupervisorV2WorkloadsEdgeNsxOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxOutput) ToSupervisorV2WorkloadsEdgeNsxOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxOutput) ToSupervisorV2WorkloadsEdgeNsxPtrOutput() SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxOutput) ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeNsx) *SupervisorV2WorkloadsEdgeNsx {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeNsxPtrOutput)
+}
+
+// The default certificate that is served on Ingress services, when another certificate is not presented.
+func (o SupervisorV2WorkloadsEdgeNsxOutput) DefaultIngressTlsCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsx) *string { return v.DefaultIngressTlsCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the edge cluster.
+func (o SupervisorV2WorkloadsEdgeNsxOutput) EdgeCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsx) *string { return v.EdgeCluster }).(pulumi.StringPtrOutput)
+}
+
+// An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+func (o SupervisorV2WorkloadsEdgeNsxOutput) EgressIpRanges() SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsx) []SupervisorV2WorkloadsEdgeNsxEgressIpRange {
+		return v.EgressIpRanges
+	}).(SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput)
+}
+
+// The size of the load balancer node.
+func (o SupervisorV2WorkloadsEdgeNsxOutput) LoadBalancerSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsx) *string { return v.LoadBalancerSize }).(pulumi.StringPtrOutput)
+}
+
+// Routing mode.
+func (o SupervisorV2WorkloadsEdgeNsxOutput) RoutingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsx) *string { return v.RoutingMode }).(pulumi.StringPtrOutput)
+}
+
+// Tier-0 gateway ID for the namespaces configuration.
+func (o SupervisorV2WorkloadsEdgeNsxOutput) T0Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsx) *string { return v.T0Gateway }).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeNsxPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeNsx)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) ToSupervisorV2WorkloadsEdgeNsxPtrOutput() SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) ToSupervisorV2WorkloadsEdgeNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) Elem() SupervisorV2WorkloadsEdgeNsxOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsx) SupervisorV2WorkloadsEdgeNsx {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeNsx
+		return ret
+	}).(SupervisorV2WorkloadsEdgeNsxOutput)
+}
+
+// The default certificate that is served on Ingress services, when another certificate is not presented.
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) DefaultIngressTlsCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsx) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultIngressTlsCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the edge cluster.
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) EdgeCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsx) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EdgeCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) EgressIpRanges() SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsx) []SupervisorV2WorkloadsEdgeNsxEgressIpRange {
+		if v == nil {
+			return nil
+		}
+		return v.EgressIpRanges
+	}).(SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput)
+}
+
+// The size of the load balancer node.
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) LoadBalancerSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsx) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Routing mode.
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) RoutingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsx) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tier-0 gateway ID for the namespaces configuration.
+func (o SupervisorV2WorkloadsEdgeNsxPtrOutput) T0Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsx) *string {
+		if v == nil {
+			return nil
+		}
+		return v.T0Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxAdvanced struct {
+	// Certificate authority chain.
+	CaChain string `pulumi:"caChain"`
+	// Cloud Name.
+	CloudName *string `pulumi:"cloudName"`
+	// The IP address of the AVI controller.
+	Host string `pulumi:"host"`
+	// Password
+	Password string `pulumi:"password"`
+	// The port of the AVI controller.
+	Port int `pulumi:"port"`
+	// Username
+	Username string `pulumi:"username"`
+}
+
+// SupervisorV2WorkloadsEdgeNsxAdvancedInput is an input type that accepts SupervisorV2WorkloadsEdgeNsxAdvancedArgs and SupervisorV2WorkloadsEdgeNsxAdvancedOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeNsxAdvancedInput` via:
+//
+//	SupervisorV2WorkloadsEdgeNsxAdvancedArgs{...}
+type SupervisorV2WorkloadsEdgeNsxAdvancedInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeNsxAdvancedOutput() SupervisorV2WorkloadsEdgeNsxAdvancedOutput
+	ToSupervisorV2WorkloadsEdgeNsxAdvancedOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedOutput
+}
+
+type SupervisorV2WorkloadsEdgeNsxAdvancedArgs struct {
+	// Certificate authority chain.
+	CaChain pulumi.StringInput `pulumi:"caChain"`
+	// Cloud Name.
+	CloudName pulumi.StringPtrInput `pulumi:"cloudName"`
+	// The IP address of the AVI controller.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Password
+	Password pulumi.StringInput `pulumi:"password"`
+	// The port of the AVI controller.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Username
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SupervisorV2WorkloadsEdgeNsxAdvancedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxAdvanced)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxAdvancedArgs) ToSupervisorV2WorkloadsEdgeNsxAdvancedOutput() SupervisorV2WorkloadsEdgeNsxAdvancedOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxAdvancedOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxAdvancedArgs) ToSupervisorV2WorkloadsEdgeNsxAdvancedOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxAdvancedOutput)
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxAdvancedArgs) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput() SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxAdvancedArgs) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxAdvancedOutput).ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsEdgeNsxAdvancedPtrInput is an input type that accepts SupervisorV2WorkloadsEdgeNsxAdvancedArgs, SupervisorV2WorkloadsEdgeNsxAdvancedPtr and SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeNsxAdvancedPtrInput` via:
+//
+//	        SupervisorV2WorkloadsEdgeNsxAdvancedArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsEdgeNsxAdvancedPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput() SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput
+	ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput
+}
+
+type supervisorV2WorkloadsEdgeNsxAdvancedPtrType SupervisorV2WorkloadsEdgeNsxAdvancedArgs
+
+func SupervisorV2WorkloadsEdgeNsxAdvancedPtr(v *SupervisorV2WorkloadsEdgeNsxAdvancedArgs) SupervisorV2WorkloadsEdgeNsxAdvancedPtrInput {
+	return (*supervisorV2WorkloadsEdgeNsxAdvancedPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsEdgeNsxAdvancedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeNsxAdvanced)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsEdgeNsxAdvancedPtrType) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput() SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsEdgeNsxAdvancedPtrType) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxAdvancedOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeNsxAdvancedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxAdvanced)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) ToSupervisorV2WorkloadsEdgeNsxAdvancedOutput() SupervisorV2WorkloadsEdgeNsxAdvancedOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) ToSupervisorV2WorkloadsEdgeNsxAdvancedOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput() SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return o.ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsEdgeNsxAdvanced) *SupervisorV2WorkloadsEdgeNsxAdvanced {
+		return &v
+	}).(SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput)
+}
+
+// Certificate authority chain.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) CaChain() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxAdvanced) string { return v.CaChain }).(pulumi.StringOutput)
+}
+
+// Cloud Name.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxAdvanced) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the AVI controller.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxAdvanced) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Password
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxAdvanced) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The port of the AVI controller.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxAdvanced) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Username
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxAdvanced) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsEdgeNsxAdvanced)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput() SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) ToSupervisorV2WorkloadsEdgeNsxAdvancedPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) Elem() SupervisorV2WorkloadsEdgeNsxAdvancedOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsxAdvanced) SupervisorV2WorkloadsEdgeNsxAdvanced {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsEdgeNsxAdvanced
+		return ret
+	}).(SupervisorV2WorkloadsEdgeNsxAdvancedOutput)
+}
+
+// Certificate authority chain.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) CaChain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsxAdvanced) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaChain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Name.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsxAdvanced) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the AVI controller.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsxAdvanced) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsxAdvanced) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of the AVI controller.
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsxAdvanced) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username
+func (o SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsEdgeNsxAdvanced) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxEgressIpRange struct {
+	// The starting IP address of the range.
+	Address string `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count int `pulumi:"count"`
+}
+
+// SupervisorV2WorkloadsEdgeNsxEgressIpRangeInput is an input type that accepts SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs and SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeNsxEgressIpRangeInput` via:
+//
+//	SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs{...}
+type SupervisorV2WorkloadsEdgeNsxEgressIpRangeInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput() SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput
+	ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput
+}
+
+type SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs struct {
+	// The starting IP address of the range.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxEgressIpRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput() SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput)
+}
+
+// SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayInput is an input type that accepts SupervisorV2WorkloadsEdgeNsxEgressIpRangeArray and SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayInput` via:
+//
+//	SupervisorV2WorkloadsEdgeNsxEgressIpRangeArray{ SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs{...} }
+type SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput() SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput
+	ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutputWithContext(context.Context) SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput
+}
+
+type SupervisorV2WorkloadsEdgeNsxEgressIpRangeArray []SupervisorV2WorkloadsEdgeNsxEgressIpRangeInput
+
+func (SupervisorV2WorkloadsEdgeNsxEgressIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeNsxEgressIpRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxEgressIpRangeArray) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput() SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput {
+	return i.ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsEdgeNsxEgressIpRangeArray) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxEgressIpRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput() SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput {
+	return o
+}
+
+// The starting IP address of the range.
+func (o SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxEgressIpRange) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The number of IP addresses in the range.
+func (o SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsEdgeNsxEgressIpRange) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsEdgeNsxEgressIpRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput() SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput) ToSupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsEdgeNsxEgressIpRange {
+		return vs[0].([]SupervisorV2WorkloadsEdgeNsxEgressIpRange)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput)
+}
+
+type SupervisorV2WorkloadsImages struct {
+	// Content library associated with the Supervisor.
+	ContentLibraries []SupervisorV2WorkloadsImagesContentLibrary `pulumi:"contentLibraries"`
+	// The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+	KubernetesContentLibrary string `pulumi:"kubernetesContentLibrary"`
+	// Configuration for the container image registry endpoint.
+	Registry SupervisorV2WorkloadsImagesRegistry `pulumi:"registry"`
+	// The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+	Repository string `pulumi:"repository"`
+}
+
+// SupervisorV2WorkloadsImagesInput is an input type that accepts SupervisorV2WorkloadsImagesArgs and SupervisorV2WorkloadsImagesOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsImagesInput` via:
+//
+//	SupervisorV2WorkloadsImagesArgs{...}
+type SupervisorV2WorkloadsImagesInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsImagesOutput() SupervisorV2WorkloadsImagesOutput
+	ToSupervisorV2WorkloadsImagesOutputWithContext(context.Context) SupervisorV2WorkloadsImagesOutput
+}
+
+type SupervisorV2WorkloadsImagesArgs struct {
+	// Content library associated with the Supervisor.
+	ContentLibraries SupervisorV2WorkloadsImagesContentLibraryArrayInput `pulumi:"contentLibraries"`
+	// The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+	KubernetesContentLibrary pulumi.StringInput `pulumi:"kubernetesContentLibrary"`
+	// Configuration for the container image registry endpoint.
+	Registry SupervisorV2WorkloadsImagesRegistryInput `pulumi:"registry"`
+	// The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+	Repository pulumi.StringInput `pulumi:"repository"`
+}
+
+func (SupervisorV2WorkloadsImagesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsImages)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsImagesArgs) ToSupervisorV2WorkloadsImagesOutput() SupervisorV2WorkloadsImagesOutput {
+	return i.ToSupervisorV2WorkloadsImagesOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsImagesArgs) ToSupervisorV2WorkloadsImagesOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesOutput)
+}
+
+func (i SupervisorV2WorkloadsImagesArgs) ToSupervisorV2WorkloadsImagesPtrOutput() SupervisorV2WorkloadsImagesPtrOutput {
+	return i.ToSupervisorV2WorkloadsImagesPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsImagesArgs) ToSupervisorV2WorkloadsImagesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesOutput).ToSupervisorV2WorkloadsImagesPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsImagesPtrInput is an input type that accepts SupervisorV2WorkloadsImagesArgs, SupervisorV2WorkloadsImagesPtr and SupervisorV2WorkloadsImagesPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsImagesPtrInput` via:
+//
+//	        SupervisorV2WorkloadsImagesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsImagesPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsImagesPtrOutput() SupervisorV2WorkloadsImagesPtrOutput
+	ToSupervisorV2WorkloadsImagesPtrOutputWithContext(context.Context) SupervisorV2WorkloadsImagesPtrOutput
+}
+
+type supervisorV2WorkloadsImagesPtrType SupervisorV2WorkloadsImagesArgs
+
+func SupervisorV2WorkloadsImagesPtr(v *SupervisorV2WorkloadsImagesArgs) SupervisorV2WorkloadsImagesPtrInput {
+	return (*supervisorV2WorkloadsImagesPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsImagesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsImages)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsImagesPtrType) ToSupervisorV2WorkloadsImagesPtrOutput() SupervisorV2WorkloadsImagesPtrOutput {
+	return i.ToSupervisorV2WorkloadsImagesPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsImagesPtrType) ToSupervisorV2WorkloadsImagesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesPtrOutput)
+}
+
+type SupervisorV2WorkloadsImagesOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsImagesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsImages)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsImagesOutput) ToSupervisorV2WorkloadsImagesOutput() SupervisorV2WorkloadsImagesOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesOutput) ToSupervisorV2WorkloadsImagesOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesOutput) ToSupervisorV2WorkloadsImagesPtrOutput() SupervisorV2WorkloadsImagesPtrOutput {
+	return o.ToSupervisorV2WorkloadsImagesPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsImagesOutput) ToSupervisorV2WorkloadsImagesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsImages) *SupervisorV2WorkloadsImages {
+		return &v
+	}).(SupervisorV2WorkloadsImagesPtrOutput)
+}
+
+// Content library associated with the Supervisor.
+func (o SupervisorV2WorkloadsImagesOutput) ContentLibraries() SupervisorV2WorkloadsImagesContentLibraryArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImages) []SupervisorV2WorkloadsImagesContentLibrary {
+		return v.ContentLibraries
+	}).(SupervisorV2WorkloadsImagesContentLibraryArrayOutput)
+}
+
+// The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+func (o SupervisorV2WorkloadsImagesOutput) KubernetesContentLibrary() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImages) string { return v.KubernetesContentLibrary }).(pulumi.StringOutput)
+}
+
+// Configuration for the container image registry endpoint.
+func (o SupervisorV2WorkloadsImagesOutput) Registry() SupervisorV2WorkloadsImagesRegistryOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImages) SupervisorV2WorkloadsImagesRegistry { return v.Registry }).(SupervisorV2WorkloadsImagesRegistryOutput)
+}
+
+// The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+func (o SupervisorV2WorkloadsImagesOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImages) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type SupervisorV2WorkloadsImagesPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsImagesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsImages)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsImagesPtrOutput) ToSupervisorV2WorkloadsImagesPtrOutput() SupervisorV2WorkloadsImagesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesPtrOutput) ToSupervisorV2WorkloadsImagesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesPtrOutput) Elem() SupervisorV2WorkloadsImagesOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImages) SupervisorV2WorkloadsImages {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsImages
+		return ret
+	}).(SupervisorV2WorkloadsImagesOutput)
+}
+
+// Content library associated with the Supervisor.
+func (o SupervisorV2WorkloadsImagesPtrOutput) ContentLibraries() SupervisorV2WorkloadsImagesContentLibraryArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImages) []SupervisorV2WorkloadsImagesContentLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.ContentLibraries
+	}).(SupervisorV2WorkloadsImagesContentLibraryArrayOutput)
+}
+
+// The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+func (o SupervisorV2WorkloadsImagesPtrOutput) KubernetesContentLibrary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImages) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KubernetesContentLibrary
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for the container image registry endpoint.
+func (o SupervisorV2WorkloadsImagesPtrOutput) Registry() SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImages) *SupervisorV2WorkloadsImagesRegistry {
+		if v == nil {
+			return nil
+		}
+		return &v.Registry
+	}).(SupervisorV2WorkloadsImagesRegistryPtrOutput)
+}
+
+// The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+func (o SupervisorV2WorkloadsImagesPtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImages) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsImagesContentLibrary struct {
+	// Content library identifier.
+	ContentLibrary string `pulumi:"contentLibrary"`
+	// The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+	ResourceNamingStrategy *string `pulumi:"resourceNamingStrategy"`
+	// A list of Supervisor Service IDs that are currently making use of the Content Library.
+	SupervisorServices []string `pulumi:"supervisorServices"`
+}
+
+// SupervisorV2WorkloadsImagesContentLibraryInput is an input type that accepts SupervisorV2WorkloadsImagesContentLibraryArgs and SupervisorV2WorkloadsImagesContentLibraryOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsImagesContentLibraryInput` via:
+//
+//	SupervisorV2WorkloadsImagesContentLibraryArgs{...}
+type SupervisorV2WorkloadsImagesContentLibraryInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsImagesContentLibraryOutput() SupervisorV2WorkloadsImagesContentLibraryOutput
+	ToSupervisorV2WorkloadsImagesContentLibraryOutputWithContext(context.Context) SupervisorV2WorkloadsImagesContentLibraryOutput
+}
+
+type SupervisorV2WorkloadsImagesContentLibraryArgs struct {
+	// Content library identifier.
+	ContentLibrary pulumi.StringInput `pulumi:"contentLibrary"`
+	// The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+	ResourceNamingStrategy pulumi.StringPtrInput `pulumi:"resourceNamingStrategy"`
+	// A list of Supervisor Service IDs that are currently making use of the Content Library.
+	SupervisorServices pulumi.StringArrayInput `pulumi:"supervisorServices"`
+}
+
+func (SupervisorV2WorkloadsImagesContentLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsImagesContentLibrary)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsImagesContentLibraryArgs) ToSupervisorV2WorkloadsImagesContentLibraryOutput() SupervisorV2WorkloadsImagesContentLibraryOutput {
+	return i.ToSupervisorV2WorkloadsImagesContentLibraryOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsImagesContentLibraryArgs) ToSupervisorV2WorkloadsImagesContentLibraryOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesContentLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesContentLibraryOutput)
+}
+
+// SupervisorV2WorkloadsImagesContentLibraryArrayInput is an input type that accepts SupervisorV2WorkloadsImagesContentLibraryArray and SupervisorV2WorkloadsImagesContentLibraryArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsImagesContentLibraryArrayInput` via:
+//
+//	SupervisorV2WorkloadsImagesContentLibraryArray{ SupervisorV2WorkloadsImagesContentLibraryArgs{...} }
+type SupervisorV2WorkloadsImagesContentLibraryArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsImagesContentLibraryArrayOutput() SupervisorV2WorkloadsImagesContentLibraryArrayOutput
+	ToSupervisorV2WorkloadsImagesContentLibraryArrayOutputWithContext(context.Context) SupervisorV2WorkloadsImagesContentLibraryArrayOutput
+}
+
+type SupervisorV2WorkloadsImagesContentLibraryArray []SupervisorV2WorkloadsImagesContentLibraryInput
+
+func (SupervisorV2WorkloadsImagesContentLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsImagesContentLibrary)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsImagesContentLibraryArray) ToSupervisorV2WorkloadsImagesContentLibraryArrayOutput() SupervisorV2WorkloadsImagesContentLibraryArrayOutput {
+	return i.ToSupervisorV2WorkloadsImagesContentLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsImagesContentLibraryArray) ToSupervisorV2WorkloadsImagesContentLibraryArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesContentLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesContentLibraryArrayOutput)
+}
+
+type SupervisorV2WorkloadsImagesContentLibraryOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsImagesContentLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsImagesContentLibrary)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsImagesContentLibraryOutput) ToSupervisorV2WorkloadsImagesContentLibraryOutput() SupervisorV2WorkloadsImagesContentLibraryOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesContentLibraryOutput) ToSupervisorV2WorkloadsImagesContentLibraryOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesContentLibraryOutput {
+	return o
+}
+
+// Content library identifier.
+func (o SupervisorV2WorkloadsImagesContentLibraryOutput) ContentLibrary() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesContentLibrary) string { return v.ContentLibrary }).(pulumi.StringOutput)
+}
+
+// The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+func (o SupervisorV2WorkloadsImagesContentLibraryOutput) ResourceNamingStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesContentLibrary) *string { return v.ResourceNamingStrategy }).(pulumi.StringPtrOutput)
+}
+
+// A list of Supervisor Service IDs that are currently making use of the Content Library.
+func (o SupervisorV2WorkloadsImagesContentLibraryOutput) SupervisorServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesContentLibrary) []string { return v.SupervisorServices }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsImagesContentLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsImagesContentLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsImagesContentLibrary)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsImagesContentLibraryArrayOutput) ToSupervisorV2WorkloadsImagesContentLibraryArrayOutput() SupervisorV2WorkloadsImagesContentLibraryArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesContentLibraryArrayOutput) ToSupervisorV2WorkloadsImagesContentLibraryArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesContentLibraryArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesContentLibraryArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsImagesContentLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsImagesContentLibrary {
+		return vs[0].([]SupervisorV2WorkloadsImagesContentLibrary)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsImagesContentLibraryOutput)
+}
+
+type SupervisorV2WorkloadsImagesRegistry struct {
+	// The certificate authority chain of the image registry.
+	CaChain string `pulumi:"caChain"`
+	// The IP address of the image registry.
+	Hostname string `pulumi:"hostname"`
+	// The password of the image registry.
+	Password string `pulumi:"password"`
+	// The port of the image registry.
+	Port int `pulumi:"port"`
+	// The username of the image registry.
+	Username string `pulumi:"username"`
+}
+
+// SupervisorV2WorkloadsImagesRegistryInput is an input type that accepts SupervisorV2WorkloadsImagesRegistryArgs and SupervisorV2WorkloadsImagesRegistryOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsImagesRegistryInput` via:
+//
+//	SupervisorV2WorkloadsImagesRegistryArgs{...}
+type SupervisorV2WorkloadsImagesRegistryInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsImagesRegistryOutput() SupervisorV2WorkloadsImagesRegistryOutput
+	ToSupervisorV2WorkloadsImagesRegistryOutputWithContext(context.Context) SupervisorV2WorkloadsImagesRegistryOutput
+}
+
+type SupervisorV2WorkloadsImagesRegistryArgs struct {
+	// The certificate authority chain of the image registry.
+	CaChain pulumi.StringInput `pulumi:"caChain"`
+	// The IP address of the image registry.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The password of the image registry.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The port of the image registry.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The username of the image registry.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SupervisorV2WorkloadsImagesRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsImagesRegistry)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsImagesRegistryArgs) ToSupervisorV2WorkloadsImagesRegistryOutput() SupervisorV2WorkloadsImagesRegistryOutput {
+	return i.ToSupervisorV2WorkloadsImagesRegistryOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsImagesRegistryArgs) ToSupervisorV2WorkloadsImagesRegistryOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesRegistryOutput)
+}
+
+func (i SupervisorV2WorkloadsImagesRegistryArgs) ToSupervisorV2WorkloadsImagesRegistryPtrOutput() SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return i.ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsImagesRegistryArgs) ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesRegistryOutput).ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsImagesRegistryPtrInput is an input type that accepts SupervisorV2WorkloadsImagesRegistryArgs, SupervisorV2WorkloadsImagesRegistryPtr and SupervisorV2WorkloadsImagesRegistryPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsImagesRegistryPtrInput` via:
+//
+//	        SupervisorV2WorkloadsImagesRegistryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsImagesRegistryPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsImagesRegistryPtrOutput() SupervisorV2WorkloadsImagesRegistryPtrOutput
+	ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(context.Context) SupervisorV2WorkloadsImagesRegistryPtrOutput
+}
+
+type supervisorV2WorkloadsImagesRegistryPtrType SupervisorV2WorkloadsImagesRegistryArgs
+
+func SupervisorV2WorkloadsImagesRegistryPtr(v *SupervisorV2WorkloadsImagesRegistryArgs) SupervisorV2WorkloadsImagesRegistryPtrInput {
+	return (*supervisorV2WorkloadsImagesRegistryPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsImagesRegistryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsImagesRegistry)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsImagesRegistryPtrType) ToSupervisorV2WorkloadsImagesRegistryPtrOutput() SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return i.ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsImagesRegistryPtrType) ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsImagesRegistryPtrOutput)
+}
+
+type SupervisorV2WorkloadsImagesRegistryOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsImagesRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsImagesRegistry)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsImagesRegistryOutput) ToSupervisorV2WorkloadsImagesRegistryOutput() SupervisorV2WorkloadsImagesRegistryOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesRegistryOutput) ToSupervisorV2WorkloadsImagesRegistryOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesRegistryOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesRegistryOutput) ToSupervisorV2WorkloadsImagesRegistryPtrOutput() SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return o.ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsImagesRegistryOutput) ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsImagesRegistry) *SupervisorV2WorkloadsImagesRegistry {
+		return &v
+	}).(SupervisorV2WorkloadsImagesRegistryPtrOutput)
+}
+
+// The certificate authority chain of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryOutput) CaChain() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesRegistry) string { return v.CaChain }).(pulumi.StringOutput)
+}
+
+// The IP address of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesRegistry) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The password of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesRegistry) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The port of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesRegistry) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The username of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsImagesRegistry) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SupervisorV2WorkloadsImagesRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsImagesRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsImagesRegistry)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) ToSupervisorV2WorkloadsImagesRegistryPtrOutput() SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) ToSupervisorV2WorkloadsImagesRegistryPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsImagesRegistryPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) Elem() SupervisorV2WorkloadsImagesRegistryOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImagesRegistry) SupervisorV2WorkloadsImagesRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsImagesRegistry
+		return ret
+	}).(SupervisorV2WorkloadsImagesRegistryOutput)
+}
+
+// The certificate authority chain of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) CaChain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImagesRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaChain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImagesRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImagesRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImagesRegistry) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The username of the image registry.
+func (o SupervisorV2WorkloadsImagesRegistryPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsImagesRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptions struct {
+	// Security configuration.
+	//
+	// <a id="nestedblock--workloads-images"></a>
+	Security *SupervisorV2WorkloadsKubeApiServerOptionsSecurity `pulumi:"security"`
+}
+
+// SupervisorV2WorkloadsKubeApiServerOptionsInput is an input type that accepts SupervisorV2WorkloadsKubeApiServerOptionsArgs and SupervisorV2WorkloadsKubeApiServerOptionsOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsKubeApiServerOptionsInput` via:
+//
+//	SupervisorV2WorkloadsKubeApiServerOptionsArgs{...}
+type SupervisorV2WorkloadsKubeApiServerOptionsInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsKubeApiServerOptionsOutput() SupervisorV2WorkloadsKubeApiServerOptionsOutput
+	ToSupervisorV2WorkloadsKubeApiServerOptionsOutputWithContext(context.Context) SupervisorV2WorkloadsKubeApiServerOptionsOutput
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptionsArgs struct {
+	// Security configuration.
+	//
+	// <a id="nestedblock--workloads-images"></a>
+	Security SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrInput `pulumi:"security"`
+}
+
+func (SupervisorV2WorkloadsKubeApiServerOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptions)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsOutput() SupervisorV2WorkloadsKubeApiServerOptionsOutput {
+	return i.ToSupervisorV2WorkloadsKubeApiServerOptionsOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsKubeApiServerOptionsOutput)
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return i.ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsKubeApiServerOptionsOutput).ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsKubeApiServerOptionsPtrInput is an input type that accepts SupervisorV2WorkloadsKubeApiServerOptionsArgs, SupervisorV2WorkloadsKubeApiServerOptionsPtr and SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsKubeApiServerOptionsPtrInput` via:
+//
+//	        SupervisorV2WorkloadsKubeApiServerOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsKubeApiServerOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput
+	ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(context.Context) SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput
+}
+
+type supervisorV2WorkloadsKubeApiServerOptionsPtrType SupervisorV2WorkloadsKubeApiServerOptionsArgs
+
+func SupervisorV2WorkloadsKubeApiServerOptionsPtr(v *SupervisorV2WorkloadsKubeApiServerOptionsArgs) SupervisorV2WorkloadsKubeApiServerOptionsPtrInput {
+	return (*supervisorV2WorkloadsKubeApiServerOptionsPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsKubeApiServerOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsKubeApiServerOptions)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsKubeApiServerOptionsPtrType) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return i.ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsKubeApiServerOptionsPtrType) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput)
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptionsOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsKubeApiServerOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptions)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsOutput() SupervisorV2WorkloadsKubeApiServerOptionsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return o.ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsKubeApiServerOptions) *SupervisorV2WorkloadsKubeApiServerOptions {
+		return &v
+	}).(SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput)
+}
+
+// Security configuration.
+//
+// <a id="nestedblock--workloads-images"></a>
+func (o SupervisorV2WorkloadsKubeApiServerOptionsOutput) Security() SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsKubeApiServerOptions) *SupervisorV2WorkloadsKubeApiServerOptionsSecurity {
+		return v.Security
+	}).(SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput)
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsKubeApiServerOptions)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput) Elem() SupervisorV2WorkloadsKubeApiServerOptionsOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsKubeApiServerOptions) SupervisorV2WorkloadsKubeApiServerOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsKubeApiServerOptions
+		return ret
+	}).(SupervisorV2WorkloadsKubeApiServerOptionsOutput)
+}
+
+// Security configuration.
+//
+// <a id="nestedblock--workloads-images"></a>
+func (o SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput) Security() SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsKubeApiServerOptions) *SupervisorV2WorkloadsKubeApiServerOptionsSecurity {
+		if v == nil {
+			return nil
+		}
+		return v.Security
+	}).(SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput)
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptionsSecurity struct {
+	// List of DNS names to include in the certificate.
+	CertificateDnsNames []string `pulumi:"certificateDnsNames"`
+}
+
+// SupervisorV2WorkloadsKubeApiServerOptionsSecurityInput is an input type that accepts SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs and SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsKubeApiServerOptionsSecurityInput` via:
+//
+//	SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs{...}
+type SupervisorV2WorkloadsKubeApiServerOptionsSecurityInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput
+	ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityOutputWithContext(context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs struct {
+	// List of DNS names to include in the certificate.
+	CertificateDnsNames pulumi.StringArrayInput `pulumi:"certificateDnsNames"`
+}
+
+func (SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptionsSecurity)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput {
+	return i.ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput)
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return i.ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput).ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrInput is an input type that accepts SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs, SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtr and SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrInput` via:
+//
+//	        SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput
+	ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput
+}
+
+type supervisorV2WorkloadsKubeApiServerOptionsSecurityPtrType SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs
+
+func SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtr(v *SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs) SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrInput {
+	return (*supervisorV2WorkloadsKubeApiServerOptionsSecurityPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsKubeApiServerOptionsSecurityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsKubeApiServerOptionsSecurity)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsKubeApiServerOptionsSecurityPtrType) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return i.ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsKubeApiServerOptionsSecurityPtrType) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput)
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptionsSecurity)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return o.ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsKubeApiServerOptionsSecurity) *SupervisorV2WorkloadsKubeApiServerOptionsSecurity {
+		return &v
+	}).(SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput)
+}
+
+// List of DNS names to include in the certificate.
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput) CertificateDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsKubeApiServerOptionsSecurity) []string { return v.CertificateDnsNames }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsKubeApiServerOptionsSecurity)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput() SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput) ToSupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput) Elem() SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsKubeApiServerOptionsSecurity) SupervisorV2WorkloadsKubeApiServerOptionsSecurity {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsKubeApiServerOptionsSecurity
+		return ret
+	}).(SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput)
+}
+
+// List of DNS names to include in the certificate.
+func (o SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput) CertificateDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsKubeApiServerOptionsSecurity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetwork struct {
+	// IP Management configuration.
+	IpManagement *SupervisorV2WorkloadsNetworkIpManagement `pulumi:"ipManagement"`
+	// A unique identifier for the workload network.
+	Network *string `pulumi:"network"`
+	// Configuration for NSX-T backing.
+	Nsx *SupervisorV2WorkloadsNetworkNsx `pulumi:"nsx"`
+	// Configuration for NSX VPC backing.
+	NsxVpc *SupervisorV2WorkloadsNetworkNsxVpc `pulumi:"nsxVpc"`
+	// Network services (e.g DNS, NTP) configuration.
+	Services *SupervisorV2WorkloadsNetworkServices `pulumi:"services"`
+	// Configuration for vSphere network backing.
+	Vsphere *SupervisorV2WorkloadsNetworkVsphere `pulumi:"vsphere"`
+}
+
+// SupervisorV2WorkloadsNetworkInput is an input type that accepts SupervisorV2WorkloadsNetworkArgs and SupervisorV2WorkloadsNetworkOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkInput` via:
+//
+//	SupervisorV2WorkloadsNetworkArgs{...}
+type SupervisorV2WorkloadsNetworkInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkOutput() SupervisorV2WorkloadsNetworkOutput
+	ToSupervisorV2WorkloadsNetworkOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkOutput
+}
+
+type SupervisorV2WorkloadsNetworkArgs struct {
+	// IP Management configuration.
+	IpManagement SupervisorV2WorkloadsNetworkIpManagementPtrInput `pulumi:"ipManagement"`
+	// A unique identifier for the workload network.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Configuration for NSX-T backing.
+	Nsx SupervisorV2WorkloadsNetworkNsxPtrInput `pulumi:"nsx"`
+	// Configuration for NSX VPC backing.
+	NsxVpc SupervisorV2WorkloadsNetworkNsxVpcPtrInput `pulumi:"nsxVpc"`
+	// Network services (e.g DNS, NTP) configuration.
+	Services SupervisorV2WorkloadsNetworkServicesPtrInput `pulumi:"services"`
+	// Configuration for vSphere network backing.
+	Vsphere SupervisorV2WorkloadsNetworkVspherePtrInput `pulumi:"vsphere"`
+}
+
+func (SupervisorV2WorkloadsNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetwork)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkArgs) ToSupervisorV2WorkloadsNetworkOutput() SupervisorV2WorkloadsNetworkOutput {
+	return i.ToSupervisorV2WorkloadsNetworkOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkArgs) ToSupervisorV2WorkloadsNetworkOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkArgs) ToSupervisorV2WorkloadsNetworkPtrOutput() SupervisorV2WorkloadsNetworkPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkArgs) ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkOutput).ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkPtrInput is an input type that accepts SupervisorV2WorkloadsNetworkArgs, SupervisorV2WorkloadsNetworkPtr and SupervisorV2WorkloadsNetworkPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkPtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkPtrOutput() SupervisorV2WorkloadsNetworkPtrOutput
+	ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkPtrOutput
+}
+
+type supervisorV2WorkloadsNetworkPtrType SupervisorV2WorkloadsNetworkArgs
+
+func SupervisorV2WorkloadsNetworkPtr(v *SupervisorV2WorkloadsNetworkArgs) SupervisorV2WorkloadsNetworkPtrInput {
+	return (*supervisorV2WorkloadsNetworkPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetwork)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkPtrType) ToSupervisorV2WorkloadsNetworkPtrOutput() SupervisorV2WorkloadsNetworkPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkPtrType) ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetwork)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkOutput) ToSupervisorV2WorkloadsNetworkOutput() SupervisorV2WorkloadsNetworkOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkOutput) ToSupervisorV2WorkloadsNetworkOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkOutput) ToSupervisorV2WorkloadsNetworkPtrOutput() SupervisorV2WorkloadsNetworkPtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkOutput) ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetwork {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkPtrOutput)
+}
+
+// IP Management configuration.
+func (o SupervisorV2WorkloadsNetworkOutput) IpManagement() SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkIpManagement { return v.IpManagement }).(SupervisorV2WorkloadsNetworkIpManagementPtrOutput)
+}
+
+// A unique identifier for the workload network.
+func (o SupervisorV2WorkloadsNetworkOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetwork) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for NSX-T backing.
+func (o SupervisorV2WorkloadsNetworkOutput) Nsx() SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkNsx { return v.Nsx }).(SupervisorV2WorkloadsNetworkNsxPtrOutput)
+}
+
+// Configuration for NSX VPC backing.
+func (o SupervisorV2WorkloadsNetworkOutput) NsxVpc() SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkNsxVpc { return v.NsxVpc }).(SupervisorV2WorkloadsNetworkNsxVpcPtrOutput)
+}
+
+// Network services (e.g DNS, NTP) configuration.
+func (o SupervisorV2WorkloadsNetworkOutput) Services() SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkServices { return v.Services }).(SupervisorV2WorkloadsNetworkServicesPtrOutput)
+}
+
+// Configuration for vSphere network backing.
+func (o SupervisorV2WorkloadsNetworkOutput) Vsphere() SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkVsphere { return v.Vsphere }).(SupervisorV2WorkloadsNetworkVspherePtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetwork)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkPtrOutput) ToSupervisorV2WorkloadsNetworkPtrOutput() SupervisorV2WorkloadsNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkPtrOutput) ToSupervisorV2WorkloadsNetworkPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkPtrOutput) Elem() SupervisorV2WorkloadsNetworkOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetwork) SupervisorV2WorkloadsNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetwork
+		return ret
+	}).(SupervisorV2WorkloadsNetworkOutput)
+}
+
+// IP Management configuration.
+func (o SupervisorV2WorkloadsNetworkPtrOutput) IpManagement() SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkIpManagement {
+		if v == nil {
+			return nil
+		}
+		return v.IpManagement
+	}).(SupervisorV2WorkloadsNetworkIpManagementPtrOutput)
+}
+
+// A unique identifier for the workload network.
+func (o SupervisorV2WorkloadsNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for NSX-T backing.
+func (o SupervisorV2WorkloadsNetworkPtrOutput) Nsx() SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkNsx {
+		if v == nil {
+			return nil
+		}
+		return v.Nsx
+	}).(SupervisorV2WorkloadsNetworkNsxPtrOutput)
+}
+
+// Configuration for NSX VPC backing.
+func (o SupervisorV2WorkloadsNetworkPtrOutput) NsxVpc() SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkNsxVpc {
+		if v == nil {
+			return nil
+		}
+		return v.NsxVpc
+	}).(SupervisorV2WorkloadsNetworkNsxVpcPtrOutput)
+}
+
+// Network services (e.g DNS, NTP) configuration.
+func (o SupervisorV2WorkloadsNetworkPtrOutput) Services() SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkServices {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(SupervisorV2WorkloadsNetworkServicesPtrOutput)
+}
+
+// Configuration for vSphere network backing.
+func (o SupervisorV2WorkloadsNetworkPtrOutput) Vsphere() SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetwork) *SupervisorV2WorkloadsNetworkVsphere {
+		if v == nil {
+			return nil
+		}
+		return v.Vsphere
+	}).(SupervisorV2WorkloadsNetworkVspherePtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagement struct {
+	// Whether to use DHCP or not.
+	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
+	// The IP address of the network gateway.
+	GatewayAddress *string `pulumi:"gatewayAddress"`
+	// IP assignment configuration.
+	IpAssignments []SupervisorV2WorkloadsNetworkIpManagementIpAssignment `pulumi:"ipAssignments"`
+}
+
+// SupervisorV2WorkloadsNetworkIpManagementInput is an input type that accepts SupervisorV2WorkloadsNetworkIpManagementArgs and SupervisorV2WorkloadsNetworkIpManagementOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkIpManagementInput` via:
+//
+//	SupervisorV2WorkloadsNetworkIpManagementArgs{...}
+type SupervisorV2WorkloadsNetworkIpManagementInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkIpManagementOutput() SupervisorV2WorkloadsNetworkIpManagementOutput
+	ToSupervisorV2WorkloadsNetworkIpManagementOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkIpManagementOutput
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementArgs struct {
+	// Whether to use DHCP or not.
+	DhcpEnabled pulumi.BoolPtrInput `pulumi:"dhcpEnabled"`
+	// The IP address of the network gateway.
+	GatewayAddress pulumi.StringPtrInput `pulumi:"gatewayAddress"`
+	// IP assignment configuration.
+	IpAssignments SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayInput `pulumi:"ipAssignments"`
+}
+
+func (SupervisorV2WorkloadsNetworkIpManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagement)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementArgs) ToSupervisorV2WorkloadsNetworkIpManagementOutput() SupervisorV2WorkloadsNetworkIpManagementOutput {
+	return i.ToSupervisorV2WorkloadsNetworkIpManagementOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementArgs) ToSupervisorV2WorkloadsNetworkIpManagementOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkIpManagementOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementArgs) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutput() SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementArgs) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkIpManagementOutput).ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkIpManagementPtrInput is an input type that accepts SupervisorV2WorkloadsNetworkIpManagementArgs, SupervisorV2WorkloadsNetworkIpManagementPtr and SupervisorV2WorkloadsNetworkIpManagementPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkIpManagementPtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkIpManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkIpManagementPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkIpManagementPtrOutput() SupervisorV2WorkloadsNetworkIpManagementPtrOutput
+	ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkIpManagementPtrOutput
+}
+
+type supervisorV2WorkloadsNetworkIpManagementPtrType SupervisorV2WorkloadsNetworkIpManagementArgs
+
+func SupervisorV2WorkloadsNetworkIpManagementPtr(v *SupervisorV2WorkloadsNetworkIpManagementArgs) SupervisorV2WorkloadsNetworkIpManagementPtrInput {
+	return (*supervisorV2WorkloadsNetworkIpManagementPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkIpManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkIpManagement)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkIpManagementPtrType) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutput() SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkIpManagementPtrType) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkIpManagementPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkIpManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagement)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementOutput) ToSupervisorV2WorkloadsNetworkIpManagementOutput() SupervisorV2WorkloadsNetworkIpManagementOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementOutput) ToSupervisorV2WorkloadsNetworkIpManagementOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementOutput) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutput() SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementOutput) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetworkIpManagement) *SupervisorV2WorkloadsNetworkIpManagement {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkIpManagementPtrOutput)
+}
+
+// Whether to use DHCP or not.
+func (o SupervisorV2WorkloadsNetworkIpManagementOutput) DhcpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkIpManagement) *bool { return v.DhcpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The IP address of the network gateway.
+func (o SupervisorV2WorkloadsNetworkIpManagementOutput) GatewayAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkIpManagement) *string { return v.GatewayAddress }).(pulumi.StringPtrOutput)
+}
+
+// IP assignment configuration.
+func (o SupervisorV2WorkloadsNetworkIpManagementOutput) IpAssignments() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkIpManagement) []SupervisorV2WorkloadsNetworkIpManagementIpAssignment {
+		return v.IpAssignments
+	}).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkIpManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkIpManagement)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementPtrOutput) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutput() SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementPtrOutput) ToSupervisorV2WorkloadsNetworkIpManagementPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementPtrOutput) Elem() SupervisorV2WorkloadsNetworkIpManagementOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkIpManagement) SupervisorV2WorkloadsNetworkIpManagement {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetworkIpManagement
+		return ret
+	}).(SupervisorV2WorkloadsNetworkIpManagementOutput)
+}
+
+// Whether to use DHCP or not.
+func (o SupervisorV2WorkloadsNetworkIpManagementPtrOutput) DhcpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkIpManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The IP address of the network gateway.
+func (o SupervisorV2WorkloadsNetworkIpManagementPtrOutput) GatewayAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkIpManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP assignment configuration.
+func (o SupervisorV2WorkloadsNetworkIpManagementPtrOutput) IpAssignments() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkIpManagement) []SupervisorV2WorkloadsNetworkIpManagementIpAssignment {
+		if v == nil {
+			return nil
+		}
+		return v.IpAssignments
+	}).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignment struct {
+	// The type of the assignee.
+	Assignee *string `pulumi:"assignee"`
+	// The available IP addresses that can be consumed by Supervisor to run the cluster.
+	Ranges []SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange `pulumi:"ranges"`
+}
+
+// SupervisorV2WorkloadsNetworkIpManagementIpAssignmentInput is an input type that accepts SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs and SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkIpManagementIpAssignmentInput` via:
+//
+//	SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs{...}
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs struct {
+	// The type of the assignee.
+	Assignee pulumi.StringPtrInput `pulumi:"assignee"`
+	// The available IP addresses that can be consumed by Supervisor to run the cluster.
+	Ranges SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayInput `pulumi:"ranges"`
+}
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput {
+	return i.ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput)
+}
+
+// SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayInput is an input type that accepts SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArray and SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayInput` via:
+//
+//	SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArray{ SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs{...} }
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArray []SupervisorV2WorkloadsNetworkIpManagementIpAssignmentInput
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArray) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput {
+	return i.ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArray) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput {
+	return o
+}
+
+// The type of the assignee.
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput) Assignee() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkIpManagementIpAssignment) *string { return v.Assignee }).(pulumi.StringPtrOutput)
+}
+
+// The available IP addresses that can be consumed by Supervisor to run the cluster.
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput) Ranges() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkIpManagementIpAssignment) []SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange {
+		return v.Ranges
+	}).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsNetworkIpManagementIpAssignment)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsNetworkIpManagementIpAssignment {
+		return vs[0].([]SupervisorV2WorkloadsNetworkIpManagementIpAssignment)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange struct {
+	// The starting IP address of the range.
+	Address string `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count int `pulumi:"count"`
+}
+
+// SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeInput is an input type that accepts SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs and SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeInput` via:
+//
+//	SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs{...}
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs struct {
+	// The starting IP address of the range.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The number of IP addresses in the range.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput {
+	return i.ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput)
+}
+
+// SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayInput is an input type that accepts SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArray and SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayInput` via:
+//
+//	SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArray{ SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs{...} }
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput
+	ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArray []SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeInput
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArray) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return i.ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArray) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput {
+	return o
+}
+
+// The starting IP address of the range.
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The number of IP addresses in the range.
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput() SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput) ToSupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange {
+		return vs[0].([]SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsx struct {
+	// The identifier of the vSphere Distributed Switch.
+	Dvs string `pulumi:"dvs"`
+	// The size of the subnet reserved for namespace segments.
+	NamespaceSubnetPrefix *int `pulumi:"namespaceSubnetPrefix"`
+}
+
+// SupervisorV2WorkloadsNetworkNsxInput is an input type that accepts SupervisorV2WorkloadsNetworkNsxArgs and SupervisorV2WorkloadsNetworkNsxOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkNsxInput` via:
+//
+//	SupervisorV2WorkloadsNetworkNsxArgs{...}
+type SupervisorV2WorkloadsNetworkNsxInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkNsxOutput() SupervisorV2WorkloadsNetworkNsxOutput
+	ToSupervisorV2WorkloadsNetworkNsxOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkNsxOutput
+}
+
+type SupervisorV2WorkloadsNetworkNsxArgs struct {
+	// The identifier of the vSphere Distributed Switch.
+	Dvs pulumi.StringInput `pulumi:"dvs"`
+	// The size of the subnet reserved for namespace segments.
+	NamespaceSubnetPrefix pulumi.IntPtrInput `pulumi:"namespaceSubnetPrefix"`
+}
+
+func (SupervisorV2WorkloadsNetworkNsxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsx)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxArgs) ToSupervisorV2WorkloadsNetworkNsxOutput() SupervisorV2WorkloadsNetworkNsxOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxArgs) ToSupervisorV2WorkloadsNetworkNsxOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxArgs) ToSupervisorV2WorkloadsNetworkNsxPtrOutput() SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxArgs) ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxOutput).ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkNsxPtrInput is an input type that accepts SupervisorV2WorkloadsNetworkNsxArgs, SupervisorV2WorkloadsNetworkNsxPtr and SupervisorV2WorkloadsNetworkNsxPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkNsxPtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkNsxArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkNsxPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkNsxPtrOutput() SupervisorV2WorkloadsNetworkNsxPtrOutput
+	ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkNsxPtrOutput
+}
+
+type supervisorV2WorkloadsNetworkNsxPtrType SupervisorV2WorkloadsNetworkNsxArgs
+
+func SupervisorV2WorkloadsNetworkNsxPtr(v *SupervisorV2WorkloadsNetworkNsxArgs) SupervisorV2WorkloadsNetworkNsxPtrInput {
+	return (*supervisorV2WorkloadsNetworkNsxPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkNsxPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkNsx)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkNsxPtrType) ToSupervisorV2WorkloadsNetworkNsxPtrOutput() SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkNsxPtrType) ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkNsxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsx)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxOutput) ToSupervisorV2WorkloadsNetworkNsxOutput() SupervisorV2WorkloadsNetworkNsxOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxOutput) ToSupervisorV2WorkloadsNetworkNsxOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxOutput) ToSupervisorV2WorkloadsNetworkNsxPtrOutput() SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxOutput) ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetworkNsx) *SupervisorV2WorkloadsNetworkNsx {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkNsxPtrOutput)
+}
+
+// The identifier of the vSphere Distributed Switch.
+func (o SupervisorV2WorkloadsNetworkNsxOutput) Dvs() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkNsx) string { return v.Dvs }).(pulumi.StringOutput)
+}
+
+// The size of the subnet reserved for namespace segments.
+func (o SupervisorV2WorkloadsNetworkNsxOutput) NamespaceSubnetPrefix() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkNsx) *int { return v.NamespaceSubnetPrefix }).(pulumi.IntPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkNsxPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkNsx)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxPtrOutput) ToSupervisorV2WorkloadsNetworkNsxPtrOutput() SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxPtrOutput) ToSupervisorV2WorkloadsNetworkNsxPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxPtrOutput) Elem() SupervisorV2WorkloadsNetworkNsxOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkNsx) SupervisorV2WorkloadsNetworkNsx {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetworkNsx
+		return ret
+	}).(SupervisorV2WorkloadsNetworkNsxOutput)
+}
+
+// The identifier of the vSphere Distributed Switch.
+func (o SupervisorV2WorkloadsNetworkNsxPtrOutput) Dvs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkNsx) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Dvs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The size of the subnet reserved for namespace segments.
+func (o SupervisorV2WorkloadsNetworkNsxPtrOutput) NamespaceSubnetPrefix() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkNsx) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NamespaceSubnetPrefix
+	}).(pulumi.IntPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpc struct {
+	// Specifies CIDR blocks from which private subnets are allocated.
+	DefaultPrivateCidrs []SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr `pulumi:"defaultPrivateCidrs"`
+	// The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+	NsxProject *string `pulumi:"nsxProject"`
+	// The identifier of the VPC Connectivity Profile.
+	VpcConnectivityProfile *string `pulumi:"vpcConnectivityProfile"`
+}
+
+// SupervisorV2WorkloadsNetworkNsxVpcInput is an input type that accepts SupervisorV2WorkloadsNetworkNsxVpcArgs and SupervisorV2WorkloadsNetworkNsxVpcOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkNsxVpcInput` via:
+//
+//	SupervisorV2WorkloadsNetworkNsxVpcArgs{...}
+type SupervisorV2WorkloadsNetworkNsxVpcInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkNsxVpcOutput() SupervisorV2WorkloadsNetworkNsxVpcOutput
+	ToSupervisorV2WorkloadsNetworkNsxVpcOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkNsxVpcOutput
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcArgs struct {
+	// Specifies CIDR blocks from which private subnets are allocated.
+	DefaultPrivateCidrs SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayInput `pulumi:"defaultPrivateCidrs"`
+	// The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+	NsxProject pulumi.StringPtrInput `pulumi:"nsxProject"`
+	// The identifier of the VPC Connectivity Profile.
+	VpcConnectivityProfile pulumi.StringPtrInput `pulumi:"vpcConnectivityProfile"`
+}
+
+func (SupervisorV2WorkloadsNetworkNsxVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpc)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcArgs) ToSupervisorV2WorkloadsNetworkNsxVpcOutput() SupervisorV2WorkloadsNetworkNsxVpcOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxVpcOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcArgs) ToSupervisorV2WorkloadsNetworkNsxVpcOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxVpcOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcArgs) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutput() SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcArgs) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxVpcOutput).ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkNsxVpcPtrInput is an input type that accepts SupervisorV2WorkloadsNetworkNsxVpcArgs, SupervisorV2WorkloadsNetworkNsxVpcPtr and SupervisorV2WorkloadsNetworkNsxVpcPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkNsxVpcPtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkNsxVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkNsxVpcPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutput() SupervisorV2WorkloadsNetworkNsxVpcPtrOutput
+	ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkNsxVpcPtrOutput
+}
+
+type supervisorV2WorkloadsNetworkNsxVpcPtrType SupervisorV2WorkloadsNetworkNsxVpcArgs
+
+func SupervisorV2WorkloadsNetworkNsxVpcPtr(v *SupervisorV2WorkloadsNetworkNsxVpcArgs) SupervisorV2WorkloadsNetworkNsxVpcPtrInput {
+	return (*supervisorV2WorkloadsNetworkNsxVpcPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkNsxVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkNsxVpc)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkNsxVpcPtrType) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutput() SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkNsxVpcPtrType) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxVpcPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkNsxVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpc)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcOutput) ToSupervisorV2WorkloadsNetworkNsxVpcOutput() SupervisorV2WorkloadsNetworkNsxVpcOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcOutput) ToSupervisorV2WorkloadsNetworkNsxVpcOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcOutput) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutput() SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcOutput) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetworkNsxVpc) *SupervisorV2WorkloadsNetworkNsxVpc {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkNsxVpcPtrOutput)
+}
+
+// Specifies CIDR blocks from which private subnets are allocated.
+func (o SupervisorV2WorkloadsNetworkNsxVpcOutput) DefaultPrivateCidrs() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkNsxVpc) []SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr {
+		return v.DefaultPrivateCidrs
+	}).(SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput)
+}
+
+// The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+func (o SupervisorV2WorkloadsNetworkNsxVpcOutput) NsxProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkNsxVpc) *string { return v.NsxProject }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the VPC Connectivity Profile.
+func (o SupervisorV2WorkloadsNetworkNsxVpcOutput) VpcConnectivityProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkNsxVpc) *string { return v.VpcConnectivityProfile }).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkNsxVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkNsxVpc)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcPtrOutput) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutput() SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcPtrOutput) ToSupervisorV2WorkloadsNetworkNsxVpcPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcPtrOutput) Elem() SupervisorV2WorkloadsNetworkNsxVpcOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkNsxVpc) SupervisorV2WorkloadsNetworkNsxVpc {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetworkNsxVpc
+		return ret
+	}).(SupervisorV2WorkloadsNetworkNsxVpcOutput)
+}
+
+// Specifies CIDR blocks from which private subnets are allocated.
+func (o SupervisorV2WorkloadsNetworkNsxVpcPtrOutput) DefaultPrivateCidrs() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkNsxVpc) []SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultPrivateCidrs
+	}).(SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput)
+}
+
+// The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+func (o SupervisorV2WorkloadsNetworkNsxVpcPtrOutput) NsxProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkNsxVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NsxProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the VPC Connectivity Profile.
+func (o SupervisorV2WorkloadsNetworkNsxVpcPtrOutput) VpcConnectivityProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkNsxVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcConnectivityProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr struct {
+	// The starting IPv4 address of the CIDR block.
+	Address string `pulumi:"address"`
+	// The number of addresses in the CIDR block.
+	Prefix int `pulumi:"prefix"`
+}
+
+// SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrInput is an input type that accepts SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs and SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrInput` via:
+//
+//	SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs{...}
+type SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput
+	ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs struct {
+	// The starting IPv4 address of the CIDR block.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The number of addresses in the CIDR block.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+}
+
+func (SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput)
+}
+
+// SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayInput is an input type that accepts SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArray and SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayInput` via:
+//
+//	SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArray{ SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs{...} }
+type SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput
+	ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArray []SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrInput
+
+func (SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArray) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput {
+	return i.ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArray) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput {
+	return o
+}
+
+// The starting IPv4 address of the CIDR block.
+func (o SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The number of addresses in the CIDR block.
+func (o SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+type SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput() SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput) ToSupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput) Index(i pulumi.IntInput) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr {
+		return vs[0].([]SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr)[vs[1].(int)]
+	}).(SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServices struct {
+	// The DNS configuration.
+	Dns *SupervisorV2WorkloadsNetworkServicesDns `pulumi:"dns"`
+	// The NTP configuration.
+	Ntp *SupervisorV2WorkloadsNetworkServicesNtp `pulumi:"ntp"`
+}
+
+// SupervisorV2WorkloadsNetworkServicesInput is an input type that accepts SupervisorV2WorkloadsNetworkServicesArgs and SupervisorV2WorkloadsNetworkServicesOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkServicesInput` via:
+//
+//	SupervisorV2WorkloadsNetworkServicesArgs{...}
+type SupervisorV2WorkloadsNetworkServicesInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkServicesOutput() SupervisorV2WorkloadsNetworkServicesOutput
+	ToSupervisorV2WorkloadsNetworkServicesOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkServicesOutput
+}
+
+type SupervisorV2WorkloadsNetworkServicesArgs struct {
+	// The DNS configuration.
+	Dns SupervisorV2WorkloadsNetworkServicesDnsPtrInput `pulumi:"dns"`
+	// The NTP configuration.
+	Ntp SupervisorV2WorkloadsNetworkServicesNtpPtrInput `pulumi:"ntp"`
+}
+
+func (SupervisorV2WorkloadsNetworkServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkServices)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesArgs) ToSupervisorV2WorkloadsNetworkServicesOutput() SupervisorV2WorkloadsNetworkServicesOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesArgs) ToSupervisorV2WorkloadsNetworkServicesOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesArgs) ToSupervisorV2WorkloadsNetworkServicesPtrOutput() SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesArgs) ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesOutput).ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkServicesPtrInput is an input type that accepts SupervisorV2WorkloadsNetworkServicesArgs, SupervisorV2WorkloadsNetworkServicesPtr and SupervisorV2WorkloadsNetworkServicesPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkServicesPtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkServicesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkServicesPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkServicesPtrOutput() SupervisorV2WorkloadsNetworkServicesPtrOutput
+	ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkServicesPtrOutput
+}
+
+type supervisorV2WorkloadsNetworkServicesPtrType SupervisorV2WorkloadsNetworkServicesArgs
+
+func SupervisorV2WorkloadsNetworkServicesPtr(v *SupervisorV2WorkloadsNetworkServicesArgs) SupervisorV2WorkloadsNetworkServicesPtrInput {
+	return (*supervisorV2WorkloadsNetworkServicesPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkServices)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkServicesPtrType) ToSupervisorV2WorkloadsNetworkServicesPtrOutput() SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkServicesPtrType) ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkServices)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesOutput) ToSupervisorV2WorkloadsNetworkServicesOutput() SupervisorV2WorkloadsNetworkServicesOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesOutput) ToSupervisorV2WorkloadsNetworkServicesOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesOutput) ToSupervisorV2WorkloadsNetworkServicesPtrOutput() SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesOutput) ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetworkServices) *SupervisorV2WorkloadsNetworkServices {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkServicesPtrOutput)
+}
+
+// The DNS configuration.
+func (o SupervisorV2WorkloadsNetworkServicesOutput) Dns() SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkServices) *SupervisorV2WorkloadsNetworkServicesDns { return v.Dns }).(SupervisorV2WorkloadsNetworkServicesDnsPtrOutput)
+}
+
+// The NTP configuration.
+func (o SupervisorV2WorkloadsNetworkServicesOutput) Ntp() SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkServices) *SupervisorV2WorkloadsNetworkServicesNtp { return v.Ntp }).(SupervisorV2WorkloadsNetworkServicesNtpPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkServices)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesPtrOutput) ToSupervisorV2WorkloadsNetworkServicesPtrOutput() SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesPtrOutput) ToSupervisorV2WorkloadsNetworkServicesPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesPtrOutput) Elem() SupervisorV2WorkloadsNetworkServicesOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServices) SupervisorV2WorkloadsNetworkServices {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetworkServices
+		return ret
+	}).(SupervisorV2WorkloadsNetworkServicesOutput)
+}
+
+// The DNS configuration.
+func (o SupervisorV2WorkloadsNetworkServicesPtrOutput) Dns() SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServices) *SupervisorV2WorkloadsNetworkServicesDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(SupervisorV2WorkloadsNetworkServicesDnsPtrOutput)
+}
+
+// The NTP configuration.
+func (o SupervisorV2WorkloadsNetworkServicesPtrOutput) Ntp() SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServices) *SupervisorV2WorkloadsNetworkServicesNtp {
+		if v == nil {
+			return nil
+		}
+		return v.Ntp
+	}).(SupervisorV2WorkloadsNetworkServicesNtpPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesDns struct {
+	// The list of search domains.
+	SearchDomains []string `pulumi:"searchDomains"`
+	// The list of DNS servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// SupervisorV2WorkloadsNetworkServicesDnsInput is an input type that accepts SupervisorV2WorkloadsNetworkServicesDnsArgs and SupervisorV2WorkloadsNetworkServicesDnsOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkServicesDnsInput` via:
+//
+//	SupervisorV2WorkloadsNetworkServicesDnsArgs{...}
+type SupervisorV2WorkloadsNetworkServicesDnsInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkServicesDnsOutput() SupervisorV2WorkloadsNetworkServicesDnsOutput
+	ToSupervisorV2WorkloadsNetworkServicesDnsOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkServicesDnsOutput
+}
+
+type SupervisorV2WorkloadsNetworkServicesDnsArgs struct {
+	// The list of search domains.
+	SearchDomains pulumi.StringArrayInput `pulumi:"searchDomains"`
+	// The list of DNS servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (SupervisorV2WorkloadsNetworkServicesDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesDns)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesDnsArgs) ToSupervisorV2WorkloadsNetworkServicesDnsOutput() SupervisorV2WorkloadsNetworkServicesDnsOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesDnsOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesDnsArgs) ToSupervisorV2WorkloadsNetworkServicesDnsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesDnsOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesDnsArgs) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesDnsArgs) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesDnsOutput).ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkServicesDnsPtrInput is an input type that accepts SupervisorV2WorkloadsNetworkServicesDnsArgs, SupervisorV2WorkloadsNetworkServicesDnsPtr and SupervisorV2WorkloadsNetworkServicesDnsPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkServicesDnsPtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkServicesDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkServicesDnsPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsNetworkServicesDnsPtrOutput
+	ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkServicesDnsPtrOutput
+}
+
+type supervisorV2WorkloadsNetworkServicesDnsPtrType SupervisorV2WorkloadsNetworkServicesDnsArgs
+
+func SupervisorV2WorkloadsNetworkServicesDnsPtr(v *SupervisorV2WorkloadsNetworkServicesDnsArgs) SupervisorV2WorkloadsNetworkServicesDnsPtrInput {
+	return (*supervisorV2WorkloadsNetworkServicesDnsPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkServicesDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkServicesDns)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkServicesDnsPtrType) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkServicesDnsPtrType) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesDnsPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesDnsOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkServicesDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesDns)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesDnsOutput) ToSupervisorV2WorkloadsNetworkServicesDnsOutput() SupervisorV2WorkloadsNetworkServicesDnsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesDnsOutput) ToSupervisorV2WorkloadsNetworkServicesDnsOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesDnsOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesDnsOutput) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesDnsOutput) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetworkServicesDns) *SupervisorV2WorkloadsNetworkServicesDns {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkServicesDnsPtrOutput)
+}
+
+// The list of search domains.
+func (o SupervisorV2WorkloadsNetworkServicesDnsOutput) SearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkServicesDns) []string { return v.SearchDomains }).(pulumi.StringArrayOutput)
+}
+
+// The list of DNS servers.
+func (o SupervisorV2WorkloadsNetworkServicesDnsOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkServicesDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkServicesDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkServicesDns)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesDnsPtrOutput) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutput() SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesDnsPtrOutput) ToSupervisorV2WorkloadsNetworkServicesDnsPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesDnsPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesDnsPtrOutput) Elem() SupervisorV2WorkloadsNetworkServicesDnsOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServicesDns) SupervisorV2WorkloadsNetworkServicesDns {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetworkServicesDns
+		return ret
+	}).(SupervisorV2WorkloadsNetworkServicesDnsOutput)
+}
+
+// The list of search domains.
+func (o SupervisorV2WorkloadsNetworkServicesDnsPtrOutput) SearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServicesDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SearchDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of DNS servers.
+func (o SupervisorV2WorkloadsNetworkServicesDnsPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServicesDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesNtp struct {
+	// The list of NTP servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// SupervisorV2WorkloadsNetworkServicesNtpInput is an input type that accepts SupervisorV2WorkloadsNetworkServicesNtpArgs and SupervisorV2WorkloadsNetworkServicesNtpOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkServicesNtpInput` via:
+//
+//	SupervisorV2WorkloadsNetworkServicesNtpArgs{...}
+type SupervisorV2WorkloadsNetworkServicesNtpInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkServicesNtpOutput() SupervisorV2WorkloadsNetworkServicesNtpOutput
+	ToSupervisorV2WorkloadsNetworkServicesNtpOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkServicesNtpOutput
+}
+
+type SupervisorV2WorkloadsNetworkServicesNtpArgs struct {
+	// The list of NTP servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (SupervisorV2WorkloadsNetworkServicesNtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesNtp)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesNtpArgs) ToSupervisorV2WorkloadsNetworkServicesNtpOutput() SupervisorV2WorkloadsNetworkServicesNtpOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesNtpOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesNtpArgs) ToSupervisorV2WorkloadsNetworkServicesNtpOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesNtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesNtpOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesNtpArgs) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkServicesNtpArgs) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesNtpOutput).ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkServicesNtpPtrInput is an input type that accepts SupervisorV2WorkloadsNetworkServicesNtpArgs, SupervisorV2WorkloadsNetworkServicesNtpPtr and SupervisorV2WorkloadsNetworkServicesNtpPtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkServicesNtpPtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkServicesNtpArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkServicesNtpPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsNetworkServicesNtpPtrOutput
+	ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkServicesNtpPtrOutput
+}
+
+type supervisorV2WorkloadsNetworkServicesNtpPtrType SupervisorV2WorkloadsNetworkServicesNtpArgs
+
+func SupervisorV2WorkloadsNetworkServicesNtpPtr(v *SupervisorV2WorkloadsNetworkServicesNtpArgs) SupervisorV2WorkloadsNetworkServicesNtpPtrInput {
+	return (*supervisorV2WorkloadsNetworkServicesNtpPtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkServicesNtpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkServicesNtp)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkServicesNtpPtrType) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkServicesNtpPtrType) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkServicesNtpPtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesNtpOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkServicesNtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesNtp)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesNtpOutput) ToSupervisorV2WorkloadsNetworkServicesNtpOutput() SupervisorV2WorkloadsNetworkServicesNtpOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesNtpOutput) ToSupervisorV2WorkloadsNetworkServicesNtpOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesNtpOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesNtpOutput) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesNtpOutput) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetworkServicesNtp) *SupervisorV2WorkloadsNetworkServicesNtp {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkServicesNtpPtrOutput)
+}
+
+// The list of NTP servers.
+func (o SupervisorV2WorkloadsNetworkServicesNtpOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkServicesNtp) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkServicesNtpPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkServicesNtpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkServicesNtp)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesNtpPtrOutput) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutput() SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesNtpPtrOutput) ToSupervisorV2WorkloadsNetworkServicesNtpPtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkServicesNtpPtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkServicesNtpPtrOutput) Elem() SupervisorV2WorkloadsNetworkServicesNtpOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServicesNtp) SupervisorV2WorkloadsNetworkServicesNtp {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetworkServicesNtp
+		return ret
+	}).(SupervisorV2WorkloadsNetworkServicesNtpOutput)
+}
+
+// The list of NTP servers.
+func (o SupervisorV2WorkloadsNetworkServicesNtpPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkServicesNtp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsNetworkVsphere struct {
+	// The identifier of the Distributed Virtual Portgroup.
+	Dvpg string `pulumi:"dvpg"`
+}
+
+// SupervisorV2WorkloadsNetworkVsphereInput is an input type that accepts SupervisorV2WorkloadsNetworkVsphereArgs and SupervisorV2WorkloadsNetworkVsphereOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkVsphereInput` via:
+//
+//	SupervisorV2WorkloadsNetworkVsphereArgs{...}
+type SupervisorV2WorkloadsNetworkVsphereInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkVsphereOutput() SupervisorV2WorkloadsNetworkVsphereOutput
+	ToSupervisorV2WorkloadsNetworkVsphereOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkVsphereOutput
+}
+
+type SupervisorV2WorkloadsNetworkVsphereArgs struct {
+	// The identifier of the Distributed Virtual Portgroup.
+	Dvpg pulumi.StringInput `pulumi:"dvpg"`
+}
+
+func (SupervisorV2WorkloadsNetworkVsphereArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkVsphere)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsNetworkVsphereArgs) ToSupervisorV2WorkloadsNetworkVsphereOutput() SupervisorV2WorkloadsNetworkVsphereOutput {
+	return i.ToSupervisorV2WorkloadsNetworkVsphereOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkVsphereArgs) ToSupervisorV2WorkloadsNetworkVsphereOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkVsphereOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkVsphereOutput)
+}
+
+func (i SupervisorV2WorkloadsNetworkVsphereArgs) ToSupervisorV2WorkloadsNetworkVspherePtrOutput() SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsNetworkVsphereArgs) ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkVsphereOutput).ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsNetworkVspherePtrInput is an input type that accepts SupervisorV2WorkloadsNetworkVsphereArgs, SupervisorV2WorkloadsNetworkVspherePtr and SupervisorV2WorkloadsNetworkVspherePtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsNetworkVspherePtrInput` via:
+//
+//	        SupervisorV2WorkloadsNetworkVsphereArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsNetworkVspherePtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsNetworkVspherePtrOutput() SupervisorV2WorkloadsNetworkVspherePtrOutput
+	ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(context.Context) SupervisorV2WorkloadsNetworkVspherePtrOutput
+}
+
+type supervisorV2WorkloadsNetworkVspherePtrType SupervisorV2WorkloadsNetworkVsphereArgs
+
+func SupervisorV2WorkloadsNetworkVspherePtr(v *SupervisorV2WorkloadsNetworkVsphereArgs) SupervisorV2WorkloadsNetworkVspherePtrInput {
+	return (*supervisorV2WorkloadsNetworkVspherePtrType)(v)
+}
+
+func (*supervisorV2WorkloadsNetworkVspherePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkVsphere)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsNetworkVspherePtrType) ToSupervisorV2WorkloadsNetworkVspherePtrOutput() SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return i.ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsNetworkVspherePtrType) ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsNetworkVspherePtrOutput)
+}
+
+type SupervisorV2WorkloadsNetworkVsphereOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkVsphereOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsNetworkVsphere)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkVsphereOutput) ToSupervisorV2WorkloadsNetworkVsphereOutput() SupervisorV2WorkloadsNetworkVsphereOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkVsphereOutput) ToSupervisorV2WorkloadsNetworkVsphereOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkVsphereOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkVsphereOutput) ToSupervisorV2WorkloadsNetworkVspherePtrOutput() SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return o.ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsNetworkVsphereOutput) ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsNetworkVsphere) *SupervisorV2WorkloadsNetworkVsphere {
+		return &v
+	}).(SupervisorV2WorkloadsNetworkVspherePtrOutput)
+}
+
+// The identifier of the Distributed Virtual Portgroup.
+func (o SupervisorV2WorkloadsNetworkVsphereOutput) Dvpg() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsNetworkVsphere) string { return v.Dvpg }).(pulumi.StringOutput)
+}
+
+type SupervisorV2WorkloadsNetworkVspherePtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsNetworkVspherePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsNetworkVsphere)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsNetworkVspherePtrOutput) ToSupervisorV2WorkloadsNetworkVspherePtrOutput() SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkVspherePtrOutput) ToSupervisorV2WorkloadsNetworkVspherePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsNetworkVspherePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsNetworkVspherePtrOutput) Elem() SupervisorV2WorkloadsNetworkVsphereOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkVsphere) SupervisorV2WorkloadsNetworkVsphere {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsNetworkVsphere
+		return ret
+	}).(SupervisorV2WorkloadsNetworkVsphereOutput)
+}
+
+// The identifier of the Distributed Virtual Portgroup.
+func (o SupervisorV2WorkloadsNetworkVspherePtrOutput) Dvpg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsNetworkVsphere) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Dvpg
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsStorage struct {
+	// Specifies the Cloud Native Storage file volume.
+	CloudNativeFileVolume *SupervisorV2WorkloadsStorageCloudNativeFileVolume `pulumi:"cloudNativeFileVolume"`
+	// The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+	EphemeralStoragePolicy *string `pulumi:"ephemeralStoragePolicy"`
+	// The specification required to configure storage used for Pod VM container images.
+	ImageStoragePolicy *string `pulumi:"imageStoragePolicy"`
+}
+
+// SupervisorV2WorkloadsStorageInput is an input type that accepts SupervisorV2WorkloadsStorageArgs and SupervisorV2WorkloadsStorageOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsStorageInput` via:
+//
+//	SupervisorV2WorkloadsStorageArgs{...}
+type SupervisorV2WorkloadsStorageInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsStorageOutput() SupervisorV2WorkloadsStorageOutput
+	ToSupervisorV2WorkloadsStorageOutputWithContext(context.Context) SupervisorV2WorkloadsStorageOutput
+}
+
+type SupervisorV2WorkloadsStorageArgs struct {
+	// Specifies the Cloud Native Storage file volume.
+	CloudNativeFileVolume SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrInput `pulumi:"cloudNativeFileVolume"`
+	// The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+	EphemeralStoragePolicy pulumi.StringPtrInput `pulumi:"ephemeralStoragePolicy"`
+	// The specification required to configure storage used for Pod VM container images.
+	ImageStoragePolicy pulumi.StringPtrInput `pulumi:"imageStoragePolicy"`
+}
+
+func (SupervisorV2WorkloadsStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsStorage)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsStorageArgs) ToSupervisorV2WorkloadsStorageOutput() SupervisorV2WorkloadsStorageOutput {
+	return i.ToSupervisorV2WorkloadsStorageOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsStorageArgs) ToSupervisorV2WorkloadsStorageOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsStorageOutput)
+}
+
+func (i SupervisorV2WorkloadsStorageArgs) ToSupervisorV2WorkloadsStoragePtrOutput() SupervisorV2WorkloadsStoragePtrOutput {
+	return i.ToSupervisorV2WorkloadsStoragePtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsStorageArgs) ToSupervisorV2WorkloadsStoragePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsStorageOutput).ToSupervisorV2WorkloadsStoragePtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsStoragePtrInput is an input type that accepts SupervisorV2WorkloadsStorageArgs, SupervisorV2WorkloadsStoragePtr and SupervisorV2WorkloadsStoragePtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsStoragePtrInput` via:
+//
+//	        SupervisorV2WorkloadsStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsStoragePtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsStoragePtrOutput() SupervisorV2WorkloadsStoragePtrOutput
+	ToSupervisorV2WorkloadsStoragePtrOutputWithContext(context.Context) SupervisorV2WorkloadsStoragePtrOutput
+}
+
+type supervisorV2WorkloadsStoragePtrType SupervisorV2WorkloadsStorageArgs
+
+func SupervisorV2WorkloadsStoragePtr(v *SupervisorV2WorkloadsStorageArgs) SupervisorV2WorkloadsStoragePtrInput {
+	return (*supervisorV2WorkloadsStoragePtrType)(v)
+}
+
+func (*supervisorV2WorkloadsStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsStorage)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsStoragePtrType) ToSupervisorV2WorkloadsStoragePtrOutput() SupervisorV2WorkloadsStoragePtrOutput {
+	return i.ToSupervisorV2WorkloadsStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsStoragePtrType) ToSupervisorV2WorkloadsStoragePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsStoragePtrOutput)
+}
+
+type SupervisorV2WorkloadsStorageOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsStorage)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsStorageOutput) ToSupervisorV2WorkloadsStorageOutput() SupervisorV2WorkloadsStorageOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStorageOutput) ToSupervisorV2WorkloadsStorageOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStorageOutput) ToSupervisorV2WorkloadsStoragePtrOutput() SupervisorV2WorkloadsStoragePtrOutput {
+	return o.ToSupervisorV2WorkloadsStoragePtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsStorageOutput) ToSupervisorV2WorkloadsStoragePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsStorage) *SupervisorV2WorkloadsStorage {
+		return &v
+	}).(SupervisorV2WorkloadsStoragePtrOutput)
+}
+
+// Specifies the Cloud Native Storage file volume.
+func (o SupervisorV2WorkloadsStorageOutput) CloudNativeFileVolume() SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsStorage) *SupervisorV2WorkloadsStorageCloudNativeFileVolume {
+		return v.CloudNativeFileVolume
+	}).(SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput)
+}
+
+// The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+func (o SupervisorV2WorkloadsStorageOutput) EphemeralStoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsStorage) *string { return v.EphemeralStoragePolicy }).(pulumi.StringPtrOutput)
+}
+
+// The specification required to configure storage used for Pod VM container images.
+func (o SupervisorV2WorkloadsStorageOutput) ImageStoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsStorage) *string { return v.ImageStoragePolicy }).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsStorage)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsStoragePtrOutput) ToSupervisorV2WorkloadsStoragePtrOutput() SupervisorV2WorkloadsStoragePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStoragePtrOutput) ToSupervisorV2WorkloadsStoragePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStoragePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStoragePtrOutput) Elem() SupervisorV2WorkloadsStorageOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsStorage) SupervisorV2WorkloadsStorage {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsStorage
+		return ret
+	}).(SupervisorV2WorkloadsStorageOutput)
+}
+
+// Specifies the Cloud Native Storage file volume.
+func (o SupervisorV2WorkloadsStoragePtrOutput) CloudNativeFileVolume() SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsStorage) *SupervisorV2WorkloadsStorageCloudNativeFileVolume {
+		if v == nil {
+			return nil
+		}
+		return v.CloudNativeFileVolume
+	}).(SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput)
+}
+
+// The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+func (o SupervisorV2WorkloadsStoragePtrOutput) EphemeralStoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EphemeralStoragePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification required to configure storage used for Pod VM container images.
+func (o SupervisorV2WorkloadsStoragePtrOutput) ImageStoragePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageStoragePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorV2WorkloadsStorageCloudNativeFileVolume struct {
+	// A list of cluster identifiers.
+	VsanClusters []string `pulumi:"vsanClusters"`
+}
+
+// SupervisorV2WorkloadsStorageCloudNativeFileVolumeInput is an input type that accepts SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs and SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsStorageCloudNativeFileVolumeInput` via:
+//
+//	SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs{...}
+type SupervisorV2WorkloadsStorageCloudNativeFileVolumeInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput
+	ToSupervisorV2WorkloadsStorageCloudNativeFileVolumeOutputWithContext(context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput
+}
+
+type SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs struct {
+	// A list of cluster identifiers.
+	VsanClusters pulumi.StringArrayInput `pulumi:"vsanClusters"`
+}
+
+func (SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsStorageCloudNativeFileVolume)(nil)).Elem()
+}
+
+func (i SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput {
+	return i.ToSupervisorV2WorkloadsStorageCloudNativeFileVolumeOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput)
+}
+
+func (i SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return i.ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput).ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(ctx)
+}
+
+// SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrInput is an input type that accepts SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs, SupervisorV2WorkloadsStorageCloudNativeFileVolumePtr and SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput values.
+// You can construct a concrete instance of `SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrInput` via:
+//
+//	        SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrInput interface {
+	pulumi.Input
+
+	ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput
+	ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput
+}
+
+type supervisorV2WorkloadsStorageCloudNativeFileVolumePtrType SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs
+
+func SupervisorV2WorkloadsStorageCloudNativeFileVolumePtr(v *SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs) SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrInput {
+	return (*supervisorV2WorkloadsStorageCloudNativeFileVolumePtrType)(v)
+}
+
+func (*supervisorV2WorkloadsStorageCloudNativeFileVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsStorageCloudNativeFileVolume)(nil)).Elem()
+}
+
+func (i *supervisorV2WorkloadsStorageCloudNativeFileVolumePtrType) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return i.ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorV2WorkloadsStorageCloudNativeFileVolumePtrType) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput)
+}
+
+type SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorV2WorkloadsStorageCloudNativeFileVolume)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumeOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return o.ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorV2WorkloadsStorageCloudNativeFileVolume) *SupervisorV2WorkloadsStorageCloudNativeFileVolume {
+		return &v
+	}).(SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput)
+}
+
+// A list of cluster identifiers.
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput) VsanClusters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorV2WorkloadsStorageCloudNativeFileVolume) []string { return v.VsanClusters }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorV2WorkloadsStorageCloudNativeFileVolume)(nil)).Elem()
+}
+
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput() SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput) ToSupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutputWithContext(ctx context.Context) SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput {
+	return o
+}
+
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput) Elem() SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsStorageCloudNativeFileVolume) SupervisorV2WorkloadsStorageCloudNativeFileVolume {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorV2WorkloadsStorageCloudNativeFileVolume
+		return ret
+	}).(SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput)
+}
+
+// A list of cluster identifiers.
+func (o SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput) VsanClusters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SupervisorV2WorkloadsStorageCloudNativeFileVolume) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VsanClusters
+	}).(pulumi.StringArrayOutput)
 }
 
 type VirtualMachineCdrom struct {
@@ -5744,7 +14265,7 @@ type VirtualMachineDisk struct {
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
 	ThinProvisioned *bool `pulumi:"thinProvisioned"`
-	// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+	// The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
 	UnitNumber *int `pulumi:"unitNumber"`
 	// The UUID of the virtual machine. Also exposed as the `id` of the resource.
 	Uuid *string `pulumi:"uuid"`
@@ -5800,7 +14321,7 @@ type VirtualMachineDiskArgs struct {
 	StoragePolicyId pulumi.StringPtrInput `pulumi:"storagePolicyId"`
 	// If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
 	ThinProvisioned pulumi.BoolPtrInput `pulumi:"thinProvisioned"`
-	// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+	// The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
 	UnitNumber pulumi.IntPtrInput `pulumi:"unitNumber"`
 	// The UUID of the virtual machine. Also exposed as the `id` of the resource.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
@@ -5949,7 +14470,7 @@ func (o VirtualMachineDiskOutput) ThinProvisioned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.ThinProvisioned }).(pulumi.BoolPtrOutput)
 }
 
-// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+// The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
 func (o VirtualMachineDiskOutput) UnitNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.UnitNumber }).(pulumi.IntPtrOutput)
 }
@@ -5997,6 +14518,8 @@ type VirtualMachineNetworkInterface struct {
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
 	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress *string `pulumi:"deviceAddress"`
+	// The external port id to be bound to the VM port.
+	ExternalPortId *string `pulumi:"externalPortId"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
 	// The MAC address of this network interface. Can only be manually set if useStaticMac is true.
@@ -6035,6 +14558,8 @@ type VirtualMachineNetworkInterfaceArgs struct {
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
 	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
+	// The external port id to be bound to the VM port.
+	ExternalPortId pulumi.StringPtrInput `pulumi:"externalPortId"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
 	// The MAC address of this network interface. Can only be manually set if useStaticMac is true.
@@ -6128,6 +14653,11 @@ func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.Strin
 // An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 func (o VirtualMachineNetworkInterfaceOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
+}
+
+// The external port id to be bound to the VM port.
+func (o VirtualMachineNetworkInterfaceOutput) ExternalPortId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.ExternalPortId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the device within the virtual machine.
@@ -6604,6 +15134,325 @@ func (o VirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 		}
 		return v.Properties
 	}).(pulumi.StringMapOutput)
+}
+
+type VirtualMachineVideoCard struct {
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	DeviceAddress *string `pulumi:"deviceAddress"`
+	// 3D graphics options.
+	Graphics3ds []VirtualMachineVideoCardGraphics3d `pulumi:"graphics3ds"`
+	// The unique device ID for this device within its virtual machine.
+	Key *int `pulumi:"key"`
+	// Number of supported displays
+	NumDisplays int `pulumi:"numDisplays"`
+	// Video RAM size in megabytes
+	TotalVideoMemory int `pulumi:"totalVideoMemory"`
+}
+
+// VirtualMachineVideoCardInput is an input type that accepts VirtualMachineVideoCardArgs and VirtualMachineVideoCardOutput values.
+// You can construct a concrete instance of `VirtualMachineVideoCardInput` via:
+//
+//	VirtualMachineVideoCardArgs{...}
+type VirtualMachineVideoCardInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVideoCardOutput() VirtualMachineVideoCardOutput
+	ToVirtualMachineVideoCardOutputWithContext(context.Context) VirtualMachineVideoCardOutput
+}
+
+type VirtualMachineVideoCardArgs struct {
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
+	// 3D graphics options.
+	Graphics3ds VirtualMachineVideoCardGraphics3dArrayInput `pulumi:"graphics3ds"`
+	// The unique device ID for this device within its virtual machine.
+	Key pulumi.IntPtrInput `pulumi:"key"`
+	// Number of supported displays
+	NumDisplays pulumi.IntInput `pulumi:"numDisplays"`
+	// Video RAM size in megabytes
+	TotalVideoMemory pulumi.IntInput `pulumi:"totalVideoMemory"`
+}
+
+func (VirtualMachineVideoCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (i VirtualMachineVideoCardArgs) ToVirtualMachineVideoCardOutput() VirtualMachineVideoCardOutput {
+	return i.ToVirtualMachineVideoCardOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVideoCardArgs) ToVirtualMachineVideoCardOutputWithContext(ctx context.Context) VirtualMachineVideoCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVideoCardOutput)
+}
+
+func (i VirtualMachineVideoCardArgs) ToVirtualMachineVideoCardPtrOutput() VirtualMachineVideoCardPtrOutput {
+	return i.ToVirtualMachineVideoCardPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVideoCardArgs) ToVirtualMachineVideoCardPtrOutputWithContext(ctx context.Context) VirtualMachineVideoCardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVideoCardOutput).ToVirtualMachineVideoCardPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineVideoCardPtrInput is an input type that accepts VirtualMachineVideoCardArgs, VirtualMachineVideoCardPtr and VirtualMachineVideoCardPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineVideoCardPtrInput` via:
+//
+//	        VirtualMachineVideoCardArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineVideoCardPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVideoCardPtrOutput() VirtualMachineVideoCardPtrOutput
+	ToVirtualMachineVideoCardPtrOutputWithContext(context.Context) VirtualMachineVideoCardPtrOutput
+}
+
+type virtualMachineVideoCardPtrType VirtualMachineVideoCardArgs
+
+func VirtualMachineVideoCardPtr(v *VirtualMachineVideoCardArgs) VirtualMachineVideoCardPtrInput {
+	return (*virtualMachineVideoCardPtrType)(v)
+}
+
+func (*virtualMachineVideoCardPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (i *virtualMachineVideoCardPtrType) ToVirtualMachineVideoCardPtrOutput() VirtualMachineVideoCardPtrOutput {
+	return i.ToVirtualMachineVideoCardPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineVideoCardPtrType) ToVirtualMachineVideoCardPtrOutputWithContext(ctx context.Context) VirtualMachineVideoCardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVideoCardPtrOutput)
+}
+
+type VirtualMachineVideoCardOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVideoCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (o VirtualMachineVideoCardOutput) ToVirtualMachineVideoCardOutput() VirtualMachineVideoCardOutput {
+	return o
+}
+
+func (o VirtualMachineVideoCardOutput) ToVirtualMachineVideoCardOutputWithContext(ctx context.Context) VirtualMachineVideoCardOutput {
+	return o
+}
+
+func (o VirtualMachineVideoCardOutput) ToVirtualMachineVideoCardPtrOutput() VirtualMachineVideoCardPtrOutput {
+	return o.ToVirtualMachineVideoCardPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineVideoCardOutput) ToVirtualMachineVideoCardPtrOutputWithContext(ctx context.Context) VirtualMachineVideoCardPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineVideoCard) *VirtualMachineVideoCard {
+		return &v
+	}).(VirtualMachineVideoCardPtrOutput)
+}
+
+// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+func (o VirtualMachineVideoCardOutput) DeviceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVideoCard) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
+}
+
+// 3D graphics options.
+func (o VirtualMachineVideoCardOutput) Graphics3ds() VirtualMachineVideoCardGraphics3dArrayOutput {
+	return o.ApplyT(func(v VirtualMachineVideoCard) []VirtualMachineVideoCardGraphics3d { return v.Graphics3ds }).(VirtualMachineVideoCardGraphics3dArrayOutput)
+}
+
+// The unique device ID for this device within its virtual machine.
+func (o VirtualMachineVideoCardOutput) Key() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVideoCard) *int { return v.Key }).(pulumi.IntPtrOutput)
+}
+
+// Number of supported displays
+func (o VirtualMachineVideoCardOutput) NumDisplays() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachineVideoCard) int { return v.NumDisplays }).(pulumi.IntOutput)
+}
+
+// Video RAM size in megabytes
+func (o VirtualMachineVideoCardOutput) TotalVideoMemory() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachineVideoCard) int { return v.TotalVideoMemory }).(pulumi.IntOutput)
+}
+
+type VirtualMachineVideoCardPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVideoCardPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (o VirtualMachineVideoCardPtrOutput) ToVirtualMachineVideoCardPtrOutput() VirtualMachineVideoCardPtrOutput {
+	return o
+}
+
+func (o VirtualMachineVideoCardPtrOutput) ToVirtualMachineVideoCardPtrOutputWithContext(ctx context.Context) VirtualMachineVideoCardPtrOutput {
+	return o
+}
+
+func (o VirtualMachineVideoCardPtrOutput) Elem() VirtualMachineVideoCardOutput {
+	return o.ApplyT(func(v *VirtualMachineVideoCard) VirtualMachineVideoCard {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineVideoCard
+		return ret
+	}).(VirtualMachineVideoCardOutput)
+}
+
+// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+func (o VirtualMachineVideoCardPtrOutput) DeviceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineVideoCard) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// 3D graphics options.
+func (o VirtualMachineVideoCardPtrOutput) Graphics3ds() VirtualMachineVideoCardGraphics3dArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineVideoCard) []VirtualMachineVideoCardGraphics3d {
+		if v == nil {
+			return nil
+		}
+		return v.Graphics3ds
+	}).(VirtualMachineVideoCardGraphics3dArrayOutput)
+}
+
+// The unique device ID for this device within its virtual machine.
+func (o VirtualMachineVideoCardPtrOutput) Key() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineVideoCard) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of supported displays
+func (o VirtualMachineVideoCardPtrOutput) NumDisplays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineVideoCard) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumDisplays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Video RAM size in megabytes
+func (o VirtualMachineVideoCardPtrOutput) TotalVideoMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineVideoCard) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalVideoMemory
+	}).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachineVideoCardGraphics3d struct {
+	// The amount of dedicated graphics memory in megabytes
+	Memory *int `pulumi:"memory"`
+	// Indicates how the virtual device renders 3D graphics
+	Renderer *string `pulumi:"renderer"`
+}
+
+// VirtualMachineVideoCardGraphics3dInput is an input type that accepts VirtualMachineVideoCardGraphics3dArgs and VirtualMachineVideoCardGraphics3dOutput values.
+// You can construct a concrete instance of `VirtualMachineVideoCardGraphics3dInput` via:
+//
+//	VirtualMachineVideoCardGraphics3dArgs{...}
+type VirtualMachineVideoCardGraphics3dInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVideoCardGraphics3dOutput() VirtualMachineVideoCardGraphics3dOutput
+	ToVirtualMachineVideoCardGraphics3dOutputWithContext(context.Context) VirtualMachineVideoCardGraphics3dOutput
+}
+
+type VirtualMachineVideoCardGraphics3dArgs struct {
+	// The amount of dedicated graphics memory in megabytes
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// Indicates how the virtual device renders 3D graphics
+	Renderer pulumi.StringPtrInput `pulumi:"renderer"`
+}
+
+func (VirtualMachineVideoCardGraphics3dArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (i VirtualMachineVideoCardGraphics3dArgs) ToVirtualMachineVideoCardGraphics3dOutput() VirtualMachineVideoCardGraphics3dOutput {
+	return i.ToVirtualMachineVideoCardGraphics3dOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVideoCardGraphics3dArgs) ToVirtualMachineVideoCardGraphics3dOutputWithContext(ctx context.Context) VirtualMachineVideoCardGraphics3dOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVideoCardGraphics3dOutput)
+}
+
+// VirtualMachineVideoCardGraphics3dArrayInput is an input type that accepts VirtualMachineVideoCardGraphics3dArray and VirtualMachineVideoCardGraphics3dArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineVideoCardGraphics3dArrayInput` via:
+//
+//	VirtualMachineVideoCardGraphics3dArray{ VirtualMachineVideoCardGraphics3dArgs{...} }
+type VirtualMachineVideoCardGraphics3dArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVideoCardGraphics3dArrayOutput() VirtualMachineVideoCardGraphics3dArrayOutput
+	ToVirtualMachineVideoCardGraphics3dArrayOutputWithContext(context.Context) VirtualMachineVideoCardGraphics3dArrayOutput
+}
+
+type VirtualMachineVideoCardGraphics3dArray []VirtualMachineVideoCardGraphics3dInput
+
+func (VirtualMachineVideoCardGraphics3dArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (i VirtualMachineVideoCardGraphics3dArray) ToVirtualMachineVideoCardGraphics3dArrayOutput() VirtualMachineVideoCardGraphics3dArrayOutput {
+	return i.ToVirtualMachineVideoCardGraphics3dArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVideoCardGraphics3dArray) ToVirtualMachineVideoCardGraphics3dArrayOutputWithContext(ctx context.Context) VirtualMachineVideoCardGraphics3dArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVideoCardGraphics3dArrayOutput)
+}
+
+type VirtualMachineVideoCardGraphics3dOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVideoCardGraphics3dOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (o VirtualMachineVideoCardGraphics3dOutput) ToVirtualMachineVideoCardGraphics3dOutput() VirtualMachineVideoCardGraphics3dOutput {
+	return o
+}
+
+func (o VirtualMachineVideoCardGraphics3dOutput) ToVirtualMachineVideoCardGraphics3dOutputWithContext(ctx context.Context) VirtualMachineVideoCardGraphics3dOutput {
+	return o
+}
+
+// The amount of dedicated graphics memory in megabytes
+func (o VirtualMachineVideoCardGraphics3dOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVideoCardGraphics3d) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// Indicates how the virtual device renders 3D graphics
+func (o VirtualMachineVideoCardGraphics3dOutput) Renderer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVideoCardGraphics3d) *string { return v.Renderer }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineVideoCardGraphics3dArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVideoCardGraphics3dArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (o VirtualMachineVideoCardGraphics3dArrayOutput) ToVirtualMachineVideoCardGraphics3dArrayOutput() VirtualMachineVideoCardGraphics3dArrayOutput {
+	return o
+}
+
+func (o VirtualMachineVideoCardGraphics3dArrayOutput) ToVirtualMachineVideoCardGraphics3dArrayOutputWithContext(ctx context.Context) VirtualMachineVideoCardGraphics3dArrayOutput {
+	return o
+}
+
+func (o VirtualMachineVideoCardGraphics3dArrayOutput) Index(i pulumi.IntInput) VirtualMachineVideoCardGraphics3dOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineVideoCardGraphics3d {
+		return vs[0].([]VirtualMachineVideoCardGraphics3d)[vs[1].(int)]
+	}).(VirtualMachineVideoCardGraphics3dOutput)
 }
 
 type VirtualMachineVtpm struct {
@@ -7244,6 +16093,934 @@ func (o VnicIpv6PtrOutput) Gw() pulumi.StringPtrOutput {
 		}
 		return v.Gw
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAlarmAdvancedAction struct {
+	// Triggers the action only for this final state.
+	FinalState string `pulumi:"finalState"`
+	// The name of the host group.
+	Name string `pulumi:"name"`
+	// Whether or not the action should be repeated.
+	Repeat bool `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState string `pulumi:"startState"`
+}
+
+// GetAlarmAdvancedActionInput is an input type that accepts GetAlarmAdvancedActionArgs and GetAlarmAdvancedActionOutput values.
+// You can construct a concrete instance of `GetAlarmAdvancedActionInput` via:
+//
+//	GetAlarmAdvancedActionArgs{...}
+type GetAlarmAdvancedActionInput interface {
+	pulumi.Input
+
+	ToGetAlarmAdvancedActionOutput() GetAlarmAdvancedActionOutput
+	ToGetAlarmAdvancedActionOutputWithContext(context.Context) GetAlarmAdvancedActionOutput
+}
+
+type GetAlarmAdvancedActionArgs struct {
+	// Triggers the action only for this final state.
+	FinalState pulumi.StringInput `pulumi:"finalState"`
+	// The name of the host group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether or not the action should be repeated.
+	Repeat pulumi.BoolInput `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState pulumi.StringInput `pulumi:"startState"`
+}
+
+func (GetAlarmAdvancedActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmAdvancedAction)(nil)).Elem()
+}
+
+func (i GetAlarmAdvancedActionArgs) ToGetAlarmAdvancedActionOutput() GetAlarmAdvancedActionOutput {
+	return i.ToGetAlarmAdvancedActionOutputWithContext(context.Background())
+}
+
+func (i GetAlarmAdvancedActionArgs) ToGetAlarmAdvancedActionOutputWithContext(ctx context.Context) GetAlarmAdvancedActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmAdvancedActionOutput)
+}
+
+// GetAlarmAdvancedActionArrayInput is an input type that accepts GetAlarmAdvancedActionArray and GetAlarmAdvancedActionArrayOutput values.
+// You can construct a concrete instance of `GetAlarmAdvancedActionArrayInput` via:
+//
+//	GetAlarmAdvancedActionArray{ GetAlarmAdvancedActionArgs{...} }
+type GetAlarmAdvancedActionArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmAdvancedActionArrayOutput() GetAlarmAdvancedActionArrayOutput
+	ToGetAlarmAdvancedActionArrayOutputWithContext(context.Context) GetAlarmAdvancedActionArrayOutput
+}
+
+type GetAlarmAdvancedActionArray []GetAlarmAdvancedActionInput
+
+func (GetAlarmAdvancedActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmAdvancedAction)(nil)).Elem()
+}
+
+func (i GetAlarmAdvancedActionArray) ToGetAlarmAdvancedActionArrayOutput() GetAlarmAdvancedActionArrayOutput {
+	return i.ToGetAlarmAdvancedActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmAdvancedActionArray) ToGetAlarmAdvancedActionArrayOutputWithContext(ctx context.Context) GetAlarmAdvancedActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmAdvancedActionArrayOutput)
+}
+
+type GetAlarmAdvancedActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmAdvancedActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmAdvancedAction)(nil)).Elem()
+}
+
+func (o GetAlarmAdvancedActionOutput) ToGetAlarmAdvancedActionOutput() GetAlarmAdvancedActionOutput {
+	return o
+}
+
+func (o GetAlarmAdvancedActionOutput) ToGetAlarmAdvancedActionOutputWithContext(ctx context.Context) GetAlarmAdvancedActionOutput {
+	return o
+}
+
+// Triggers the action only for this final state.
+func (o GetAlarmAdvancedActionOutput) FinalState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmAdvancedAction) string { return v.FinalState }).(pulumi.StringOutput)
+}
+
+// The name of the host group.
+func (o GetAlarmAdvancedActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmAdvancedAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether or not the action should be repeated.
+func (o GetAlarmAdvancedActionOutput) Repeat() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmAdvancedAction) bool { return v.Repeat }).(pulumi.BoolOutput)
+}
+
+// Triggers the action only for this initial state.
+func (o GetAlarmAdvancedActionOutput) StartState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmAdvancedAction) string { return v.StartState }).(pulumi.StringOutput)
+}
+
+type GetAlarmAdvancedActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmAdvancedActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmAdvancedAction)(nil)).Elem()
+}
+
+func (o GetAlarmAdvancedActionArrayOutput) ToGetAlarmAdvancedActionArrayOutput() GetAlarmAdvancedActionArrayOutput {
+	return o
+}
+
+func (o GetAlarmAdvancedActionArrayOutput) ToGetAlarmAdvancedActionArrayOutputWithContext(ctx context.Context) GetAlarmAdvancedActionArrayOutput {
+	return o
+}
+
+func (o GetAlarmAdvancedActionArrayOutput) Index(i pulumi.IntInput) GetAlarmAdvancedActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmAdvancedAction {
+		return vs[0].([]GetAlarmAdvancedAction)[vs[1].(int)]
+	}).(GetAlarmAdvancedActionOutput)
+}
+
+type GetAlarmEmailAction struct {
+	// Email body.
+	Body string `pulumi:"body"`
+	// Email destination cc.
+	Cc string `pulumi:"cc"`
+	// Triggers the action only for this final state.
+	FinalState string `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat bool `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState string `pulumi:"startState"`
+	// Email subject.
+	Subject string `pulumi:"subject"`
+	// Email destination.
+	To string `pulumi:"to"`
+}
+
+// GetAlarmEmailActionInput is an input type that accepts GetAlarmEmailActionArgs and GetAlarmEmailActionOutput values.
+// You can construct a concrete instance of `GetAlarmEmailActionInput` via:
+//
+//	GetAlarmEmailActionArgs{...}
+type GetAlarmEmailActionInput interface {
+	pulumi.Input
+
+	ToGetAlarmEmailActionOutput() GetAlarmEmailActionOutput
+	ToGetAlarmEmailActionOutputWithContext(context.Context) GetAlarmEmailActionOutput
+}
+
+type GetAlarmEmailActionArgs struct {
+	// Email body.
+	Body pulumi.StringInput `pulumi:"body"`
+	// Email destination cc.
+	Cc pulumi.StringInput `pulumi:"cc"`
+	// Triggers the action only for this final state.
+	FinalState pulumi.StringInput `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat pulumi.BoolInput `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState pulumi.StringInput `pulumi:"startState"`
+	// Email subject.
+	Subject pulumi.StringInput `pulumi:"subject"`
+	// Email destination.
+	To pulumi.StringInput `pulumi:"to"`
+}
+
+func (GetAlarmEmailActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmEmailAction)(nil)).Elem()
+}
+
+func (i GetAlarmEmailActionArgs) ToGetAlarmEmailActionOutput() GetAlarmEmailActionOutput {
+	return i.ToGetAlarmEmailActionOutputWithContext(context.Background())
+}
+
+func (i GetAlarmEmailActionArgs) ToGetAlarmEmailActionOutputWithContext(ctx context.Context) GetAlarmEmailActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmEmailActionOutput)
+}
+
+// GetAlarmEmailActionArrayInput is an input type that accepts GetAlarmEmailActionArray and GetAlarmEmailActionArrayOutput values.
+// You can construct a concrete instance of `GetAlarmEmailActionArrayInput` via:
+//
+//	GetAlarmEmailActionArray{ GetAlarmEmailActionArgs{...} }
+type GetAlarmEmailActionArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmEmailActionArrayOutput() GetAlarmEmailActionArrayOutput
+	ToGetAlarmEmailActionArrayOutputWithContext(context.Context) GetAlarmEmailActionArrayOutput
+}
+
+type GetAlarmEmailActionArray []GetAlarmEmailActionInput
+
+func (GetAlarmEmailActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmEmailAction)(nil)).Elem()
+}
+
+func (i GetAlarmEmailActionArray) ToGetAlarmEmailActionArrayOutput() GetAlarmEmailActionArrayOutput {
+	return i.ToGetAlarmEmailActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmEmailActionArray) ToGetAlarmEmailActionArrayOutputWithContext(ctx context.Context) GetAlarmEmailActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmEmailActionArrayOutput)
+}
+
+type GetAlarmEmailActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmEmailActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmEmailAction)(nil)).Elem()
+}
+
+func (o GetAlarmEmailActionOutput) ToGetAlarmEmailActionOutput() GetAlarmEmailActionOutput {
+	return o
+}
+
+func (o GetAlarmEmailActionOutput) ToGetAlarmEmailActionOutputWithContext(ctx context.Context) GetAlarmEmailActionOutput {
+	return o
+}
+
+// Email body.
+func (o GetAlarmEmailActionOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEmailAction) string { return v.Body }).(pulumi.StringOutput)
+}
+
+// Email destination cc.
+func (o GetAlarmEmailActionOutput) Cc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEmailAction) string { return v.Cc }).(pulumi.StringOutput)
+}
+
+// Triggers the action only for this final state.
+func (o GetAlarmEmailActionOutput) FinalState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEmailAction) string { return v.FinalState }).(pulumi.StringOutput)
+}
+
+// Whether or not the action should be repeated.
+func (o GetAlarmEmailActionOutput) Repeat() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmEmailAction) bool { return v.Repeat }).(pulumi.BoolOutput)
+}
+
+// Triggers the action only for this initial state.
+func (o GetAlarmEmailActionOutput) StartState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEmailAction) string { return v.StartState }).(pulumi.StringOutput)
+}
+
+// Email subject.
+func (o GetAlarmEmailActionOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEmailAction) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// Email destination.
+func (o GetAlarmEmailActionOutput) To() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEmailAction) string { return v.To }).(pulumi.StringOutput)
+}
+
+type GetAlarmEmailActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmEmailActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmEmailAction)(nil)).Elem()
+}
+
+func (o GetAlarmEmailActionArrayOutput) ToGetAlarmEmailActionArrayOutput() GetAlarmEmailActionArrayOutput {
+	return o
+}
+
+func (o GetAlarmEmailActionArrayOutput) ToGetAlarmEmailActionArrayOutputWithContext(ctx context.Context) GetAlarmEmailActionArrayOutput {
+	return o
+}
+
+func (o GetAlarmEmailActionArrayOutput) Index(i pulumi.IntInput) GetAlarmEmailActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmEmailAction {
+		return vs[0].([]GetAlarmEmailAction)[vs[1].(int)]
+	}).(GetAlarmEmailActionOutput)
+}
+
+type GetAlarmEventExpression struct {
+	// Additional check that allows adding threshold on the given object attribute.
+	Comparisons []GetAlarmEventExpressionComparison `pulumi:"comparisons"`
+	// Type of Event (vim.event.Event).
+	EventType string `pulumi:"eventType"`
+	// Name of the event (vim.event).
+	EventTypeId string `pulumi:"eventTypeId"`
+	// Type of object where the event applies on.
+	ObjectType string `pulumi:"objectType"`
+	// Alarm status once triggered.
+	Status string `pulumi:"status"`
+}
+
+// GetAlarmEventExpressionInput is an input type that accepts GetAlarmEventExpressionArgs and GetAlarmEventExpressionOutput values.
+// You can construct a concrete instance of `GetAlarmEventExpressionInput` via:
+//
+//	GetAlarmEventExpressionArgs{...}
+type GetAlarmEventExpressionInput interface {
+	pulumi.Input
+
+	ToGetAlarmEventExpressionOutput() GetAlarmEventExpressionOutput
+	ToGetAlarmEventExpressionOutputWithContext(context.Context) GetAlarmEventExpressionOutput
+}
+
+type GetAlarmEventExpressionArgs struct {
+	// Additional check that allows adding threshold on the given object attribute.
+	Comparisons GetAlarmEventExpressionComparisonArrayInput `pulumi:"comparisons"`
+	// Type of Event (vim.event.Event).
+	EventType pulumi.StringInput `pulumi:"eventType"`
+	// Name of the event (vim.event).
+	EventTypeId pulumi.StringInput `pulumi:"eventTypeId"`
+	// Type of object where the event applies on.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Alarm status once triggered.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAlarmEventExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmEventExpression)(nil)).Elem()
+}
+
+func (i GetAlarmEventExpressionArgs) ToGetAlarmEventExpressionOutput() GetAlarmEventExpressionOutput {
+	return i.ToGetAlarmEventExpressionOutputWithContext(context.Background())
+}
+
+func (i GetAlarmEventExpressionArgs) ToGetAlarmEventExpressionOutputWithContext(ctx context.Context) GetAlarmEventExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmEventExpressionOutput)
+}
+
+// GetAlarmEventExpressionArrayInput is an input type that accepts GetAlarmEventExpressionArray and GetAlarmEventExpressionArrayOutput values.
+// You can construct a concrete instance of `GetAlarmEventExpressionArrayInput` via:
+//
+//	GetAlarmEventExpressionArray{ GetAlarmEventExpressionArgs{...} }
+type GetAlarmEventExpressionArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmEventExpressionArrayOutput() GetAlarmEventExpressionArrayOutput
+	ToGetAlarmEventExpressionArrayOutputWithContext(context.Context) GetAlarmEventExpressionArrayOutput
+}
+
+type GetAlarmEventExpressionArray []GetAlarmEventExpressionInput
+
+func (GetAlarmEventExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmEventExpression)(nil)).Elem()
+}
+
+func (i GetAlarmEventExpressionArray) ToGetAlarmEventExpressionArrayOutput() GetAlarmEventExpressionArrayOutput {
+	return i.ToGetAlarmEventExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmEventExpressionArray) ToGetAlarmEventExpressionArrayOutputWithContext(ctx context.Context) GetAlarmEventExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmEventExpressionArrayOutput)
+}
+
+type GetAlarmEventExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmEventExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmEventExpression)(nil)).Elem()
+}
+
+func (o GetAlarmEventExpressionOutput) ToGetAlarmEventExpressionOutput() GetAlarmEventExpressionOutput {
+	return o
+}
+
+func (o GetAlarmEventExpressionOutput) ToGetAlarmEventExpressionOutputWithContext(ctx context.Context) GetAlarmEventExpressionOutput {
+	return o
+}
+
+// Additional check that allows adding threshold on the given object attribute.
+func (o GetAlarmEventExpressionOutput) Comparisons() GetAlarmEventExpressionComparisonArrayOutput {
+	return o.ApplyT(func(v GetAlarmEventExpression) []GetAlarmEventExpressionComparison { return v.Comparisons }).(GetAlarmEventExpressionComparisonArrayOutput)
+}
+
+// Type of Event (vim.event.Event).
+func (o GetAlarmEventExpressionOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEventExpression) string { return v.EventType }).(pulumi.StringOutput)
+}
+
+// Name of the event (vim.event).
+func (o GetAlarmEventExpressionOutput) EventTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEventExpression) string { return v.EventTypeId }).(pulumi.StringOutput)
+}
+
+// Type of object where the event applies on.
+func (o GetAlarmEventExpressionOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEventExpression) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Alarm status once triggered.
+func (o GetAlarmEventExpressionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEventExpression) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAlarmEventExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmEventExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmEventExpression)(nil)).Elem()
+}
+
+func (o GetAlarmEventExpressionArrayOutput) ToGetAlarmEventExpressionArrayOutput() GetAlarmEventExpressionArrayOutput {
+	return o
+}
+
+func (o GetAlarmEventExpressionArrayOutput) ToGetAlarmEventExpressionArrayOutputWithContext(ctx context.Context) GetAlarmEventExpressionArrayOutput {
+	return o
+}
+
+func (o GetAlarmEventExpressionArrayOutput) Index(i pulumi.IntInput) GetAlarmEventExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmEventExpression {
+		return vs[0].([]GetAlarmEventExpression)[vs[1].(int)]
+	}).(GetAlarmEventExpressionOutput)
+}
+
+type GetAlarmEventExpressionComparison struct {
+	// Name of the attribute to compare.
+	AttributeName string `pulumi:"attributeName"`
+	// Comparison operator.
+	Operator string `pulumi:"operator"`
+	// Value to compare.
+	Value string `pulumi:"value"`
+}
+
+// GetAlarmEventExpressionComparisonInput is an input type that accepts GetAlarmEventExpressionComparisonArgs and GetAlarmEventExpressionComparisonOutput values.
+// You can construct a concrete instance of `GetAlarmEventExpressionComparisonInput` via:
+//
+//	GetAlarmEventExpressionComparisonArgs{...}
+type GetAlarmEventExpressionComparisonInput interface {
+	pulumi.Input
+
+	ToGetAlarmEventExpressionComparisonOutput() GetAlarmEventExpressionComparisonOutput
+	ToGetAlarmEventExpressionComparisonOutputWithContext(context.Context) GetAlarmEventExpressionComparisonOutput
+}
+
+type GetAlarmEventExpressionComparisonArgs struct {
+	// Name of the attribute to compare.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// Comparison operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Value to compare.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlarmEventExpressionComparisonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (i GetAlarmEventExpressionComparisonArgs) ToGetAlarmEventExpressionComparisonOutput() GetAlarmEventExpressionComparisonOutput {
+	return i.ToGetAlarmEventExpressionComparisonOutputWithContext(context.Background())
+}
+
+func (i GetAlarmEventExpressionComparisonArgs) ToGetAlarmEventExpressionComparisonOutputWithContext(ctx context.Context) GetAlarmEventExpressionComparisonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmEventExpressionComparisonOutput)
+}
+
+// GetAlarmEventExpressionComparisonArrayInput is an input type that accepts GetAlarmEventExpressionComparisonArray and GetAlarmEventExpressionComparisonArrayOutput values.
+// You can construct a concrete instance of `GetAlarmEventExpressionComparisonArrayInput` via:
+//
+//	GetAlarmEventExpressionComparisonArray{ GetAlarmEventExpressionComparisonArgs{...} }
+type GetAlarmEventExpressionComparisonArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmEventExpressionComparisonArrayOutput() GetAlarmEventExpressionComparisonArrayOutput
+	ToGetAlarmEventExpressionComparisonArrayOutputWithContext(context.Context) GetAlarmEventExpressionComparisonArrayOutput
+}
+
+type GetAlarmEventExpressionComparisonArray []GetAlarmEventExpressionComparisonInput
+
+func (GetAlarmEventExpressionComparisonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (i GetAlarmEventExpressionComparisonArray) ToGetAlarmEventExpressionComparisonArrayOutput() GetAlarmEventExpressionComparisonArrayOutput {
+	return i.ToGetAlarmEventExpressionComparisonArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmEventExpressionComparisonArray) ToGetAlarmEventExpressionComparisonArrayOutputWithContext(ctx context.Context) GetAlarmEventExpressionComparisonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmEventExpressionComparisonArrayOutput)
+}
+
+type GetAlarmEventExpressionComparisonOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmEventExpressionComparisonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (o GetAlarmEventExpressionComparisonOutput) ToGetAlarmEventExpressionComparisonOutput() GetAlarmEventExpressionComparisonOutput {
+	return o
+}
+
+func (o GetAlarmEventExpressionComparisonOutput) ToGetAlarmEventExpressionComparisonOutputWithContext(ctx context.Context) GetAlarmEventExpressionComparisonOutput {
+	return o
+}
+
+// Name of the attribute to compare.
+func (o GetAlarmEventExpressionComparisonOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEventExpressionComparison) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// Comparison operator.
+func (o GetAlarmEventExpressionComparisonOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEventExpressionComparison) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Value to compare.
+func (o GetAlarmEventExpressionComparisonOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmEventExpressionComparison) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlarmEventExpressionComparisonArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmEventExpressionComparisonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmEventExpressionComparison)(nil)).Elem()
+}
+
+func (o GetAlarmEventExpressionComparisonArrayOutput) ToGetAlarmEventExpressionComparisonArrayOutput() GetAlarmEventExpressionComparisonArrayOutput {
+	return o
+}
+
+func (o GetAlarmEventExpressionComparisonArrayOutput) ToGetAlarmEventExpressionComparisonArrayOutputWithContext(ctx context.Context) GetAlarmEventExpressionComparisonArrayOutput {
+	return o
+}
+
+func (o GetAlarmEventExpressionComparisonArrayOutput) Index(i pulumi.IntInput) GetAlarmEventExpressionComparisonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmEventExpressionComparison {
+		return vs[0].([]GetAlarmEventExpressionComparison)[vs[1].(int)]
+	}).(GetAlarmEventExpressionComparisonOutput)
+}
+
+type GetAlarmMetricExpression struct {
+	// ID of the metric.
+	MetricCounterId int    `pulumi:"metricCounterId"`
+	MetricInstance  string `pulumi:"metricInstance"`
+	// Type of object of the metric, ie: HostSystem.
+	ObjectType string `pulumi:"objectType"`
+	// Whether the metric is below or above the given threshold.
+	Operator string `pulumi:"operator"`
+	// Critical threshold, for percentage, 9900 is 99%.
+	Red int `pulumi:"red"`
+	// Amount of seconds the threshold must be crossed to trigger the critical alarm.
+	RedInterval int `pulumi:"redInterval"`
+	// Warning threshold, for percentage, 9900 is 99%.
+	Yellow int `pulumi:"yellow"`
+	// Amount of seconds the threshold must be crossed to trigger the warning alarm.
+	YellowInterval int `pulumi:"yellowInterval"`
+}
+
+// GetAlarmMetricExpressionInput is an input type that accepts GetAlarmMetricExpressionArgs and GetAlarmMetricExpressionOutput values.
+// You can construct a concrete instance of `GetAlarmMetricExpressionInput` via:
+//
+//	GetAlarmMetricExpressionArgs{...}
+type GetAlarmMetricExpressionInput interface {
+	pulumi.Input
+
+	ToGetAlarmMetricExpressionOutput() GetAlarmMetricExpressionOutput
+	ToGetAlarmMetricExpressionOutputWithContext(context.Context) GetAlarmMetricExpressionOutput
+}
+
+type GetAlarmMetricExpressionArgs struct {
+	// ID of the metric.
+	MetricCounterId pulumi.IntInput    `pulumi:"metricCounterId"`
+	MetricInstance  pulumi.StringInput `pulumi:"metricInstance"`
+	// Type of object of the metric, ie: HostSystem.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Whether the metric is below or above the given threshold.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Critical threshold, for percentage, 9900 is 99%.
+	Red pulumi.IntInput `pulumi:"red"`
+	// Amount of seconds the threshold must be crossed to trigger the critical alarm.
+	RedInterval pulumi.IntInput `pulumi:"redInterval"`
+	// Warning threshold, for percentage, 9900 is 99%.
+	Yellow pulumi.IntInput `pulumi:"yellow"`
+	// Amount of seconds the threshold must be crossed to trigger the warning alarm.
+	YellowInterval pulumi.IntInput `pulumi:"yellowInterval"`
+}
+
+func (GetAlarmMetricExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmMetricExpression)(nil)).Elem()
+}
+
+func (i GetAlarmMetricExpressionArgs) ToGetAlarmMetricExpressionOutput() GetAlarmMetricExpressionOutput {
+	return i.ToGetAlarmMetricExpressionOutputWithContext(context.Background())
+}
+
+func (i GetAlarmMetricExpressionArgs) ToGetAlarmMetricExpressionOutputWithContext(ctx context.Context) GetAlarmMetricExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmMetricExpressionOutput)
+}
+
+// GetAlarmMetricExpressionArrayInput is an input type that accepts GetAlarmMetricExpressionArray and GetAlarmMetricExpressionArrayOutput values.
+// You can construct a concrete instance of `GetAlarmMetricExpressionArrayInput` via:
+//
+//	GetAlarmMetricExpressionArray{ GetAlarmMetricExpressionArgs{...} }
+type GetAlarmMetricExpressionArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmMetricExpressionArrayOutput() GetAlarmMetricExpressionArrayOutput
+	ToGetAlarmMetricExpressionArrayOutputWithContext(context.Context) GetAlarmMetricExpressionArrayOutput
+}
+
+type GetAlarmMetricExpressionArray []GetAlarmMetricExpressionInput
+
+func (GetAlarmMetricExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmMetricExpression)(nil)).Elem()
+}
+
+func (i GetAlarmMetricExpressionArray) ToGetAlarmMetricExpressionArrayOutput() GetAlarmMetricExpressionArrayOutput {
+	return i.ToGetAlarmMetricExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmMetricExpressionArray) ToGetAlarmMetricExpressionArrayOutputWithContext(ctx context.Context) GetAlarmMetricExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmMetricExpressionArrayOutput)
+}
+
+type GetAlarmMetricExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmMetricExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmMetricExpression)(nil)).Elem()
+}
+
+func (o GetAlarmMetricExpressionOutput) ToGetAlarmMetricExpressionOutput() GetAlarmMetricExpressionOutput {
+	return o
+}
+
+func (o GetAlarmMetricExpressionOutput) ToGetAlarmMetricExpressionOutputWithContext(ctx context.Context) GetAlarmMetricExpressionOutput {
+	return o
+}
+
+// ID of the metric.
+func (o GetAlarmMetricExpressionOutput) MetricCounterId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) int { return v.MetricCounterId }).(pulumi.IntOutput)
+}
+
+func (o GetAlarmMetricExpressionOutput) MetricInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) string { return v.MetricInstance }).(pulumi.StringOutput)
+}
+
+// Type of object of the metric, ie: HostSystem.
+func (o GetAlarmMetricExpressionOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Whether the metric is below or above the given threshold.
+func (o GetAlarmMetricExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Critical threshold, for percentage, 9900 is 99%.
+func (o GetAlarmMetricExpressionOutput) Red() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) int { return v.Red }).(pulumi.IntOutput)
+}
+
+// Amount of seconds the threshold must be crossed to trigger the critical alarm.
+func (o GetAlarmMetricExpressionOutput) RedInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) int { return v.RedInterval }).(pulumi.IntOutput)
+}
+
+// Warning threshold, for percentage, 9900 is 99%.
+func (o GetAlarmMetricExpressionOutput) Yellow() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) int { return v.Yellow }).(pulumi.IntOutput)
+}
+
+// Amount of seconds the threshold must be crossed to trigger the warning alarm.
+func (o GetAlarmMetricExpressionOutput) YellowInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlarmMetricExpression) int { return v.YellowInterval }).(pulumi.IntOutput)
+}
+
+type GetAlarmMetricExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmMetricExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmMetricExpression)(nil)).Elem()
+}
+
+func (o GetAlarmMetricExpressionArrayOutput) ToGetAlarmMetricExpressionArrayOutput() GetAlarmMetricExpressionArrayOutput {
+	return o
+}
+
+func (o GetAlarmMetricExpressionArrayOutput) ToGetAlarmMetricExpressionArrayOutputWithContext(ctx context.Context) GetAlarmMetricExpressionArrayOutput {
+	return o
+}
+
+func (o GetAlarmMetricExpressionArrayOutput) Index(i pulumi.IntInput) GetAlarmMetricExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmMetricExpression {
+		return vs[0].([]GetAlarmMetricExpression)[vs[1].(int)]
+	}).(GetAlarmMetricExpressionOutput)
+}
+
+type GetAlarmSnmpAction struct {
+	// Triggers the action only for this final state.
+	FinalState string `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat bool `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState string `pulumi:"startState"`
+}
+
+// GetAlarmSnmpActionInput is an input type that accepts GetAlarmSnmpActionArgs and GetAlarmSnmpActionOutput values.
+// You can construct a concrete instance of `GetAlarmSnmpActionInput` via:
+//
+//	GetAlarmSnmpActionArgs{...}
+type GetAlarmSnmpActionInput interface {
+	pulumi.Input
+
+	ToGetAlarmSnmpActionOutput() GetAlarmSnmpActionOutput
+	ToGetAlarmSnmpActionOutputWithContext(context.Context) GetAlarmSnmpActionOutput
+}
+
+type GetAlarmSnmpActionArgs struct {
+	// Triggers the action only for this final state.
+	FinalState pulumi.StringInput `pulumi:"finalState"`
+	// Whether or not the action should be repeated.
+	Repeat pulumi.BoolInput `pulumi:"repeat"`
+	// Triggers the action only for this initial state.
+	StartState pulumi.StringInput `pulumi:"startState"`
+}
+
+func (GetAlarmSnmpActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmSnmpAction)(nil)).Elem()
+}
+
+func (i GetAlarmSnmpActionArgs) ToGetAlarmSnmpActionOutput() GetAlarmSnmpActionOutput {
+	return i.ToGetAlarmSnmpActionOutputWithContext(context.Background())
+}
+
+func (i GetAlarmSnmpActionArgs) ToGetAlarmSnmpActionOutputWithContext(ctx context.Context) GetAlarmSnmpActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmSnmpActionOutput)
+}
+
+// GetAlarmSnmpActionArrayInput is an input type that accepts GetAlarmSnmpActionArray and GetAlarmSnmpActionArrayOutput values.
+// You can construct a concrete instance of `GetAlarmSnmpActionArrayInput` via:
+//
+//	GetAlarmSnmpActionArray{ GetAlarmSnmpActionArgs{...} }
+type GetAlarmSnmpActionArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmSnmpActionArrayOutput() GetAlarmSnmpActionArrayOutput
+	ToGetAlarmSnmpActionArrayOutputWithContext(context.Context) GetAlarmSnmpActionArrayOutput
+}
+
+type GetAlarmSnmpActionArray []GetAlarmSnmpActionInput
+
+func (GetAlarmSnmpActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmSnmpAction)(nil)).Elem()
+}
+
+func (i GetAlarmSnmpActionArray) ToGetAlarmSnmpActionArrayOutput() GetAlarmSnmpActionArrayOutput {
+	return i.ToGetAlarmSnmpActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmSnmpActionArray) ToGetAlarmSnmpActionArrayOutputWithContext(ctx context.Context) GetAlarmSnmpActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmSnmpActionArrayOutput)
+}
+
+type GetAlarmSnmpActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmSnmpActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmSnmpAction)(nil)).Elem()
+}
+
+func (o GetAlarmSnmpActionOutput) ToGetAlarmSnmpActionOutput() GetAlarmSnmpActionOutput {
+	return o
+}
+
+func (o GetAlarmSnmpActionOutput) ToGetAlarmSnmpActionOutputWithContext(ctx context.Context) GetAlarmSnmpActionOutput {
+	return o
+}
+
+// Triggers the action only for this final state.
+func (o GetAlarmSnmpActionOutput) FinalState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmSnmpAction) string { return v.FinalState }).(pulumi.StringOutput)
+}
+
+// Whether or not the action should be repeated.
+func (o GetAlarmSnmpActionOutput) Repeat() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmSnmpAction) bool { return v.Repeat }).(pulumi.BoolOutput)
+}
+
+// Triggers the action only for this initial state.
+func (o GetAlarmSnmpActionOutput) StartState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmSnmpAction) string { return v.StartState }).(pulumi.StringOutput)
+}
+
+type GetAlarmSnmpActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmSnmpActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmSnmpAction)(nil)).Elem()
+}
+
+func (o GetAlarmSnmpActionArrayOutput) ToGetAlarmSnmpActionArrayOutput() GetAlarmSnmpActionArrayOutput {
+	return o
+}
+
+func (o GetAlarmSnmpActionArrayOutput) ToGetAlarmSnmpActionArrayOutputWithContext(ctx context.Context) GetAlarmSnmpActionArrayOutput {
+	return o
+}
+
+func (o GetAlarmSnmpActionArrayOutput) Index(i pulumi.IntInput) GetAlarmSnmpActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmSnmpAction {
+		return vs[0].([]GetAlarmSnmpAction)[vs[1].(int)]
+	}).(GetAlarmSnmpActionOutput)
+}
+
+type GetAlarmStateExpression struct {
+	// Type of object where the event applies on, ie: HostSystem.
+	ObjectType string `pulumi:"objectType"`
+	// Check if state is equal or unequal.
+	Operator string `pulumi:"operator"`
+	// State value to trigger critical alarm.
+	Red string `pulumi:"red"`
+	// State path: ie. runtime.connectionState.
+	StatePath string `pulumi:"statePath"`
+	// State value to trigger warning alarm.
+	Yellow string `pulumi:"yellow"`
+}
+
+// GetAlarmStateExpressionInput is an input type that accepts GetAlarmStateExpressionArgs and GetAlarmStateExpressionOutput values.
+// You can construct a concrete instance of `GetAlarmStateExpressionInput` via:
+//
+//	GetAlarmStateExpressionArgs{...}
+type GetAlarmStateExpressionInput interface {
+	pulumi.Input
+
+	ToGetAlarmStateExpressionOutput() GetAlarmStateExpressionOutput
+	ToGetAlarmStateExpressionOutputWithContext(context.Context) GetAlarmStateExpressionOutput
+}
+
+type GetAlarmStateExpressionArgs struct {
+	// Type of object where the event applies on, ie: HostSystem.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Check if state is equal or unequal.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// State value to trigger critical alarm.
+	Red pulumi.StringInput `pulumi:"red"`
+	// State path: ie. runtime.connectionState.
+	StatePath pulumi.StringInput `pulumi:"statePath"`
+	// State value to trigger warning alarm.
+	Yellow pulumi.StringInput `pulumi:"yellow"`
+}
+
+func (GetAlarmStateExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmStateExpression)(nil)).Elem()
+}
+
+func (i GetAlarmStateExpressionArgs) ToGetAlarmStateExpressionOutput() GetAlarmStateExpressionOutput {
+	return i.ToGetAlarmStateExpressionOutputWithContext(context.Background())
+}
+
+func (i GetAlarmStateExpressionArgs) ToGetAlarmStateExpressionOutputWithContext(ctx context.Context) GetAlarmStateExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmStateExpressionOutput)
+}
+
+// GetAlarmStateExpressionArrayInput is an input type that accepts GetAlarmStateExpressionArray and GetAlarmStateExpressionArrayOutput values.
+// You can construct a concrete instance of `GetAlarmStateExpressionArrayInput` via:
+//
+//	GetAlarmStateExpressionArray{ GetAlarmStateExpressionArgs{...} }
+type GetAlarmStateExpressionArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmStateExpressionArrayOutput() GetAlarmStateExpressionArrayOutput
+	ToGetAlarmStateExpressionArrayOutputWithContext(context.Context) GetAlarmStateExpressionArrayOutput
+}
+
+type GetAlarmStateExpressionArray []GetAlarmStateExpressionInput
+
+func (GetAlarmStateExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmStateExpression)(nil)).Elem()
+}
+
+func (i GetAlarmStateExpressionArray) ToGetAlarmStateExpressionArrayOutput() GetAlarmStateExpressionArrayOutput {
+	return i.ToGetAlarmStateExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmStateExpressionArray) ToGetAlarmStateExpressionArrayOutputWithContext(ctx context.Context) GetAlarmStateExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmStateExpressionArrayOutput)
+}
+
+type GetAlarmStateExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmStateExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmStateExpression)(nil)).Elem()
+}
+
+func (o GetAlarmStateExpressionOutput) ToGetAlarmStateExpressionOutput() GetAlarmStateExpressionOutput {
+	return o
+}
+
+func (o GetAlarmStateExpressionOutput) ToGetAlarmStateExpressionOutputWithContext(ctx context.Context) GetAlarmStateExpressionOutput {
+	return o
+}
+
+// Type of object where the event applies on, ie: HostSystem.
+func (o GetAlarmStateExpressionOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmStateExpression) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Check if state is equal or unequal.
+func (o GetAlarmStateExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmStateExpression) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// State value to trigger critical alarm.
+func (o GetAlarmStateExpressionOutput) Red() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmStateExpression) string { return v.Red }).(pulumi.StringOutput)
+}
+
+// State path: ie. runtime.connectionState.
+func (o GetAlarmStateExpressionOutput) StatePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmStateExpression) string { return v.StatePath }).(pulumi.StringOutput)
+}
+
+// State value to trigger warning alarm.
+func (o GetAlarmStateExpressionOutput) Yellow() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmStateExpression) string { return v.Yellow }).(pulumi.StringOutput)
+}
+
+type GetAlarmStateExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmStateExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmStateExpression)(nil)).Elem()
+}
+
+func (o GetAlarmStateExpressionArrayOutput) ToGetAlarmStateExpressionArrayOutput() GetAlarmStateExpressionArrayOutput {
+	return o
+}
+
+func (o GetAlarmStateExpressionArrayOutput) ToGetAlarmStateExpressionArrayOutputWithContext(ctx context.Context) GetAlarmStateExpressionArrayOutput {
+	return o
+}
+
+func (o GetAlarmStateExpressionArrayOutput) Index(i pulumi.IntInput) GetAlarmStateExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmStateExpression {
+		return vs[0].([]GetAlarmStateExpression)[vs[1].(int)]
+	}).(GetAlarmStateExpressionOutput)
 }
 
 type GetGuestOsCustomizationSpec struct {
@@ -8029,6 +17806,112 @@ func (o GetHostVgpuProfileVgpuProfileArrayOutput) Index(i pulumi.IntInput) GetHo
 	}).(GetHostVgpuProfileVgpuProfileOutput)
 }
 
+type GetNamespaceVmService struct {
+	// The list of content libraries associated with the VM Service.
+	ContentLibraries []string `pulumi:"contentLibraries"`
+	// The list of VM Classes associated with the VM Service.
+	VmClasses []string `pulumi:"vmClasses"`
+}
+
+// GetNamespaceVmServiceInput is an input type that accepts GetNamespaceVmServiceArgs and GetNamespaceVmServiceOutput values.
+// You can construct a concrete instance of `GetNamespaceVmServiceInput` via:
+//
+//	GetNamespaceVmServiceArgs{...}
+type GetNamespaceVmServiceInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVmServiceOutput() GetNamespaceVmServiceOutput
+	ToGetNamespaceVmServiceOutputWithContext(context.Context) GetNamespaceVmServiceOutput
+}
+
+type GetNamespaceVmServiceArgs struct {
+	// The list of content libraries associated with the VM Service.
+	ContentLibraries pulumi.StringArrayInput `pulumi:"contentLibraries"`
+	// The list of VM Classes associated with the VM Service.
+	VmClasses pulumi.StringArrayInput `pulumi:"vmClasses"`
+}
+
+func (GetNamespaceVmServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVmService)(nil)).Elem()
+}
+
+func (i GetNamespaceVmServiceArgs) ToGetNamespaceVmServiceOutput() GetNamespaceVmServiceOutput {
+	return i.ToGetNamespaceVmServiceOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVmServiceArgs) ToGetNamespaceVmServiceOutputWithContext(ctx context.Context) GetNamespaceVmServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVmServiceOutput)
+}
+
+// GetNamespaceVmServiceArrayInput is an input type that accepts GetNamespaceVmServiceArray and GetNamespaceVmServiceArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceVmServiceArrayInput` via:
+//
+//	GetNamespaceVmServiceArray{ GetNamespaceVmServiceArgs{...} }
+type GetNamespaceVmServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVmServiceArrayOutput() GetNamespaceVmServiceArrayOutput
+	ToGetNamespaceVmServiceArrayOutputWithContext(context.Context) GetNamespaceVmServiceArrayOutput
+}
+
+type GetNamespaceVmServiceArray []GetNamespaceVmServiceInput
+
+func (GetNamespaceVmServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVmService)(nil)).Elem()
+}
+
+func (i GetNamespaceVmServiceArray) ToGetNamespaceVmServiceArrayOutput() GetNamespaceVmServiceArrayOutput {
+	return i.ToGetNamespaceVmServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVmServiceArray) ToGetNamespaceVmServiceArrayOutputWithContext(ctx context.Context) GetNamespaceVmServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVmServiceArrayOutput)
+}
+
+type GetNamespaceVmServiceOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVmServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVmService)(nil)).Elem()
+}
+
+func (o GetNamespaceVmServiceOutput) ToGetNamespaceVmServiceOutput() GetNamespaceVmServiceOutput {
+	return o
+}
+
+func (o GetNamespaceVmServiceOutput) ToGetNamespaceVmServiceOutputWithContext(ctx context.Context) GetNamespaceVmServiceOutput {
+	return o
+}
+
+// The list of content libraries associated with the VM Service.
+func (o GetNamespaceVmServiceOutput) ContentLibraries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamespaceVmService) []string { return v.ContentLibraries }).(pulumi.StringArrayOutput)
+}
+
+// The list of VM Classes associated with the VM Service.
+func (o GetNamespaceVmServiceOutput) VmClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamespaceVmService) []string { return v.VmClasses }).(pulumi.StringArrayOutput)
+}
+
+type GetNamespaceVmServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVmServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVmService)(nil)).Elem()
+}
+
+func (o GetNamespaceVmServiceArrayOutput) ToGetNamespaceVmServiceArrayOutput() GetNamespaceVmServiceArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVmServiceArrayOutput) ToGetNamespaceVmServiceArrayOutputWithContext(ctx context.Context) GetNamespaceVmServiceArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVmServiceArrayOutput) Index(i pulumi.IntInput) GetNamespaceVmServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceVmService {
+		return vs[0].([]GetNamespaceVmService)[vs[1].(int)]
+	}).(GetNamespaceVmServiceOutput)
+}
+
 type GetNetworkFilter struct {
 	// This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
 	NetworkType *string `pulumi:"networkType"`
@@ -8276,6 +18159,8 @@ type GetVirtualMachineNetworkInterface struct {
 	// The bandwidth share allocation level for this
 	// interface. Can be one of `low`, `normal`, `high`, or `custom`.
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
+	// The external port id to be bound to the VM port.
+	ExternalPortId string `pulumi:"externalPortId"`
 	// The MAC address of this network interface.
 	MacAddress string `pulumi:"macAddress"`
 	// The managed object reference ID of the network this interface
@@ -8313,6 +18198,8 @@ type GetVirtualMachineNetworkInterfaceArgs struct {
 	// The bandwidth share allocation level for this
 	// interface. Can be one of `low`, `normal`, `high`, or `custom`.
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
+	// The external port id to be bound to the VM port.
+	ExternalPortId pulumi.StringInput `pulumi:"externalPortId"`
 	// The MAC address of this network interface.
 	MacAddress pulumi.StringInput `pulumi:"macAddress"`
 	// The managed object reference ID of the network this interface
@@ -8402,6 +18289,11 @@ func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthShareCount() pulumi.In
 // interface. Can be one of `low`, `normal`, `high`, or `custom`.
 func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
+}
+
+// The external port id to be bound to the VM port.
+func (o GetVirtualMachineNetworkInterfaceOutput) ExternalPortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.ExternalPortId }).(pulumi.StringOutput)
 }
 
 // The MAC address of this network interface.
@@ -8577,7 +18469,242 @@ func (o GetVirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type GetVirtualMachineVideoCard struct {
+	// 3D graphics options.
+	Graphics3ds []GetVirtualMachineVideoCardGraphics3d `pulumi:"graphics3ds"`
+	// The number of supported displays.
+	NumDisplays int `pulumi:"numDisplays"`
+	// The total video memory buffer in megabytes.
+	TotalVideoMemory int `pulumi:"totalVideoMemory"`
+}
+
+// GetVirtualMachineVideoCardInput is an input type that accepts GetVirtualMachineVideoCardArgs and GetVirtualMachineVideoCardOutput values.
+// You can construct a concrete instance of `GetVirtualMachineVideoCardInput` via:
+//
+//	GetVirtualMachineVideoCardArgs{...}
+type GetVirtualMachineVideoCardInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineVideoCardOutput() GetVirtualMachineVideoCardOutput
+	ToGetVirtualMachineVideoCardOutputWithContext(context.Context) GetVirtualMachineVideoCardOutput
+}
+
+type GetVirtualMachineVideoCardArgs struct {
+	// 3D graphics options.
+	Graphics3ds GetVirtualMachineVideoCardGraphics3dArrayInput `pulumi:"graphics3ds"`
+	// The number of supported displays.
+	NumDisplays pulumi.IntInput `pulumi:"numDisplays"`
+	// The total video memory buffer in megabytes.
+	TotalVideoMemory pulumi.IntInput `pulumi:"totalVideoMemory"`
+}
+
+func (GetVirtualMachineVideoCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (i GetVirtualMachineVideoCardArgs) ToGetVirtualMachineVideoCardOutput() GetVirtualMachineVideoCardOutput {
+	return i.ToGetVirtualMachineVideoCardOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineVideoCardArgs) ToGetVirtualMachineVideoCardOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVideoCardOutput)
+}
+
+// GetVirtualMachineVideoCardArrayInput is an input type that accepts GetVirtualMachineVideoCardArray and GetVirtualMachineVideoCardArrayOutput values.
+// You can construct a concrete instance of `GetVirtualMachineVideoCardArrayInput` via:
+//
+//	GetVirtualMachineVideoCardArray{ GetVirtualMachineVideoCardArgs{...} }
+type GetVirtualMachineVideoCardArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineVideoCardArrayOutput() GetVirtualMachineVideoCardArrayOutput
+	ToGetVirtualMachineVideoCardArrayOutputWithContext(context.Context) GetVirtualMachineVideoCardArrayOutput
+}
+
+type GetVirtualMachineVideoCardArray []GetVirtualMachineVideoCardInput
+
+func (GetVirtualMachineVideoCardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (i GetVirtualMachineVideoCardArray) ToGetVirtualMachineVideoCardArrayOutput() GetVirtualMachineVideoCardArrayOutput {
+	return i.ToGetVirtualMachineVideoCardArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineVideoCardArray) ToGetVirtualMachineVideoCardArrayOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVideoCardArrayOutput)
+}
+
+type GetVirtualMachineVideoCardOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineVideoCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (o GetVirtualMachineVideoCardOutput) ToGetVirtualMachineVideoCardOutput() GetVirtualMachineVideoCardOutput {
+	return o
+}
+
+func (o GetVirtualMachineVideoCardOutput) ToGetVirtualMachineVideoCardOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardOutput {
+	return o
+}
+
+// 3D graphics options.
+func (o GetVirtualMachineVideoCardOutput) Graphics3ds() GetVirtualMachineVideoCardGraphics3dArrayOutput {
+	return o.ApplyT(func(v GetVirtualMachineVideoCard) []GetVirtualMachineVideoCardGraphics3d { return v.Graphics3ds }).(GetVirtualMachineVideoCardGraphics3dArrayOutput)
+}
+
+// The number of supported displays.
+func (o GetVirtualMachineVideoCardOutput) NumDisplays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualMachineVideoCard) int { return v.NumDisplays }).(pulumi.IntOutput)
+}
+
+// The total video memory buffer in megabytes.
+func (o GetVirtualMachineVideoCardOutput) TotalVideoMemory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualMachineVideoCard) int { return v.TotalVideoMemory }).(pulumi.IntOutput)
+}
+
+type GetVirtualMachineVideoCardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineVideoCardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachineVideoCard)(nil)).Elem()
+}
+
+func (o GetVirtualMachineVideoCardArrayOutput) ToGetVirtualMachineVideoCardArrayOutput() GetVirtualMachineVideoCardArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachineVideoCardArrayOutput) ToGetVirtualMachineVideoCardArrayOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachineVideoCardArrayOutput) Index(i pulumi.IntInput) GetVirtualMachineVideoCardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualMachineVideoCard {
+		return vs[0].([]GetVirtualMachineVideoCard)[vs[1].(int)]
+	}).(GetVirtualMachineVideoCardOutput)
+}
+
+type GetVirtualMachineVideoCardGraphics3d struct {
+	// The dedicated 3D graphics memory in megabytes.
+	Memory int `pulumi:"memory"`
+	// The 3D renderer - software, hardware or automatic.
+	Renderer string `pulumi:"renderer"`
+}
+
+// GetVirtualMachineVideoCardGraphics3dInput is an input type that accepts GetVirtualMachineVideoCardGraphics3dArgs and GetVirtualMachineVideoCardGraphics3dOutput values.
+// You can construct a concrete instance of `GetVirtualMachineVideoCardGraphics3dInput` via:
+//
+//	GetVirtualMachineVideoCardGraphics3dArgs{...}
+type GetVirtualMachineVideoCardGraphics3dInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineVideoCardGraphics3dOutput() GetVirtualMachineVideoCardGraphics3dOutput
+	ToGetVirtualMachineVideoCardGraphics3dOutputWithContext(context.Context) GetVirtualMachineVideoCardGraphics3dOutput
+}
+
+type GetVirtualMachineVideoCardGraphics3dArgs struct {
+	// The dedicated 3D graphics memory in megabytes.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The 3D renderer - software, hardware or automatic.
+	Renderer pulumi.StringInput `pulumi:"renderer"`
+}
+
+func (GetVirtualMachineVideoCardGraphics3dArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (i GetVirtualMachineVideoCardGraphics3dArgs) ToGetVirtualMachineVideoCardGraphics3dOutput() GetVirtualMachineVideoCardGraphics3dOutput {
+	return i.ToGetVirtualMachineVideoCardGraphics3dOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineVideoCardGraphics3dArgs) ToGetVirtualMachineVideoCardGraphics3dOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardGraphics3dOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVideoCardGraphics3dOutput)
+}
+
+// GetVirtualMachineVideoCardGraphics3dArrayInput is an input type that accepts GetVirtualMachineVideoCardGraphics3dArray and GetVirtualMachineVideoCardGraphics3dArrayOutput values.
+// You can construct a concrete instance of `GetVirtualMachineVideoCardGraphics3dArrayInput` via:
+//
+//	GetVirtualMachineVideoCardGraphics3dArray{ GetVirtualMachineVideoCardGraphics3dArgs{...} }
+type GetVirtualMachineVideoCardGraphics3dArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineVideoCardGraphics3dArrayOutput() GetVirtualMachineVideoCardGraphics3dArrayOutput
+	ToGetVirtualMachineVideoCardGraphics3dArrayOutputWithContext(context.Context) GetVirtualMachineVideoCardGraphics3dArrayOutput
+}
+
+type GetVirtualMachineVideoCardGraphics3dArray []GetVirtualMachineVideoCardGraphics3dInput
+
+func (GetVirtualMachineVideoCardGraphics3dArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (i GetVirtualMachineVideoCardGraphics3dArray) ToGetVirtualMachineVideoCardGraphics3dArrayOutput() GetVirtualMachineVideoCardGraphics3dArrayOutput {
+	return i.ToGetVirtualMachineVideoCardGraphics3dArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineVideoCardGraphics3dArray) ToGetVirtualMachineVideoCardGraphics3dArrayOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardGraphics3dArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVideoCardGraphics3dArrayOutput)
+}
+
+type GetVirtualMachineVideoCardGraphics3dOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineVideoCardGraphics3dOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (o GetVirtualMachineVideoCardGraphics3dOutput) ToGetVirtualMachineVideoCardGraphics3dOutput() GetVirtualMachineVideoCardGraphics3dOutput {
+	return o
+}
+
+func (o GetVirtualMachineVideoCardGraphics3dOutput) ToGetVirtualMachineVideoCardGraphics3dOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardGraphics3dOutput {
+	return o
+}
+
+// The dedicated 3D graphics memory in megabytes.
+func (o GetVirtualMachineVideoCardGraphics3dOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualMachineVideoCardGraphics3d) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The 3D renderer - software, hardware or automatic.
+func (o GetVirtualMachineVideoCardGraphics3dOutput) Renderer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachineVideoCardGraphics3d) string { return v.Renderer }).(pulumi.StringOutput)
+}
+
+type GetVirtualMachineVideoCardGraphics3dArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineVideoCardGraphics3dArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachineVideoCardGraphics3d)(nil)).Elem()
+}
+
+func (o GetVirtualMachineVideoCardGraphics3dArrayOutput) ToGetVirtualMachineVideoCardGraphics3dArrayOutput() GetVirtualMachineVideoCardGraphics3dArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachineVideoCardGraphics3dArrayOutput) ToGetVirtualMachineVideoCardGraphics3dArrayOutputWithContext(ctx context.Context) GetVirtualMachineVideoCardGraphics3dArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachineVideoCardGraphics3dArrayOutput) Index(i pulumi.IntInput) GetVirtualMachineVideoCardGraphics3dOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualMachineVideoCardGraphics3d {
+		return vs[0].([]GetVirtualMachineVideoCardGraphics3d)[vs[1].(int)]
+	}).(GetVirtualMachineVideoCardGraphics3dOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmAdvancedActionInput)(nil)).Elem(), AlarmAdvancedActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmAdvancedActionArrayInput)(nil)).Elem(), AlarmAdvancedActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEmailActionInput)(nil)).Elem(), AlarmEmailActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEmailActionArrayInput)(nil)).Elem(), AlarmEmailActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEventExpressionInput)(nil)).Elem(), AlarmEventExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEventExpressionArrayInput)(nil)).Elem(), AlarmEventExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEventExpressionComparisonInput)(nil)).Elem(), AlarmEventExpressionComparisonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEventExpressionComparisonArrayInput)(nil)).Elem(), AlarmEventExpressionComparisonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmMetricExpressionInput)(nil)).Elem(), AlarmMetricExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmMetricExpressionArrayInput)(nil)).Elem(), AlarmMetricExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmSnmpActionInput)(nil)).Elem(), AlarmSnmpActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmSnmpActionArrayInput)(nil)).Elem(), AlarmSnmpActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmStateExpressionInput)(nil)).Elem(), AlarmStateExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmStateExpressionArrayInput)(nil)).Elem(), AlarmStateExpressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostImageInput)(nil)).Elem(), ComputeClusterHostImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostImagePtrInput)(nil)).Elem(), ComputeClusterHostImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostImageComponentInput)(nil)).Elem(), ComputeClusterHostImageComponentArgs{})
@@ -8618,6 +18745,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceArrayInput)(nil)).Elem(), HostServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceNtpdInput)(nil)).Elem(), HostServiceNtpdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceNtpdPtrInput)(nil)).Elem(), HostServiceNtpdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVmServiceInput)(nil)).Elem(), NamespaceVmServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVmServiceArrayInput)(nil)).Elem(), NamespaceVmServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentInput)(nil)).Elem(), OfflineSoftwareDepotComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentArrayInput)(nil)).Elem(), OfflineSoftwareDepotComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorEgressCidrInput)(nil)).Elem(), SupervisorEgressCidrArgs{})
@@ -8632,6 +18761,99 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorPodCidrArrayInput)(nil)).Elem(), SupervisorPodCidrArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorServiceCidrInput)(nil)).Elem(), SupervisorServiceCidrArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorServiceCidrPtrInput)(nil)).Elem(), SupervisorServiceCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneInput)(nil)).Elem(), SupervisorV2ControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlanePtrInput)(nil)).Elem(), SupervisorV2ControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkPtrInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkBackingInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkBackingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkBackingPtrInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkBackingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkIpManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementPtrInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkIpManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkProxyInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkProxyPtrInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesPtrInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesDnsInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkServicesDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesDnsPtrInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkServicesDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesNtpInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkServicesNtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2ControlPlaneNetworkServicesNtpPtrInput)(nil)).Elem(), SupervisorV2ControlPlaneNetworkServicesNtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsInput)(nil)).Elem(), SupervisorV2WorkloadsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsPtrInput)(nil)).Elem(), SupervisorV2WorkloadsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgePtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationDeploymentTargetInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceArrayInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxyInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeHaproxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxyPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeHaproxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxyServerInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeHaproxyServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeHaproxyServerArrayInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeHaproxyServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeLbAddressRangeInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeLbAddressRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeLbAddressRangeArrayInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeLbAddressRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeNsxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeNsxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxAdvancedInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeNsxAdvancedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxAdvancedPtrInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeNsxAdvancedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxEgressIpRangeInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayInput)(nil)).Elem(), SupervisorV2WorkloadsEdgeNsxEgressIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsImagesInput)(nil)).Elem(), SupervisorV2WorkloadsImagesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsImagesPtrInput)(nil)).Elem(), SupervisorV2WorkloadsImagesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsImagesContentLibraryInput)(nil)).Elem(), SupervisorV2WorkloadsImagesContentLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsImagesContentLibraryArrayInput)(nil)).Elem(), SupervisorV2WorkloadsImagesContentLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsImagesRegistryInput)(nil)).Elem(), SupervisorV2WorkloadsImagesRegistryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsImagesRegistryPtrInput)(nil)).Elem(), SupervisorV2WorkloadsImagesRegistryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptionsInput)(nil)).Elem(), SupervisorV2WorkloadsKubeApiServerOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptionsPtrInput)(nil)).Elem(), SupervisorV2WorkloadsKubeApiServerOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptionsSecurityInput)(nil)).Elem(), SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrInput)(nil)).Elem(), SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkPtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkIpManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementPtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkIpManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignmentInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkNsxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxPtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkNsxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpcInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkNsxVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpcPtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkNsxVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesPtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesDnsInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkServicesDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesDnsPtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkServicesDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesNtpInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkServicesNtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkServicesNtpPtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkServicesNtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkVsphereInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkVsphereArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsNetworkVspherePtrInput)(nil)).Elem(), SupervisorV2WorkloadsNetworkVsphereArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsStorageInput)(nil)).Elem(), SupervisorV2WorkloadsStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsStoragePtrInput)(nil)).Elem(), SupervisorV2WorkloadsStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsStorageCloudNativeFileVolumeInput)(nil)).Elem(), SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrInput)(nil)).Elem(), SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromInput)(nil)).Elem(), VirtualMachineCdromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromArrayInput)(nil)).Elem(), VirtualMachineCdromArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneInput)(nil)).Elem(), VirtualMachineCloneArgs{})
@@ -8654,6 +18876,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOvfDeployPtrInput)(nil)).Elem(), VirtualMachineOvfDeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVappInput)(nil)).Elem(), VirtualMachineVappArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVappPtrInput)(nil)).Elem(), VirtualMachineVappArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVideoCardInput)(nil)).Elem(), VirtualMachineVideoCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVideoCardPtrInput)(nil)).Elem(), VirtualMachineVideoCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVideoCardGraphics3dInput)(nil)).Elem(), VirtualMachineVideoCardGraphics3dArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVideoCardGraphics3dArrayInput)(nil)).Elem(), VirtualMachineVideoCardGraphics3dArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVtpmInput)(nil)).Elem(), VirtualMachineVtpmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVtpmPtrInput)(nil)).Elem(), VirtualMachineVtpmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyTagRuleInput)(nil)).Elem(), VmStoragePolicyTagRuleArgs{})
@@ -8662,6 +18888,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv4PtrInput)(nil)).Elem(), VnicIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv6Input)(nil)).Elem(), VnicIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv6PtrInput)(nil)).Elem(), VnicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmAdvancedActionInput)(nil)).Elem(), GetAlarmAdvancedActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmAdvancedActionArrayInput)(nil)).Elem(), GetAlarmAdvancedActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmEmailActionInput)(nil)).Elem(), GetAlarmEmailActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmEmailActionArrayInput)(nil)).Elem(), GetAlarmEmailActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmEventExpressionInput)(nil)).Elem(), GetAlarmEventExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmEventExpressionArrayInput)(nil)).Elem(), GetAlarmEventExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmEventExpressionComparisonInput)(nil)).Elem(), GetAlarmEventExpressionComparisonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmEventExpressionComparisonArrayInput)(nil)).Elem(), GetAlarmEventExpressionComparisonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmMetricExpressionInput)(nil)).Elem(), GetAlarmMetricExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmMetricExpressionArrayInput)(nil)).Elem(), GetAlarmMetricExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmSnmpActionInput)(nil)).Elem(), GetAlarmSnmpActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmSnmpActionArrayInput)(nil)).Elem(), GetAlarmSnmpActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmStateExpressionInput)(nil)).Elem(), GetAlarmStateExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmStateExpressionArrayInput)(nil)).Elem(), GetAlarmStateExpressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecInput)(nil)).Elem(), GetGuestOsCustomizationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecLinuxOptionInput)(nil)).Elem(), GetGuestOsCustomizationSpecLinuxOptionArgs{})
@@ -8672,6 +18912,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOptionArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecWindowsOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileArrayInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVmServiceInput)(nil)).Elem(), GetNamespaceVmServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVmServiceArrayInput)(nil)).Elem(), GetNamespaceVmServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterInput)(nil)).Elem(), GetNetworkFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterArrayInput)(nil)).Elem(), GetNetworkFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskInput)(nil)).Elem(), GetVirtualMachineDiskArgs{})
@@ -8680,6 +18922,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceArrayInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVappInput)(nil)).Elem(), GetVirtualMachineVappArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVappPtrInput)(nil)).Elem(), GetVirtualMachineVappArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVideoCardInput)(nil)).Elem(), GetVirtualMachineVideoCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVideoCardArrayInput)(nil)).Elem(), GetVirtualMachineVideoCardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVideoCardGraphics3dInput)(nil)).Elem(), GetVirtualMachineVideoCardGraphics3dArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVideoCardGraphics3dArrayInput)(nil)).Elem(), GetVirtualMachineVideoCardGraphics3dArray{})
+	pulumi.RegisterOutputType(AlarmAdvancedActionOutput{})
+	pulumi.RegisterOutputType(AlarmAdvancedActionArrayOutput{})
+	pulumi.RegisterOutputType(AlarmEmailActionOutput{})
+	pulumi.RegisterOutputType(AlarmEmailActionArrayOutput{})
+	pulumi.RegisterOutputType(AlarmEventExpressionOutput{})
+	pulumi.RegisterOutputType(AlarmEventExpressionArrayOutput{})
+	pulumi.RegisterOutputType(AlarmEventExpressionComparisonOutput{})
+	pulumi.RegisterOutputType(AlarmEventExpressionComparisonArrayOutput{})
+	pulumi.RegisterOutputType(AlarmMetricExpressionOutput{})
+	pulumi.RegisterOutputType(AlarmMetricExpressionArrayOutput{})
+	pulumi.RegisterOutputType(AlarmSnmpActionOutput{})
+	pulumi.RegisterOutputType(AlarmSnmpActionArrayOutput{})
+	pulumi.RegisterOutputType(AlarmStateExpressionOutput{})
+	pulumi.RegisterOutputType(AlarmStateExpressionArrayOutput{})
 	pulumi.RegisterOutputType(ComputeClusterHostImageOutput{})
 	pulumi.RegisterOutputType(ComputeClusterHostImagePtrOutput{})
 	pulumi.RegisterOutputType(ComputeClusterHostImageComponentOutput{})
@@ -8720,6 +18980,8 @@ func init() {
 	pulumi.RegisterOutputType(HostServiceArrayOutput{})
 	pulumi.RegisterOutputType(HostServiceNtpdOutput{})
 	pulumi.RegisterOutputType(HostServiceNtpdPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceVmServiceOutput{})
+	pulumi.RegisterOutputType(NamespaceVmServiceArrayOutput{})
 	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentOutput{})
 	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentArrayOutput{})
 	pulumi.RegisterOutputType(SupervisorEgressCidrOutput{})
@@ -8734,6 +18996,99 @@ func init() {
 	pulumi.RegisterOutputType(SupervisorPodCidrArrayOutput{})
 	pulumi.RegisterOutputType(SupervisorServiceCidrOutput{})
 	pulumi.RegisterOutputType(SupervisorServiceCidrPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlanePtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkBackingOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkBackingPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkIpManagementOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkIpManagementPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkProxyOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkProxyPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkServicesOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkServicesPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkServicesDnsOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkServicesDnsPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkServicesNtpOutput{})
+	pulumi.RegisterOutputType(SupervisorV2ControlPlaneNetworkServicesNtpPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgePtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationDeploymentTargetPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeHaproxyOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeHaproxyPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeHaproxyServerOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeHaproxyServerArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeLbAddressRangeOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeLbAddressRangeArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeNsxOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeNsxPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeNsxAdvancedOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeNsxAdvancedPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeNsxEgressIpRangeOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsEdgeNsxEgressIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsImagesOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsImagesPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsImagesContentLibraryOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsImagesContentLibraryArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsImagesRegistryOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsImagesRegistryPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsKubeApiServerOptionsOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsKubeApiServerOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsKubeApiServerOptionsSecurityOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsKubeApiServerOptionsSecurityPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkIpManagementOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkIpManagementPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkNsxOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkNsxPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkNsxVpcOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkNsxVpcPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkServicesOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkServicesPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkServicesDnsOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkServicesDnsPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkServicesNtpOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkServicesNtpPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkVsphereOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsNetworkVspherePtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsStorageOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsStoragePtrOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsStorageCloudNativeFileVolumeOutput{})
+	pulumi.RegisterOutputType(SupervisorV2WorkloadsStorageCloudNativeFileVolumePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneOutput{})
@@ -8756,6 +19111,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineOvfDeployPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVideoCardOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVideoCardPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVideoCardGraphics3dOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVideoCardGraphics3dArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVtpmOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVtpmPtrOutput{})
 	pulumi.RegisterOutputType(VmStoragePolicyTagRuleOutput{})
@@ -8764,6 +19123,20 @@ func init() {
 	pulumi.RegisterOutputType(VnicIpv4PtrOutput{})
 	pulumi.RegisterOutputType(VnicIpv6Output{})
 	pulumi.RegisterOutputType(VnicIpv6PtrOutput{})
+	pulumi.RegisterOutputType(GetAlarmAdvancedActionOutput{})
+	pulumi.RegisterOutputType(GetAlarmAdvancedActionArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmEmailActionOutput{})
+	pulumi.RegisterOutputType(GetAlarmEmailActionArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmEventExpressionOutput{})
+	pulumi.RegisterOutputType(GetAlarmEventExpressionArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmEventExpressionComparisonOutput{})
+	pulumi.RegisterOutputType(GetAlarmEventExpressionComparisonArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmMetricExpressionOutput{})
+	pulumi.RegisterOutputType(GetAlarmMetricExpressionArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmSnmpActionOutput{})
+	pulumi.RegisterOutputType(GetAlarmSnmpActionArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmStateExpressionOutput{})
+	pulumi.RegisterOutputType(GetAlarmStateExpressionArrayOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecLinuxOptionOutput{})
@@ -8774,6 +19147,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecWindowsOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileOutput{})
 	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVmServiceOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVmServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkFilterOutput{})
 	pulumi.RegisterOutputType(GetNetworkFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
@@ -8782,4 +19157,8 @@ func init() {
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineVappOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineVappPtrOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineVideoCardOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineVideoCardArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineVideoCardGraphics3dOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineVideoCardGraphics3dArrayOutput{})
 }

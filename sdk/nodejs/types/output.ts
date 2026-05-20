@@ -5,6 +5,165 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AlarmAdvancedAction {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: string;
+    /**
+     * The name of the alarm. This name needs to be unique
+     * within the vCenter. Forces a new resource if changed.
+     */
+    name?: string;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: boolean;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: string;
+}
+
+export interface AlarmEmailAction {
+    /**
+     * Email body.
+     */
+    body?: string;
+    /**
+     * Email destination cc.
+     */
+    cc?: string;
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: string;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: boolean;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: string;
+    /**
+     * Email subject.
+     */
+    subject?: string;
+    /**
+     * Email destination.
+     */
+    to?: string;
+}
+
+export interface AlarmEventExpression {
+    /**
+     * Additional check that allows adding threshold on the given object attribute.
+     */
+    comparisons?: outputs.AlarmEventExpressionComparison[];
+    /**
+     * Type of Event (vim.event.Event).
+     */
+    eventType?: string;
+    /**
+     * Name of the event (vim.event).
+     */
+    eventTypeId: string;
+    /**
+     * Type of object where the event applies on.
+     */
+    objectType: string;
+    /**
+     * Alarm status once triggered.
+     */
+    status: string;
+}
+
+export interface AlarmEventExpressionComparison {
+    /**
+     * Name of the attribute to compare.
+     */
+    attributeName: string;
+    /**
+     * Comparison operator.
+     */
+    operator: string;
+    /**
+     * Value to compare.
+     */
+    value: string;
+}
+
+export interface AlarmMetricExpression {
+    /**
+     * ID of the metric.
+     */
+    metricCounterId: number;
+    metricInstance?: string;
+    /**
+     * Type of object of the metric, ie: HostSystem.
+     */
+    objectType: string;
+    /**
+     * Whether the metric is below or above the given threshold.
+     */
+    operator: string;
+    /**
+     * Critical threshold, for percentage, 9900 is 99%.
+     */
+    red?: number;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the critical alarm.
+     */
+    redInterval?: number;
+    /**
+     * Warning threshold, for percentage, 9900 is 99%.
+     */
+    yellow?: number;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the warning alarm.
+     */
+    yellowInterval?: number;
+}
+
+export interface AlarmSnmpAction {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: string;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat?: boolean;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: string;
+}
+
+export interface AlarmStateExpression {
+    /**
+     * Type of object where the event applies on, ie: HostSystem.
+     */
+    objectType: string;
+    /**
+     * Check if state is equal or unequal.
+     */
+    operator: string;
+    /**
+     * State value to trigger critical alarm.
+     */
+    red?: string;
+    /**
+     * State path: ie. runtime.connectionState.
+     */
+    statePath: string;
+    /**
+     * State value to trigger warning alarm.
+     */
+    yellow?: string;
+}
+
 export interface ComputeClusterHostImage {
     /**
      * List of custom components.
@@ -201,6 +360,164 @@ export interface EntityPermissionsPermission {
     userOrGroup: string;
 }
 
+export interface GetAlarmAdvancedAction {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: string;
+    /**
+     * The name of the host group.
+     */
+    name: string;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat: boolean;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: string;
+}
+
+export interface GetAlarmEmailAction {
+    /**
+     * Email body.
+     */
+    body: string;
+    /**
+     * Email destination cc.
+     */
+    cc: string;
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: string;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat: boolean;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: string;
+    /**
+     * Email subject.
+     */
+    subject: string;
+    /**
+     * Email destination.
+     */
+    to: string;
+}
+
+export interface GetAlarmEventExpression {
+    /**
+     * Additional check that allows adding threshold on the given object attribute.
+     */
+    comparisons?: outputs.GetAlarmEventExpressionComparison[];
+    /**
+     * Type of Event (vim.event.Event).
+     */
+    eventType: string;
+    /**
+     * Name of the event (vim.event).
+     */
+    eventTypeId: string;
+    /**
+     * Type of object where the event applies on.
+     */
+    objectType: string;
+    /**
+     * Alarm status once triggered.
+     */
+    status: string;
+}
+
+export interface GetAlarmEventExpressionComparison {
+    /**
+     * Name of the attribute to compare.
+     */
+    attributeName: string;
+    /**
+     * Comparison operator.
+     */
+    operator: string;
+    /**
+     * Value to compare.
+     */
+    value: string;
+}
+
+export interface GetAlarmMetricExpression {
+    /**
+     * ID of the metric.
+     */
+    metricCounterId: number;
+    metricInstance: string;
+    /**
+     * Type of object of the metric, ie: HostSystem.
+     */
+    objectType: string;
+    /**
+     * Whether the metric is below or above the given threshold.
+     */
+    operator: string;
+    /**
+     * Critical threshold, for percentage, 9900 is 99%.
+     */
+    red: number;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the critical alarm.
+     */
+    redInterval: number;
+    /**
+     * Warning threshold, for percentage, 9900 is 99%.
+     */
+    yellow: number;
+    /**
+     * Amount of seconds the threshold must be crossed to trigger the warning alarm.
+     */
+    yellowInterval: number;
+}
+
+export interface GetAlarmSnmpAction {
+    /**
+     * Triggers the action only for this final state.
+     */
+    finalState: string;
+    /**
+     * Whether or not the action should be repeated.
+     */
+    repeat: boolean;
+    /**
+     * Triggers the action only for this initial state.
+     */
+    startState: string;
+}
+
+export interface GetAlarmStateExpression {
+    /**
+     * Type of object where the event applies on, ie: HostSystem.
+     */
+    objectType: string;
+    /**
+     * Check if state is equal or unequal.
+     */
+    operator: string;
+    /**
+     * State value to trigger critical alarm.
+     */
+    red: string;
+    /**
+     * State path: ie. runtime.connectionState.
+     */
+    statePath: string;
+    /**
+     * State value to trigger warning alarm.
+     */
+    yellow: string;
+}
+
 export interface GetGuestOsCustomizationSpec {
     /**
      * A list of DNS servers for a virtual network adapter with a static IP address.
@@ -365,6 +682,17 @@ export interface GetHostVgpuProfileVgpuProfile {
     vgpu: string;
 }
 
+export interface GetNamespaceVmService {
+    /**
+     * The list of content libraries associated with the VM Service.
+     */
+    contentLibraries: string[];
+    /**
+     * The list of VM Classes associated with the VM Service.
+     */
+    vmClasses: string[];
+}
+
 export interface GetNetworkFilter {
     /**
      * This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
@@ -423,6 +751,10 @@ export interface GetVirtualMachineNetworkInterface {
      */
     bandwidthShareLevel?: string;
     /**
+     * The external port id to be bound to the VM port.
+     */
+    externalPortId: string;
+    /**
      * The MAC address of this network interface.
      */
     macAddress: string;
@@ -442,6 +774,32 @@ export interface GetVirtualMachineVapp {
      * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
      */
     properties?: {[key: string]: string};
+}
+
+export interface GetVirtualMachineVideoCard {
+    /**
+     * 3D graphics options.
+     */
+    graphics3ds: outputs.GetVirtualMachineVideoCardGraphics3d[];
+    /**
+     * The number of supported displays.
+     */
+    numDisplays: number;
+    /**
+     * The total video memory buffer in megabytes.
+     */
+    totalVideoMemory: number;
+}
+
+export interface GetVirtualMachineVideoCardGraphics3d {
+    /**
+     * The dedicated 3D graphics memory in megabytes.
+     */
+    memory: number;
+    /**
+     * The 3D renderer - software, hardware or automatic.
+     */
+    renderer: string;
 }
 
 export interface GuestOsCustomizationSpec {
@@ -624,6 +982,17 @@ export interface HostServiceNtpd {
     policy?: string;
 }
 
+export interface NamespaceVmService {
+    /**
+     * The list of content libraries to associate with the VM Service.
+     */
+    contentLibraries?: string[];
+    /**
+     * The list of VM Classes to associate with the VM Service.
+     */
+    vmClasses?: string[];
+}
+
 export interface OfflineSoftwareDepotComponent {
     /**
      * The name of the component. Useful for easier identification.
@@ -663,7 +1032,7 @@ export interface SupervisorIngressCidr {
 
 export interface SupervisorManagementNetwork {
     /**
-     * Number of addresses to allocate. Starts from 'starting_address'
+     * Number of addresses to allocate. Starts from `startingAddress`
      */
     addressCount: number;
     /**
@@ -671,7 +1040,7 @@ export interface SupervisorManagementNetwork {
      */
     gateway: string;
     /**
-     * ID of the network. (e.g. a distributed port group).
+     * ID of the network. (_e.g._, a distributed port group).
      */
     network: string;
     /**
@@ -719,6 +1088,683 @@ export interface SupervisorServiceCidr {
      * Subnet prefix.
      */
     prefix: number;
+}
+
+export interface SupervisorV2ControlPlane {
+    /**
+     * The number of control plane VMs to deploy.
+     */
+    count?: number;
+    /**
+     * The network configuration for the control plane VM(s).
+     */
+    network: outputs.SupervisorV2ControlPlaneNetwork;
+    /**
+     * The size preset for the control plane VM(s).
+     */
+    size?: string;
+    /**
+     * The storage policy for the control plane VM(s).
+     */
+    storagePolicy?: string;
+}
+
+export interface SupervisorV2ControlPlaneNetwork {
+    /**
+     * Backing network configuration.
+     */
+    backing: outputs.SupervisorV2ControlPlaneNetworkBacking;
+    /**
+     * Floating IP address.
+     */
+    floatingIp?: string;
+    /**
+     * IP Management configuration.
+     */
+    ipManagement?: outputs.SupervisorV2ControlPlaneNetworkIpManagement;
+    /**
+     * The network identifier for the management network.
+     */
+    network?: string;
+    /**
+     * Proxy server configuration.
+     */
+    proxy?: outputs.SupervisorV2ControlPlaneNetworkProxy;
+    /**
+     * Network services (e.g DNS, NTP) configuration.
+     */
+    services?: outputs.SupervisorV2ControlPlaneNetworkServices;
+}
+
+export interface SupervisorV2ControlPlaneNetworkBacking {
+    /**
+     * The Managed Object ID of the Network object.
+     */
+    network?: string;
+    /**
+     * The backing network segment.
+     */
+    segments?: string[];
+}
+
+export interface SupervisorV2ControlPlaneNetworkIpManagement {
+    /**
+     * Whether to use DHCP or not.
+     */
+    dhcpEnabled?: boolean;
+    /**
+     * The IP address of the network gateway.
+     */
+    gatewayAddress?: string;
+    /**
+     * IP assignment configuration.
+     */
+    ipAssignments?: outputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignment[];
+}
+
+export interface SupervisorV2ControlPlaneNetworkIpManagementIpAssignment {
+    /**
+     * The type of the assignee.
+     */
+    assignee?: string;
+    /**
+     * The available IP addresses that can be consumed by Supervisor to run the cluster.
+     */
+    ranges?: outputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange[];
+}
+
+export interface SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: string;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: number;
+}
+
+export interface SupervisorV2ControlPlaneNetworkProxy {
+    /**
+     * HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`.
+     */
+    httpConfig?: string;
+    /**
+     * HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+     */
+    httpsConfig?: string;
+    /**
+     * List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+     */
+    noProxyConfigs?: string[];
+    /**
+     * The source of the proxy settings.
+     */
+    settingsSource: string;
+    /**
+     * Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settingsSource`
+     */
+    tlsRootCaBundle?: string;
+}
+
+export interface SupervisorV2ControlPlaneNetworkServices {
+    /**
+     * The DNS configuration.
+     */
+    dns?: outputs.SupervisorV2ControlPlaneNetworkServicesDns;
+    /**
+     * The NTP configuration.
+     */
+    ntp?: outputs.SupervisorV2ControlPlaneNetworkServicesNtp;
+}
+
+export interface SupervisorV2ControlPlaneNetworkServicesDns {
+    /**
+     * The list of search domains.
+     */
+    searchDomains: string[];
+    /**
+     * The list of DNS servers.
+     */
+    servers: string[];
+}
+
+export interface SupervisorV2ControlPlaneNetworkServicesNtp {
+    /**
+     * The list of NTP servers.
+     */
+    servers: string[];
+}
+
+export interface SupervisorV2Workloads {
+    /**
+     * Edge configuration
+     */
+    edge: outputs.SupervisorV2WorkloadsEdge;
+    /**
+     * Configuration for storing and pulling images into the cluster.
+     */
+    images?: outputs.SupervisorV2WorkloadsImages;
+    /**
+     * Kubernetes API Server options
+     */
+    kubeApiServerOptions: outputs.SupervisorV2WorkloadsKubeApiServerOptions;
+    /**
+     * The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+     */
+    network: outputs.SupervisorV2WorkloadsNetwork;
+    /**
+     * Persistent storage configuration.
+     */
+    storage?: outputs.SupervisorV2WorkloadsStorage;
+}
+
+export interface SupervisorV2WorkloadsEdge {
+    /**
+     * Configuration for the vSphere Foundation Load Balancer.
+     */
+    foundation?: outputs.SupervisorV2WorkloadsEdgeFoundation;
+    /**
+     * Configuration for the HAProxy Load Balancer.
+     */
+    haproxy?: outputs.SupervisorV2WorkloadsEdgeHaproxy;
+    /**
+     * The unique identifier of this edge.
+     */
+    id?: string;
+    /**
+     * The list of addresses that a load balancer can consume to publish Kubernetes services.
+     */
+    lbAddressRanges?: outputs.SupervisorV2WorkloadsEdgeLbAddressRange[];
+    /**
+     * Configuration for the NSX Load Balancer.
+     */
+    nsx?: outputs.SupervisorV2WorkloadsEdgeNsx;
+    /**
+     * Configuration for the NSX Advanced Load Balancer.
+     */
+    nsxAdvanced?: outputs.SupervisorV2WorkloadsEdgeNsxAdvanced;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundation {
+    /**
+     * The configuration for the Load Balancer placement.
+     */
+    deploymentTarget?: outputs.SupervisorV2WorkloadsEdgeFoundationDeploymentTarget;
+    /**
+     * Configuration for the Load Balancer network interfaces.
+     */
+    interfaces?: outputs.SupervisorV2WorkloadsEdgeFoundationInterface[];
+    /**
+     * Configuration for the Load Balancer network services.
+     */
+    networkServices?: outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServices;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationDeploymentTarget {
+    /**
+     * Configures the availability level for the load balancer.
+     */
+    availability?: string;
+    /**
+     * Determines the CPU/memory resource size of the load balancer deployment.
+     */
+    deploymentSize?: string;
+    /**
+     * Storage Policy containing datastores hosting the load balancer nodes.
+     */
+    storagePolicy?: string;
+    /**
+     * A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+     *
+     * <a id="nestedblock--control-plane"></a>
+     */
+    zones?: string[];
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterface {
+    /**
+     * Network configuration for this interface.
+     */
+    network: outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork;
+    /**
+     * Determines the type of traffic that passes through a network interface.
+     */
+    personas: string[];
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork {
+    /**
+     * Identifier of the Distributed Virtual Portgroup.
+     */
+    dvpgNetwork?: outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork;
+    /**
+     * The type of network interface.
+     */
+    networkType: string;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork {
+    /**
+     * Static IP Configuration for this network.
+     */
+    ipConfig?: outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig;
+    /**
+     * IP Address management scheme for this network.
+     */
+    ipam: string;
+    /**
+     * The name of the Supervisor cluster.
+     */
+    name: string;
+    /**
+     * The identifier of the Distributed Virtual Portgroup.
+     */
+    network: string;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig {
+    /**
+     * Gateway address.
+     */
+    gateway: string;
+    /**
+     * IP range configuration.
+     */
+    ipRanges: outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange[];
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: string;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: number;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServices {
+    /**
+     * DNS configuration.
+     */
+    dns?: outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns;
+    /**
+     * NTP configuration.
+     */
+    ntp?: outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp;
+    /**
+     * Remote log forwarding configuration.
+     */
+    syslog?: outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog;
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns {
+    /**
+     * The list of search domains.
+     */
+    searchDomains: string[];
+    /**
+     * The list of DNS servers.
+     */
+    servers: string[];
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp {
+    /**
+     * The list of NTP servers.
+     */
+    servers: string[];
+}
+
+export interface SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog {
+    /**
+     * Certificate authority PEM.
+     */
+    caCert?: string;
+    /**
+     * FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+     */
+    endpoint?: string;
+}
+
+export interface SupervisorV2WorkloadsEdgeHaproxy {
+    /**
+     * The CA chain for the data plane API server.
+     */
+    caChain: string;
+    /**
+     * The password for the data plane API server.
+     */
+    password: string;
+    /**
+     * The servers for the data plane API server.
+     */
+    servers: outputs.SupervisorV2WorkloadsEdgeHaproxyServer[];
+    /**
+     * The username for the data plane API server.
+     */
+    username: string;
+}
+
+export interface SupervisorV2WorkloadsEdgeHaproxyServer {
+    /**
+     * The IP address of the API server.
+     */
+    host: string;
+    /**
+     * The port of the API server.
+     */
+    port: number;
+}
+
+export interface SupervisorV2WorkloadsEdgeLbAddressRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: string;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: number;
+}
+
+export interface SupervisorV2WorkloadsEdgeNsx {
+    /**
+     * The default certificate that is served on Ingress services, when another certificate is not presented.
+     */
+    defaultIngressTlsCertificate?: string;
+    /**
+     * The identifier of the edge cluster.
+     */
+    edgeCluster?: string;
+    /**
+     * An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+     */
+    egressIpRanges?: outputs.SupervisorV2WorkloadsEdgeNsxEgressIpRange[];
+    /**
+     * The size of the load balancer node.
+     */
+    loadBalancerSize?: string;
+    /**
+     * Routing mode.
+     */
+    routingMode?: string;
+    /**
+     * Tier-0 gateway ID for the namespaces configuration.
+     */
+    t0Gateway?: string;
+}
+
+export interface SupervisorV2WorkloadsEdgeNsxAdvanced {
+    /**
+     * Certificate authority chain.
+     */
+    caChain: string;
+    /**
+     * Cloud Name.
+     */
+    cloudName?: string;
+    /**
+     * The IP address of the AVI controller.
+     */
+    host: string;
+    /**
+     * Password
+     */
+    password: string;
+    /**
+     * The port of the AVI controller.
+     */
+    port: number;
+    /**
+     * Username
+     */
+    username: string;
+}
+
+export interface SupervisorV2WorkloadsEdgeNsxEgressIpRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: string;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: number;
+}
+
+export interface SupervisorV2WorkloadsImages {
+    /**
+     * Content library associated with the Supervisor.
+     */
+    contentLibraries: outputs.SupervisorV2WorkloadsImagesContentLibrary[];
+    /**
+     * The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+     */
+    kubernetesContentLibrary: string;
+    /**
+     * Configuration for the container image registry endpoint.
+     */
+    registry: outputs.SupervisorV2WorkloadsImagesRegistry;
+    /**
+     * The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+     */
+    repository: string;
+}
+
+export interface SupervisorV2WorkloadsImagesContentLibrary {
+    /**
+     * Content library identifier.
+     */
+    contentLibrary: string;
+    /**
+     * The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+     */
+    resourceNamingStrategy?: string;
+    /**
+     * A list of Supervisor Service IDs that are currently making use of the Content Library.
+     */
+    supervisorServices?: string[];
+}
+
+export interface SupervisorV2WorkloadsImagesRegistry {
+    /**
+     * The certificate authority chain of the image registry.
+     */
+    caChain: string;
+    /**
+     * The IP address of the image registry.
+     */
+    hostname: string;
+    /**
+     * The password of the image registry.
+     */
+    password: string;
+    /**
+     * The port of the image registry.
+     */
+    port: number;
+    /**
+     * The username of the image registry.
+     */
+    username: string;
+}
+
+export interface SupervisorV2WorkloadsKubeApiServerOptions {
+    /**
+     * Security configuration.
+     *
+     * <a id="nestedblock--workloads-images"></a>
+     */
+    security?: outputs.SupervisorV2WorkloadsKubeApiServerOptionsSecurity;
+}
+
+export interface SupervisorV2WorkloadsKubeApiServerOptionsSecurity {
+    /**
+     * List of DNS names to include in the certificate.
+     */
+    certificateDnsNames: string[];
+}
+
+export interface SupervisorV2WorkloadsNetwork {
+    /**
+     * IP Management configuration.
+     */
+    ipManagement?: outputs.SupervisorV2WorkloadsNetworkIpManagement;
+    /**
+     * A unique identifier for the workload network.
+     */
+    network?: string;
+    /**
+     * Configuration for NSX-T backing.
+     */
+    nsx?: outputs.SupervisorV2WorkloadsNetworkNsx;
+    /**
+     * Configuration for NSX VPC backing.
+     */
+    nsxVpc?: outputs.SupervisorV2WorkloadsNetworkNsxVpc;
+    /**
+     * Network services (e.g DNS, NTP) configuration.
+     */
+    services?: outputs.SupervisorV2WorkloadsNetworkServices;
+    /**
+     * Configuration for vSphere network backing.
+     */
+    vsphere?: outputs.SupervisorV2WorkloadsNetworkVsphere;
+}
+
+export interface SupervisorV2WorkloadsNetworkIpManagement {
+    /**
+     * Whether to use DHCP or not.
+     */
+    dhcpEnabled?: boolean;
+    /**
+     * The IP address of the network gateway.
+     */
+    gatewayAddress?: string;
+    /**
+     * IP assignment configuration.
+     */
+    ipAssignments?: outputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignment[];
+}
+
+export interface SupervisorV2WorkloadsNetworkIpManagementIpAssignment {
+    /**
+     * The type of the assignee.
+     */
+    assignee?: string;
+    /**
+     * The available IP addresses that can be consumed by Supervisor to run the cluster.
+     */
+    ranges?: outputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange[];
+}
+
+export interface SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange {
+    /**
+     * The starting IP address of the range.
+     */
+    address: string;
+    /**
+     * The number of IP addresses in the range.
+     */
+    count: number;
+}
+
+export interface SupervisorV2WorkloadsNetworkNsx {
+    /**
+     * The identifier of the vSphere Distributed Switch.
+     */
+    dvs: string;
+    /**
+     * The size of the subnet reserved for namespace segments.
+     */
+    namespaceSubnetPrefix?: number;
+}
+
+export interface SupervisorV2WorkloadsNetworkNsxVpc {
+    /**
+     * Specifies CIDR blocks from which private subnets are allocated.
+     */
+    defaultPrivateCidrs: outputs.SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr[];
+    /**
+     * The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+     */
+    nsxProject?: string;
+    /**
+     * The identifier of the VPC Connectivity Profile.
+     */
+    vpcConnectivityProfile?: string;
+}
+
+export interface SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr {
+    /**
+     * The starting IPv4 address of the CIDR block.
+     */
+    address: string;
+    /**
+     * The number of addresses in the CIDR block.
+     */
+    prefix: number;
+}
+
+export interface SupervisorV2WorkloadsNetworkServices {
+    /**
+     * The DNS configuration.
+     */
+    dns?: outputs.SupervisorV2WorkloadsNetworkServicesDns;
+    /**
+     * The NTP configuration.
+     */
+    ntp?: outputs.SupervisorV2WorkloadsNetworkServicesNtp;
+}
+
+export interface SupervisorV2WorkloadsNetworkServicesDns {
+    /**
+     * The list of search domains.
+     */
+    searchDomains: string[];
+    /**
+     * The list of DNS servers.
+     */
+    servers: string[];
+}
+
+export interface SupervisorV2WorkloadsNetworkServicesNtp {
+    /**
+     * The list of NTP servers.
+     */
+    servers: string[];
+}
+
+export interface SupervisorV2WorkloadsNetworkVsphere {
+    /**
+     * The identifier of the Distributed Virtual Portgroup.
+     */
+    dvpg: string;
+}
+
+export interface SupervisorV2WorkloadsStorage {
+    /**
+     * Specifies the Cloud Native Storage file volume.
+     */
+    cloudNativeFileVolume?: outputs.SupervisorV2WorkloadsStorageCloudNativeFileVolume;
+    /**
+     * The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+     */
+    ephemeralStoragePolicy?: string;
+    /**
+     * The specification required to configure storage used for Pod VM container images.
+     */
+    imageStoragePolicy?: string;
+}
+
+export interface SupervisorV2WorkloadsStorageCloudNativeFileVolume {
+    /**
+     * A list of cluster identifiers.
+     */
+    vsanClusters: string[];
 }
 
 export interface VirtualMachineCdrom {
@@ -1008,7 +2054,7 @@ export interface VirtualMachineDisk {
      */
     thinProvisioned?: boolean;
     /**
-     * The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+     * The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
      */
     unitNumber?: number;
     /**
@@ -1046,6 +2092,10 @@ export interface VirtualMachineNetworkInterface {
      * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress: string;
+    /**
+     * The external port id to be bound to the VM port.
+     */
+    externalPortId: string;
     /**
      * The ID of the device within the virtual machine.
      */
@@ -1116,6 +2166,40 @@ export interface VirtualMachineVapp {
      * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
      */
     properties?: {[key: string]: string};
+}
+
+export interface VirtualMachineVideoCard {
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     */
+    deviceAddress: string;
+    /**
+     * 3D graphics options.
+     */
+    graphics3ds?: outputs.VirtualMachineVideoCardGraphics3d[];
+    /**
+     * The unique device ID for this device within its virtual machine.
+     */
+    key: number;
+    /**
+     * Number of supported displays
+     */
+    numDisplays: number;
+    /**
+     * Video RAM size in megabytes
+     */
+    totalVideoMemory: number;
+}
+
+export interface VirtualMachineVideoCardGraphics3d {
+    /**
+     * The amount of dedicated graphics memory in megabytes
+     */
+    memory?: number;
+    /**
+     * Indicates how the virtual device renders 3D graphics
+     */
+    renderer?: string;
 }
 
 export interface VirtualMachineVtpm {

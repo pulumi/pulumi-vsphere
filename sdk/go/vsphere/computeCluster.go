@@ -155,6 +155,8 @@ type ComputeCluster struct {
 	DrsMigrationThreshold pulumi.IntPtrOutput `pulumi:"drsMigrationThreshold"`
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares pulumi.StringPtrOutput `pulumi:"drsScaleDescendantsShares"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode pulumi.StringPtrOutput `pulumi:"evcMode"`
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -352,6 +354,8 @@ type computeClusterState struct {
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares *string `pulumi:"drsScaleDescendantsShares"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode *string `pulumi:"evcMode"`
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -517,6 +521,8 @@ type ComputeClusterState struct {
 	DrsMigrationThreshold pulumi.IntPtrInput
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares pulumi.StringPtrInput
+	// Enhanced vMotion Compatibility mode.
+	EvcMode pulumi.StringPtrInput
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -686,6 +692,8 @@ type computeClusterArgs struct {
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares *string `pulumi:"drsScaleDescendantsShares"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode *string `pulumi:"evcMode"`
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -846,6 +854,8 @@ type ComputeClusterArgs struct {
 	DrsMigrationThreshold pulumi.IntPtrInput
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares pulumi.StringPtrInput
+	// Enhanced vMotion Compatibility mode.
+	EvcMode pulumi.StringPtrInput
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -1125,6 +1135,11 @@ func (o ComputeClusterOutput) DrsMigrationThreshold() pulumi.IntPtrOutput {
 // Enable scalable shares for all descendants of this cluster.
 func (o ComputeClusterOutput) DrsScaleDescendantsShares() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.DrsScaleDescendantsShares }).(pulumi.StringPtrOutput)
+}
+
+// Enhanced vMotion Compatibility mode.
+func (o ComputeClusterOutput) EvcMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.EvcMode }).(pulumi.StringPtrOutput)
 }
 
 // The relative path to a folder to put this cluster in.

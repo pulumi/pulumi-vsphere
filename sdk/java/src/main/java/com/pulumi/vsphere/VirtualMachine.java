@@ -16,6 +16,7 @@ import com.pulumi.vsphere.outputs.VirtualMachineDisk;
 import com.pulumi.vsphere.outputs.VirtualMachineNetworkInterface;
 import com.pulumi.vsphere.outputs.VirtualMachineOvfDeploy;
 import com.pulumi.vsphere.outputs.VirtualMachineVapp;
+import com.pulumi.vsphere.outputs.VirtualMachineVideoCard;
 import com.pulumi.vsphere.outputs.VirtualMachineVtpm;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -1034,7 +1035,7 @@ import javax.annotation.Nullable;
  * 
  * * `runOnceCommandList` - (Optional) A list of commands to run at first user logon, after guest customization. Each run once command is limited by the API to 260 characters.
  * 
- * * `autoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`.
+ * * `autoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`. Make sure that `autoLogonCount` is not set to 0 if `autoLogon` is `true`.
  * 
  * * `autoLogonCount` - (Optional) Specifies how many times the virtual machine should auto-logon the Administrator account when `autoLogon` is `true`. This option should be set accordingly to ensure that all of your commands that run in `runOnceCommandList` can log in to run. Default: `1`.
  * 
@@ -1788,6 +1789,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.eptRviMode;
     }
     /**
+     * Enhanced vMotion Compatibility mode.
+     * 
+     */
+    @Export(name="evcMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> evcMode;
+
+    /**
+     * @return Enhanced vMotion Compatibility mode.
+     * 
+     */
+    public Output<Optional<String>> evcMode() {
+        return Codegen.optional(this.evcMode);
+    }
+    /**
      * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
@@ -2040,14 +2055,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryReservation);
     }
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory. Applied only when `memory` and `memoryReservation` have the same value.
      * 
      */
     @Export(name="memoryReservationLockedToMax", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> memoryReservationLockedToMax;
 
     /**
-     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory. Applied only when `memory` and `memoryReservation` have the same value.
      * 
      */
     public Output<Optional<Boolean>> memoryReservationLockedToMax() {
@@ -2150,6 +2165,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<VirtualMachineNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
+    }
+    /**
+     * The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+     * 
+     */
+    @Export(name="numCoresPerNumaNode", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> numCoresPerNumaNode;
+
+    /**
+     * @return The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+     * 
+     */
+    public Output<Optional<Integer>> numCoresPerNumaNode() {
+        return Codegen.optional(this.numCoresPerNumaNode);
     }
     /**
      * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
@@ -2570,6 +2599,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> vbsEnabled() {
         return Codegen.optional(this.vbsEnabled);
+    }
+    /**
+     * A specification for a video card device on this virtual machine.
+     * 
+     */
+    @Export(name="videoCard", refs={VirtualMachineVideoCard.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineVideoCard> videoCard;
+
+    /**
+     * @return A specification for a video card device on this virtual machine.
+     * 
+     */
+    public Output<Optional<VirtualMachineVideoCard>> videoCard() {
+        return Codegen.optional(this.videoCard);
     }
     /**
      * The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.

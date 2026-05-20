@@ -6,6 +6,7 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .alarm import *
 from .compute_cluster import *
 from .compute_cluster_host_group import *
 from .compute_cluster_vm_affinity_rule import *
@@ -28,6 +29,7 @@ from .drs_vm_override import *
 from .entity_permissions import *
 from .file import *
 from .folder import *
+from .get_alarm import *
 from .get_compute_cluster import *
 from .get_compute_cluster_host_group import *
 from .get_configuration_profile import *
@@ -48,6 +50,7 @@ from .get_host_pci_device import *
 from .get_host_thumbprint import *
 from .get_host_vgpu_profile import *
 from .get_license import *
+from .get_namespace import *
 from .get_network import *
 from .get_ovf_vm_template import *
 from .get_policy import *
@@ -58,12 +61,14 @@ from .get_tag_category import *
 from .get_vapp_container import *
 from .get_virtual_machine import *
 from .get_vmfs_disks import *
+from .get_zone import *
 from .guest_os_customization import *
 from .ha_vm_override import *
 from .host import *
 from .host_port_group import *
 from .host_virtual_switch import *
 from .license import *
+from .namespace import *
 from .nas_datastore import *
 from .offline_software_depot import *
 from .provider import *
@@ -71,6 +76,7 @@ from .resource_pool import *
 from .role import *
 from .storage_drs_vm_override import *
 from .supervisor import *
+from .supervisor_v2 import *
 from .tag import *
 from .tag_category import *
 from .vapp_container import *
@@ -82,6 +88,7 @@ from .virtual_machine_snapshot import *
 from .vm_storage_policy import *
 from .vmfs_datastore import *
 from .vnic import *
+from .zone import *
 from ._inputs import *
 from . import outputs
 
@@ -95,6 +102,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "vsphere",
+  "mod": "index/alarm",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/alarm:Alarm": "Alarm"
+  }
+ },
  {
   "pkg": "vsphere",
   "mod": "index/computeCluster",
@@ -321,6 +336,14 @@ _utilities.register(
  },
  {
   "pkg": "vsphere",
+  "mod": "index/namespace",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "vsphere",
   "mod": "index/nasDatastore",
   "fqn": "pulumi_vsphere",
   "classes": {
@@ -365,6 +388,14 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/supervisor:Supervisor": "Supervisor"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/supervisorV2",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/supervisorV2:SupervisorV2": "SupervisorV2"
   }
  },
  {
@@ -453,6 +484,14 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/vnic:Vnic": "Vnic"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/zone",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/zone:Zone": "Zone"
   }
  }
 ]
