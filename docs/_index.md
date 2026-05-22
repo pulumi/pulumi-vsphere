@@ -47,7 +47,7 @@ The datacenter, datastore, resource pool, and network are discovered using the
 [`vsphere.ResourcePool`](https://www.terraform.io/docs/providers/vsphere/d/resource_pool.html), and
 [`vsphere.getNetwork`](https://www.terraform.io/docs/providers/vsphere/d/network.html) functions respectively.
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -460,6 +460,50 @@ public class App {
             .build());
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    vsphere = {
+      source = "pulumi/vsphere"
+    }
+  }
+}
+
+data "vsphere_getdatacenter" "datacenter" {
+  name = "dc-01"
+}
+data "vsphere_getdatastore" "datastore" {
+  name          = "datastore-01"
+  datacenter_id = data.vsphere_getdatacenter.datacenter.id
+}
+data "vsphere_getcomputecluster" "cluster" {
+  name          = "cluster-01"
+  datacenter_id = data.vsphere_getdatacenter.datacenter.id
+}
+data "vsphere_getnetwork" "network" {
+  name          = "VM Network"
+  datacenter_id = data.vsphere_getdatacenter.datacenter.id
+}
+
+resource "vsphere_virtualmachine" "vm" {
+  name             = "foo"
+  resource_pool_id = data.vsphere_getcomputecluster.cluster.resource_pool_id
+  datastore_id     = data.vsphere_getdatastore.datastore.id
+  num_cpus         = 1
+  memory           = 1024
+  guest_id         = "otherLinux64Guest"
+  network_interfaces {
+    network_id = data.vsphere_getnetwork.network.id
+  }
+  disks {
+    label = "disk0"
+    size  = 20
+  }
 }
 ```
 

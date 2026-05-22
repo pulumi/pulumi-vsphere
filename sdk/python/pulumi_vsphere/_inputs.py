@@ -106,7 +106,7 @@ __all__ = [
 ]
 
 class ComputeClusterHostImageArgsDict(TypedDict):
-    components: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgs']]]]]
+    components: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgsDict']]]]]
     """
     List of custom components.
     """
@@ -253,7 +253,7 @@ class ComputeClusterVsanDiskGroupArgs:
 
 
 class ComputeClusterVsanFaultDomainArgsDict(TypedDict):
-    fault_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgs']]]]]
+    fault_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgsDict']]]]]
     """
     The configuration for single fault domain.
     """
@@ -997,15 +997,15 @@ class GuestOsCustomizationSpecArgsDict(TypedDict):
     """
     The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
     """
-    linux_options: NotRequired[pulumi.Input[Optional['GuestOsCustomizationSpecLinuxOptionsArgs']]]
+    linux_options: NotRequired[pulumi.Input[Optional['GuestOsCustomizationSpecLinuxOptionsArgsDict']]]
     """
     A list of configuration options specific to Linux virtual machines.
     """
-    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestOsCustomizationSpecNetworkInterfaceArgs']]]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestOsCustomizationSpecNetworkInterfaceArgsDict']]]]]
     """
     A specification of network interface configuration options.
     """
-    windows_options: NotRequired[pulumi.Input[Optional['GuestOsCustomizationSpecWindowsOptionsArgs']]]
+    windows_options: NotRequired[pulumi.Input[Optional['GuestOsCustomizationSpecWindowsOptionsArgsDict']]]
     """
     A list of configuration options specific to Windows virtual machines.
     """
@@ -1743,7 +1743,7 @@ class HostPortGroupPortArgs:
 
 
 class HostServiceArgsDict(TypedDict):
-    ntpd: NotRequired[pulumi.Input[Optional['HostServiceNtpdArgs']]]
+    ntpd: NotRequired[pulumi.Input[Optional['HostServiceNtpdArgsDict']]]
     """
     service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
 
@@ -2382,11 +2382,11 @@ class VirtualMachineCloneArgsDict(TypedDict):
     """
     The UUID of the source virtual machine or template.
     """
-    customization_spec: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizationSpecArgs']]]
+    customization_spec: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizationSpecArgsDict']]]
     """
     The customization specification for the virtual machine post-clone.
     """
-    customize: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizeArgs']]]
+    customize: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizeArgsDict']]]
     """
     The customization specification for the virtual machine post-clone.
     """
@@ -2590,11 +2590,11 @@ class VirtualMachineCloneCustomizeArgsDict(TypedDict):
     """
     The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
     """
-    linux_options: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizeLinuxOptionsArgs']]]
+    linux_options: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizeLinuxOptionsArgsDict']]]
     """
     A list of configuration options specific to Linux virtual machines.
     """
-    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgsDict']]]]]
     """
     A specification of network interface configuration options.
     """
@@ -2602,7 +2602,7 @@ class VirtualMachineCloneCustomizeArgsDict(TypedDict):
     """
     The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
     """
-    windows_options: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizeWindowsOptionsArgs']]]
+    windows_options: NotRequired[pulumi.Input[Optional['VirtualMachineCloneCustomizeWindowsOptionsArgsDict']]]
     """
     A list of configuration options specific to Windows virtual machines.
     """
