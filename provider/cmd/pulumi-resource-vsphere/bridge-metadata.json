@@ -1,6 +1,37 @@
 {
     "auto-aliasing": {
         "resources": {
+            "vsphere_alarm": {
+                "current": "vsphere:index/alarm:Alarm",
+                "majorVersion": 4,
+                "fields": {
+                    "advanced_action": {
+                        "maxItemsOne": false
+                    },
+                    "email_action": {
+                        "maxItemsOne": false
+                    },
+                    "event_expression": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "comparison": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "metric_expression": {
+                        "maxItemsOne": false
+                    },
+                    "snmp_action": {
+                        "maxItemsOne": false
+                    },
+                    "state_expression": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "vsphere_compute_cluster": {
                 "current": "vsphere:index/computeCluster:ComputeCluster",
                 "majorVersion": 4,
@@ -372,6 +403,28 @@
                 "current": "vsphere:index/license:License",
                 "majorVersion": 4
             },
+            "vsphere_namespace": {
+                "current": "vsphere:index/namespace:Namespace",
+                "majorVersion": 4,
+                "fields": {
+                    "storage_policies": {
+                        "maxItemsOne": false
+                    },
+                    "vm_service": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "content_libraries": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_classes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "vsphere_nas_datastore": {
                 "current": "vsphere:index/nasDatastore:NasDatastore",
                 "majorVersion": 4,
@@ -470,6 +523,344 @@
                         "maxItemsOne": false
                     },
                     "worker_ntp": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "vsphere_supervisor_v2": {
+                "current": "vsphere:index/supervisorV2:SupervisorV2",
+                "majorVersion": 4,
+                "fields": {
+                    "control_plane": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "network": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "backing": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "segments": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "ip_management": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ip_assignment": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "range": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "proxy": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "no_proxy_config": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "services": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "dns": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "search_domains": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "servers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "ntp": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "servers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "workloads": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "edge": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "foundation": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "deployment_target": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "zones": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "interface": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "network": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "dvpg_network": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "ip_config": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "ip_range": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "personas": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "network_services": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "dns": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "search_domains": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "servers": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "ntp": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "servers": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "syslog": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "haproxy": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "server": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "lb_address_range": {
+                                                "maxItemsOne": false
+                                            },
+                                            "nsx": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "egress_ip_range": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "nsx_advanced": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "images": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "content_library": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "supervisor_services": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "registry": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "kube_api_server_options": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "security": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "certificate_dns_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "network": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ip_management": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ip_assignment": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "range": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "nsx": {
+                                                "maxItemsOne": true
+                                            },
+                                            "nsx_vpc": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "default_private_cidr": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "services": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "dns": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "search_domains": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "servers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "ntp": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "servers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "vsphere": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "storage": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cloud_native_file_volume": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "vsan_clusters": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "zones": {
                         "maxItemsOne": false
                     }
                 }
@@ -589,6 +980,16 @@
                     "vapp_transport": {
                         "maxItemsOne": false
                     },
+                    "video_card": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "graphics_3d": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "vtpm": {
                         "maxItemsOne": true
                     }
@@ -656,9 +1057,49 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "vsphere_zone": {
+                "current": "vsphere:index/zone:Zone",
+                "majorVersion": 4,
+                "fields": {
+                    "cluster_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
+            "vsphere_alarm": {
+                "current": "vsphere:index/getAlarm:getAlarm",
+                "majorVersion": 4,
+                "fields": {
+                    "advanced_action": {
+                        "maxItemsOne": false
+                    },
+                    "email_action": {
+                        "maxItemsOne": false
+                    },
+                    "event_expression": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "comparison": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "metric_expression": {
+                        "maxItemsOne": false
+                    },
+                    "snmp_action": {
+                        "maxItemsOne": false
+                    },
+                    "state_expression": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "vsphere_compute_cluster": {
                 "current": "vsphere:index/getComputeCluster:getComputeCluster",
                 "majorVersion": 4
@@ -812,6 +1253,28 @@
                 "current": "vsphere:index/getLicense:getLicense",
                 "majorVersion": 4
             },
+            "vsphere_namespace": {
+                "current": "vsphere:index/getNamespace:getNamespace",
+                "majorVersion": 4,
+                "fields": {
+                    "storage_policies": {
+                        "maxItemsOne": false
+                    },
+                    "vm_service": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "content_libraries": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_classes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "vsphere_network": {
                 "current": "vsphere:index/getNetwork:getNetwork",
                 "majorVersion": 4,
@@ -875,11 +1338,24 @@
                     "network_interfaces": {
                         "maxItemsOne": false
                     },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
                     "vapp": {
                         "maxItemsOne": true
                     },
                     "vapp_transport": {
                         "maxItemsOne": false
+                    },
+                    "video_card": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "graphics_3d": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -888,6 +1364,15 @@
                 "majorVersion": 4,
                 "fields": {
                     "disks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "vsphere_zone": {
+                "current": "vsphere:index/getZone:getZone",
+                "majorVersion": 4,
+                "fields": {
+                    "cluster_ids": {
                         "maxItemsOne": false
                     }
                 }
