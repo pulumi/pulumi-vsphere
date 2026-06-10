@@ -8,18 +8,16 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTagCategoryResult {
     private List<String> associableTypes;
     private String cardinality;
     private String description;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    private String name;
+    private @Nullable String id;
+    private @Nullable String name;
 
     private GetTagCategoryResult() {}
     public List<String> associableTypes() {
@@ -31,15 +29,11 @@ public final class GetTagCategoryResult {
     public String description() {
         return this.description;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -54,8 +48,8 @@ public final class GetTagCategoryResult {
         private List<String> associableTypes;
         private String cardinality;
         private String description;
-        private String id;
-        private String name;
+        private @Nullable String id;
+        private @Nullable String name;
         public Builder() {}
         public Builder(GetTagCategoryResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -94,18 +88,14 @@ public final class GetTagCategoryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetTagCategoryResult", "id");
-            }
+        public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetTagCategoryResult", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

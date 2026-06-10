@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AlarmArgs, AlarmState } from "./alarm";
+export type Alarm = import("./alarm").Alarm;
+export const Alarm: typeof import("./alarm").Alarm = null as any;
+utilities.lazyLoad(exports, ["Alarm"], () => require("./alarm"));
+
 export { ComputeClusterArgs, ComputeClusterState } from "./computeCluster";
 export type ComputeCluster = import("./computeCluster").ComputeCluster;
 export const ComputeCluster: typeof import("./computeCluster").ComputeCluster = null as any;
@@ -115,6 +120,11 @@ export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
 utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
 
+export { GetAlarmArgs, GetAlarmResult, GetAlarmOutputArgs } from "./getAlarm";
+export const getAlarm: typeof import("./getAlarm").getAlarm = null as any;
+export const getAlarmOutput: typeof import("./getAlarm").getAlarmOutput = null as any;
+utilities.lazyLoad(exports, ["getAlarm","getAlarmOutput"], () => require("./getAlarm"));
+
 export { GetComputeClusterArgs, GetComputeClusterResult, GetComputeClusterOutputArgs } from "./getComputeCluster";
 export const getComputeCluster: typeof import("./getComputeCluster").getComputeCluster = null as any;
 export const getComputeClusterOutput: typeof import("./getComputeCluster").getComputeClusterOutput = null as any;
@@ -215,6 +225,11 @@ export const getLicense: typeof import("./getLicense").getLicense = null as any;
 export const getLicenseOutput: typeof import("./getLicense").getLicenseOutput = null as any;
 utilities.lazyLoad(exports, ["getLicense","getLicenseOutput"], () => require("./getLicense"));
 
+export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
+export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
+export const getNamespaceOutput: typeof import("./getNamespace").getNamespaceOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
+
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
@@ -265,6 +280,11 @@ export const getVmfsDisks: typeof import("./getVmfsDisks").getVmfsDisks = null a
 export const getVmfsDisksOutput: typeof import("./getVmfsDisks").getVmfsDisksOutput = null as any;
 utilities.lazyLoad(exports, ["getVmfsDisks","getVmfsDisksOutput"], () => require("./getVmfsDisks"));
 
+export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
+export const getZone: typeof import("./getZone").getZone = null as any;
+export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
+utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
+
 export { GuestOsCustomizationArgs, GuestOsCustomizationState } from "./guestOsCustomization";
 export type GuestOsCustomization = import("./guestOsCustomization").GuestOsCustomization;
 export const GuestOsCustomization: typeof import("./guestOsCustomization").GuestOsCustomization = null as any;
@@ -294,6 +314,11 @@ export { LicenseArgs, LicenseState } from "./license";
 export type License = import("./license").License;
 export const License: typeof import("./license").License = null as any;
 utilities.lazyLoad(exports, ["License"], () => require("./license"));
+
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
 
 export { NasDatastoreArgs, NasDatastoreState } from "./nasDatastore";
 export type NasDatastore = import("./nasDatastore").NasDatastore;
@@ -327,6 +352,11 @@ export { SupervisorArgs, SupervisorState } from "./supervisor";
 export type Supervisor = import("./supervisor").Supervisor;
 export const Supervisor: typeof import("./supervisor").Supervisor = null as any;
 utilities.lazyLoad(exports, ["Supervisor"], () => require("./supervisor"));
+
+export { SupervisorV2Args, SupervisorV2State } from "./supervisorV2";
+export type SupervisorV2 = import("./supervisorV2").SupervisorV2;
+export const SupervisorV2: typeof import("./supervisorV2").SupervisorV2 = null as any;
+utilities.lazyLoad(exports, ["SupervisorV2"], () => require("./supervisorV2"));
 
 export { TagArgs, TagState } from "./tag";
 export type Tag = import("./tag").Tag;
@@ -383,6 +413,11 @@ export type Vnic = import("./vnic").Vnic;
 export const Vnic: typeof import("./vnic").Vnic = null as any;
 utilities.lazyLoad(exports, ["Vnic"], () => require("./vnic"));
 
+export { ZoneArgs, ZoneState } from "./zone";
+export type Zone = import("./zone").Zone;
+export const Zone: typeof import("./zone").Zone = null as any;
+utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -397,6 +432,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "vsphere:index/alarm:Alarm":
+                return new Alarm(name, <any>undefined, { urn })
             case "vsphere:index/computeCluster:ComputeCluster":
                 return new ComputeCluster(name, <any>undefined, { urn })
             case "vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup":
@@ -453,6 +490,8 @@ const _module = {
                 return new HostVirtualSwitch(name, <any>undefined, { urn })
             case "vsphere:index/license:License":
                 return new License(name, <any>undefined, { urn })
+            case "vsphere:index/namespace:Namespace":
+                return new Namespace(name, <any>undefined, { urn })
             case "vsphere:index/nasDatastore:NasDatastore":
                 return new NasDatastore(name, <any>undefined, { urn })
             case "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot":
@@ -465,6 +504,8 @@ const _module = {
                 return new StorageDrsVmOverride(name, <any>undefined, { urn })
             case "vsphere:index/supervisor:Supervisor":
                 return new Supervisor(name, <any>undefined, { urn })
+            case "vsphere:index/supervisorV2:SupervisorV2":
+                return new SupervisorV2(name, <any>undefined, { urn })
             case "vsphere:index/tag:Tag":
                 return new Tag(name, <any>undefined, { urn })
             case "vsphere:index/tagCategory:TagCategory":
@@ -487,11 +528,14 @@ const _module = {
                 return new VmfsDatastore(name, <any>undefined, { urn })
             case "vsphere:index/vnic:Vnic":
                 return new Vnic(name, <any>undefined, { urn })
+            case "vsphere:index/zone:Zone":
+                return new Zone(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("vsphere", "index/alarm", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/computeCluster", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/computeClusterHostGroup", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/computeClusterVmAffinityRule", _module)
@@ -520,12 +564,14 @@ pulumi.runtime.registerResourceModule("vsphere", "index/host", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/hostPortGroup", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/hostVirtualSwitch", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/license", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/namespace", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/nasDatastore", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/offlineSoftwareDepot", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/resourcePool", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/role", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/storageDrsVmOverride", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/supervisor", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/supervisorV2", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/tag", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/tagCategory", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vappContainer", _module)
@@ -537,6 +583,7 @@ pulumi.runtime.registerResourceModule("vsphere", "index/virtualMachineSnapshot",
 pulumi.runtime.registerResourceModule("vsphere", "index/vmStoragePolicy", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vmfsDatastore", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vnic", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/zone", _module)
 pulumi.runtime.registerResourcePackage("vsphere", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

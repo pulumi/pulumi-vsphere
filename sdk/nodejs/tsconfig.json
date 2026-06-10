@@ -19,6 +19,7 @@
         "skipLibCheck": true
     },
     "files": [
+        "alarm.ts",
         "computeCluster.ts",
         "computeClusterHostGroup.ts",
         "computeClusterVmAffinityRule.ts",
@@ -43,6 +44,7 @@
         "entityPermissions.ts",
         "file.ts",
         "folder.ts",
+        "getAlarm.ts",
         "getComputeCluster.ts",
         "getComputeClusterHostGroup.ts",
         "getConfigurationProfile.ts",
@@ -63,6 +65,7 @@
         "getHostThumbprint.ts",
         "getHostVgpuProfile.ts",
         "getLicense.ts",
+        "getNamespace.ts",
         "getNetwork.ts",
         "getOvfVmTemplate.ts",
         "getPolicy.ts",
@@ -73,6 +76,7 @@
         "getVappContainer.ts",
         "getVirtualMachine.ts",
         "getVmfsDisks.ts",
+        "getZone.ts",
         "guestOsCustomization.ts",
         "haVmOverride.ts",
         "host.ts",
@@ -80,6 +84,7 @@
         "hostVirtualSwitch.ts",
         "index.ts",
         "license.ts",
+        "namespace.ts",
         "nasDatastore.ts",
         "offlineSoftwareDepot.ts",
         "provider.ts",
@@ -87,6 +92,7 @@
         "role.ts",
         "storageDrsVmOverride.ts",
         "supervisor.ts",
+        "supervisorV2.ts",
         "tag.ts",
         "tagCategory.ts",
         "types/index.ts",
@@ -101,6 +107,7 @@
         "virtualMachineSnapshot.ts",
         "vmStoragePolicy.ts",
         "vmfsDatastore.ts",
-        "vnic.ts"
+        "vnic.ts",
+        "zone.ts"
     ]
 }

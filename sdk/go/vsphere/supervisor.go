@@ -14,6 +14,8 @@ import (
 
 // Provides a resource for configuring Workload Management.
 //
+// > **NOTE:** This resource is deprecated and will be removed in a future major version of the provider. Use `SupervisorV2` instead.
+//
 // ## Example Usage
 //
 // ### S
@@ -112,16 +114,11 @@ type Supervisor struct {
 	EgressCidrs SupervisorEgressCidrArrayOutput `pulumi:"egressCidrs"`
 	// CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
 	IngressCidrs SupervisorIngressCidrArrayOutput `pulumi:"ingressCidrs"`
-	// The list of addresses of the primary DNS servers.
+	// The list of addresses for the primary DNS servers.
 	MainDns pulumi.StringArrayOutput `pulumi:"mainDns"`
-	// The list of addresses of the primary NTP servers.
+	// The list of addresses for the primary NTP servers.
 	MainNtps pulumi.StringArrayOutput `pulumi:"mainNtps"`
 	// The configuration for the management network which the control plane VMs will be connected to.
-	// * * `network` - ID of the network. (e.g. a distributed port group).
-	// * * `startingAddress` - Starting address of the management network range.
-	// * * `subnetMask` - Subnet mask.
-	// * * `gateway` - Gateway IP address.
-	// * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
 	ManagementNetwork SupervisorManagementNetworkOutput `pulumi:"managementNetwork"`
 	// The list of namespaces to create in the Supervisor cluster
 	Namespaces SupervisorNamespaceArrayOutput `pulumi:"namespaces"`
@@ -135,9 +132,9 @@ type Supervisor struct {
 	SizingHint pulumi.StringOutput `pulumi:"sizingHint"`
 	// The name of the storage policy.
 	StoragePolicy pulumi.StringOutput `pulumi:"storagePolicy"`
-	// The list of addresses of the DNS servers to use for the worker nodes.
+	// The list of addresses for the DNS servers to use for the worker nodes.
 	WorkerDns pulumi.StringArrayOutput `pulumi:"workerDns"`
-	// The list of addresses of the NTP servers to use for the worker nodes.
+	// The list of addresses for the NTP servers to use for the worker nodes.
 	WorkerNtps pulumi.StringArrayOutput `pulumi:"workerNtps"`
 }
 
@@ -231,16 +228,11 @@ type supervisorState struct {
 	EgressCidrs []SupervisorEgressCidr `pulumi:"egressCidrs"`
 	// CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
 	IngressCidrs []SupervisorIngressCidr `pulumi:"ingressCidrs"`
-	// The list of addresses of the primary DNS servers.
+	// The list of addresses for the primary DNS servers.
 	MainDns []string `pulumi:"mainDns"`
-	// The list of addresses of the primary NTP servers.
+	// The list of addresses for the primary NTP servers.
 	MainNtps []string `pulumi:"mainNtps"`
 	// The configuration for the management network which the control plane VMs will be connected to.
-	// * * `network` - ID of the network. (e.g. a distributed port group).
-	// * * `startingAddress` - Starting address of the management network range.
-	// * * `subnetMask` - Subnet mask.
-	// * * `gateway` - Gateway IP address.
-	// * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
 	ManagementNetwork *SupervisorManagementNetwork `pulumi:"managementNetwork"`
 	// The list of namespaces to create in the Supervisor cluster
 	Namespaces []SupervisorNamespace `pulumi:"namespaces"`
@@ -254,9 +246,9 @@ type supervisorState struct {
 	SizingHint *string `pulumi:"sizingHint"`
 	// The name of the storage policy.
 	StoragePolicy *string `pulumi:"storagePolicy"`
-	// The list of addresses of the DNS servers to use for the worker nodes.
+	// The list of addresses for the DNS servers to use for the worker nodes.
 	WorkerDns []string `pulumi:"workerDns"`
-	// The list of addresses of the NTP servers to use for the worker nodes.
+	// The list of addresses for the NTP servers to use for the worker nodes.
 	WorkerNtps []string `pulumi:"workerNtps"`
 }
 
@@ -273,16 +265,11 @@ type SupervisorState struct {
 	EgressCidrs SupervisorEgressCidrArrayInput
 	// CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
 	IngressCidrs SupervisorIngressCidrArrayInput
-	// The list of addresses of the primary DNS servers.
+	// The list of addresses for the primary DNS servers.
 	MainDns pulumi.StringArrayInput
-	// The list of addresses of the primary NTP servers.
+	// The list of addresses for the primary NTP servers.
 	MainNtps pulumi.StringArrayInput
 	// The configuration for the management network which the control plane VMs will be connected to.
-	// * * `network` - ID of the network. (e.g. a distributed port group).
-	// * * `startingAddress` - Starting address of the management network range.
-	// * * `subnetMask` - Subnet mask.
-	// * * `gateway` - Gateway IP address.
-	// * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
 	ManagementNetwork SupervisorManagementNetworkPtrInput
 	// The list of namespaces to create in the Supervisor cluster
 	Namespaces SupervisorNamespaceArrayInput
@@ -296,9 +283,9 @@ type SupervisorState struct {
 	SizingHint pulumi.StringPtrInput
 	// The name of the storage policy.
 	StoragePolicy pulumi.StringPtrInput
-	// The list of addresses of the DNS servers to use for the worker nodes.
+	// The list of addresses for the DNS servers to use for the worker nodes.
 	WorkerDns pulumi.StringArrayInput
-	// The list of addresses of the NTP servers to use for the worker nodes.
+	// The list of addresses for the NTP servers to use for the worker nodes.
 	WorkerNtps pulumi.StringArrayInput
 }
 
@@ -319,16 +306,11 @@ type supervisorArgs struct {
 	EgressCidrs []SupervisorEgressCidr `pulumi:"egressCidrs"`
 	// CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
 	IngressCidrs []SupervisorIngressCidr `pulumi:"ingressCidrs"`
-	// The list of addresses of the primary DNS servers.
+	// The list of addresses for the primary DNS servers.
 	MainDns []string `pulumi:"mainDns"`
-	// The list of addresses of the primary NTP servers.
+	// The list of addresses for the primary NTP servers.
 	MainNtps []string `pulumi:"mainNtps"`
 	// The configuration for the management network which the control plane VMs will be connected to.
-	// * * `network` - ID of the network. (e.g. a distributed port group).
-	// * * `startingAddress` - Starting address of the management network range.
-	// * * `subnetMask` - Subnet mask.
-	// * * `gateway` - Gateway IP address.
-	// * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
 	ManagementNetwork SupervisorManagementNetwork `pulumi:"managementNetwork"`
 	// The list of namespaces to create in the Supervisor cluster
 	Namespaces []SupervisorNamespace `pulumi:"namespaces"`
@@ -342,9 +324,9 @@ type supervisorArgs struct {
 	SizingHint string `pulumi:"sizingHint"`
 	// The name of the storage policy.
 	StoragePolicy string `pulumi:"storagePolicy"`
-	// The list of addresses of the DNS servers to use for the worker nodes.
+	// The list of addresses for the DNS servers to use for the worker nodes.
 	WorkerDns []string `pulumi:"workerDns"`
-	// The list of addresses of the NTP servers to use for the worker nodes.
+	// The list of addresses for the NTP servers to use for the worker nodes.
 	WorkerNtps []string `pulumi:"workerNtps"`
 }
 
@@ -362,16 +344,11 @@ type SupervisorArgs struct {
 	EgressCidrs SupervisorEgressCidrArrayInput
 	// CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
 	IngressCidrs SupervisorIngressCidrArrayInput
-	// The list of addresses of the primary DNS servers.
+	// The list of addresses for the primary DNS servers.
 	MainDns pulumi.StringArrayInput
-	// The list of addresses of the primary NTP servers.
+	// The list of addresses for the primary NTP servers.
 	MainNtps pulumi.StringArrayInput
 	// The configuration for the management network which the control plane VMs will be connected to.
-	// * * `network` - ID of the network. (e.g. a distributed port group).
-	// * * `startingAddress` - Starting address of the management network range.
-	// * * `subnetMask` - Subnet mask.
-	// * * `gateway` - Gateway IP address.
-	// * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
 	ManagementNetwork SupervisorManagementNetworkInput
 	// The list of namespaces to create in the Supervisor cluster
 	Namespaces SupervisorNamespaceArrayInput
@@ -385,9 +362,9 @@ type SupervisorArgs struct {
 	SizingHint pulumi.StringInput
 	// The name of the storage policy.
 	StoragePolicy pulumi.StringInput
-	// The list of addresses of the DNS servers to use for the worker nodes.
+	// The list of addresses for the DNS servers to use for the worker nodes.
 	WorkerDns pulumi.StringArrayInput
-	// The list of addresses of the NTP servers to use for the worker nodes.
+	// The list of addresses for the NTP servers to use for the worker nodes.
 	WorkerNtps pulumi.StringArrayInput
 }
 
@@ -508,22 +485,17 @@ func (o SupervisorOutput) IngressCidrs() SupervisorIngressCidrArrayOutput {
 	return o.ApplyT(func(v *Supervisor) SupervisorIngressCidrArrayOutput { return v.IngressCidrs }).(SupervisorIngressCidrArrayOutput)
 }
 
-// The list of addresses of the primary DNS servers.
+// The list of addresses for the primary DNS servers.
 func (o SupervisorOutput) MainDns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.MainDns }).(pulumi.StringArrayOutput)
 }
 
-// The list of addresses of the primary NTP servers.
+// The list of addresses for the primary NTP servers.
 func (o SupervisorOutput) MainNtps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.MainNtps }).(pulumi.StringArrayOutput)
 }
 
 // The configuration for the management network which the control plane VMs will be connected to.
-// * * `network` - ID of the network. (e.g. a distributed port group).
-// * * `startingAddress` - Starting address of the management network range.
-// * * `subnetMask` - Subnet mask.
-// * * `gateway` - Gateway IP address.
-// * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
 func (o SupervisorOutput) ManagementNetwork() SupervisorManagementNetworkOutput {
 	return o.ApplyT(func(v *Supervisor) SupervisorManagementNetworkOutput { return v.ManagementNetwork }).(SupervisorManagementNetworkOutput)
 }
@@ -558,12 +530,12 @@ func (o SupervisorOutput) StoragePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Supervisor) pulumi.StringOutput { return v.StoragePolicy }).(pulumi.StringOutput)
 }
 
-// The list of addresses of the DNS servers to use for the worker nodes.
+// The list of addresses for the DNS servers to use for the worker nodes.
 func (o SupervisorOutput) WorkerDns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.WorkerDns }).(pulumi.StringArrayOutput)
 }
 
-// The list of addresses of the NTP servers to use for the worker nodes.
+// The list of addresses for the NTP servers to use for the worker nodes.
 func (o SupervisorOutput) WorkerNtps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.WorkerNtps }).(pulumi.StringArrayOutput)
 }

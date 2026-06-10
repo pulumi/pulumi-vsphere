@@ -105,7 +105,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable Boolean thinProvisioned;
     /**
-     * @return The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+     * @return The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
      * 
      */
     private @Nullable Integer unitNumber;
@@ -248,7 +248,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.thinProvisioned);
     }
     /**
-     * @return The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+     * @return The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
      * 
      */
     public Optional<Integer> unitNumber() {

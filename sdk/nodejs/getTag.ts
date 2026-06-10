@@ -18,6 +18,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Lookup by Name and Category
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -30,11 +32,23 @@ import * as utilities from "./utilities";
  *     categoryId: category.id,
  * }));
  * ```
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const byId = vsphere.getTag({
+ *     id: "urn:vmomi:InventoryServiceTag:xxxx",
+ * });
+ * ```
  */
-export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
+export function getTag(args?: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getTag:getTag", {
         "categoryId": args.categoryId,
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -45,26 +59,29 @@ export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<G
 export interface GetTagArgs {
     /**
      * The ID of the tag category in which the tag is
-     * located.
+     * located. Required when `name` is used.
      */
-    categoryId: string;
+    categoryId?: string;
     /**
-     * The name of the tag.
+     * The unique identifier of the tag. If specified, `name` and
+     * `categoryId` must not be set.
      */
-    name: string;
+    id?: string;
+    /**
+     * The name of the tag. If specified, `categoryId` must also
+     * be provided.
+     */
+    name?: string;
 }
 
 /**
  * A collection of values returned by getTag.
  */
 export interface GetTagResult {
-    readonly categoryId: string;
+    readonly categoryId?: string;
     readonly description: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    readonly name: string;
+    readonly id?: string;
+    readonly name?: string;
 }
 /**
  * The `vsphere.Tag` data source can be used to reference tags that are not managed
@@ -80,6 +97,8 @@ export interface GetTagResult {
  *
  * ## Example Usage
  *
+ * ### Lookup by Name and Category
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -92,11 +111,23 @@ export interface GetTagResult {
  *     categoryId: category.id,
  * }));
  * ```
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const byId = vsphere.getTag({
+ *     id: "urn:vmomi:InventoryServiceTag:xxxx",
+ * });
+ * ```
  */
-export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagResult> {
+export function getTagOutput(args?: GetTagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getTag:getTag", {
         "categoryId": args.categoryId,
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -107,11 +138,17 @@ export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOutputO
 export interface GetTagOutputArgs {
     /**
      * The ID of the tag category in which the tag is
-     * located.
+     * located. Required when `name` is used.
      */
-    categoryId: pulumi.Input<string>;
+    categoryId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the tag.
+     * The unique identifier of the tag. If specified, `name` and
+     * `categoryId` must not be set.
      */
-    name: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the tag. If specified, `categoryId` must also
+     * be provided.
+     */
+    name?: pulumi.Input<string | undefined>;
 }

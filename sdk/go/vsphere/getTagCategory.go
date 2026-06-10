@@ -24,6 +24,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Lookup by Name
+//
 // ```go
 // package main
 //
@@ -37,7 +39,33 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
-//				Name: "example-category",
+//				Name: pulumi.StringRef("example-category"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by ID
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.GetTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+//				Id: pulumi.StringRef("urn:vmomi:InventoryServiceCategory:xxxx"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,8 +87,10 @@ func LookupTagCategory(ctx *pulumi.Context, args *LookupTagCategoryArgs, opts ..
 
 // A collection of arguments for invoking getTagCategory.
 type LookupTagCategoryArgs struct {
-	// The name of the tag category.
-	Name string `pulumi:"name"`
+	// The unique identifier of the tag category. If specified, `name` must not be set.
+	Id *string `pulumi:"id"`
+	// The name of the tag category. Required if `id` is not set.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getTagCategory.
@@ -68,9 +98,8 @@ type LookupTagCategoryResult struct {
 	AssociableTypes []string `pulumi:"associableTypes"`
 	Cardinality     string   `pulumi:"cardinality"`
 	Description     string   `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id              *string  `pulumi:"id"`
+	Name            *string  `pulumi:"name"`
 }
 
 func LookupTagCategoryOutput(ctx *pulumi.Context, args LookupTagCategoryOutputArgs, opts ...pulumi.InvokeOption) LookupTagCategoryResultOutput {
@@ -84,8 +113,10 @@ func LookupTagCategoryOutput(ctx *pulumi.Context, args LookupTagCategoryOutputAr
 
 // A collection of arguments for invoking getTagCategory.
 type LookupTagCategoryOutputArgs struct {
-	// The name of the tag category.
-	Name pulumi.StringInput `pulumi:"name"`
+	// The unique identifier of the tag category. If specified, `name` must not be set.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the tag category. Required if `id` is not set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupTagCategoryOutputArgs) ElementType() reflect.Type {
@@ -119,13 +150,12 @@ func (o LookupTagCategoryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagCategoryResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o LookupTagCategoryResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagCategoryResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupTagCategoryResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTagCategoryResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupTagCategoryResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagCategoryResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupTagCategoryResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTagCategoryResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func init() {

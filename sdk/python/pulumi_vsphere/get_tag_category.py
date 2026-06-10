@@ -60,15 +60,12 @@ class GetTagCategoryResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
+    def id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> _builtins.str:
+    def name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "name")
 
 
@@ -85,7 +82,8 @@ class AwaitableGetTagCategoryResult(GetTagCategoryResult):
             name=self.name)
 
 
-def get_tag_category(name: Optional[_builtins.str] = None,
+def get_tag_category(id: Optional[_builtins.str] = None,
+                     name: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagCategoryResult:
     """
     The `TagCategory` data source can be used to reference tag categories
@@ -101,6 +99,8 @@ def get_tag_category(name: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ### Lookup by Name
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -108,10 +108,21 @@ def get_tag_category(name: Optional[_builtins.str] = None,
     category = vsphere.get_tag_category(name="example-category")
     ```
 
+    ### Lookup by ID
 
-    :param _builtins.str name: The name of the tag category.
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    by_id = vsphere.get_tag_category(id="urn:vmomi:InventoryServiceCategory:xxxx")
+    ```
+
+
+    :param _builtins.str id: The unique identifier of the tag category. If specified, `name` must not be set.
+    :param _builtins.str name: The name of the tag category. Required if `id` is not set.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts, typ=GetTagCategoryResult).value
@@ -122,7 +133,8 @@ def get_tag_category(name: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_tag_category_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+def get_tag_category_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagCategoryResult]:
     """
     The `TagCategory` data source can be used to reference tag categories
@@ -138,6 +150,8 @@ def get_tag_category_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     ## Example Usage
 
+    ### Lookup by Name
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -145,10 +159,21 @@ def get_tag_category_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     category = vsphere.get_tag_category(name="example-category")
     ```
 
+    ### Lookup by ID
 
-    :param _builtins.str name: The name of the tag category.
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    by_id = vsphere.get_tag_category(id="urn:vmomi:InventoryServiceCategory:xxxx")
+    ```
+
+
+    :param _builtins.str id: The unique identifier of the tag category. If specified, `name` must not be set.
+    :param _builtins.str name: The name of the tag category. Required if `id` is not set.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts, typ=GetTagCategoryResult)

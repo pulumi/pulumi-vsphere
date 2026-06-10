@@ -56,6 +56,7 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
         "retryInterval": args.retryInterval,
         "retryTimeout": args.retryTimeout,
         "vpcId": args.vpcId,
+        "vpcProjectId": args.vpcProjectId,
     }, opts);
 }
 
@@ -99,6 +100,10 @@ export interface GetNetworkArgs {
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     vpcId?: string;
+    /**
+     * Select a project scope for retrieval of VPC subnets.
+     */
+    vpcProjectId?: string;
 }
 
 /**
@@ -123,6 +128,7 @@ export interface GetNetworkResult {
      */
     readonly type: string;
     readonly vpcId?: string;
+    readonly vpcProjectId?: string;
 }
 /**
  * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
@@ -174,6 +180,7 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
         "retryInterval": args.retryInterval,
         "retryTimeout": args.retryTimeout,
         "vpcId": args.vpcId,
+        "vpcProjectId": args.vpcProjectId,
     }, opts);
 }
 
@@ -217,4 +224,8 @@ export interface GetNetworkOutputArgs {
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * Select a project scope for retrieval of VPC subnets.
+     */
+    vpcProjectId?: pulumi.Input<string | undefined>;
 }

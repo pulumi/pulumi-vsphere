@@ -15,6 +15,20 @@ else:
 from . import _utilities
 
 __all__ = [
+    'AlarmAdvancedActionArgs',
+    'AlarmAdvancedActionArgsDict',
+    'AlarmEmailActionArgs',
+    'AlarmEmailActionArgsDict',
+    'AlarmEventExpressionArgs',
+    'AlarmEventExpressionArgsDict',
+    'AlarmEventExpressionComparisonArgs',
+    'AlarmEventExpressionComparisonArgsDict',
+    'AlarmMetricExpressionArgs',
+    'AlarmMetricExpressionArgsDict',
+    'AlarmSnmpActionArgs',
+    'AlarmSnmpActionArgsDict',
+    'AlarmStateExpressionArgs',
+    'AlarmStateExpressionArgsDict',
     'ComputeClusterHostImageArgs',
     'ComputeClusterHostImageArgsDict',
     'ComputeClusterHostImageComponentArgs',
@@ -55,6 +69,8 @@ __all__ = [
     'HostServiceArgsDict',
     'HostServiceNtpdArgs',
     'HostServiceNtpdArgsDict',
+    'NamespaceVmServiceArgs',
+    'NamespaceVmServiceArgsDict',
     'OfflineSoftwareDepotComponentArgs',
     'OfflineSoftwareDepotComponentArgsDict',
     'SupervisorEgressCidrArgs',
@@ -69,6 +85,100 @@ __all__ = [
     'SupervisorPodCidrArgsDict',
     'SupervisorServiceCidrArgs',
     'SupervisorServiceCidrArgsDict',
+    'SupervisorV2ControlPlaneArgs',
+    'SupervisorV2ControlPlaneArgsDict',
+    'SupervisorV2ControlPlaneNetworkArgs',
+    'SupervisorV2ControlPlaneNetworkArgsDict',
+    'SupervisorV2ControlPlaneNetworkBackingArgs',
+    'SupervisorV2ControlPlaneNetworkBackingArgsDict',
+    'SupervisorV2ControlPlaneNetworkIpManagementArgs',
+    'SupervisorV2ControlPlaneNetworkIpManagementArgsDict',
+    'SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs',
+    'SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgsDict',
+    'SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs',
+    'SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgsDict',
+    'SupervisorV2ControlPlaneNetworkProxyArgs',
+    'SupervisorV2ControlPlaneNetworkProxyArgsDict',
+    'SupervisorV2ControlPlaneNetworkServicesArgs',
+    'SupervisorV2ControlPlaneNetworkServicesArgsDict',
+    'SupervisorV2ControlPlaneNetworkServicesDnsArgs',
+    'SupervisorV2ControlPlaneNetworkServicesDnsArgsDict',
+    'SupervisorV2ControlPlaneNetworkServicesNtpArgs',
+    'SupervisorV2ControlPlaneNetworkServicesNtpArgsDict',
+    'SupervisorV2WorkloadsArgs',
+    'SupervisorV2WorkloadsArgsDict',
+    'SupervisorV2WorkloadsEdgeArgs',
+    'SupervisorV2WorkloadsEdgeArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationArgs',
+    'SupervisorV2WorkloadsEdgeFoundationArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs',
+    'SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceArgs',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgsDict',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgsDict',
+    'SupervisorV2WorkloadsEdgeHaproxyArgs',
+    'SupervisorV2WorkloadsEdgeHaproxyArgsDict',
+    'SupervisorV2WorkloadsEdgeHaproxyServerArgs',
+    'SupervisorV2WorkloadsEdgeHaproxyServerArgsDict',
+    'SupervisorV2WorkloadsEdgeLbAddressRangeArgs',
+    'SupervisorV2WorkloadsEdgeLbAddressRangeArgsDict',
+    'SupervisorV2WorkloadsEdgeNsxArgs',
+    'SupervisorV2WorkloadsEdgeNsxArgsDict',
+    'SupervisorV2WorkloadsEdgeNsxAdvancedArgs',
+    'SupervisorV2WorkloadsEdgeNsxAdvancedArgsDict',
+    'SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs',
+    'SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgsDict',
+    'SupervisorV2WorkloadsImagesArgs',
+    'SupervisorV2WorkloadsImagesArgsDict',
+    'SupervisorV2WorkloadsImagesContentLibraryArgs',
+    'SupervisorV2WorkloadsImagesContentLibraryArgsDict',
+    'SupervisorV2WorkloadsImagesRegistryArgs',
+    'SupervisorV2WorkloadsImagesRegistryArgsDict',
+    'SupervisorV2WorkloadsKubeApiServerOptionsArgs',
+    'SupervisorV2WorkloadsKubeApiServerOptionsArgsDict',
+    'SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs',
+    'SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgsDict',
+    'SupervisorV2WorkloadsNetworkArgs',
+    'SupervisorV2WorkloadsNetworkArgsDict',
+    'SupervisorV2WorkloadsNetworkIpManagementArgs',
+    'SupervisorV2WorkloadsNetworkIpManagementArgsDict',
+    'SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs',
+    'SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgsDict',
+    'SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs',
+    'SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgsDict',
+    'SupervisorV2WorkloadsNetworkNsxArgs',
+    'SupervisorV2WorkloadsNetworkNsxArgsDict',
+    'SupervisorV2WorkloadsNetworkNsxVpcArgs',
+    'SupervisorV2WorkloadsNetworkNsxVpcArgsDict',
+    'SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs',
+    'SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgsDict',
+    'SupervisorV2WorkloadsNetworkServicesArgs',
+    'SupervisorV2WorkloadsNetworkServicesArgsDict',
+    'SupervisorV2WorkloadsNetworkServicesDnsArgs',
+    'SupervisorV2WorkloadsNetworkServicesDnsArgsDict',
+    'SupervisorV2WorkloadsNetworkServicesNtpArgs',
+    'SupervisorV2WorkloadsNetworkServicesNtpArgsDict',
+    'SupervisorV2WorkloadsNetworkVsphereArgs',
+    'SupervisorV2WorkloadsNetworkVsphereArgsDict',
+    'SupervisorV2WorkloadsStorageArgs',
+    'SupervisorV2WorkloadsStorageArgsDict',
+    'SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs',
+    'SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgsDict',
     'VirtualMachineCdromArgs',
     'VirtualMachineCdromArgsDict',
     'VirtualMachineCloneArgs',
@@ -91,6 +201,10 @@ __all__ = [
     'VirtualMachineOvfDeployArgsDict',
     'VirtualMachineVappArgs',
     'VirtualMachineVappArgsDict',
+    'VirtualMachineVideoCardArgs',
+    'VirtualMachineVideoCardArgsDict',
+    'VirtualMachineVideoCardGraphics3dArgs',
+    'VirtualMachineVideoCardGraphics3dArgsDict',
     'VirtualMachineVtpmArgs',
     'VirtualMachineVtpmArgsDict',
     'VmStoragePolicyTagRuleArgs',
@@ -99,11 +213,758 @@ __all__ = [
     'VnicIpv4ArgsDict',
     'VnicIpv6Args',
     'VnicIpv6ArgsDict',
+    'GetAlarmMetricExpressionArgs',
+    'GetAlarmMetricExpressionArgsDict',
+    'GetAlarmSnmpActionArgs',
+    'GetAlarmSnmpActionArgsDict',
+    'GetAlarmStateExpressionArgs',
+    'GetAlarmStateExpressionArgsDict',
     'GetNetworkFilterArgs',
     'GetNetworkFilterArgsDict',
     'GetVirtualMachineVappArgs',
     'GetVirtualMachineVappArgsDict',
 ]
+
+class AlarmAdvancedActionArgsDict(TypedDict):
+    final_state: pulumi.Input[_builtins.str]
+    """
+    Triggers the action only for this final state.
+    """
+    start_state: pulumi.Input[_builtins.str]
+    """
+    Triggers the action only for this initial state.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the alarm. This name needs to be unique
+    within the vCenter. Forces a new resource if changed.
+    """
+    repeat: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether or not the action should be repeated.
+    """
+
+@pulumi.input_type
+class AlarmAdvancedActionArgs:
+    def __init__(__self__, *,
+                 final_state: pulumi.Input[_builtins.str],
+                 start_state: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] final_state: Triggers the action only for this final state.
+        :param pulumi.Input[_builtins.str] start_state: Triggers the action only for this initial state.
+        :param pulumi.Input[_builtins.str] name: The name of the alarm. This name needs to be unique
+               within the vCenter. Forces a new resource if changed.
+        :param pulumi.Input[_builtins.bool] repeat: Whether or not the action should be repeated.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "start_state", start_state)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> pulumi.Input[_builtins.str]:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @final_state.setter
+    def final_state(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "final_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> pulumi.Input[_builtins.str]:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @start_state.setter
+    def start_state(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "start_state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the alarm. This name needs to be unique
+        within the vCenter. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @repeat.setter
+    def repeat(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "repeat", value)
+
+
+class AlarmEmailActionArgsDict(TypedDict):
+    final_state: pulumi.Input[_builtins.str]
+    """
+    Triggers the action only for this final state.
+    """
+    start_state: pulumi.Input[_builtins.str]
+    """
+    Triggers the action only for this initial state.
+    """
+    body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Email body.
+    """
+    cc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Email destination cc.
+    """
+    repeat: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether or not the action should be repeated.
+    """
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Email subject.
+    """
+    to: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Email destination.
+    """
+
+@pulumi.input_type
+class AlarmEmailActionArgs:
+    def __init__(__self__, *,
+                 final_state: pulumi.Input[_builtins.str],
+                 start_state: pulumi.Input[_builtins.str],
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 cc: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 to: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] final_state: Triggers the action only for this final state.
+        :param pulumi.Input[_builtins.str] start_state: Triggers the action only for this initial state.
+        :param pulumi.Input[_builtins.str] body: Email body.
+        :param pulumi.Input[_builtins.str] cc: Email destination cc.
+        :param pulumi.Input[_builtins.bool] repeat: Whether or not the action should be repeated.
+        :param pulumi.Input[_builtins.str] subject: Email subject.
+        :param pulumi.Input[_builtins.str] to: Email destination.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "start_state", start_state)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if cc is not None:
+            pulumi.set(__self__, "cc", cc)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> pulumi.Input[_builtins.str]:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @final_state.setter
+    def final_state(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "final_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> pulumi.Input[_builtins.str]:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @start_state.setter
+    def start_state(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "start_state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Email body.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "body", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cc(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Email destination cc.
+        """
+        return pulumi.get(self, "cc")
+
+    @cc.setter
+    def cc(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cc", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @repeat.setter
+    def repeat(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "repeat", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Email subject.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subject", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Email destination.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+class AlarmEventExpressionArgsDict(TypedDict):
+    event_type_id: pulumi.Input[_builtins.str]
+    """
+    Name of the event (vim.event).
+    """
+    object_type: pulumi.Input[_builtins.str]
+    """
+    Type of object where the event applies on.
+    """
+    status: pulumi.Input[_builtins.str]
+    """
+    Alarm status once triggered.
+    """
+    comparisons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlarmEventExpressionComparisonArgsDict']]]]]
+    """
+    Additional check that allows adding threshold on the given object attribute.
+    """
+    event_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of Event (vim.event.Event).
+    """
+
+@pulumi.input_type
+class AlarmEventExpressionArgs:
+    def __init__(__self__, *,
+                 event_type_id: pulumi.Input[_builtins.str],
+                 object_type: pulumi.Input[_builtins.str],
+                 status: pulumi.Input[_builtins.str],
+                 comparisons: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmEventExpressionComparisonArgs']]]] = None,
+                 event_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] event_type_id: Name of the event (vim.event).
+        :param pulumi.Input[_builtins.str] object_type: Type of object where the event applies on.
+        :param pulumi.Input[_builtins.str] status: Alarm status once triggered.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmEventExpressionComparisonArgs']]] comparisons: Additional check that allows adding threshold on the given object attribute.
+        :param pulumi.Input[_builtins.str] event_type: Type of Event (vim.event.Event).
+        """
+        pulumi.set(__self__, "event_type_id", event_type_id)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "status", status)
+        if comparisons is not None:
+            pulumi.set(__self__, "comparisons", comparisons)
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
+
+    @_builtins.property
+    @pulumi.getter(name="eventTypeId")
+    def event_type_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the event (vim.event).
+        """
+        return pulumi.get(self, "event_type_id")
+
+    @event_type_id.setter
+    def event_type_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "event_type_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of object where the event applies on.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "object_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[_builtins.str]:
+        """
+        Alarm status once triggered.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comparisons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmEventExpressionComparisonArgs']]]]:
+        """
+        Additional check that allows adding threshold on the given object attribute.
+        """
+        return pulumi.get(self, "comparisons")
+
+    @comparisons.setter
+    def comparisons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmEventExpressionComparisonArgs']]]]):
+        pulumi.set(self, "comparisons", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of Event (vim.event.Event).
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "event_type", value)
+
+
+class AlarmEventExpressionComparisonArgsDict(TypedDict):
+    attribute_name: pulumi.Input[_builtins.str]
+    """
+    Name of the attribute to compare.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Comparison operator.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value to compare.
+    """
+
+@pulumi.input_type
+class AlarmEventExpressionComparisonArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] attribute_name: Name of the attribute to compare.
+        :param pulumi.Input[_builtins.str] operator: Comparison operator.
+        :param pulumi.Input[_builtins.str] value: Value to compare.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the attribute to compare.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Comparison operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        Value to compare.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+class AlarmMetricExpressionArgsDict(TypedDict):
+    metric_counter_id: pulumi.Input[_builtins.int]
+    """
+    ID of the metric.
+    """
+    object_type: pulumi.Input[_builtins.str]
+    """
+    Type of object of the metric, ie: HostSystem.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Whether the metric is below or above the given threshold.
+    """
+    metric_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    red: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Critical threshold, for percentage, 9900 is 99%.
+    """
+    red_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Amount of seconds the threshold must be crossed to trigger the critical alarm.
+    """
+    yellow: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Warning threshold, for percentage, 9900 is 99%.
+    """
+    yellow_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Amount of seconds the threshold must be crossed to trigger the warning alarm.
+    """
+
+@pulumi.input_type
+class AlarmMetricExpressionArgs:
+    def __init__(__self__, *,
+                 metric_counter_id: pulumi.Input[_builtins.int],
+                 object_type: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[_builtins.str],
+                 metric_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 red: pulumi.Input[Optional[_builtins.int]] = None,
+                 red_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 yellow: pulumi.Input[Optional[_builtins.int]] = None,
+                 yellow_interval: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] metric_counter_id: ID of the metric.
+        :param pulumi.Input[_builtins.str] object_type: Type of object of the metric, ie: HostSystem.
+        :param pulumi.Input[_builtins.str] operator: Whether the metric is below or above the given threshold.
+        :param pulumi.Input[_builtins.int] red: Critical threshold, for percentage, 9900 is 99%.
+        :param pulumi.Input[_builtins.int] red_interval: Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        :param pulumi.Input[_builtins.int] yellow: Warning threshold, for percentage, 9900 is 99%.
+        :param pulumi.Input[_builtins.int] yellow_interval: Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        pulumi.set(__self__, "metric_counter_id", metric_counter_id)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        if metric_instance is not None:
+            pulumi.set(__self__, "metric_instance", metric_instance)
+        if red is not None:
+            pulumi.set(__self__, "red", red)
+        if red_interval is not None:
+            pulumi.set(__self__, "red_interval", red_interval)
+        if yellow is not None:
+            pulumi.set(__self__, "yellow", yellow)
+        if yellow_interval is not None:
+            pulumi.set(__self__, "yellow_interval", yellow_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="metricCounterId")
+    def metric_counter_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        ID of the metric.
+        """
+        return pulumi.get(self, "metric_counter_id")
+
+    @metric_counter_id.setter
+    def metric_counter_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "metric_counter_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of object of the metric, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "object_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Whether the metric is below or above the given threshold.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricInstance")
+    def metric_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "metric_instance")
+
+    @metric_instance.setter
+    def metric_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric_instance", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Critical threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "red")
+
+    @red.setter
+    def red(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "red", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redInterval")
+    def red_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        """
+        return pulumi.get(self, "red_interval")
+
+    @red_interval.setter
+    def red_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "red_interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Warning threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "yellow")
+
+    @yellow.setter
+    def yellow(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "yellow", value)
+
+    @_builtins.property
+    @pulumi.getter(name="yellowInterval")
+    def yellow_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        return pulumi.get(self, "yellow_interval")
+
+    @yellow_interval.setter
+    def yellow_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "yellow_interval", value)
+
+
+class AlarmSnmpActionArgsDict(TypedDict):
+    final_state: pulumi.Input[_builtins.str]
+    """
+    Triggers the action only for this final state.
+    """
+    start_state: pulumi.Input[_builtins.str]
+    """
+    Triggers the action only for this initial state.
+    """
+    repeat: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether or not the action should be repeated.
+    """
+
+@pulumi.input_type
+class AlarmSnmpActionArgs:
+    def __init__(__self__, *,
+                 final_state: pulumi.Input[_builtins.str],
+                 start_state: pulumi.Input[_builtins.str],
+                 repeat: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] final_state: Triggers the action only for this final state.
+        :param pulumi.Input[_builtins.str] start_state: Triggers the action only for this initial state.
+        :param pulumi.Input[_builtins.bool] repeat: Whether or not the action should be repeated.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "start_state", start_state)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> pulumi.Input[_builtins.str]:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @final_state.setter
+    def final_state(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "final_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> pulumi.Input[_builtins.str]:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @start_state.setter
+    def start_state(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "start_state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @repeat.setter
+    def repeat(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "repeat", value)
+
+
+class AlarmStateExpressionArgsDict(TypedDict):
+    object_type: pulumi.Input[_builtins.str]
+    """
+    Type of object where the event applies on, ie: HostSystem.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Check if state is equal or unequal.
+    """
+    state_path: pulumi.Input[_builtins.str]
+    """
+    State path: ie. runtime.connectionState.
+    """
+    red: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    State value to trigger critical alarm.
+    """
+    yellow: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    State value to trigger warning alarm.
+    """
+
+@pulumi.input_type
+class AlarmStateExpressionArgs:
+    def __init__(__self__, *,
+                 object_type: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[_builtins.str],
+                 state_path: pulumi.Input[_builtins.str],
+                 red: pulumi.Input[Optional[_builtins.str]] = None,
+                 yellow: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] object_type: Type of object where the event applies on, ie: HostSystem.
+        :param pulumi.Input[_builtins.str] operator: Check if state is equal or unequal.
+        :param pulumi.Input[_builtins.str] state_path: State path: ie. runtime.connectionState.
+        :param pulumi.Input[_builtins.str] red: State value to trigger critical alarm.
+        :param pulumi.Input[_builtins.str] yellow: State value to trigger warning alarm.
+        """
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "state_path", state_path)
+        if red is not None:
+            pulumi.set(__self__, "red", red)
+        if yellow is not None:
+            pulumi.set(__self__, "yellow", yellow)
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of object where the event applies on, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "object_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Check if state is equal or unequal.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="statePath")
+    def state_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        State path: ie. runtime.connectionState.
+        """
+        return pulumi.get(self, "state_path")
+
+    @state_path.setter
+    def state_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "state_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        State value to trigger critical alarm.
+        """
+        return pulumi.get(self, "red")
+
+    @red.setter
+    def red(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "red", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        State value to trigger warning alarm.
+        """
+        return pulumi.get(self, "yellow")
+
+    @yellow.setter
+    def yellow(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "yellow", value)
+
 
 class ComputeClusterHostImageArgsDict(TypedDict):
     components: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgsDict']]]]]
@@ -1839,6 +2700,55 @@ class HostServiceNtpdArgs:
         pulumi.set(self, "policy", value)
 
 
+class NamespaceVmServiceArgsDict(TypedDict):
+    content_libraries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of content libraries to associate with the VM Service.
+    """
+    vm_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of VM Classes to associate with the VM Service.
+    """
+
+@pulumi.input_type
+class NamespaceVmServiceArgs:
+    def __init__(__self__, *,
+                 content_libraries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vm_classes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] content_libraries: The list of content libraries to associate with the VM Service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vm_classes: The list of VM Classes to associate with the VM Service.
+        """
+        if content_libraries is not None:
+            pulumi.set(__self__, "content_libraries", content_libraries)
+        if vm_classes is not None:
+            pulumi.set(__self__, "vm_classes", vm_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="contentLibraries")
+    def content_libraries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of content libraries to associate with the VM Service.
+        """
+        return pulumi.get(self, "content_libraries")
+
+    @content_libraries.setter
+    def content_libraries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "content_libraries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmClasses")
+    def vm_classes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of VM Classes to associate with the VM Service.
+        """
+        return pulumi.get(self, "vm_classes")
+
+    @vm_classes.setter
+    def vm_classes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "vm_classes", value)
+
+
 class OfflineSoftwareDepotComponentArgsDict(TypedDict):
     display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2005,7 +2915,7 @@ class SupervisorIngressCidrArgs:
 class SupervisorManagementNetworkArgsDict(TypedDict):
     address_count: pulumi.Input[_builtins.int]
     """
-    Number of addresses to allocate. Starts from 'starting_address'
+    Number of addresses to allocate. Starts from `starting_address`
     """
     gateway: pulumi.Input[_builtins.str]
     """
@@ -2013,7 +2923,7 @@ class SupervisorManagementNetworkArgsDict(TypedDict):
     """
     network: pulumi.Input[_builtins.str]
     """
-    ID of the network. (e.g. a distributed port group).
+    ID of the network. (_e.g._, a distributed port group).
     """
     starting_address: pulumi.Input[_builtins.str]
     """
@@ -2033,9 +2943,9 @@ class SupervisorManagementNetworkArgs:
                  starting_address: pulumi.Input[_builtins.str],
                  subnet_mask: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.int] address_count: Number of addresses to allocate. Starts from 'starting_address'
+        :param pulumi.Input[_builtins.int] address_count: Number of addresses to allocate. Starts from `starting_address`
         :param pulumi.Input[_builtins.str] gateway: Gateway IP address.
-        :param pulumi.Input[_builtins.str] network: ID of the network. (e.g. a distributed port group).
+        :param pulumi.Input[_builtins.str] network: ID of the network. (_e.g._, a distributed port group).
         :param pulumi.Input[_builtins.str] starting_address: Starting address of the management network range.
         :param pulumi.Input[_builtins.str] subnet_mask: Subnet mask.
         """
@@ -2049,7 +2959,7 @@ class SupervisorManagementNetworkArgs:
     @pulumi.getter(name="addressCount")
     def address_count(self) -> pulumi.Input[_builtins.int]:
         """
-        Number of addresses to allocate. Starts from 'starting_address'
+        Number of addresses to allocate. Starts from `starting_address`
         """
         return pulumi.get(self, "address_count")
 
@@ -2073,7 +2983,7 @@ class SupervisorManagementNetworkArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the network. (e.g. a distributed port group).
+        ID of the network. (_e.g._, a distributed port group).
         """
         return pulumi.get(self, "network")
 
@@ -2266,6 +3176,3040 @@ class SupervisorServiceCidrArgs:
     @prefix.setter
     def prefix(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "prefix", value)
+
+
+class SupervisorV2ControlPlaneArgsDict(TypedDict):
+    network: pulumi.Input['SupervisorV2ControlPlaneNetworkArgsDict']
+    """
+    The network configuration for the control plane VM(s).
+    """
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of control plane VMs to deploy.
+    """
+    size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The size preset for the control plane VM(s).
+    """
+    storage_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The storage policy for the control plane VM(s).
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input['SupervisorV2ControlPlaneNetworkArgs'],
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['SupervisorV2ControlPlaneNetworkArgs'] network: The network configuration for the control plane VM(s).
+        :param pulumi.Input[_builtins.int] count: The number of control plane VMs to deploy.
+        :param pulumi.Input[_builtins.str] size: The size preset for the control plane VM(s).
+        :param pulumi.Input[_builtins.str] storage_policy: The storage policy for the control plane VM(s).
+        """
+        pulumi.set(__self__, "network", network)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if storage_policy is not None:
+            pulumi.set(__self__, "storage_policy", storage_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input['SupervisorV2ControlPlaneNetworkArgs']:
+        """
+        The network configuration for the control plane VM(s).
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input['SupervisorV2ControlPlaneNetworkArgs']):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of control plane VMs to deploy.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The size preset for the control plane VM(s).
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storagePolicy")
+    def storage_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The storage policy for the control plane VM(s).
+        """
+        return pulumi.get(self, "storage_policy")
+
+    @storage_policy.setter
+    def storage_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_policy", value)
+
+
+class SupervisorV2ControlPlaneNetworkArgsDict(TypedDict):
+    backing: pulumi.Input['SupervisorV2ControlPlaneNetworkBackingArgsDict']
+    """
+    Backing network configuration.
+    """
+    floating_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Floating IP address.
+    """
+    ip_management: NotRequired[pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkIpManagementArgsDict']]]
+    """
+    IP Management configuration.
+    """
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The network identifier for the management network.
+    """
+    proxy: NotRequired[pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkProxyArgsDict']]]
+    """
+    Proxy server configuration.
+    """
+    services: NotRequired[pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesArgsDict']]]
+    """
+    Network services (e.g DNS, NTP) configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkArgs:
+    def __init__(__self__, *,
+                 backing: pulumi.Input['SupervisorV2ControlPlaneNetworkBackingArgs'],
+                 floating_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_management: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkIpManagementArgs']] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkProxyArgs']] = None,
+                 services: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2ControlPlaneNetworkBackingArgs'] backing: Backing network configuration.
+        :param pulumi.Input[_builtins.str] floating_ip: Floating IP address.
+        :param pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementArgs'] ip_management: IP Management configuration.
+        :param pulumi.Input[_builtins.str] network: The network identifier for the management network.
+        :param pulumi.Input['SupervisorV2ControlPlaneNetworkProxyArgs'] proxy: Proxy server configuration.
+        :param pulumi.Input['SupervisorV2ControlPlaneNetworkServicesArgs'] services: Network services (e.g DNS, NTP) configuration.
+        """
+        pulumi.set(__self__, "backing", backing)
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
+        if ip_management is not None:
+            pulumi.set(__self__, "ip_management", ip_management)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter
+    def backing(self) -> pulumi.Input['SupervisorV2ControlPlaneNetworkBackingArgs']:
+        """
+        Backing network configuration.
+        """
+        return pulumi.get(self, "backing")
+
+    @backing.setter
+    def backing(self, value: pulumi.Input['SupervisorV2ControlPlaneNetworkBackingArgs']):
+        pulumi.set(self, "backing", value)
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Floating IP address.
+        """
+        return pulumi.get(self, "floating_ip")
+
+    @floating_ip.setter
+    def floating_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "floating_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipManagement")
+    def ip_management(self) -> pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkIpManagementArgs']]:
+        """
+        IP Management configuration.
+        """
+        return pulumi.get(self, "ip_management")
+
+    @ip_management.setter
+    def ip_management(self, value: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkIpManagementArgs']]):
+        pulumi.set(self, "ip_management", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network identifier for the management network.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def proxy(self) -> pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkProxyArgs']]:
+        """
+        Proxy server configuration.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkProxyArgs']]):
+        pulumi.set(self, "proxy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesArgs']]:
+        """
+        Network services (e.g DNS, NTP) configuration.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesArgs']]):
+        pulumi.set(self, "services", value)
+
+
+class SupervisorV2ControlPlaneNetworkBackingArgsDict(TypedDict):
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Managed Object ID of the Network object.
+    """
+    segments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The backing network segment.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkBackingArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] network: The Managed Object ID of the Network object.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] segments: The backing network segment.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if segments is not None:
+            pulumi.set(__self__, "segments", segments)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Managed Object ID of the Network object.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def segments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The backing network segment.
+        """
+        return pulumi.get(self, "segments")
+
+    @segments.setter
+    def segments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "segments", value)
+
+
+class SupervisorV2ControlPlaneNetworkIpManagementArgsDict(TypedDict):
+    dhcp_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to use DHCP or not.
+    """
+    gateway_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP address of the network gateway.
+    """
+    ip_assignments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgsDict']]]]]
+    """
+    IP assignment configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkIpManagementArgs:
+    def __init__(__self__, *,
+                 dhcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_assignments: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] dhcp_enabled: Whether to use DHCP or not.
+        :param pulumi.Input[_builtins.str] gateway_address: The IP address of the network gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs']]] ip_assignments: IP assignment configuration.
+        """
+        if dhcp_enabled is not None:
+            pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        if gateway_address is not None:
+            pulumi.set(__self__, "gateway_address", gateway_address)
+        if ip_assignments is not None:
+            pulumi.set(__self__, "ip_assignments", ip_assignments)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use DHCP or not.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @dhcp_enabled.setter
+    def dhcp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dhcp_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayAddress")
+    def gateway_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP address of the network gateway.
+        """
+        return pulumi.get(self, "gateway_address")
+
+    @gateway_address.setter
+    def gateway_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gateway_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAssignments")
+    def ip_assignments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs']]]]:
+        """
+        IP assignment configuration.
+        """
+        return pulumi.get(self, "ip_assignments")
+
+    @ip_assignments.setter
+    def ip_assignments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs']]]]):
+        pulumi.set(self, "ip_assignments", value)
+
+
+class SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgsDict(TypedDict):
+    assignee: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the assignee.
+    """
+    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgsDict']]]]]
+    """
+    The available IP addresses that can be consumed by Supervisor to run the cluster.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs:
+    def __init__(__self__, *,
+                 assignee: pulumi.Input[Optional[_builtins.str]] = None,
+                 ranges: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] assignee: The type of the assignee.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs']]] ranges: The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        if assignee is not None:
+            pulumi.set(__self__, "assignee", assignee)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def assignee(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the assignee.
+        """
+        return pulumi.get(self, "assignee")
+
+    @assignee.setter
+    def assignee(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "assignee", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs']]]]:
+        """
+        The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        return pulumi.get(self, "ranges")
+
+    @ranges.setter
+    def ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs']]]]):
+        pulumi.set(self, "ranges", value)
+
+
+class SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The starting IP address of the range.
+    """
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of IP addresses in the range.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 count: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The starting IP address of the range.
+        :param pulumi.Input[_builtins.int] count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "count", value)
+
+
+class SupervisorV2ControlPlaneNetworkProxyArgsDict(TypedDict):
+    settings_source: pulumi.Input[_builtins.str]
+    """
+    The source of the proxy settings.
+    """
+    http_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`.
+    """
+    https_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+    """
+    no_proxy_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+    """
+    tls_root_ca_bundle: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkProxyArgs:
+    def __init__(__self__, *,
+                 settings_source: pulumi.Input[_builtins.str],
+                 http_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy_configs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tls_root_ca_bundle: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] settings_source: The source of the proxy settings.
+        :param pulumi.Input[_builtins.str] http_config: HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`.
+        :param pulumi.Input[_builtins.str] https_config: HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] no_proxy_configs: List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        :param pulumi.Input[_builtins.str] tls_root_ca_bundle: Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        pulumi.set(__self__, "settings_source", settings_source)
+        if http_config is not None:
+            pulumi.set(__self__, "http_config", http_config)
+        if https_config is not None:
+            pulumi.set(__self__, "https_config", https_config)
+        if no_proxy_configs is not None:
+            pulumi.set(__self__, "no_proxy_configs", no_proxy_configs)
+        if tls_root_ca_bundle is not None:
+            pulumi.set(__self__, "tls_root_ca_bundle", tls_root_ca_bundle)
+
+    @_builtins.property
+    @pulumi.getter(name="settingsSource")
+    def settings_source(self) -> pulumi.Input[_builtins.str]:
+        """
+        The source of the proxy settings.
+        """
+        return pulumi.get(self, "settings_source")
+
+    @settings_source.setter
+    def settings_source(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "settings_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpConfig")
+    def http_config(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`.
+        """
+        return pulumi.get(self, "http_config")
+
+    @http_config.setter
+    def http_config(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "http_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpsConfig")
+    def https_config(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        return pulumi.get(self, "https_config")
+
+    @https_config.setter
+    def https_config(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "https_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noProxyConfigs")
+    def no_proxy_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        return pulumi.get(self, "no_proxy_configs")
+
+    @no_proxy_configs.setter
+    def no_proxy_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "no_proxy_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsRootCaBundle")
+    def tls_root_ca_bundle(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        return pulumi.get(self, "tls_root_ca_bundle")
+
+    @tls_root_ca_bundle.setter
+    def tls_root_ca_bundle(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_root_ca_bundle", value)
+
+
+class SupervisorV2ControlPlaneNetworkServicesArgsDict(TypedDict):
+    dns: NotRequired[pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesDnsArgsDict']]]
+    """
+    The DNS configuration.
+    """
+    ntp: NotRequired[pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesNtpArgsDict']]]
+    """
+    The NTP configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkServicesArgs:
+    def __init__(__self__, *,
+                 dns: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesDnsArgs']] = None,
+                 ntp: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesNtpArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2ControlPlaneNetworkServicesDnsArgs'] dns: The DNS configuration.
+        :param pulumi.Input['SupervisorV2ControlPlaneNetworkServicesNtpArgs'] ntp: The NTP configuration.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if ntp is not None:
+            pulumi.set(__self__, "ntp", ntp)
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesDnsArgs']]:
+        """
+        The DNS configuration.
+        """
+        return pulumi.get(self, "dns")
+
+    @dns.setter
+    def dns(self, value: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesDnsArgs']]):
+        pulumi.set(self, "dns", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ntp(self) -> pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesNtpArgs']]:
+        """
+        The NTP configuration.
+        """
+        return pulumi.get(self, "ntp")
+
+    @ntp.setter
+    def ntp(self, value: pulumi.Input[Optional['SupervisorV2ControlPlaneNetworkServicesNtpArgs']]):
+        pulumi.set(self, "ntp", value)
+
+
+class SupervisorV2ControlPlaneNetworkServicesDnsArgsDict(TypedDict):
+    search_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of search domains.
+    """
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of DNS servers.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkServicesDnsArgs:
+    def __init__(__self__, *,
+                 search_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] search_domains: The list of search domains.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of DNS servers.
+        """
+        pulumi.set(__self__, "search_domains", search_domains)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="searchDomains")
+    def search_domains(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of search domains.
+        """
+        return pulumi.get(self, "search_domains")
+
+    @search_domains.setter
+    def search_domains(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "search_domains", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "servers", value)
+
+
+class SupervisorV2ControlPlaneNetworkServicesNtpArgsDict(TypedDict):
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of NTP servers.
+    """
+
+@pulumi.input_type
+class SupervisorV2ControlPlaneNetworkServicesNtpArgs:
+    def __init__(__self__, *,
+                 servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of NTP servers.
+        """
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of NTP servers.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "servers", value)
+
+
+class SupervisorV2WorkloadsArgsDict(TypedDict):
+    edge: pulumi.Input['SupervisorV2WorkloadsEdgeArgsDict']
+    """
+    Edge configuration
+    """
+    kube_api_server_options: pulumi.Input['SupervisorV2WorkloadsKubeApiServerOptionsArgsDict']
+    """
+    Kubernetes API Server options
+    """
+    network: pulumi.Input['SupervisorV2WorkloadsNetworkArgsDict']
+    """
+    The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+    """
+    images: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsImagesArgsDict']]]
+    """
+    Configuration for storing and pulling images into the cluster.
+    """
+    storage: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsStorageArgsDict']]]
+    """
+    Persistent storage configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsArgs:
+    def __init__(__self__, *,
+                 edge: pulumi.Input['SupervisorV2WorkloadsEdgeArgs'],
+                 kube_api_server_options: pulumi.Input['SupervisorV2WorkloadsKubeApiServerOptionsArgs'],
+                 network: pulumi.Input['SupervisorV2WorkloadsNetworkArgs'],
+                 images: pulumi.Input[Optional['SupervisorV2WorkloadsImagesArgs']] = None,
+                 storage: pulumi.Input[Optional['SupervisorV2WorkloadsStorageArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeArgs'] edge: Edge configuration
+        :param pulumi.Input['SupervisorV2WorkloadsKubeApiServerOptionsArgs'] kube_api_server_options: Kubernetes API Server options
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkArgs'] network: The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+        :param pulumi.Input['SupervisorV2WorkloadsImagesArgs'] images: Configuration for storing and pulling images into the cluster.
+        :param pulumi.Input['SupervisorV2WorkloadsStorageArgs'] storage: Persistent storage configuration.
+        """
+        pulumi.set(__self__, "edge", edge)
+        pulumi.set(__self__, "kube_api_server_options", kube_api_server_options)
+        pulumi.set(__self__, "network", network)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
+
+    @_builtins.property
+    @pulumi.getter
+    def edge(self) -> pulumi.Input['SupervisorV2WorkloadsEdgeArgs']:
+        """
+        Edge configuration
+        """
+        return pulumi.get(self, "edge")
+
+    @edge.setter
+    def edge(self, value: pulumi.Input['SupervisorV2WorkloadsEdgeArgs']):
+        pulumi.set(self, "edge", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kubeApiServerOptions")
+    def kube_api_server_options(self) -> pulumi.Input['SupervisorV2WorkloadsKubeApiServerOptionsArgs']:
+        """
+        Kubernetes API Server options
+        """
+        return pulumi.get(self, "kube_api_server_options")
+
+    @kube_api_server_options.setter
+    def kube_api_server_options(self, value: pulumi.Input['SupervisorV2WorkloadsKubeApiServerOptionsArgs']):
+        pulumi.set(self, "kube_api_server_options", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input['SupervisorV2WorkloadsNetworkArgs']:
+        """
+        The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input['SupervisorV2WorkloadsNetworkArgs']):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def images(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsImagesArgs']]:
+        """
+        Configuration for storing and pulling images into the cluster.
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsImagesArgs']]):
+        pulumi.set(self, "images", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def storage(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsStorageArgs']]:
+        """
+        Persistent storage configuration.
+        """
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsStorageArgs']]):
+        pulumi.set(self, "storage", value)
+
+
+class SupervisorV2WorkloadsEdgeArgsDict(TypedDict):
+    foundation: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationArgsDict']]]
+    """
+    Configuration for the vSphere Foundation Load Balancer.
+    """
+    haproxy: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeHaproxyArgsDict']]]
+    """
+    Configuration for the HAProxy Load Balancer.
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The unique identifier of this edge.
+    """
+    lb_address_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeLbAddressRangeArgsDict']]]]]
+    """
+    The list of addresses that a load balancer can consume to publish Kubernetes services.
+    """
+    nsx: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxArgsDict']]]
+    """
+    Configuration for the NSX Load Balancer.
+    """
+    nsx_advanced: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxAdvancedArgsDict']]]
+    """
+    Configuration for the NSX Advanced Load Balancer.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeArgs:
+    def __init__(__self__, *,
+                 foundation: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationArgs']] = None,
+                 haproxy: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeHaproxyArgs']] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lb_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeLbAddressRangeArgs']]]] = None,
+                 nsx: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxArgs']] = None,
+                 nsx_advanced: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxAdvancedArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationArgs'] foundation: Configuration for the vSphere Foundation Load Balancer.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeHaproxyArgs'] haproxy: Configuration for the HAProxy Load Balancer.
+        :param pulumi.Input[_builtins.str] id: The unique identifier of this edge.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeLbAddressRangeArgs']]] lb_address_ranges: The list of addresses that a load balancer can consume to publish Kubernetes services.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeNsxArgs'] nsx: Configuration for the NSX Load Balancer.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeNsxAdvancedArgs'] nsx_advanced: Configuration for the NSX Advanced Load Balancer.
+        """
+        if foundation is not None:
+            pulumi.set(__self__, "foundation", foundation)
+        if haproxy is not None:
+            pulumi.set(__self__, "haproxy", haproxy)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if lb_address_ranges is not None:
+            pulumi.set(__self__, "lb_address_ranges", lb_address_ranges)
+        if nsx is not None:
+            pulumi.set(__self__, "nsx", nsx)
+        if nsx_advanced is not None:
+            pulumi.set(__self__, "nsx_advanced", nsx_advanced)
+
+    @_builtins.property
+    @pulumi.getter
+    def foundation(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationArgs']]:
+        """
+        Configuration for the vSphere Foundation Load Balancer.
+        """
+        return pulumi.get(self, "foundation")
+
+    @foundation.setter
+    def foundation(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationArgs']]):
+        pulumi.set(self, "foundation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def haproxy(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeHaproxyArgs']]:
+        """
+        Configuration for the HAProxy Load Balancer.
+        """
+        return pulumi.get(self, "haproxy")
+
+    @haproxy.setter
+    def haproxy(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeHaproxyArgs']]):
+        pulumi.set(self, "haproxy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unique identifier of this edge.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lbAddressRanges")
+    def lb_address_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeLbAddressRangeArgs']]]]:
+        """
+        The list of addresses that a load balancer can consume to publish Kubernetes services.
+        """
+        return pulumi.get(self, "lb_address_ranges")
+
+    @lb_address_ranges.setter
+    def lb_address_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeLbAddressRangeArgs']]]]):
+        pulumi.set(self, "lb_address_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nsx(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxArgs']]:
+        """
+        Configuration for the NSX Load Balancer.
+        """
+        return pulumi.get(self, "nsx")
+
+    @nsx.setter
+    def nsx(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxArgs']]):
+        pulumi.set(self, "nsx", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nsxAdvanced")
+    def nsx_advanced(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxAdvancedArgs']]:
+        """
+        Configuration for the NSX Advanced Load Balancer.
+        """
+        return pulumi.get(self, "nsx_advanced")
+
+    @nsx_advanced.setter
+    def nsx_advanced(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeNsxAdvancedArgs']]):
+        pulumi.set(self, "nsx_advanced", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationArgsDict(TypedDict):
+    deployment_target: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgsDict']]]
+    """
+    The configuration for the Load Balancer placement.
+    """
+    interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceArgsDict']]]]]
+    """
+    Configuration for the Load Balancer network interfaces.
+    """
+    network_services: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgsDict']]]
+    """
+    Configuration for the Load Balancer network services.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationArgs:
+    def __init__(__self__, *,
+                 deployment_target: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs']] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceArgs']]]] = None,
+                 network_services: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs'] deployment_target: The configuration for the Load Balancer placement.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceArgs']]] interfaces: Configuration for the Load Balancer network interfaces.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs'] network_services: Configuration for the Load Balancer network services.
+        """
+        if deployment_target is not None:
+            pulumi.set(__self__, "deployment_target", deployment_target)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
+        if network_services is not None:
+            pulumi.set(__self__, "network_services", network_services)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentTarget")
+    def deployment_target(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs']]:
+        """
+        The configuration for the Load Balancer placement.
+        """
+        return pulumi.get(self, "deployment_target")
+
+    @deployment_target.setter
+    def deployment_target(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs']]):
+        pulumi.set(self, "deployment_target", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceArgs']]]]:
+        """
+        Configuration for the Load Balancer network interfaces.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceArgs']]]]):
+        pulumi.set(self, "interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkServices")
+    def network_services(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs']]:
+        """
+        Configuration for the Load Balancer network services.
+        """
+        return pulumi.get(self, "network_services")
+
+    @network_services.setter
+    def network_services(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs']]):
+        pulumi.set(self, "network_services", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgsDict(TypedDict):
+    availability: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Configures the availability level for the load balancer.
+    """
+    deployment_size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Determines the CPU/memory resource size of the load balancer deployment.
+    """
+    storage_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Storage Policy containing datastores hosting the load balancer nodes.
+    """
+    zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+
+    <a id="nestedblock--control-plane"></a>
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs:
+    def __init__(__self__, *,
+                 availability: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability: Configures the availability level for the load balancer.
+        :param pulumi.Input[_builtins.str] deployment_size: Determines the CPU/memory resource size of the load balancer deployment.
+        :param pulumi.Input[_builtins.str] storage_policy: Storage Policy containing datastores hosting the load balancer nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zones: A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+               
+               <a id="nestedblock--control-plane"></a>
+        """
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if deployment_size is not None:
+            pulumi.set(__self__, "deployment_size", deployment_size)
+        if storage_policy is not None:
+            pulumi.set(__self__, "storage_policy", storage_policy)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter
+    def availability(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configures the availability level for the load balancer.
+        """
+        return pulumi.get(self, "availability")
+
+    @availability.setter
+    def availability(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "availability", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentSize")
+    def deployment_size(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Determines the CPU/memory resource size of the load balancer deployment.
+        """
+        return pulumi.get(self, "deployment_size")
+
+    @deployment_size.setter
+    def deployment_size(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deployment_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storagePolicy")
+    def storage_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Storage Policy containing datastores hosting the load balancer nodes.
+        """
+        return pulumi.get(self, "storage_policy")
+
+    @storage_policy.setter
+    def storage_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+
+        <a id="nestedblock--control-plane"></a>
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "zones", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationInterfaceArgsDict(TypedDict):
+    network: pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgsDict']
+    """
+    Network configuration for this interface.
+    """
+    personas: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Determines the type of traffic that passes through a network interface.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs'],
+                 personas: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs'] network: Network configuration for this interface.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] personas: Determines the type of traffic that passes through a network interface.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "personas", personas)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs']:
+        """
+        Network configuration for this interface.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs']):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def personas(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Determines the type of traffic that passes through a network interface.
+        """
+        return pulumi.get(self, "personas")
+
+    @personas.setter
+    def personas(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "personas", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgsDict(TypedDict):
+    network_type: pulumi.Input[_builtins.str]
+    """
+    The type of network interface.
+    """
+    dvpg_network: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgsDict']]]
+    """
+    Identifier of the Distributed Virtual Portgroup.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs:
+    def __init__(__self__, *,
+                 network_type: pulumi.Input[_builtins.str],
+                 dvpg_network: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] network_type: The type of network interface.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs'] dvpg_network: Identifier of the Distributed Virtual Portgroup.
+        """
+        pulumi.set(__self__, "network_type", network_type)
+        if dvpg_network is not None:
+            pulumi.set(__self__, "dvpg_network", dvpg_network)
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of network interface.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dvpgNetwork")
+    def dvpg_network(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs']]:
+        """
+        Identifier of the Distributed Virtual Portgroup.
+        """
+        return pulumi.get(self, "dvpg_network")
+
+    @dvpg_network.setter
+    def dvpg_network(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs']]):
+        pulumi.set(self, "dvpg_network", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgsDict(TypedDict):
+    ipam: pulumi.Input[_builtins.str]
+    """
+    IP Address management scheme for this network.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the Supervisor cluster.
+    """
+    network: pulumi.Input[_builtins.str]
+    """
+    The identifier of the Distributed Virtual Portgroup.
+    """
+    ip_config: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgsDict']]]
+    """
+    Static IP Configuration for this network.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs:
+    def __init__(__self__, *,
+                 ipam: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 network: pulumi.Input[_builtins.str],
+                 ip_config: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] ipam: IP Address management scheme for this network.
+        :param pulumi.Input[_builtins.str] name: The name of the Supervisor cluster.
+        :param pulumi.Input[_builtins.str] network: The identifier of the Distributed Virtual Portgroup.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs'] ip_config: Static IP Configuration for this network.
+        """
+        pulumi.set(__self__, "ipam", ipam)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        if ip_config is not None:
+            pulumi.set(__self__, "ip_config", ip_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipam(self) -> pulumi.Input[_builtins.str]:
+        """
+        IP Address management scheme for this network.
+        """
+        return pulumi.get(self, "ipam")
+
+    @ipam.setter
+    def ipam(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ipam", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the Supervisor cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier of the Distributed Virtual Portgroup.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipConfig")
+    def ip_config(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs']]:
+        """
+        Static IP Configuration for this network.
+        """
+        return pulumi.get(self, "ip_config")
+
+    @ip_config.setter
+    def ip_config(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs']]):
+        pulumi.set(self, "ip_config", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgsDict(TypedDict):
+    gateway: pulumi.Input[_builtins.str]
+    """
+    Gateway address.
+    """
+    ip_ranges: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgsDict']]]
+    """
+    IP range configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs:
+    def __init__(__self__, *,
+                 gateway: pulumi.Input[_builtins.str],
+                 ip_ranges: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs']]]):
+        """
+        :param pulumi.Input[_builtins.str] gateway: Gateway address.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs']]] ip_ranges: IP range configuration.
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> pulumi.Input[_builtins.str]:
+        """
+        Gateway address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "gateway", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs']]]:
+        """
+        IP range configuration.
+        """
+        return pulumi.get(self, "ip_ranges")
+
+    @ip_ranges.setter
+    def ip_ranges(self, value: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs']]]):
+        pulumi.set(self, "ip_ranges", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The starting IP address of the range.
+    """
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of IP addresses in the range.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 count: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The starting IP address of the range.
+        :param pulumi.Input[_builtins.int] count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "count", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgsDict(TypedDict):
+    dns: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgsDict']]]
+    """
+    DNS configuration.
+    """
+    ntp: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgsDict']]]
+    """
+    NTP configuration.
+    """
+    syslog: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgsDict']]]
+    """
+    Remote log forwarding configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs:
+    def __init__(__self__, *,
+                 dns: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs']] = None,
+                 ntp: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs']] = None,
+                 syslog: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs'] dns: DNS configuration.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs'] ntp: NTP configuration.
+        :param pulumi.Input['SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs'] syslog: Remote log forwarding configuration.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if ntp is not None:
+            pulumi.set(__self__, "ntp", ntp)
+        if syslog is not None:
+            pulumi.set(__self__, "syslog", syslog)
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs']]:
+        """
+        DNS configuration.
+        """
+        return pulumi.get(self, "dns")
+
+    @dns.setter
+    def dns(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs']]):
+        pulumi.set(self, "dns", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ntp(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs']]:
+        """
+        NTP configuration.
+        """
+        return pulumi.get(self, "ntp")
+
+    @ntp.setter
+    def ntp(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs']]):
+        pulumi.set(self, "ntp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def syslog(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs']]:
+        """
+        Remote log forwarding configuration.
+        """
+        return pulumi.get(self, "syslog")
+
+    @syslog.setter
+    def syslog(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs']]):
+        pulumi.set(self, "syslog", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgsDict(TypedDict):
+    search_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of search domains.
+    """
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of DNS servers.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs:
+    def __init__(__self__, *,
+                 search_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] search_domains: The list of search domains.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of DNS servers.
+        """
+        pulumi.set(__self__, "search_domains", search_domains)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="searchDomains")
+    def search_domains(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of search domains.
+        """
+        return pulumi.get(self, "search_domains")
+
+    @search_domains.setter
+    def search_domains(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "search_domains", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "servers", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgsDict(TypedDict):
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of NTP servers.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs:
+    def __init__(__self__, *,
+                 servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of NTP servers.
+        """
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of NTP servers.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "servers", value)
+
+
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgsDict(TypedDict):
+    ca_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Certificate authority PEM.
+    """
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs:
+    def __init__(__self__, *,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ca_cert: Certificate authority PEM.
+        :param pulumi.Input[_builtins.str] endpoint: FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+        """
+        if ca_cert is not None:
+            pulumi.set(__self__, "ca_cert", ca_cert)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Certificate authority PEM.
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @ca_cert.setter
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ca_cert", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "endpoint", value)
+
+
+class SupervisorV2WorkloadsEdgeHaproxyArgsDict(TypedDict):
+    ca_chain: pulumi.Input[_builtins.str]
+    """
+    The CA chain for the data plane API server.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    The password for the data plane API server.
+    """
+    servers: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeHaproxyServerArgsDict']]]
+    """
+    The servers for the data plane API server.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    The username for the data plane API server.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeHaproxyArgs:
+    def __init__(__self__, *,
+                 ca_chain: pulumi.Input[_builtins.str],
+                 password: pulumi.Input[_builtins.str],
+                 servers: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeHaproxyServerArgs']]],
+                 username: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] ca_chain: The CA chain for the data plane API server.
+        :param pulumi.Input[_builtins.str] password: The password for the data plane API server.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeHaproxyServerArgs']]] servers: The servers for the data plane API server.
+        :param pulumi.Input[_builtins.str] username: The username for the data plane API server.
+        """
+        pulumi.set(__self__, "ca_chain", ca_chain)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "servers", servers)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="caChain")
+    def ca_chain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The CA chain for the data plane API server.
+        """
+        return pulumi.get(self, "ca_chain")
+
+    @ca_chain.setter
+    def ca_chain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ca_chain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[_builtins.str]:
+        """
+        The password for the data plane API server.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeHaproxyServerArgs']]]:
+        """
+        The servers for the data plane API server.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeHaproxyServerArgs']]]):
+        pulumi.set(self, "servers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        """
+        The username for the data plane API server.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
+
+
+class SupervisorV2WorkloadsEdgeHaproxyServerArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    The IP address of the API server.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port of the API server.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeHaproxyServerArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[_builtins.str],
+                 port: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] host: The IP address of the API server.
+        :param pulumi.Input[_builtins.int] port: The port of the API server.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IP address of the API server.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[_builtins.int]:
+        """
+        The port of the API server.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "port", value)
+
+
+class SupervisorV2WorkloadsEdgeLbAddressRangeArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The starting IP address of the range.
+    """
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of IP addresses in the range.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeLbAddressRangeArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 count: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The starting IP address of the range.
+        :param pulumi.Input[_builtins.int] count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "count", value)
+
+
+class SupervisorV2WorkloadsEdgeNsxArgsDict(TypedDict):
+    default_ingress_tls_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The default certificate that is served on Ingress services, when another certificate is not presented.
+    """
+    edge_cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The identifier of the edge cluster.
+    """
+    egress_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgsDict']]]]]
+    """
+    An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+    """
+    load_balancer_size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The size of the load balancer node.
+    """
+    routing_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Routing mode.
+    """
+    t0_gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Tier-0 gateway ID for the namespaces configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeNsxArgs:
+    def __init__(__self__, *,
+                 default_ingress_tls_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs']]]] = None,
+                 load_balancer_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 t0_gateway: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] default_ingress_tls_certificate: The default certificate that is served on Ingress services, when another certificate is not presented.
+        :param pulumi.Input[_builtins.str] edge_cluster: The identifier of the edge cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs']]] egress_ip_ranges: An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+        :param pulumi.Input[_builtins.str] load_balancer_size: The size of the load balancer node.
+        :param pulumi.Input[_builtins.str] routing_mode: Routing mode.
+        :param pulumi.Input[_builtins.str] t0_gateway: Tier-0 gateway ID for the namespaces configuration.
+        """
+        if default_ingress_tls_certificate is not None:
+            pulumi.set(__self__, "default_ingress_tls_certificate", default_ingress_tls_certificate)
+        if edge_cluster is not None:
+            pulumi.set(__self__, "edge_cluster", edge_cluster)
+        if egress_ip_ranges is not None:
+            pulumi.set(__self__, "egress_ip_ranges", egress_ip_ranges)
+        if load_balancer_size is not None:
+            pulumi.set(__self__, "load_balancer_size", load_balancer_size)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
+        if t0_gateway is not None:
+            pulumi.set(__self__, "t0_gateway", t0_gateway)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultIngressTlsCertificate")
+    def default_ingress_tls_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default certificate that is served on Ingress services, when another certificate is not presented.
+        """
+        return pulumi.get(self, "default_ingress_tls_certificate")
+
+    @default_ingress_tls_certificate.setter
+    def default_ingress_tls_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_ingress_tls_certificate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="edgeCluster")
+    def edge_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The identifier of the edge cluster.
+        """
+        return pulumi.get(self, "edge_cluster")
+
+    @edge_cluster.setter
+    def edge_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "edge_cluster", value)
+
+    @_builtins.property
+    @pulumi.getter(name="egressIpRanges")
+    def egress_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs']]]]:
+        """
+        An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+        """
+        return pulumi.get(self, "egress_ip_ranges")
+
+    @egress_ip_ranges.setter
+    def egress_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs']]]]):
+        pulumi.set(self, "egress_ip_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerSize")
+    def load_balancer_size(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The size of the load balancer node.
+        """
+        return pulumi.get(self, "load_balancer_size")
+
+    @load_balancer_size.setter
+    def load_balancer_size(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "load_balancer_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Routing mode.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @routing_mode.setter
+    def routing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "routing_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="t0Gateway")
+    def t0_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Tier-0 gateway ID for the namespaces configuration.
+        """
+        return pulumi.get(self, "t0_gateway")
+
+    @t0_gateway.setter
+    def t0_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "t0_gateway", value)
+
+
+class SupervisorV2WorkloadsEdgeNsxAdvancedArgsDict(TypedDict):
+    ca_chain: pulumi.Input[_builtins.str]
+    """
+    Certificate authority chain.
+    """
+    host: pulumi.Input[_builtins.str]
+    """
+    The IP address of the AVI controller.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    Password
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port of the AVI controller.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username
+    """
+    cloud_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Cloud Name.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeNsxAdvancedArgs:
+    def __init__(__self__, *,
+                 ca_chain: pulumi.Input[_builtins.str],
+                 host: pulumi.Input[_builtins.str],
+                 password: pulumi.Input[_builtins.str],
+                 port: pulumi.Input[_builtins.int],
+                 username: pulumi.Input[_builtins.str],
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ca_chain: Certificate authority chain.
+        :param pulumi.Input[_builtins.str] host: The IP address of the AVI controller.
+        :param pulumi.Input[_builtins.str] password: Password
+        :param pulumi.Input[_builtins.int] port: The port of the AVI controller.
+        :param pulumi.Input[_builtins.str] username: Username
+        :param pulumi.Input[_builtins.str] cloud_name: Cloud Name.
+        """
+        pulumi.set(__self__, "ca_chain", ca_chain)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+        if cloud_name is not None:
+            pulumi.set(__self__, "cloud_name", cloud_name)
+
+    @_builtins.property
+    @pulumi.getter(name="caChain")
+    def ca_chain(self) -> pulumi.Input[_builtins.str]:
+        """
+        Certificate authority chain.
+        """
+        return pulumi.get(self, "ca_chain")
+
+    @ca_chain.setter
+    def ca_chain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ca_chain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IP address of the AVI controller.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[_builtins.str]:
+        """
+        Password
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[_builtins.int]:
+        """
+        The port of the AVI controller.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        """
+        Username
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Cloud Name.
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @cloud_name.setter
+    def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cloud_name", value)
+
+
+class SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The starting IP address of the range.
+    """
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of IP addresses in the range.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 count: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The starting IP address of the range.
+        :param pulumi.Input[_builtins.int] count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "count", value)
+
+
+class SupervisorV2WorkloadsImagesArgsDict(TypedDict):
+    content_libraries: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsImagesContentLibraryArgsDict']]]
+    """
+    Content library associated with the Supervisor.
+    """
+    kubernetes_content_library: pulumi.Input[_builtins.str]
+    """
+    The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+    """
+    registry: pulumi.Input['SupervisorV2WorkloadsImagesRegistryArgsDict']
+    """
+    Configuration for the container image registry endpoint.
+    """
+    repository: pulumi.Input[_builtins.str]
+    """
+    The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsImagesArgs:
+    def __init__(__self__, *,
+                 content_libraries: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsImagesContentLibraryArgs']]],
+                 kubernetes_content_library: pulumi.Input[_builtins.str],
+                 registry: pulumi.Input['SupervisorV2WorkloadsImagesRegistryArgs'],
+                 repository: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsImagesContentLibraryArgs']]] content_libraries: Content library associated with the Supervisor.
+        :param pulumi.Input[_builtins.str] kubernetes_content_library: The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+        :param pulumi.Input['SupervisorV2WorkloadsImagesRegistryArgs'] registry: Configuration for the container image registry endpoint.
+        :param pulumi.Input[_builtins.str] repository: The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+        """
+        pulumi.set(__self__, "content_libraries", content_libraries)
+        pulumi.set(__self__, "kubernetes_content_library", kubernetes_content_library)
+        pulumi.set(__self__, "registry", registry)
+        pulumi.set(__self__, "repository", repository)
+
+    @_builtins.property
+    @pulumi.getter(name="contentLibraries")
+    def content_libraries(self) -> pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsImagesContentLibraryArgs']]]:
+        """
+        Content library associated with the Supervisor.
+        """
+        return pulumi.get(self, "content_libraries")
+
+    @content_libraries.setter
+    def content_libraries(self, value: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsImagesContentLibraryArgs']]]):
+        pulumi.set(self, "content_libraries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kubernetesContentLibrary")
+    def kubernetes_content_library(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+        """
+        return pulumi.get(self, "kubernetes_content_library")
+
+    @kubernetes_content_library.setter
+    def kubernetes_content_library(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kubernetes_content_library", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def registry(self) -> pulumi.Input['SupervisorV2WorkloadsImagesRegistryArgs']:
+        """
+        Configuration for the container image registry endpoint.
+        """
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: pulumi.Input['SupervisorV2WorkloadsImagesRegistryArgs']):
+        pulumi.set(self, "registry", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[_builtins.str]:
+        """
+        The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "repository", value)
+
+
+class SupervisorV2WorkloadsImagesContentLibraryArgsDict(TypedDict):
+    content_library: pulumi.Input[_builtins.str]
+    """
+    Content library identifier.
+    """
+    resource_naming_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+    """
+    supervisor_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of Supervisor Service IDs that are currently making use of the Content Library.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsImagesContentLibraryArgs:
+    def __init__(__self__, *,
+                 content_library: pulumi.Input[_builtins.str],
+                 resource_naming_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 supervisor_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] content_library: Content library identifier.
+        :param pulumi.Input[_builtins.str] resource_naming_strategy: The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supervisor_services: A list of Supervisor Service IDs that are currently making use of the Content Library.
+        """
+        pulumi.set(__self__, "content_library", content_library)
+        if resource_naming_strategy is not None:
+            pulumi.set(__self__, "resource_naming_strategy", resource_naming_strategy)
+        if supervisor_services is not None:
+            pulumi.set(__self__, "supervisor_services", supervisor_services)
+
+    @_builtins.property
+    @pulumi.getter(name="contentLibrary")
+    def content_library(self) -> pulumi.Input[_builtins.str]:
+        """
+        Content library identifier.
+        """
+        return pulumi.get(self, "content_library")
+
+    @content_library.setter
+    def content_library(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "content_library", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceNamingStrategy")
+    def resource_naming_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+        """
+        return pulumi.get(self, "resource_naming_strategy")
+
+    @resource_naming_strategy.setter
+    def resource_naming_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_naming_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="supervisorServices")
+    def supervisor_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of Supervisor Service IDs that are currently making use of the Content Library.
+        """
+        return pulumi.get(self, "supervisor_services")
+
+    @supervisor_services.setter
+    def supervisor_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "supervisor_services", value)
+
+
+class SupervisorV2WorkloadsImagesRegistryArgsDict(TypedDict):
+    ca_chain: pulumi.Input[_builtins.str]
+    """
+    The certificate authority chain of the image registry.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The IP address of the image registry.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    The password of the image registry.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port of the image registry.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    The username of the image registry.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsImagesRegistryArgs:
+    def __init__(__self__, *,
+                 ca_chain: pulumi.Input[_builtins.str],
+                 hostname: pulumi.Input[_builtins.str],
+                 password: pulumi.Input[_builtins.str],
+                 port: pulumi.Input[_builtins.int],
+                 username: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] ca_chain: The certificate authority chain of the image registry.
+        :param pulumi.Input[_builtins.str] hostname: The IP address of the image registry.
+        :param pulumi.Input[_builtins.str] password: The password of the image registry.
+        :param pulumi.Input[_builtins.int] port: The port of the image registry.
+        :param pulumi.Input[_builtins.str] username: The username of the image registry.
+        """
+        pulumi.set(__self__, "ca_chain", ca_chain)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="caChain")
+    def ca_chain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The certificate authority chain of the image registry.
+        """
+        return pulumi.get(self, "ca_chain")
+
+    @ca_chain.setter
+    def ca_chain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ca_chain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IP address of the image registry.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[_builtins.str]:
+        """
+        The password of the image registry.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[_builtins.int]:
+        """
+        The port of the image registry.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        """
+        The username of the image registry.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
+
+
+class SupervisorV2WorkloadsKubeApiServerOptionsArgsDict(TypedDict):
+    security: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgsDict']]]
+    """
+    Security configuration.
+
+    <a id="nestedblock--workloads-images"></a>
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsKubeApiServerOptionsArgs:
+    def __init__(__self__, *,
+                 security: pulumi.Input[Optional['SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs'] security: Security configuration.
+               
+               <a id="nestedblock--workloads-images"></a>
+        """
+        if security is not None:
+            pulumi.set(__self__, "security", security)
+
+    @_builtins.property
+    @pulumi.getter
+    def security(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs']]:
+        """
+        Security configuration.
+
+        <a id="nestedblock--workloads-images"></a>
+        """
+        return pulumi.get(self, "security")
+
+    @security.setter
+    def security(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs']]):
+        pulumi.set(self, "security", value)
+
+
+class SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgsDict(TypedDict):
+    certificate_dns_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of DNS names to include in the certificate.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs:
+    def __init__(__self__, *,
+                 certificate_dns_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_dns_names: List of DNS names to include in the certificate.
+        """
+        pulumi.set(__self__, "certificate_dns_names", certificate_dns_names)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateDnsNames")
+    def certificate_dns_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of DNS names to include in the certificate.
+        """
+        return pulumi.get(self, "certificate_dns_names")
+
+    @certificate_dns_names.setter
+    def certificate_dns_names(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "certificate_dns_names", value)
+
+
+class SupervisorV2WorkloadsNetworkArgsDict(TypedDict):
+    ip_management: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsNetworkIpManagementArgsDict']]]
+    """
+    IP Management configuration.
+    """
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A unique identifier for the workload network.
+    """
+    nsx: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxArgsDict']]]
+    """
+    Configuration for NSX-T backing.
+    """
+    nsx_vpc: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxVpcArgsDict']]]
+    """
+    Configuration for NSX VPC backing.
+    """
+    services: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesArgsDict']]]
+    """
+    Network services (e.g DNS, NTP) configuration.
+    """
+    vsphere: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsNetworkVsphereArgsDict']]]
+    """
+    Configuration for vSphere network backing.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkArgs:
+    def __init__(__self__, *,
+                 ip_management: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkIpManagementArgs']] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 nsx: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxArgs']] = None,
+                 nsx_vpc: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxVpcArgs']] = None,
+                 services: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesArgs']] = None,
+                 vsphere: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkVsphereArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementArgs'] ip_management: IP Management configuration.
+        :param pulumi.Input[_builtins.str] network: A unique identifier for the workload network.
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkNsxArgs'] nsx: Configuration for NSX-T backing.
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkNsxVpcArgs'] nsx_vpc: Configuration for NSX VPC backing.
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkServicesArgs'] services: Network services (e.g DNS, NTP) configuration.
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkVsphereArgs'] vsphere: Configuration for vSphere network backing.
+        """
+        if ip_management is not None:
+            pulumi.set(__self__, "ip_management", ip_management)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if nsx is not None:
+            pulumi.set(__self__, "nsx", nsx)
+        if nsx_vpc is not None:
+            pulumi.set(__self__, "nsx_vpc", nsx_vpc)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if vsphere is not None:
+            pulumi.set(__self__, "vsphere", vsphere)
+
+    @_builtins.property
+    @pulumi.getter(name="ipManagement")
+    def ip_management(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsNetworkIpManagementArgs']]:
+        """
+        IP Management configuration.
+        """
+        return pulumi.get(self, "ip_management")
+
+    @ip_management.setter
+    def ip_management(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkIpManagementArgs']]):
+        pulumi.set(self, "ip_management", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A unique identifier for the workload network.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nsx(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxArgs']]:
+        """
+        Configuration for NSX-T backing.
+        """
+        return pulumi.get(self, "nsx")
+
+    @nsx.setter
+    def nsx(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxArgs']]):
+        pulumi.set(self, "nsx", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nsxVpc")
+    def nsx_vpc(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxVpcArgs']]:
+        """
+        Configuration for NSX VPC backing.
+        """
+        return pulumi.get(self, "nsx_vpc")
+
+    @nsx_vpc.setter
+    def nsx_vpc(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkNsxVpcArgs']]):
+        pulumi.set(self, "nsx_vpc", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesArgs']]:
+        """
+        Network services (e.g DNS, NTP) configuration.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesArgs']]):
+        pulumi.set(self, "services", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def vsphere(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsNetworkVsphereArgs']]:
+        """
+        Configuration for vSphere network backing.
+        """
+        return pulumi.get(self, "vsphere")
+
+    @vsphere.setter
+    def vsphere(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkVsphereArgs']]):
+        pulumi.set(self, "vsphere", value)
+
+
+class SupervisorV2WorkloadsNetworkIpManagementArgsDict(TypedDict):
+    dhcp_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to use DHCP or not.
+    """
+    gateway_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP address of the network gateway.
+    """
+    ip_assignments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgsDict']]]]]
+    """
+    IP assignment configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkIpManagementArgs:
+    def __init__(__self__, *,
+                 dhcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_assignments: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] dhcp_enabled: Whether to use DHCP or not.
+        :param pulumi.Input[_builtins.str] gateway_address: The IP address of the network gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs']]] ip_assignments: IP assignment configuration.
+        """
+        if dhcp_enabled is not None:
+            pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        if gateway_address is not None:
+            pulumi.set(__self__, "gateway_address", gateway_address)
+        if ip_assignments is not None:
+            pulumi.set(__self__, "ip_assignments", ip_assignments)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use DHCP or not.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @dhcp_enabled.setter
+    def dhcp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dhcp_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayAddress")
+    def gateway_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP address of the network gateway.
+        """
+        return pulumi.get(self, "gateway_address")
+
+    @gateway_address.setter
+    def gateway_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gateway_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAssignments")
+    def ip_assignments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs']]]]:
+        """
+        IP assignment configuration.
+        """
+        return pulumi.get(self, "ip_assignments")
+
+    @ip_assignments.setter
+    def ip_assignments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs']]]]):
+        pulumi.set(self, "ip_assignments", value)
+
+
+class SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgsDict(TypedDict):
+    assignee: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the assignee.
+    """
+    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgsDict']]]]]
+    """
+    The available IP addresses that can be consumed by Supervisor to run the cluster.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs:
+    def __init__(__self__, *,
+                 assignee: pulumi.Input[Optional[_builtins.str]] = None,
+                 ranges: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] assignee: The type of the assignee.
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs']]] ranges: The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        if assignee is not None:
+            pulumi.set(__self__, "assignee", assignee)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def assignee(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the assignee.
+        """
+        return pulumi.get(self, "assignee")
+
+    @assignee.setter
+    def assignee(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "assignee", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs']]]]:
+        """
+        The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        return pulumi.get(self, "ranges")
+
+    @ranges.setter
+    def ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs']]]]):
+        pulumi.set(self, "ranges", value)
+
+
+class SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The starting IP address of the range.
+    """
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of IP addresses in the range.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 count: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The starting IP address of the range.
+        :param pulumi.Input[_builtins.int] count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "count", value)
+
+
+class SupervisorV2WorkloadsNetworkNsxArgsDict(TypedDict):
+    dvs: pulumi.Input[_builtins.str]
+    """
+    The identifier of the vSphere Distributed Switch.
+    """
+    namespace_subnet_prefix: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The size of the subnet reserved for namespace segments.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkNsxArgs:
+    def __init__(__self__, *,
+                 dvs: pulumi.Input[_builtins.str],
+                 namespace_subnet_prefix: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dvs: The identifier of the vSphere Distributed Switch.
+        :param pulumi.Input[_builtins.int] namespace_subnet_prefix: The size of the subnet reserved for namespace segments.
+        """
+        pulumi.set(__self__, "dvs", dvs)
+        if namespace_subnet_prefix is not None:
+            pulumi.set(__self__, "namespace_subnet_prefix", namespace_subnet_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def dvs(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier of the vSphere Distributed Switch.
+        """
+        return pulumi.get(self, "dvs")
+
+    @dvs.setter
+    def dvs(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "dvs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceSubnetPrefix")
+    def namespace_subnet_prefix(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The size of the subnet reserved for namespace segments.
+        """
+        return pulumi.get(self, "namespace_subnet_prefix")
+
+    @namespace_subnet_prefix.setter
+    def namespace_subnet_prefix(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "namespace_subnet_prefix", value)
+
+
+class SupervisorV2WorkloadsNetworkNsxVpcArgsDict(TypedDict):
+    default_private_cidrs: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgsDict']]]
+    """
+    Specifies CIDR blocks from which private subnets are allocated.
+    """
+    nsx_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+    """
+    vpc_connectivity_profile: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The identifier of the VPC Connectivity Profile.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkNsxVpcArgs:
+    def __init__(__self__, *,
+                 default_private_cidrs: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs']]],
+                 nsx_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_connectivity_profile: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs']]] default_private_cidrs: Specifies CIDR blocks from which private subnets are allocated.
+        :param pulumi.Input[_builtins.str] nsx_project: The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+        :param pulumi.Input[_builtins.str] vpc_connectivity_profile: The identifier of the VPC Connectivity Profile.
+        """
+        pulumi.set(__self__, "default_private_cidrs", default_private_cidrs)
+        if nsx_project is not None:
+            pulumi.set(__self__, "nsx_project", nsx_project)
+        if vpc_connectivity_profile is not None:
+            pulumi.set(__self__, "vpc_connectivity_profile", vpc_connectivity_profile)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPrivateCidrs")
+    def default_private_cidrs(self) -> pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs']]]:
+        """
+        Specifies CIDR blocks from which private subnets are allocated.
+        """
+        return pulumi.get(self, "default_private_cidrs")
+
+    @default_private_cidrs.setter
+    def default_private_cidrs(self, value: pulumi.Input[Sequence[pulumi.Input['SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs']]]):
+        pulumi.set(self, "default_private_cidrs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nsxProject")
+    def nsx_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+        """
+        return pulumi.get(self, "nsx_project")
+
+    @nsx_project.setter
+    def nsx_project(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "nsx_project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcConnectivityProfile")
+    def vpc_connectivity_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The identifier of the VPC Connectivity Profile.
+        """
+        return pulumi.get(self, "vpc_connectivity_profile")
+
+    @vpc_connectivity_profile.setter
+    def vpc_connectivity_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_connectivity_profile", value)
+
+
+class SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The starting IPv4 address of the CIDR block.
+    """
+    prefix: pulumi.Input[_builtins.int]
+    """
+    The number of addresses in the CIDR block.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 prefix: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The starting IPv4 address of the CIDR block.
+        :param pulumi.Input[_builtins.int] prefix: The number of addresses in the CIDR block.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The starting IPv4 address of the CIDR block.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of addresses in the CIDR block.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "prefix", value)
+
+
+class SupervisorV2WorkloadsNetworkServicesArgsDict(TypedDict):
+    dns: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesDnsArgsDict']]]
+    """
+    The DNS configuration.
+    """
+    ntp: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesNtpArgsDict']]]
+    """
+    The NTP configuration.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkServicesArgs:
+    def __init__(__self__, *,
+                 dns: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesDnsArgs']] = None,
+                 ntp: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesNtpArgs']] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkServicesDnsArgs'] dns: The DNS configuration.
+        :param pulumi.Input['SupervisorV2WorkloadsNetworkServicesNtpArgs'] ntp: The NTP configuration.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if ntp is not None:
+            pulumi.set(__self__, "ntp", ntp)
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesDnsArgs']]:
+        """
+        The DNS configuration.
+        """
+        return pulumi.get(self, "dns")
+
+    @dns.setter
+    def dns(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesDnsArgs']]):
+        pulumi.set(self, "dns", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ntp(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesNtpArgs']]:
+        """
+        The NTP configuration.
+        """
+        return pulumi.get(self, "ntp")
+
+    @ntp.setter
+    def ntp(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsNetworkServicesNtpArgs']]):
+        pulumi.set(self, "ntp", value)
+
+
+class SupervisorV2WorkloadsNetworkServicesDnsArgsDict(TypedDict):
+    search_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of search domains.
+    """
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of DNS servers.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkServicesDnsArgs:
+    def __init__(__self__, *,
+                 search_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] search_domains: The list of search domains.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of DNS servers.
+        """
+        pulumi.set(__self__, "search_domains", search_domains)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="searchDomains")
+    def search_domains(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of search domains.
+        """
+        return pulumi.get(self, "search_domains")
+
+    @search_domains.setter
+    def search_domains(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "search_domains", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "servers", value)
+
+
+class SupervisorV2WorkloadsNetworkServicesNtpArgsDict(TypedDict):
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of NTP servers.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkServicesNtpArgs:
+    def __init__(__self__, *,
+                 servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of NTP servers.
+        """
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of NTP servers.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "servers", value)
+
+
+class SupervisorV2WorkloadsNetworkVsphereArgsDict(TypedDict):
+    dvpg: pulumi.Input[_builtins.str]
+    """
+    The identifier of the Distributed Virtual Portgroup.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsNetworkVsphereArgs:
+    def __init__(__self__, *,
+                 dvpg: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] dvpg: The identifier of the Distributed Virtual Portgroup.
+        """
+        pulumi.set(__self__, "dvpg", dvpg)
+
+    @_builtins.property
+    @pulumi.getter
+    def dvpg(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier of the Distributed Virtual Portgroup.
+        """
+        return pulumi.get(self, "dvpg")
+
+    @dvpg.setter
+    def dvpg(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "dvpg", value)
+
+
+class SupervisorV2WorkloadsStorageArgsDict(TypedDict):
+    cloud_native_file_volume: NotRequired[pulumi.Input[Optional['SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgsDict']]]
+    """
+    Specifies the Cloud Native Storage file volume.
+    """
+    ephemeral_storage_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+    """
+    image_storage_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The specification required to configure storage used for Pod VM container images.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsStorageArgs:
+    def __init__(__self__, *,
+                 cloud_native_file_volume: pulumi.Input[Optional['SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs']] = None,
+                 ephemeral_storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_storage_policy: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs'] cloud_native_file_volume: Specifies the Cloud Native Storage file volume.
+        :param pulumi.Input[_builtins.str] ephemeral_storage_policy: The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+        :param pulumi.Input[_builtins.str] image_storage_policy: The specification required to configure storage used for Pod VM container images.
+        """
+        if cloud_native_file_volume is not None:
+            pulumi.set(__self__, "cloud_native_file_volume", cloud_native_file_volume)
+        if ephemeral_storage_policy is not None:
+            pulumi.set(__self__, "ephemeral_storage_policy", ephemeral_storage_policy)
+        if image_storage_policy is not None:
+            pulumi.set(__self__, "image_storage_policy", image_storage_policy)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudNativeFileVolume")
+    def cloud_native_file_volume(self) -> pulumi.Input[Optional['SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs']]:
+        """
+        Specifies the Cloud Native Storage file volume.
+        """
+        return pulumi.get(self, "cloud_native_file_volume")
+
+    @cloud_native_file_volume.setter
+    def cloud_native_file_volume(self, value: pulumi.Input[Optional['SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs']]):
+        pulumi.set(self, "cloud_native_file_volume", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralStoragePolicy")
+    def ephemeral_storage_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+        """
+        return pulumi.get(self, "ephemeral_storage_policy")
+
+    @ephemeral_storage_policy.setter
+    def ephemeral_storage_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ephemeral_storage_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageStoragePolicy")
+    def image_storage_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The specification required to configure storage used for Pod VM container images.
+        """
+        return pulumi.get(self, "image_storage_policy")
+
+    @image_storage_policy.setter
+    def image_storage_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image_storage_policy", value)
+
+
+class SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgsDict(TypedDict):
+    vsan_clusters: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of cluster identifiers.
+    """
+
+@pulumi.input_type
+class SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs:
+    def __init__(__self__, *,
+                 vsan_clusters: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vsan_clusters: A list of cluster identifiers.
+        """
+        pulumi.set(__self__, "vsan_clusters", vsan_clusters)
+
+    @_builtins.property
+    @pulumi.getter(name="vsanClusters")
+    def vsan_clusters(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        A list of cluster identifiers.
+        """
+        return pulumi.get(self, "vsan_clusters")
+
+    @vsan_clusters.setter
+    def vsan_clusters(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "vsan_clusters", value)
 
 
 class VirtualMachineCdromArgsDict(TypedDict):
@@ -3361,7 +7305,7 @@ class VirtualMachineDiskArgsDict(TypedDict):
     """
     unit_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+    The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
     """
     uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3415,7 +7359,7 @@ class VirtualMachineDiskArgs:
         :param pulumi.Input[_builtins.int] size: The size of the disk, in GB.
         :param pulumi.Input[_builtins.str] storage_policy_id: The ID of the storage policy to assign to the virtual disk in VM.
         :param pulumi.Input[_builtins.bool] thin_provisioned: If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
-        :param pulumi.Input[_builtins.int] unit_number: The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+        :param pulumi.Input[_builtins.int] unit_number: The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
         :param pulumi.Input[_builtins.str] uuid: The UUID of the virtual machine. Also exposed as the `id` of the resource.
         :param pulumi.Input[_builtins.bool] write_through: If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
         """
@@ -3681,7 +7625,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="unitNumber")
     def unit_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+        The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
         """
         return pulumi.get(self, "unit_number")
 
@@ -3743,6 +7687,10 @@ class VirtualMachineNetworkInterfaceArgsDict(TypedDict):
     """
     An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
     """
+    external_port_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The external port id to be bound to the VM port.
+    """
     key: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the device within the virtual machine.
@@ -3774,6 +7722,7 @@ class VirtualMachineNetworkInterfaceArgs:
                  bandwidth_share_count: pulumi.Input[Optional[_builtins.int]] = None,
                  bandwidth_share_level: pulumi.Input[Optional[_builtins.str]] = None,
                  device_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_port_id: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.int]] = None,
                  mac_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ovf_mapping: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3787,6 +7736,7 @@ class VirtualMachineNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.int] bandwidth_share_count: The share count for this network interface when the share level is custom.
         :param pulumi.Input[_builtins.str] bandwidth_share_level: The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
         :param pulumi.Input[_builtins.str] device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
+        :param pulumi.Input[_builtins.str] external_port_id: The external port id to be bound to the VM port.
         :param pulumi.Input[_builtins.int] key: The ID of the device within the virtual machine.
         :param pulumi.Input[_builtins.str] mac_address: The MAC address of this network interface. Can only be manually set if use_static_mac is true.
         :param pulumi.Input[_builtins.str] ovf_mapping: Mapping of network interface to OVF network.
@@ -3806,6 +7756,8 @@ class VirtualMachineNetworkInterfaceArgs:
             pulumi.set(__self__, "bandwidth_share_level", bandwidth_share_level)
         if device_address is not None:
             pulumi.set(__self__, "device_address", device_address)
+        if external_port_id is not None:
+            pulumi.set(__self__, "external_port_id", external_port_id)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if mac_address is not None:
@@ -3900,6 +7852,18 @@ class VirtualMachineNetworkInterfaceArgs:
     @device_address.setter
     def device_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalPortId")
+    def external_port_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The external port id to be bound to the VM port.
+        """
+        return pulumi.get(self, "external_port_id")
+
+    @external_port_id.setter
+    def external_port_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "external_port_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -4180,6 +8144,162 @@ class VirtualMachineVappArgs:
         pulumi.set(self, "properties", value)
 
 
+class VirtualMachineVideoCardArgsDict(TypedDict):
+    num_displays: pulumi.Input[_builtins.int]
+    """
+    Number of supported displays
+    """
+    total_video_memory: pulumi.Input[_builtins.int]
+    """
+    Video RAM size in megabytes
+    """
+    device_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+    """
+    graphics3ds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineVideoCardGraphics3dArgsDict']]]]]
+    """
+    3D graphics options.
+    """
+    key: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The unique device ID for this device within its virtual machine.
+    """
+
+@pulumi.input_type
+class VirtualMachineVideoCardArgs:
+    def __init__(__self__, *,
+                 num_displays: pulumi.Input[_builtins.int],
+                 total_video_memory: pulumi.Input[_builtins.int],
+                 device_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 graphics3ds: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineVideoCardGraphics3dArgs']]]] = None,
+                 key: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] num_displays: Number of supported displays
+        :param pulumi.Input[_builtins.int] total_video_memory: Video RAM size in megabytes
+        :param pulumi.Input[_builtins.str] device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineVideoCardGraphics3dArgs']]] graphics3ds: 3D graphics options.
+        :param pulumi.Input[_builtins.int] key: The unique device ID for this device within its virtual machine.
+        """
+        pulumi.set(__self__, "num_displays", num_displays)
+        pulumi.set(__self__, "total_video_memory", total_video_memory)
+        if device_address is not None:
+            pulumi.set(__self__, "device_address", device_address)
+        if graphics3ds is not None:
+            pulumi.set(__self__, "graphics3ds", graphics3ds)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter(name="numDisplays")
+    def num_displays(self) -> pulumi.Input[_builtins.int]:
+        """
+        Number of supported displays
+        """
+        return pulumi.get(self, "num_displays")
+
+    @num_displays.setter
+    def num_displays(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "num_displays", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalVideoMemory")
+    def total_video_memory(self) -> pulumi.Input[_builtins.int]:
+        """
+        Video RAM size in megabytes
+        """
+        return pulumi.get(self, "total_video_memory")
+
+    @total_video_memory.setter
+    def total_video_memory(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "total_video_memory", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deviceAddress")
+    def device_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        """
+        return pulumi.get(self, "device_address")
+
+    @device_address.setter
+    def device_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "device_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def graphics3ds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineVideoCardGraphics3dArgs']]]]:
+        """
+        3D graphics options.
+        """
+        return pulumi.get(self, "graphics3ds")
+
+    @graphics3ds.setter
+    def graphics3ds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineVideoCardGraphics3dArgs']]]]):
+        pulumi.set(self, "graphics3ds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The unique device ID for this device within its virtual machine.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "key", value)
+
+
+class VirtualMachineVideoCardGraphics3dArgsDict(TypedDict):
+    memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of dedicated graphics memory in megabytes
+    """
+    renderer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Indicates how the virtual device renders 3D graphics
+    """
+
+@pulumi.input_type
+class VirtualMachineVideoCardGraphics3dArgs:
+    def __init__(__self__, *,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 renderer: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] memory: The amount of dedicated graphics memory in megabytes
+        :param pulumi.Input[_builtins.str] renderer: Indicates how the virtual device renders 3D graphics
+        """
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if renderer is not None:
+            pulumi.set(__self__, "renderer", renderer)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of dedicated graphics memory in megabytes
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "memory", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def renderer(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Indicates how the virtual device renders 3D graphics
+        """
+        return pulumi.get(self, "renderer")
+
+    @renderer.setter
+    def renderer(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "renderer", value)
+
+
 class VirtualMachineVtpmArgsDict(TypedDict):
     version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -4452,6 +8572,330 @@ class VnicIpv6Args:
     @gw.setter
     def gw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gw", value)
+
+
+class GetAlarmMetricExpressionArgsDict(TypedDict):
+    metric_counter_id: _builtins.int
+    """
+    ID of the metric.
+    """
+    metric_instance: _builtins.str
+    object_type: _builtins.str
+    """
+    Type of object of the metric, ie: HostSystem.
+    """
+    operator: _builtins.str
+    """
+    Whether the metric is below or above the given threshold.
+    """
+    red: _builtins.int
+    """
+    Critical threshold, for percentage, 9900 is 99%.
+    """
+    red_interval: _builtins.int
+    """
+    Amount of seconds the threshold must be crossed to trigger the critical alarm.
+    """
+    yellow: _builtins.int
+    """
+    Warning threshold, for percentage, 9900 is 99%.
+    """
+    yellow_interval: _builtins.int
+    """
+    Amount of seconds the threshold must be crossed to trigger the warning alarm.
+    """
+
+@pulumi.input_type
+class GetAlarmMetricExpressionArgs:
+    def __init__(__self__, *,
+                 metric_counter_id: _builtins.int,
+                 metric_instance: _builtins.str,
+                 object_type: _builtins.str,
+                 operator: _builtins.str,
+                 red: _builtins.int,
+                 red_interval: _builtins.int,
+                 yellow: _builtins.int,
+                 yellow_interval: _builtins.int):
+        """
+        :param _builtins.int metric_counter_id: ID of the metric.
+        :param _builtins.str object_type: Type of object of the metric, ie: HostSystem.
+        :param _builtins.str operator: Whether the metric is below or above the given threshold.
+        :param _builtins.int red: Critical threshold, for percentage, 9900 is 99%.
+        :param _builtins.int red_interval: Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        :param _builtins.int yellow: Warning threshold, for percentage, 9900 is 99%.
+        :param _builtins.int yellow_interval: Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        pulumi.set(__self__, "metric_counter_id", metric_counter_id)
+        pulumi.set(__self__, "metric_instance", metric_instance)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "red", red)
+        pulumi.set(__self__, "red_interval", red_interval)
+        pulumi.set(__self__, "yellow", yellow)
+        pulumi.set(__self__, "yellow_interval", yellow_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="metricCounterId")
+    def metric_counter_id(self) -> _builtins.int:
+        """
+        ID of the metric.
+        """
+        return pulumi.get(self, "metric_counter_id")
+
+    @metric_counter_id.setter
+    def metric_counter_id(self, value: _builtins.int):
+        pulumi.set(self, "metric_counter_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricInstance")
+    def metric_instance(self) -> _builtins.str:
+        return pulumi.get(self, "metric_instance")
+
+    @metric_instance.setter
+    def metric_instance(self, value: _builtins.str):
+        pulumi.set(self, "metric_instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object of the metric, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: _builtins.str):
+        pulumi.set(self, "object_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Whether the metric is below or above the given threshold.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: _builtins.str):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> _builtins.int:
+        """
+        Critical threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "red")
+
+    @red.setter
+    def red(self, value: _builtins.int):
+        pulumi.set(self, "red", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redInterval")
+    def red_interval(self) -> _builtins.int:
+        """
+        Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        """
+        return pulumi.get(self, "red_interval")
+
+    @red_interval.setter
+    def red_interval(self, value: _builtins.int):
+        pulumi.set(self, "red_interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> _builtins.int:
+        """
+        Warning threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "yellow")
+
+    @yellow.setter
+    def yellow(self, value: _builtins.int):
+        pulumi.set(self, "yellow", value)
+
+    @_builtins.property
+    @pulumi.getter(name="yellowInterval")
+    def yellow_interval(self) -> _builtins.int:
+        """
+        Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        return pulumi.get(self, "yellow_interval")
+
+    @yellow_interval.setter
+    def yellow_interval(self, value: _builtins.int):
+        pulumi.set(self, "yellow_interval", value)
+
+
+class GetAlarmSnmpActionArgsDict(TypedDict):
+    final_state: _builtins.str
+    """
+    Triggers the action only for this final state.
+    """
+    repeat: _builtins.bool
+    """
+    Whether or not the action should be repeated.
+    """
+    start_state: _builtins.str
+    """
+    Triggers the action only for this initial state.
+    """
+
+@pulumi.input_type
+class GetAlarmSnmpActionArgs:
+    def __init__(__self__, *,
+                 final_state: _builtins.str,
+                 repeat: _builtins.bool,
+                 start_state: _builtins.str):
+        """
+        :param _builtins.str final_state: Triggers the action only for this final state.
+        :param _builtins.bool repeat: Whether or not the action should be repeated.
+        :param _builtins.str start_state: Triggers the action only for this initial state.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "repeat", repeat)
+        pulumi.set(__self__, "start_state", start_state)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @final_state.setter
+    def final_state(self, value: _builtins.str):
+        pulumi.set(self, "final_state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> _builtins.bool:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @repeat.setter
+    def repeat(self, value: _builtins.bool):
+        pulumi.set(self, "repeat", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @start_state.setter
+    def start_state(self, value: _builtins.str):
+        pulumi.set(self, "start_state", value)
+
+
+class GetAlarmStateExpressionArgsDict(TypedDict):
+    object_type: _builtins.str
+    """
+    Type of object where the event applies on, ie: HostSystem.
+    """
+    operator: _builtins.str
+    """
+    Check if state is equal or unequal.
+    """
+    red: _builtins.str
+    """
+    State value to trigger critical alarm.
+    """
+    state_path: _builtins.str
+    """
+    State path: ie. runtime.connectionState.
+    """
+    yellow: _builtins.str
+    """
+    State value to trigger warning alarm.
+    """
+
+@pulumi.input_type
+class GetAlarmStateExpressionArgs:
+    def __init__(__self__, *,
+                 object_type: _builtins.str,
+                 operator: _builtins.str,
+                 red: _builtins.str,
+                 state_path: _builtins.str,
+                 yellow: _builtins.str):
+        """
+        :param _builtins.str object_type: Type of object where the event applies on, ie: HostSystem.
+        :param _builtins.str operator: Check if state is equal or unequal.
+        :param _builtins.str red: State value to trigger critical alarm.
+        :param _builtins.str state_path: State path: ie. runtime.connectionState.
+        :param _builtins.str yellow: State value to trigger warning alarm.
+        """
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "red", red)
+        pulumi.set(__self__, "state_path", state_path)
+        pulumi.set(__self__, "yellow", yellow)
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object where the event applies on, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: _builtins.str):
+        pulumi.set(self, "object_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Check if state is equal or unequal.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: _builtins.str):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> _builtins.str:
+        """
+        State value to trigger critical alarm.
+        """
+        return pulumi.get(self, "red")
+
+    @red.setter
+    def red(self, value: _builtins.str):
+        pulumi.set(self, "red", value)
+
+    @_builtins.property
+    @pulumi.getter(name="statePath")
+    def state_path(self) -> _builtins.str:
+        """
+        State path: ie. runtime.connectionState.
+        """
+        return pulumi.get(self, "state_path")
+
+    @state_path.setter
+    def state_path(self, value: _builtins.str):
+        pulumi.set(self, "state_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> _builtins.str:
+        """
+        State value to trigger warning alarm.
+        """
+        return pulumi.get(self, "yellow")
+
+    @yellow.setter
+    def yellow(self, value: _builtins.str):
+        pulumi.set(self, "yellow", value)
 
 
 class GetNetworkFilterArgsDict(TypedDict):
