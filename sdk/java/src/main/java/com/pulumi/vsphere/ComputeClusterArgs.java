@@ -223,6 +223,21 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Enhanced vMotion Compatibility mode.
+     * 
+     */
+    @Import(name="evcMode")
+    private @Nullable Output<String> evcMode;
+
+    /**
+     * @return Enhanced vMotion Compatibility mode.
+     * 
+     */
+    public Optional<Output<String>> evcMode() {
+        return Optional.ofNullable(this.evcMode);
+    }
+
+    /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
      * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -1110,6 +1125,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         this.drsEnabled = $.drsEnabled;
         this.drsMigrationThreshold = $.drsMigrationThreshold;
         this.drsScaleDescendantsShares = $.drsScaleDescendantsShares;
+        this.evcMode = $.evcMode;
         this.folder = $.folder;
         this.forceEvacuateOnDestroy = $.forceEvacuateOnDestroy;
         this.haAdmissionControlFailoverHostSystemIds = $.haAdmissionControlFailoverHostSystemIds;
@@ -1455,6 +1471,27 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder drsScaleDescendantsShares(String drsScaleDescendantsShares) {
             return drsScaleDescendantsShares(Output.of(drsScaleDescendantsShares));
+        }
+
+        /**
+         * @param evcMode Enhanced vMotion Compatibility mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evcMode(@Nullable Output<String> evcMode) {
+            $.evcMode = evcMode;
+            return this;
+        }
+
+        /**
+         * @param evcMode Enhanced vMotion Compatibility mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evcMode(String evcMode) {
+            return evcMode(Output.of(evcMode));
         }
 
         /**

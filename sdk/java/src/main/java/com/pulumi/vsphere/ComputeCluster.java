@@ -325,6 +325,20 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.drsScaleDescendantsShares);
     }
     /**
+     * Enhanced vMotion Compatibility mode.
+     * 
+     */
+    @Export(name="evcMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> evcMode;
+
+    /**
+     * @return Enhanced vMotion Compatibility mode.
+     * 
+     */
+    public Output<Optional<String>> evcMode() {
+        return Codegen.optional(this.evcMode);
+    }
+    /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
      * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,

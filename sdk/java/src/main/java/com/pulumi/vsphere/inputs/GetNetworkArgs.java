@@ -140,6 +140,21 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.vpcId);
     }
 
+    /**
+     * Select a project scope for retrieval of VPC subnets.
+     * 
+     */
+    @Import(name="vpcProjectId")
+    private @Nullable Output<String> vpcProjectId;
+
+    /**
+     * @return Select a project scope for retrieval of VPC subnets.
+     * 
+     */
+    public Optional<Output<String>> vpcProjectId() {
+        return Optional.ofNullable(this.vpcProjectId);
+    }
+
     private GetNetworkArgs() {}
 
     private GetNetworkArgs(GetNetworkArgs $) {
@@ -150,6 +165,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
         this.retryInterval = $.retryInterval;
         this.retryTimeout = $.retryTimeout;
         this.vpcId = $.vpcId;
+        this.vpcProjectId = $.vpcProjectId;
     }
 
     public static Builder builder() {
@@ -341,6 +357,27 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vpcProjectId Select a project scope for retrieval of VPC subnets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcProjectId(@Nullable Output<String> vpcProjectId) {
+            $.vpcProjectId = vpcProjectId;
+            return this;
+        }
+
+        /**
+         * @param vpcProjectId Select a project scope for retrieval of VPC subnets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcProjectId(String vpcProjectId) {
+            return vpcProjectId(Output.of(vpcProjectId));
         }
 
         public GetNetworkArgs build() {

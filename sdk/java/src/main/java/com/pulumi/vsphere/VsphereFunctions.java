@@ -10,6 +10,8 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import com.pulumi.vsphere.Utilities;
+import com.pulumi.vsphere.inputs.GetAlarmArgs;
+import com.pulumi.vsphere.inputs.GetAlarmPlainArgs;
 import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
 import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
 import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupPlainArgs;
@@ -48,6 +50,8 @@ import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
 import com.pulumi.vsphere.inputs.GetHostVgpuProfilePlainArgs;
 import com.pulumi.vsphere.inputs.GetLicenseArgs;
 import com.pulumi.vsphere.inputs.GetLicensePlainArgs;
+import com.pulumi.vsphere.inputs.GetNamespaceArgs;
+import com.pulumi.vsphere.inputs.GetNamespacePlainArgs;
 import com.pulumi.vsphere.inputs.GetNetworkArgs;
 import com.pulumi.vsphere.inputs.GetNetworkPlainArgs;
 import com.pulumi.vsphere.inputs.GetOvfVmTemplateArgs;
@@ -68,6 +72,9 @@ import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
 import com.pulumi.vsphere.inputs.GetVirtualMachinePlainArgs;
 import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
 import com.pulumi.vsphere.inputs.GetVmfsDisksPlainArgs;
+import com.pulumi.vsphere.inputs.GetZoneArgs;
+import com.pulumi.vsphere.inputs.GetZonePlainArgs;
+import com.pulumi.vsphere.outputs.GetAlarmResult;
 import com.pulumi.vsphere.outputs.GetComputeClusterHostGroupResult;
 import com.pulumi.vsphere.outputs.GetComputeClusterResult;
 import com.pulumi.vsphere.outputs.GetConfigurationProfileResult;
@@ -88,6 +95,7 @@ import com.pulumi.vsphere.outputs.GetHostResult;
 import com.pulumi.vsphere.outputs.GetHostThumbprintResult;
 import com.pulumi.vsphere.outputs.GetHostVgpuProfileResult;
 import com.pulumi.vsphere.outputs.GetLicenseResult;
+import com.pulumi.vsphere.outputs.GetNamespaceResult;
 import com.pulumi.vsphere.outputs.GetNetworkResult;
 import com.pulumi.vsphere.outputs.GetOvfVmTemplateResult;
 import com.pulumi.vsphere.outputs.GetPolicyResult;
@@ -98,9 +106,245 @@ import com.pulumi.vsphere.outputs.GetTagResult;
 import com.pulumi.vsphere.outputs.GetVappContainerResult;
 import com.pulumi.vsphere.outputs.GetVirtualMachineResult;
 import com.pulumi.vsphere.outputs.GetVmfsDisksResult;
+import com.pulumi.vsphere.outputs.GetZoneResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class VsphereFunctions {
+    /**
+     * The `vsphere.Alarm` data source can be used to retrieve the property of a given alarm.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetAlarmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
+     *             .entityType("Datacenter")
+     *             .entityId(dc.id())
+     *             .name("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAlarmResult> getAlarm(GetAlarmArgs args) {
+        return getAlarm(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.Alarm` data source can be used to retrieve the property of a given alarm.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetAlarmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
+     *             .entityType("Datacenter")
+     *             .entityId(dc.id())
+     *             .name("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAlarmResult> getAlarmPlain(GetAlarmPlainArgs args) {
+        return getAlarmPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.Alarm` data source can be used to retrieve the property of a given alarm.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetAlarmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
+     *             .entityType("Datacenter")
+     *             .entityId(dc.id())
+     *             .name("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAlarmResult> getAlarm(GetAlarmArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getAlarm:getAlarm", TypeShape.of(GetAlarmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Alarm` data source can be used to retrieve the property of a given alarm.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetAlarmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
+     *             .entityType("Datacenter")
+     *             .entityId(dc.id())
+     *             .name("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAlarmResult> getAlarm(GetAlarmArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getAlarm:getAlarm", TypeShape.of(GetAlarmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Alarm` data source can be used to retrieve the property of a given alarm.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetAlarmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
+     *             .entityType("Datacenter")
+     *             .entityId(dc.id())
+     *             .name("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAlarmResult> getAlarmPlain(GetAlarmPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getAlarm:getAlarm", TypeShape.of(GetAlarmResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
      * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
@@ -6348,6 +6592,226 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getLicense:getLicense", TypeShape.of(GetLicenseResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source can be used to read the properties of a vSphere Namespace.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Create a Namespace
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetNamespaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getNamespace(GetNamespaceArgs.builder()
+     *             .name("example-namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args) {
+        return getNamespace(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Namespace.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Create a Namespace
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetNamespaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getNamespace(GetNamespaceArgs.builder()
+     *             .name("example-namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args) {
+        return getNamespacePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Namespace.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Create a Namespace
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetNamespaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getNamespace(GetNamespaceArgs.builder()
+     *             .name("example-namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getNamespace:getNamespace", TypeShape.of(GetNamespaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Namespace.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Create a Namespace
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetNamespaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getNamespace(GetNamespaceArgs.builder()
+     *             .name("example-namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getNamespace:getNamespace", TypeShape.of(GetNamespaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Namespace.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Create a Namespace
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetNamespaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getNamespace(GetNamespaceArgs.builder()
+     *             .name("example-namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getNamespace:getNamespace", TypeShape.of(GetNamespaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
      * vSphere. This can be any network that can be used as the backing for a network
      * interface for `vsphere.VirtualMachine` or any other vSphere resource that
@@ -8355,6 +8819,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name and Category
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8385,6 +8851,216 @@ public final class VsphereFunctions {
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
      *             .categoryId(category.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceTag:xxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTagResult> getTag() {
+        return getTag(GetTagArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not managed
+     * by Terraform. Its attributes are exactly the same as the
+     * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+     * uses a name and category as search criteria. The `id` and other attributes are
+     * populated with the data found by the search.
+     * 
+     * [resource-tag]: /docs/providers/vsphere/r/tag.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by Name and Category
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .name("example-category")
+     *             .build());
+     * 
+     *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .name("example-tag")
+     *             .categoryId(category.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceTag:xxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTagResult> getTagPlain() {
+        return getTagPlain(GetTagPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not managed
+     * by Terraform. Its attributes are exactly the same as the
+     * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+     * uses a name and category as search criteria. The `id` and other attributes are
+     * populated with the data found by the search.
+     * 
+     * [resource-tag]: /docs/providers/vsphere/r/tag.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by Name and Category
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .name("example-category")
+     *             .build());
+     * 
+     *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .name("example-tag")
+     *             .categoryId(category.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceTag:xxxx")
      *             .build());
      * 
      *     }
@@ -8410,6 +9086,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name and Category
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8440,6 +9118,38 @@ public final class VsphereFunctions {
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
      *             .categoryId(category.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceTag:xxxx")
      *             .build());
      * 
      *     }
@@ -8465,6 +9175,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name and Category
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8495,6 +9207,38 @@ public final class VsphereFunctions {
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
      *             .categoryId(category.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceTag:xxxx")
      *             .build());
      * 
      *     }
@@ -8520,6 +9264,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name and Category
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8550,6 +9296,38 @@ public final class VsphereFunctions {
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
      *             .categoryId(category.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceTag:xxxx")
      *             .build());
      * 
      *     }
@@ -8575,6 +9353,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name and Category
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8611,6 +9391,38 @@ public final class VsphereFunctions {
      * }
      * }
      * </pre>
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceTag:xxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args, InvokeOptions options) {
@@ -8629,6 +9441,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by Name
      * 
      * <pre>
      * {@code
@@ -8654,6 +9468,207 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
      *             .name("example-category")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceCategory:xxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTagCategoryResult> getTagCategory() {
+        return getTagCategory(GetTagCategoryArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by Terraform. Its attributes are the same as the
+     * [`vsphere.TagCategory` resource][resource-tag-category], and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .name("example-category")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceCategory:xxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTagCategoryResult> getTagCategoryPlain() {
+        return getTagCategoryPlain(GetTagCategoryPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by Terraform. Its attributes are the same as the
+     * [`vsphere.TagCategory` resource][resource-tag-category], and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .name("example-category")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceCategory:xxxx")
      *             .build());
      * 
      *     }
@@ -8679,6 +9694,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8703,6 +9720,39 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
      *             .name("example-category")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceCategory:xxxx")
      *             .build());
      * 
      *     }
@@ -8728,6 +9778,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8752,6 +9804,39 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
      *             .name("example-category")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceCategory:xxxx")
      *             .build());
      * 
      *     }
@@ -8777,6 +9862,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by Name
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8808,6 +9895,39 @@ public final class VsphereFunctions {
      * }
      * </pre>
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceCategory:xxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTagCategoryResult> getTagCategory(GetTagCategoryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getTagCategory:getTagCategory", TypeShape.of(GetTagCategoryResult.class), args, Utilities.withVersion(options));
@@ -8825,6 +9945,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by Name
      * 
      * <pre>
      * {@code
@@ -8850,6 +9972,39 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
      *             .name("example-category")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .id("urn:vmomi:InventoryServiceCategory:xxxx")
      *             .build());
      * 
      *     }
@@ -10105,5 +11260,210 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetVmfsDisksResult> getVmfsDisksPlain(GetVmfsDisksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getVmfsDisks:getVmfsDisks", TypeShape.of(GetVmfsDisksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
+     * its associated compute clusters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zone1 = VsphereFunctions.getZone(GetZoneArgs.builder()
+     *             .name("zone-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZoneResult> getZone(GetZoneArgs args) {
+        return getZone(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
+     * its associated compute clusters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zone1 = VsphereFunctions.getZone(GetZoneArgs.builder()
+     *             .name("zone-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args) {
+        return getZonePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
+     * its associated compute clusters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zone1 = VsphereFunctions.getZone(GetZoneArgs.builder()
+     *             .name("zone-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
+     * its associated compute clusters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zone1 = VsphereFunctions.getZone(GetZoneArgs.builder()
+     *             .name("zone-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
+     * its associated compute clusters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetZoneArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zone1 = VsphereFunctions.getZone(GetZoneArgs.builder()
+     *             .name("zone-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
 }
