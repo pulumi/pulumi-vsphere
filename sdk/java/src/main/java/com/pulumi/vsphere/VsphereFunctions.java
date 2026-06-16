@@ -6405,6 +6405,7 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6497,6 +6498,7 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6589,6 +6591,7 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6681,6 +6684,7 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6773,6 +6777,7 @@ public final class VsphereFunctions {
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
      * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
