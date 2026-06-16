@@ -715,6 +715,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeNetworkInterfaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -775,6 +776,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
  * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeNetworkInterfaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1163,7 +1165,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var vsphereInsecure = config.get("vsphereInsecure").orElse(false);
+ *         final var vsphereInsecure = config.getBoolean("vsphereInsecure").orElse(false);
  *     }
  * }
  * }
