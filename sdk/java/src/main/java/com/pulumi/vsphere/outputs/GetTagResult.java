@@ -7,34 +7,28 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTagResult {
-    private String categoryId;
+    private @Nullable String categoryId;
     private String description;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    private String name;
+    private @Nullable String id;
+    private @Nullable String name;
 
     private GetTagResult() {}
-    public String categoryId() {
-        return this.categoryId;
+    public Optional<String> categoryId() {
+        return Optional.ofNullable(this.categoryId);
     }
     public String description() {
         return this.description;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -46,10 +40,10 @@ public final class GetTagResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String categoryId;
+        private @Nullable String categoryId;
         private String description;
-        private String id;
-        private String name;
+        private @Nullable String id;
+        private @Nullable String name;
         public Builder() {}
         public Builder(GetTagResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,10 +54,8 @@ public final class GetTagResult {
         }
 
         @CustomType.Setter
-        public Builder categoryId(String categoryId) {
-            if (categoryId == null) {
-              throw new MissingRequiredPropertyException("GetTagResult", "categoryId");
-            }
+        public Builder categoryId(@Nullable String categoryId) {
+
             this.categoryId = categoryId;
             return this;
         }
@@ -76,18 +68,14 @@ public final class GetTagResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetTagResult", "id");
-            }
+        public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetTagResult", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

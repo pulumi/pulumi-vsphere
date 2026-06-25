@@ -45,6 +45,11 @@ public final class GetVirtualMachineNetworkInterface {
      */
     private @Nullable String bandwidthShareLevel;
     /**
+     * @return The external port id to be bound to the VM port.
+     * 
+     */
+    private String externalPortId;
+    /**
      * @return The MAC address of this network interface.
      * 
      */
@@ -104,6 +109,13 @@ public final class GetVirtualMachineNetworkInterface {
         return Optional.ofNullable(this.bandwidthShareLevel);
     }
     /**
+     * @return The external port id to be bound to the VM port.
+     * 
+     */
+    public String externalPortId() {
+        return this.externalPortId;
+    }
+    /**
      * @return The MAC address of this network interface.
      * 
      */
@@ -140,6 +152,7 @@ public final class GetVirtualMachineNetworkInterface {
         private @Nullable Integer bandwidthReservation;
         private Integer bandwidthShareCount;
         private @Nullable String bandwidthShareLevel;
+        private String externalPortId;
         private String macAddress;
         private String networkId;
         private String physicalFunction;
@@ -151,6 +164,7 @@ public final class GetVirtualMachineNetworkInterface {
     	      this.bandwidthReservation = defaults.bandwidthReservation;
     	      this.bandwidthShareCount = defaults.bandwidthShareCount;
     	      this.bandwidthShareLevel = defaults.bandwidthShareLevel;
+    	      this.externalPortId = defaults.externalPortId;
     	      this.macAddress = defaults.macAddress;
     	      this.networkId = defaults.networkId;
     	      this.physicalFunction = defaults.physicalFunction;
@@ -191,6 +205,14 @@ public final class GetVirtualMachineNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder externalPortId(String externalPortId) {
+            if (externalPortId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineNetworkInterface", "externalPortId");
+            }
+            this.externalPortId = externalPortId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder macAddress(String macAddress) {
             if (macAddress == null) {
               throw new MissingRequiredPropertyException("GetVirtualMachineNetworkInterface", "macAddress");
@@ -221,6 +243,7 @@ public final class GetVirtualMachineNetworkInterface {
             _resultValue.bandwidthReservation = bandwidthReservation;
             _resultValue.bandwidthShareCount = bandwidthShareCount;
             _resultValue.bandwidthShareLevel = bandwidthShareLevel;
+            _resultValue.externalPortId = externalPortId;
             _resultValue.macAddress = macAddress;
             _resultValue.networkId = networkId;
             _resultValue.physicalFunction = physicalFunction;

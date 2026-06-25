@@ -13,7 +13,7 @@ namespace Pulumi.VSphere.Inputs
     public sealed class SupervisorManagementNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of addresses to allocate. Starts from 'starting_address'
+        /// Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         [Input("addressCount", required: true)]
         public Input<int> AddressCount { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<string> Gateway { get; set; } = null!;
 
         /// <summary>
-        /// ID of the network. (e.g. a distributed port group).
+        /// ID of the network. (_e.g._, a distributed port group).
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

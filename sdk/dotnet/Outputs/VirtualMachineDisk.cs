@@ -86,7 +86,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool? ThinProvisioned;
         /// <summary>
-        /// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+        /// The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
         /// </summary>
         public readonly int? UnitNumber;
         /// <summary>

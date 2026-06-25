@@ -16,6 +16,13 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'AlarmAdvancedAction',
+    'AlarmEmailAction',
+    'AlarmEventExpression',
+    'AlarmEventExpressionComparison',
+    'AlarmMetricExpression',
+    'AlarmSnmpAction',
+    'AlarmStateExpression',
     'ComputeClusterHostImage',
     'ComputeClusterHostImageComponent',
     'ComputeClusterVsanDiskGroup',
@@ -36,6 +43,7 @@ __all__ = [
     'HostPortGroupPort',
     'HostService',
     'HostServiceNtpd',
+    'NamespaceVmService',
     'OfflineSoftwareDepotComponent',
     'SupervisorEgressCidr',
     'SupervisorIngressCidr',
@@ -43,6 +51,53 @@ __all__ = [
     'SupervisorNamespace',
     'SupervisorPodCidr',
     'SupervisorServiceCidr',
+    'SupervisorV2ControlPlane',
+    'SupervisorV2ControlPlaneNetwork',
+    'SupervisorV2ControlPlaneNetworkBacking',
+    'SupervisorV2ControlPlaneNetworkIpManagement',
+    'SupervisorV2ControlPlaneNetworkIpManagementIpAssignment',
+    'SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange',
+    'SupervisorV2ControlPlaneNetworkProxy',
+    'SupervisorV2ControlPlaneNetworkServices',
+    'SupervisorV2ControlPlaneNetworkServicesDns',
+    'SupervisorV2ControlPlaneNetworkServicesNtp',
+    'SupervisorV2Workloads',
+    'SupervisorV2WorkloadsEdge',
+    'SupervisorV2WorkloadsEdgeFoundation',
+    'SupervisorV2WorkloadsEdgeFoundationDeploymentTarget',
+    'SupervisorV2WorkloadsEdgeFoundationInterface',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig',
+    'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServices',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp',
+    'SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog',
+    'SupervisorV2WorkloadsEdgeHaproxy',
+    'SupervisorV2WorkloadsEdgeHaproxyServer',
+    'SupervisorV2WorkloadsEdgeLbAddressRange',
+    'SupervisorV2WorkloadsEdgeNsx',
+    'SupervisorV2WorkloadsEdgeNsxAdvanced',
+    'SupervisorV2WorkloadsEdgeNsxEgressIpRange',
+    'SupervisorV2WorkloadsImages',
+    'SupervisorV2WorkloadsImagesContentLibrary',
+    'SupervisorV2WorkloadsImagesRegistry',
+    'SupervisorV2WorkloadsKubeApiServerOptions',
+    'SupervisorV2WorkloadsKubeApiServerOptionsSecurity',
+    'SupervisorV2WorkloadsNetwork',
+    'SupervisorV2WorkloadsNetworkIpManagement',
+    'SupervisorV2WorkloadsNetworkIpManagementIpAssignment',
+    'SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange',
+    'SupervisorV2WorkloadsNetworkNsx',
+    'SupervisorV2WorkloadsNetworkNsxVpc',
+    'SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr',
+    'SupervisorV2WorkloadsNetworkServices',
+    'SupervisorV2WorkloadsNetworkServicesDns',
+    'SupervisorV2WorkloadsNetworkServicesNtp',
+    'SupervisorV2WorkloadsNetworkVsphere',
+    'SupervisorV2WorkloadsStorage',
+    'SupervisorV2WorkloadsStorageCloudNativeFileVolume',
     'VirtualMachineCdrom',
     'VirtualMachineClone',
     'VirtualMachineCloneCustomizationSpec',
@@ -54,20 +109,620 @@ __all__ = [
     'VirtualMachineNetworkInterface',
     'VirtualMachineOvfDeploy',
     'VirtualMachineVapp',
+    'VirtualMachineVideoCard',
+    'VirtualMachineVideoCardGraphics3d',
     'VirtualMachineVtpm',
     'VmStoragePolicyTagRule',
     'VnicIpv4',
     'VnicIpv6',
+    'GetAlarmAdvancedActionResult',
+    'GetAlarmEmailActionResult',
+    'GetAlarmEventExpressionResult',
+    'GetAlarmEventExpressionComparisonResult',
+    'GetAlarmMetricExpressionResult',
+    'GetAlarmSnmpActionResult',
+    'GetAlarmStateExpressionResult',
     'GetGuestOsCustomizationSpecResult',
     'GetGuestOsCustomizationSpecLinuxOptionResult',
     'GetGuestOsCustomizationSpecNetworkInterfaceResult',
     'GetGuestOsCustomizationSpecWindowsOptionResult',
     'GetHostVgpuProfileVgpuProfileResult',
+    'GetNamespaceVmServiceResult',
     'GetNetworkFilterResult',
     'GetVirtualMachineDiskResult',
     'GetVirtualMachineNetworkInterfaceResult',
     'GetVirtualMachineVappResult',
+    'GetVirtualMachineVideoCardResult',
+    'GetVirtualMachineVideoCardGraphics3dResult',
 ]
+
+@pulumi.output_type
+class AlarmAdvancedAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finalState":
+            suggest = "final_state"
+        elif key == "startState":
+            suggest = "start_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmAdvancedAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmAdvancedAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmAdvancedAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 final_state: _builtins.str,
+                 start_state: _builtins.str,
+                 name: Optional[_builtins.str] = None,
+                 repeat: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str final_state: Triggers the action only for this final state.
+        :param _builtins.str start_state: Triggers the action only for this initial state.
+        :param _builtins.str name: The name of the alarm. This name needs to be unique
+               within the vCenter. Forces a new resource if changed.
+        :param _builtins.bool repeat: Whether or not the action should be repeated.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "start_state", start_state)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the alarm. This name needs to be unique
+        within the vCenter. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> Optional[_builtins.bool]:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+
+@pulumi.output_type
+class AlarmEmailAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finalState":
+            suggest = "final_state"
+        elif key == "startState":
+            suggest = "start_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmEmailAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmEmailAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmEmailAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 final_state: _builtins.str,
+                 start_state: _builtins.str,
+                 body: Optional[_builtins.str] = None,
+                 cc: Optional[_builtins.str] = None,
+                 repeat: Optional[_builtins.bool] = None,
+                 subject: Optional[_builtins.str] = None,
+                 to: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str final_state: Triggers the action only for this final state.
+        :param _builtins.str start_state: Triggers the action only for this initial state.
+        :param _builtins.str body: Email body.
+        :param _builtins.str cc: Email destination cc.
+        :param _builtins.bool repeat: Whether or not the action should be repeated.
+        :param _builtins.str subject: Email subject.
+        :param _builtins.str to: Email destination.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "start_state", start_state)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if cc is not None:
+            pulumi.set(__self__, "cc", cc)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> Optional[_builtins.str]:
+        """
+        Email body.
+        """
+        return pulumi.get(self, "body")
+
+    @_builtins.property
+    @pulumi.getter
+    def cc(self) -> Optional[_builtins.str]:
+        """
+        Email destination cc.
+        """
+        return pulumi.get(self, "cc")
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> Optional[_builtins.bool]:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> Optional[_builtins.str]:
+        """
+        Email subject.
+        """
+        return pulumi.get(self, "subject")
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[_builtins.str]:
+        """
+        Email destination.
+        """
+        return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class AlarmEventExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventTypeId":
+            suggest = "event_type_id"
+        elif key == "objectType":
+            suggest = "object_type"
+        elif key == "eventType":
+            suggest = "event_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmEventExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmEventExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmEventExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_type_id: _builtins.str,
+                 object_type: _builtins.str,
+                 status: _builtins.str,
+                 comparisons: Optional[Sequence['outputs.AlarmEventExpressionComparison']] = None,
+                 event_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str event_type_id: Name of the event (vim.event).
+        :param _builtins.str object_type: Type of object where the event applies on.
+        :param _builtins.str status: Alarm status once triggered.
+        :param Sequence['AlarmEventExpressionComparisonArgs'] comparisons: Additional check that allows adding threshold on the given object attribute.
+        :param _builtins.str event_type: Type of Event (vim.event.Event).
+        """
+        pulumi.set(__self__, "event_type_id", event_type_id)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "status", status)
+        if comparisons is not None:
+            pulumi.set(__self__, "comparisons", comparisons)
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
+
+    @_builtins.property
+    @pulumi.getter(name="eventTypeId")
+    def event_type_id(self) -> _builtins.str:
+        """
+        Name of the event (vim.event).
+        """
+        return pulumi.get(self, "event_type_id")
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object where the event applies on.
+        """
+        return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Alarm status once triggered.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def comparisons(self) -> Optional[Sequence['outputs.AlarmEventExpressionComparison']]:
+        """
+        Additional check that allows adding threshold on the given object attribute.
+        """
+        return pulumi.get(self, "comparisons")
+
+    @_builtins.property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Optional[_builtins.str]:
+        """
+        Type of Event (vim.event.Event).
+        """
+        return pulumi.get(self, "event_type")
+
+
+@pulumi.output_type
+class AlarmEventExpressionComparison(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmEventExpressionComparison. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmEventExpressionComparison.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmEventExpressionComparison.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: _builtins.str,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str attribute_name: Name of the attribute to compare.
+        :param _builtins.str operator: Comparison operator.
+        :param _builtins.str value: Value to compare.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> _builtins.str:
+        """
+        Name of the attribute to compare.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Comparison operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AlarmMetricExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricCounterId":
+            suggest = "metric_counter_id"
+        elif key == "objectType":
+            suggest = "object_type"
+        elif key == "metricInstance":
+            suggest = "metric_instance"
+        elif key == "redInterval":
+            suggest = "red_interval"
+        elif key == "yellowInterval":
+            suggest = "yellow_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmMetricExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmMetricExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmMetricExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric_counter_id: _builtins.int,
+                 object_type: _builtins.str,
+                 operator: _builtins.str,
+                 metric_instance: Optional[_builtins.str] = None,
+                 red: Optional[_builtins.int] = None,
+                 red_interval: Optional[_builtins.int] = None,
+                 yellow: Optional[_builtins.int] = None,
+                 yellow_interval: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int metric_counter_id: ID of the metric.
+        :param _builtins.str object_type: Type of object of the metric, ie: HostSystem.
+        :param _builtins.str operator: Whether the metric is below or above the given threshold.
+        :param _builtins.int red: Critical threshold, for percentage, 9900 is 99%.
+        :param _builtins.int red_interval: Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        :param _builtins.int yellow: Warning threshold, for percentage, 9900 is 99%.
+        :param _builtins.int yellow_interval: Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        pulumi.set(__self__, "metric_counter_id", metric_counter_id)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        if metric_instance is not None:
+            pulumi.set(__self__, "metric_instance", metric_instance)
+        if red is not None:
+            pulumi.set(__self__, "red", red)
+        if red_interval is not None:
+            pulumi.set(__self__, "red_interval", red_interval)
+        if yellow is not None:
+            pulumi.set(__self__, "yellow", yellow)
+        if yellow_interval is not None:
+            pulumi.set(__self__, "yellow_interval", yellow_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="metricCounterId")
+    def metric_counter_id(self) -> _builtins.int:
+        """
+        ID of the metric.
+        """
+        return pulumi.get(self, "metric_counter_id")
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object of the metric, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Whether the metric is below or above the given threshold.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="metricInstance")
+    def metric_instance(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "metric_instance")
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> Optional[_builtins.int]:
+        """
+        Critical threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "red")
+
+    @_builtins.property
+    @pulumi.getter(name="redInterval")
+    def red_interval(self) -> Optional[_builtins.int]:
+        """
+        Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        """
+        return pulumi.get(self, "red_interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> Optional[_builtins.int]:
+        """
+        Warning threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "yellow")
+
+    @_builtins.property
+    @pulumi.getter(name="yellowInterval")
+    def yellow_interval(self) -> Optional[_builtins.int]:
+        """
+        Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        return pulumi.get(self, "yellow_interval")
+
+
+@pulumi.output_type
+class AlarmSnmpAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finalState":
+            suggest = "final_state"
+        elif key == "startState":
+            suggest = "start_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmSnmpAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmSnmpAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmSnmpAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 final_state: _builtins.str,
+                 start_state: _builtins.str,
+                 repeat: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str final_state: Triggers the action only for this final state.
+        :param _builtins.str start_state: Triggers the action only for this initial state.
+        :param _builtins.bool repeat: Whether or not the action should be repeated.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "start_state", start_state)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> Optional[_builtins.bool]:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+
+@pulumi.output_type
+class AlarmStateExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectType":
+            suggest = "object_type"
+        elif key == "statePath":
+            suggest = "state_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmStateExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmStateExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmStateExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_type: _builtins.str,
+                 operator: _builtins.str,
+                 state_path: _builtins.str,
+                 red: Optional[_builtins.str] = None,
+                 yellow: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str object_type: Type of object where the event applies on, ie: HostSystem.
+        :param _builtins.str operator: Check if state is equal or unequal.
+        :param _builtins.str state_path: State path: ie. runtime.connectionState.
+        :param _builtins.str red: State value to trigger critical alarm.
+        :param _builtins.str yellow: State value to trigger warning alarm.
+        """
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "state_path", state_path)
+        if red is not None:
+            pulumi.set(__self__, "red", red)
+        if yellow is not None:
+            pulumi.set(__self__, "yellow", yellow)
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object where the event applies on, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Check if state is equal or unequal.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="statePath")
+    def state_path(self) -> _builtins.str:
+        """
+        State path: ie. runtime.connectionState.
+        """
+        return pulumi.get(self, "state_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> Optional[_builtins.str]:
+        """
+        State value to trigger critical alarm.
+        """
+        return pulumi.get(self, "red")
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> Optional[_builtins.str]:
+        """
+        State value to trigger warning alarm.
+        """
+        return pulumi.get(self, "yellow")
+
 
 @pulumi.output_type
 class ComputeClusterHostImage(dict):
@@ -1507,6 +2162,56 @@ class HostServiceNtpd(dict):
 
 
 @pulumi.output_type
+class NamespaceVmService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentLibraries":
+            suggest = "content_libraries"
+        elif key == "vmClasses":
+            suggest = "vm_classes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceVmService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceVmService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceVmService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_libraries: Optional[Sequence[_builtins.str]] = None,
+                 vm_classes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] content_libraries: The list of content libraries to associate with the VM Service.
+        :param Sequence[_builtins.str] vm_classes: The list of VM Classes to associate with the VM Service.
+        """
+        if content_libraries is not None:
+            pulumi.set(__self__, "content_libraries", content_libraries)
+        if vm_classes is not None:
+            pulumi.set(__self__, "vm_classes", vm_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="contentLibraries")
+    def content_libraries(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of content libraries to associate with the VM Service.
+        """
+        return pulumi.get(self, "content_libraries")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClasses")
+    def vm_classes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of VM Classes to associate with the VM Service.
+        """
+        return pulumi.get(self, "vm_classes")
+
+
+@pulumi.output_type
 class OfflineSoftwareDepotComponent(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1654,9 +2359,9 @@ class SupervisorManagementNetwork(dict):
                  starting_address: _builtins.str,
                  subnet_mask: _builtins.str):
         """
-        :param _builtins.int address_count: Number of addresses to allocate. Starts from 'starting_address'
+        :param _builtins.int address_count: Number of addresses to allocate. Starts from `starting_address`
         :param _builtins.str gateway: Gateway IP address.
-        :param _builtins.str network: ID of the network. (e.g. a distributed port group).
+        :param _builtins.str network: ID of the network. (_e.g._, a distributed port group).
         :param _builtins.str starting_address: Starting address of the management network range.
         :param _builtins.str subnet_mask: Subnet mask.
         """
@@ -1670,7 +2375,7 @@ class SupervisorManagementNetwork(dict):
     @pulumi.getter(name="addressCount")
     def address_count(self) -> _builtins.int:
         """
-        Number of addresses to allocate. Starts from 'starting_address'
+        Number of addresses to allocate. Starts from `starting_address`
         """
         return pulumi.get(self, "address_count")
 
@@ -1686,7 +2391,7 @@ class SupervisorManagementNetwork(dict):
     @pulumi.getter
     def network(self) -> _builtins.str:
         """
-        ID of the network. (e.g. a distributed port group).
+        ID of the network. (_e.g._, a distributed port group).
         """
         return pulumi.get(self, "network")
 
@@ -1824,6 +2529,2408 @@ class SupervisorServiceCidr(dict):
         Subnet prefix.
         """
         return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlane(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storagePolicy":
+            suggest = "storage_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2ControlPlane. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2ControlPlane.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2ControlPlane.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: 'outputs.SupervisorV2ControlPlaneNetwork',
+                 count: Optional[_builtins.int] = None,
+                 size: Optional[_builtins.str] = None,
+                 storage_policy: Optional[_builtins.str] = None):
+        """
+        :param 'SupervisorV2ControlPlaneNetworkArgs' network: The network configuration for the control plane VM(s).
+        :param _builtins.int count: The number of control plane VMs to deploy.
+        :param _builtins.str size: The size preset for the control plane VM(s).
+        :param _builtins.str storage_policy: The storage policy for the control plane VM(s).
+        """
+        pulumi.set(__self__, "network", network)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if storage_policy is not None:
+            pulumi.set(__self__, "storage_policy", storage_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.SupervisorV2ControlPlaneNetwork':
+        """
+        The network configuration for the control plane VM(s).
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> Optional[_builtins.int]:
+        """
+        The number of control plane VMs to deploy.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.str]:
+        """
+        The size preset for the control plane VM(s).
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter(name="storagePolicy")
+    def storage_policy(self) -> Optional[_builtins.str]:
+        """
+        The storage policy for the control plane VM(s).
+        """
+        return pulumi.get(self, "storage_policy")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "floatingIp":
+            suggest = "floating_ip"
+        elif key == "ipManagement":
+            suggest = "ip_management"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2ControlPlaneNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2ControlPlaneNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2ControlPlaneNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backing: 'outputs.SupervisorV2ControlPlaneNetworkBacking',
+                 floating_ip: Optional[_builtins.str] = None,
+                 ip_management: Optional['outputs.SupervisorV2ControlPlaneNetworkIpManagement'] = None,
+                 network: Optional[_builtins.str] = None,
+                 proxy: Optional['outputs.SupervisorV2ControlPlaneNetworkProxy'] = None,
+                 services: Optional['outputs.SupervisorV2ControlPlaneNetworkServices'] = None):
+        """
+        :param 'SupervisorV2ControlPlaneNetworkBackingArgs' backing: Backing network configuration.
+        :param _builtins.str floating_ip: Floating IP address.
+        :param 'SupervisorV2ControlPlaneNetworkIpManagementArgs' ip_management: IP Management configuration.
+        :param _builtins.str network: The network identifier for the management network.
+        :param 'SupervisorV2ControlPlaneNetworkProxyArgs' proxy: Proxy server configuration.
+        :param 'SupervisorV2ControlPlaneNetworkServicesArgs' services: Network services (e.g DNS, NTP) configuration.
+        """
+        pulumi.set(__self__, "backing", backing)
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
+        if ip_management is not None:
+            pulumi.set(__self__, "ip_management", ip_management)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter
+    def backing(self) -> 'outputs.SupervisorV2ControlPlaneNetworkBacking':
+        """
+        Backing network configuration.
+        """
+        return pulumi.get(self, "backing")
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> Optional[_builtins.str]:
+        """
+        Floating IP address.
+        """
+        return pulumi.get(self, "floating_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="ipManagement")
+    def ip_management(self) -> Optional['outputs.SupervisorV2ControlPlaneNetworkIpManagement']:
+        """
+        IP Management configuration.
+        """
+        return pulumi.get(self, "ip_management")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        The network identifier for the management network.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def proxy(self) -> Optional['outputs.SupervisorV2ControlPlaneNetworkProxy']:
+        """
+        Proxy server configuration.
+        """
+        return pulumi.get(self, "proxy")
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> Optional['outputs.SupervisorV2ControlPlaneNetworkServices']:
+        """
+        Network services (e.g DNS, NTP) configuration.
+        """
+        return pulumi.get(self, "services")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkBacking(dict):
+    def __init__(__self__, *,
+                 network: Optional[_builtins.str] = None,
+                 segments: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str network: The Managed Object ID of the Network object.
+        :param Sequence[_builtins.str] segments: The backing network segment.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if segments is not None:
+            pulumi.set(__self__, "segments", segments)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        The Managed Object ID of the Network object.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def segments(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The backing network segment.
+        """
+        return pulumi.get(self, "segments")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkIpManagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dhcpEnabled":
+            suggest = "dhcp_enabled"
+        elif key == "gatewayAddress":
+            suggest = "gateway_address"
+        elif key == "ipAssignments":
+            suggest = "ip_assignments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2ControlPlaneNetworkIpManagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2ControlPlaneNetworkIpManagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2ControlPlaneNetworkIpManagement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dhcp_enabled: Optional[_builtins.bool] = None,
+                 gateway_address: Optional[_builtins.str] = None,
+                 ip_assignments: Optional[Sequence['outputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignment']] = None):
+        """
+        :param _builtins.bool dhcp_enabled: Whether to use DHCP or not.
+        :param _builtins.str gateway_address: The IP address of the network gateway.
+        :param Sequence['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentArgs'] ip_assignments: IP assignment configuration.
+        """
+        if dhcp_enabled is not None:
+            pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        if gateway_address is not None:
+            pulumi.set(__self__, "gateway_address", gateway_address)
+        if ip_assignments is not None:
+            pulumi.set(__self__, "ip_assignments", ip_assignments)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to use DHCP or not.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayAddress")
+    def gateway_address(self) -> Optional[_builtins.str]:
+        """
+        The IP address of the network gateway.
+        """
+        return pulumi.get(self, "gateway_address")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAssignments")
+    def ip_assignments(self) -> Optional[Sequence['outputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignment']]:
+        """
+        IP assignment configuration.
+        """
+        return pulumi.get(self, "ip_assignments")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkIpManagementIpAssignment(dict):
+    def __init__(__self__, *,
+                 assignee: Optional[_builtins.str] = None,
+                 ranges: Optional[Sequence['outputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange']] = None):
+        """
+        :param _builtins.str assignee: The type of the assignee.
+        :param Sequence['SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRangeArgs'] ranges: The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        if assignee is not None:
+            pulumi.set(__self__, "assignee", assignee)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def assignee(self) -> Optional[_builtins.str]:
+        """
+        The type of the assignee.
+        """
+        return pulumi.get(self, "assignee")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[Sequence['outputs.SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange']]:
+        """
+        The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        return pulumi.get(self, "ranges")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkIpManagementIpAssignmentRange(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 count: _builtins.int):
+        """
+        :param _builtins.str address: The starting IP address of the range.
+        :param _builtins.int count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkProxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "settingsSource":
+            suggest = "settings_source"
+        elif key == "httpConfig":
+            suggest = "http_config"
+        elif key == "httpsConfig":
+            suggest = "https_config"
+        elif key == "noProxyConfigs":
+            suggest = "no_proxy_configs"
+        elif key == "tlsRootCaBundle":
+            suggest = "tls_root_ca_bundle"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2ControlPlaneNetworkProxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2ControlPlaneNetworkProxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2ControlPlaneNetworkProxy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 settings_source: _builtins.str,
+                 http_config: Optional[_builtins.str] = None,
+                 https_config: Optional[_builtins.str] = None,
+                 no_proxy_configs: Optional[Sequence[_builtins.str]] = None,
+                 tls_root_ca_bundle: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str settings_source: The source of the proxy settings.
+        :param _builtins.str http_config: HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`.
+        :param _builtins.str https_config: HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        :param Sequence[_builtins.str] no_proxy_configs: List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        :param _builtins.str tls_root_ca_bundle: Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        pulumi.set(__self__, "settings_source", settings_source)
+        if http_config is not None:
+            pulumi.set(__self__, "http_config", http_config)
+        if https_config is not None:
+            pulumi.set(__self__, "https_config", https_config)
+        if no_proxy_configs is not None:
+            pulumi.set(__self__, "no_proxy_configs", no_proxy_configs)
+        if tls_root_ca_bundle is not None:
+            pulumi.set(__self__, "tls_root_ca_bundle", tls_root_ca_bundle)
+
+    @_builtins.property
+    @pulumi.getter(name="settingsSource")
+    def settings_source(self) -> _builtins.str:
+        """
+        The source of the proxy settings.
+        """
+        return pulumi.get(self, "settings_source")
+
+    @_builtins.property
+    @pulumi.getter(name="httpConfig")
+    def http_config(self) -> Optional[_builtins.str]:
+        """
+        HTTP proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`.
+        """
+        return pulumi.get(self, "http_config")
+
+    @_builtins.property
+    @pulumi.getter(name="httpsConfig")
+    def https_config(self) -> Optional[_builtins.str]:
+        """
+        HTTPS proxy configuration. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        return pulumi.get(self, "https_config")
+
+    @_builtins.property
+    @pulumi.getter(name="noProxyConfigs")
+    def no_proxy_configs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of addresses that should be accessed directly. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        return pulumi.get(self, "no_proxy_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsRootCaBundle")
+    def tls_root_ca_bundle(self) -> Optional[_builtins.str]:
+        """
+        Proxy TLS root CA bundle which will be used to verify the proxy's certificates. Every certificate in the bundle is expected to be in PEM format. This can be used if `CLUSTER_CONFIGURED` is specified for `settings_source`
+        """
+        return pulumi.get(self, "tls_root_ca_bundle")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkServices(dict):
+    def __init__(__self__, *,
+                 dns: Optional['outputs.SupervisorV2ControlPlaneNetworkServicesDns'] = None,
+                 ntp: Optional['outputs.SupervisorV2ControlPlaneNetworkServicesNtp'] = None):
+        """
+        :param 'SupervisorV2ControlPlaneNetworkServicesDnsArgs' dns: The DNS configuration.
+        :param 'SupervisorV2ControlPlaneNetworkServicesNtpArgs' ntp: The NTP configuration.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if ntp is not None:
+            pulumi.set(__self__, "ntp", ntp)
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> Optional['outputs.SupervisorV2ControlPlaneNetworkServicesDns']:
+        """
+        The DNS configuration.
+        """
+        return pulumi.get(self, "dns")
+
+    @_builtins.property
+    @pulumi.getter
+    def ntp(self) -> Optional['outputs.SupervisorV2ControlPlaneNetworkServicesNtp']:
+        """
+        The NTP configuration.
+        """
+        return pulumi.get(self, "ntp")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkServicesDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "searchDomains":
+            suggest = "search_domains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2ControlPlaneNetworkServicesDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2ControlPlaneNetworkServicesDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2ControlPlaneNetworkServicesDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 search_domains: Sequence[_builtins.str],
+                 servers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] search_domains: The list of search domains.
+        :param Sequence[_builtins.str] servers: The list of DNS servers.
+        """
+        pulumi.set(__self__, "search_domains", search_domains)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="searchDomains")
+    def search_domains(self) -> Sequence[_builtins.str]:
+        """
+        The list of search domains.
+        """
+        return pulumi.get(self, "search_domains")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class SupervisorV2ControlPlaneNetworkServicesNtp(dict):
+    def __init__(__self__, *,
+                 servers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] servers: The list of NTP servers.
+        """
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        The list of NTP servers.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class SupervisorV2Workloads(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kubeApiServerOptions":
+            suggest = "kube_api_server_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2Workloads. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2Workloads.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2Workloads.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 edge: 'outputs.SupervisorV2WorkloadsEdge',
+                 kube_api_server_options: 'outputs.SupervisorV2WorkloadsKubeApiServerOptions',
+                 network: 'outputs.SupervisorV2WorkloadsNetwork',
+                 images: Optional['outputs.SupervisorV2WorkloadsImages'] = None,
+                 storage: Optional['outputs.SupervisorV2WorkloadsStorage'] = None):
+        """
+        :param 'SupervisorV2WorkloadsEdgeArgs' edge: Edge configuration
+        :param 'SupervisorV2WorkloadsKubeApiServerOptionsArgs' kube_api_server_options: Kubernetes API Server options
+        :param 'SupervisorV2WorkloadsNetworkArgs' network: The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+        :param 'SupervisorV2WorkloadsImagesArgs' images: Configuration for storing and pulling images into the cluster.
+        :param 'SupervisorV2WorkloadsStorageArgs' storage: Persistent storage configuration.
+        """
+        pulumi.set(__self__, "edge", edge)
+        pulumi.set(__self__, "kube_api_server_options", kube_api_server_options)
+        pulumi.set(__self__, "network", network)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
+
+    @_builtins.property
+    @pulumi.getter
+    def edge(self) -> 'outputs.SupervisorV2WorkloadsEdge':
+        """
+        Edge configuration
+        """
+        return pulumi.get(self, "edge")
+
+    @_builtins.property
+    @pulumi.getter(name="kubeApiServerOptions")
+    def kube_api_server_options(self) -> 'outputs.SupervisorV2WorkloadsKubeApiServerOptions':
+        """
+        Kubernetes API Server options
+        """
+        return pulumi.get(self, "kube_api_server_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.SupervisorV2WorkloadsNetwork':
+        """
+        The primary workload network configuration. Workloads will communicate with each other and will reach external networks over this network.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def images(self) -> Optional['outputs.SupervisorV2WorkloadsImages']:
+        """
+        Configuration for storing and pulling images into the cluster.
+        """
+        return pulumi.get(self, "images")
+
+    @_builtins.property
+    @pulumi.getter
+    def storage(self) -> Optional['outputs.SupervisorV2WorkloadsStorage']:
+        """
+        Persistent storage configuration.
+        """
+        return pulumi.get(self, "storage")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdge(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lbAddressRanges":
+            suggest = "lb_address_ranges"
+        elif key == "nsxAdvanced":
+            suggest = "nsx_advanced"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdge. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdge.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdge.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 foundation: Optional['outputs.SupervisorV2WorkloadsEdgeFoundation'] = None,
+                 haproxy: Optional['outputs.SupervisorV2WorkloadsEdgeHaproxy'] = None,
+                 id: Optional[_builtins.str] = None,
+                 lb_address_ranges: Optional[Sequence['outputs.SupervisorV2WorkloadsEdgeLbAddressRange']] = None,
+                 nsx: Optional['outputs.SupervisorV2WorkloadsEdgeNsx'] = None,
+                 nsx_advanced: Optional['outputs.SupervisorV2WorkloadsEdgeNsxAdvanced'] = None):
+        """
+        :param 'SupervisorV2WorkloadsEdgeFoundationArgs' foundation: Configuration for the vSphere Foundation Load Balancer.
+        :param 'SupervisorV2WorkloadsEdgeHaproxyArgs' haproxy: Configuration for the HAProxy Load Balancer.
+        :param _builtins.str id: The unique identifier of this edge.
+        :param Sequence['SupervisorV2WorkloadsEdgeLbAddressRangeArgs'] lb_address_ranges: The list of addresses that a load balancer can consume to publish Kubernetes services.
+        :param 'SupervisorV2WorkloadsEdgeNsxArgs' nsx: Configuration for the NSX Load Balancer.
+        :param 'SupervisorV2WorkloadsEdgeNsxAdvancedArgs' nsx_advanced: Configuration for the NSX Advanced Load Balancer.
+        """
+        if foundation is not None:
+            pulumi.set(__self__, "foundation", foundation)
+        if haproxy is not None:
+            pulumi.set(__self__, "haproxy", haproxy)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if lb_address_ranges is not None:
+            pulumi.set(__self__, "lb_address_ranges", lb_address_ranges)
+        if nsx is not None:
+            pulumi.set(__self__, "nsx", nsx)
+        if nsx_advanced is not None:
+            pulumi.set(__self__, "nsx_advanced", nsx_advanced)
+
+    @_builtins.property
+    @pulumi.getter
+    def foundation(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundation']:
+        """
+        Configuration for the vSphere Foundation Load Balancer.
+        """
+        return pulumi.get(self, "foundation")
+
+    @_builtins.property
+    @pulumi.getter
+    def haproxy(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeHaproxy']:
+        """
+        Configuration for the HAProxy Load Balancer.
+        """
+        return pulumi.get(self, "haproxy")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier of this edge.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lbAddressRanges")
+    def lb_address_ranges(self) -> Optional[Sequence['outputs.SupervisorV2WorkloadsEdgeLbAddressRange']]:
+        """
+        The list of addresses that a load balancer can consume to publish Kubernetes services.
+        """
+        return pulumi.get(self, "lb_address_ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def nsx(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeNsx']:
+        """
+        Configuration for the NSX Load Balancer.
+        """
+        return pulumi.get(self, "nsx")
+
+    @_builtins.property
+    @pulumi.getter(name="nsxAdvanced")
+    def nsx_advanced(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeNsxAdvanced']:
+        """
+        Configuration for the NSX Advanced Load Balancer.
+        """
+        return pulumi.get(self, "nsx_advanced")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentTarget":
+            suggest = "deployment_target"
+        elif key == "networkServices":
+            suggest = "network_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeFoundation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeFoundation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeFoundation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deployment_target: Optional['outputs.SupervisorV2WorkloadsEdgeFoundationDeploymentTarget'] = None,
+                 interfaces: Optional[Sequence['outputs.SupervisorV2WorkloadsEdgeFoundationInterface']] = None,
+                 network_services: Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServices'] = None):
+        """
+        :param 'SupervisorV2WorkloadsEdgeFoundationDeploymentTargetArgs' deployment_target: The configuration for the Load Balancer placement.
+        :param Sequence['SupervisorV2WorkloadsEdgeFoundationInterfaceArgs'] interfaces: Configuration for the Load Balancer network interfaces.
+        :param 'SupervisorV2WorkloadsEdgeFoundationNetworkServicesArgs' network_services: Configuration for the Load Balancer network services.
+        """
+        if deployment_target is not None:
+            pulumi.set(__self__, "deployment_target", deployment_target)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
+        if network_services is not None:
+            pulumi.set(__self__, "network_services", network_services)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentTarget")
+    def deployment_target(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundationDeploymentTarget']:
+        """
+        The configuration for the Load Balancer placement.
+        """
+        return pulumi.get(self, "deployment_target")
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> Optional[Sequence['outputs.SupervisorV2WorkloadsEdgeFoundationInterface']]:
+        """
+        Configuration for the Load Balancer network interfaces.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @_builtins.property
+    @pulumi.getter(name="networkServices")
+    def network_services(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServices']:
+        """
+        Configuration for the Load Balancer network services.
+        """
+        return pulumi.get(self, "network_services")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationDeploymentTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentSize":
+            suggest = "deployment_size"
+        elif key == "storagePolicy":
+            suggest = "storage_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeFoundationDeploymentTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationDeploymentTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationDeploymentTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability: Optional[_builtins.str] = None,
+                 deployment_size: Optional[_builtins.str] = None,
+                 storage_policy: Optional[_builtins.str] = None,
+                 zones: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str availability: Configures the availability level for the load balancer.
+        :param _builtins.str deployment_size: Determines the CPU/memory resource size of the load balancer deployment.
+        :param _builtins.str storage_policy: Storage Policy containing datastores hosting the load balancer nodes.
+        :param Sequence[_builtins.str] zones: A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+               
+               <a id="nestedblock--control-plane"></a>
+        """
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if deployment_size is not None:
+            pulumi.set(__self__, "deployment_size", deployment_size)
+        if storage_policy is not None:
+            pulumi.set(__self__, "storage_policy", storage_policy)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter
+    def availability(self) -> Optional[_builtins.str]:
+        """
+        Configures the availability level for the load balancer.
+        """
+        return pulumi.get(self, "availability")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentSize")
+    def deployment_size(self) -> Optional[_builtins.str]:
+        """
+        Determines the CPU/memory resource size of the load balancer deployment.
+        """
+        return pulumi.get(self, "deployment_size")
+
+    @_builtins.property
+    @pulumi.getter(name="storagePolicy")
+    def storage_policy(self) -> Optional[_builtins.str]:
+        """
+        Storage Policy containing datastores hosting the load balancer nodes.
+        """
+        return pulumi.get(self, "storage_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
+
+        <a id="nestedblock--control-plane"></a>
+        """
+        return pulumi.get(self, "zones")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationInterface(dict):
+    def __init__(__self__, *,
+                 network: 'outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork',
+                 personas: Sequence[_builtins.str]):
+        """
+        :param 'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkArgs' network: Network configuration for this interface.
+        :param Sequence[_builtins.str] personas: Determines the type of traffic that passes through a network interface.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "personas", personas)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork':
+        """
+        Network configuration for this interface.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def personas(self) -> Sequence[_builtins.str]:
+        """
+        Determines the type of traffic that passes through a network interface.
+        """
+        return pulumi.get(self, "personas")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkType":
+            suggest = "network_type"
+        elif key == "dvpgNetwork":
+            suggest = "dvpg_network"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationInterfaceNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_type: _builtins.str,
+                 dvpg_network: Optional['outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork'] = None):
+        """
+        :param _builtins.str network_type: The type of network interface.
+        :param 'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkArgs' dvpg_network: Identifier of the Distributed Virtual Portgroup.
+        """
+        pulumi.set(__self__, "network_type", network_type)
+        if dvpg_network is not None:
+            pulumi.set(__self__, "dvpg_network", dvpg_network)
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> _builtins.str:
+        """
+        The type of network interface.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter(name="dvpgNetwork")
+    def dvpg_network(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork']:
+        """
+        Identifier of the Distributed Virtual Portgroup.
+        """
+        return pulumi.get(self, "dvpg_network")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipConfig":
+            suggest = "ip_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipam: _builtins.str,
+                 name: _builtins.str,
+                 network: _builtins.str,
+                 ip_config: Optional['outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig'] = None):
+        """
+        :param _builtins.str ipam: IP Address management scheme for this network.
+        :param _builtins.str name: The name of the Supervisor cluster.
+        :param _builtins.str network: The identifier of the Distributed Virtual Portgroup.
+        :param 'SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigArgs' ip_config: Static IP Configuration for this network.
+        """
+        pulumi.set(__self__, "ipam", ipam)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        if ip_config is not None:
+            pulumi.set(__self__, "ip_config", ip_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipam(self) -> _builtins.str:
+        """
+        IP Address management scheme for this network.
+        """
+        return pulumi.get(self, "ipam")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Supervisor cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        The identifier of the Distributed Virtual Portgroup.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="ipConfig")
+    def ip_config(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig']:
+        """
+        Static IP Configuration for this network.
+        """
+        return pulumi.get(self, "ip_config")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipRanges":
+            suggest = "ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gateway: _builtins.str,
+                 ip_ranges: Sequence['outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange']):
+        """
+        :param _builtins.str gateway: Gateway address.
+        :param Sequence['SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRangeArgs'] ip_ranges: IP range configuration.
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> _builtins.str:
+        """
+        Gateway address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @_builtins.property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> Sequence['outputs.SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange']:
+        """
+        IP range configuration.
+        """
+        return pulumi.get(self, "ip_ranges")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationInterfaceNetworkDvpgNetworkIpConfigIpRange(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 count: _builtins.int):
+        """
+        :param _builtins.str address: The starting IP address of the range.
+        :param _builtins.int count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServices(dict):
+    def __init__(__self__, *,
+                 dns: Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns'] = None,
+                 ntp: Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp'] = None,
+                 syslog: Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog'] = None):
+        """
+        :param 'SupervisorV2WorkloadsEdgeFoundationNetworkServicesDnsArgs' dns: DNS configuration.
+        :param 'SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtpArgs' ntp: NTP configuration.
+        :param 'SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslogArgs' syslog: Remote log forwarding configuration.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if ntp is not None:
+            pulumi.set(__self__, "ntp", ntp)
+        if syslog is not None:
+            pulumi.set(__self__, "syslog", syslog)
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns']:
+        """
+        DNS configuration.
+        """
+        return pulumi.get(self, "dns")
+
+    @_builtins.property
+    @pulumi.getter
+    def ntp(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp']:
+        """
+        NTP configuration.
+        """
+        return pulumi.get(self, "ntp")
+
+    @_builtins.property
+    @pulumi.getter
+    def syslog(self) -> Optional['outputs.SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog']:
+        """
+        Remote log forwarding configuration.
+        """
+        return pulumi.get(self, "syslog")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "searchDomains":
+            suggest = "search_domains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationNetworkServicesDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 search_domains: Sequence[_builtins.str],
+                 servers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] search_domains: The list of search domains.
+        :param Sequence[_builtins.str] servers: The list of DNS servers.
+        """
+        pulumi.set(__self__, "search_domains", search_domains)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="searchDomains")
+    def search_domains(self) -> Sequence[_builtins.str]:
+        """
+        The list of search domains.
+        """
+        return pulumi.get(self, "search_domains")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesNtp(dict):
+    def __init__(__self__, *,
+                 servers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] servers: The list of NTP servers.
+        """
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        The list of NTP servers.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCert":
+            suggest = "ca_cert"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeFoundationNetworkServicesSyslog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_cert: Optional[_builtins.str] = None,
+                 endpoint: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ca_cert: Certificate authority PEM.
+        :param _builtins.str endpoint: FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+        """
+        if ca_cert is not None:
+            pulumi.set(__self__, "ca_cert", ca_cert)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> Optional[_builtins.str]:
+        """
+        Certificate authority PEM.
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        FQDN or IP address of the remote syslog server taking the form protocol://hostname|ipv4|ipv6[:port]. The syslog protocol defaults to tcp.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeHaproxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caChain":
+            suggest = "ca_chain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeHaproxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeHaproxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeHaproxy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_chain: _builtins.str,
+                 password: _builtins.str,
+                 servers: Sequence['outputs.SupervisorV2WorkloadsEdgeHaproxyServer'],
+                 username: _builtins.str):
+        """
+        :param _builtins.str ca_chain: The CA chain for the data plane API server.
+        :param _builtins.str password: The password for the data plane API server.
+        :param Sequence['SupervisorV2WorkloadsEdgeHaproxyServerArgs'] servers: The servers for the data plane API server.
+        :param _builtins.str username: The username for the data plane API server.
+        """
+        pulumi.set(__self__, "ca_chain", ca_chain)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "servers", servers)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="caChain")
+    def ca_chain(self) -> _builtins.str:
+        """
+        The CA chain for the data plane API server.
+        """
+        return pulumi.get(self, "ca_chain")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        The password for the data plane API server.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence['outputs.SupervisorV2WorkloadsEdgeHaproxyServer']:
+        """
+        The servers for the data plane API server.
+        """
+        return pulumi.get(self, "servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        The username for the data plane API server.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeHaproxyServer(dict):
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param _builtins.str host: The IP address of the API server.
+        :param _builtins.int port: The port of the API server.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        The IP address of the API server.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The port of the API server.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeLbAddressRange(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 count: _builtins.int):
+        """
+        :param _builtins.str address: The starting IP address of the range.
+        :param _builtins.int count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeNsx(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultIngressTlsCertificate":
+            suggest = "default_ingress_tls_certificate"
+        elif key == "edgeCluster":
+            suggest = "edge_cluster"
+        elif key == "egressIpRanges":
+            suggest = "egress_ip_ranges"
+        elif key == "loadBalancerSize":
+            suggest = "load_balancer_size"
+        elif key == "routingMode":
+            suggest = "routing_mode"
+        elif key == "t0Gateway":
+            suggest = "t0_gateway"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeNsx. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeNsx.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeNsx.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_ingress_tls_certificate: Optional[_builtins.str] = None,
+                 edge_cluster: Optional[_builtins.str] = None,
+                 egress_ip_ranges: Optional[Sequence['outputs.SupervisorV2WorkloadsEdgeNsxEgressIpRange']] = None,
+                 load_balancer_size: Optional[_builtins.str] = None,
+                 routing_mode: Optional[_builtins.str] = None,
+                 t0_gateway: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str default_ingress_tls_certificate: The default certificate that is served on Ingress services, when another certificate is not presented.
+        :param _builtins.str edge_cluster: The identifier of the edge cluster.
+        :param Sequence['SupervisorV2WorkloadsEdgeNsxEgressIpRangeArgs'] egress_ip_ranges: An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+        :param _builtins.str load_balancer_size: The size of the load balancer node.
+        :param _builtins.str routing_mode: Routing mode.
+        :param _builtins.str t0_gateway: Tier-0 gateway ID for the namespaces configuration.
+        """
+        if default_ingress_tls_certificate is not None:
+            pulumi.set(__self__, "default_ingress_tls_certificate", default_ingress_tls_certificate)
+        if edge_cluster is not None:
+            pulumi.set(__self__, "edge_cluster", edge_cluster)
+        if egress_ip_ranges is not None:
+            pulumi.set(__self__, "egress_ip_ranges", egress_ip_ranges)
+        if load_balancer_size is not None:
+            pulumi.set(__self__, "load_balancer_size", load_balancer_size)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
+        if t0_gateway is not None:
+            pulumi.set(__self__, "t0_gateway", t0_gateway)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultIngressTlsCertificate")
+    def default_ingress_tls_certificate(self) -> Optional[_builtins.str]:
+        """
+        The default certificate that is served on Ingress services, when another certificate is not presented.
+        """
+        return pulumi.get(self, "default_ingress_tls_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="edgeCluster")
+    def edge_cluster(self) -> Optional[_builtins.str]:
+        """
+        The identifier of the edge cluster.
+        """
+        return pulumi.get(self, "edge_cluster")
+
+    @_builtins.property
+    @pulumi.getter(name="egressIpRanges")
+    def egress_ip_ranges(self) -> Optional[Sequence['outputs.SupervisorV2WorkloadsEdgeNsxEgressIpRange']]:
+        """
+        An IP Range from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+        """
+        return pulumi.get(self, "egress_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerSize")
+    def load_balancer_size(self) -> Optional[_builtins.str]:
+        """
+        The size of the load balancer node.
+        """
+        return pulumi.get(self, "load_balancer_size")
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> Optional[_builtins.str]:
+        """
+        Routing mode.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="t0Gateway")
+    def t0_gateway(self) -> Optional[_builtins.str]:
+        """
+        Tier-0 gateway ID for the namespaces configuration.
+        """
+        return pulumi.get(self, "t0_gateway")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeNsxAdvanced(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caChain":
+            suggest = "ca_chain"
+        elif key == "cloudName":
+            suggest = "cloud_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsEdgeNsxAdvanced. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsEdgeNsxAdvanced.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsEdgeNsxAdvanced.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_chain: _builtins.str,
+                 host: _builtins.str,
+                 password: _builtins.str,
+                 port: _builtins.int,
+                 username: _builtins.str,
+                 cloud_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ca_chain: Certificate authority chain.
+        :param _builtins.str host: The IP address of the AVI controller.
+        :param _builtins.str password: Password
+        :param _builtins.int port: The port of the AVI controller.
+        :param _builtins.str username: Username
+        :param _builtins.str cloud_name: Cloud Name.
+        """
+        pulumi.set(__self__, "ca_chain", ca_chain)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+        if cloud_name is not None:
+            pulumi.set(__self__, "cloud_name", cloud_name)
+
+    @_builtins.property
+    @pulumi.getter(name="caChain")
+    def ca_chain(self) -> _builtins.str:
+        """
+        Certificate authority chain.
+        """
+        return pulumi.get(self, "ca_chain")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        The IP address of the AVI controller.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        Password
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The port of the AVI controller.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Username
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[_builtins.str]:
+        """
+        Cloud Name.
+        """
+        return pulumi.get(self, "cloud_name")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsEdgeNsxEgressIpRange(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 count: _builtins.int):
+        """
+        :param _builtins.str address: The starting IP address of the range.
+        :param _builtins.int count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsImages(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentLibraries":
+            suggest = "content_libraries"
+        elif key == "kubernetesContentLibrary":
+            suggest = "kubernetes_content_library"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsImages. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsImages.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsImages.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_libraries: Sequence['outputs.SupervisorV2WorkloadsImagesContentLibrary'],
+                 kubernetes_content_library: _builtins.str,
+                 registry: 'outputs.SupervisorV2WorkloadsImagesRegistry',
+                 repository: _builtins.str):
+        """
+        :param Sequence['SupervisorV2WorkloadsImagesContentLibraryArgs'] content_libraries: Content library associated with the Supervisor.
+        :param _builtins.str kubernetes_content_library: The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+        :param 'SupervisorV2WorkloadsImagesRegistryArgs' registry: Configuration for the container image registry endpoint.
+        :param _builtins.str repository: The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+        """
+        pulumi.set(__self__, "content_libraries", content_libraries)
+        pulumi.set(__self__, "kubernetes_content_library", kubernetes_content_library)
+        pulumi.set(__self__, "registry", registry)
+        pulumi.set(__self__, "repository", repository)
+
+    @_builtins.property
+    @pulumi.getter(name="contentLibraries")
+    def content_libraries(self) -> Sequence['outputs.SupervisorV2WorkloadsImagesContentLibrary']:
+        """
+        Content library associated with the Supervisor.
+        """
+        return pulumi.get(self, "content_libraries")
+
+    @_builtins.property
+    @pulumi.getter(name="kubernetesContentLibrary")
+    def kubernetes_content_library(self) -> _builtins.str:
+        """
+        The identifier of the Content Library which holds the VM Images for vSphere Kubernetes Service.
+        """
+        return pulumi.get(self, "kubernetes_content_library")
+
+    @_builtins.property
+    @pulumi.getter
+    def registry(self) -> 'outputs.SupervisorV2WorkloadsImagesRegistry':
+        """
+        Configuration for the container image registry endpoint.
+        """
+        return pulumi.get(self, "registry")
+
+    @_builtins.property
+    @pulumi.getter
+    def repository(self) -> _builtins.str:
+        """
+        The default container image repository to use when the Kubernetes Pod configuration does not specify it.
+        """
+        return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsImagesContentLibrary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentLibrary":
+            suggest = "content_library"
+        elif key == "resourceNamingStrategy":
+            suggest = "resource_naming_strategy"
+        elif key == "supervisorServices":
+            suggest = "supervisor_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsImagesContentLibrary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsImagesContentLibrary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsImagesContentLibrary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_library: _builtins.str,
+                 resource_naming_strategy: Optional[_builtins.str] = None,
+                 supervisor_services: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str content_library: Content library identifier.
+        :param _builtins.str resource_naming_strategy: The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+        :param Sequence[_builtins.str] supervisor_services: A list of Supervisor Service IDs that are currently making use of the Content Library.
+        """
+        pulumi.set(__self__, "content_library", content_library)
+        if resource_naming_strategy is not None:
+            pulumi.set(__self__, "resource_naming_strategy", resource_naming_strategy)
+        if supervisor_services is not None:
+            pulumi.set(__self__, "supervisor_services", supervisor_services)
+
+    @_builtins.property
+    @pulumi.getter(name="contentLibrary")
+    def content_library(self) -> _builtins.str:
+        """
+        Content library identifier.
+        """
+        return pulumi.get(self, "content_library")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceNamingStrategy")
+    def resource_naming_strategy(self) -> Optional[_builtins.str]:
+        """
+        The resource naming strategy that is used to generate the Kubernetes resource names for images from this Content Library.
+        """
+        return pulumi.get(self, "resource_naming_strategy")
+
+    @_builtins.property
+    @pulumi.getter(name="supervisorServices")
+    def supervisor_services(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of Supervisor Service IDs that are currently making use of the Content Library.
+        """
+        return pulumi.get(self, "supervisor_services")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsImagesRegistry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caChain":
+            suggest = "ca_chain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsImagesRegistry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsImagesRegistry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsImagesRegistry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_chain: _builtins.str,
+                 hostname: _builtins.str,
+                 password: _builtins.str,
+                 port: _builtins.int,
+                 username: _builtins.str):
+        """
+        :param _builtins.str ca_chain: The certificate authority chain of the image registry.
+        :param _builtins.str hostname: The IP address of the image registry.
+        :param _builtins.str password: The password of the image registry.
+        :param _builtins.int port: The port of the image registry.
+        :param _builtins.str username: The username of the image registry.
+        """
+        pulumi.set(__self__, "ca_chain", ca_chain)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="caChain")
+    def ca_chain(self) -> _builtins.str:
+        """
+        The certificate authority chain of the image registry.
+        """
+        return pulumi.get(self, "ca_chain")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        The IP address of the image registry.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        The password of the image registry.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The port of the image registry.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        The username of the image registry.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsKubeApiServerOptions(dict):
+    def __init__(__self__, *,
+                 security: Optional['outputs.SupervisorV2WorkloadsKubeApiServerOptionsSecurity'] = None):
+        """
+        :param 'SupervisorV2WorkloadsKubeApiServerOptionsSecurityArgs' security: Security configuration.
+               
+               <a id="nestedblock--workloads-images"></a>
+        """
+        if security is not None:
+            pulumi.set(__self__, "security", security)
+
+    @_builtins.property
+    @pulumi.getter
+    def security(self) -> Optional['outputs.SupervisorV2WorkloadsKubeApiServerOptionsSecurity']:
+        """
+        Security configuration.
+
+        <a id="nestedblock--workloads-images"></a>
+        """
+        return pulumi.get(self, "security")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsKubeApiServerOptionsSecurity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateDnsNames":
+            suggest = "certificate_dns_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsKubeApiServerOptionsSecurity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsKubeApiServerOptionsSecurity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsKubeApiServerOptionsSecurity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_dns_names: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] certificate_dns_names: List of DNS names to include in the certificate.
+        """
+        pulumi.set(__self__, "certificate_dns_names", certificate_dns_names)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateDnsNames")
+    def certificate_dns_names(self) -> Sequence[_builtins.str]:
+        """
+        List of DNS names to include in the certificate.
+        """
+        return pulumi.get(self, "certificate_dns_names")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipManagement":
+            suggest = "ip_management"
+        elif key == "nsxVpc":
+            suggest = "nsx_vpc"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_management: Optional['outputs.SupervisorV2WorkloadsNetworkIpManagement'] = None,
+                 network: Optional[_builtins.str] = None,
+                 nsx: Optional['outputs.SupervisorV2WorkloadsNetworkNsx'] = None,
+                 nsx_vpc: Optional['outputs.SupervisorV2WorkloadsNetworkNsxVpc'] = None,
+                 services: Optional['outputs.SupervisorV2WorkloadsNetworkServices'] = None,
+                 vsphere: Optional['outputs.SupervisorV2WorkloadsNetworkVsphere'] = None):
+        """
+        :param 'SupervisorV2WorkloadsNetworkIpManagementArgs' ip_management: IP Management configuration.
+        :param _builtins.str network: A unique identifier for the workload network.
+        :param 'SupervisorV2WorkloadsNetworkNsxArgs' nsx: Configuration for NSX-T backing.
+        :param 'SupervisorV2WorkloadsNetworkNsxVpcArgs' nsx_vpc: Configuration for NSX VPC backing.
+        :param 'SupervisorV2WorkloadsNetworkServicesArgs' services: Network services (e.g DNS, NTP) configuration.
+        :param 'SupervisorV2WorkloadsNetworkVsphereArgs' vsphere: Configuration for vSphere network backing.
+        """
+        if ip_management is not None:
+            pulumi.set(__self__, "ip_management", ip_management)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if nsx is not None:
+            pulumi.set(__self__, "nsx", nsx)
+        if nsx_vpc is not None:
+            pulumi.set(__self__, "nsx_vpc", nsx_vpc)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if vsphere is not None:
+            pulumi.set(__self__, "vsphere", vsphere)
+
+    @_builtins.property
+    @pulumi.getter(name="ipManagement")
+    def ip_management(self) -> Optional['outputs.SupervisorV2WorkloadsNetworkIpManagement']:
+        """
+        IP Management configuration.
+        """
+        return pulumi.get(self, "ip_management")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        A unique identifier for the workload network.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def nsx(self) -> Optional['outputs.SupervisorV2WorkloadsNetworkNsx']:
+        """
+        Configuration for NSX-T backing.
+        """
+        return pulumi.get(self, "nsx")
+
+    @_builtins.property
+    @pulumi.getter(name="nsxVpc")
+    def nsx_vpc(self) -> Optional['outputs.SupervisorV2WorkloadsNetworkNsxVpc']:
+        """
+        Configuration for NSX VPC backing.
+        """
+        return pulumi.get(self, "nsx_vpc")
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> Optional['outputs.SupervisorV2WorkloadsNetworkServices']:
+        """
+        Network services (e.g DNS, NTP) configuration.
+        """
+        return pulumi.get(self, "services")
+
+    @_builtins.property
+    @pulumi.getter
+    def vsphere(self) -> Optional['outputs.SupervisorV2WorkloadsNetworkVsphere']:
+        """
+        Configuration for vSphere network backing.
+        """
+        return pulumi.get(self, "vsphere")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkIpManagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dhcpEnabled":
+            suggest = "dhcp_enabled"
+        elif key == "gatewayAddress":
+            suggest = "gateway_address"
+        elif key == "ipAssignments":
+            suggest = "ip_assignments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsNetworkIpManagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsNetworkIpManagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsNetworkIpManagement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dhcp_enabled: Optional[_builtins.bool] = None,
+                 gateway_address: Optional[_builtins.str] = None,
+                 ip_assignments: Optional[Sequence['outputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignment']] = None):
+        """
+        :param _builtins.bool dhcp_enabled: Whether to use DHCP or not.
+        :param _builtins.str gateway_address: The IP address of the network gateway.
+        :param Sequence['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentArgs'] ip_assignments: IP assignment configuration.
+        """
+        if dhcp_enabled is not None:
+            pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        if gateway_address is not None:
+            pulumi.set(__self__, "gateway_address", gateway_address)
+        if ip_assignments is not None:
+            pulumi.set(__self__, "ip_assignments", ip_assignments)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to use DHCP or not.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayAddress")
+    def gateway_address(self) -> Optional[_builtins.str]:
+        """
+        The IP address of the network gateway.
+        """
+        return pulumi.get(self, "gateway_address")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAssignments")
+    def ip_assignments(self) -> Optional[Sequence['outputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignment']]:
+        """
+        IP assignment configuration.
+        """
+        return pulumi.get(self, "ip_assignments")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkIpManagementIpAssignment(dict):
+    def __init__(__self__, *,
+                 assignee: Optional[_builtins.str] = None,
+                 ranges: Optional[Sequence['outputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange']] = None):
+        """
+        :param _builtins.str assignee: The type of the assignee.
+        :param Sequence['SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRangeArgs'] ranges: The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        if assignee is not None:
+            pulumi.set(__self__, "assignee", assignee)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def assignee(self) -> Optional[_builtins.str]:
+        """
+        The type of the assignee.
+        """
+        return pulumi.get(self, "assignee")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[Sequence['outputs.SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange']]:
+        """
+        The available IP addresses that can be consumed by Supervisor to run the cluster.
+        """
+        return pulumi.get(self, "ranges")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkIpManagementIpAssignmentRange(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 count: _builtins.int):
+        """
+        :param _builtins.str address: The starting IP address of the range.
+        :param _builtins.int count: The number of IP addresses in the range.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "count", count)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The starting IP address of the range.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The number of IP addresses in the range.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkNsx(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceSubnetPrefix":
+            suggest = "namespace_subnet_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsNetworkNsx. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsNetworkNsx.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsNetworkNsx.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dvs: _builtins.str,
+                 namespace_subnet_prefix: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str dvs: The identifier of the vSphere Distributed Switch.
+        :param _builtins.int namespace_subnet_prefix: The size of the subnet reserved for namespace segments.
+        """
+        pulumi.set(__self__, "dvs", dvs)
+        if namespace_subnet_prefix is not None:
+            pulumi.set(__self__, "namespace_subnet_prefix", namespace_subnet_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def dvs(self) -> _builtins.str:
+        """
+        The identifier of the vSphere Distributed Switch.
+        """
+        return pulumi.get(self, "dvs")
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceSubnetPrefix")
+    def namespace_subnet_prefix(self) -> Optional[_builtins.int]:
+        """
+        The size of the subnet reserved for namespace segments.
+        """
+        return pulumi.get(self, "namespace_subnet_prefix")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkNsxVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultPrivateCidrs":
+            suggest = "default_private_cidrs"
+        elif key == "nsxProject":
+            suggest = "nsx_project"
+        elif key == "vpcConnectivityProfile":
+            suggest = "vpc_connectivity_profile"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsNetworkNsxVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsNetworkNsxVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsNetworkNsxVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_private_cidrs: Sequence['outputs.SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr'],
+                 nsx_project: Optional[_builtins.str] = None,
+                 vpc_connectivity_profile: Optional[_builtins.str] = None):
+        """
+        :param Sequence['SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidrArgs'] default_private_cidrs: Specifies CIDR blocks from which private subnets are allocated.
+        :param _builtins.str nsx_project: The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+        :param _builtins.str vpc_connectivity_profile: The identifier of the VPC Connectivity Profile.
+        """
+        pulumi.set(__self__, "default_private_cidrs", default_private_cidrs)
+        if nsx_project is not None:
+            pulumi.set(__self__, "nsx_project", nsx_project)
+        if vpc_connectivity_profile is not None:
+            pulumi.set(__self__, "vpc_connectivity_profile", vpc_connectivity_profile)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPrivateCidrs")
+    def default_private_cidrs(self) -> Sequence['outputs.SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr']:
+        """
+        Specifies CIDR blocks from which private subnets are allocated.
+        """
+        return pulumi.get(self, "default_private_cidrs")
+
+    @_builtins.property
+    @pulumi.getter(name="nsxProject")
+    def nsx_project(self) -> Optional[_builtins.str]:
+        """
+        The NSX Project for VPCs in the Supervisor, including the System VPC, and Supervisor Services VPC.
+        """
+        return pulumi.get(self, "nsx_project")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcConnectivityProfile")
+    def vpc_connectivity_profile(self) -> Optional[_builtins.str]:
+        """
+        The identifier of the VPC Connectivity Profile.
+        """
+        return pulumi.get(self, "vpc_connectivity_profile")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkNsxVpcDefaultPrivateCidr(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 prefix: _builtins.int):
+        """
+        :param _builtins.str address: The starting IPv4 address of the CIDR block.
+        :param _builtins.int prefix: The number of addresses in the CIDR block.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The starting IPv4 address of the CIDR block.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.int:
+        """
+        The number of addresses in the CIDR block.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkServices(dict):
+    def __init__(__self__, *,
+                 dns: Optional['outputs.SupervisorV2WorkloadsNetworkServicesDns'] = None,
+                 ntp: Optional['outputs.SupervisorV2WorkloadsNetworkServicesNtp'] = None):
+        """
+        :param 'SupervisorV2WorkloadsNetworkServicesDnsArgs' dns: The DNS configuration.
+        :param 'SupervisorV2WorkloadsNetworkServicesNtpArgs' ntp: The NTP configuration.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if ntp is not None:
+            pulumi.set(__self__, "ntp", ntp)
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> Optional['outputs.SupervisorV2WorkloadsNetworkServicesDns']:
+        """
+        The DNS configuration.
+        """
+        return pulumi.get(self, "dns")
+
+    @_builtins.property
+    @pulumi.getter
+    def ntp(self) -> Optional['outputs.SupervisorV2WorkloadsNetworkServicesNtp']:
+        """
+        The NTP configuration.
+        """
+        return pulumi.get(self, "ntp")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkServicesDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "searchDomains":
+            suggest = "search_domains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsNetworkServicesDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsNetworkServicesDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsNetworkServicesDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 search_domains: Sequence[_builtins.str],
+                 servers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] search_domains: The list of search domains.
+        :param Sequence[_builtins.str] servers: The list of DNS servers.
+        """
+        pulumi.set(__self__, "search_domains", search_domains)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="searchDomains")
+    def search_domains(self) -> Sequence[_builtins.str]:
+        """
+        The list of search domains.
+        """
+        return pulumi.get(self, "search_domains")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        The list of DNS servers.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkServicesNtp(dict):
+    def __init__(__self__, *,
+                 servers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] servers: The list of NTP servers.
+        """
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        The list of NTP servers.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsNetworkVsphere(dict):
+    def __init__(__self__, *,
+                 dvpg: _builtins.str):
+        """
+        :param _builtins.str dvpg: The identifier of the Distributed Virtual Portgroup.
+        """
+        pulumi.set(__self__, "dvpg", dvpg)
+
+    @_builtins.property
+    @pulumi.getter
+    def dvpg(self) -> _builtins.str:
+        """
+        The identifier of the Distributed Virtual Portgroup.
+        """
+        return pulumi.get(self, "dvpg")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudNativeFileVolume":
+            suggest = "cloud_native_file_volume"
+        elif key == "ephemeralStoragePolicy":
+            suggest = "ephemeral_storage_policy"
+        elif key == "imageStoragePolicy":
+            suggest = "image_storage_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_native_file_volume: Optional['outputs.SupervisorV2WorkloadsStorageCloudNativeFileVolume'] = None,
+                 ephemeral_storage_policy: Optional[_builtins.str] = None,
+                 image_storage_policy: Optional[_builtins.str] = None):
+        """
+        :param 'SupervisorV2WorkloadsStorageCloudNativeFileVolumeArgs' cloud_native_file_volume: Specifies the Cloud Native Storage file volume.
+        :param _builtins.str ephemeral_storage_policy: The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+        :param _builtins.str image_storage_policy: The specification required to configure storage used for Pod VM container images.
+        """
+        if cloud_native_file_volume is not None:
+            pulumi.set(__self__, "cloud_native_file_volume", cloud_native_file_volume)
+        if ephemeral_storage_policy is not None:
+            pulumi.set(__self__, "ephemeral_storage_policy", ephemeral_storage_policy)
+        if image_storage_policy is not None:
+            pulumi.set(__self__, "image_storage_policy", image_storage_policy)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudNativeFileVolume")
+    def cloud_native_file_volume(self) -> Optional['outputs.SupervisorV2WorkloadsStorageCloudNativeFileVolume']:
+        """
+        Specifies the Cloud Native Storage file volume.
+        """
+        return pulumi.get(self, "cloud_native_file_volume")
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralStoragePolicy")
+    def ephemeral_storage_policy(self) -> Optional[_builtins.str]:
+        """
+        The storage policy associated with ephemeral disks of all the Kubernetes Pod VMs in the cluster.
+        """
+        return pulumi.get(self, "ephemeral_storage_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="imageStoragePolicy")
+    def image_storage_policy(self) -> Optional[_builtins.str]:
+        """
+        The specification required to configure storage used for Pod VM container images.
+        """
+        return pulumi.get(self, "image_storage_policy")
+
+
+@pulumi.output_type
+class SupervisorV2WorkloadsStorageCloudNativeFileVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vsanClusters":
+            suggest = "vsan_clusters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorV2WorkloadsStorageCloudNativeFileVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorV2WorkloadsStorageCloudNativeFileVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorV2WorkloadsStorageCloudNativeFileVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vsan_clusters: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] vsan_clusters: A list of cluster identifiers.
+        """
+        pulumi.set(__self__, "vsan_clusters", vsan_clusters)
+
+    @_builtins.property
+    @pulumi.getter(name="vsanClusters")
+    def vsan_clusters(self) -> Sequence[_builtins.str]:
+        """
+        A list of cluster identifiers.
+        """
+        return pulumi.get(self, "vsan_clusters")
 
 
 @pulumi.output_type
@@ -2702,7 +5809,7 @@ class VirtualMachineDisk(dict):
         :param _builtins.int size: The size of the disk, in GB.
         :param _builtins.str storage_policy_id: The ID of the storage policy to assign to the virtual disk in VM.
         :param _builtins.bool thin_provisioned: If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
-        :param _builtins.int unit_number: The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+        :param _builtins.int unit_number: The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
         :param _builtins.str uuid: The UUID of the virtual machine. Also exposed as the `id` of the resource.
         :param _builtins.bool write_through: If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
         """
@@ -2896,7 +6003,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="unitNumber")
     def unit_number(self) -> Optional[_builtins.int]:
         """
-        The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+        The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
         """
         return pulumi.get(self, "unit_number")
 
@@ -2936,6 +6043,8 @@ class VirtualMachineNetworkInterface(dict):
             suggest = "bandwidth_share_level"
         elif key == "deviceAddress":
             suggest = "device_address"
+        elif key == "externalPortId":
+            suggest = "external_port_id"
         elif key == "macAddress":
             suggest = "mac_address"
         elif key == "ovfMapping":
@@ -2964,6 +6073,7 @@ class VirtualMachineNetworkInterface(dict):
                  bandwidth_share_count: Optional[_builtins.int] = None,
                  bandwidth_share_level: Optional[_builtins.str] = None,
                  device_address: Optional[_builtins.str] = None,
+                 external_port_id: Optional[_builtins.str] = None,
                  key: Optional[_builtins.int] = None,
                  mac_address: Optional[_builtins.str] = None,
                  ovf_mapping: Optional[_builtins.str] = None,
@@ -2977,6 +6087,7 @@ class VirtualMachineNetworkInterface(dict):
         :param _builtins.int bandwidth_share_count: The share count for this network interface when the share level is custom.
         :param _builtins.str bandwidth_share_level: The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
         :param _builtins.str device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
+        :param _builtins.str external_port_id: The external port id to be bound to the VM port.
         :param _builtins.int key: The ID of the device within the virtual machine.
         :param _builtins.str mac_address: The MAC address of this network interface. Can only be manually set if use_static_mac is true.
         :param _builtins.str ovf_mapping: Mapping of network interface to OVF network.
@@ -2996,6 +6107,8 @@ class VirtualMachineNetworkInterface(dict):
             pulumi.set(__self__, "bandwidth_share_level", bandwidth_share_level)
         if device_address is not None:
             pulumi.set(__self__, "device_address", device_address)
+        if external_port_id is not None:
+            pulumi.set(__self__, "external_port_id", external_port_id)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if mac_address is not None:
@@ -3062,6 +6175,14 @@ class VirtualMachineNetworkInterface(dict):
         An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         """
         return pulumi.get(self, "device_address")
+
+    @_builtins.property
+    @pulumi.getter(name="externalPortId")
+    def external_port_id(self) -> Optional[_builtins.str]:
+        """
+        The external port id to be bound to the VM port.
+        """
+        return pulumi.get(self, "external_port_id")
 
     @_builtins.property
     @pulumi.getter
@@ -3272,6 +6393,123 @@ class VirtualMachineVapp(dict):
 
 
 @pulumi.output_type
+class VirtualMachineVideoCard(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numDisplays":
+            suggest = "num_displays"
+        elif key == "totalVideoMemory":
+            suggest = "total_video_memory"
+        elif key == "deviceAddress":
+            suggest = "device_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineVideoCard. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineVideoCard.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineVideoCard.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 num_displays: _builtins.int,
+                 total_video_memory: _builtins.int,
+                 device_address: Optional[_builtins.str] = None,
+                 graphics3ds: Optional[Sequence['outputs.VirtualMachineVideoCardGraphics3d']] = None,
+                 key: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int num_displays: Number of supported displays
+        :param _builtins.int total_video_memory: Video RAM size in megabytes
+        :param _builtins.str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param Sequence['VirtualMachineVideoCardGraphics3dArgs'] graphics3ds: 3D graphics options.
+        :param _builtins.int key: The unique device ID for this device within its virtual machine.
+        """
+        pulumi.set(__self__, "num_displays", num_displays)
+        pulumi.set(__self__, "total_video_memory", total_video_memory)
+        if device_address is not None:
+            pulumi.set(__self__, "device_address", device_address)
+        if graphics3ds is not None:
+            pulumi.set(__self__, "graphics3ds", graphics3ds)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter(name="numDisplays")
+    def num_displays(self) -> _builtins.int:
+        """
+        Number of supported displays
+        """
+        return pulumi.get(self, "num_displays")
+
+    @_builtins.property
+    @pulumi.getter(name="totalVideoMemory")
+    def total_video_memory(self) -> _builtins.int:
+        """
+        Video RAM size in megabytes
+        """
+        return pulumi.get(self, "total_video_memory")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceAddress")
+    def device_address(self) -> Optional[_builtins.str]:
+        """
+        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        """
+        return pulumi.get(self, "device_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def graphics3ds(self) -> Optional[Sequence['outputs.VirtualMachineVideoCardGraphics3d']]:
+        """
+        3D graphics options.
+        """
+        return pulumi.get(self, "graphics3ds")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.int]:
+        """
+        The unique device ID for this device within its virtual machine.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class VirtualMachineVideoCardGraphics3d(dict):
+    def __init__(__self__, *,
+                 memory: Optional[_builtins.int] = None,
+                 renderer: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int memory: The amount of dedicated graphics memory in megabytes
+        :param _builtins.str renderer: Indicates how the virtual device renders 3D graphics
+        """
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if renderer is not None:
+            pulumi.set(__self__, "renderer", renderer)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.int]:
+        """
+        The amount of dedicated graphics memory in megabytes
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def renderer(self) -> Optional[_builtins.str]:
+        """
+        Indicates how the virtual device renders 3D graphics
+        """
+        return pulumi.get(self, "renderer")
+
+
+@pulumi.output_type
 class VirtualMachineVtpm(dict):
     def __init__(__self__, *,
                  version: Optional[_builtins.str] = None):
@@ -3458,6 +6696,437 @@ class VnicIpv6(dict):
         IP address of the default gateway, if DHCP or autoconfig is not set.
         """
         return pulumi.get(self, "gw")
+
+
+@pulumi.output_type
+class GetAlarmAdvancedActionResult(dict):
+    def __init__(__self__, *,
+                 final_state: _builtins.str,
+                 name: _builtins.str,
+                 repeat: _builtins.bool,
+                 start_state: _builtins.str):
+        """
+        :param _builtins.str final_state: Triggers the action only for this final state.
+        :param _builtins.str name: The name of the host group.
+        :param _builtins.bool repeat: Whether or not the action should be repeated.
+        :param _builtins.str start_state: Triggers the action only for this initial state.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "repeat", repeat)
+        pulumi.set(__self__, "start_state", start_state)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the host group.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> _builtins.bool:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+
+@pulumi.output_type
+class GetAlarmEmailActionResult(dict):
+    def __init__(__self__, *,
+                 body: _builtins.str,
+                 cc: _builtins.str,
+                 final_state: _builtins.str,
+                 repeat: _builtins.bool,
+                 start_state: _builtins.str,
+                 subject: _builtins.str,
+                 to: _builtins.str):
+        """
+        :param _builtins.str body: Email body.
+        :param _builtins.str cc: Email destination cc.
+        :param _builtins.str final_state: Triggers the action only for this final state.
+        :param _builtins.bool repeat: Whether or not the action should be repeated.
+        :param _builtins.str start_state: Triggers the action only for this initial state.
+        :param _builtins.str subject: Email subject.
+        :param _builtins.str to: Email destination.
+        """
+        pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "cc", cc)
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "repeat", repeat)
+        pulumi.set(__self__, "start_state", start_state)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> _builtins.str:
+        """
+        Email body.
+        """
+        return pulumi.get(self, "body")
+
+    @_builtins.property
+    @pulumi.getter
+    def cc(self) -> _builtins.str:
+        """
+        Email destination cc.
+        """
+        return pulumi.get(self, "cc")
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> _builtins.bool:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Email subject.
+        """
+        return pulumi.get(self, "subject")
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> _builtins.str:
+        """
+        Email destination.
+        """
+        return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class GetAlarmEventExpressionResult(dict):
+    def __init__(__self__, *,
+                 event_type: _builtins.str,
+                 event_type_id: _builtins.str,
+                 object_type: _builtins.str,
+                 status: _builtins.str,
+                 comparisons: Optional[Sequence['outputs.GetAlarmEventExpressionComparisonResult']] = None):
+        """
+        :param _builtins.str event_type: Type of Event (vim.event.Event).
+        :param _builtins.str event_type_id: Name of the event (vim.event).
+        :param _builtins.str object_type: Type of object where the event applies on.
+        :param _builtins.str status: Alarm status once triggered.
+        :param Sequence['GetAlarmEventExpressionComparisonArgs'] comparisons: Additional check that allows adding threshold on the given object attribute.
+        """
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "event_type_id", event_type_id)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "status", status)
+        if comparisons is not None:
+            pulumi.set(__self__, "comparisons", comparisons)
+
+    @_builtins.property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> _builtins.str:
+        """
+        Type of Event (vim.event.Event).
+        """
+        return pulumi.get(self, "event_type")
+
+    @_builtins.property
+    @pulumi.getter(name="eventTypeId")
+    def event_type_id(self) -> _builtins.str:
+        """
+        Name of the event (vim.event).
+        """
+        return pulumi.get(self, "event_type_id")
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object where the event applies on.
+        """
+        return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Alarm status once triggered.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def comparisons(self) -> Optional[Sequence['outputs.GetAlarmEventExpressionComparisonResult']]:
+        """
+        Additional check that allows adding threshold on the given object attribute.
+        """
+        return pulumi.get(self, "comparisons")
+
+
+@pulumi.output_type
+class GetAlarmEventExpressionComparisonResult(dict):
+    def __init__(__self__, *,
+                 attribute_name: _builtins.str,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str attribute_name: Name of the attribute to compare.
+        :param _builtins.str operator: Comparison operator.
+        :param _builtins.str value: Value to compare.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> _builtins.str:
+        """
+        Name of the attribute to compare.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Comparison operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAlarmMetricExpressionResult(dict):
+    def __init__(__self__, *,
+                 metric_counter_id: _builtins.int,
+                 metric_instance: _builtins.str,
+                 object_type: _builtins.str,
+                 operator: _builtins.str,
+                 red: _builtins.int,
+                 red_interval: _builtins.int,
+                 yellow: _builtins.int,
+                 yellow_interval: _builtins.int):
+        """
+        :param _builtins.int metric_counter_id: ID of the metric.
+        :param _builtins.str object_type: Type of object of the metric, ie: HostSystem.
+        :param _builtins.str operator: Whether the metric is below or above the given threshold.
+        :param _builtins.int red: Critical threshold, for percentage, 9900 is 99%.
+        :param _builtins.int red_interval: Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        :param _builtins.int yellow: Warning threshold, for percentage, 9900 is 99%.
+        :param _builtins.int yellow_interval: Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        pulumi.set(__self__, "metric_counter_id", metric_counter_id)
+        pulumi.set(__self__, "metric_instance", metric_instance)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "red", red)
+        pulumi.set(__self__, "red_interval", red_interval)
+        pulumi.set(__self__, "yellow", yellow)
+        pulumi.set(__self__, "yellow_interval", yellow_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="metricCounterId")
+    def metric_counter_id(self) -> _builtins.int:
+        """
+        ID of the metric.
+        """
+        return pulumi.get(self, "metric_counter_id")
+
+    @_builtins.property
+    @pulumi.getter(name="metricInstance")
+    def metric_instance(self) -> _builtins.str:
+        return pulumi.get(self, "metric_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object of the metric, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Whether the metric is below or above the given threshold.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> _builtins.int:
+        """
+        Critical threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "red")
+
+    @_builtins.property
+    @pulumi.getter(name="redInterval")
+    def red_interval(self) -> _builtins.int:
+        """
+        Amount of seconds the threshold must be crossed to trigger the critical alarm.
+        """
+        return pulumi.get(self, "red_interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> _builtins.int:
+        """
+        Warning threshold, for percentage, 9900 is 99%.
+        """
+        return pulumi.get(self, "yellow")
+
+    @_builtins.property
+    @pulumi.getter(name="yellowInterval")
+    def yellow_interval(self) -> _builtins.int:
+        """
+        Amount of seconds the threshold must be crossed to trigger the warning alarm.
+        """
+        return pulumi.get(self, "yellow_interval")
+
+
+@pulumi.output_type
+class GetAlarmSnmpActionResult(dict):
+    def __init__(__self__, *,
+                 final_state: _builtins.str,
+                 repeat: _builtins.bool,
+                 start_state: _builtins.str):
+        """
+        :param _builtins.str final_state: Triggers the action only for this final state.
+        :param _builtins.bool repeat: Whether or not the action should be repeated.
+        :param _builtins.str start_state: Triggers the action only for this initial state.
+        """
+        pulumi.set(__self__, "final_state", final_state)
+        pulumi.set(__self__, "repeat", repeat)
+        pulumi.set(__self__, "start_state", start_state)
+
+    @_builtins.property
+    @pulumi.getter(name="finalState")
+    def final_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this final state.
+        """
+        return pulumi.get(self, "final_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def repeat(self) -> _builtins.bool:
+        """
+        Whether or not the action should be repeated.
+        """
+        return pulumi.get(self, "repeat")
+
+    @_builtins.property
+    @pulumi.getter(name="startState")
+    def start_state(self) -> _builtins.str:
+        """
+        Triggers the action only for this initial state.
+        """
+        return pulumi.get(self, "start_state")
+
+
+@pulumi.output_type
+class GetAlarmStateExpressionResult(dict):
+    def __init__(__self__, *,
+                 object_type: _builtins.str,
+                 operator: _builtins.str,
+                 red: _builtins.str,
+                 state_path: _builtins.str,
+                 yellow: _builtins.str):
+        """
+        :param _builtins.str object_type: Type of object where the event applies on, ie: HostSystem.
+        :param _builtins.str operator: Check if state is equal or unequal.
+        :param _builtins.str red: State value to trigger critical alarm.
+        :param _builtins.str state_path: State path: ie. runtime.connectionState.
+        :param _builtins.str yellow: State value to trigger warning alarm.
+        """
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "red", red)
+        pulumi.set(__self__, "state_path", state_path)
+        pulumi.set(__self__, "yellow", yellow)
+
+    @_builtins.property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> _builtins.str:
+        """
+        Type of object where the event applies on, ie: HostSystem.
+        """
+        return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Check if state is equal or unequal.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def red(self) -> _builtins.str:
+        """
+        State value to trigger critical alarm.
+        """
+        return pulumi.get(self, "red")
+
+    @_builtins.property
+    @pulumi.getter(name="statePath")
+    def state_path(self) -> _builtins.str:
+        """
+        State path: ie. runtime.connectionState.
+        """
+        return pulumi.get(self, "state_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def yellow(self) -> _builtins.str:
+        """
+        State value to trigger warning alarm.
+        """
+        return pulumi.get(self, "yellow")
 
 
 @pulumi.output_type
@@ -3903,6 +7572,35 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
 
 
 @pulumi.output_type
+class GetNamespaceVmServiceResult(dict):
+    def __init__(__self__, *,
+                 content_libraries: Sequence[_builtins.str],
+                 vm_classes: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] content_libraries: The list of content libraries associated with the VM Service.
+        :param Sequence[_builtins.str] vm_classes: The list of VM Classes associated with the VM Service.
+        """
+        pulumi.set(__self__, "content_libraries", content_libraries)
+        pulumi.set(__self__, "vm_classes", vm_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="contentLibraries")
+    def content_libraries(self) -> Sequence[_builtins.str]:
+        """
+        The list of content libraries associated with the VM Service.
+        """
+        return pulumi.get(self, "content_libraries")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClasses")
+    def vm_classes(self) -> Sequence[_builtins.str]:
+        """
+        The list of VM Classes associated with the VM Service.
+        """
+        return pulumi.get(self, "vm_classes")
+
+
+@pulumi.output_type
 class GetNetworkFilterResult(dict):
     def __init__(__self__, *,
                  network_type: Optional[_builtins.str] = None):
@@ -3988,6 +7686,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  adapter_type: _builtins.str,
                  bandwidth_share_count: _builtins.int,
+                 external_port_id: _builtins.str,
                  mac_address: _builtins.str,
                  network_id: _builtins.str,
                  physical_function: _builtins.str,
@@ -4000,6 +7699,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
                `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
         :param _builtins.int bandwidth_share_count: The share count for this network interface when the
                share level is custom.
+        :param _builtins.str external_port_id: The external port id to be bound to the VM port.
         :param _builtins.str mac_address: The MAC address of this network interface.
         :param _builtins.str network_id: The managed object reference ID of the network this interface
                is connected to.
@@ -4013,6 +7713,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
         """
         pulumi.set(__self__, "adapter_type", adapter_type)
         pulumi.set(__self__, "bandwidth_share_count", bandwidth_share_count)
+        pulumi.set(__self__, "external_port_id", external_port_id)
         pulumi.set(__self__, "mac_address", mac_address)
         pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "physical_function", physical_function)
@@ -4041,6 +7742,14 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
         share level is custom.
         """
         return pulumi.get(self, "bandwidth_share_count")
+
+    @_builtins.property
+    @pulumi.getter(name="externalPortId")
+    def external_port_id(self) -> _builtins.str:
+        """
+        The external port id to be bound to the VM port.
+        """
+        return pulumi.get(self, "external_port_id")
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
@@ -4112,5 +7821,74 @@ class GetVirtualMachineVappResult(dict):
         A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
         """
         return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class GetVirtualMachineVideoCardResult(dict):
+    def __init__(__self__, *,
+                 graphics3ds: Sequence['outputs.GetVirtualMachineVideoCardGraphics3dResult'],
+                 num_displays: _builtins.int,
+                 total_video_memory: _builtins.int):
+        """
+        :param Sequence['GetVirtualMachineVideoCardGraphics3dArgs'] graphics3ds: 3D graphics options.
+        :param _builtins.int num_displays: The number of supported displays.
+        :param _builtins.int total_video_memory: The total video memory buffer in megabytes.
+        """
+        pulumi.set(__self__, "graphics3ds", graphics3ds)
+        pulumi.set(__self__, "num_displays", num_displays)
+        pulumi.set(__self__, "total_video_memory", total_video_memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def graphics3ds(self) -> Sequence['outputs.GetVirtualMachineVideoCardGraphics3dResult']:
+        """
+        3D graphics options.
+        """
+        return pulumi.get(self, "graphics3ds")
+
+    @_builtins.property
+    @pulumi.getter(name="numDisplays")
+    def num_displays(self) -> _builtins.int:
+        """
+        The number of supported displays.
+        """
+        return pulumi.get(self, "num_displays")
+
+    @_builtins.property
+    @pulumi.getter(name="totalVideoMemory")
+    def total_video_memory(self) -> _builtins.int:
+        """
+        The total video memory buffer in megabytes.
+        """
+        return pulumi.get(self, "total_video_memory")
+
+
+@pulumi.output_type
+class GetVirtualMachineVideoCardGraphics3dResult(dict):
+    def __init__(__self__, *,
+                 memory: _builtins.int,
+                 renderer: _builtins.str):
+        """
+        :param _builtins.int memory: The dedicated 3D graphics memory in megabytes.
+        :param _builtins.str renderer: The 3D renderer - software, hardware or automatic.
+        """
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "renderer", renderer)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        """
+        The dedicated 3D graphics memory in megabytes.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def renderer(self) -> _builtins.str:
+        """
+        The 3D renderer - software, hardware or automatic.
+        """
+        return pulumi.get(self, "renderer")
 
 

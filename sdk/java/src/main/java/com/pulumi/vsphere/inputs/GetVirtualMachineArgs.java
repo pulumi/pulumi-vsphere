@@ -174,6 +174,21 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.eptRviMode);
     }
 
+    /**
+     * Enhanced vMotion Compatibility mode.
+     * 
+     */
+    @Import(name="evcMode")
+    private @Nullable Output<String> evcMode;
+
+    /**
+     * @return Enhanced vMotion Compatibility mode.
+     * 
+     */
+    public Optional<Output<String>> evcMode() {
+        return Optional.ofNullable(this.evcMode);
+    }
+
     @Import(name="extraConfig")
     private @Nullable Output<Map<String,String>> extraConfig;
 
@@ -278,14 +293,14 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The size of the virtual machine&#39;s memory, in MB.
+     * The dedicated 3D graphics memory in megabytes.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Integer> memory;
 
     /**
-     * @return The size of the virtual machine&#39;s memory, in MB.
+     * @return The dedicated 3D graphics memory in megabytes.
      * 
      */
     public Optional<Output<Integer>> memory() {
@@ -368,6 +383,21 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * The number of cores per NUMA node for this virtual machine.
+     * 
+     */
+    @Import(name="numCoresPerNumaNode")
+    private @Nullable Output<Integer> numCoresPerNumaNode;
+
+    /**
+     * @return The number of cores per NUMA node for this virtual machine.
+     * 
+     */
+    public Optional<Output<Integer>> numCoresPerNumaNode() {
+        return Optional.ofNullable(this.numCoresPerNumaNode);
+    }
+
+    /**
      * The number of cores per socket for this virtual
      * machine.
      * 
@@ -405,18 +435,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
      * The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
-     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this value
-     * at the default. See the
-     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-     * documentation for the significance of this setting, specifically the
-     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-     * section.
-     * 
-     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
-     * 
      */
     @Import(name="nvmeControllerScanCount")
     private @Nullable Output<Integer> nvmeControllerScanCount;
@@ -424,18 +442,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     /**
      * @return The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
-     * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
-     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this value
-     * at the default. See the
-     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-     * documentation for the significance of this setting, specifically the
-     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-     * section.
-     * 
-     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      * 
      */
     public Optional<Output<Integer>> nvmeControllerScanCount() {
@@ -601,6 +607,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         this.enableDiskUuid = $.enableDiskUuid;
         this.enableLogging = $.enableLogging;
         this.eptRviMode = $.eptRviMode;
+        this.evcMode = $.evcMode;
         this.extraConfig = $.extraConfig;
         this.extraConfigRebootRequired = $.extraConfigRebootRequired;
         this.firmware = $.firmware;
@@ -620,6 +627,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         this.moid = $.moid;
         this.name = $.name;
         this.nestedHvEnabled = $.nestedHvEnabled;
+        this.numCoresPerNumaNode = $.numCoresPerNumaNode;
         this.numCoresPerSocket = $.numCoresPerSocket;
         this.numCpus = $.numCpus;
         this.nvmeControllerScanCount = $.nvmeControllerScanCount;
@@ -861,6 +869,27 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
             return eptRviMode(Output.of(eptRviMode));
         }
 
+        /**
+         * @param evcMode Enhanced vMotion Compatibility mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evcMode(@Nullable Output<String> evcMode) {
+            $.evcMode = evcMode;
+            return this;
+        }
+
+        /**
+         * @param evcMode Enhanced vMotion Compatibility mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evcMode(String evcMode) {
+            return evcMode(Output.of(evcMode));
+        }
+
         public Builder extraConfig(@Nullable Output<Map<String,String>> extraConfig) {
             $.extraConfig = extraConfig;
             return this;
@@ -999,7 +1028,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param memory The size of the virtual machine&#39;s memory, in MB.
+         * @param memory The dedicated 3D graphics memory in megabytes.
          * 
          * @return builder
          * 
@@ -1010,7 +1039,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param memory The size of the virtual machine&#39;s memory, in MB.
+         * @param memory The dedicated 3D graphics memory in megabytes.
          * 
          * @return builder
          * 
@@ -1117,6 +1146,27 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
+         * @param numCoresPerNumaNode The number of cores per NUMA node for this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numCoresPerNumaNode(@Nullable Output<Integer> numCoresPerNumaNode) {
+            $.numCoresPerNumaNode = numCoresPerNumaNode;
+            return this;
+        }
+
+        /**
+         * @param numCoresPerNumaNode The number of cores per NUMA node for this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numCoresPerNumaNode(Integer numCoresPerNumaNode) {
+            return numCoresPerNumaNode(Output.of(numCoresPerNumaNode));
+        }
+
+        /**
          * @param numCoresPerSocket The number of cores per socket for this virtual
          * machine.
          * 
@@ -1166,18 +1216,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
          * @param nvmeControllerScanCount The number of NVMe controllers to
          * scan for disk attributes and controller types on. Default: `1`.
          * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-         * 
-         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-         * use with this data source reside on the primary controller, and leave this value
-         * at the default. See the
-         * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-         * documentation for the significance of this setting, specifically the
-         * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-         * section.
-         * 
-         * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
-         * 
          * @return builder
          * 
          */
@@ -1189,18 +1227,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         /**
          * @param nvmeControllerScanCount The number of NVMe controllers to
          * scan for disk attributes and controller types on. Default: `1`.
-         * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-         * 
-         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-         * use with this data source reside on the primary controller, and leave this value
-         * at the default. See the
-         * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-         * documentation for the significance of this setting, specifically the
-         * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-         * section.
-         * 
-         * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
          * 
          * @return builder
          * 

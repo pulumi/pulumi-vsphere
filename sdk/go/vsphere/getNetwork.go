@@ -121,6 +121,8 @@ type GetNetworkArgs struct {
 	// Select a VPC scope for retrieval of VPC subnets.
 	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VpcId *string `pulumi:"vpcId"`
+	// Select a project scope for retrieval of VPC subnets.
+	VpcProjectId *string `pulumi:"vpcProjectId"`
 }
 
 // A collection of values returned by getNetwork.
@@ -137,8 +139,9 @@ type GetNetworkResult struct {
 	// of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
 	// standard (host-based) port groups, or `OpaqueNetwork` for networks managed
 	// externally, such as those managed by NSX.
-	Type  string  `pulumi:"type"`
-	VpcId *string `pulumi:"vpcId"`
+	Type         string  `pulumi:"type"`
+	VpcId        *string `pulumi:"vpcId"`
+	VpcProjectId *string `pulumi:"vpcProjectId"`
 }
 
 func GetNetworkOutput(ctx *pulumi.Context, args GetNetworkOutputArgs, opts ...pulumi.InvokeOption) GetNetworkResultOutput {
@@ -174,6 +177,8 @@ type GetNetworkOutputArgs struct {
 	// Select a VPC scope for retrieval of VPC subnets.
 	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// Select a project scope for retrieval of VPC subnets.
+	VpcProjectId pulumi.StringPtrInput `pulumi:"vpcProjectId"`
 }
 
 func (GetNetworkOutputArgs) ElementType() reflect.Type {
@@ -234,6 +239,10 @@ func (o GetNetworkResultOutput) Type() pulumi.StringOutput {
 
 func (o GetNetworkResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkResultOutput) VpcProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkResult) *string { return v.VpcProjectId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

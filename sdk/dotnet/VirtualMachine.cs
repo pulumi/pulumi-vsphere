@@ -1074,7 +1074,7 @@ namespace Pulumi.VSphere
     /// 
     /// * `RunOnceCommandList` - (Optional) A list of commands to run at first user logon, after guest customization. Each run once command is limited by the API to 260 characters.
     /// 
-    /// * `AutoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `False`.
+    /// * `AutoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `False`. Make sure that `AutoLogonCount` is not set to 0 if `AutoLogon` is `True`.
     /// 
     /// * `AutoLogonCount` - (Optional) Specifies how many times the virtual machine should auto-logon the Administrator account when `AutoLogon` is `True`. This option should be set accordingly to ensure that all of your commands that run in `RunOnceCommandList` can log in to run. Default: `1`.
     /// 
@@ -1555,6 +1555,12 @@ namespace Pulumi.VSphere
         public Output<string> EptRviMode { get; private set; } = null!;
 
         /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Output("evcMode")]
+        public Output<string?> EvcMode { get; private set; } = null!;
+
+        /// <summary>
         /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         /// </summary>
         [Output("extraConfig")]
@@ -1663,7 +1669,7 @@ namespace Pulumi.VSphere
         public Output<int?> MemoryReservation { get; private set; } = null!;
 
         /// <summary>
-        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `Memory` and `MemoryReservation` have the same value.
         /// </summary>
         [Output("memoryReservationLockedToMax")]
         public Output<bool?> MemoryReservationLockedToMax { get; private set; } = null!;
@@ -1709,6 +1715,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.VirtualMachineNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to NumCpus must be evenly divisible by this value.
+        /// </summary>
+        [Output("numCoresPerNumaNode")]
+        public Output<int?> NumCoresPerNumaNode { get; private set; } = null!;
 
         /// <summary>
         /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to NumCpus must be evenly divisible by this value.
@@ -1889,6 +1901,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("vbsEnabled")]
         public Output<bool?> VbsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// A specification for a video card device on this virtual machine.
+        /// </summary>
+        [Output("videoCard")]
+        public Output<Outputs.VirtualMachineVideoCard?> VideoCard { get; private set; } = null!;
 
         /// <summary>
         /// The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
@@ -2134,6 +2152,12 @@ namespace Pulumi.VSphere
         [Input("eptRviMode")]
         public Input<string>? EptRviMode { get; set; }
 
+        /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Input("evcMode")]
+        public Input<string>? EvcMode { get; set; }
+
         [Input("extraConfig")]
         private InputMap<string>? _extraConfig;
 
@@ -2243,7 +2267,7 @@ namespace Pulumi.VSphere
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `Memory` and `MemoryReservation` have the same value.
         /// </summary>
         [Input("memoryReservationLockedToMax")]
         public Input<bool>? MemoryReservationLockedToMax { get; set; }
@@ -2289,6 +2313,12 @@ namespace Pulumi.VSphere
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.VirtualMachineNetworkInterfaceArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to NumCpus must be evenly divisible by this value.
+        /// </summary>
+        [Input("numCoresPerNumaNode")]
+        public Input<int>? NumCoresPerNumaNode { get; set; }
 
         /// <summary>
         /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to NumCpus must be evenly divisible by this value.
@@ -2457,6 +2487,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("vbsEnabled")]
         public Input<bool>? VbsEnabled { get; set; }
+
+        /// <summary>
+        /// A specification for a video card device on this virtual machine.
+        /// </summary>
+        [Input("videoCard")]
+        public Input<Inputs.VirtualMachineVideoCardArgs>? VideoCard { get; set; }
 
         /// <summary>
         /// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
@@ -2664,6 +2700,12 @@ namespace Pulumi.VSphere
         [Input("eptRviMode")]
         public Input<string>? EptRviMode { get; set; }
 
+        /// <summary>
+        /// Enhanced vMotion Compatibility mode.
+        /// </summary>
+        [Input("evcMode")]
+        public Input<string>? EvcMode { get; set; }
+
         [Input("extraConfig")]
         private InputMap<string>? _extraConfig;
 
@@ -2791,7 +2833,7 @@ namespace Pulumi.VSphere
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `Memory` and `MemoryReservation` have the same value.
         /// </summary>
         [Input("memoryReservationLockedToMax")]
         public Input<bool>? MemoryReservationLockedToMax { get; set; }
@@ -2843,6 +2885,12 @@ namespace Pulumi.VSphere
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.VirtualMachineNetworkInterfaceGetArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to NumCpus must be evenly divisible by this value.
+        /// </summary>
+        [Input("numCoresPerNumaNode")]
+        public Input<int>? NumCoresPerNumaNode { get; set; }
 
         /// <summary>
         /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to NumCpus must be evenly divisible by this value.
@@ -3041,6 +3089,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("vbsEnabled")]
         public Input<bool>? VbsEnabled { get; set; }
+
+        /// <summary>
+        /// A specification for a video card device on this virtual machine.
+        /// </summary>
+        [Input("videoCard")]
+        public Input<Inputs.VirtualMachineVideoCardGetArgs>? VideoCard { get; set; }
 
         /// <summary>
         /// The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.

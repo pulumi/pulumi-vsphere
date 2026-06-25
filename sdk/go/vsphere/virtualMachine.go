@@ -951,7 +951,7 @@ import (
 //
 // * `runOnceCommandList` - (Optional) A list of commands to run at first user logon, after guest customization. Each run once command is limited by the API to 260 characters.
 //
-// * `autoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`.
+// * `autoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`. Make sure that `autoLogonCount` is not set to 0 if `autoLogon` is `true`.
 //
 // * `autoLogonCount` - (Optional) Specifies how many times the virtual machine should auto-logon the Administrator account when `autoLogon` is `true`. This option should be set accordingly to ensure that all of your commands that run in `runOnceCommandList` can log in to run. Default: `1`.
 //
@@ -1376,6 +1376,8 @@ type VirtualMachine struct {
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode pulumi.StringOutput `pulumi:"eptRviMode"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode pulumi.StringPtrOutput `pulumi:"evcMode"`
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapOutput `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
@@ -1412,7 +1414,7 @@ type VirtualMachine struct {
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation pulumi.IntPtrOutput `pulumi:"memoryReservation"`
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
 	MemoryReservationLockedToMax pulumi.BoolPtrOutput `pulumi:"memoryReservationLockedToMax"`
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount pulumi.IntOutput `pulumi:"memoryShareCount"`
@@ -1428,6 +1430,8 @@ type VirtualMachine struct {
 	NestedHvEnabled pulumi.BoolPtrOutput `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
+	// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+	NumCoresPerNumaNode pulumi.IntPtrOutput `pulumi:"numCoresPerNumaNode"`
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrOutput `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
@@ -1488,6 +1492,8 @@ type VirtualMachine struct {
 	VappTransports pulumi.StringArrayOutput `pulumi:"vappTransports"`
 	// Flag to specify if Virtualization-based security is enabled for this virtual machine.
 	VbsEnabled pulumi.BoolPtrOutput `pulumi:"vbsEnabled"`
+	// A specification for a video card device on this virtual machine.
+	VideoCard VirtualMachineVideoCardPtrOutput `pulumi:"videoCard"`
 	// The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
 	VmwareToolsStatus pulumi.StringOutput `pulumi:"vmwareToolsStatus"`
 	// The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
@@ -1587,6 +1593,8 @@ type virtualMachineState struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode *string `pulumi:"eptRviMode"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode *string `pulumi:"evcMode"`
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
@@ -1623,7 +1631,7 @@ type virtualMachineState struct {
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
 	MemoryReservationLockedToMax *bool `pulumi:"memoryReservationLockedToMax"`
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount *int `pulumi:"memoryShareCount"`
@@ -1639,6 +1647,8 @@ type virtualMachineState struct {
 	NestedHvEnabled *bool `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces []VirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
+	// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+	NumCoresPerNumaNode *int `pulumi:"numCoresPerNumaNode"`
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
@@ -1699,6 +1709,8 @@ type virtualMachineState struct {
 	VappTransports []string `pulumi:"vappTransports"`
 	// Flag to specify if Virtualization-based security is enabled for this virtual machine.
 	VbsEnabled *bool `pulumi:"vbsEnabled"`
+	// A specification for a video card device on this virtual machine.
+	VideoCard *VirtualMachineVideoCard `pulumi:"videoCard"`
 	// The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
 	VmwareToolsStatus *string `pulumi:"vmwareToolsStatus"`
 	// The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
@@ -1766,6 +1778,8 @@ type VirtualMachineState struct {
 	EnableLogging pulumi.BoolPtrInput
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode pulumi.StringPtrInput
+	// Enhanced vMotion Compatibility mode.
+	EvcMode pulumi.StringPtrInput
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapInput
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
@@ -1802,7 +1816,7 @@ type VirtualMachineState struct {
 	MemoryLimit pulumi.IntPtrInput
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation pulumi.IntPtrInput
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
 	MemoryReservationLockedToMax pulumi.BoolPtrInput
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount pulumi.IntPtrInput
@@ -1818,6 +1832,8 @@ type VirtualMachineState struct {
 	NestedHvEnabled pulumi.BoolPtrInput
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayInput
+	// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+	NumCoresPerNumaNode pulumi.IntPtrInput
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
@@ -1878,6 +1894,8 @@ type VirtualMachineState struct {
 	VappTransports pulumi.StringArrayInput
 	// Flag to specify if Virtualization-based security is enabled for this virtual machine.
 	VbsEnabled pulumi.BoolPtrInput
+	// A specification for a video card device on this virtual machine.
+	VideoCard VirtualMachineVideoCardPtrInput
 	// The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
 	VmwareToolsStatus pulumi.StringPtrInput
 	// The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
@@ -1945,6 +1963,8 @@ type virtualMachineArgs struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode *string `pulumi:"eptRviMode"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode *string `pulumi:"evcMode"`
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
@@ -1977,7 +1997,7 @@ type virtualMachineArgs struct {
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
 	MemoryReservationLockedToMax *bool `pulumi:"memoryReservationLockedToMax"`
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount *int `pulumi:"memoryShareCount"`
@@ -1991,6 +2011,8 @@ type virtualMachineArgs struct {
 	NestedHvEnabled *bool `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces []VirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
+	// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+	NumCoresPerNumaNode *int `pulumi:"numCoresPerNumaNode"`
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
@@ -2043,6 +2065,8 @@ type virtualMachineArgs struct {
 	Vapp *VirtualMachineVapp `pulumi:"vapp"`
 	// Flag to specify if Virtualization-based security is enabled for this virtual machine.
 	VbsEnabled *bool `pulumi:"vbsEnabled"`
+	// A specification for a video card device on this virtual machine.
+	VideoCard *VirtualMachineVideoCard `pulumi:"videoCard"`
 	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
 	Vtpm *VirtualMachineVtpm `pulumi:"vtpm"`
 	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
@@ -2103,6 +2127,8 @@ type VirtualMachineArgs struct {
 	EnableLogging pulumi.BoolPtrInput
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode pulumi.StringPtrInput
+	// Enhanced vMotion Compatibility mode.
+	EvcMode pulumi.StringPtrInput
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapInput
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
@@ -2135,7 +2161,7 @@ type VirtualMachineArgs struct {
 	MemoryLimit pulumi.IntPtrInput
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation pulumi.IntPtrInput
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
 	MemoryReservationLockedToMax pulumi.BoolPtrInput
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount pulumi.IntPtrInput
@@ -2149,6 +2175,8 @@ type VirtualMachineArgs struct {
 	NestedHvEnabled pulumi.BoolPtrInput
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayInput
+	// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+	NumCoresPerNumaNode pulumi.IntPtrInput
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
@@ -2201,6 +2229,8 @@ type VirtualMachineArgs struct {
 	Vapp VirtualMachineVappPtrInput
 	// Flag to specify if Virtualization-based security is enabled for this virtual machine.
 	VbsEnabled pulumi.BoolPtrInput
+	// A specification for a video card device on this virtual machine.
+	VideoCard VirtualMachineVideoCardPtrInput
 	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
 	Vtpm VirtualMachineVtpmPtrInput
 	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
@@ -2425,6 +2455,11 @@ func (o VirtualMachineOutput) EptRviMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.EptRviMode }).(pulumi.StringOutput)
 }
 
+// Enhanced vMotion Compatibility mode.
+func (o VirtualMachineOutput) EvcMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.EvcMode }).(pulumi.StringPtrOutput)
+}
+
 // Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 func (o VirtualMachineOutput) ExtraConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringMapOutput { return v.ExtraConfig }).(pulumi.StringMapOutput)
@@ -2515,7 +2550,7 @@ func (o VirtualMachineOutput) MemoryReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.MemoryReservation }).(pulumi.IntPtrOutput)
 }
 
-// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
 func (o VirtualMachineOutput) MemoryReservationLockedToMax() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.MemoryReservationLockedToMax }).(pulumi.BoolPtrOutput)
 }
@@ -2553,6 +2588,11 @@ func (o VirtualMachineOutput) NestedHvEnabled() pulumi.BoolPtrOutput {
 // A specification for a virtual NIC on this virtual machine.
 func (o VirtualMachineOutput) NetworkInterfaces() VirtualMachineNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(VirtualMachineNetworkInterfaceArrayOutput)
+}
+
+// The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+func (o VirtualMachineOutput) NumCoresPerNumaNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.NumCoresPerNumaNode }).(pulumi.IntPtrOutput)
 }
 
 // The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
@@ -2703,6 +2743,11 @@ func (o VirtualMachineOutput) VappTransports() pulumi.StringArrayOutput {
 // Flag to specify if Virtualization-based security is enabled for this virtual machine.
 func (o VirtualMachineOutput) VbsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.VbsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A specification for a video card device on this virtual machine.
+func (o VirtualMachineOutput) VideoCard() VirtualMachineVideoCardPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVideoCardPtrOutput { return v.VideoCard }).(VirtualMachineVideoCardPtrOutput)
 }
 
 // The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.

@@ -814,7 +814,7 @@ import * as utilities from "./utilities";
  *
  * * `runOnceCommandList` - (Optional) A list of commands to run at first user logon, after guest customization. Each run once command is limited by the API to 260 characters.
  *
- * * `autoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`.
+ * * `autoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`. Make sure that `autoLogonCount` is not set to 0 if `autoLogon` is `true`.
  *
  * * `autoLogonCount` - (Optional) Specifies how many times the virtual machine should auto-logon the Administrator account when `autoLogon` is `true`. This option should be set accordingly to ensure that all of your commands that run in `runOnceCommandList` can log in to run. Default: `1`.
  *
@@ -1210,6 +1210,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly eptRviMode: pulumi.Output<string>;
     /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    declare public readonly evcMode: pulumi.Output<string | undefined>;
+    /**
      * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      */
     declare public readonly extraConfig: pulumi.Output<{[key: string]: string} | undefined>;
@@ -1282,7 +1286,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly memoryReservation: pulumi.Output<number | undefined>;
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
      */
     declare public readonly memoryReservationLockedToMax: pulumi.Output<boolean | undefined>;
     /**
@@ -1313,6 +1317,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * A specification for a virtual NIC on this virtual machine.
      */
     declare public readonly networkInterfaces: pulumi.Output<outputs.VirtualMachineNetworkInterface[] | undefined>;
+    /**
+     * The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+     */
+    declare public readonly numCoresPerNumaNode: pulumi.Output<number | undefined>;
     /**
      * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      */
@@ -1434,6 +1442,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly vbsEnabled: pulumi.Output<boolean | undefined>;
     /**
+     * A specification for a video card device on this virtual machine.
+     */
+    declare public readonly videoCard: pulumi.Output<outputs.VirtualMachineVideoCard | undefined>;
+    /**
      * The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
      */
     declare public /*out*/ readonly vmwareToolsStatus: pulumi.Output<string>;
@@ -1500,6 +1512,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["enableDiskUuid"] = state?.enableDiskUuid;
             resourceInputs["enableLogging"] = state?.enableLogging;
             resourceInputs["eptRviMode"] = state?.eptRviMode;
+            resourceInputs["evcMode"] = state?.evcMode;
             resourceInputs["extraConfig"] = state?.extraConfig;
             resourceInputs["extraConfigRebootRequired"] = state?.extraConfigRebootRequired;
             resourceInputs["firmware"] = state?.firmware;
@@ -1526,6 +1539,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["nestedHvEnabled"] = state?.nestedHvEnabled;
             resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["numCoresPerNumaNode"] = state?.numCoresPerNumaNode;
             resourceInputs["numCoresPerSocket"] = state?.numCoresPerSocket;
             resourceInputs["numCpus"] = state?.numCpus;
             resourceInputs["nvmeControllerCount"] = state?.nvmeControllerCount;
@@ -1556,6 +1570,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["vapp"] = state?.vapp;
             resourceInputs["vappTransports"] = state?.vappTransports;
             resourceInputs["vbsEnabled"] = state?.vbsEnabled;
+            resourceInputs["videoCard"] = state?.videoCard;
             resourceInputs["vmwareToolsStatus"] = state?.vmwareToolsStatus;
             resourceInputs["vmxPath"] = state?.vmxPath;
             resourceInputs["vtpm"] = state?.vtpm;
@@ -1591,6 +1606,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["enableDiskUuid"] = args?.enableDiskUuid;
             resourceInputs["enableLogging"] = args?.enableLogging;
             resourceInputs["eptRviMode"] = args?.eptRviMode;
+            resourceInputs["evcMode"] = args?.evcMode;
             resourceInputs["extraConfig"] = args?.extraConfig;
             resourceInputs["extraConfigRebootRequired"] = args?.extraConfigRebootRequired;
             resourceInputs["firmware"] = args?.firmware;
@@ -1614,6 +1630,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nestedHvEnabled"] = args?.nestedHvEnabled;
             resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["numCoresPerNumaNode"] = args?.numCoresPerNumaNode;
             resourceInputs["numCoresPerSocket"] = args?.numCoresPerSocket;
             resourceInputs["numCpus"] = args?.numCpus;
             resourceInputs["nvmeControllerCount"] = args?.nvmeControllerCount;
@@ -1640,6 +1657,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["toolsUpgradePolicy"] = args?.toolsUpgradePolicy;
             resourceInputs["vapp"] = args?.vapp;
             resourceInputs["vbsEnabled"] = args?.vbsEnabled;
+            resourceInputs["videoCard"] = args?.videoCard;
             resourceInputs["vtpm"] = args?.vtpm;
             resourceInputs["vvtdEnabled"] = args?.vvtdEnabled;
             resourceInputs["waitForGuestIpTimeout"] = args?.waitForGuestIpTimeout;
@@ -1767,6 +1785,10 @@ export interface VirtualMachineState {
      */
     eptRviMode?: pulumi.Input<string | undefined>;
     /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    evcMode?: pulumi.Input<string | undefined>;
+    /**
      * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -1839,7 +1861,7 @@ export interface VirtualMachineState {
      */
     memoryReservation?: pulumi.Input<number | undefined>;
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
      */
     memoryReservationLockedToMax?: pulumi.Input<boolean | undefined>;
     /**
@@ -1870,6 +1892,10 @@ export interface VirtualMachineState {
      * A specification for a virtual NIC on this virtual machine.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[] | undefined>;
+    /**
+     * The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+     */
+    numCoresPerNumaNode?: pulumi.Input<number | undefined>;
     /**
      * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      */
@@ -1990,6 +2016,10 @@ export interface VirtualMachineState {
      * Flag to specify if Virtualization-based security is enabled for this virtual machine.
      */
     vbsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * A specification for a video card device on this virtual machine.
+     */
+    videoCard?: pulumi.Input<inputs.VirtualMachineVideoCard | undefined>;
     /**
      * The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
      */
@@ -2117,6 +2147,10 @@ export interface VirtualMachineArgs {
      */
     eptRviMode?: pulumi.Input<string | undefined>;
     /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    evcMode?: pulumi.Input<string | undefined>;
+    /**
      * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -2181,7 +2215,7 @@ export interface VirtualMachineArgs {
      */
     memoryReservation?: pulumi.Input<number | undefined>;
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memoryReservation` have the same value.
      */
     memoryReservationLockedToMax?: pulumi.Input<boolean | undefined>;
     /**
@@ -2208,6 +2242,10 @@ export interface VirtualMachineArgs {
      * A specification for a virtual NIC on this virtual machine.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[] | undefined>;
+    /**
+     * The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+     */
+    numCoresPerNumaNode?: pulumi.Input<number | undefined>;
     /**
      * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      */
@@ -2312,6 +2350,10 @@ export interface VirtualMachineArgs {
      * Flag to specify if Virtualization-based security is enabled for this virtual machine.
      */
     vbsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * A specification for a video card device on this virtual machine.
+     */
+    videoCard?: pulumi.Input<inputs.VirtualMachineVideoCard | undefined>;
     /**
      * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
      */
