@@ -35,9 +35,9 @@ func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(vsphere.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:                p,
-		Name:             "vsphere",
+		Name:             vspherePkg,
 		Description:      "A Pulumi package for creating vsphere resources",
-		Keywords:         []string{"pulumi", "vsphere"},
+		Keywords:         []string{"pulumi", vspherePkg},
 		License:          "Apache-2.0",
 		Homepage:         "https://pulumi.io",
 		Repository:       "https://github.com/pulumi/pulumi-vsphere",
@@ -129,7 +129,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
-				"vsphere": "VSphere",
+				vspherePkg: "VSphere",
 			},
 		},
 	}
