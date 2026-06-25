@@ -40,6 +40,10 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? BandwidthShareLevel;
         /// <summary>
+        /// The external port id to be bound to the VM port.
+        /// </summary>
+        public readonly string ExternalPortId;
+        /// <summary>
         /// The MAC address of this network interface.
         /// </summary>
         public readonly string MacAddress;
@@ -65,6 +69,8 @@ namespace Pulumi.VSphere.Outputs
 
             string? bandwidthShareLevel,
 
+            string externalPortId,
+
             string macAddress,
 
             string networkId,
@@ -76,6 +82,7 @@ namespace Pulumi.VSphere.Outputs
             BandwidthReservation = bandwidthReservation;
             BandwidthShareCount = bandwidthShareCount;
             BandwidthShareLevel = bandwidthShareLevel;
+            ExternalPortId = externalPortId;
             MacAddress = macAddress;
             NetworkId = networkId;
             PhysicalFunction = physicalFunction;

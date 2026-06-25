@@ -45,6 +45,11 @@ public final class VirtualMachineNetworkInterface {
      */
     private @Nullable String deviceAddress;
     /**
+     * @return The external port id to be bound to the VM port.
+     * 
+     */
+    private @Nullable String externalPortId;
+    /**
      * @return The ID of the device within the virtual machine.
      * 
      */
@@ -119,6 +124,13 @@ public final class VirtualMachineNetworkInterface {
         return Optional.ofNullable(this.deviceAddress);
     }
     /**
+     * @return The external port id to be bound to the VM port.
+     * 
+     */
+    public Optional<String> externalPortId() {
+        return Optional.ofNullable(this.externalPortId);
+    }
+    /**
      * @return The ID of the device within the virtual machine.
      * 
      */
@@ -176,6 +188,7 @@ public final class VirtualMachineNetworkInterface {
         private @Nullable Integer bandwidthShareCount;
         private @Nullable String bandwidthShareLevel;
         private @Nullable String deviceAddress;
+        private @Nullable String externalPortId;
         private @Nullable Integer key;
         private @Nullable String macAddress;
         private String networkId;
@@ -191,6 +204,7 @@ public final class VirtualMachineNetworkInterface {
     	      this.bandwidthShareCount = defaults.bandwidthShareCount;
     	      this.bandwidthShareLevel = defaults.bandwidthShareLevel;
     	      this.deviceAddress = defaults.deviceAddress;
+    	      this.externalPortId = defaults.externalPortId;
     	      this.key = defaults.key;
     	      this.macAddress = defaults.macAddress;
     	      this.networkId = defaults.networkId;
@@ -233,6 +247,12 @@ public final class VirtualMachineNetworkInterface {
         public Builder deviceAddress(@Nullable String deviceAddress) {
 
             this.deviceAddress = deviceAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalPortId(@Nullable String externalPortId) {
+
+            this.externalPortId = externalPortId;
             return this;
         }
         @CustomType.Setter
@@ -281,6 +301,7 @@ public final class VirtualMachineNetworkInterface {
             _resultValue.bandwidthShareCount = bandwidthShareCount;
             _resultValue.bandwidthShareLevel = bandwidthShareLevel;
             _resultValue.deviceAddress = deviceAddress;
+            _resultValue.externalPortId = externalPortId;
             _resultValue.key = key;
             _resultValue.macAddress = macAddress;
             _resultValue.networkId = networkId;

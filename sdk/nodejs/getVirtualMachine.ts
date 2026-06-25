@@ -74,6 +74,7 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
         "enableDiskUuid": args.enableDiskUuid,
         "enableLogging": args.enableLogging,
         "eptRviMode": args.eptRviMode,
+        "evcMode": args.evcMode,
         "extraConfig": args.extraConfig,
         "extraConfigRebootRequired": args.extraConfigRebootRequired,
         "firmware": args.firmware,
@@ -93,6 +94,7 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
         "moid": args.moid,
         "name": args.name,
         "nestedHvEnabled": args.nestedHvEnabled,
+        "numCoresPerNumaNode": args.numCoresPerNumaNode,
         "numCoresPerSocket": args.numCoresPerSocket,
         "numCpus": args.numCpus,
         "nvmeControllerScanCount": args.nvmeControllerScanCount,
@@ -152,6 +154,10 @@ export interface GetVirtualMachineArgs {
     enableDiskUuid?: boolean;
     enableLogging?: boolean;
     eptRviMode?: string;
+    /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    evcMode?: string;
     extraConfig?: {[key: string]: string};
     extraConfigRebootRequired?: boolean;
     /**
@@ -178,7 +184,7 @@ export interface GetVirtualMachineArgs {
     ideControllerScanCount?: number;
     latencySensitivity?: string;
     /**
-     * The size of the virtual machine's memory, in MB.
+     * The dedicated 3D graphics memory in megabytes.
      */
     memory?: number;
     memoryHotAddEnabled?: boolean;
@@ -196,6 +202,10 @@ export interface GetVirtualMachineArgs {
     name?: string;
     nestedHvEnabled?: boolean;
     /**
+     * The number of cores per NUMA node for this virtual machine.
+     */
+    numCoresPerNumaNode?: number;
+    /**
      * The number of cores per socket for this virtual
      * machine.
      */
@@ -208,18 +218,6 @@ export interface GetVirtualMachineArgs {
     /**
      * The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     *
-     * > **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this value
-     * at the default. See the
-     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-     * documentation for the significance of this setting, specifically the
-     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-     * section.
-     *
-     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      */
     nvmeControllerScanCount?: number;
     replaceTrigger?: string;
@@ -274,6 +272,7 @@ export interface GetVirtualMachineResult {
     readonly cpuReservation?: number;
     readonly cpuShareCount: number;
     readonly cpuShareLevel?: string;
+    readonly customAttributes: {[key: string]: string};
     readonly datacenterId?: string;
     /**
      * Whenever possible, this is the first IPv4 address that
@@ -298,6 +297,10 @@ export interface GetVirtualMachineResult {
     readonly enableDiskUuid?: boolean;
     readonly enableLogging?: boolean;
     readonly eptRviMode: string;
+    /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    readonly evcMode?: string;
     readonly extraConfig?: {[key: string]: string};
     readonly extraConfigRebootRequired?: boolean;
     /**
@@ -330,7 +333,7 @@ export interface GetVirtualMachineResult {
     readonly instanceUuid: string;
     readonly latencySensitivity?: string;
     /**
-     * The size of the virtual machine's memory, in MB.
+     * The dedicated 3D graphics memory in megabytes.
      */
     readonly memory?: number;
     readonly memoryHotAddEnabled?: boolean;
@@ -360,6 +363,10 @@ export interface GetVirtualMachineResult {
      */
     readonly networkInterfaces: outputs.GetVirtualMachineNetworkInterface[];
     /**
+     * The number of cores per NUMA node for this virtual machine.
+     */
+    readonly numCoresPerNumaNode?: number;
+    /**
      * The number of cores per socket for this virtual
      * machine.
      */
@@ -379,7 +386,8 @@ export interface GetVirtualMachineResult {
     readonly sataControllerScanCount?: number;
     /**
      * Mode for sharing the SCSI bus. The modes are
-     * physicalSharing, virtualSharing, and noSharing. Only the first number of
+     * `physicalSharing`, `virtualSharing`, `noSharing`, or `mixed` when
+     * there are multiple sharing types across controllers. Only the first number of
      * controllers defined by `scsiControllerScanCount` are scanned.
      */
     readonly scsiBusSharing: string;
@@ -396,11 +404,16 @@ export interface GetVirtualMachineResult {
     readonly swapPlacementPolicy?: string;
     readonly syncTimeWithHost?: boolean;
     readonly syncTimeWithHostPeriodically?: boolean;
+    readonly tags: string[];
     readonly toolsUpgradePolicy?: string;
     readonly uuid: string;
     readonly vapp?: outputs.GetVirtualMachineVapp;
     readonly vappTransports: string[];
     readonly vbsEnabled?: boolean;
+    /**
+     * Information about the virtual video card
+     */
+    readonly videoCards: outputs.GetVirtualMachineVideoCard[];
     /**
      * Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
      */
@@ -475,6 +488,7 @@ export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts
         "enableDiskUuid": args.enableDiskUuid,
         "enableLogging": args.enableLogging,
         "eptRviMode": args.eptRviMode,
+        "evcMode": args.evcMode,
         "extraConfig": args.extraConfig,
         "extraConfigRebootRequired": args.extraConfigRebootRequired,
         "firmware": args.firmware,
@@ -494,6 +508,7 @@ export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts
         "moid": args.moid,
         "name": args.name,
         "nestedHvEnabled": args.nestedHvEnabled,
+        "numCoresPerNumaNode": args.numCoresPerNumaNode,
         "numCoresPerSocket": args.numCoresPerSocket,
         "numCpus": args.numCpus,
         "nvmeControllerScanCount": args.nvmeControllerScanCount,
@@ -553,6 +568,10 @@ export interface GetVirtualMachineOutputArgs {
     enableDiskUuid?: pulumi.Input<boolean | undefined>;
     enableLogging?: pulumi.Input<boolean | undefined>;
     eptRviMode?: pulumi.Input<string | undefined>;
+    /**
+     * Enhanced vMotion Compatibility mode.
+     */
+    evcMode?: pulumi.Input<string | undefined>;
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     extraConfigRebootRequired?: pulumi.Input<boolean | undefined>;
     /**
@@ -579,7 +598,7 @@ export interface GetVirtualMachineOutputArgs {
     ideControllerScanCount?: pulumi.Input<number | undefined>;
     latencySensitivity?: pulumi.Input<string | undefined>;
     /**
-     * The size of the virtual machine's memory, in MB.
+     * The dedicated 3D graphics memory in megabytes.
      */
     memory?: pulumi.Input<number | undefined>;
     memoryHotAddEnabled?: pulumi.Input<boolean | undefined>;
@@ -597,6 +616,10 @@ export interface GetVirtualMachineOutputArgs {
     name?: pulumi.Input<string | undefined>;
     nestedHvEnabled?: pulumi.Input<boolean | undefined>;
     /**
+     * The number of cores per NUMA node for this virtual machine.
+     */
+    numCoresPerNumaNode?: pulumi.Input<number | undefined>;
+    /**
      * The number of cores per socket for this virtual
      * machine.
      */
@@ -609,18 +632,6 @@ export interface GetVirtualMachineOutputArgs {
     /**
      * The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     *
-     * > **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this value
-     * at the default. See the
-     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
-     * documentation for the significance of this setting, specifically the
-     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-     * section.
-     *
-     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      */
     nvmeControllerScanCount?: pulumi.Input<number | undefined>;
     replaceTrigger?: pulumi.Input<string | undefined>;

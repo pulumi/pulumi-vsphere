@@ -18,6 +18,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Lookup by Name
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -26,10 +28,23 @@ import * as utilities from "./utilities";
  *     name: "example-category",
  * });
  * ```
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const byId = vsphere.getTagCategory({
+ *     id: "urn:vmomi:InventoryServiceCategory:xxxx",
+ * });
+ * ```
  */
-export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
+export function getTagCategory(args?: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -39,9 +54,13 @@ export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetTagCategoryArgs {
     /**
-     * The name of the tag category.
+     * The unique identifier of the tag category. If specified, `name` must not be set.
      */
-    name: string;
+    id?: string;
+    /**
+     * The name of the tag category. Required if `id` is not set.
+     */
+    name?: string;
 }
 
 /**
@@ -51,11 +70,8 @@ export interface GetTagCategoryResult {
     readonly associableTypes: string[];
     readonly cardinality: string;
     readonly description: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    readonly name: string;
+    readonly id?: string;
+    readonly name?: string;
 }
 /**
  * The `vsphere.TagCategory` data source can be used to reference tag categories
@@ -71,6 +87,8 @@ export interface GetTagCategoryResult {
  *
  * ## Example Usage
  *
+ * ### Lookup by Name
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -79,10 +97,23 @@ export interface GetTagCategoryResult {
  *     name: "example-category",
  * });
  * ```
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const byId = vsphere.getTagCategory({
+ *     id: "urn:vmomi:InventoryServiceCategory:xxxx",
+ * });
+ * ```
  */
-export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagCategoryResult> {
+export function getTagCategoryOutput(args?: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagCategoryResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getTagCategory:getTagCategory", {
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -92,7 +123,11 @@ export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulu
  */
 export interface GetTagCategoryOutputArgs {
     /**
-     * The name of the tag category.
+     * The unique identifier of the tag category. If specified, `name` must not be set.
      */
-    name: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the tag category. Required if `id` is not set.
+     */
+    name?: pulumi.Input<string | undefined>;
 }

@@ -12,6 +12,7 @@ import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineOvfDeployArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineVappArgs;
+import com.pulumi.vsphere.inputs.VirtualMachineVideoCardArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineVtpmArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -373,6 +374,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Enhanced vMotion Compatibility mode.
+     * 
+     */
+    @Import(name="evcMode")
+    private @Nullable Output<String> evcMode;
+
+    /**
+     * @return Enhanced vMotion Compatibility mode.
+     * 
+     */
+    public Optional<Output<String>> evcMode() {
+        return Optional.ofNullable(this.evcMode);
+    }
+
+    /**
      * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
@@ -613,14 +629,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory. Applied only when `memory` and `memoryReservation` have the same value.
      * 
      */
     @Import(name="memoryReservationLockedToMax")
     private @Nullable Output<Boolean> memoryReservationLockedToMax;
 
     /**
-     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory. Applied only when `memory` and `memoryReservation` have the same value.
      * 
      */
     public Optional<Output<Boolean>> memoryReservationLockedToMax() {
@@ -715,6 +731,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<List<VirtualMachineNetworkInterfaceArgs>>> networkInterfaces() {
         return Optional.ofNullable(this.networkInterfaces);
+    }
+
+    /**
+     * The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+     * 
+     */
+    @Import(name="numCoresPerNumaNode")
+    private @Nullable Output<Integer> numCoresPerNumaNode;
+
+    /**
+     * @return The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+     * 
+     */
+    public Optional<Output<Integer>> numCoresPerNumaNode() {
+        return Optional.ofNullable(this.numCoresPerNumaNode);
     }
 
     /**
@@ -1108,6 +1139,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A specification for a video card device on this virtual machine.
+     * 
+     */
+    @Import(name="videoCard")
+    private @Nullable Output<VirtualMachineVideoCardArgs> videoCard;
+
+    /**
+     * @return A specification for a video card device on this virtual machine.
+     * 
+     */
+    public Optional<Output<VirtualMachineVideoCardArgs>> videoCard() {
+        return Optional.ofNullable(this.videoCard);
+    }
+
+    /**
      * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
      * 
      */
@@ -1208,6 +1254,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.enableDiskUuid = $.enableDiskUuid;
         this.enableLogging = $.enableLogging;
         this.eptRviMode = $.eptRviMode;
+        this.evcMode = $.evcMode;
         this.extraConfig = $.extraConfig;
         this.extraConfigRebootRequired = $.extraConfigRebootRequired;
         this.firmware = $.firmware;
@@ -1231,6 +1278,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.nestedHvEnabled = $.nestedHvEnabled;
         this.networkInterfaces = $.networkInterfaces;
+        this.numCoresPerNumaNode = $.numCoresPerNumaNode;
         this.numCoresPerSocket = $.numCoresPerSocket;
         this.numCpus = $.numCpus;
         this.nvmeControllerCount = $.nvmeControllerCount;
@@ -1257,6 +1305,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.toolsUpgradePolicy = $.toolsUpgradePolicy;
         this.vapp = $.vapp;
         this.vbsEnabled = $.vbsEnabled;
+        this.videoCard = $.videoCard;
         this.vtpm = $.vtpm;
         this.vvtdEnabled = $.vvtdEnabled;
         this.waitForGuestIpTimeout = $.waitForGuestIpTimeout;
@@ -1786,6 +1835,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param evcMode Enhanced vMotion Compatibility mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evcMode(@Nullable Output<String> evcMode) {
+            $.evcMode = evcMode;
+            return this;
+        }
+
+        /**
+         * @param evcMode Enhanced vMotion Compatibility mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evcMode(String evcMode) {
+            return evcMode(Output.of(evcMode));
+        }
+
+        /**
          * @param extraConfig Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
          * 
          * @return builder
@@ -2132,7 +2202,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory. Applied only when `memory` and `memoryReservation` have the same value.
          * 
          * @return builder
          * 
@@ -2143,7 +2213,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory. Applied only when `memory` and `memoryReservation` have the same value.
          * 
          * @return builder
          * 
@@ -2286,6 +2356,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder networkInterfaces(VirtualMachineNetworkInterfaceArgs... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
+        }
+
+        /**
+         * @param numCoresPerNumaNode The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numCoresPerNumaNode(@Nullable Output<Integer> numCoresPerNumaNode) {
+            $.numCoresPerNumaNode = numCoresPerNumaNode;
+            return this;
+        }
+
+        /**
+         * @param numCoresPerNumaNode The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to numCpus must be evenly divisible by this value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numCoresPerNumaNode(Integer numCoresPerNumaNode) {
+            return numCoresPerNumaNode(Output.of(numCoresPerNumaNode));
         }
 
         /**
@@ -2852,6 +2943,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder vbsEnabled(Boolean vbsEnabled) {
             return vbsEnabled(Output.of(vbsEnabled));
+        }
+
+        /**
+         * @param videoCard A specification for a video card device on this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder videoCard(@Nullable Output<VirtualMachineVideoCardArgs> videoCard) {
+            $.videoCard = videoCard;
+            return this;
+        }
+
+        /**
+         * @param videoCard A specification for a video card device on this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder videoCard(VirtualMachineVideoCardArgs videoCard) {
+            return videoCard(Output.of(videoCard));
         }
 
         /**

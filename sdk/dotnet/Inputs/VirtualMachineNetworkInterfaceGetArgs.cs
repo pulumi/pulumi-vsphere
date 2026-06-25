@@ -49,6 +49,12 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? DeviceAddress { get; set; }
 
         /// <summary>
+        /// The external port id to be bound to the VM port.
+        /// </summary>
+        [Input("externalPortId")]
+        public Input<string>? ExternalPortId { get; set; }
+
+        /// <summary>
         /// The ID of the device within the virtual machine.
         /// </summary>
         [Input("key")]

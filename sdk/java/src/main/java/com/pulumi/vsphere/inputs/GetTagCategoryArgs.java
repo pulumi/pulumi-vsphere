@@ -5,9 +5,10 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTagCategoryArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,23 +16,39 @@ public final class GetTagCategoryArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetTagCategoryArgs Empty = new GetTagCategoryArgs();
 
     /**
-     * The name of the tag category.
+     * The unique identifier of the tag category. If specified, `name` must not be set.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
-     * @return The name of the tag category.
+     * @return The unique identifier of the tag category. If specified, `name` must not be set.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * The name of the tag category. Required if `id` is not set.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the tag category. Required if `id` is not set.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetTagCategoryArgs() {}
 
     private GetTagCategoryArgs(GetTagCategoryArgs $) {
+        this.id = $.id;
         this.name = $.name;
     }
 
@@ -54,18 +71,39 @@ public final class GetTagCategoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the tag category.
+         * @param id The unique identifier of the tag category. If specified, `name` must not be set.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The unique identifier of the tag category. If specified, `name` must not be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param name The name of the tag category. Required if `id` is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the tag category.
+         * @param name The name of the tag category. Required if `id` is not set.
          * 
          * @return builder
          * 
@@ -75,9 +113,6 @@ public final class GetTagCategoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetTagCategoryArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetTagCategoryArgs", "name");
-            }
             return $;
         }
     }

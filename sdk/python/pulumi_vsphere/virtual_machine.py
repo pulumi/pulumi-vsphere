@@ -45,6 +45,7 @@ class VirtualMachineArgs:
                  enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  firmware: pulumi.Input[Optional[_builtins.str]] = None,
@@ -68,6 +69,7 @@ class VirtualMachineArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
+                 num_cores_per_numa_node: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
                  nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -93,6 +95,7 @@ class VirtualMachineArgs:
                  tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  vapp: pulumi.Input[Optional['VirtualMachineVappArgs']] = None,
                  vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_card: pulumi.Input[Optional['VirtualMachineVideoCardArgs']] = None,
                  vtpm: pulumi.Input[Optional['VirtualMachineVtpmArgs']] = None,
                  vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -125,6 +128,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
@@ -141,13 +145,14 @@ class VirtualMachineArgs:
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memory_reservation` have the same value.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this virtual machine.
+        :param pulumi.Input[_builtins.int] num_cores_per_numa_node: The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input[_builtins.int] nvme_controller_count: The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
@@ -173,6 +178,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[_builtins.str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input['VirtualMachineVappArgs'] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
+        :param pulumi.Input['VirtualMachineVideoCardArgs'] video_card: A specification for a video card device on this virtual machine.
         :param pulumi.Input['VirtualMachineVtpmArgs'] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
@@ -226,6 +232,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "enable_logging", enable_logging)
         if ept_rvi_mode is not None:
             pulumi.set(__self__, "ept_rvi_mode", ept_rvi_mode)
+        if evc_mode is not None:
+            pulumi.set(__self__, "evc_mode", evc_mode)
         if extra_config is not None:
             pulumi.set(__self__, "extra_config", extra_config)
         if extra_config_reboot_required is not None:
@@ -272,6 +280,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "nested_hv_enabled", nested_hv_enabled)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if num_cores_per_numa_node is not None:
+            pulumi.set(__self__, "num_cores_per_numa_node", num_cores_per_numa_node)
         if num_cores_per_socket is not None:
             pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
         if num_cpus is not None:
@@ -322,6 +332,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "vapp", vapp)
         if vbs_enabled is not None:
             pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+        if video_card is not None:
+            pulumi.set(__self__, "video_card", video_card)
         if vtpm is not None:
             pulumi.set(__self__, "vtpm", vtpm)
         if vvtd_enabled is not None:
@@ -622,6 +634,18 @@ class VirtualMachineArgs:
         pulumi.set(self, "ept_rvi_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="evcMode")
+    def evc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Enhanced vMotion Compatibility mode.
+        """
+        return pulumi.get(self, "evc_mode")
+
+    @evc_mode.setter
+    def evc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "evc_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="extraConfig")
     def extra_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -817,7 +841,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="memoryReservationLockedToMax")
     def memory_reservation_locked_to_max(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memory_reservation` have the same value.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
@@ -896,6 +920,18 @@ class VirtualMachineArgs:
     @network_interfaces.setter
     def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numCoresPerNumaNode")
+    def num_cores_per_numa_node(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+        """
+        return pulumi.get(self, "num_cores_per_numa_node")
+
+    @num_cores_per_numa_node.setter
+    def num_cores_per_numa_node(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_cores_per_numa_node", value)
 
     @_builtins.property
     @pulumi.getter(name="numCoresPerSocket")
@@ -1198,6 +1234,18 @@ class VirtualMachineArgs:
         pulumi.set(self, "vbs_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="videoCard")
+    def video_card(self) -> pulumi.Input[Optional['VirtualMachineVideoCardArgs']]:
+        """
+        A specification for a video card device on this virtual machine.
+        """
+        return pulumi.get(self, "video_card")
+
+    @video_card.setter
+    def video_card(self, value: pulumi.Input[Optional['VirtualMachineVideoCardArgs']]):
+        pulumi.set(self, "video_card", value)
+
+    @_builtins.property
     @pulumi.getter
     def vtpm(self) -> pulumi.Input[Optional['VirtualMachineVtpmArgs']]:
         """
@@ -1286,6 +1334,7 @@ class _VirtualMachineState:
                  enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  firmware: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1312,6 +1361,7 @@ class _VirtualMachineState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
+                 num_cores_per_numa_node: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
                  nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1342,6 +1392,7 @@ class _VirtualMachineState:
                  vapp: pulumi.Input[Optional['VirtualMachineVappArgs']] = None,
                  vapp_transports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_card: pulumi.Input[Optional['VirtualMachineVideoCardArgs']] = None,
                  vmware_tools_status: pulumi.Input[Optional[_builtins.str]] = None,
                  vmx_path: pulumi.Input[Optional[_builtins.str]] = None,
                  vtpm: pulumi.Input[Optional['VirtualMachineVtpmArgs']] = None,
@@ -1377,6 +1428,7 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
@@ -1395,7 +1447,7 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memory_reservation` have the same value.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
@@ -1403,6 +1455,7 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this virtual machine.
+        :param pulumi.Input[_builtins.int] num_cores_per_numa_node: The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input[_builtins.int] nvme_controller_count: The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
@@ -1433,6 +1486,7 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineVappArgs'] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vapp_transports: Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
         :param pulumi.Input[_builtins.bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
+        :param pulumi.Input['VirtualMachineVideoCardArgs'] video_card: A specification for a video card device on this virtual machine.
         :param pulumi.Input[_builtins.str] vmware_tools_status: The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
         :param pulumi.Input[_builtins.str] vmx_path: The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
         :param pulumi.Input['VirtualMachineVtpmArgs'] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
@@ -1491,6 +1545,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "enable_logging", enable_logging)
         if ept_rvi_mode is not None:
             pulumi.set(__self__, "ept_rvi_mode", ept_rvi_mode)
+        if evc_mode is not None:
+            pulumi.set(__self__, "evc_mode", evc_mode)
         if extra_config is not None:
             pulumi.set(__self__, "extra_config", extra_config)
         if extra_config_reboot_required is not None:
@@ -1543,6 +1599,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "nested_hv_enabled", nested_hv_enabled)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if num_cores_per_numa_node is not None:
+            pulumi.set(__self__, "num_cores_per_numa_node", num_cores_per_numa_node)
         if num_cores_per_socket is not None:
             pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
         if num_cpus is not None:
@@ -1603,6 +1661,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "vapp_transports", vapp_transports)
         if vbs_enabled is not None:
             pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+        if video_card is not None:
+            pulumi.set(__self__, "video_card", video_card)
         if vmware_tools_status is not None:
             pulumi.set(__self__, "vmware_tools_status", vmware_tools_status)
         if vmx_path is not None:
@@ -1919,6 +1979,18 @@ class _VirtualMachineState:
         pulumi.set(self, "ept_rvi_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="evcMode")
+    def evc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Enhanced vMotion Compatibility mode.
+        """
+        return pulumi.get(self, "evc_mode")
+
+    @evc_mode.setter
+    def evc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "evc_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="extraConfig")
     def extra_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -2138,7 +2210,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="memoryReservationLockedToMax")
     def memory_reservation_locked_to_max(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memory_reservation` have the same value.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
@@ -2229,6 +2301,18 @@ class _VirtualMachineState:
     @network_interfaces.setter
     def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numCoresPerNumaNode")
+    def num_cores_per_numa_node(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+        """
+        return pulumi.get(self, "num_cores_per_numa_node")
+
+    @num_cores_per_numa_node.setter
+    def num_cores_per_numa_node(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_cores_per_numa_node", value)
 
     @_builtins.property
     @pulumi.getter(name="numCoresPerSocket")
@@ -2591,6 +2675,18 @@ class _VirtualMachineState:
         pulumi.set(self, "vbs_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="videoCard")
+    def video_card(self) -> pulumi.Input[Optional['VirtualMachineVideoCardArgs']]:
+        """
+        A specification for a video card device on this virtual machine.
+        """
+        return pulumi.get(self, "video_card")
+
+    @video_card.setter
+    def video_card(self, value: pulumi.Input[Optional['VirtualMachineVideoCardArgs']]):
+        pulumi.set(self, "video_card", value)
+
+    @_builtins.property
     @pulumi.getter(name="vmwareToolsStatus")
     def vmware_tools_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -2704,6 +2800,7 @@ class VirtualMachine(pulumi.CustomResource):
                  enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  firmware: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2727,6 +2824,7 @@ class VirtualMachine(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
+                 num_cores_per_numa_node: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
                  nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2753,6 +2851,7 @@ class VirtualMachine(pulumi.CustomResource):
                  tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  vapp: pulumi.Input[Optional[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
                  vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_card: pulumi.Input[Optional[Union['VirtualMachineVideoCardArgs', 'VirtualMachineVideoCardArgsDict']]] = None,
                  vtpm: pulumi.Input[Optional[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
                  vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3476,7 +3575,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         * `run_once_command_list` - (Optional) A list of commands to run at first user logon, after guest customization. Each run once command is limited by the API to 260 characters.
 
-        * `auto_logon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`.
+        * `auto_logon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`. Make sure that `auto_logon_count` is not set to 0 if `auto_logon` is `true`.
 
         * `auto_logon_count` - (Optional) Specifies how many times the virtual machine should auto-logon the Administrator account when `auto_logon` is `true`. This option should be set accordingly to ensure that all of your commands that run in `run_once_command_list` can log in to run. Default: `1`.
 
@@ -3770,6 +3869,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
@@ -3786,13 +3886,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memory_reservation` have the same value.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
+        :param pulumi.Input[_builtins.int] num_cores_per_numa_node: The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input[_builtins.int] nvme_controller_count: The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
@@ -3819,6 +3920,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
+        :param pulumi.Input[Union['VirtualMachineVideoCardArgs', 'VirtualMachineVideoCardArgsDict']] video_card: A specification for a video card device on this virtual machine.
         :param pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
@@ -4548,7 +4650,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         * `run_once_command_list` - (Optional) A list of commands to run at first user logon, after guest customization. Each run once command is limited by the API to 260 characters.
 
-        * `auto_logon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`.
+        * `auto_logon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`. Make sure that `auto_logon_count` is not set to 0 if `auto_logon` is `true`.
 
         * `auto_logon_count` - (Optional) Specifies how many times the virtual machine should auto-logon the Administrator account when `auto_logon` is `true`. This option should be set accordingly to ensure that all of your commands that run in `run_once_command_list` can log in to run. Default: `1`.
 
@@ -4855,6 +4957,7 @@ class VirtualMachine(pulumi.CustomResource):
                  enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  firmware: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4878,6 +4981,7 @@ class VirtualMachine(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
+                 num_cores_per_numa_node: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
                  num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
                  nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4904,6 +5008,7 @@ class VirtualMachine(pulumi.CustomResource):
                  tools_upgrade_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  vapp: pulumi.Input[Optional[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
                  vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_card: pulumi.Input[Optional[Union['VirtualMachineVideoCardArgs', 'VirtualMachineVideoCardArgsDict']]] = None,
                  vtpm: pulumi.Input[Optional[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
                  vvtd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  wait_for_guest_ip_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4941,6 +5046,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["enable_disk_uuid"] = enable_disk_uuid
             __props__.__dict__["enable_logging"] = enable_logging
             __props__.__dict__["ept_rvi_mode"] = ept_rvi_mode
+            __props__.__dict__["evc_mode"] = evc_mode
             __props__.__dict__["extra_config"] = extra_config
             __props__.__dict__["extra_config_reboot_required"] = extra_config_reboot_required
             __props__.__dict__["firmware"] = firmware
@@ -4964,6 +5070,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nested_hv_enabled"] = nested_hv_enabled
             __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["num_cores_per_numa_node"] = num_cores_per_numa_node
             __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
             __props__.__dict__["num_cpus"] = num_cpus
             __props__.__dict__["nvme_controller_count"] = nvme_controller_count
@@ -4992,6 +5099,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["tools_upgrade_policy"] = tools_upgrade_policy
             __props__.__dict__["vapp"] = vapp
             __props__.__dict__["vbs_enabled"] = vbs_enabled
+            __props__.__dict__["video_card"] = video_card
             __props__.__dict__["vtpm"] = vtpm
             __props__.__dict__["vvtd_enabled"] = vvtd_enabled
             __props__.__dict__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
@@ -5043,6 +5151,7 @@ class VirtualMachine(pulumi.CustomResource):
             enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
             ept_rvi_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            evc_mode: pulumi.Input[Optional[_builtins.str]] = None,
             extra_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             extra_config_reboot_required: pulumi.Input[Optional[_builtins.bool]] = None,
             firmware: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5069,6 +5178,7 @@ class VirtualMachine(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             nested_hv_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
+            num_cores_per_numa_node: pulumi.Input[Optional[_builtins.int]] = None,
             num_cores_per_socket: pulumi.Input[Optional[_builtins.int]] = None,
             num_cpus: pulumi.Input[Optional[_builtins.int]] = None,
             nvme_controller_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -5099,6 +5209,7 @@ class VirtualMachine(pulumi.CustomResource):
             vapp: pulumi.Input[Optional[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
             vapp_transports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             vbs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            video_card: pulumi.Input[Optional[Union['VirtualMachineVideoCardArgs', 'VirtualMachineVideoCardArgsDict']]] = None,
             vmware_tools_status: pulumi.Input[Optional[_builtins.str]] = None,
             vmx_path: pulumi.Input[Optional[_builtins.str]] = None,
             vtpm: pulumi.Input[Optional[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
@@ -5138,6 +5249,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
+        :param pulumi.Input[_builtins.str] evc_mode: Enhanced vMotion Compatibility mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
@@ -5156,7 +5268,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memory_reservation` have the same value.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
@@ -5164,6 +5276,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
+        :param pulumi.Input[_builtins.int] num_cores_per_numa_node: The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input[_builtins.int] nvme_controller_count: The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
@@ -5194,6 +5307,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vapp_transports: Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
         :param pulumi.Input[_builtins.bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
+        :param pulumi.Input[Union['VirtualMachineVideoCardArgs', 'VirtualMachineVideoCardArgsDict']] video_card: A specification for a video card device on this virtual machine.
         :param pulumi.Input[_builtins.str] vmware_tools_status: The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
         :param pulumi.Input[_builtins.str] vmx_path: The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
         :param pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
@@ -5231,6 +5345,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["enable_disk_uuid"] = enable_disk_uuid
         __props__.__dict__["enable_logging"] = enable_logging
         __props__.__dict__["ept_rvi_mode"] = ept_rvi_mode
+        __props__.__dict__["evc_mode"] = evc_mode
         __props__.__dict__["extra_config"] = extra_config
         __props__.__dict__["extra_config_reboot_required"] = extra_config_reboot_required
         __props__.__dict__["firmware"] = firmware
@@ -5257,6 +5372,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["nested_hv_enabled"] = nested_hv_enabled
         __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["num_cores_per_numa_node"] = num_cores_per_numa_node
         __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
         __props__.__dict__["num_cpus"] = num_cpus
         __props__.__dict__["nvme_controller_count"] = nvme_controller_count
@@ -5287,6 +5403,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["vapp"] = vapp
         __props__.__dict__["vapp_transports"] = vapp_transports
         __props__.__dict__["vbs_enabled"] = vbs_enabled
+        __props__.__dict__["video_card"] = video_card
         __props__.__dict__["vmware_tools_status"] = vmware_tools_status
         __props__.__dict__["vmx_path"] = vmx_path
         __props__.__dict__["vtpm"] = vtpm
@@ -5497,6 +5614,14 @@ class VirtualMachine(pulumi.CustomResource):
         return pulumi.get(self, "ept_rvi_mode")
 
     @_builtins.property
+    @pulumi.getter(name="evcMode")
+    def evc_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Enhanced vMotion Compatibility mode.
+        """
+        return pulumi.get(self, "evc_mode")
+
+    @_builtins.property
     @pulumi.getter(name="extraConfig")
     def extra_config(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
@@ -5644,7 +5769,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="memoryReservationLockedToMax")
     def memory_reservation_locked_to_max(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory. Applied only when `memory` and `memory_reservation` have the same value.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
@@ -5703,6 +5828,14 @@ class VirtualMachine(pulumi.CustomResource):
         A specification for a virtual NIC on this virtual machine.
         """
         return pulumi.get(self, "network_interfaces")
+
+    @_builtins.property
+    @pulumi.getter(name="numCoresPerNumaNode")
+    def num_cores_per_numa_node(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The number of cores to distribute amongst the CPUs NUMA nodes. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+        """
+        return pulumi.get(self, "num_cores_per_numa_node")
 
     @_builtins.property
     @pulumi.getter(name="numCoresPerSocket")
@@ -5943,6 +6076,14 @@ class VirtualMachine(pulumi.CustomResource):
         Flag to specify if Virtualization-based security is enabled for this virtual machine.
         """
         return pulumi.get(self, "vbs_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="videoCard")
+    def video_card(self) -> pulumi.Output[Optional['outputs.VirtualMachineVideoCard']]:
+        """
+        A specification for a video card device on this virtual machine.
+        """
+        return pulumi.get(self, "video_card")
 
     @_builtins.property
     @pulumi.getter(name="vmwareToolsStatus")

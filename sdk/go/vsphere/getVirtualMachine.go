@@ -128,11 +128,13 @@ type LookupVirtualMachineArgs struct {
 	// This can be omitted if the search path used in `name` is an absolute path. For
 	// default datacenters, use the `id` attribute from an empty `Datacenter`
 	// data source.
-	DatacenterId              *string           `pulumi:"datacenterId"`
-	EfiSecureBootEnabled      *bool             `pulumi:"efiSecureBootEnabled"`
-	EnableDiskUuid            *bool             `pulumi:"enableDiskUuid"`
-	EnableLogging             *bool             `pulumi:"enableLogging"`
-	EptRviMode                *string           `pulumi:"eptRviMode"`
+	DatacenterId         *string `pulumi:"datacenterId"`
+	EfiSecureBootEnabled *bool   `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid       *bool   `pulumi:"enableDiskUuid"`
+	EnableLogging        *bool   `pulumi:"enableLogging"`
+	EptRviMode           *string `pulumi:"eptRviMode"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode                   *string           `pulumi:"evcMode"`
 	ExtraConfig               map[string]string `pulumi:"extraConfig"`
 	ExtraConfigRebootRequired *bool             `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or
@@ -150,7 +152,7 @@ type LookupVirtualMachineArgs struct {
 	HvMode                 *string `pulumi:"hvMode"`
 	IdeControllerScanCount *int    `pulumi:"ideControllerScanCount"`
 	LatencySensitivity     *string `pulumi:"latencySensitivity"`
-	// The size of the virtual machine's memory, in MB.
+	// The dedicated 3D graphics memory in megabytes.
 	Memory                       *int    `pulumi:"memory"`
 	MemoryHotAddEnabled          *bool   `pulumi:"memoryHotAddEnabled"`
 	MemoryLimit                  *int    `pulumi:"memoryLimit"`
@@ -164,6 +166,8 @@ type LookupVirtualMachineArgs struct {
 	// performed.
 	Name            *string `pulumi:"name"`
 	NestedHvEnabled *bool   `pulumi:"nestedHvEnabled"`
+	// The number of cores per NUMA node for this virtual machine.
+	NumCoresPerNumaNode *int `pulumi:"numCoresPerNumaNode"`
 	// The number of cores per socket for this virtual
 	// machine.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
@@ -172,18 +176,6 @@ type LookupVirtualMachineArgs struct {
 	NumCpus *int `pulumi:"numCpus"`
 	// The number of NVMe controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-	//
-	// > **NOTE:** For best results, ensure that all the disks on any templates you
-	// use with this data source reside on the primary controller, and leave this value
-	// at the default. See the
-	// [`VirtualMachine`][docs-virtual-machine-resource] resource
-	// documentation for the significance of this setting, specifically the
-	// [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-	// section.
-	//
-	// [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
 	NvmeControllerScanCount            *int    `pulumi:"nvmeControllerScanCount"`
 	ReplaceTrigger                     *string `pulumi:"replaceTrigger"`
 	RunToolsScriptsAfterPowerOn        *bool   `pulumi:"runToolsScriptsAfterPowerOn"`
@@ -215,19 +207,20 @@ type LookupVirtualMachineResult struct {
 	// `otherGuest64`.
 	AlternateGuestName *string `pulumi:"alternateGuestName"`
 	// The user-provided description of this virtual machine.
-	Annotation                    string  `pulumi:"annotation"`
-	BootDelay                     *int    `pulumi:"bootDelay"`
-	BootRetryDelay                *int    `pulumi:"bootRetryDelay"`
-	BootRetryEnabled              *bool   `pulumi:"bootRetryEnabled"`
-	ChangeVersion                 string  `pulumi:"changeVersion"`
-	CpuHotAddEnabled              *bool   `pulumi:"cpuHotAddEnabled"`
-	CpuHotRemoveEnabled           *bool   `pulumi:"cpuHotRemoveEnabled"`
-	CpuLimit                      *int    `pulumi:"cpuLimit"`
-	CpuPerformanceCountersEnabled *bool   `pulumi:"cpuPerformanceCountersEnabled"`
-	CpuReservation                *int    `pulumi:"cpuReservation"`
-	CpuShareCount                 int     `pulumi:"cpuShareCount"`
-	CpuShareLevel                 *string `pulumi:"cpuShareLevel"`
-	DatacenterId                  *string `pulumi:"datacenterId"`
+	Annotation                    string            `pulumi:"annotation"`
+	BootDelay                     *int              `pulumi:"bootDelay"`
+	BootRetryDelay                *int              `pulumi:"bootRetryDelay"`
+	BootRetryEnabled              *bool             `pulumi:"bootRetryEnabled"`
+	ChangeVersion                 string            `pulumi:"changeVersion"`
+	CpuHotAddEnabled              *bool             `pulumi:"cpuHotAddEnabled"`
+	CpuHotRemoveEnabled           *bool             `pulumi:"cpuHotRemoveEnabled"`
+	CpuLimit                      *int              `pulumi:"cpuLimit"`
+	CpuPerformanceCountersEnabled *bool             `pulumi:"cpuPerformanceCountersEnabled"`
+	CpuReservation                *int              `pulumi:"cpuReservation"`
+	CpuShareCount                 int               `pulumi:"cpuShareCount"`
+	CpuShareLevel                 *string           `pulumi:"cpuShareLevel"`
+	CustomAttributes              map[string]string `pulumi:"customAttributes"`
+	DatacenterId                  *string           `pulumi:"datacenterId"`
 	// Whenever possible, this is the first IPv4 address that
 	// is reachable through the default gateway configured on the machine, then the
 	// first reachable IPv6 address, and then the first general discovered address if
@@ -242,13 +235,15 @@ type LookupVirtualMachineResult struct {
 	// must be the same on the destination virtual machine as the source. Only the
 	// first number of controllers defined by `scsiControllerScanCount` are
 	// scanned for disks. The sub-attributes are:
-	Disks                     []GetVirtualMachineDisk `pulumi:"disks"`
-	EfiSecureBootEnabled      *bool                   `pulumi:"efiSecureBootEnabled"`
-	EnableDiskUuid            *bool                   `pulumi:"enableDiskUuid"`
-	EnableLogging             *bool                   `pulumi:"enableLogging"`
-	EptRviMode                string                  `pulumi:"eptRviMode"`
-	ExtraConfig               map[string]string       `pulumi:"extraConfig"`
-	ExtraConfigRebootRequired *bool                   `pulumi:"extraConfigRebootRequired"`
+	Disks                []GetVirtualMachineDisk `pulumi:"disks"`
+	EfiSecureBootEnabled *bool                   `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid       *bool                   `pulumi:"enableDiskUuid"`
+	EnableLogging        *bool                   `pulumi:"enableLogging"`
+	EptRviMode           string                  `pulumi:"eptRviMode"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode                   *string           `pulumi:"evcMode"`
+	ExtraConfig               map[string]string `pulumi:"extraConfig"`
+	ExtraConfigRebootRequired *bool             `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or
 	// `efi`.
 	Firmware *string `pulumi:"firmware"`
@@ -266,7 +261,7 @@ type LookupVirtualMachineResult struct {
 	// The instance UUID of the virtual machine or template.
 	InstanceUuid       string  `pulumi:"instanceUuid"`
 	LatencySensitivity *string `pulumi:"latencySensitivity"`
-	// The size of the virtual machine's memory, in MB.
+	// The dedicated 3D graphics memory in megabytes.
 	Memory                       *int    `pulumi:"memory"`
 	MemoryHotAddEnabled          *bool   `pulumi:"memoryHotAddEnabled"`
 	MemoryLimit                  *int    `pulumi:"memoryLimit"`
@@ -290,6 +285,8 @@ type LookupVirtualMachineResult struct {
 	// output by this data source must be the same on the destination virtual machine
 	// as the source. The sub-attributes are:
 	NetworkInterfaces []GetVirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
+	// The number of cores per NUMA node for this virtual machine.
+	NumCoresPerNumaNode *int `pulumi:"numCoresPerNumaNode"`
 	// The number of cores per socket for this virtual
 	// machine.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
@@ -305,7 +302,8 @@ type LookupVirtualMachineResult struct {
 	RunToolsScriptsBeforeGuestStandby  *bool   `pulumi:"runToolsScriptsBeforeGuestStandby"`
 	SataControllerScanCount            *int    `pulumi:"sataControllerScanCount"`
 	// Mode for sharing the SCSI bus. The modes are
-	// physicalSharing, virtualSharing, and noSharing. Only the first number of
+	// `physicalSharing`, `virtualSharing`, `noSharing`, or `mixed` when
+	// there are multiple sharing types across controllers. Only the first number of
 	// controllers defined by `scsiControllerScanCount` are scanned.
 	ScsiBusSharing          string `pulumi:"scsiBusSharing"`
 	ScsiControllerScanCount *int   `pulumi:"scsiControllerScanCount"`
@@ -319,11 +317,14 @@ type LookupVirtualMachineResult struct {
 	SwapPlacementPolicy          *string                `pulumi:"swapPlacementPolicy"`
 	SyncTimeWithHost             *bool                  `pulumi:"syncTimeWithHost"`
 	SyncTimeWithHostPeriodically *bool                  `pulumi:"syncTimeWithHostPeriodically"`
+	Tags                         []string               `pulumi:"tags"`
 	ToolsUpgradePolicy           *string                `pulumi:"toolsUpgradePolicy"`
 	Uuid                         string                 `pulumi:"uuid"`
 	Vapp                         *GetVirtualMachineVapp `pulumi:"vapp"`
 	VappTransports               []string               `pulumi:"vappTransports"`
 	VbsEnabled                   *bool                  `pulumi:"vbsEnabled"`
+	// Information about the virtual video card
+	VideoCards []GetVirtualMachineVideoCard `pulumi:"videoCards"`
 	// Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
 	Vtpm        bool  `pulumi:"vtpm"`
 	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
@@ -361,11 +362,13 @@ type LookupVirtualMachineOutputArgs struct {
 	// This can be omitted if the search path used in `name` is an absolute path. For
 	// default datacenters, use the `id` attribute from an empty `Datacenter`
 	// data source.
-	DatacenterId              pulumi.StringPtrInput `pulumi:"datacenterId"`
-	EfiSecureBootEnabled      pulumi.BoolPtrInput   `pulumi:"efiSecureBootEnabled"`
-	EnableDiskUuid            pulumi.BoolPtrInput   `pulumi:"enableDiskUuid"`
-	EnableLogging             pulumi.BoolPtrInput   `pulumi:"enableLogging"`
-	EptRviMode                pulumi.StringPtrInput `pulumi:"eptRviMode"`
+	DatacenterId         pulumi.StringPtrInput `pulumi:"datacenterId"`
+	EfiSecureBootEnabled pulumi.BoolPtrInput   `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid       pulumi.BoolPtrInput   `pulumi:"enableDiskUuid"`
+	EnableLogging        pulumi.BoolPtrInput   `pulumi:"enableLogging"`
+	EptRviMode           pulumi.StringPtrInput `pulumi:"eptRviMode"`
+	// Enhanced vMotion Compatibility mode.
+	EvcMode                   pulumi.StringPtrInput `pulumi:"evcMode"`
 	ExtraConfig               pulumi.StringMapInput `pulumi:"extraConfig"`
 	ExtraConfigRebootRequired pulumi.BoolPtrInput   `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or
@@ -383,7 +386,7 @@ type LookupVirtualMachineOutputArgs struct {
 	HvMode                 pulumi.StringPtrInput `pulumi:"hvMode"`
 	IdeControllerScanCount pulumi.IntPtrInput    `pulumi:"ideControllerScanCount"`
 	LatencySensitivity     pulumi.StringPtrInput `pulumi:"latencySensitivity"`
-	// The size of the virtual machine's memory, in MB.
+	// The dedicated 3D graphics memory in megabytes.
 	Memory                       pulumi.IntPtrInput    `pulumi:"memory"`
 	MemoryHotAddEnabled          pulumi.BoolPtrInput   `pulumi:"memoryHotAddEnabled"`
 	MemoryLimit                  pulumi.IntPtrInput    `pulumi:"memoryLimit"`
@@ -397,6 +400,8 @@ type LookupVirtualMachineOutputArgs struct {
 	// performed.
 	Name            pulumi.StringPtrInput `pulumi:"name"`
 	NestedHvEnabled pulumi.BoolPtrInput   `pulumi:"nestedHvEnabled"`
+	// The number of cores per NUMA node for this virtual machine.
+	NumCoresPerNumaNode pulumi.IntPtrInput `pulumi:"numCoresPerNumaNode"`
 	// The number of cores per socket for this virtual
 	// machine.
 	NumCoresPerSocket pulumi.IntPtrInput `pulumi:"numCoresPerSocket"`
@@ -405,18 +410,6 @@ type LookupVirtualMachineOutputArgs struct {
 	NumCpus pulumi.IntPtrInput `pulumi:"numCpus"`
 	// The number of NVMe controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-	//
-	// > **NOTE:** For best results, ensure that all the disks on any templates you
-	// use with this data source reside on the primary controller, and leave this value
-	// at the default. See the
-	// [`VirtualMachine`][docs-virtual-machine-resource] resource
-	// documentation for the significance of this setting, specifically the
-	// [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-	// section.
-	//
-	// [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
 	NvmeControllerScanCount            pulumi.IntPtrInput    `pulumi:"nvmeControllerScanCount"`
 	ReplaceTrigger                     pulumi.StringPtrInput `pulumi:"replaceTrigger"`
 	RunToolsScriptsAfterPowerOn        pulumi.BoolPtrInput   `pulumi:"runToolsScriptsAfterPowerOn"`
@@ -516,6 +509,10 @@ func (o LookupVirtualMachineResultOutput) CpuShareLevel() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.CpuShareLevel }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupVirtualMachineResultOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) map[string]string { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
 func (o LookupVirtualMachineResultOutput) DatacenterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
 }
@@ -555,6 +552,11 @@ func (o LookupVirtualMachineResultOutput) EnableLogging() pulumi.BoolPtrOutput {
 
 func (o LookupVirtualMachineResultOutput) EptRviMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.EptRviMode }).(pulumi.StringOutput)
+}
+
+// Enhanced vMotion Compatibility mode.
+func (o LookupVirtualMachineResultOutput) EvcMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.EvcMode }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) ExtraConfig() pulumi.StringMapOutput {
@@ -612,7 +614,7 @@ func (o LookupVirtualMachineResultOutput) LatencySensitivity() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.LatencySensitivity }).(pulumi.StringPtrOutput)
 }
 
-// The size of the virtual machine's memory, in MB.
+// The dedicated 3D graphics memory in megabytes.
 func (o LookupVirtualMachineResultOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
@@ -672,6 +674,11 @@ func (o LookupVirtualMachineResultOutput) NetworkInterfaces() GetVirtualMachineN
 	return o.ApplyT(func(v LookupVirtualMachineResult) []GetVirtualMachineNetworkInterface { return v.NetworkInterfaces }).(GetVirtualMachineNetworkInterfaceArrayOutput)
 }
 
+// The number of cores per NUMA node for this virtual machine.
+func (o LookupVirtualMachineResultOutput) NumCoresPerNumaNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.NumCoresPerNumaNode }).(pulumi.IntPtrOutput)
+}
+
 // The number of cores per socket for this virtual
 // machine.
 func (o LookupVirtualMachineResultOutput) NumCoresPerSocket() pulumi.IntPtrOutput {
@@ -717,7 +724,8 @@ func (o LookupVirtualMachineResultOutput) SataControllerScanCount() pulumi.IntPt
 }
 
 // Mode for sharing the SCSI bus. The modes are
-// physicalSharing, virtualSharing, and noSharing. Only the first number of
+// `physicalSharing`, `virtualSharing`, `noSharing`, or `mixed` when
+// there are multiple sharing types across controllers. Only the first number of
 // controllers defined by `scsiControllerScanCount` are scanned.
 func (o LookupVirtualMachineResultOutput) ScsiBusSharing() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.ScsiBusSharing }).(pulumi.StringOutput)
@@ -752,6 +760,10 @@ func (o LookupVirtualMachineResultOutput) SyncTimeWithHostPeriodically() pulumi.
 	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.SyncTimeWithHostPeriodically }).(pulumi.BoolPtrOutput)
 }
 
+func (o LookupVirtualMachineResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupVirtualMachineResultOutput) ToolsUpgradePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.ToolsUpgradePolicy }).(pulumi.StringPtrOutput)
 }
@@ -770,6 +782,11 @@ func (o LookupVirtualMachineResultOutput) VappTransports() pulumi.StringArrayOut
 
 func (o LookupVirtualMachineResultOutput) VbsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.VbsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Information about the virtual video card
+func (o LookupVirtualMachineResultOutput) VideoCards() GetVirtualMachineVideoCardArrayOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) []GetVirtualMachineVideoCard { return v.VideoCards }).(GetVirtualMachineVideoCardArrayOutput)
 }
 
 // Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.

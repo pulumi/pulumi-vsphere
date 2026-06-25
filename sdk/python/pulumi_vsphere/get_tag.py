@@ -42,7 +42,7 @@ class GetTagResult:
 
     @_builtins.property
     @pulumi.getter(name="categoryId")
-    def category_id(self) -> _builtins.str:
+    def category_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "category_id")
 
     @_builtins.property
@@ -52,15 +52,12 @@ class GetTagResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
+    def id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> _builtins.str:
+    def name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "name")
 
 
@@ -77,6 +74,7 @@ class AwaitableGetTagResult(GetTagResult):
 
 
 def get_tag(category_id: Optional[_builtins.str] = None,
+            id: Optional[_builtins.str] = None,
             name: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
@@ -93,6 +91,8 @@ def get_tag(category_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ### Lookup by Name and Category
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -101,14 +101,26 @@ def get_tag(category_id: Optional[_builtins.str] = None,
     tag = vsphere.get_tag(name="example-tag",
         category_id=category.id)
     ```
+    ### Lookup by ID
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    by_id = vsphere.get_tag(id="urn:vmomi:InventoryServiceTag:xxxx")
+    ```
 
 
     :param _builtins.str category_id: The ID of the tag category in which the tag is
-           located.
-    :param _builtins.str name: The name of the tag.
+           located. Required when `name` is used.
+    :param _builtins.str id: The unique identifier of the tag. If specified, `name` and
+           `category_id` must not be set.
+    :param _builtins.str name: The name of the tag. If specified, `category_id` must also
+           be provided.
     """
     __args__ = dict()
     __args__['categoryId'] = category_id
+    __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts, typ=GetTagResult).value
@@ -118,8 +130,9 @@ def get_tag(category_id: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_tag_output(category_id: pulumi.Input[Optional[_builtins.str]] = None,
-                   name: pulumi.Input[Optional[_builtins.str]] = None,
+def get_tag_output(category_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
     The `Tag` data source can be used to reference tags that are not managed
@@ -135,6 +148,8 @@ def get_tag_output(category_id: pulumi.Input[Optional[_builtins.str]] = None,
 
     ## Example Usage
 
+    ### Lookup by Name and Category
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -143,14 +158,26 @@ def get_tag_output(category_id: pulumi.Input[Optional[_builtins.str]] = None,
     tag = vsphere.get_tag(name="example-tag",
         category_id=category.id)
     ```
+    ### Lookup by ID
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    by_id = vsphere.get_tag(id="urn:vmomi:InventoryServiceTag:xxxx")
+    ```
 
 
     :param _builtins.str category_id: The ID of the tag category in which the tag is
-           located.
-    :param _builtins.str name: The name of the tag.
+           located. Required when `name` is used.
+    :param _builtins.str id: The unique identifier of the tag. If specified, `name` and
+           `category_id` must not be set.
+    :param _builtins.str name: The name of the tag. If specified, `category_id` must also
+           be provided.
     """
     __args__ = dict()
     __args__['categoryId'] = category_id
+    __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getTag:getTag', __args__, opts=opts, typ=GetTagResult)

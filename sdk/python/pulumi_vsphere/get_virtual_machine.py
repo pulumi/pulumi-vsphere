@@ -28,7 +28,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, instance_uuid=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, nvme_controller_scan_count=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vtpm=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, evc_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, instance_uuid=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_numa_node=None, num_cores_per_socket=None, num_cpus=None, nvme_controller_scan_count=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tags=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, video_cards=None, vtpm=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -68,6 +68,9 @@ class GetVirtualMachineResult:
         if cpu_share_level and not isinstance(cpu_share_level, str):
             raise TypeError("Expected argument 'cpu_share_level' to be a str")
         pulumi.set(__self__, "cpu_share_level", cpu_share_level)
+        if custom_attributes and not isinstance(custom_attributes, dict):
+            raise TypeError("Expected argument 'custom_attributes' to be a dict")
+        pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
@@ -89,6 +92,9 @@ class GetVirtualMachineResult:
         if ept_rvi_mode and not isinstance(ept_rvi_mode, str):
             raise TypeError("Expected argument 'ept_rvi_mode' to be a str")
         pulumi.set(__self__, "ept_rvi_mode", ept_rvi_mode)
+        if evc_mode and not isinstance(evc_mode, str):
+            raise TypeError("Expected argument 'evc_mode' to be a str")
+        pulumi.set(__self__, "evc_mode", evc_mode)
         if extra_config and not isinstance(extra_config, dict):
             raise TypeError("Expected argument 'extra_config' to be a dict")
         pulumi.set(__self__, "extra_config", extra_config)
@@ -161,6 +167,9 @@ class GetVirtualMachineResult:
         if network_interfaces and not isinstance(network_interfaces, list):
             raise TypeError("Expected argument 'network_interfaces' to be a list")
         pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if num_cores_per_numa_node and not isinstance(num_cores_per_numa_node, int):
+            raise TypeError("Expected argument 'num_cores_per_numa_node' to be a int")
+        pulumi.set(__self__, "num_cores_per_numa_node", num_cores_per_numa_node)
         if num_cores_per_socket and not isinstance(num_cores_per_socket, int):
             raise TypeError("Expected argument 'num_cores_per_socket' to be a int")
         pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
@@ -212,6 +221,9 @@ class GetVirtualMachineResult:
         if sync_time_with_host_periodically and not isinstance(sync_time_with_host_periodically, bool):
             raise TypeError("Expected argument 'sync_time_with_host_periodically' to be a bool")
         pulumi.set(__self__, "sync_time_with_host_periodically", sync_time_with_host_periodically)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if tools_upgrade_policy and not isinstance(tools_upgrade_policy, str):
             raise TypeError("Expected argument 'tools_upgrade_policy' to be a str")
         pulumi.set(__self__, "tools_upgrade_policy", tools_upgrade_policy)
@@ -227,6 +239,9 @@ class GetVirtualMachineResult:
         if vbs_enabled and not isinstance(vbs_enabled, bool):
             raise TypeError("Expected argument 'vbs_enabled' to be a bool")
         pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+        if video_cards and not isinstance(video_cards, list):
+            raise TypeError("Expected argument 'video_cards' to be a list")
+        pulumi.set(__self__, "video_cards", video_cards)
         if vtpm and not isinstance(vtpm, bool):
             raise TypeError("Expected argument 'vtpm' to be a bool")
         pulumi.set(__self__, "vtpm", vtpm)
@@ -308,6 +323,11 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "cpu_share_level")
 
     @_builtins.property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "custom_attributes")
+
+    @_builtins.property
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "datacenter_id")
@@ -358,6 +378,14 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="eptRviMode")
     def ept_rvi_mode(self) -> _builtins.str:
         return pulumi.get(self, "ept_rvi_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="evcMode")
+    def evc_mode(self) -> Optional[_builtins.str]:
+        """
+        Enhanced vMotion Compatibility mode.
+        """
+        return pulumi.get(self, "evc_mode")
 
     @_builtins.property
     @pulumi.getter(name="extraConfig")
@@ -442,7 +470,7 @@ class GetVirtualMachineResult:
     @pulumi.getter
     def memory(self) -> Optional[_builtins.int]:
         """
-        The size of the virtual machine's memory, in MB.
+        The dedicated 3D graphics memory in megabytes.
         """
         return pulumi.get(self, "memory")
 
@@ -517,6 +545,14 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "network_interfaces")
 
     @_builtins.property
+    @pulumi.getter(name="numCoresPerNumaNode")
+    def num_cores_per_numa_node(self) -> Optional[_builtins.int]:
+        """
+        The number of cores per NUMA node for this virtual machine.
+        """
+        return pulumi.get(self, "num_cores_per_numa_node")
+
+    @_builtins.property
     @pulumi.getter(name="numCoresPerSocket")
     def num_cores_per_socket(self) -> Optional[_builtins.int]:
         """
@@ -579,7 +615,8 @@ class GetVirtualMachineResult:
     def scsi_bus_sharing(self) -> _builtins.str:
         """
         Mode for sharing the SCSI bus. The modes are
-        physicalSharing, virtualSharing, and noSharing. Only the first number of
+        `physicalSharing`, `virtualSharing`, `noSharing`, or `mixed` when
+        there are multiple sharing types across controllers. Only the first number of
         controllers defined by `scsi_controller_scan_count` are scanned.
         """
         return pulumi.get(self, "scsi_bus_sharing")
@@ -622,6 +659,11 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "sync_time_with_host_periodically")
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
     @pulumi.getter(name="toolsUpgradePolicy")
     def tools_upgrade_policy(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "tools_upgrade_policy")
@@ -645,6 +687,14 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="vbsEnabled")
     def vbs_enabled(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "vbs_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="videoCards")
+    def video_cards(self) -> Sequence['outputs.GetVirtualMachineVideoCardResult']:
+        """
+        Information about the virtual video card
+        """
+        return pulumi.get(self, "video_cards")
 
     @_builtins.property
     @pulumi.getter
@@ -679,6 +729,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             cpu_reservation=self.cpu_reservation,
             cpu_share_count=self.cpu_share_count,
             cpu_share_level=self.cpu_share_level,
+            custom_attributes=self.custom_attributes,
             datacenter_id=self.datacenter_id,
             default_ip_address=self.default_ip_address,
             disks=self.disks,
@@ -686,6 +737,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             enable_disk_uuid=self.enable_disk_uuid,
             enable_logging=self.enable_logging,
             ept_rvi_mode=self.ept_rvi_mode,
+            evc_mode=self.evc_mode,
             extra_config=self.extra_config,
             extra_config_reboot_required=self.extra_config_reboot_required,
             firmware=self.firmware,
@@ -710,6 +762,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             nested_hv_enabled=self.nested_hv_enabled,
             network_interface_types=self.network_interface_types,
             network_interfaces=self.network_interfaces,
+            num_cores_per_numa_node=self.num_cores_per_numa_node,
             num_cores_per_socket=self.num_cores_per_socket,
             num_cpus=self.num_cpus,
             nvme_controller_scan_count=self.nvme_controller_scan_count,
@@ -727,11 +780,13 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             swap_placement_policy=self.swap_placement_policy,
             sync_time_with_host=self.sync_time_with_host,
             sync_time_with_host_periodically=self.sync_time_with_host_periodically,
+            tags=self.tags,
             tools_upgrade_policy=self.tools_upgrade_policy,
             uuid=self.uuid,
             vapp=self.vapp,
             vapp_transports=self.vapp_transports,
             vbs_enabled=self.vbs_enabled,
+            video_cards=self.video_cards,
             vtpm=self.vtpm,
             vvtd_enabled=self.vvtd_enabled)
 
@@ -753,6 +808,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
                         enable_disk_uuid: Optional[_builtins.bool] = None,
                         enable_logging: Optional[_builtins.bool] = None,
                         ept_rvi_mode: Optional[_builtins.str] = None,
+                        evc_mode: Optional[_builtins.str] = None,
                         extra_config: Optional[Mapping[str, _builtins.str]] = None,
                         extra_config_reboot_required: Optional[_builtins.bool] = None,
                         firmware: Optional[_builtins.str] = None,
@@ -772,6 +828,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
                         moid: Optional[_builtins.str] = None,
                         name: Optional[_builtins.str] = None,
                         nested_hv_enabled: Optional[_builtins.bool] = None,
+                        num_cores_per_numa_node: Optional[_builtins.int] = None,
                         num_cores_per_socket: Optional[_builtins.int] = None,
                         num_cpus: Optional[_builtins.int] = None,
                         nvme_controller_scan_count: Optional[_builtins.int] = None,
@@ -840,6 +897,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
            This can be omitted if the search path used in `name` is an absolute path. For
            default datacenters, use the `id` attribute from an empty `Datacenter`
            data source.
+    :param _builtins.str evc_mode: Enhanced vMotion Compatibility mode.
     :param _builtins.str firmware: The firmware type for this virtual machine. Can be `bios` or
            `efi`.
     :param _builtins.str folder: The name of the virtual machine folder where the virtual
@@ -848,28 +906,17 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
            80 characters limit, the `folder` folder argument can be used.
     :param _builtins.str guest_id: The guest ID of the virtual machine or template.
     :param _builtins.int hardware_version: The hardware version number on this virtual machine.
-    :param _builtins.int memory: The size of the virtual machine's memory, in MB.
+    :param _builtins.int memory: The dedicated 3D graphics memory in megabytes.
     :param _builtins.str name: The name of the virtual machine. This can be a name or the
            full path relative to the datacenter. This is required if a UUID lookup is not
            performed.
+    :param _builtins.int num_cores_per_numa_node: The number of cores per NUMA node for this virtual machine.
     :param _builtins.int num_cores_per_socket: The number of cores per socket for this virtual
            machine.
     :param _builtins.int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
     :param _builtins.int nvme_controller_scan_count: The number of NVMe controllers to
            scan for disk attributes and controller types on. Default: `1`.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-           
-           > **NOTE:** For best results, ensure that all the disks on any templates you
-           use with this data source reside on the primary controller, and leave this value
-           at the default. See the
-           [`VirtualMachine`][docs-virtual-machine-resource] resource
-           documentation for the significance of this setting, specifically the
-           [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-           section.
-           
-           [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
     :param _builtins.int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
     :param _builtins.str uuid: Specify this field for a UUID lookup, `name` and
@@ -893,6 +940,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
     __args__['enableDiskUuid'] = enable_disk_uuid
     __args__['enableLogging'] = enable_logging
     __args__['eptRviMode'] = ept_rvi_mode
+    __args__['evcMode'] = evc_mode
     __args__['extraConfig'] = extra_config
     __args__['extraConfigRebootRequired'] = extra_config_reboot_required
     __args__['firmware'] = firmware
@@ -912,6 +960,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
     __args__['moid'] = moid
     __args__['name'] = name
     __args__['nestedHvEnabled'] = nested_hv_enabled
+    __args__['numCoresPerNumaNode'] = num_cores_per_numa_node
     __args__['numCoresPerSocket'] = num_cores_per_socket
     __args__['numCpus'] = num_cpus
     __args__['nvmeControllerScanCount'] = nvme_controller_scan_count
@@ -949,6 +998,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
         cpu_reservation=pulumi.get(__ret__, 'cpu_reservation'),
         cpu_share_count=pulumi.get(__ret__, 'cpu_share_count'),
         cpu_share_level=pulumi.get(__ret__, 'cpu_share_level'),
+        custom_attributes=pulumi.get(__ret__, 'custom_attributes'),
         datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
         default_ip_address=pulumi.get(__ret__, 'default_ip_address'),
         disks=pulumi.get(__ret__, 'disks'),
@@ -956,6 +1006,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
         enable_disk_uuid=pulumi.get(__ret__, 'enable_disk_uuid'),
         enable_logging=pulumi.get(__ret__, 'enable_logging'),
         ept_rvi_mode=pulumi.get(__ret__, 'ept_rvi_mode'),
+        evc_mode=pulumi.get(__ret__, 'evc_mode'),
         extra_config=pulumi.get(__ret__, 'extra_config'),
         extra_config_reboot_required=pulumi.get(__ret__, 'extra_config_reboot_required'),
         firmware=pulumi.get(__ret__, 'firmware'),
@@ -980,6 +1031,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
         nested_hv_enabled=pulumi.get(__ret__, 'nested_hv_enabled'),
         network_interface_types=pulumi.get(__ret__, 'network_interface_types'),
         network_interfaces=pulumi.get(__ret__, 'network_interfaces'),
+        num_cores_per_numa_node=pulumi.get(__ret__, 'num_cores_per_numa_node'),
         num_cores_per_socket=pulumi.get(__ret__, 'num_cores_per_socket'),
         num_cpus=pulumi.get(__ret__, 'num_cpus'),
         nvme_controller_scan_count=pulumi.get(__ret__, 'nvme_controller_scan_count'),
@@ -997,11 +1049,13 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
         swap_placement_policy=pulumi.get(__ret__, 'swap_placement_policy'),
         sync_time_with_host=pulumi.get(__ret__, 'sync_time_with_host'),
         sync_time_with_host_periodically=pulumi.get(__ret__, 'sync_time_with_host_periodically'),
+        tags=pulumi.get(__ret__, 'tags'),
         tools_upgrade_policy=pulumi.get(__ret__, 'tools_upgrade_policy'),
         uuid=pulumi.get(__ret__, 'uuid'),
         vapp=pulumi.get(__ret__, 'vapp'),
         vapp_transports=pulumi.get(__ret__, 'vapp_transports'),
         vbs_enabled=pulumi.get(__ret__, 'vbs_enabled'),
+        video_cards=pulumi.get(__ret__, 'video_cards'),
         vtpm=pulumi.get(__ret__, 'vtpm'),
         vvtd_enabled=pulumi.get(__ret__, 'vvtd_enabled'))
 def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -1021,6 +1075,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
                                enable_disk_uuid: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                enable_logging: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                ept_rvi_mode: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               evc_mode: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                extra_config: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                extra_config_reboot_required: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                firmware: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -1040,6 +1095,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
                                moid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                nested_hv_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               num_cores_per_numa_node: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                num_cores_per_socket: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                num_cpus: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                nvme_controller_scan_count: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -1108,6 +1164,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
            This can be omitted if the search path used in `name` is an absolute path. For
            default datacenters, use the `id` attribute from an empty `Datacenter`
            data source.
+    :param _builtins.str evc_mode: Enhanced vMotion Compatibility mode.
     :param _builtins.str firmware: The firmware type for this virtual machine. Can be `bios` or
            `efi`.
     :param _builtins.str folder: The name of the virtual machine folder where the virtual
@@ -1116,28 +1173,17 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
            80 characters limit, the `folder` folder argument can be used.
     :param _builtins.str guest_id: The guest ID of the virtual machine or template.
     :param _builtins.int hardware_version: The hardware version number on this virtual machine.
-    :param _builtins.int memory: The size of the virtual machine's memory, in MB.
+    :param _builtins.int memory: The dedicated 3D graphics memory in megabytes.
     :param _builtins.str name: The name of the virtual machine. This can be a name or the
            full path relative to the datacenter. This is required if a UUID lookup is not
            performed.
+    :param _builtins.int num_cores_per_numa_node: The number of cores per NUMA node for this virtual machine.
     :param _builtins.int num_cores_per_socket: The number of cores per socket for this virtual
            machine.
     :param _builtins.int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
     :param _builtins.int nvme_controller_scan_count: The number of NVMe controllers to
            scan for disk attributes and controller types on. Default: `1`.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-           
-           > **NOTE:** For best results, ensure that all the disks on any templates you
-           use with this data source reside on the primary controller, and leave this value
-           at the default. See the
-           [`VirtualMachine`][docs-virtual-machine-resource] resource
-           documentation for the significance of this setting, specifically the
-           [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
-           section.
-           
-           [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
     :param _builtins.int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
     :param _builtins.str uuid: Specify this field for a UUID lookup, `name` and
@@ -1161,6 +1207,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
     __args__['enableDiskUuid'] = enable_disk_uuid
     __args__['enableLogging'] = enable_logging
     __args__['eptRviMode'] = ept_rvi_mode
+    __args__['evcMode'] = evc_mode
     __args__['extraConfig'] = extra_config
     __args__['extraConfigRebootRequired'] = extra_config_reboot_required
     __args__['firmware'] = firmware
@@ -1180,6 +1227,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
     __args__['moid'] = moid
     __args__['name'] = name
     __args__['nestedHvEnabled'] = nested_hv_enabled
+    __args__['numCoresPerNumaNode'] = num_cores_per_numa_node
     __args__['numCoresPerSocket'] = num_cores_per_socket
     __args__['numCpus'] = num_cpus
     __args__['nvmeControllerScanCount'] = nvme_controller_scan_count
@@ -1216,6 +1264,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
         cpu_reservation=pulumi.get(__response__, 'cpu_reservation'),
         cpu_share_count=pulumi.get(__response__, 'cpu_share_count'),
         cpu_share_level=pulumi.get(__response__, 'cpu_share_level'),
+        custom_attributes=pulumi.get(__response__, 'custom_attributes'),
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),
         default_ip_address=pulumi.get(__response__, 'default_ip_address'),
         disks=pulumi.get(__response__, 'disks'),
@@ -1223,6 +1272,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
         enable_disk_uuid=pulumi.get(__response__, 'enable_disk_uuid'),
         enable_logging=pulumi.get(__response__, 'enable_logging'),
         ept_rvi_mode=pulumi.get(__response__, 'ept_rvi_mode'),
+        evc_mode=pulumi.get(__response__, 'evc_mode'),
         extra_config=pulumi.get(__response__, 'extra_config'),
         extra_config_reboot_required=pulumi.get(__response__, 'extra_config_reboot_required'),
         firmware=pulumi.get(__response__, 'firmware'),
@@ -1247,6 +1297,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
         nested_hv_enabled=pulumi.get(__response__, 'nested_hv_enabled'),
         network_interface_types=pulumi.get(__response__, 'network_interface_types'),
         network_interfaces=pulumi.get(__response__, 'network_interfaces'),
+        num_cores_per_numa_node=pulumi.get(__response__, 'num_cores_per_numa_node'),
         num_cores_per_socket=pulumi.get(__response__, 'num_cores_per_socket'),
         num_cpus=pulumi.get(__response__, 'num_cpus'),
         nvme_controller_scan_count=pulumi.get(__response__, 'nvme_controller_scan_count'),
@@ -1264,10 +1315,12 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
         swap_placement_policy=pulumi.get(__response__, 'swap_placement_policy'),
         sync_time_with_host=pulumi.get(__response__, 'sync_time_with_host'),
         sync_time_with_host_periodically=pulumi.get(__response__, 'sync_time_with_host_periodically'),
+        tags=pulumi.get(__response__, 'tags'),
         tools_upgrade_policy=pulumi.get(__response__, 'tools_upgrade_policy'),
         uuid=pulumi.get(__response__, 'uuid'),
         vapp=pulumi.get(__response__, 'vapp'),
         vapp_transports=pulumi.get(__response__, 'vapp_transports'),
         vbs_enabled=pulumi.get(__response__, 'vbs_enabled'),
+        video_cards=pulumi.get(__response__, 'video_cards'),
         vtpm=pulumi.get(__response__, 'vtpm'),
         vvtd_enabled=pulumi.get(__response__, 'vvtd_enabled')))

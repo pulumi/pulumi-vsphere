@@ -25,6 +25,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Lookup by Name and Category
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +48,25 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Id = "urn:vmomi:InventoryServiceTag:xxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
+        public static Task<GetTagResult> InvokeAsync(GetTagArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
 
         /// <summary>
@@ -64,6 +83,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Lookup by Name and Category
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +106,25 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Id = "urn:vmomi:InventoryServiceTag:xxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetTagResult> Invoke(GetTagInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -103,6 +141,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Lookup by Name and Category
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -124,6 +164,23 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Id = "urn:vmomi:InventoryServiceTag:xxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
@@ -134,16 +191,24 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the tag category in which the tag is
-        /// located.
+        /// located. Required when `Name` is used.
         /// </summary>
-        [Input("categoryId", required: true)]
-        public string CategoryId { get; set; } = null!;
+        [Input("categoryId")]
+        public string? CategoryId { get; set; }
 
         /// <summary>
-        /// The name of the tag.
+        /// The unique identifier of the tag. If specified, `Name` and
+        /// `CategoryId` must not be set.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// The name of the tag. If specified, `CategoryId` must also
+        /// be provided.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetTagArgs()
         {
@@ -155,16 +220,24 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the tag category in which the tag is
-        /// located.
+        /// located. Required when `Name` is used.
         /// </summary>
-        [Input("categoryId", required: true)]
-        public Input<string> CategoryId { get; set; } = null!;
+        [Input("categoryId")]
+        public Input<string>? CategoryId { get; set; }
 
         /// <summary>
-        /// The name of the tag.
+        /// The unique identifier of the tag. If specified, `Name` and
+        /// `CategoryId` must not be set.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the tag. If specified, `CategoryId` must also
+        /// be provided.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetTagInvokeArgs()
         {
@@ -176,23 +249,20 @@ namespace Pulumi.VSphere
     [OutputType]
     public sealed class GetTagResult
     {
-        public readonly string CategoryId;
+        public readonly string? CategoryId;
         public readonly string Description;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        public readonly string Name;
+        public readonly string? Id;
+        public readonly string? Name;
 
         [OutputConstructor]
         private GetTagResult(
-            string categoryId,
+            string? categoryId,
 
             string description,
 
-            string id,
+            string? id,
 
-            string name)
+            string? name)
         {
             CategoryId = categoryId;
             Description = description;

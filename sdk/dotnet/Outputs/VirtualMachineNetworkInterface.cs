@@ -38,6 +38,10 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? DeviceAddress;
         /// <summary>
+        /// The external port id to be bound to the VM port.
+        /// </summary>
+        public readonly string? ExternalPortId;
+        /// <summary>
         /// The ID of the device within the virtual machine.
         /// </summary>
         public readonly int? Key;
@@ -76,6 +80,8 @@ namespace Pulumi.VSphere.Outputs
 
             string? deviceAddress,
 
+            string? externalPortId,
+
             int? key,
 
             string? macAddress,
@@ -94,6 +100,7 @@ namespace Pulumi.VSphere.Outputs
             BandwidthShareCount = bandwidthShareCount;
             BandwidthShareLevel = bandwidthShareLevel;
             DeviceAddress = deviceAddress;
+            ExternalPortId = externalPortId;
             Key = key;
             MacAddress = macAddress;
             NetworkId = networkId;

@@ -16,14 +16,14 @@ public final class SupervisorManagementNetworkArgs extends com.pulumi.resources.
     public static final SupervisorManagementNetworkArgs Empty = new SupervisorManagementNetworkArgs();
 
     /**
-     * Number of addresses to allocate. Starts from &#39;starting_address&#39;
+     * Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     @Import(name="addressCount", required=true)
     private Output<Integer> addressCount;
 
     /**
-     * @return Number of addresses to allocate. Starts from &#39;starting_address&#39;
+     * @return Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     public Output<Integer> addressCount() {
@@ -46,14 +46,14 @@ public final class SupervisorManagementNetworkArgs extends com.pulumi.resources.
     }
 
     /**
-     * ID of the network. (e.g. a distributed port group).
+     * ID of the network. (_e.g._, a distributed port group).
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return ID of the network. (e.g. a distributed port group).
+     * @return ID of the network. (_e.g._, a distributed port group).
      * 
      */
     public Output<String> network() {
@@ -119,7 +119,7 @@ public final class SupervisorManagementNetworkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param addressCount Number of addresses to allocate. Starts from &#39;starting_address&#39;
+         * @param addressCount Number of addresses to allocate. Starts from `startingAddress`
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class SupervisorManagementNetworkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param addressCount Number of addresses to allocate. Starts from &#39;starting_address&#39;
+         * @param addressCount Number of addresses to allocate. Starts from `startingAddress`
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class SupervisorManagementNetworkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param network ID of the network. (e.g. a distributed port group).
+         * @param network ID of the network. (_e.g._, a distributed port group).
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class SupervisorManagementNetworkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param network ID of the network. (e.g. a distributed port group).
+         * @param network ID of the network. (_e.g._, a distributed port group).
          * 
          * @return builder
          * 

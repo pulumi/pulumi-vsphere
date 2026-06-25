@@ -289,14 +289,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+     * The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
      * 
      */
     @Import(name="unitNumber")
     private @Nullable Output<Integer> unitNumber;
 
     /**
-     * @return The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+     * @return The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
      * 
      */
     public Optional<Output<Integer>> unitNumber() {
@@ -756,7 +756,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param unitNumber The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+         * @param unitNumber The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param unitNumber The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+         * @param unitNumber The unique device number for this disk. This number determines where on the virtual bus this device will be attached.
          * 
          * @return builder
          * 

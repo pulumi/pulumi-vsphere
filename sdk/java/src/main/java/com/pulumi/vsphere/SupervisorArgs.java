@@ -114,14 +114,14 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of addresses of the primary DNS servers.
+     * The list of addresses for the primary DNS servers.
      * 
      */
     @Import(name="mainDns", required=true)
     private Output<List<String>> mainDns;
 
     /**
-     * @return The list of addresses of the primary DNS servers.
+     * @return The list of addresses for the primary DNS servers.
      * 
      */
     public Output<List<String>> mainDns() {
@@ -129,14 +129,14 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of addresses of the primary NTP servers.
+     * The list of addresses for the primary NTP servers.
      * 
      */
     @Import(name="mainNtps", required=true)
     private Output<List<String>> mainNtps;
 
     /**
-     * @return The list of addresses of the primary NTP servers.
+     * @return The list of addresses for the primary NTP servers.
      * 
      */
     public Output<List<String>> mainNtps() {
@@ -145,11 +145,6 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
-     * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `startingAddress` - Starting address of the management network range.
-     * * * `subnetMask` - Subnet mask.
-     * * * `gateway` - Gateway IP address.
-     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     @Import(name="managementNetwork", required=true)
@@ -157,11 +152,6 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The configuration for the management network which the control plane VMs will be connected to.
-     * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `startingAddress` - Starting address of the management network range.
-     * * * `subnetMask` - Subnet mask.
-     * * * `gateway` - Gateway IP address.
-     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     public Output<SupervisorManagementNetworkArgs> managementNetwork() {
@@ -259,14 +249,14 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of addresses of the DNS servers to use for the worker nodes.
+     * The list of addresses for the DNS servers to use for the worker nodes.
      * 
      */
     @Import(name="workerDns", required=true)
     private Output<List<String>> workerDns;
 
     /**
-     * @return The list of addresses of the DNS servers to use for the worker nodes.
+     * @return The list of addresses for the DNS servers to use for the worker nodes.
      * 
      */
     public Output<List<String>> workerDns() {
@@ -274,14 +264,14 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of addresses of the NTP servers to use for the worker nodes.
+     * The list of addresses for the NTP servers to use for the worker nodes.
      * 
      */
     @Import(name="workerNtps", required=true)
     private Output<List<String>> workerNtps;
 
     /**
-     * @return The list of addresses of the NTP servers to use for the worker nodes.
+     * @return The list of addresses for the NTP servers to use for the worker nodes.
      * 
      */
     public Output<List<String>> workerNtps() {
@@ -475,7 +465,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainDns The list of addresses of the primary DNS servers.
+         * @param mainDns The list of addresses for the primary DNS servers.
          * 
          * @return builder
          * 
@@ -486,7 +476,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainDns The list of addresses of the primary DNS servers.
+         * @param mainDns The list of addresses for the primary DNS servers.
          * 
          * @return builder
          * 
@@ -496,7 +486,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainDns The list of addresses of the primary DNS servers.
+         * @param mainDns The list of addresses for the primary DNS servers.
          * 
          * @return builder
          * 
@@ -506,7 +496,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainNtps The list of addresses of the primary NTP servers.
+         * @param mainNtps The list of addresses for the primary NTP servers.
          * 
          * @return builder
          * 
@@ -517,7 +507,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainNtps The list of addresses of the primary NTP servers.
+         * @param mainNtps The list of addresses for the primary NTP servers.
          * 
          * @return builder
          * 
@@ -527,7 +517,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainNtps The list of addresses of the primary NTP servers.
+         * @param mainNtps The list of addresses for the primary NTP servers.
          * 
          * @return builder
          * 
@@ -538,11 +528,6 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param managementNetwork The configuration for the management network which the control plane VMs will be connected to.
-         * * * `network` - ID of the network. (e.g. a distributed port group).
-         * * * `startingAddress` - Starting address of the management network range.
-         * * * `subnetMask` - Subnet mask.
-         * * * `gateway` - Gateway IP address.
-         * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
          * 
          * @return builder
          * 
@@ -554,11 +539,6 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param managementNetwork The configuration for the management network which the control plane VMs will be connected to.
-         * * * `network` - ID of the network. (e.g. a distributed port group).
-         * * * `startingAddress` - Starting address of the management network range.
-         * * * `subnetMask` - Subnet mask.
-         * * * `gateway` - Gateway IP address.
-         * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
          * 
          * @return builder
          * 
@@ -714,7 +694,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerDns The list of addresses of the DNS servers to use for the worker nodes.
+         * @param workerDns The list of addresses for the DNS servers to use for the worker nodes.
          * 
          * @return builder
          * 
@@ -725,7 +705,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerDns The list of addresses of the DNS servers to use for the worker nodes.
+         * @param workerDns The list of addresses for the DNS servers to use for the worker nodes.
          * 
          * @return builder
          * 
@@ -735,7 +715,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerDns The list of addresses of the DNS servers to use for the worker nodes.
+         * @param workerDns The list of addresses for the DNS servers to use for the worker nodes.
          * 
          * @return builder
          * 
@@ -745,7 +725,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerNtps The list of addresses of the NTP servers to use for the worker nodes.
+         * @param workerNtps The list of addresses for the NTP servers to use for the worker nodes.
          * 
          * @return builder
          * 
@@ -756,7 +736,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerNtps The list of addresses of the NTP servers to use for the worker nodes.
+         * @param workerNtps The list of addresses for the NTP servers to use for the worker nodes.
          * 
          * @return builder
          * 
@@ -766,7 +746,7 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerNtps The list of addresses of the NTP servers to use for the worker nodes.
+         * @param workerNtps The list of addresses for the NTP servers to use for the worker nodes.
          * 
          * @return builder
          * 

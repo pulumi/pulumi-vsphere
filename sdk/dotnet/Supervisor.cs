@@ -12,6 +12,8 @@ namespace Pulumi.VSphere
     /// <summary>
     /// Provides a resource for configuring Workload Management.
     /// 
+    /// &gt; **NOTE:** This resource is deprecated and will be removed in a future major version of the provider. Use `vsphere.SupervisorV2` instead.
+    /// 
     /// ## Example Usage
     /// 
     /// ### S
@@ -138,24 +140,19 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<Outputs.SupervisorIngressCidr>> IngressCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The list of addresses of the primary DNS servers.
+        /// The list of addresses for the primary DNS servers.
         /// </summary>
         [Output("mainDns")]
         public Output<ImmutableArray<string>> MainDns { get; private set; } = null!;
 
         /// <summary>
-        /// The list of addresses of the primary NTP servers.
+        /// The list of addresses for the primary NTP servers.
         /// </summary>
         [Output("mainNtps")]
         public Output<ImmutableArray<string>> MainNtps { get; private set; } = null!;
 
         /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
-        /// * * `Network` - ID of the network. (e.g. a distributed port group).
-        /// * * `StartingAddress` - Starting address of the management network range.
-        /// * * `SubnetMask` - Subnet mask.
-        /// * * `Gateway` - Gateway IP address.
-        /// * * `AddressCount` - Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         [Output("managementNetwork")]
         public Output<Outputs.SupervisorManagementNetwork> ManagementNetwork { get; private set; } = null!;
@@ -197,13 +194,13 @@ namespace Pulumi.VSphere
         public Output<string> StoragePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The list of addresses of the DNS servers to use for the worker nodes.
+        /// The list of addresses for the DNS servers to use for the worker nodes.
         /// </summary>
         [Output("workerDns")]
         public Output<ImmutableArray<string>> WorkerDns { get; private set; } = null!;
 
         /// <summary>
-        /// The list of addresses of the NTP servers to use for the worker nodes.
+        /// The list of addresses for the NTP servers to use for the worker nodes.
         /// </summary>
         [Output("workerNtps")]
         public Output<ImmutableArray<string>> WorkerNtps { get; private set; } = null!;
@@ -306,7 +303,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _mainDns;
 
         /// <summary>
-        /// The list of addresses of the primary DNS servers.
+        /// The list of addresses for the primary DNS servers.
         /// </summary>
         public InputList<string> MainDns
         {
@@ -318,7 +315,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _mainNtps;
 
         /// <summary>
-        /// The list of addresses of the primary NTP servers.
+        /// The list of addresses for the primary NTP servers.
         /// </summary>
         public InputList<string> MainNtps
         {
@@ -328,11 +325,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
-        /// * * `Network` - ID of the network. (e.g. a distributed port group).
-        /// * * `StartingAddress` - Starting address of the management network range.
-        /// * * `SubnetMask` - Subnet mask.
-        /// * * `Gateway` - Gateway IP address.
-        /// * * `AddressCount` - Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         [Input("managementNetwork", required: true)]
         public Input<Inputs.SupervisorManagementNetworkArgs> ManagementNetwork { get; set; } = null!;
@@ -389,7 +381,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _workerDns;
 
         /// <summary>
-        /// The list of addresses of the DNS servers to use for the worker nodes.
+        /// The list of addresses for the DNS servers to use for the worker nodes.
         /// </summary>
         public InputList<string> WorkerDns
         {
@@ -401,7 +393,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _workerNtps;
 
         /// <summary>
-        /// The list of addresses of the NTP servers to use for the worker nodes.
+        /// The list of addresses for the NTP servers to use for the worker nodes.
         /// </summary>
         public InputList<string> WorkerNtps
         {
@@ -469,7 +461,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _mainDns;
 
         /// <summary>
-        /// The list of addresses of the primary DNS servers.
+        /// The list of addresses for the primary DNS servers.
         /// </summary>
         public InputList<string> MainDns
         {
@@ -481,7 +473,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _mainNtps;
 
         /// <summary>
-        /// The list of addresses of the primary NTP servers.
+        /// The list of addresses for the primary NTP servers.
         /// </summary>
         public InputList<string> MainNtps
         {
@@ -491,11 +483,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
-        /// * * `Network` - ID of the network. (e.g. a distributed port group).
-        /// * * `StartingAddress` - Starting address of the management network range.
-        /// * * `SubnetMask` - Subnet mask.
-        /// * * `Gateway` - Gateway IP address.
-        /// * * `AddressCount` - Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         [Input("managementNetwork")]
         public Input<Inputs.SupervisorManagementNetworkGetArgs>? ManagementNetwork { get; set; }
@@ -552,7 +539,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _workerDns;
 
         /// <summary>
-        /// The list of addresses of the DNS servers to use for the worker nodes.
+        /// The list of addresses for the DNS servers to use for the worker nodes.
         /// </summary>
         public InputList<string> WorkerDns
         {
@@ -564,7 +551,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _workerNtps;
 
         /// <summary>
-        /// The list of addresses of the NTP servers to use for the worker nodes.
+        /// The list of addresses for the NTP servers to use for the worker nodes.
         /// </summary>
         public InputList<string> WorkerNtps
         {

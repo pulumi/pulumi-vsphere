@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "vsphere:index/alarm:Alarm":
+		r = &Alarm{}
 	case "vsphere:index/computeCluster:ComputeCluster":
 		r = &ComputeCluster{}
 	case "vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup":
@@ -77,6 +79,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HostVirtualSwitch{}
 	case "vsphere:index/license:License":
 		r = &License{}
+	case "vsphere:index/namespace:Namespace":
+		r = &Namespace{}
 	case "vsphere:index/nasDatastore:NasDatastore":
 		r = &NasDatastore{}
 	case "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot":
@@ -89,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StorageDrsVmOverride{}
 	case "vsphere:index/supervisor:Supervisor":
 		r = &Supervisor{}
+	case "vsphere:index/supervisorV2:SupervisorV2":
+		r = &SupervisorV2{}
 	case "vsphere:index/tag:Tag":
 		r = &Tag{}
 	case "vsphere:index/tagCategory:TagCategory":
@@ -111,6 +117,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VmfsDatastore{}
 	case "vsphere:index/vnic:Vnic":
 		r = &Vnic{}
+	case "vsphere:index/zone:Zone":
+		r = &Zone{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -142,6 +150,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/alarm",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/computeCluster",
@@ -284,6 +297,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"vsphere",
+		"index/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
 		"index/nasDatastore",
 		&module{version},
 	)
@@ -310,6 +328,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/supervisor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/supervisorV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -365,6 +388,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/vnic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/zone",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

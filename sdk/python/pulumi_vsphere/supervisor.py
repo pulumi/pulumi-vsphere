@@ -47,21 +47,16 @@ class SupervisorArgs:
         :param pulumi.Input[_builtins.str] edge_cluster: The identifier of the NSX Edge Cluster.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses of the primary DNS servers.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses of the primary NTP servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses for the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses for the primary NTP servers.
         :param pulumi.Input['SupervisorManagementNetworkArgs'] management_network: The configuration for the management network which the control plane VMs will be connected to.
-               * * `network` - ID of the network. (e.g. a distributed port group).
-               * * `starting_address` - Starting address of the management network range.
-               * * `subnet_mask` - Subnet mask.
-               * * `gateway` - Gateway IP address.
-               * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorPodCidrArgs']]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
         :param pulumi.Input[_builtins.str] search_domains: List of DNS search domains.
         :param pulumi.Input['SupervisorServiceCidrArgs'] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
         :param pulumi.Input[_builtins.str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[_builtins.str] storage_policy: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses for the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses for the NTP servers to use for the worker nodes.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]] namespaces: The list of namespaces to create in the Supervisor cluster
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -159,7 +154,7 @@ class SupervisorArgs:
     @pulumi.getter(name="mainDns")
     def main_dns(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of addresses of the primary DNS servers.
+        The list of addresses for the primary DNS servers.
         """
         return pulumi.get(self, "main_dns")
 
@@ -171,7 +166,7 @@ class SupervisorArgs:
     @pulumi.getter(name="mainNtps")
     def main_ntps(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of addresses of the primary NTP servers.
+        The list of addresses for the primary NTP servers.
         """
         return pulumi.get(self, "main_ntps")
 
@@ -184,11 +179,6 @@ class SupervisorArgs:
     def management_network(self) -> pulumi.Input['SupervisorManagementNetworkArgs']:
         """
         The configuration for the management network which the control plane VMs will be connected to.
-        * * `network` - ID of the network. (e.g. a distributed port group).
-        * * `starting_address` - Starting address of the management network range.
-        * * `subnet_mask` - Subnet mask.
-        * * `gateway` - Gateway IP address.
-        * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
         """
         return pulumi.get(self, "management_network")
 
@@ -260,7 +250,7 @@ class SupervisorArgs:
     @pulumi.getter(name="workerDns")
     def worker_dns(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of addresses of the DNS servers to use for the worker nodes.
+        The list of addresses for the DNS servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_dns")
 
@@ -272,7 +262,7 @@ class SupervisorArgs:
     @pulumi.getter(name="workerNtps")
     def worker_ntps(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of addresses of the NTP servers to use for the worker nodes.
+        The list of addresses for the NTP servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_ntps")
 
@@ -322,22 +312,17 @@ class _SupervisorState:
         :param pulumi.Input[_builtins.str] edge_cluster: The identifier of the NSX Edge Cluster.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses of the primary DNS servers.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses of the primary NTP servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses for the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses for the primary NTP servers.
         :param pulumi.Input['SupervisorManagementNetworkArgs'] management_network: The configuration for the management network which the control plane VMs will be connected to.
-               * * `network` - ID of the network. (e.g. a distributed port group).
-               * * `starting_address` - Starting address of the management network range.
-               * * `subnet_mask` - Subnet mask.
-               * * `gateway` - Gateway IP address.
-               * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]] namespaces: The list of namespaces to create in the Supervisor cluster
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorPodCidrArgs']]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
         :param pulumi.Input[_builtins.str] search_domains: List of DNS search domains.
         :param pulumi.Input['SupervisorServiceCidrArgs'] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
         :param pulumi.Input[_builtins.str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[_builtins.str] storage_policy: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses for the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses for the NTP servers to use for the worker nodes.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -450,7 +435,7 @@ class _SupervisorState:
     @pulumi.getter(name="mainDns")
     def main_dns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of addresses of the primary DNS servers.
+        The list of addresses for the primary DNS servers.
         """
         return pulumi.get(self, "main_dns")
 
@@ -462,7 +447,7 @@ class _SupervisorState:
     @pulumi.getter(name="mainNtps")
     def main_ntps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of addresses of the primary NTP servers.
+        The list of addresses for the primary NTP servers.
         """
         return pulumi.get(self, "main_ntps")
 
@@ -475,11 +460,6 @@ class _SupervisorState:
     def management_network(self) -> pulumi.Input[Optional['SupervisorManagementNetworkArgs']]:
         """
         The configuration for the management network which the control plane VMs will be connected to.
-        * * `network` - ID of the network. (e.g. a distributed port group).
-        * * `starting_address` - Starting address of the management network range.
-        * * `subnet_mask` - Subnet mask.
-        * * `gateway` - Gateway IP address.
-        * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
         """
         return pulumi.get(self, "management_network")
 
@@ -563,7 +543,7 @@ class _SupervisorState:
     @pulumi.getter(name="workerDns")
     def worker_dns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of addresses of the DNS servers to use for the worker nodes.
+        The list of addresses for the DNS servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_dns")
 
@@ -575,7 +555,7 @@ class _SupervisorState:
     @pulumi.getter(name="workerNtps")
     def worker_ntps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of addresses of the NTP servers to use for the worker nodes.
+        The list of addresses for the NTP servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_ntps")
 
@@ -610,6 +590,8 @@ class Supervisor(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a resource for configuring Workload Management.
+
+        > **NOTE:** This resource is deprecated and will be removed in a future major version of the provider. Use `SupervisorV2` instead.
 
         ## Example Usage
 
@@ -674,22 +656,17 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] edge_cluster: The identifier of the NSX Edge Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses of the primary DNS servers.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses of the primary NTP servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses for the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses for the primary NTP servers.
         :param pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']] management_network: The configuration for the management network which the control plane VMs will be connected to.
-               * * `network` - ID of the network. (e.g. a distributed port group).
-               * * `starting_address` - Starting address of the management network range.
-               * * `subnet_mask` - Subnet mask.
-               * * `gateway` - Gateway IP address.
-               * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]] namespaces: The list of namespaces to create in the Supervisor cluster
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
         :param pulumi.Input[_builtins.str] search_domains: List of DNS search domains.
         :param pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
         :param pulumi.Input[_builtins.str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[_builtins.str] storage_policy: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses for the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses for the NTP servers to use for the worker nodes.
         """
         ...
     @overload
@@ -699,6 +676,8 @@ class Supervisor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for configuring Workload Management.
+
+        > **NOTE:** This resource is deprecated and will be removed in a future major version of the provider. Use `SupervisorV2` instead.
 
         ## Example Usage
 
@@ -885,22 +864,17 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] edge_cluster: The identifier of the NSX Edge Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses of the primary DNS servers.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses of the primary NTP servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_dns: The list of addresses for the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] main_ntps: The list of addresses for the primary NTP servers.
         :param pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']] management_network: The configuration for the management network which the control plane VMs will be connected to.
-               * * `network` - ID of the network. (e.g. a distributed port group).
-               * * `starting_address` - Starting address of the management network range.
-               * * `subnet_mask` - Subnet mask.
-               * * `gateway` - Gateway IP address.
-               * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]] namespaces: The list of namespaces to create in the Supervisor cluster
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
         :param pulumi.Input[_builtins.str] search_domains: List of DNS search domains.
         :param pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
         :param pulumi.Input[_builtins.str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[_builtins.str] storage_policy: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_dns: The list of addresses for the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] worker_ntps: The list of addresses for the NTP servers to use for the worker nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -977,7 +951,7 @@ class Supervisor(pulumi.CustomResource):
     @pulumi.getter(name="mainDns")
     def main_dns(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of addresses of the primary DNS servers.
+        The list of addresses for the primary DNS servers.
         """
         return pulumi.get(self, "main_dns")
 
@@ -985,7 +959,7 @@ class Supervisor(pulumi.CustomResource):
     @pulumi.getter(name="mainNtps")
     def main_ntps(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of addresses of the primary NTP servers.
+        The list of addresses for the primary NTP servers.
         """
         return pulumi.get(self, "main_ntps")
 
@@ -994,11 +968,6 @@ class Supervisor(pulumi.CustomResource):
     def management_network(self) -> pulumi.Output['outputs.SupervisorManagementNetwork']:
         """
         The configuration for the management network which the control plane VMs will be connected to.
-        * * `network` - ID of the network. (e.g. a distributed port group).
-        * * `starting_address` - Starting address of the management network range.
-        * * `subnet_mask` - Subnet mask.
-        * * `gateway` - Gateway IP address.
-        * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
         """
         return pulumi.get(self, "management_network")
 
@@ -1054,7 +1023,7 @@ class Supervisor(pulumi.CustomResource):
     @pulumi.getter(name="workerDns")
     def worker_dns(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of addresses of the DNS servers to use for the worker nodes.
+        The list of addresses for the DNS servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_dns")
 
@@ -1062,7 +1031,7 @@ class Supervisor(pulumi.CustomResource):
     @pulumi.getter(name="workerNtps")
     def worker_ntps(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of addresses of the NTP servers to use for the worker nodes.
+        The list of addresses for the NTP servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_ntps")
 
