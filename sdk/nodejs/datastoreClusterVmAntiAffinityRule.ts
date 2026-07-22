@@ -56,9 +56,9 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * const vm: vsphere.VirtualMachine[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     vm.push(new vsphere.VirtualMachine(`vm-${range.value}`, {
- *         name: `pulumi-test-${range.value}`,
+ * for (let range = 0; range < 2; range++) {
+ *     vm.push(new vsphere.VirtualMachine(`vm-${range}`, {
+ *         name: `pulumi-test-${range}`,
  *         resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
  *         datastoreClusterId: datastoreCluster.then(datastoreCluster => datastoreCluster.id),
  *         numCpus: 2,

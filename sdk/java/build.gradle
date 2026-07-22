@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-vsphere"
                 packaging = "jar"
-                description = "A Pulumi package for creating vsphere resources"
+                description = $/A Pulumi package for creating vsphere resources/$
 
                 url = "https://github.com/pulumi/pulumi-vsphere"
 
