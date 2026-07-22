@@ -321,14 +321,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFormat, err := std.Format(ctx, map[string]interface{}{
+//				"input": "%s%s",
+//				"args": []*string{
+//					cluster.Name,
+//					"/Resources",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_default, err := vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
-//				Name: pulumi.StringRef(std.Format(ctx, map[string]interface{}{
-//					"input": "%s%s",
-//					"args": []*string{
-//						cluster.Name,
-//						"/Resources",
-//					},
-//				}, nil).Result),
+//				Name:         pulumi.StringRef(invokeFormat.Result),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
@@ -471,14 +475,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFormat, err := std.Format(ctx, map[string]interface{}{
+//				"input": "%s%s",
+//				"args": []*string{
+//					cluster.Name,
+//					"/Resources",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
-//				Name: pulumi.StringRef(std.Format(ctx, map[string]interface{}{
-//					"input": "%s%s",
-//					"args": []*string{
-//						cluster.Name,
-//						"/Resources",
-//					},
-//				}, nil).Result),
+//				Name:         pulumi.StringRef(invokeFormat.Result),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {

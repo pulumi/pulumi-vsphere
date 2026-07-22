@@ -293,10 +293,10 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="VM Network",
             datacenter_id=datacenter.id)
-        vm: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
-                name=f"foo-{range['value']}",
+        vm: list[vsphere.VirtualMachine] = []
+        for vm_range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{vm_range['value']}",
+                name=f"foo-{vm_range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_id=datastore.id,
                 num_cpus=1,
@@ -430,10 +430,10 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             datacenter_id=datacenter.id)
         network = vsphere.get_network(name="VM Network",
             datacenter_id=datacenter.id)
-        vm: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
-                name=f"foo-{range['value']}",
+        vm: list[vsphere.VirtualMachine] = []
+        for vm_range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{vm_range['value']}",
+                name=f"foo-{vm_range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_id=datastore.id,
                 num_cpus=1,

@@ -27,10 +27,10 @@ import * as utilities from "./utilities";
  *     name: "SecondTag",
  *     categoryId: cat.id,
  * });
- * const dyn = Promise.all([tag1, tag1]).then(([tag1, tag11]) => vsphere.getDynamic({
+ * const dyn = tag1.then(tag1 => vsphere.getDynamic({
  *     filters: [
  *         tag1.id,
- *         tag11.id,
+ *         tag1.id,
  *     ],
  *     nameRegex: "ubuntu",
  *     type: "Datacenter",
@@ -103,10 +103,10 @@ export interface GetDynamicResult {
  *     name: "SecondTag",
  *     categoryId: cat.id,
  * });
- * const dyn = Promise.all([tag1, tag1]).then(([tag1, tag11]) => vsphere.getDynamic({
+ * const dyn = tag1.then(tag1 => vsphere.getDynamic({
  *     filters: [
  *         tag1.id,
- *         tag11.id,
+ *         tag1.id,
  *     ],
  *     nameRegex: "ubuntu",
  *     type: "Datacenter",
