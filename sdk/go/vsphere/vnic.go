@@ -63,15 +63,15 @@ import (
 //			pg, err := vsphere.NewDistributedPortGroup(ctx, "pg", &vsphere.DistributedPortGroupArgs{
 //				Name:                         pulumi.String("pg-01"),
 //				VlanId:                       pulumi.Int(1234),
-//				DistributedVirtualSwitchUuid: vds.ID(),
+//				DistributedVirtualSwitchUuid: vds.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vsphere.NewVnic(ctx, "vnic", &vsphere.VnicArgs{
 //				Host:                  pulumi.String(host.Id),
-//				DistributedSwitchPort: vds.ID(),
-//				DistributedPortGroup:  pg.ID(),
+//				DistributedSwitchPort: vds.ID().ToIDOutput().ToStringOutput(),
+//				DistributedPortGroup:  pg.ID().ToIDOutput().ToStringOutput(),
 //				Ipv4: &vsphere.VnicIpv4Args{
 //					Dhcp: pulumi.Bool(true),
 //				},

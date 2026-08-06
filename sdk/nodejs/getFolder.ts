@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * });
  * const datacenterDatacenter = new vsphere.Datacenter("datacenter", {
  *     name: "example-datacenter",
- *     folder: datacenterFolder.apply(datacenterFolder => datacenterFolder.path),
+ *     folder: datacenterFolder.path,
  * }, {
  *     dependsOn: [datacenterFolder],
  * });
@@ -37,22 +37,22 @@ import * as utilities from "./utilities";
  * const vmFolderFolder = new vsphere.Folder("vm_folder", {
  *     path: "example-vm-folder",
  *     type: "vm",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const datastoreFolderFolder = new vsphere.Folder("datastore_folder", {
  *     path: "example-datastore-folder",
  *     type: "datastore",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const networkFolderFolder = new vsphere.Folder("network_folder", {
  *     path: "example-network-folder",
  *     type: "network",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const hostFolderFolder = new vsphere.Folder("host_folder", {
  *     path: "example-host-folder",
  *     type: "host",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const vmFolder = vsphere.getFolderOutput({
  *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/vm/${vmFolderFolder.path}`,
@@ -66,11 +66,11 @@ import * as utilities from "./utilities";
  * const hostFolder = vsphere.getFolderOutput({
  *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/host/${hostFolderFolder.path}`,
  * });
- * export const vmFolderId = vmFolder.apply(vmFolder => vmFolder.id);
- * export const datastoreFolderId = datastoreFolder.apply(datastoreFolder => datastoreFolder.id);
- * export const networkFolderId = networkFolder.apply(networkFolder => networkFolder.id);
- * export const hostFolderId = hostFolder.apply(hostFolder => hostFolder.id);
- * export const datacenterId = datacenter.apply(datacenter => datacenter.id);
+ * export const vmFolderId = vmFolder.id;
+ * export const datastoreFolderId = datastoreFolder.id;
+ * export const networkFolderId = networkFolder.id;
+ * export const hostFolderId = hostFolder.id;
+ * export const datacenterId = datacenter.id;
  * export const datacenterFolderPath = datacenterFolderFolder.path;
  * ```
  */
@@ -135,7 +135,7 @@ export interface GetFolderResult {
  * });
  * const datacenterDatacenter = new vsphere.Datacenter("datacenter", {
  *     name: "example-datacenter",
- *     folder: datacenterFolder.apply(datacenterFolder => datacenterFolder.path),
+ *     folder: datacenterFolder.path,
  * }, {
  *     dependsOn: [datacenterFolder],
  * });
@@ -145,22 +145,22 @@ export interface GetFolderResult {
  * const vmFolderFolder = new vsphere.Folder("vm_folder", {
  *     path: "example-vm-folder",
  *     type: "vm",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const datastoreFolderFolder = new vsphere.Folder("datastore_folder", {
  *     path: "example-datastore-folder",
  *     type: "datastore",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const networkFolderFolder = new vsphere.Folder("network_folder", {
  *     path: "example-network-folder",
  *     type: "network",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const hostFolderFolder = new vsphere.Folder("host_folder", {
  *     path: "example-host-folder",
  *     type: "host",
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  * });
  * const vmFolder = vsphere.getFolderOutput({
  *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/vm/${vmFolderFolder.path}`,
@@ -174,11 +174,11 @@ export interface GetFolderResult {
  * const hostFolder = vsphere.getFolderOutput({
  *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/host/${hostFolderFolder.path}`,
  * });
- * export const vmFolderId = vmFolder.apply(vmFolder => vmFolder.id);
- * export const datastoreFolderId = datastoreFolder.apply(datastoreFolder => datastoreFolder.id);
- * export const networkFolderId = networkFolder.apply(networkFolder => networkFolder.id);
- * export const hostFolderId = hostFolder.apply(hostFolder => hostFolder.id);
- * export const datacenterId = datacenter.apply(datacenter => datacenter.id);
+ * export const vmFolderId = vmFolder.id;
+ * export const datastoreFolderId = datastoreFolder.id;
+ * export const networkFolderId = networkFolder.id;
+ * export const hostFolderId = hostFolder.id;
+ * export const datacenterId = datacenter.id;
  * export const datacenterFolderPath = datacenterFolderFolder.path;
  * ```
  */

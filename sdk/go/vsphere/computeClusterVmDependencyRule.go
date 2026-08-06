@@ -134,7 +134,7 @@ import (
 //				Name:             pulumi.String("pulumi-test-cluster-vm-group1"),
 //				ComputeClusterId: pulumi.String(cluster.Id),
 //				VirtualMachineIds: pulumi.StringArray{
-//					vm1.ID(),
+//					vm1.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -144,7 +144,7 @@ import (
 //				Name:             pulumi.String("pulumi-test-cluster-vm-group2"),
 //				ComputeClusterId: pulumi.String(cluster.Id),
 //				VirtualMachineIds: pulumi.StringArray{
-//					vm2.ID(),
+//					vm2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

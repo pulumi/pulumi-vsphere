@@ -141,7 +141,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//			invokeFile, err := std.File(ctx, map[string]string{
 //				"input": "/path/to/cluster_config_1.json",
 //			}, nil)
 //			if err != nil {

@@ -126,7 +126,7 @@ import (
 //			}
 //			_, err = vsphere.NewResourcePool(ctx, "resource_pool_child", &vsphere.ResourcePoolArgs{
 //				Name:                 pulumi.String("child"),
-//				ParentResourcePoolId: resourcePoolParent.ID(),
+//				ParentResourcePoolId: resourcePoolParent.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

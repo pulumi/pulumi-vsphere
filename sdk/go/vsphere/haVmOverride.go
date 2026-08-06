@@ -106,7 +106,7 @@ import (
 //			}
 //			_, err = vsphere.NewHaVmOverride(ctx, "ha_vm_override", &vsphere.HaVmOverrideArgs{
 //				ComputeClusterId:    pulumi.String(cluster.Id),
-//				VirtualMachineId:    vm.ID(),
+//				VirtualMachineId:    vm.ID().ToIDOutput().ToStringOutput(),
 //				HaVmRestartPriority: pulumi.String("highest"),
 //			})
 //			if err != nil {
