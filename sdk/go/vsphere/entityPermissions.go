@@ -83,7 +83,7 @@ import (
 //						UserOrGroup: pulumi.String("vsphere.local\\ExternalIDPUsers"),
 //						Propagate:   pulumi.Bool(true),
 //						IsGroup:     pulumi.Bool(true),
-//						RoleId:      role2.ID(),
+//						RoleId:      role2.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

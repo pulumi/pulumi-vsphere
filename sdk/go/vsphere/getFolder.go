@@ -47,10 +47,8 @@ import (
 //				}).(pulumi.StringOutput),
 //			}, nil)
 //			datacenterDatacenter, err := vsphere.NewDatacenter(ctx, "datacenter", &vsphere.DatacenterArgs{
-//				Name: pulumi.String("example-datacenter"),
-//				Folder: pulumi.String(datacenterFolder.ApplyT(func(datacenterFolder vsphere.GetFolderResult) (*string, error) {
-//					return datacenterFolder.Path, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Name:   pulumi.String("example-datacenter"),
+//				Folder: datacenterFolder.Path(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				datacenterFolder,
 //			}))
@@ -61,41 +59,33 @@ import (
 //				Name: datacenterDatacenter.Name,
 //			}, nil)
 //			vmFolderFolder, err := vsphere.NewFolder(ctx, "vm_folder", &vsphere.FolderArgs{
-//				Path: pulumi.String("example-vm-folder"),
-//				Type: pulumi.String("vm"),
-//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
-//					return datacenter.Id, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Path:         pulumi.String("example-vm-folder"),
+//				Type:         pulumi.String("vm"),
+//				DatacenterId: datacenter.Id(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			datastoreFolderFolder, err := vsphere.NewFolder(ctx, "datastore_folder", &vsphere.FolderArgs{
-//				Path: pulumi.String("example-datastore-folder"),
-//				Type: pulumi.String("datastore"),
-//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
-//					return datacenter.Id, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Path:         pulumi.String("example-datastore-folder"),
+//				Type:         pulumi.String("datastore"),
+//				DatacenterId: datacenter.Id(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			networkFolderFolder, err := vsphere.NewFolder(ctx, "network_folder", &vsphere.FolderArgs{
-//				Path: pulumi.String("example-network-folder"),
-//				Type: pulumi.String("network"),
-//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
-//					return datacenter.Id, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Path:         pulumi.String("example-network-folder"),
+//				Type:         pulumi.String("network"),
+//				DatacenterId: datacenter.Id(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			hostFolderFolder, err := vsphere.NewFolder(ctx, "host_folder", &vsphere.FolderArgs{
-//				Path: pulumi.String("example-host-folder"),
-//				Type: pulumi.String("host"),
-//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
-//					return datacenter.Id, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Path:         pulumi.String("example-host-folder"),
+//				Type:         pulumi.String("host"),
+//				DatacenterId: datacenter.Id(),
 //			})
 //			if err != nil {
 //				return err
@@ -132,21 +122,11 @@ import (
 //					return fmt.Sprintf("/%v/%v/host/%v", datacenterFolderFolderPath, name, hostFolderFolderPath), nil
 //				}).(pulumi.StringOutput),
 //			}, nil)
-//			ctx.Export("vmFolderId", vmFolder.ApplyT(func(vmFolder vsphere.GetFolderResult) (*string, error) {
-//				return vmFolder.Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			ctx.Export("datastoreFolderId", datastoreFolder.ApplyT(func(datastoreFolder vsphere.GetFolderResult) (*string, error) {
-//				return datastoreFolder.Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			ctx.Export("networkFolderId", networkFolder.ApplyT(func(networkFolder vsphere.GetFolderResult) (*string, error) {
-//				return networkFolder.Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			ctx.Export("hostFolderId", hostFolder.ApplyT(func(hostFolder vsphere.GetFolderResult) (*string, error) {
-//				return hostFolder.Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			ctx.Export("datacenterId", datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
-//				return datacenter.Id, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("vmFolderId", vmFolder.Id())
+//			ctx.Export("datastoreFolderId", datastoreFolder.Id())
+//			ctx.Export("networkFolderId", networkFolder.Id())
+//			ctx.Export("hostFolderId", hostFolder.Id())
+//			ctx.Export("datacenterId", datacenter.Id())
 //			ctx.Export("datacenterFolderPath", datacenterFolderFolder.Path)
 //			return nil
 //		})

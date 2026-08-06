@@ -109,7 +109,7 @@ import (
 //			}
 //			_, err = vsphere.NewStorageDrsVmOverride(ctx, "drs_vm_override", &vsphere.StorageDrsVmOverrideArgs{
 //				DatastoreClusterId: pulumi.String(datastoreCluster.Id),
-//				VirtualMachineId:   vm.ID(),
+//				VirtualMachineId:   vm.ID().ToIDOutput().ToStringOutput(),
 //				SdrsEnabled:        pulumi.String("false"),
 //			})
 //			if err != nil {

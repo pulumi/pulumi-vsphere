@@ -82,7 +82,7 @@ import (
 //			}
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
 //				Name:           pulumi.String("pulumi-virtual-machine-test"),
-//				ResourcePoolId: vappContainer.ID(),
+//				ResourcePoolId: vappContainer.ID().ToIDOutput().ToStringOutput(),
 //				DatastoreId:    pulumi.String(datastore.Id),
 //				NumCpus:        pulumi.Int(2),
 //				Memory:         pulumi.Int(1024),
@@ -104,7 +104,7 @@ import (
 //			}
 //			_, err = vsphere.NewVappEntity(ctx, "vapp_entity", &vsphere.VappEntityArgs{
 //				TargetId:    vm.Moid,
-//				ContainerId: vappContainer.ID(),
+//				ContainerId: vappContainer.ID().ToIDOutput().ToStringOutput(),
 //				StartAction: pulumi.String("none"),
 //			})
 //			if err != nil {

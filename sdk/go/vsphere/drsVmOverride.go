@@ -111,7 +111,7 @@ import (
 //			}
 //			_, err = vsphere.NewDrsVmOverride(ctx, "drs_vm_override", &vsphere.DrsVmOverrideArgs{
 //				ComputeClusterId: pulumi.String(cluster.Id),
-//				VirtualMachineId: vm.ID(),
+//				VirtualMachineId: vm.ID().ToIDOutput().ToStringOutput(),
 //				DrsEnabled:       pulumi.Bool(false),
 //			})
 //			if err != nil {

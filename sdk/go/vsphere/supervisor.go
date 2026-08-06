@@ -86,7 +86,7 @@ import (
 //						Name:             pulumi.String("custom-namespace"),
 //						ContentLibraries: pulumi.StringArray{},
 //						VmClasses: pulumi.StringArray{
-//							vmClass.ID(),
+//							vmClass.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},

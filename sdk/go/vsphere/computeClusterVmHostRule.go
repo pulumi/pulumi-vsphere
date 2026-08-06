@@ -129,7 +129,7 @@ import (
 //				Name:             pulumi.String("pulumi-test-cluster-vm-group"),
 //				ComputeClusterId: pulumi.String(cluster.Id),
 //				VirtualMachineIds: pulumi.StringArray{
-//					vm.ID(),
+//					vm.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
