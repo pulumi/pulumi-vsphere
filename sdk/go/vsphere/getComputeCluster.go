@@ -95,12 +95,8 @@ type LookupComputeClusterResult struct {
 }
 
 func LookupComputeClusterOutput(ctx *pulumi.Context, args LookupComputeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupComputeClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupComputeClusterResultOutput, error) {
-			args := v.(LookupComputeClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getComputeCluster:getComputeCluster", args, LookupComputeClusterResultOutput{}, options).(LookupComputeClusterResultOutput), nil
-		}).(LookupComputeClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getComputeCluster:getComputeCluster", args, LookupComputeClusterResultOutput{}, options).(LookupComputeClusterResultOutput)
 }
 
 // A collection of arguments for invoking getComputeCluster.

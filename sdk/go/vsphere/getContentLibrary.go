@@ -66,12 +66,8 @@ type LookupContentLibraryResult struct {
 }
 
 func LookupContentLibraryOutput(ctx *pulumi.Context, args LookupContentLibraryOutputArgs, opts ...pulumi.InvokeOption) LookupContentLibraryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContentLibraryResultOutput, error) {
-			args := v.(LookupContentLibraryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getContentLibrary:getContentLibrary", args, LookupContentLibraryResultOutput{}, options).(LookupContentLibraryResultOutput), nil
-		}).(LookupContentLibraryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getContentLibrary:getContentLibrary", args, LookupContentLibraryResultOutput{}, options).(LookupContentLibraryResultOutput)
 }
 
 // A collection of arguments for invoking getContentLibrary.

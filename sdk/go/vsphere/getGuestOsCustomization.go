@@ -102,12 +102,8 @@ type LookupGuestOsCustomizationResult struct {
 }
 
 func LookupGuestOsCustomizationOutput(ctx *pulumi.Context, args LookupGuestOsCustomizationOutputArgs, opts ...pulumi.InvokeOption) LookupGuestOsCustomizationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGuestOsCustomizationResultOutput, error) {
-			args := v.(LookupGuestOsCustomizationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args, LookupGuestOsCustomizationResultOutput{}, options).(LookupGuestOsCustomizationResultOutput), nil
-		}).(LookupGuestOsCustomizationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args, LookupGuestOsCustomizationResultOutput{}, options).(LookupGuestOsCustomizationResultOutput)
 }
 
 // A collection of arguments for invoking getGuestOsCustomization.

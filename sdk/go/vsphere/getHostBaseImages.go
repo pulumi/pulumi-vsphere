@@ -56,10 +56,8 @@ type GetHostBaseImagesResult struct {
 }
 
 func GetHostBaseImagesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetHostBaseImagesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetHostBaseImagesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("vsphere:index/getHostBaseImages:getHostBaseImages", nil, GetHostBaseImagesResultOutput{}, options).(GetHostBaseImagesResultOutput), nil
-	}).(GetHostBaseImagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getHostBaseImages:getHostBaseImages", nil, GetHostBaseImagesResultOutput{}, options).(GetHostBaseImagesResultOutput)
 }
 
 // A collection of values returned by getHostBaseImages.

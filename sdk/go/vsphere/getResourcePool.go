@@ -178,12 +178,8 @@ type LookupResourcePoolResult struct {
 }
 
 func LookupResourcePoolOutput(ctx *pulumi.Context, args LookupResourcePoolOutputArgs, opts ...pulumi.InvokeOption) LookupResourcePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourcePoolResultOutput, error) {
-			args := v.(LookupResourcePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getResourcePool:getResourcePool", args, LookupResourcePoolResultOutput{}, options).(LookupResourcePoolResultOutput), nil
-		}).(LookupResourcePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getResourcePool:getResourcePool", args, LookupResourcePoolResultOutput{}, options).(LookupResourcePoolResultOutput)
 }
 
 // A collection of arguments for invoking getResourcePool.

@@ -95,12 +95,8 @@ type LookupComputeClusterHostGroupResult struct {
 }
 
 func LookupComputeClusterHostGroupOutput(ctx *pulumi.Context, args LookupComputeClusterHostGroupOutputArgs, opts ...pulumi.InvokeOption) LookupComputeClusterHostGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupComputeClusterHostGroupResultOutput, error) {
-			args := v.(LookupComputeClusterHostGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args, LookupComputeClusterHostGroupResultOutput{}, options).(LookupComputeClusterHostGroupResultOutput), nil
-		}).(LookupComputeClusterHostGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args, LookupComputeClusterHostGroupResultOutput{}, options).(LookupComputeClusterHostGroupResultOutput)
 }
 
 // A collection of arguments for invoking getComputeClusterHostGroup.

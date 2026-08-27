@@ -131,12 +131,8 @@ type GetHostVgpuProfileResult struct {
 }
 
 func GetHostVgpuProfileOutput(ctx *pulumi.Context, args GetHostVgpuProfileOutputArgs, opts ...pulumi.InvokeOption) GetHostVgpuProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHostVgpuProfileResultOutput, error) {
-			args := v.(GetHostVgpuProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", args, GetHostVgpuProfileResultOutput{}, options).(GetHostVgpuProfileResultOutput), nil
-		}).(GetHostVgpuProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", args, GetHostVgpuProfileResultOutput{}, options).(GetHostVgpuProfileResultOutput)
 }
 
 // A collection of arguments for invoking getHostVgpuProfile.

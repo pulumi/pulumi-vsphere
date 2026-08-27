@@ -138,12 +138,8 @@ type GetHostPciDeviceResult struct {
 }
 
 func GetHostPciDeviceOutput(ctx *pulumi.Context, args GetHostPciDeviceOutputArgs, opts ...pulumi.InvokeOption) GetHostPciDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHostPciDeviceResultOutput, error) {
-			args := v.(GetHostPciDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getHostPciDevice:getHostPciDevice", args, GetHostPciDeviceResultOutput{}, options).(GetHostPciDeviceResultOutput), nil
-		}).(GetHostPciDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getHostPciDevice:getHostPciDevice", args, GetHostPciDeviceResultOutput{}, options).(GetHostPciDeviceResultOutput)
 }
 
 // A collection of arguments for invoking getHostPciDevice.

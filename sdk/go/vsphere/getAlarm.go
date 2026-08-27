@@ -99,12 +99,8 @@ type LookupAlarmResult struct {
 }
 
 func LookupAlarmOutput(ctx *pulumi.Context, args LookupAlarmOutputArgs, opts ...pulumi.InvokeOption) LookupAlarmResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlarmResultOutput, error) {
-			args := v.(LookupAlarmArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getAlarm:getAlarm", args, LookupAlarmResultOutput{}, options).(LookupAlarmResultOutput), nil
-		}).(LookupAlarmResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getAlarm:getAlarm", args, LookupAlarmResultOutput{}, options).(LookupAlarmResultOutput)
 }
 
 // A collection of arguments for invoking getAlarm.

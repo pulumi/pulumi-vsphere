@@ -108,12 +108,8 @@ type LookupDistributedVirtualSwitchResult struct {
 }
 
 func LookupDistributedVirtualSwitchOutput(ctx *pulumi.Context, args LookupDistributedVirtualSwitchOutputArgs, opts ...pulumi.InvokeOption) LookupDistributedVirtualSwitchResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDistributedVirtualSwitchResultOutput, error) {
-			args := v.(LookupDistributedVirtualSwitchArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args, LookupDistributedVirtualSwitchResultOutput{}, options).(LookupDistributedVirtualSwitchResultOutput), nil
-		}).(LookupDistributedVirtualSwitchResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args, LookupDistributedVirtualSwitchResultOutput{}, options).(LookupDistributedVirtualSwitchResultOutput)
 }
 
 // A collection of arguments for invoking getDistributedVirtualSwitch.

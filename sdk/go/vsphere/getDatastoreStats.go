@@ -116,12 +116,8 @@ type GetDatastoreStatsResult struct {
 }
 
 func GetDatastoreStatsOutput(ctx *pulumi.Context, args GetDatastoreStatsOutputArgs, opts ...pulumi.InvokeOption) GetDatastoreStatsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatastoreStatsResultOutput, error) {
-			args := v.(GetDatastoreStatsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getDatastoreStats:getDatastoreStats", args, GetDatastoreStatsResultOutput{}, options).(GetDatastoreStatsResultOutput), nil
-		}).(GetDatastoreStatsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getDatastoreStats:getDatastoreStats", args, GetDatastoreStatsResultOutput{}, options).(GetDatastoreStatsResultOutput)
 }
 
 // A collection of arguments for invoking getDatastoreStats.

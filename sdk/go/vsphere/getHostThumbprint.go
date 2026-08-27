@@ -77,12 +77,8 @@ type GetHostThumbprintResult struct {
 }
 
 func GetHostThumbprintOutput(ctx *pulumi.Context, args GetHostThumbprintOutputArgs, opts ...pulumi.InvokeOption) GetHostThumbprintResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHostThumbprintResultOutput, error) {
-			args := v.(GetHostThumbprintArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getHostThumbprint:getHostThumbprint", args, GetHostThumbprintResultOutput{}, options).(GetHostThumbprintResultOutput), nil
-		}).(GetHostThumbprintResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getHostThumbprint:getHostThumbprint", args, GetHostThumbprintResultOutput{}, options).(GetHostThumbprintResultOutput)
 }
 
 // A collection of arguments for invoking getHostThumbprint.

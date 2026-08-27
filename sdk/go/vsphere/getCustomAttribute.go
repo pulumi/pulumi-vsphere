@@ -72,12 +72,8 @@ type LookupCustomAttributeResult struct {
 }
 
 func LookupCustomAttributeOutput(ctx *pulumi.Context, args LookupCustomAttributeOutputArgs, opts ...pulumi.InvokeOption) LookupCustomAttributeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomAttributeResultOutput, error) {
-			args := v.(LookupCustomAttributeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getCustomAttribute:getCustomAttribute", args, LookupCustomAttributeResultOutput{}, options).(LookupCustomAttributeResultOutput), nil
-		}).(LookupCustomAttributeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getCustomAttribute:getCustomAttribute", args, LookupCustomAttributeResultOutput{}, options).(LookupCustomAttributeResultOutput)
 }
 
 // A collection of arguments for invoking getCustomAttribute.
