@@ -89,12 +89,8 @@ type LookupDatastoreClusterResult struct {
 }
 
 func LookupDatastoreClusterOutput(ctx *pulumi.Context, args LookupDatastoreClusterOutputArgs, opts ...pulumi.InvokeOption) LookupDatastoreClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatastoreClusterResultOutput, error) {
-			args := v.(LookupDatastoreClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getDatastoreCluster:getDatastoreCluster", args, LookupDatastoreClusterResultOutput{}, options).(LookupDatastoreClusterResultOutput), nil
-		}).(LookupDatastoreClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getDatastoreCluster:getDatastoreCluster", args, LookupDatastoreClusterResultOutput{}, options).(LookupDatastoreClusterResultOutput)
 }
 
 // A collection of arguments for invoking getDatastoreCluster.

@@ -101,12 +101,8 @@ type GetVmfsDisksResult struct {
 }
 
 func GetVmfsDisksOutput(ctx *pulumi.Context, args GetVmfsDisksOutputArgs, opts ...pulumi.InvokeOption) GetVmfsDisksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVmfsDisksResultOutput, error) {
-			args := v.(GetVmfsDisksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getVmfsDisks:getVmfsDisks", args, GetVmfsDisksResultOutput{}, options).(GetVmfsDisksResultOutput), nil
-		}).(GetVmfsDisksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getVmfsDisks:getVmfsDisks", args, GetVmfsDisksResultOutput{}, options).(GetVmfsDisksResultOutput)
 }
 
 // A collection of arguments for invoking getVmfsDisks.

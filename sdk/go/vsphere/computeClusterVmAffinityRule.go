@@ -48,6 +48,101 @@ import (
 //
 // [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.GetComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "VM Network",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var vm []*vsphere.VirtualMachine
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
+//					Name:           pulumi.Sprintf("foo-%v", val0),
+//					ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//					DatastoreId:    pulumi.String(datastore.Id),
+//					NumCpus:        pulumi.Int(1),
+//					Memory:         pulumi.Int(1024),
+//					GuestId:        pulumi.String("otherLinux64Guest"),
+//					NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//						&vsphere.VirtualMachineNetworkInterfaceArgs{
+//							NetworkId: pulumi.String(network.Id),
+//						},
+//					},
+//					Disks: vsphere.VirtualMachineDiskArray{
+//						&vsphere.VirtualMachineDiskArgs{
+//							Label: pulumi.String("disk0"),
+//							Size:  pulumi.Int(20),
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				vm = append(vm, __res)
+//			}
+//			var forResult0 pulumi.IDArray
+//			for _, v := range vm {
+//				forResult0 = append(forResult0, v.ID())
+//			}
+//			_, err = vsphere.NewComputeClusterVmAffinityRule(ctx, "vm_affinity_rule", &vsphere.ComputeClusterVmAffinityRuleArgs{
+//				Name:              pulumi.String("vm-affinity-rule"),
+//				ComputeClusterId:  pulumi.String(cluster.Id),
+//				VirtualMachineIds: toPulumiIDArray(forResult0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+//	func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+//		var pulumiArr pulumi.IDArray
+//		for _, v := range arr {
+//			pulumiArr = append(pulumiArr, pulumi.ID(v))
+//		}
+//		return pulumiArr
+//	}
+//
+// ```
+//
 // The following example creates an affinity rule for a set of virtual machines
 // in the cluster by looking up the virtual machine UUIDs from the
 // [`VirtualMachine`][tf-vsphere-vm-data-source] data source.

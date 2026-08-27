@@ -100,12 +100,8 @@ type GetDynamicResult struct {
 }
 
 func GetDynamicOutput(ctx *pulumi.Context, args GetDynamicOutputArgs, opts ...pulumi.InvokeOption) GetDynamicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDynamicResultOutput, error) {
-			args := v.(GetDynamicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getDynamic:getDynamic", args, GetDynamicResultOutput{}, options).(GetDynamicResultOutput), nil
-		}).(GetDynamicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getDynamic:getDynamic", args, GetDynamicResultOutput{}, options).(GetDynamicResultOutput)
 }
 
 // A collection of arguments for invoking getDynamic.

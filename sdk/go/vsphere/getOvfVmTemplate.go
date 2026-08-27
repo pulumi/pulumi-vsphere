@@ -130,12 +130,8 @@ type GetOvfVmTemplateResult struct {
 }
 
 func GetOvfVmTemplateOutput(ctx *pulumi.Context, args GetOvfVmTemplateOutputArgs, opts ...pulumi.InvokeOption) GetOvfVmTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOvfVmTemplateResultOutput, error) {
-			args := v.(GetOvfVmTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args, GetOvfVmTemplateResultOutput{}, options).(GetOvfVmTemplateResultOutput), nil
-		}).(GetOvfVmTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args, GetOvfVmTemplateResultOutput{}, options).(GetOvfVmTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getOvfVmTemplate.

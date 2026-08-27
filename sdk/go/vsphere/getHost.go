@@ -87,12 +87,8 @@ type LookupHostResult struct {
 }
 
 func LookupHostOutput(ctx *pulumi.Context, args LookupHostOutputArgs, opts ...pulumi.InvokeOption) LookupHostResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHostResultOutput, error) {
-			args := v.(LookupHostArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getHost:getHost", args, LookupHostResultOutput{}, options).(LookupHostResultOutput), nil
-		}).(LookupHostResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getHost:getHost", args, LookupHostResultOutput{}, options).(LookupHostResultOutput)
 }
 
 // A collection of arguments for invoking getHost.

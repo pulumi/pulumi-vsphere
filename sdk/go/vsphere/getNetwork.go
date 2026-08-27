@@ -145,12 +145,8 @@ type GetNetworkResult struct {
 }
 
 func GetNetworkOutput(ctx *pulumi.Context, args GetNetworkOutputArgs, opts ...pulumi.InvokeOption) GetNetworkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkResultOutput, error) {
-			args := v.(GetNetworkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("vsphere:index/getNetwork:getNetwork", args, GetNetworkResultOutput{}, options).(GetNetworkResultOutput), nil
-		}).(GetNetworkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("vsphere:index/getNetwork:getNetwork", args, GetNetworkResultOutput{}, options).(GetNetworkResultOutput)
 }
 
 // A collection of arguments for invoking getNetwork.
