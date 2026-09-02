@@ -305,8 +305,8 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryExpandable);
     }
     /**
-     * The CPU utilization of a vApp container will not
-     * exceed this limit, even if there are available resources. Set to `-1` for
+     * The memory utilization of a vApp container will
+     * not exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      * 
      */
@@ -314,8 +314,8 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> memoryLimit;
 
     /**
-     * @return The CPU utilization of a vApp container will not
-     * exceed this limit, even if there are available resources. Set to `-1` for
+     * @return The memory utilization of a vApp container will
+     * not exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      * 
      */
@@ -323,7 +323,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryLimit);
     }
     /**
-     * Amount of CPU (MHz) that is guaranteed
+     * Amount of memory (MB) that is guaranteed
      * available to the vApp container. Default: `0`
      * 
      */
@@ -331,7 +331,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> memoryReservation;
 
     /**
-     * @return Amount of CPU (MHz) that is guaranteed
+     * @return Amount of memory (MB) that is guaranteed
      * available to the vApp container. Default: `0`
      * 
      */
@@ -339,7 +339,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryReservation);
     }
     /**
-     * The CPU allocation level. The level is a
+     * The memory allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -350,7 +350,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> memoryShareLevel;
 
     /**
-     * @return The CPU allocation level. The level is a
+     * @return The memory allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -361,18 +361,18 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryShareLevel);
     }
     /**
-     * The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memoryShareLevel` must be `custom`.
+     * The number of shares allocated for memory. Used
+     * to determine resource allocation in case of resource contention. If this is
+     * set, `memoryShareLevel` must be `custom`.
      * 
      */
     @Export(name="memoryShares", refs={Integer.class}, tree="[0]")
     private Output<Integer> memoryShares;
 
     /**
-     * @return The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memoryShareLevel` must be `custom`.
+     * @return The number of shares allocated for memory. Used
+     * to determine resource allocation in case of resource contention. If this is
+     * set, `memoryShareLevel` must be `custom`.
      * 
      */
     public Output<Integer> memoryShares() {

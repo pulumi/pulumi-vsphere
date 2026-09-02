@@ -71,8 +71,16 @@ __all__ = [
     'HostServiceNtpdArgsDict',
     'NamespaceVmServiceArgs',
     'NamespaceVmServiceArgsDict',
+    'NetworkProtocolProfileIpv4Args',
+    'NetworkProtocolProfileIpv4ArgsDict',
+    'NetworkProtocolProfileIpv6Args',
+    'NetworkProtocolProfileIpv6ArgsDict',
     'OfflineSoftwareDepotComponentArgs',
     'OfflineSoftwareDepotComponentArgsDict',
+    'SsoGroupMemberGroupArgs',
+    'SsoGroupMemberGroupArgsDict',
+    'SsoGroupMemberUserArgs',
+    'SsoGroupMemberUserArgsDict',
     'SupervisorEgressCidrArgs',
     'SupervisorEgressCidrArgsDict',
     'SupervisorIngressCidrArgs',
@@ -2749,6 +2757,390 @@ class NamespaceVmServiceArgs:
         pulumi.set(self, "vm_classes", value)
 
 
+class NetworkProtocolProfileIpv4ArgsDict(TypedDict):
+    netmask: pulumi.Input[_builtins.str]
+    """
+    The IPv4 netmask of the subnet, for example "255.255.255.0".
+    """
+    range: pulumi.Input[_builtins.str]
+    """
+    The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+    """
+    subnet: pulumi.Input[_builtins.str]
+    """
+    The IPv4 address of the subnet, for example "10.10.10.0".
+    """
+    allocated_addresses: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of addresses currently allocated from
+    this range.
+    """
+    available_addresses: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of addresses available for allocation
+    from this range.
+    """
+    dhcp_available: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether a DHCP server is available on this network.
+    """
+    dns_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The DNS server addresses to use for this network protocol profile.
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether addresses can be allocated from this range.
+    """
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IPv4 gateway of the subnet.
+    """
+
+@pulumi.input_type
+class NetworkProtocolProfileIpv4Args:
+    def __init__(__self__, *,
+                 netmask: pulumi.Input[_builtins.str],
+                 range: pulumi.Input[_builtins.str],
+                 subnet: pulumi.Input[_builtins.str],
+                 allocated_addresses: pulumi.Input[Optional[_builtins.int]] = None,
+                 available_addresses: pulumi.Input[Optional[_builtins.int]] = None,
+                 dhcp_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] netmask: The IPv4 netmask of the subnet, for example "255.255.255.0".
+        :param pulumi.Input[_builtins.str] range: The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        :param pulumi.Input[_builtins.str] subnet: The IPv4 address of the subnet, for example "10.10.10.0".
+        :param pulumi.Input[_builtins.int] allocated_addresses: The number of addresses currently allocated from
+               this range.
+        :param pulumi.Input[_builtins.int] available_addresses: The number of addresses available for allocation
+               from this range.
+        :param pulumi.Input[_builtins.bool] dhcp_available: Whether a DHCP server is available on this network.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: The DNS server addresses to use for this network protocol profile.
+        :param pulumi.Input[_builtins.bool] enabled: Whether addresses can be allocated from this range.
+        :param pulumi.Input[_builtins.str] gateway: The IPv4 gateway of the subnet.
+        """
+        pulumi.set(__self__, "netmask", netmask)
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "subnet", subnet)
+        if allocated_addresses is not None:
+            pulumi.set(__self__, "allocated_addresses", allocated_addresses)
+        if available_addresses is not None:
+            pulumi.set(__self__, "available_addresses", available_addresses)
+        if dhcp_available is not None:
+            pulumi.set(__self__, "dhcp_available", dhcp_available)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IPv4 netmask of the subnet, for example "255.255.255.0".
+        """
+        return pulumi.get(self, "netmask")
+
+    @netmask.setter
+    def netmask(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "netmask", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Input[_builtins.str]:
+        """
+        The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IPv4 address of the subnet, for example "10.10.10.0".
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "subnet", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAddresses")
+    def allocated_addresses(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of addresses currently allocated from
+        this range.
+        """
+        return pulumi.get(self, "allocated_addresses")
+
+    @allocated_addresses.setter
+    def allocated_addresses(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "allocated_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availableAddresses")
+    def available_addresses(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of addresses available for allocation
+        from this range.
+        """
+        return pulumi.get(self, "available_addresses")
+
+    @available_addresses.setter
+    def available_addresses(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "available_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpAvailable")
+    def dhcp_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether a DHCP server is available on this network.
+        """
+        return pulumi.get(self, "dhcp_available")
+
+    @dhcp_available.setter
+    def dhcp_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dhcp_available", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The DNS server addresses to use for this network protocol profile.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dns_servers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether addresses can be allocated from this range.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IPv4 gateway of the subnet.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gateway", value)
+
+
+class NetworkProtocolProfileIpv6ArgsDict(TypedDict):
+    netmask: pulumi.Input[_builtins.str]
+    """
+    The IPv6 netmask of the subnet, for example "255.255.255.0".
+    """
+    range: pulumi.Input[_builtins.str]
+    """
+    The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+    """
+    subnet: pulumi.Input[_builtins.str]
+    """
+    The IPv6 address of the subnet, for example "10.10.10.0".
+    """
+    allocated_addresses: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of addresses currently allocated from
+    this range.
+    """
+    available_addresses: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of addresses available for allocation
+    from this range.
+    """
+    dhcp_available: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether a DHCP server is available on this network.
+    """
+    dns_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The DNS server addresses to use for this network protocol profile.
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether addresses can be allocated from this range.
+    """
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IPv6 gateway of the subnet.
+    """
+
+@pulumi.input_type
+class NetworkProtocolProfileIpv6Args:
+    def __init__(__self__, *,
+                 netmask: pulumi.Input[_builtins.str],
+                 range: pulumi.Input[_builtins.str],
+                 subnet: pulumi.Input[_builtins.str],
+                 allocated_addresses: pulumi.Input[Optional[_builtins.int]] = None,
+                 available_addresses: pulumi.Input[Optional[_builtins.int]] = None,
+                 dhcp_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] netmask: The IPv6 netmask of the subnet, for example "255.255.255.0".
+        :param pulumi.Input[_builtins.str] range: The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        :param pulumi.Input[_builtins.str] subnet: The IPv6 address of the subnet, for example "10.10.10.0".
+        :param pulumi.Input[_builtins.int] allocated_addresses: The number of addresses currently allocated from
+               this range.
+        :param pulumi.Input[_builtins.int] available_addresses: The number of addresses available for allocation
+               from this range.
+        :param pulumi.Input[_builtins.bool] dhcp_available: Whether a DHCP server is available on this network.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: The DNS server addresses to use for this network protocol profile.
+        :param pulumi.Input[_builtins.bool] enabled: Whether addresses can be allocated from this range.
+        :param pulumi.Input[_builtins.str] gateway: The IPv6 gateway of the subnet.
+        """
+        pulumi.set(__self__, "netmask", netmask)
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "subnet", subnet)
+        if allocated_addresses is not None:
+            pulumi.set(__self__, "allocated_addresses", allocated_addresses)
+        if available_addresses is not None:
+            pulumi.set(__self__, "available_addresses", available_addresses)
+        if dhcp_available is not None:
+            pulumi.set(__self__, "dhcp_available", dhcp_available)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IPv6 netmask of the subnet, for example "255.255.255.0".
+        """
+        return pulumi.get(self, "netmask")
+
+    @netmask.setter
+    def netmask(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "netmask", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Input[_builtins.str]:
+        """
+        The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IPv6 address of the subnet, for example "10.10.10.0".
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "subnet", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAddresses")
+    def allocated_addresses(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of addresses currently allocated from
+        this range.
+        """
+        return pulumi.get(self, "allocated_addresses")
+
+    @allocated_addresses.setter
+    def allocated_addresses(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "allocated_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availableAddresses")
+    def available_addresses(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of addresses available for allocation
+        from this range.
+        """
+        return pulumi.get(self, "available_addresses")
+
+    @available_addresses.setter
+    def available_addresses(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "available_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpAvailable")
+    def dhcp_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether a DHCP server is available on this network.
+        """
+        return pulumi.get(self, "dhcp_available")
+
+    @dhcp_available.setter
+    def dhcp_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dhcp_available", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The DNS server addresses to use for this network protocol profile.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dns_servers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether addresses can be allocated from this range.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IPv6 gateway of the subnet.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gateway", value)
+
+
 class OfflineSoftwareDepotComponentArgsDict(TypedDict):
     display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2816,6 +3208,100 @@ class OfflineSoftwareDepotComponentArgs:
     @versions.setter
     def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "versions", value)
+
+
+class SsoGroupMemberGroupArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The identity source domain the nested group belongs to.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the nested group.
+    """
+
+@pulumi.input_type
+class SsoGroupMemberGroupArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] domain: The identity source domain the nested group belongs to.
+        :param pulumi.Input[_builtins.str] name: The name of the nested group.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identity source domain the nested group belongs to.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the nested group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class SsoGroupMemberUserArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The identity source domain the member belongs to.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The username of the member.
+    """
+
+@pulumi.input_type
+class SsoGroupMemberUserArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] domain: The identity source domain the member belongs to.
+        :param pulumi.Input[_builtins.str] name: The username of the member.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identity source domain the member belongs to.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The username of the member.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
 
 
 class SupervisorEgressCidrArgsDict(TypedDict):

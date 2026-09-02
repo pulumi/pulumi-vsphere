@@ -700,6 +700,30 @@ export interface GetNetworkFilter {
     networkType?: string;
 }
 
+export interface GetSsoGroupMemberGroup {
+    /**
+     * The identity source domain the group belongs to.
+     * Defaults to the local (system) domain.
+     */
+    domain: string;
+    /**
+     * The name of the group to look up.
+     */
+    name: string;
+}
+
+export interface GetSsoGroupMemberUser {
+    /**
+     * The identity source domain the group belongs to.
+     * Defaults to the local (system) domain.
+     */
+    domain: string;
+    /**
+     * The name of the group to look up.
+     */
+    name: string;
+}
+
 export interface GetVirtualMachineDisk {
     /**
      * Set to `true` if the disk has been eager zeroed.
@@ -993,6 +1017,88 @@ export interface NamespaceVmService {
     vmClasses?: string[];
 }
 
+export interface NetworkProtocolProfileIpv4 {
+    /**
+     * The number of addresses currently allocated from
+     * this range.
+     */
+    allocatedAddresses: number;
+    /**
+     * The number of addresses available for allocation
+     * from this range.
+     */
+    availableAddresses: number;
+    /**
+     * Whether a DHCP server is available on this network.
+     */
+    dhcpAvailable?: boolean;
+    /**
+     * The DNS server addresses to use for this network protocol profile.
+     */
+    dnsServers?: string[];
+    /**
+     * Whether addresses can be allocated from this range.
+     */
+    enabled?: boolean;
+    /**
+     * The IPv4 gateway of the subnet.
+     */
+    gateway?: string;
+    /**
+     * The IPv4 netmask of the subnet, for example "255.255.255.0".
+     */
+    netmask: string;
+    /**
+     * The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+     */
+    range: string;
+    /**
+     * The IPv4 address of the subnet, for example "10.10.10.0".
+     */
+    subnet: string;
+}
+
+export interface NetworkProtocolProfileIpv6 {
+    /**
+     * The number of addresses currently allocated from
+     * this range.
+     */
+    allocatedAddresses: number;
+    /**
+     * The number of addresses available for allocation
+     * from this range.
+     */
+    availableAddresses: number;
+    /**
+     * Whether a DHCP server is available on this network.
+     */
+    dhcpAvailable?: boolean;
+    /**
+     * The DNS server addresses to use for this network protocol profile.
+     */
+    dnsServers?: string[];
+    /**
+     * Whether addresses can be allocated from this range.
+     */
+    enabled?: boolean;
+    /**
+     * The IPv6 gateway of the subnet.
+     */
+    gateway?: string;
+    /**
+     * The IPv6 netmask of the subnet, for example "255.255.255.0".
+     */
+    netmask: string;
+    /**
+     * The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+     */
+    range: string;
+    /**
+     * The IPv6 address of the subnet, for example "10.10.10.0".
+     */
+    subnet: string;
+}
+
 export interface OfflineSoftwareDepotComponent {
     /**
      * The name of the component. Useful for easier identification.
@@ -1006,6 +1112,28 @@ export interface OfflineSoftwareDepotComponent {
      * The list of available versions of the component.
      */
     versions: string[];
+}
+
+export interface SsoGroupMemberGroup {
+    /**
+     * The identity source domain the nested group belongs to.
+     */
+    domain: string;
+    /**
+     * The name of the nested group.
+     */
+    name: string;
+}
+
+export interface SsoGroupMemberUser {
+    /**
+     * The identity source domain the member belongs to.
+     */
+    domain: string;
+    /**
+     * The username of the member.
+     */
+    name: string;
 }
 
 export interface SupervisorEgressCidr {

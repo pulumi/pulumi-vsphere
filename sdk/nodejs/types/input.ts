@@ -719,6 +719,88 @@ export interface NamespaceVmService {
     vmClasses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface NetworkProtocolProfileIpv4 {
+    /**
+     * The number of addresses currently allocated from
+     * this range.
+     */
+    allocatedAddresses?: pulumi.Input<number | undefined>;
+    /**
+     * The number of addresses available for allocation
+     * from this range.
+     */
+    availableAddresses?: pulumi.Input<number | undefined>;
+    /**
+     * Whether a DHCP server is available on this network.
+     */
+    dhcpAvailable?: pulumi.Input<boolean | undefined>;
+    /**
+     * The DNS server addresses to use for this network protocol profile.
+     */
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether addresses can be allocated from this range.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The IPv4 gateway of the subnet.
+     */
+    gateway?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv4 netmask of the subnet, for example "255.255.255.0".
+     */
+    netmask: pulumi.Input<string>;
+    /**
+     * The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+     */
+    range: pulumi.Input<string>;
+    /**
+     * The IPv4 address of the subnet, for example "10.10.10.0".
+     */
+    subnet: pulumi.Input<string>;
+}
+
+export interface NetworkProtocolProfileIpv6 {
+    /**
+     * The number of addresses currently allocated from
+     * this range.
+     */
+    allocatedAddresses?: pulumi.Input<number | undefined>;
+    /**
+     * The number of addresses available for allocation
+     * from this range.
+     */
+    availableAddresses?: pulumi.Input<number | undefined>;
+    /**
+     * Whether a DHCP server is available on this network.
+     */
+    dhcpAvailable?: pulumi.Input<boolean | undefined>;
+    /**
+     * The DNS server addresses to use for this network protocol profile.
+     */
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether addresses can be allocated from this range.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The IPv6 gateway of the subnet.
+     */
+    gateway?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv6 netmask of the subnet, for example "255.255.255.0".
+     */
+    netmask: pulumi.Input<string>;
+    /**
+     * The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+     */
+    range: pulumi.Input<string>;
+    /**
+     * The IPv6 address of the subnet, for example "10.10.10.0".
+     */
+    subnet: pulumi.Input<string>;
+}
+
 export interface OfflineSoftwareDepotComponent {
     /**
      * The name of the component. Useful for easier identification.
@@ -732,6 +814,28 @@ export interface OfflineSoftwareDepotComponent {
      * The list of available versions of the component.
      */
     versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface SsoGroupMemberGroup {
+    /**
+     * The identity source domain the nested group belongs to.
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * The name of the nested group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface SsoGroupMemberUser {
+    /**
+     * The identity source domain the member belongs to.
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * The username of the member.
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface SupervisorEgressCidr {

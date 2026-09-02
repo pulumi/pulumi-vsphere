@@ -171,7 +171,7 @@ export class Vnic extends pulumi.CustomResource {
     /**
      * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      */
-    declare public readonly services: pulumi.Output<string[] | undefined>;
+    declare public readonly services: pulumi.Output<string[]>;
 
     /**
      * Create a Vnic resource with the given unique name, arguments, and options.

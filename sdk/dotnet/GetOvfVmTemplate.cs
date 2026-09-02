@@ -584,9 +584,19 @@ namespace Pulumi.VSphere
         public bool? AllowUnverifiedSslCert { get; set; }
 
         /// <summary>
+        /// The ID of a datastore cluster in which to
+        /// place the virtual machine. Storage DRS must be enabled on the cluster.
+        /// Conflicts with `DatastoreId`.
+        /// 
+        /// &gt; **NOTE:** One of `DatastoreId` or `DatastoreClusterId` must be specified.
+        /// </summary>
+        [Input("datastoreClusterId")]
+        public string? DatastoreClusterId { get; set; }
+
+        /// <summary>
         /// The ID of the virtual machine's datastore. The
         /// virtual machine configuration is placed here, along with any virtual disks
-        /// that are created without datastores.
+        /// that are created without datastores. Conflicts with `DatastoreClusterId`.
         /// </summary>
         [Input("datastoreId")]
         public string? DatastoreId { get; set; }
@@ -698,9 +708,19 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowUnverifiedSslCert { get; set; }
 
         /// <summary>
+        /// The ID of a datastore cluster in which to
+        /// place the virtual machine. Storage DRS must be enabled on the cluster.
+        /// Conflicts with `DatastoreId`.
+        /// 
+        /// &gt; **NOTE:** One of `DatastoreId` or `DatastoreClusterId` must be specified.
+        /// </summary>
+        [Input("datastoreClusterId")]
+        public Input<string>? DatastoreClusterId { get; set; }
+
+        /// <summary>
         /// The ID of the virtual machine's datastore. The
         /// virtual machine configuration is placed here, along with any virtual disks
-        /// that are created without datastores.
+        /// that are created without datastores. Conflicts with `DatastoreClusterId`.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -826,6 +846,7 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly bool CpuHotRemoveEnabled;
         public readonly bool CpuPerformanceCountersEnabled;
+        public readonly string? DatastoreClusterId;
         public readonly string? DatastoreId;
         public readonly string? DeploymentOption;
         public readonly string? DiskProvisioning;
@@ -898,6 +919,8 @@ namespace Pulumi.VSphere
 
             bool cpuPerformanceCountersEnabled,
 
+            string? datastoreClusterId,
+
             string? datastoreId,
 
             string? deploymentOption,
@@ -956,6 +979,7 @@ namespace Pulumi.VSphere
             CpuHotAddEnabled = cpuHotAddEnabled;
             CpuHotRemoveEnabled = cpuHotRemoveEnabled;
             CpuPerformanceCountersEnabled = cpuPerformanceCountersEnabled;
+            DatastoreClusterId = datastoreClusterId;
             DatastoreId = datastoreId;
             DeploymentOption = deploymentOption;
             DiskProvisioning = diskProvisioning;

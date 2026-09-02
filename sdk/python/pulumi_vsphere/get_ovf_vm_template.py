@@ -26,7 +26,7 @@ class GetOvfVmTemplateResult:
     """
     A collection of values returned by getOvfVmTemplate.
     """
-    def __init__(__self__, allow_unverified_ssl_cert=None, alternate_guest_name=None, annotation=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_performance_counters_enabled=None, datastore_id=None, deployment_option=None, disk_provisioning=None, enable_hidden_properties=None, firmware=None, folder=None, guest_id=None, host_system_id=None, id=None, ide_controller_count=None, ip_allocation_policy=None, ip_protocol=None, local_ovf_path=None, memory=None, memory_hot_add_enabled=None, name=None, nested_hv_enabled=None, num_cores_per_socket=None, num_cpus=None, ovf_network_map=None, remote_ovf_url=None, resource_pool_id=None, sata_controller_count=None, scsi_controller_count=None, scsi_type=None, swap_placement_policy=None):
+    def __init__(__self__, allow_unverified_ssl_cert=None, alternate_guest_name=None, annotation=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_performance_counters_enabled=None, datastore_cluster_id=None, datastore_id=None, deployment_option=None, disk_provisioning=None, enable_hidden_properties=None, firmware=None, folder=None, guest_id=None, host_system_id=None, id=None, ide_controller_count=None, ip_allocation_policy=None, ip_protocol=None, local_ovf_path=None, memory=None, memory_hot_add_enabled=None, name=None, nested_hv_enabled=None, num_cores_per_socket=None, num_cpus=None, ovf_network_map=None, remote_ovf_url=None, resource_pool_id=None, sata_controller_count=None, scsi_controller_count=None, scsi_type=None, swap_placement_policy=None):
         if allow_unverified_ssl_cert and not isinstance(allow_unverified_ssl_cert, bool):
             raise TypeError("Expected argument 'allow_unverified_ssl_cert' to be a bool")
         pulumi.set(__self__, "allow_unverified_ssl_cert", allow_unverified_ssl_cert)
@@ -45,6 +45,9 @@ class GetOvfVmTemplateResult:
         if cpu_performance_counters_enabled and not isinstance(cpu_performance_counters_enabled, bool):
             raise TypeError("Expected argument 'cpu_performance_counters_enabled' to be a bool")
         pulumi.set(__self__, "cpu_performance_counters_enabled", cpu_performance_counters_enabled)
+        if datastore_cluster_id and not isinstance(datastore_cluster_id, str):
+            raise TypeError("Expected argument 'datastore_cluster_id' to be a str")
+        pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
         if datastore_id and not isinstance(datastore_id, str):
             raise TypeError("Expected argument 'datastore_id' to be a str")
         pulumi.set(__self__, "datastore_id", datastore_id)
@@ -167,6 +170,11 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="cpuPerformanceCountersEnabled")
     def cpu_performance_counters_enabled(self) -> _builtins.bool:
         return pulumi.get(self, "cpu_performance_counters_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="datastoreClusterId")
+    def datastore_cluster_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "datastore_cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
@@ -342,6 +350,7 @@ class AwaitableGetOvfVmTemplateResult(GetOvfVmTemplateResult):
             cpu_hot_add_enabled=self.cpu_hot_add_enabled,
             cpu_hot_remove_enabled=self.cpu_hot_remove_enabled,
             cpu_performance_counters_enabled=self.cpu_performance_counters_enabled,
+            datastore_cluster_id=self.datastore_cluster_id,
             datastore_id=self.datastore_id,
             deployment_option=self.deployment_option,
             disk_provisioning=self.disk_provisioning,
@@ -371,6 +380,7 @@ class AwaitableGetOvfVmTemplateResult(GetOvfVmTemplateResult):
 
 
 def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = None,
+                        datastore_cluster_id: Optional[_builtins.str] = None,
                         datastore_id: Optional[_builtins.str] = None,
                         deployment_option: Optional[_builtins.str] = None,
                         disk_provisioning: Optional[_builtins.str] = None,
@@ -507,9 +517,14 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
 
     :param _builtins.bool allow_unverified_ssl_cert: Allow unverified SSL certificates
            when deploying OVF/OVA from a URL.
+    :param _builtins.str datastore_cluster_id: The ID of a datastore cluster in which to
+           place the virtual machine. Storage DRS must be enabled on the cluster.
+           Conflicts with `datastore_id`.
+           
+           > **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
     :param _builtins.str datastore_id: The ID of the virtual machine's datastore. The
            virtual machine configuration is placed here, along with any virtual disks
-           that are created without datastores.
+           that are created without datastores. Conflicts with `datastore_cluster_id`.
     :param _builtins.str deployment_option: The key of the chosen deployment option. If
            empty, the default option is chosen.
     :param _builtins.str disk_provisioning: The disk provisioning type. If set, all the
@@ -538,6 +553,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
     """
     __args__ = dict()
     __args__['allowUnverifiedSslCert'] = allow_unverified_ssl_cert
+    __args__['datastoreClusterId'] = datastore_cluster_id
     __args__['datastoreId'] = datastore_id
     __args__['deploymentOption'] = deployment_option
     __args__['diskProvisioning'] = disk_provisioning
@@ -561,6 +577,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
         cpu_hot_add_enabled=pulumi.get(__ret__, 'cpu_hot_add_enabled'),
         cpu_hot_remove_enabled=pulumi.get(__ret__, 'cpu_hot_remove_enabled'),
         cpu_performance_counters_enabled=pulumi.get(__ret__, 'cpu_performance_counters_enabled'),
+        datastore_cluster_id=pulumi.get(__ret__, 'datastore_cluster_id'),
         datastore_id=pulumi.get(__ret__, 'datastore_id'),
         deployment_option=pulumi.get(__ret__, 'deployment_option'),
         disk_provisioning=pulumi.get(__ret__, 'disk_provisioning'),
@@ -588,6 +605,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
         scsi_type=pulumi.get(__ret__, 'scsi_type'),
         swap_placement_policy=pulumi.get(__ret__, 'swap_placement_policy'))
 def get_ovf_vm_template_output(allow_unverified_ssl_cert: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               datastore_cluster_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                datastore_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                deployment_option: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                disk_provisioning: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -724,9 +742,14 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: pulumi.Input[Optional[
 
     :param _builtins.bool allow_unverified_ssl_cert: Allow unverified SSL certificates
            when deploying OVF/OVA from a URL.
+    :param _builtins.str datastore_cluster_id: The ID of a datastore cluster in which to
+           place the virtual machine. Storage DRS must be enabled on the cluster.
+           Conflicts with `datastore_id`.
+           
+           > **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
     :param _builtins.str datastore_id: The ID of the virtual machine's datastore. The
            virtual machine configuration is placed here, along with any virtual disks
-           that are created without datastores.
+           that are created without datastores. Conflicts with `datastore_cluster_id`.
     :param _builtins.str deployment_option: The key of the chosen deployment option. If
            empty, the default option is chosen.
     :param _builtins.str disk_provisioning: The disk provisioning type. If set, all the
@@ -755,6 +778,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: pulumi.Input[Optional[
     """
     __args__ = dict()
     __args__['allowUnverifiedSslCert'] = allow_unverified_ssl_cert
+    __args__['datastoreClusterId'] = datastore_cluster_id
     __args__['datastoreId'] = datastore_id
     __args__['deploymentOption'] = deployment_option
     __args__['diskProvisioning'] = disk_provisioning
@@ -777,6 +801,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: pulumi.Input[Optional[
         cpu_hot_add_enabled=pulumi.get(__response__, 'cpu_hot_add_enabled'),
         cpu_hot_remove_enabled=pulumi.get(__response__, 'cpu_hot_remove_enabled'),
         cpu_performance_counters_enabled=pulumi.get(__response__, 'cpu_performance_counters_enabled'),
+        datastore_cluster_id=pulumi.get(__response__, 'datastore_cluster_id'),
         datastore_id=pulumi.get(__response__, 'datastore_id'),
         deployment_option=pulumi.get(__response__, 'deployment_option'),
         disk_provisioning=pulumi.get(__response__, 'disk_provisioning'),

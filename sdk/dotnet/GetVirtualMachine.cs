@@ -788,7 +788,12 @@ namespace Pulumi.VSphere
         /// `Efi`.
         /// </summary>
         public readonly string? Firmware;
-        public readonly string? Folder;
+        /// <summary>
+        /// The inventory folder path of the virtual machine. This is the
+        /// parent folder containing the virtual machine, relative to the vSphere
+        /// inventory. For example, given a default datacenter of `default-dc`, a folder of type `Vm` (denoting a virtual machine folder), and a supplied folder of `example-vm-folder`, the resulting path would be `/default-dc/vm/example-vm-folder`.
+        /// </summary>
+        public readonly string Folder;
         /// <summary>
         /// The guest ID of the virtual machine or template.
         /// </summary>
@@ -952,7 +957,7 @@ namespace Pulumi.VSphere
 
             string? firmware,
 
-            string? folder,
+            string folder,
 
             string guestId,
 

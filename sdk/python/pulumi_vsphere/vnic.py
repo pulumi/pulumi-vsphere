@@ -735,7 +735,7 @@ class Vnic(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def services(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         """

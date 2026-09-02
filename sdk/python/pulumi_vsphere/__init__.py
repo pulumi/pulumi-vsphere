@@ -56,6 +56,8 @@ from .get_ovf_vm_template import *
 from .get_policy import *
 from .get_resource_pool import *
 from .get_role import *
+from .get_sso_group import *
+from .get_sso_user import *
 from .get_tag import *
 from .get_tag_category import *
 from .get_vapp_container import *
@@ -70,10 +72,13 @@ from .host_virtual_switch import *
 from .license import *
 from .namespace import *
 from .nas_datastore import *
+from .network_protocol_profile import *
 from .offline_software_depot import *
 from .provider import *
 from .resource_pool import *
 from .role import *
+from .sso_group import *
+from .sso_user import *
 from .storage_drs_vm_override import *
 from .supervisor import *
 from .supervisor_v2 import *
@@ -352,6 +357,14 @@ _utilities.register(
  },
  {
   "pkg": "vsphere",
+  "mod": "index/networkProtocolProfile",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/networkProtocolProfile:NetworkProtocolProfile": "NetworkProtocolProfile"
+  }
+ },
+ {
+  "pkg": "vsphere",
   "mod": "index/offlineSoftwareDepot",
   "fqn": "pulumi_vsphere",
   "classes": {
@@ -372,6 +385,22 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/ssoGroup",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/ssoGroup:SsoGroup": "SsoGroup"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/ssoUser",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/ssoUser:SsoUser": "SsoUser"
   }
  },
  {

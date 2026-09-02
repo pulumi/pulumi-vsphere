@@ -310,6 +310,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** An OVF/OVA deployment requires vCenter Server and is not supported on direct ESXi host connections.
  * 
+ * &gt; **NOTE:** OVF/OVA deployment supports both `datastoreId` and `datastoreClusterId`. When `datastoreClusterId` is specified, Storage DRS must be enabled on the cluster and is used to select the member datastore for initial placement.
+ * 
  * The following example demonstrates a scenario deploying a simple OVF/OVA, using both the local path and remote URL options.
  * 
  * **Example**:
@@ -445,6 +447,56 @@ import javax.annotation.Nullable;
  *                     Map.entry("guestinfo.password", "VMware1!"),
  *                     Map.entry("guestinfo.ssh", "True")
  *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * To deploy an OVF/OVA onto a datastore cluster, set `datastoreClusterId` instead of `datastoreId`. Storage DRS must be enabled on the cluster.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineOvfDeployArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
+ *             .name("datastore-cluster-01")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         var vmFromOvfDatastoreCluster = new VirtualMachine("vmFromOvfDatastoreCluster", VirtualMachineArgs.builder()
+ *             .name("ovf-sdrs-foo")
+ *             .datacenterId(datacenter.id())
+ *             .datastoreClusterId(datastoreCluster.id())
+ *             .resourcePoolId(default_.id())
+ *             .waitForGuestNetTimeout(0)
+ *             .waitForGuestIpTimeout(0)
+ *             .ovfDeploy(VirtualMachineOvfDeployArgs.builder()
+ *                 .remoteOvfUrl("https://example.com/foo.ova")
+ *                 .ovfNetworkMap(Map.of("Network 1", network.id()))
  *                 .build())
  *             .build());
  * 
@@ -1705,6 +1757,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> datastoreId() {
         return this.datastoreId;
+    }
+    /**
+     * A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     * 
+     */
+    @Export(name="datastorePath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> datastorePath;
+
+    /**
+     * @return A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     * 
+     */
+    public Output<Optional<String>> datastorePath() {
+        return Codegen.optional(this.datastorePath);
     }
     /**
      * The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.

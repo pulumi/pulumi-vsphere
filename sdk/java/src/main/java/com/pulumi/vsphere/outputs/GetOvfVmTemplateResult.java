@@ -39,6 +39,7 @@ public final class GetOvfVmTemplateResult {
      */
     private Boolean cpuHotRemoveEnabled;
     private Boolean cpuPerformanceCountersEnabled;
+    private @Nullable String datastoreClusterId;
     private @Nullable String datastoreId;
     private @Nullable String deploymentOption;
     private @Nullable String diskProvisioning;
@@ -142,6 +143,9 @@ public final class GetOvfVmTemplateResult {
     }
     public Boolean cpuPerformanceCountersEnabled() {
         return this.cpuPerformanceCountersEnabled;
+    }
+    public Optional<String> datastoreClusterId() {
+        return Optional.ofNullable(this.datastoreClusterId);
     }
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
@@ -277,6 +281,7 @@ public final class GetOvfVmTemplateResult {
         private Boolean cpuHotAddEnabled;
         private Boolean cpuHotRemoveEnabled;
         private Boolean cpuPerformanceCountersEnabled;
+        private @Nullable String datastoreClusterId;
         private @Nullable String datastoreId;
         private @Nullable String deploymentOption;
         private @Nullable String diskProvisioning;
@@ -312,6 +317,7 @@ public final class GetOvfVmTemplateResult {
     	      this.cpuHotAddEnabled = defaults.cpuHotAddEnabled;
     	      this.cpuHotRemoveEnabled = defaults.cpuHotRemoveEnabled;
     	      this.cpuPerformanceCountersEnabled = defaults.cpuPerformanceCountersEnabled;
+    	      this.datastoreClusterId = defaults.datastoreClusterId;
     	      this.datastoreId = defaults.datastoreId;
     	      this.deploymentOption = defaults.deploymentOption;
     	      this.diskProvisioning = defaults.diskProvisioning;
@@ -384,6 +390,12 @@ public final class GetOvfVmTemplateResult {
               throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "cpuPerformanceCountersEnabled");
             }
             this.cpuPerformanceCountersEnabled = cpuPerformanceCountersEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder datastoreClusterId(@Nullable String datastoreClusterId) {
+
+            this.datastoreClusterId = datastoreClusterId;
             return this;
         }
         @CustomType.Setter
@@ -582,6 +594,7 @@ public final class GetOvfVmTemplateResult {
             _resultValue.cpuHotAddEnabled = cpuHotAddEnabled;
             _resultValue.cpuHotRemoveEnabled = cpuHotRemoveEnabled;
             _resultValue.cpuPerformanceCountersEnabled = cpuPerformanceCountersEnabled;
+            _resultValue.datastoreClusterId = datastoreClusterId;
             _resultValue.datastoreId = datastoreId;
             _resultValue.deploymentOption = deploymentOption;
             _resultValue.diskProvisioning = diskProvisioning;

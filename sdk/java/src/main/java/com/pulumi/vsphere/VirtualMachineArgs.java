@@ -299,6 +299,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     * 
+     */
+    @Import(name="datastorePath")
+    private @Nullable Output<String> datastorePath;
+
+    /**
+     * @return A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     * 
+     */
+    public Optional<Output<String>> datastorePath() {
+        return Optional.ofNullable(this.datastorePath);
+    }
+
+    /**
      * A specification for a virtual disk device on this virtual machine.
      * 
      */
@@ -1249,6 +1264,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.datacenterId = $.datacenterId;
         this.datastoreClusterId = $.datastoreClusterId;
         this.datastoreId = $.datastoreId;
+        this.datastorePath = $.datastorePath;
         this.disks = $.disks;
         this.efiSecureBootEnabled = $.efiSecureBootEnabled;
         this.enableDiskUuid = $.enableDiskUuid;
@@ -1717,6 +1733,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
+        }
+
+        /**
+         * @param datastorePath A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastorePath(@Nullable Output<String> datastorePath) {
+            $.datastorePath = datastorePath;
+            return this;
+        }
+
+        /**
+         * @param datastorePath A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastorePath(String datastorePath) {
+            return datastorePath(Output.of(datastorePath));
         }
 
         /**

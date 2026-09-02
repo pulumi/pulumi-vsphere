@@ -40,6 +40,7 @@ class VirtualMachineArgs:
                  datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_path: pulumi.Input[Optional[_builtins.str]] = None,
                  disks: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
                  efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -123,6 +124,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
         :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_path: A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
@@ -222,6 +224,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if datastore_path is not None:
+            pulumi.set(__self__, "datastore_path", datastore_path)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
         if efi_secure_boot_enabled is not None:
@@ -572,6 +576,18 @@ class VirtualMachineArgs:
     @datastore_id.setter
     def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datastorePath")
+    def datastore_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+        """
+        return pulumi.get(self, "datastore_path")
+
+    @datastore_path.setter
+    def datastore_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "datastore_path", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1328,6 +1344,7 @@ class _VirtualMachineState:
                  datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  disks: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
                  efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1422,6 +1439,7 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
         :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_path: A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
         :param pulumi.Input[_builtins.str] default_ip_address: The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
@@ -1533,6 +1551,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if datastore_path is not None:
+            pulumi.set(__self__, "datastore_path", datastore_path)
         if default_ip_address is not None:
             pulumi.set(__self__, "default_ip_address", default_ip_address)
         if disks is not None:
@@ -1905,6 +1925,18 @@ class _VirtualMachineState:
     @datastore_id.setter
     def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datastorePath")
+    def datastore_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+        """
+        return pulumi.get(self, "datastore_path")
+
+    @datastore_path.setter
+    def datastore_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "datastore_path", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultIpAddress")
@@ -2795,6 +2827,7 @@ class VirtualMachine(pulumi.CustomResource):
                  datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_path: pulumi.Input[Optional[_builtins.str]] = None,
                  disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
                  efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3025,6 +3058,8 @@ class VirtualMachine(pulumi.CustomResource):
 
         > **NOTE:** An OVF/OVA deployment requires vCenter Server and is not supported on direct ESXi host connections.
 
+        > **NOTE:** OVF/OVA deployment supports both `datastore_id` and `datastore_cluster_id`. When `datastore_cluster_id` is specified, Storage DRS must be enabled on the cluster and is used to select the member datastore for initial placement.
+
         The following example demonstrates a scenario deploying a simple OVF/OVA, using both the local path and remote URL options.
 
         **Example**:
@@ -3111,6 +3146,29 @@ class VirtualMachine(pulumi.CustomResource):
                     "guestinfo.ntp": "ntp.example.com",
                     "guestinfo.password": "VMware1!",
                     "guestinfo.ssh": "True",
+                },
+            })
+        ```
+
+        To deploy an OVF/OVA onto a datastore cluster, set `datastore_cluster_id` instead of `datastore_id`. Storage DRS must be enabled on the cluster.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
+            datacenter_id=datacenter["id"])
+        vm_from_ovf_datastore_cluster = vsphere.VirtualMachine("vmFromOvfDatastoreCluster",
+            name="ovf-sdrs-foo",
+            datacenter_id=datacenter["id"],
+            datastore_cluster_id=datastore_cluster.id,
+            resource_pool_id=default["id"],
+            wait_for_guest_net_timeout=0,
+            wait_for_guest_ip_timeout=0,
+            ovf_deploy={
+                "remote_ovf_url": "https://example.com/foo.ova",
+                "ovf_network_map": {
+                    "Network 1": network["id"],
                 },
             })
         ```
@@ -3864,6 +3922,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
         :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_path: A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
@@ -4100,6 +4159,8 @@ class VirtualMachine(pulumi.CustomResource):
 
         > **NOTE:** An OVF/OVA deployment requires vCenter Server and is not supported on direct ESXi host connections.
 
+        > **NOTE:** OVF/OVA deployment supports both `datastore_id` and `datastore_cluster_id`. When `datastore_cluster_id` is specified, Storage DRS must be enabled on the cluster and is used to select the member datastore for initial placement.
+
         The following example demonstrates a scenario deploying a simple OVF/OVA, using both the local path and remote URL options.
 
         **Example**:
@@ -4186,6 +4247,29 @@ class VirtualMachine(pulumi.CustomResource):
                     "guestinfo.ntp": "ntp.example.com",
                     "guestinfo.password": "VMware1!",
                     "guestinfo.ssh": "True",
+                },
+            })
+        ```
+
+        To deploy an OVF/OVA onto a datastore cluster, set `datastore_cluster_id` instead of `datastore_id`. Storage DRS must be enabled on the cluster.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
+            datacenter_id=datacenter["id"])
+        vm_from_ovf_datastore_cluster = vsphere.VirtualMachine("vmFromOvfDatastoreCluster",
+            name="ovf-sdrs-foo",
+            datacenter_id=datacenter["id"],
+            datastore_cluster_id=datastore_cluster.id,
+            resource_pool_id=default["id"],
+            wait_for_guest_net_timeout=0,
+            wait_for_guest_ip_timeout=0,
+            ovf_deploy={
+                "remote_ovf_url": "https://example.com/foo.ova",
+                "ovf_network_map": {
+                    "Network 1": network["id"],
                 },
             })
         ```
@@ -4952,6 +5036,7 @@ class VirtualMachine(pulumi.CustomResource):
                  datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_path: pulumi.Input[Optional[_builtins.str]] = None,
                  disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
                  efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_disk_uuid: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5041,6 +5126,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["datacenter_id"] = datacenter_id
             __props__.__dict__["datastore_cluster_id"] = datastore_cluster_id
             __props__.__dict__["datastore_id"] = datastore_id
+            __props__.__dict__["datastore_path"] = datastore_path
             __props__.__dict__["disks"] = disks
             __props__.__dict__["efi_secure_boot_enabled"] = efi_secure_boot_enabled
             __props__.__dict__["enable_disk_uuid"] = enable_disk_uuid
@@ -5145,6 +5231,7 @@ class VirtualMachine(pulumi.CustomResource):
             datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
             datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_path: pulumi.Input[Optional[_builtins.str]] = None,
             default_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
             efi_secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5243,6 +5330,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
         :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_path: A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
         :param pulumi.Input[_builtins.str] default_ip_address: The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
@@ -5339,6 +5427,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["datacenter_id"] = datacenter_id
         __props__.__dict__["datastore_cluster_id"] = datastore_cluster_id
         __props__.__dict__["datastore_id"] = datastore_id
+        __props__.__dict__["datastore_path"] = datastore_path
         __props__.__dict__["default_ip_address"] = default_ip_address
         __props__.__dict__["disks"] = disks
         __props__.__dict__["efi_secure_boot_enabled"] = efi_secure_boot_enabled
@@ -5564,6 +5653,14 @@ class VirtualMachine(pulumi.CustomResource):
         The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         """
         return pulumi.get(self, "datastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="datastorePath")
+    def datastore_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+        """
+        return pulumi.get(self, "datastore_path")
 
     @_builtins.property
     @pulumi.getter(name="defaultIpAddress")

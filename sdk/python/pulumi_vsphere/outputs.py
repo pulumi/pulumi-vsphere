@@ -44,7 +44,11 @@ __all__ = [
     'HostService',
     'HostServiceNtpd',
     'NamespaceVmService',
+    'NetworkProtocolProfileIpv4',
+    'NetworkProtocolProfileIpv6',
     'OfflineSoftwareDepotComponent',
+    'SsoGroupMemberGroup',
+    'SsoGroupMemberUser',
     'SupervisorEgressCidr',
     'SupervisorIngressCidr',
     'SupervisorManagementNetwork',
@@ -129,6 +133,8 @@ __all__ = [
     'GetHostVgpuProfileVgpuProfileResult',
     'GetNamespaceVmServiceResult',
     'GetNetworkFilterResult',
+    'GetSsoGroupMemberGroupResult',
+    'GetSsoGroupMemberUserResult',
     'GetVirtualMachineDiskResult',
     'GetVirtualMachineNetworkInterfaceResult',
     'GetVirtualMachineVappResult',
@@ -2212,6 +2218,284 @@ class NamespaceVmService(dict):
 
 
 @pulumi.output_type
+class NetworkProtocolProfileIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedAddresses":
+            suggest = "allocated_addresses"
+        elif key == "availableAddresses":
+            suggest = "available_addresses"
+        elif key == "dhcpAvailable":
+            suggest = "dhcp_available"
+        elif key == "dnsServers":
+            suggest = "dns_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkProtocolProfileIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkProtocolProfileIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkProtocolProfileIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 netmask: _builtins.str,
+                 range: _builtins.str,
+                 subnet: _builtins.str,
+                 allocated_addresses: Optional[_builtins.int] = None,
+                 available_addresses: Optional[_builtins.int] = None,
+                 dhcp_available: Optional[_builtins.bool] = None,
+                 dns_servers: Optional[Sequence[_builtins.str]] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 gateway: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str netmask: The IPv4 netmask of the subnet, for example "255.255.255.0".
+        :param _builtins.str range: The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        :param _builtins.str subnet: The IPv4 address of the subnet, for example "10.10.10.0".
+        :param _builtins.int allocated_addresses: The number of addresses currently allocated from
+               this range.
+        :param _builtins.int available_addresses: The number of addresses available for allocation
+               from this range.
+        :param _builtins.bool dhcp_available: Whether a DHCP server is available on this network.
+        :param Sequence[_builtins.str] dns_servers: The DNS server addresses to use for this network protocol profile.
+        :param _builtins.bool enabled: Whether addresses can be allocated from this range.
+        :param _builtins.str gateway: The IPv4 gateway of the subnet.
+        """
+        pulumi.set(__self__, "netmask", netmask)
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "subnet", subnet)
+        if allocated_addresses is not None:
+            pulumi.set(__self__, "allocated_addresses", allocated_addresses)
+        if available_addresses is not None:
+            pulumi.set(__self__, "available_addresses", available_addresses)
+        if dhcp_available is not None:
+            pulumi.set(__self__, "dhcp_available", dhcp_available)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask(self) -> _builtins.str:
+        """
+        The IPv4 netmask of the subnet, for example "255.255.255.0".
+        """
+        return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        """
+        return pulumi.get(self, "range")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> _builtins.str:
+        """
+        The IPv4 address of the subnet, for example "10.10.10.0".
+        """
+        return pulumi.get(self, "subnet")
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAddresses")
+    def allocated_addresses(self) -> Optional[_builtins.int]:
+        """
+        The number of addresses currently allocated from
+        this range.
+        """
+        return pulumi.get(self, "allocated_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="availableAddresses")
+    def available_addresses(self) -> Optional[_builtins.int]:
+        """
+        The number of addresses available for allocation
+        from this range.
+        """
+        return pulumi.get(self, "available_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpAvailable")
+    def dhcp_available(self) -> Optional[_builtins.bool]:
+        """
+        Whether a DHCP server is available on this network.
+        """
+        return pulumi.get(self, "dhcp_available")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The DNS server addresses to use for this network protocol profile.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether addresses can be allocated from this range.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 gateway of the subnet.
+        """
+        return pulumi.get(self, "gateway")
+
+
+@pulumi.output_type
+class NetworkProtocolProfileIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedAddresses":
+            suggest = "allocated_addresses"
+        elif key == "availableAddresses":
+            suggest = "available_addresses"
+        elif key == "dhcpAvailable":
+            suggest = "dhcp_available"
+        elif key == "dnsServers":
+            suggest = "dns_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkProtocolProfileIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkProtocolProfileIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkProtocolProfileIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 netmask: _builtins.str,
+                 range: _builtins.str,
+                 subnet: _builtins.str,
+                 allocated_addresses: Optional[_builtins.int] = None,
+                 available_addresses: Optional[_builtins.int] = None,
+                 dhcp_available: Optional[_builtins.bool] = None,
+                 dns_servers: Optional[Sequence[_builtins.str]] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 gateway: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str netmask: The IPv6 netmask of the subnet, for example "255.255.255.0".
+        :param _builtins.str range: The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        :param _builtins.str subnet: The IPv6 address of the subnet, for example "10.10.10.0".
+        :param _builtins.int allocated_addresses: The number of addresses currently allocated from
+               this range.
+        :param _builtins.int available_addresses: The number of addresses available for allocation
+               from this range.
+        :param _builtins.bool dhcp_available: Whether a DHCP server is available on this network.
+        :param Sequence[_builtins.str] dns_servers: The DNS server addresses to use for this network protocol profile.
+        :param _builtins.bool enabled: Whether addresses can be allocated from this range.
+        :param _builtins.str gateway: The IPv6 gateway of the subnet.
+        """
+        pulumi.set(__self__, "netmask", netmask)
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "subnet", subnet)
+        if allocated_addresses is not None:
+            pulumi.set(__self__, "allocated_addresses", allocated_addresses)
+        if available_addresses is not None:
+            pulumi.set(__self__, "available_addresses", available_addresses)
+        if dhcp_available is not None:
+            pulumi.set(__self__, "dhcp_available", dhcp_available)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask(self) -> _builtins.str:
+        """
+        The IPv6 netmask of the subnet, for example "255.255.255.0".
+        """
+        return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+        """
+        return pulumi.get(self, "range")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> _builtins.str:
+        """
+        The IPv6 address of the subnet, for example "10.10.10.0".
+        """
+        return pulumi.get(self, "subnet")
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAddresses")
+    def allocated_addresses(self) -> Optional[_builtins.int]:
+        """
+        The number of addresses currently allocated from
+        this range.
+        """
+        return pulumi.get(self, "allocated_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="availableAddresses")
+    def available_addresses(self) -> Optional[_builtins.int]:
+        """
+        The number of addresses available for allocation
+        from this range.
+        """
+        return pulumi.get(self, "available_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpAvailable")
+    def dhcp_available(self) -> Optional[_builtins.bool]:
+        """
+        Whether a DHCP server is available on this network.
+        """
+        return pulumi.get(self, "dhcp_available")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The DNS server addresses to use for this network protocol profile.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether addresses can be allocated from this range.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> Optional[_builtins.str]:
+        """
+        The IPv6 gateway of the subnet.
+        """
+        return pulumi.get(self, "gateway")
+
+
+@pulumi.output_type
 class OfflineSoftwareDepotComponent(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2269,6 +2553,64 @@ class OfflineSoftwareDepotComponent(dict):
         The list of available versions of the component.
         """
         return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class SsoGroupMemberGroup(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str domain: The identity source domain the nested group belongs to.
+        :param _builtins.str name: The name of the nested group.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The identity source domain the nested group belongs to.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the nested group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class SsoGroupMemberUser(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str domain: The identity source domain the member belongs to.
+        :param _builtins.str name: The username of the member.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The identity source domain the member belongs to.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The username of the member.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -7617,6 +7959,68 @@ class GetNetworkFilterResult(dict):
         This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
         """
         return pulumi.get(self, "network_type")
+
+
+@pulumi.output_type
+class GetSsoGroupMemberGroupResult(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str domain: The identity source domain the group belongs to.
+               Defaults to the local (system) domain.
+        :param _builtins.str name: The name of the group to look up.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The identity source domain the group belongs to.
+        Defaults to the local (system) domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the group to look up.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetSsoGroupMemberUserResult(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str domain: The identity source domain the group belongs to.
+               Defaults to the local (system) domain.
+        :param _builtins.str name: The name of the group to look up.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The identity source domain the group belongs to.
+        Defaults to the local (system) domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the group to look up.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

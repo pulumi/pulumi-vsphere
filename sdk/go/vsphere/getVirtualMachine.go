@@ -247,7 +247,10 @@ type LookupVirtualMachineResult struct {
 	// The firmware type for this virtual machine. Can be `bios` or
 	// `efi`.
 	Firmware *string `pulumi:"firmware"`
-	Folder   *string `pulumi:"folder"`
+	// The inventory folder path of the virtual machine. This is the
+	// parent folder containing the virtual machine, relative to the vSphere
+	// inventory. For example, given a default datacenter of `default-dc`, a folder of type `vm` (denoting a virtual machine folder), and a supplied folder of `example-vm-folder`, the resulting path would be `/default-dc/vm/example-vm-folder`.
+	Folder string `pulumi:"folder"`
 	// The guest ID of the virtual machine or template.
 	GuestId string `pulumi:"guestId"`
 	// A list of IP addresses as reported by VMware Tools.
@@ -569,8 +572,11 @@ func (o LookupVirtualMachineResultOutput) Firmware() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Firmware }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupVirtualMachineResultOutput) Folder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Folder }).(pulumi.StringPtrOutput)
+// The inventory folder path of the virtual machine. This is the
+// parent folder containing the virtual machine, relative to the vSphere
+// inventory. For example, given a default datacenter of `default-dc`, a folder of type `vm` (denoting a virtual machine folder), and a supplied folder of `example-vm-folder`, the resulting path would be `/default-dc/vm/example-vm-folder`.
+func (o LookupVirtualMachineResultOutput) Folder() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Folder }).(pulumi.StringOutput)
 }
 
 // The guest ID of the virtual machine or template.

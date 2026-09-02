@@ -35,9 +35,32 @@ public final class GetOvfVmTemplatePlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * The ID of a datastore cluster in which to
+     * place the virtual machine. Storage DRS must be enabled on the cluster.
+     * Conflicts with `datastoreId`.
+     * 
+     * &gt; **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+     * 
+     */
+    @Import(name="datastoreClusterId")
+    private @Nullable String datastoreClusterId;
+
+    /**
+     * @return The ID of a datastore cluster in which to
+     * place the virtual machine. Storage DRS must be enabled on the cluster.
+     * Conflicts with `datastoreId`.
+     * 
+     * &gt; **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+     * 
+     */
+    public Optional<String> datastoreClusterId() {
+        return Optional.ofNullable(this.datastoreClusterId);
+    }
+
+    /**
      * The ID of the virtual machine&#39;s datastore. The
      * virtual machine configuration is placed here, along with any virtual disks
-     * that are created without datastores.
+     * that are created without datastores. Conflicts with `datastoreClusterId`.
      * 
      */
     @Import(name="datastoreId")
@@ -46,7 +69,7 @@ public final class GetOvfVmTemplatePlainArgs extends com.pulumi.resources.Invoke
     /**
      * @return The ID of the virtual machine&#39;s datastore. The
      * virtual machine configuration is placed here, along with any virtual disks
-     * that are created without datastores.
+     * that are created without datastores. Conflicts with `datastoreClusterId`.
      * 
      */
     public Optional<String> datastoreId() {
@@ -263,6 +286,7 @@ public final class GetOvfVmTemplatePlainArgs extends com.pulumi.resources.Invoke
 
     private GetOvfVmTemplatePlainArgs(GetOvfVmTemplatePlainArgs $) {
         this.allowUnverifiedSslCert = $.allowUnverifiedSslCert;
+        this.datastoreClusterId = $.datastoreClusterId;
         this.datastoreId = $.datastoreId;
         this.deploymentOption = $.deploymentOption;
         this.diskProvisioning = $.diskProvisioning;
@@ -309,9 +333,24 @@ public final class GetOvfVmTemplatePlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param datastoreClusterId The ID of a datastore cluster in which to
+         * place the virtual machine. Storage DRS must be enabled on the cluster.
+         * Conflicts with `datastoreId`.
+         * 
+         * &gt; **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastoreClusterId(@Nullable String datastoreClusterId) {
+            $.datastoreClusterId = datastoreClusterId;
+            return this;
+        }
+
+        /**
          * @param datastoreId The ID of the virtual machine&#39;s datastore. The
          * virtual machine configuration is placed here, along with any virtual disks
-         * that are created without datastores.
+         * that are created without datastores. Conflicts with `datastoreClusterId`.
          * 
          * @return builder
          * 

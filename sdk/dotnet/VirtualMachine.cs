@@ -263,6 +263,8 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** An OVF/OVA deployment requires vCenter Server and is not supported on direct ESXi host connections.
     /// 
+    /// &gt; **NOTE:** OVF/OVA deployment supports both `DatastoreId` and `DatastoreClusterId`. When `DatastoreClusterId` is specified, Storage DRS must be enabled on the cluster and is used to select the member datastore for initial placement.
+    /// 
     /// The following example demonstrates a scenario deploying a simple OVF/OVA, using both the local path and remote URL options.
     /// 
     /// **Example**:
@@ -393,6 +395,43 @@ namespace Pulumi.VSphere
     ///                 { "guestinfo.ntp", "ntp.example.com" },
     ///                 { "guestinfo.password", "VMware1!" },
     ///                 { "guestinfo.ssh", "True" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To deploy an OVF/OVA onto a datastore cluster, set `DatastoreClusterId` instead of `DatastoreId`. Storage DRS must be enabled on the cluster.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
+    ///     {
+    ///         Name = "datastore-cluster-01",
+    ///         DatacenterId = datacenter.Id,
+    ///     });
+    /// 
+    ///     var vmFromOvfDatastoreCluster = new VSphere.VirtualMachine("vmFromOvfDatastoreCluster", new()
+    ///     {
+    ///         Name = "ovf-sdrs-foo",
+    ///         DatacenterId = datacenter.Id,
+    ///         DatastoreClusterId = datastoreCluster.Apply(getDatastoreClusterResult =&gt; getDatastoreClusterResult.Id),
+    ///         ResourcePoolId = @default.Id,
+    ///         WaitForGuestNetTimeout = 0,
+    ///         WaitForGuestIpTimeout = 0,
+    ///         OvfDeploy = new VSphere.Inputs.VirtualMachineOvfDeployArgs
+    ///         {
+    ///             RemoteOvfUrl = "https://example.com/foo.ova",
+    ///             OvfNetworkMap = 
+    ///             {
+    ///                 { "Network 1", network.Id },
     ///             },
     ///         },
     ///     });
@@ -1519,6 +1558,12 @@ namespace Pulumi.VSphere
         public Output<string> DatastoreId { get; private set; } = null!;
 
         /// <summary>
+        /// A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+        /// </summary>
+        [Output("datastorePath")]
+        public Output<string?> DatastorePath { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         /// </summary>
         [Output("defaultIpAddress")]
@@ -2116,6 +2161,12 @@ namespace Pulumi.VSphere
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        /// <summary>
+        /// A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+        /// </summary>
+        [Input("datastorePath")]
+        public Input<string>? DatastorePath { get; set; }
+
         [Input("disks")]
         private InputList<Inputs.VirtualMachineDiskArgs>? _disks;
 
@@ -2657,6 +2708,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
+
+        /// <summary>
+        /// A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+        /// </summary>
+        [Input("datastorePath")]
+        public Input<string>? DatastorePath { get; set; }
 
         /// <summary>
         /// The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.

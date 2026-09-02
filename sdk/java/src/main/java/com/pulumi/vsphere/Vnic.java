@@ -317,14 +317,14 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> services;
+    private Output<List<String>> services;
 
     /**
      * @return Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      * 
      */
-    public Output<Optional<List<String>>> services() {
-        return Codegen.optional(this.services);
+    public Output<List<String>> services() {
+        return this.services;
     }
 
     /**

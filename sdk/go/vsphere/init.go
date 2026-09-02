@@ -83,12 +83,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Namespace{}
 	case "vsphere:index/nasDatastore:NasDatastore":
 		r = &NasDatastore{}
+	case "vsphere:index/networkProtocolProfile:NetworkProtocolProfile":
+		r = &NetworkProtocolProfile{}
 	case "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot":
 		r = &OfflineSoftwareDepot{}
 	case "vsphere:index/resourcePool:ResourcePool":
 		r = &ResourcePool{}
 	case "vsphere:index/role:Role":
 		r = &Role{}
+	case "vsphere:index/ssoGroup:SsoGroup":
+		r = &SsoGroup{}
+	case "vsphere:index/ssoUser:SsoUser":
+		r = &SsoUser{}
 	case "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride":
 		r = &StorageDrsVmOverride{}
 	case "vsphere:index/supervisor:Supervisor":
@@ -307,6 +313,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"vsphere",
+		"index/networkProtocolProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
 		"index/offlineSoftwareDepot",
 		&module{version},
 	)
@@ -318,6 +329,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/role",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/ssoGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/ssoUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
