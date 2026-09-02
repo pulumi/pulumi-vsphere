@@ -71,29 +71,29 @@ import (
 // )
 //
 //	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//	           Name: pulumi.StringRef("dc-01"),
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       host, err := vsphere.GetHost(ctx, &vsphere.LookupHostArgs{
-//	           Name:         pulumi.StringRef("esxi-01.example.com"),
-//	           DatacenterId: datacenter.Id,
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       _, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
-//	           HostId:    host.Id,
-//	           NameRegex: pulumi.StringRef("MMC"),
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       return nil
-//	   })
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.GetDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.GetHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
+//				HostId:    host.Id,
+//				NameRegex: pulumi.StringRef("MMC"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
 //	}
 //
 // ```

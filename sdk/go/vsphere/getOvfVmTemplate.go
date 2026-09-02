@@ -31,9 +31,15 @@ type GetOvfVmTemplateArgs struct {
 	// Allow unverified SSL certificates
 	// when deploying OVF/OVA from a URL.
 	AllowUnverifiedSslCert *bool `pulumi:"allowUnverifiedSslCert"`
+	// The ID of a datastore cluster in which to
+	// place the virtual machine. Storage DRS must be enabled on the cluster.
+	// Conflicts with `datastoreId`.
+	//
+	// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// The ID of the virtual machine's datastore. The
 	// virtual machine configuration is placed here, along with any virtual disks
-	// that are created without datastores.
+	// that are created without datastores. Conflicts with `datastoreClusterId`.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The key of the chosen deployment option. If
 	// empty, the default option is chosen.
@@ -88,6 +94,7 @@ type GetOvfVmTemplateResult struct {
 	// while powered on.
 	CpuHotRemoveEnabled           bool    `pulumi:"cpuHotRemoveEnabled"`
 	CpuPerformanceCountersEnabled bool    `pulumi:"cpuPerformanceCountersEnabled"`
+	DatastoreClusterId            *string `pulumi:"datastoreClusterId"`
 	DatastoreId                   *string `pulumi:"datastoreId"`
 	DeploymentOption              *string `pulumi:"deploymentOption"`
 	DiskProvisioning              *string `pulumi:"diskProvisioning"`
@@ -139,9 +146,15 @@ type GetOvfVmTemplateOutputArgs struct {
 	// Allow unverified SSL certificates
 	// when deploying OVF/OVA from a URL.
 	AllowUnverifiedSslCert pulumi.BoolPtrInput `pulumi:"allowUnverifiedSslCert"`
+	// The ID of a datastore cluster in which to
+	// place the virtual machine. Storage DRS must be enabled on the cluster.
+	// Conflicts with `datastoreId`.
+	//
+	// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+	DatastoreClusterId pulumi.StringPtrInput `pulumi:"datastoreClusterId"`
 	// The ID of the virtual machine's datastore. The
 	// virtual machine configuration is placed here, along with any virtual disks
-	// that are created without datastores.
+	// that are created without datastores. Conflicts with `datastoreClusterId`.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// The key of the chosen deployment option. If
 	// empty, the default option is chosen.
@@ -229,6 +242,10 @@ func (o GetOvfVmTemplateResultOutput) CpuHotRemoveEnabled() pulumi.BoolOutput {
 
 func (o GetOvfVmTemplateResultOutput) CpuPerformanceCountersEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) bool { return v.CpuPerformanceCountersEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetOvfVmTemplateResultOutput) DatastoreClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOvfVmTemplateResult) *string { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetOvfVmTemplateResultOutput) DatastoreId() pulumi.StringPtrOutput {

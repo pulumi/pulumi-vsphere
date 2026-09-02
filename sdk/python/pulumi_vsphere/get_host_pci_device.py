@@ -131,9 +131,9 @@ def get_host_pci_device(class_id: Optional[_builtins.str] = None,
 
     datacenter = vsphere.get_datacenter(name="dc-01")
     host = vsphere.get_host(name="esxi-01.example.com",
-       datacenter_id=datacenter.id)
+        datacenter_id=datacenter.id)
     dev = vsphere.get_host_pci_device(host_id=host.id,
-       name_regex="MMC")
+        name_regex="MMC")
     ```
 
 
@@ -197,9 +197,9 @@ def get_host_pci_device_output(class_id: pulumi.Input[Optional[Optional[_builtin
 
     datacenter = vsphere.get_datacenter(name="dc-01")
     host = vsphere.get_host(name="esxi-01.example.com",
-       datacenter_id=datacenter.id)
+        datacenter_id=datacenter.id)
     dev = vsphere.get_host_pci_device(host_id=host.id,
-       name_regex="MMC")
+        name_regex="MMC")
     ```
 
 

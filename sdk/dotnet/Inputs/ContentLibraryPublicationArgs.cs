@@ -18,11 +18,21 @@ namespace Pulumi.VSphere.Inputs
         [Input("authenticationMethod")]
         public Input<string>? AuthenticationMethod { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password used by subscribers to authenticate.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The URL of the published content library.

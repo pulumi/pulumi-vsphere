@@ -267,22 +267,22 @@ type ResourcePool struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrOutput `pulumi:"memoryExpandable"`
-	// The CPU utilization of a resource pool will not
+	// The memory utilization of a resource pool will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the resource pool. Default: `0`
 	MemoryReservation pulumi.IntPtrOutput `pulumi:"memoryReservation"`
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrOutput `pulumi:"memoryShareLevel"`
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntOutput `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -365,22 +365,22 @@ type resourcePoolState struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The CPU utilization of a resource pool will not
+	// The memory utilization of a resource pool will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the resource pool. Default: `0`
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel *string `pulumi:"memoryShareLevel"`
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name *string `pulumi:"name"`
@@ -431,22 +431,22 @@ type ResourcePoolState struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a resource pool will not
+	// The memory utilization of a resource pool will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the resource pool. Default: `0`
 	MemoryReservation pulumi.IntPtrInput
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrInput
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntPtrInput
 	// The name of the resource pool.
 	Name pulumi.StringPtrInput
@@ -501,22 +501,22 @@ type resourcePoolArgs struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The CPU utilization of a resource pool will not
+	// The memory utilization of a resource pool will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the resource pool. Default: `0`
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel *string `pulumi:"memoryShareLevel"`
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name *string `pulumi:"name"`
@@ -568,22 +568,22 @@ type ResourcePoolArgs struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a resource pool will not
+	// The memory utilization of a resource pool will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the resource pool. Default: `0`
 	MemoryReservation pulumi.IntPtrInput
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrInput
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntPtrInput
 	// The name of the resource pool.
 	Name pulumi.StringPtrInput
@@ -741,20 +741,20 @@ func (o ResourcePoolOutput) MemoryExpandable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.BoolPtrOutput { return v.MemoryExpandable }).(pulumi.BoolPtrOutput)
 }
 
-// The CPU utilization of a resource pool will not
+// The memory utilization of a resource pool will not
 // exceed this limit, even if there are available resources. Set to `-1` for
 // unlimited. Default: `-1`
 func (o ResourcePoolOutput) MemoryLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntPtrOutput { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
 
-// Amount of CPU (MHz) that is guaranteed
+// Amount of memory (MB) that is guaranteed
 // available to the resource pool. Default: `0`
 func (o ResourcePoolOutput) MemoryReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntPtrOutput { return v.MemoryReservation }).(pulumi.IntPtrOutput)
 }
 
-// The CPU allocation level. The level is a
+// The memory allocation level. The level is a
 // simplified view of shares. Levels map to a pre-determined set of numeric
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 // `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -763,9 +763,9 @@ func (o ResourcePoolOutput) MemoryShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringPtrOutput { return v.MemoryShareLevel }).(pulumi.StringPtrOutput)
 }
 
-// The number of shares allocated for CPU. Used to
-// determine resource allocation in case of resource contention. If this is set,
-// `memoryShareLevel` must be `custom`.
+// The number of shares allocated for memory. Used
+// to determine resource allocation in case of resource contention. If this is
+// set, `memoryShareLevel` must be `custom`.
 func (o ResourcePoolOutput) MemoryShares() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntOutput { return v.MemoryShares }).(pulumi.IntOutput)
 }

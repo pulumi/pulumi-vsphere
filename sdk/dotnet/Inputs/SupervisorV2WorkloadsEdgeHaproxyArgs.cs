@@ -18,11 +18,21 @@ namespace Pulumi.VSphere.Inputs
         [Input("caChain", required: true)]
         public Input<string> CaChain { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password for the data plane API server.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("servers", required: true)]
         private InputList<Inputs.SupervisorV2WorkloadsEdgeHaproxyServerArgs>? _servers;

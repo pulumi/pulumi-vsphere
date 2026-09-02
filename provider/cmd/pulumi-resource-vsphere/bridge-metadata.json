@@ -440,6 +440,35 @@
                     }
                 }
             },
+            "vsphere_network_protocol_profile": {
+                "current": "vsphere:index/networkProtocolProfile:NetworkProtocolProfile",
+                "majorVersion": 4,
+                "fields": {
+                    "ipv4": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dns_servers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ipv6": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dns_servers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "network_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "vsphere_offline_software_depot": {
                 "current": "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot",
                 "majorVersion": 4,
@@ -473,6 +502,22 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "vsphere_sso_group": {
+                "current": "vsphere:index/ssoGroup:SsoGroup",
+                "majorVersion": 4,
+                "fields": {
+                    "member_group": {
+                        "maxItemsOne": false
+                    },
+                    "member_user": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "vsphere_sso_user": {
+                "current": "vsphere:index/ssoUser:SsoUser",
+                "majorVersion": 4
             },
             "vsphere_storage_drs_vm_override": {
                 "current": "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride",
@@ -1300,6 +1345,22 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "vsphere_sso_group": {
+                "current": "vsphere:index/getSsoGroup:getSsoGroup",
+                "majorVersion": 4,
+                "fields": {
+                    "member_group": {
+                        "maxItemsOne": false
+                    },
+                    "member_user": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "vsphere_sso_user": {
+                "current": "vsphere:index/getSsoUser:getSsoUser",
+                "majorVersion": 4
             },
             "vsphere_storage_policy": {
                 "current": "vsphere:index/getPolicy:getPolicy",

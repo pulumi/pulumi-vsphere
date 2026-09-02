@@ -313,6 +313,21 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     * 
+     */
+    @Import(name="datastorePath")
+    private @Nullable Output<String> datastorePath;
+
+    /**
+     * @return A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     * 
+     */
+    public Optional<Output<String>> datastorePath() {
+        return Optional.ofNullable(this.datastorePath);
+    }
+
+    /**
      * The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
      * 
      */
@@ -1414,6 +1429,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.datacenterId = $.datacenterId;
         this.datastoreClusterId = $.datastoreClusterId;
         this.datastoreId = $.datastoreId;
+        this.datastorePath = $.datastorePath;
         this.defaultIpAddress = $.defaultIpAddress;
         this.disks = $.disks;
         this.efiSecureBootEnabled = $.efiSecureBootEnabled;
@@ -1913,6 +1929,27 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder datastoreId(String datastoreId) {
             return datastoreId(Output.of(datastoreId));
+        }
+
+        /**
+         * @param datastorePath A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastorePath(@Nullable Output<String> datastorePath) {
+            $.datastorePath = datastorePath;
+            return this;
+        }
+
+        /**
+         * @param datastorePath A &#39;/&#39; joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastorePath(String datastorePath) {
+            return datastorePath(Output.of(datastorePath));
         }
 
         /**

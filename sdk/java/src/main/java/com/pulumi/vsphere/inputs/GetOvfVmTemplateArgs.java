@@ -36,9 +36,32 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * The ID of a datastore cluster in which to
+     * place the virtual machine. Storage DRS must be enabled on the cluster.
+     * Conflicts with `datastoreId`.
+     * 
+     * &gt; **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+     * 
+     */
+    @Import(name="datastoreClusterId")
+    private @Nullable Output<String> datastoreClusterId;
+
+    /**
+     * @return The ID of a datastore cluster in which to
+     * place the virtual machine. Storage DRS must be enabled on the cluster.
+     * Conflicts with `datastoreId`.
+     * 
+     * &gt; **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+     * 
+     */
+    public Optional<Output<String>> datastoreClusterId() {
+        return Optional.ofNullable(this.datastoreClusterId);
+    }
+
+    /**
      * The ID of the virtual machine&#39;s datastore. The
      * virtual machine configuration is placed here, along with any virtual disks
-     * that are created without datastores.
+     * that are created without datastores. Conflicts with `datastoreClusterId`.
      * 
      */
     @Import(name="datastoreId")
@@ -47,7 +70,7 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * @return The ID of the virtual machine&#39;s datastore. The
      * virtual machine configuration is placed here, along with any virtual disks
-     * that are created without datastores.
+     * that are created without datastores. Conflicts with `datastoreClusterId`.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -264,6 +287,7 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetOvfVmTemplateArgs(GetOvfVmTemplateArgs $) {
         this.allowUnverifiedSslCert = $.allowUnverifiedSslCert;
+        this.datastoreClusterId = $.datastoreClusterId;
         this.datastoreId = $.datastoreId;
         this.deploymentOption = $.deploymentOption;
         this.diskProvisioning = $.diskProvisioning;
@@ -321,9 +345,38 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param datastoreClusterId The ID of a datastore cluster in which to
+         * place the virtual machine. Storage DRS must be enabled on the cluster.
+         * Conflicts with `datastoreId`.
+         * 
+         * &gt; **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastoreClusterId(@Nullable Output<String> datastoreClusterId) {
+            $.datastoreClusterId = datastoreClusterId;
+            return this;
+        }
+
+        /**
+         * @param datastoreClusterId The ID of a datastore cluster in which to
+         * place the virtual machine. Storage DRS must be enabled on the cluster.
+         * Conflicts with `datastoreId`.
+         * 
+         * &gt; **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastoreClusterId(String datastoreClusterId) {
+            return datastoreClusterId(Output.of(datastoreClusterId));
+        }
+
+        /**
          * @param datastoreId The ID of the virtual machine&#39;s datastore. The
          * virtual machine configuration is placed here, along with any virtual disks
-         * that are created without datastores.
+         * that are created without datastores. Conflicts with `datastoreClusterId`.
          * 
          * @return builder
          * 
@@ -336,7 +389,7 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param datastoreId The ID of the virtual machine&#39;s datastore. The
          * virtual machine configuration is placed here, along with any virtual disks
-         * that are created without datastores.
+         * that are created without datastores. Conflicts with `datastoreClusterId`.
          * 
          * @return builder
          * 

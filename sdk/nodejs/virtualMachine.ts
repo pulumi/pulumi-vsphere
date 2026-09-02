@@ -196,6 +196,8 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** An OVF/OVA deployment requires vCenter Server and is not supported on direct ESXi host connections.
  *
+ * > **NOTE:** OVF/OVA deployment supports both `datastoreId` and `datastoreClusterId`. When `datastoreClusterId` is specified, Storage DRS must be enabled on the cluster and is used to select the member datastore for initial placement.
+ *
  * The following example demonstrates a scenario deploying a simple OVF/OVA, using both the local path and remote URL options.
  *
  * **Example**:
@@ -297,6 +299,32 @@ import * as utilities from "./utilities";
  *             "guestinfo.ntp": "ntp.example.com",
  *             "guestinfo.password": "VMware1!",
  *             "guestinfo.ssh": "True",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * To deploy an OVF/OVA onto a datastore cluster, set `datastoreClusterId` instead of `datastoreId`. Storage DRS must be enabled on the cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datastoreCluster = vsphere.getDatastoreCluster({
+ *     name: "datastore-cluster-01",
+ *     datacenterId: datacenter.id,
+ * });
+ * const vmFromOvfDatastoreCluster = new vsphere.VirtualMachine("vmFromOvfDatastoreCluster", {
+ *     name: "ovf-sdrs-foo",
+ *     datacenterId: datacenter.id,
+ *     datastoreClusterId: datastoreCluster.then(datastoreCluster => datastoreCluster.id),
+ *     resourcePoolId: _default.id,
+ *     waitForGuestNetTimeout: 0,
+ *     waitForGuestIpTimeout: 0,
+ *     ovfDeploy: {
+ *         remoteOvfUrl: "https://example.com/foo.ova",
+ *         ovfNetworkMap: {
+ *             "Network 1": network.id,
  *         },
  *     },
  * });
@@ -1186,6 +1214,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly datastoreId: pulumi.Output<string>;
     /**
+     * A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     */
+    declare public readonly datastorePath: pulumi.Output<string | undefined>;
+    /**
      * The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
      */
     declare public /*out*/ readonly defaultIpAddress: pulumi.Output<string>;
@@ -1506,6 +1538,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["datacenterId"] = state?.datacenterId;
             resourceInputs["datastoreClusterId"] = state?.datastoreClusterId;
             resourceInputs["datastoreId"] = state?.datastoreId;
+            resourceInputs["datastorePath"] = state?.datastorePath;
             resourceInputs["defaultIpAddress"] = state?.defaultIpAddress;
             resourceInputs["disks"] = state?.disks;
             resourceInputs["efiSecureBootEnabled"] = state?.efiSecureBootEnabled;
@@ -1601,6 +1634,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["datacenterId"] = args?.datacenterId;
             resourceInputs["datastoreClusterId"] = args?.datastoreClusterId;
             resourceInputs["datastoreId"] = args?.datastoreId;
+            resourceInputs["datastorePath"] = args?.datastorePath;
             resourceInputs["disks"] = args?.disks;
             resourceInputs["efiSecureBootEnabled"] = args?.efiSecureBootEnabled;
             resourceInputs["enableDiskUuid"] = args?.enableDiskUuid;
@@ -1760,6 +1794,10 @@ export interface VirtualMachineState {
      * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      */
     datastoreId?: pulumi.Input<string | undefined>;
+    /**
+     * A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     */
+    datastorePath?: pulumi.Input<string | undefined>;
     /**
      * The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
      */
@@ -2126,6 +2164,10 @@ export interface VirtualMachineArgs {
      * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      */
     datastoreId?: pulumi.Input<string | undefined>;
+    /**
+     * A '/' joined relative path within the datastore where the virtual machine metadata files (VMX, NVRAM, logs, etc.) will be placed. If empty, the files are placed at the datastore root.
+     */
+    datastorePath?: pulumi.Input<string | undefined>;
     /**
      * A specification for a virtual disk device on this virtual machine.
      */

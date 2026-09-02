@@ -52,7 +52,7 @@ namespace Pulumi.VSphere
         /// 
         /// ### With Name Regular Expression
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -124,7 +124,7 @@ namespace Pulumi.VSphere
         /// 
         /// ### With Name Regular Expression
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -196,7 +196,7 @@ namespace Pulumi.VSphere
         /// 
         /// ### With Name Regular Expression
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;

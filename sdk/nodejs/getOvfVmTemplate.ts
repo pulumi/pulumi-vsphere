@@ -151,6 +151,7 @@ export function getOvfVmTemplate(args: GetOvfVmTemplateArgs, opts?: pulumi.Invok
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", {
         "allowUnverifiedSslCert": args.allowUnverifiedSslCert,
+        "datastoreClusterId": args.datastoreClusterId,
         "datastoreId": args.datastoreId,
         "deploymentOption": args.deploymentOption,
         "diskProvisioning": args.diskProvisioning,
@@ -177,9 +178,17 @@ export interface GetOvfVmTemplateArgs {
      */
     allowUnverifiedSslCert?: boolean;
     /**
+     * The ID of a datastore cluster in which to
+     * place the virtual machine. Storage DRS must be enabled on the cluster.
+     * Conflicts with `datastoreId`.
+     *
+     * > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+     */
+    datastoreClusterId?: string;
+    /**
      * The ID of the virtual machine's datastore. The
      * virtual machine configuration is placed here, along with any virtual disks
-     * that are created without datastores.
+     * that are created without datastores. Conflicts with `datastoreClusterId`.
      */
     datastoreId?: string;
     /**
@@ -269,6 +278,7 @@ export interface GetOvfVmTemplateResult {
      */
     readonly cpuHotRemoveEnabled: boolean;
     readonly cpuPerformanceCountersEnabled: boolean;
+    readonly datastoreClusterId?: string;
     readonly datastoreId?: string;
     readonly deploymentOption?: string;
     readonly diskProvisioning?: string;
@@ -474,6 +484,7 @@ export function getOvfVmTemplateOutput(args: GetOvfVmTemplateOutputArgs, opts?: 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", {
         "allowUnverifiedSslCert": args.allowUnverifiedSslCert,
+        "datastoreClusterId": args.datastoreClusterId,
         "datastoreId": args.datastoreId,
         "deploymentOption": args.deploymentOption,
         "diskProvisioning": args.diskProvisioning,
@@ -500,9 +511,17 @@ export interface GetOvfVmTemplateOutputArgs {
      */
     allowUnverifiedSslCert?: pulumi.Input<boolean | undefined>;
     /**
+     * The ID of a datastore cluster in which to
+     * place the virtual machine. Storage DRS must be enabled on the cluster.
+     * Conflicts with `datastoreId`.
+     *
+     * > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+     */
+    datastoreClusterId?: pulumi.Input<string | undefined>;
+    /**
      * The ID of the virtual machine's datastore. The
      * virtual machine configuration is placed here, along with any virtual disks
-     * that are created without datastores.
+     * that are created without datastores. Conflicts with `datastoreClusterId`.
      */
     datastoreId?: pulumi.Input<string | undefined>;
     /**

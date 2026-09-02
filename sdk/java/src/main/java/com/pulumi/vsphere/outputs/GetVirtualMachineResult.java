@@ -83,7 +83,13 @@ public final class GetVirtualMachineResult {
      * 
      */
     private @Nullable String firmware;
-    private @Nullable String folder;
+    /**
+     * @return The inventory folder path of the virtual machine. This is the
+     * parent folder containing the virtual machine, relative to the vSphere
+     * inventory. For example, given a default datacenter of `default-dc`, a folder of type `vm` (denoting a virtual machine folder), and a supplied folder of `example-vm-folder`, the resulting path would be `/default-dc/vm/example-vm-folder`.
+     * 
+     */
+    private String folder;
     /**
      * @return The guest ID of the virtual machine or template.
      * 
@@ -324,8 +330,14 @@ public final class GetVirtualMachineResult {
     public Optional<String> firmware() {
         return Optional.ofNullable(this.firmware);
     }
-    public Optional<String> folder() {
-        return Optional.ofNullable(this.folder);
+    /**
+     * @return The inventory folder path of the virtual machine. This is the
+     * parent folder containing the virtual machine, relative to the vSphere
+     * inventory. For example, given a default datacenter of `default-dc`, a folder of type `vm` (denoting a virtual machine folder), and a supplied folder of `example-vm-folder`, the resulting path would be `/default-dc/vm/example-vm-folder`.
+     * 
+     */
+    public String folder() {
+        return this.folder;
     }
     /**
      * @return The guest ID of the virtual machine or template.
@@ -581,7 +593,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Map<String,String> extraConfig;
         private @Nullable Boolean extraConfigRebootRequired;
         private @Nullable String firmware;
-        private @Nullable String folder;
+        private String folder;
         private String guestId;
         private List<String> guestIpAddresses;
         private Integer hardwareVersion;
@@ -875,8 +887,10 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
-        public Builder folder(@Nullable String folder) {
-
+        public Builder folder(String folder) {
+            if (folder == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "folder");
+            }
             this.folder = folder;
             return this;
         }

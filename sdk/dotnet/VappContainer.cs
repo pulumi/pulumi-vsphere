@@ -199,22 +199,22 @@ namespace Pulumi.VSphere
         public Output<bool?> MemoryExpandable { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU utilization of a vApp container will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
+        /// The memory utilization of a vApp container will
+        /// not exceed this limit, even if there are available resources. Set to `-1` for
         /// unlimited. Default: `-1`
         /// </summary>
         [Output("memoryLimit")]
         public Output<int?> MemoryLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
+        /// Amount of memory (MB) that is guaranteed
         /// available to the vApp container. Default: `0`
         /// </summary>
         [Output("memoryReservation")]
         public Output<int?> MemoryReservation { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU allocation level. The level is a
+        /// The memory allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
         /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
         /// `Low`, `Normal`, or `High` are specified values in `MemoryShares` will be
@@ -224,9 +224,9 @@ namespace Pulumi.VSphere
         public Output<string?> MemoryShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `MemoryShareLevel` must be `Custom`.
+        /// The number of shares allocated for memory. Used
+        /// to determine resource allocation in case of resource contention. If this is
+        /// set, `MemoryShareLevel` must be `Custom`.
         /// </summary>
         [Output("memoryShares")]
         public Output<int> MemoryShares { get; private set; } = null!;
@@ -373,22 +373,22 @@ namespace Pulumi.VSphere
         public Input<bool>? MemoryExpandable { get; set; }
 
         /// <summary>
-        /// The CPU utilization of a vApp container will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
+        /// The memory utilization of a vApp container will
+        /// not exceed this limit, even if there are available resources. Set to `-1` for
         /// unlimited. Default: `-1`
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
+        /// Amount of memory (MB) that is guaranteed
         /// available to the vApp container. Default: `0`
         /// </summary>
         [Input("memoryReservation")]
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// The CPU allocation level. The level is a
+        /// The memory allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
         /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
         /// `Low`, `Normal`, or `High` are specified values in `MemoryShares` will be
@@ -398,9 +398,9 @@ namespace Pulumi.VSphere
         public Input<string>? MemoryShareLevel { get; set; }
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `MemoryShareLevel` must be `Custom`.
+        /// The number of shares allocated for memory. Used
+        /// to determine resource allocation in case of resource contention. If this is
+        /// set, `MemoryShareLevel` must be `Custom`.
         /// </summary>
         [Input("memoryShares")]
         public Input<int>? MemoryShares { get; set; }
@@ -515,22 +515,22 @@ namespace Pulumi.VSphere
         public Input<bool>? MemoryExpandable { get; set; }
 
         /// <summary>
-        /// The CPU utilization of a vApp container will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
+        /// The memory utilization of a vApp container will
+        /// not exceed this limit, even if there are available resources. Set to `-1` for
         /// unlimited. Default: `-1`
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
+        /// Amount of memory (MB) that is guaranteed
         /// available to the vApp container. Default: `0`
         /// </summary>
         [Input("memoryReservation")]
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// The CPU allocation level. The level is a
+        /// The memory allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
         /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
         /// `Low`, `Normal`, or `High` are specified values in `MemoryShares` will be
@@ -540,9 +540,9 @@ namespace Pulumi.VSphere
         public Input<string>? MemoryShareLevel { get; set; }
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `MemoryShareLevel` must be `Custom`.
+        /// The number of shares allocated for memory. Used
+        /// to determine resource allocation in case of resource contention. If this is
+        /// set, `MemoryShareLevel` must be `Custom`.
         /// </summary>
         [Input("memoryShares")]
         public Input<int>? MemoryShares { get; set; }

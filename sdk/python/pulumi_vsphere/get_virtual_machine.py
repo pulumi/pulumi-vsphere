@@ -408,7 +408,12 @@ class GetVirtualMachineResult:
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[_builtins.str]:
+    def folder(self) -> _builtins.str:
+        """
+        The inventory folder path of the virtual machine. This is the
+        parent folder containing the virtual machine, relative to the vSphere
+        inventory. For example, given a default datacenter of `default-dc`, a folder of type `vm` (denoting a virtual machine folder), and a supplied folder of `example-vm-folder`, the resulting path would be `/default-dc/vm/example-vm-folder`.
+        """
         return pulumi.get(self, "folder")
 
     @_builtins.property

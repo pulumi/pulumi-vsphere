@@ -200,18 +200,18 @@ export class ResourcePool extends pulumi.CustomResource {
      */
     declare public readonly memoryExpandable: pulumi.Output<boolean | undefined>;
     /**
-     * The CPU utilization of a resource pool will not
+     * The memory utilization of a resource pool will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      */
     declare public readonly memoryLimit: pulumi.Output<number | undefined>;
     /**
-     * Amount of CPU (MHz) that is guaranteed
+     * Amount of memory (MB) that is guaranteed
      * available to the resource pool. Default: `0`
      */
     declare public readonly memoryReservation: pulumi.Output<number | undefined>;
     /**
-     * The CPU allocation level. The level is a
+     * The memory allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -219,9 +219,9 @@ export class ResourcePool extends pulumi.CustomResource {
      */
     declare public readonly memoryShareLevel: pulumi.Output<string | undefined>;
     /**
-     * The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memoryShareLevel` must be `custom`.
+     * The number of shares allocated for memory. Used
+     * to determine resource allocation in case of resource contention. If this is
+     * set, `memoryShareLevel` must be `custom`.
      */
     declare public readonly memoryShares: pulumi.Output<number>;
     /**
@@ -352,18 +352,18 @@ export interface ResourcePoolState {
      */
     memoryExpandable?: pulumi.Input<boolean | undefined>;
     /**
-     * The CPU utilization of a resource pool will not
+     * The memory utilization of a resource pool will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      */
     memoryLimit?: pulumi.Input<number | undefined>;
     /**
-     * Amount of CPU (MHz) that is guaranteed
+     * Amount of memory (MB) that is guaranteed
      * available to the resource pool. Default: `0`
      */
     memoryReservation?: pulumi.Input<number | undefined>;
     /**
-     * The CPU allocation level. The level is a
+     * The memory allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -371,9 +371,9 @@ export interface ResourcePoolState {
      */
     memoryShareLevel?: pulumi.Input<string | undefined>;
     /**
-     * The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memoryShareLevel` must be `custom`.
+     * The number of shares allocated for memory. Used
+     * to determine resource allocation in case of resource contention. If this is
+     * set, `memoryShareLevel` must be `custom`.
      */
     memoryShares?: pulumi.Input<number | undefined>;
     /**
@@ -451,18 +451,18 @@ export interface ResourcePoolArgs {
      */
     memoryExpandable?: pulumi.Input<boolean | undefined>;
     /**
-     * The CPU utilization of a resource pool will not
+     * The memory utilization of a resource pool will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      */
     memoryLimit?: pulumi.Input<number | undefined>;
     /**
-     * Amount of CPU (MHz) that is guaranteed
+     * Amount of memory (MB) that is guaranteed
      * available to the resource pool. Default: `0`
      */
     memoryReservation?: pulumi.Input<number | undefined>;
     /**
-     * The CPU allocation level. The level is a
+     * The memory allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -470,9 +470,9 @@ export interface ResourcePoolArgs {
      */
     memoryShareLevel?: pulumi.Input<string | undefined>;
     /**
-     * The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memoryShareLevel` must be `custom`.
+     * The number of shares allocated for memory. Used
+     * to determine resource allocation in case of resource contention. If this is
+     * set, `memoryShareLevel` must be `custom`.
      */
     memoryShares?: pulumi.Input<number | undefined>;
     /**

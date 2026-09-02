@@ -32,11 +32,21 @@ namespace Pulumi.VSphere.Inputs
         [Input("onDemand")]
         public Input<bool>? OnDemand { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password used for authentication.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// URL of the published content library.

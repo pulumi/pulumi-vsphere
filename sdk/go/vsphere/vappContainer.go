@@ -190,22 +190,22 @@ type VappContainer struct {
 	// container can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrOutput `pulumi:"memoryExpandable"`
-	// The CPU utilization of a vApp container will not
-	// exceed this limit, even if there are available resources. Set to `-1` for
+	// The memory utilization of a vApp container will
+	// not exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the vApp container. Default: `0`
 	MemoryReservation pulumi.IntPtrOutput `pulumi:"memoryReservation"`
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrOutput `pulumi:"memoryShareLevel"`
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntOutput `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -287,22 +287,22 @@ type vappContainerState struct {
 	// container can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The CPU utilization of a vApp container will not
-	// exceed this limit, even if there are available resources. Set to `-1` for
+	// The memory utilization of a vApp container will
+	// not exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the vApp container. Default: `0`
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel *string `pulumi:"memoryShareLevel"`
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name *string `pulumi:"name"`
@@ -352,22 +352,22 @@ type VappContainerState struct {
 	// container can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a vApp container will not
-	// exceed this limit, even if there are available resources. Set to `-1` for
+	// The memory utilization of a vApp container will
+	// not exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the vApp container. Default: `0`
 	MemoryReservation pulumi.IntPtrInput
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrInput
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntPtrInput
 	// The name of the vApp container.
 	Name pulumi.StringPtrInput
@@ -421,22 +421,22 @@ type vappContainerArgs struct {
 	// container can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The CPU utilization of a vApp container will not
-	// exceed this limit, even if there are available resources. Set to `-1` for
+	// The memory utilization of a vApp container will
+	// not exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the vApp container. Default: `0`
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel *string `pulumi:"memoryShareLevel"`
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name *string `pulumi:"name"`
@@ -487,22 +487,22 @@ type VappContainerArgs struct {
 	// container can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a vApp container will not
-	// exceed this limit, even if there are available resources. Set to `-1` for
+	// The memory utilization of a vApp container will
+	// not exceed this limit, even if there are available resources. Set to `-1` for
 	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
-	// Amount of CPU (MHz) that is guaranteed
+	// Amount of memory (MB) that is guaranteed
 	// available to the vApp container. Default: `0`
 	MemoryReservation pulumi.IntPtrInput
-	// The CPU allocation level. The level is a
+	// The memory allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrInput
-	// The number of shares allocated for CPU. Used to
-	// determine resource allocation in case of resource contention. If this is set,
-	// `memoryShareLevel` must be `custom`.
+	// The number of shares allocated for memory. Used
+	// to determine resource allocation in case of resource contention. If this is
+	// set, `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntPtrInput
 	// The name of the vApp container.
 	Name pulumi.StringPtrInput
@@ -659,20 +659,20 @@ func (o VappContainerOutput) MemoryExpandable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.BoolPtrOutput { return v.MemoryExpandable }).(pulumi.BoolPtrOutput)
 }
 
-// The CPU utilization of a vApp container will not
-// exceed this limit, even if there are available resources. Set to `-1` for
+// The memory utilization of a vApp container will
+// not exceed this limit, even if there are available resources. Set to `-1` for
 // unlimited. Default: `-1`
 func (o VappContainerOutput) MemoryLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.IntPtrOutput { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
 
-// Amount of CPU (MHz) that is guaranteed
+// Amount of memory (MB) that is guaranteed
 // available to the vApp container. Default: `0`
 func (o VappContainerOutput) MemoryReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.IntPtrOutput { return v.MemoryReservation }).(pulumi.IntPtrOutput)
 }
 
-// The CPU allocation level. The level is a
+// The memory allocation level. The level is a
 // simplified view of shares. Levels map to a pre-determined set of numeric
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 // `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -681,9 +681,9 @@ func (o VappContainerOutput) MemoryShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.StringPtrOutput { return v.MemoryShareLevel }).(pulumi.StringPtrOutput)
 }
 
-// The number of shares allocated for CPU. Used to
-// determine resource allocation in case of resource contention. If this is set,
-// `memoryShareLevel` must be `custom`.
+// The number of shares allocated for memory. Used
+// to determine resource allocation in case of resource contention. If this is
+// set, `memoryShareLevel` must be `custom`.
 func (o VappContainerOutput) MemoryShares() pulumi.IntOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.IntOutput { return v.MemoryShares }).(pulumi.IntOutput)
 }

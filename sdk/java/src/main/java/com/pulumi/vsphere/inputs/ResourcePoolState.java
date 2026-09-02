@@ -151,7 +151,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU utilization of a resource pool will not
+     * The memory utilization of a resource pool will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      * 
@@ -160,7 +160,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> memoryLimit;
 
     /**
-     * @return The CPU utilization of a resource pool will not
+     * @return The memory utilization of a resource pool will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      * 
@@ -170,7 +170,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Amount of CPU (MHz) that is guaranteed
+     * Amount of memory (MB) that is guaranteed
      * available to the resource pool. Default: `0`
      * 
      */
@@ -178,7 +178,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> memoryReservation;
 
     /**
-     * @return Amount of CPU (MHz) that is guaranteed
+     * @return Amount of memory (MB) that is guaranteed
      * available to the resource pool. Default: `0`
      * 
      */
@@ -187,7 +187,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU allocation level. The level is a
+     * The memory allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -198,7 +198,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> memoryShareLevel;
 
     /**
-     * @return The CPU allocation level. The level is a
+     * @return The memory allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -210,18 +210,18 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memoryShareLevel` must be `custom`.
+     * The number of shares allocated for memory. Used
+     * to determine resource allocation in case of resource contention. If this is
+     * set, `memoryShareLevel` must be `custom`.
      * 
      */
     @Import(name="memoryShares")
     private @Nullable Output<Integer> memoryShares;
 
     /**
-     * @return The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memoryShareLevel` must be `custom`.
+     * @return The number of shares allocated for memory. Used
+     * to determine resource allocation in case of resource contention. If this is
+     * set, `memoryShareLevel` must be `custom`.
      * 
      */
     public Optional<Output<Integer>> memoryShares() {
@@ -522,7 +522,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryLimit The CPU utilization of a resource pool will not
+         * @param memoryLimit The memory utilization of a resource pool will not
          * exceed this limit, even if there are available resources. Set to `-1` for
          * unlimited. Default: `-1`
          * 
@@ -535,7 +535,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryLimit The CPU utilization of a resource pool will not
+         * @param memoryLimit The memory utilization of a resource pool will not
          * exceed this limit, even if there are available resources. Set to `-1` for
          * unlimited. Default: `-1`
          * 
@@ -547,7 +547,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryReservation Amount of CPU (MHz) that is guaranteed
+         * @param memoryReservation Amount of memory (MB) that is guaranteed
          * available to the resource pool. Default: `0`
          * 
          * @return builder
@@ -559,7 +559,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryReservation Amount of CPU (MHz) that is guaranteed
+         * @param memoryReservation Amount of memory (MB) that is guaranteed
          * available to the resource pool. Default: `0`
          * 
          * @return builder
@@ -570,7 +570,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShareLevel The CPU allocation level. The level is a
+         * @param memoryShareLevel The memory allocation level. The level is a
          * simplified view of shares. Levels map to a pre-determined set of numeric
          * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
          * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -585,7 +585,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShareLevel The CPU allocation level. The level is a
+         * @param memoryShareLevel The memory allocation level. The level is a
          * simplified view of shares. Levels map to a pre-determined set of numeric
          * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
          * `low`, `normal`, or `high` are specified values in `memoryShares` will be
@@ -599,9 +599,9 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShares The number of shares allocated for CPU. Used to
-         * determine resource allocation in case of resource contention. If this is set,
-         * `memoryShareLevel` must be `custom`.
+         * @param memoryShares The number of shares allocated for memory. Used
+         * to determine resource allocation in case of resource contention. If this is
+         * set, `memoryShareLevel` must be `custom`.
          * 
          * @return builder
          * 
@@ -612,9 +612,9 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShares The number of shares allocated for CPU. Used to
-         * determine resource allocation in case of resource contention. If this is set,
-         * `memoryShareLevel` must be `custom`.
+         * @param memoryShares The number of shares allocated for memory. Used
+         * to determine resource allocation in case of resource contention. If this is
+         * set, `memoryShareLevel` must be `custom`.
          * 
          * @return builder
          * 

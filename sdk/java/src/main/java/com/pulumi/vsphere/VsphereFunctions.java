@@ -62,6 +62,10 @@ import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
 import com.pulumi.vsphere.inputs.GetResourcePoolPlainArgs;
 import com.pulumi.vsphere.inputs.GetRoleArgs;
 import com.pulumi.vsphere.inputs.GetRolePlainArgs;
+import com.pulumi.vsphere.inputs.GetSsoGroupArgs;
+import com.pulumi.vsphere.inputs.GetSsoGroupPlainArgs;
+import com.pulumi.vsphere.inputs.GetSsoUserArgs;
+import com.pulumi.vsphere.inputs.GetSsoUserPlainArgs;
 import com.pulumi.vsphere.inputs.GetTagArgs;
 import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
 import com.pulumi.vsphere.inputs.GetTagCategoryPlainArgs;
@@ -101,6 +105,8 @@ import com.pulumi.vsphere.outputs.GetOvfVmTemplateResult;
 import com.pulumi.vsphere.outputs.GetPolicyResult;
 import com.pulumi.vsphere.outputs.GetResourcePoolResult;
 import com.pulumi.vsphere.outputs.GetRoleResult;
+import com.pulumi.vsphere.outputs.GetSsoGroupResult;
+import com.pulumi.vsphere.outputs.GetSsoUserResult;
 import com.pulumi.vsphere.outputs.GetTagCategoryResult;
 import com.pulumi.vsphere.outputs.GetTagResult;
 import com.pulumi.vsphere.outputs.GetVappContainerResult;
@@ -5215,26 +5221,26 @@ public final class VsphereFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *            .name("dc-01")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
      * 
-     *        final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *            .name("esxi-01.example.com")
-     *            .datacenterId(datacenter.id())
-     *            .build());
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.id())
+     *             .build());
      * 
-     *        final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *            .hostId(host.id())
-     *            .nameRegex("MMC")
-     *            .build());
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.id())
+     *             .nameRegex("MMC")
+     *             .build());
      * 
-     *    }
+     *     }
      * }
      * }
      * </pre>
@@ -5317,26 +5323,26 @@ public final class VsphereFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *            .name("dc-01")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
      * 
-     *        final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *            .name("esxi-01.example.com")
-     *            .datacenterId(datacenter.id())
-     *            .build());
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.id())
+     *             .build());
      * 
-     *        final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *            .hostId(host.id())
-     *            .nameRegex("MMC")
-     *            .build());
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.id())
+     *             .nameRegex("MMC")
+     *             .build());
      * 
-     *    }
+     *     }
      * }
      * }
      * </pre>
@@ -5419,26 +5425,26 @@ public final class VsphereFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *            .name("dc-01")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
      * 
-     *        final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *            .name("esxi-01.example.com")
-     *            .datacenterId(datacenter.id())
-     *            .build());
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.id())
+     *             .build());
      * 
-     *        final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *            .hostId(host.id())
-     *            .nameRegex("MMC")
-     *            .build());
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.id())
+     *             .nameRegex("MMC")
+     *             .build());
      * 
-     *    }
+     *     }
      * }
      * }
      * </pre>
@@ -5521,26 +5527,26 @@ public final class VsphereFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *            .name("dc-01")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
      * 
-     *        final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *            .name("esxi-01.example.com")
-     *            .datacenterId(datacenter.id())
-     *            .build());
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.id())
+     *             .build());
      * 
-     *        final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *            .hostId(host.id())
-     *            .nameRegex("MMC")
-     *            .build());
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.id())
+     *             .nameRegex("MMC")
+     *             .build());
      * 
-     *    }
+     *     }
      * }
      * }
      * </pre>
@@ -5623,26 +5629,26 @@ public final class VsphereFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *            .name("dc-01")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
      * 
-     *        final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *            .name("esxi-01.example.com")
-     *            .datacenterId(datacenter.id())
-     *            .build());
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.id())
+     *             .build());
      * 
-     *        final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *            .hostId(host.id())
-     *            .nameRegex("MMC")
-     *            .build());
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.id())
+     *             .nameRegex("MMC")
+     *             .build());
      * 
-     *    }
+     *     }
      * }
      * }
      * </pre>
@@ -8809,6 +8815,461 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.SsoGroup` data source can be used to look up a vCenter Single
+     * Sign-On group by its name and domain, along with its user and nested-group
+     * members.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSsoGroup(GetSsoGroupArgs.builder()
+     *             .name("engineering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSsoGroupResult> getSsoGroup(GetSsoGroupArgs args) {
+        return getSsoGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.SsoGroup` data source can be used to look up a vCenter Single
+     * Sign-On group by its name and domain, along with its user and nested-group
+     * members.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSsoGroup(GetSsoGroupArgs.builder()
+     *             .name("engineering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSsoGroupResult> getSsoGroupPlain(GetSsoGroupPlainArgs args) {
+        return getSsoGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.SsoGroup` data source can be used to look up a vCenter Single
+     * Sign-On group by its name and domain, along with its user and nested-group
+     * members.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSsoGroup(GetSsoGroupArgs.builder()
+     *             .name("engineering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSsoGroupResult> getSsoGroup(GetSsoGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getSsoGroup:getSsoGroup", TypeShape.of(GetSsoGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.SsoGroup` data source can be used to look up a vCenter Single
+     * Sign-On group by its name and domain, along with its user and nested-group
+     * members.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSsoGroup(GetSsoGroupArgs.builder()
+     *             .name("engineering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSsoGroupResult> getSsoGroup(GetSsoGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getSsoGroup:getSsoGroup", TypeShape.of(GetSsoGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.SsoGroup` data source can be used to look up a vCenter Single
+     * Sign-On group by its name and domain, along with its user and nested-group
+     * members.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSsoGroup(GetSsoGroupArgs.builder()
+     *             .name("engineering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSsoGroupResult> getSsoGroupPlain(GetSsoGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getSsoGroup:getSsoGroup", TypeShape.of(GetSsoGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.SsoUser` data source can be used to look up a vCenter Single
+     * Sign-On user by its username and domain, including users from external identity
+     * sources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // A user in the local (system) domain.
+     *         final var local = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("local.user")
+     *             .build());
+     * 
+     *         // A user in an external identity source.
+     *         final var external = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("john.doe")
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSsoUserResult> getSsoUser(GetSsoUserArgs args) {
+        return getSsoUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.SsoUser` data source can be used to look up a vCenter Single
+     * Sign-On user by its username and domain, including users from external identity
+     * sources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // A user in the local (system) domain.
+     *         final var local = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("local.user")
+     *             .build());
+     * 
+     *         // A user in an external identity source.
+     *         final var external = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("john.doe")
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSsoUserResult> getSsoUserPlain(GetSsoUserPlainArgs args) {
+        return getSsoUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.SsoUser` data source can be used to look up a vCenter Single
+     * Sign-On user by its username and domain, including users from external identity
+     * sources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // A user in the local (system) domain.
+     *         final var local = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("local.user")
+     *             .build());
+     * 
+     *         // A user in an external identity source.
+     *         final var external = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("john.doe")
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSsoUserResult> getSsoUser(GetSsoUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getSsoUser:getSsoUser", TypeShape.of(GetSsoUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.SsoUser` data source can be used to look up a vCenter Single
+     * Sign-On user by its username and domain, including users from external identity
+     * sources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // A user in the local (system) domain.
+     *         final var local = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("local.user")
+     *             .build());
+     * 
+     *         // A user in an external identity source.
+     *         final var external = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("john.doe")
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSsoUserResult> getSsoUser(GetSsoUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getSsoUser:getSsoUser", TypeShape.of(GetSsoUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.SsoUser` data source can be used to look up a vCenter Single
+     * Sign-On user by its username and domain, including users from external identity
+     * sources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSsoUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // A user in the local (system) domain.
+     *         final var local = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("local.user")
+     *             .build());
+     * 
+     *         // A user in an external identity source.
+     *         final var external = VsphereFunctions.getSsoUser(GetSsoUserArgs.builder()
+     *             .name("john.doe")
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSsoUserResult> getSsoUserPlain(GetSsoUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getSsoUser:getSsoUser", TypeShape.of(GetSsoUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.Tag` data source can be used to reference tags that are not managed

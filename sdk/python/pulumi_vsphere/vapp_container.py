@@ -63,19 +63,19 @@ class VappContainerArgs:
         :param pulumi.Input[_builtins.bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[_builtins.int] memory_limit: The CPU utilization of a vApp container will not
-               exceed this limit, even if there are available resources. Set to `-1` for
+        :param pulumi.Input[_builtins.int] memory_limit: The memory utilization of a vApp container will
+               not exceed this limit, even if there are available resources. Set to `-1` for
                unlimited. Default: `-1`
-        :param pulumi.Input[_builtins.int] memory_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[_builtins.int] memory_reservation: Amount of memory (MB) that is guaranteed
                available to the vApp container. Default: `0`
-        :param pulumi.Input[_builtins.str] memory_share_level: The CPU allocation level. The level is a
+        :param pulumi.Input[_builtins.str] memory_share_level: The memory allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `memory_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for CPU. Used to
-               determine resource allocation in case of resource contention. If this is set,
-               `memory_share_level` must be `custom`.
+        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for memory. Used
+               to determine resource allocation in case of resource contention. If this is
+               set, `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
         :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
@@ -233,8 +233,8 @@ class VappContainerArgs:
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The CPU utilization of a vApp container will not
-        exceed this limit, even if there are available resources. Set to `-1` for
+        The memory utilization of a vApp container will
+        not exceed this limit, even if there are available resources. Set to `-1` for
         unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
@@ -247,7 +247,7 @@ class VappContainerArgs:
     @pulumi.getter(name="memoryReservation")
     def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Amount of CPU (MHz) that is guaranteed
+        Amount of memory (MB) that is guaranteed
         available to the vApp container. Default: `0`
         """
         return pulumi.get(self, "memory_reservation")
@@ -260,7 +260,7 @@ class VappContainerArgs:
     @pulumi.getter(name="memoryShareLevel")
     def memory_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The CPU allocation level. The level is a
+        The memory allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
         values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
         `low`, `normal`, or `high` are specified values in `memory_shares` will be
@@ -276,9 +276,9 @@ class VappContainerArgs:
     @pulumi.getter(name="memoryShares")
     def memory_shares(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of shares allocated for CPU. Used to
-        determine resource allocation in case of resource contention. If this is set,
-        `memory_share_level` must be `custom`.
+        The number of shares allocated for memory. Used
+        to determine resource allocation in case of resource contention. If this is
+        set, `memory_share_level` must be `custom`.
         """
         return pulumi.get(self, "memory_shares")
 
@@ -370,19 +370,19 @@ class _VappContainerState:
         :param pulumi.Input[_builtins.bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[_builtins.int] memory_limit: The CPU utilization of a vApp container will not
-               exceed this limit, even if there are available resources. Set to `-1` for
+        :param pulumi.Input[_builtins.int] memory_limit: The memory utilization of a vApp container will
+               not exceed this limit, even if there are available resources. Set to `-1` for
                unlimited. Default: `-1`
-        :param pulumi.Input[_builtins.int] memory_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[_builtins.int] memory_reservation: Amount of memory (MB) that is guaranteed
                available to the vApp container. Default: `0`
-        :param pulumi.Input[_builtins.str] memory_share_level: The CPU allocation level. The level is a
+        :param pulumi.Input[_builtins.str] memory_share_level: The memory allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `memory_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for CPU. Used to
-               determine resource allocation in case of resource contention. If this is set,
-               `memory_share_level` must be `custom`.
+        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for memory. Used
+               to determine resource allocation in case of resource contention. If this is
+               set, `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
         :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
@@ -530,8 +530,8 @@ class _VappContainerState:
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The CPU utilization of a vApp container will not
-        exceed this limit, even if there are available resources. Set to `-1` for
+        The memory utilization of a vApp container will
+        not exceed this limit, even if there are available resources. Set to `-1` for
         unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
@@ -544,7 +544,7 @@ class _VappContainerState:
     @pulumi.getter(name="memoryReservation")
     def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Amount of CPU (MHz) that is guaranteed
+        Amount of memory (MB) that is guaranteed
         available to the vApp container. Default: `0`
         """
         return pulumi.get(self, "memory_reservation")
@@ -557,7 +557,7 @@ class _VappContainerState:
     @pulumi.getter(name="memoryShareLevel")
     def memory_share_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The CPU allocation level. The level is a
+        The memory allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
         values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
         `low`, `normal`, or `high` are specified values in `memory_shares` will be
@@ -573,9 +573,9 @@ class _VappContainerState:
     @pulumi.getter(name="memoryShares")
     def memory_shares(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of shares allocated for CPU. Used to
-        determine resource allocation in case of resource contention. If this is set,
-        `memory_share_level` must be `custom`.
+        The number of shares allocated for memory. Used
+        to determine resource allocation in case of resource contention. If this is
+        set, `memory_share_level` must be `custom`.
         """
         return pulumi.get(self, "memory_shares")
 
@@ -766,19 +766,19 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[_builtins.int] memory_limit: The CPU utilization of a vApp container will not
-               exceed this limit, even if there are available resources. Set to `-1` for
+        :param pulumi.Input[_builtins.int] memory_limit: The memory utilization of a vApp container will
+               not exceed this limit, even if there are available resources. Set to `-1` for
                unlimited. Default: `-1`
-        :param pulumi.Input[_builtins.int] memory_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[_builtins.int] memory_reservation: Amount of memory (MB) that is guaranteed
                available to the vApp container. Default: `0`
-        :param pulumi.Input[_builtins.str] memory_share_level: The CPU allocation level. The level is a
+        :param pulumi.Input[_builtins.str] memory_share_level: The memory allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `memory_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for CPU. Used to
-               determine resource allocation in case of resource contention. If this is set,
-               `memory_share_level` must be `custom`.
+        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for memory. Used
+               to determine resource allocation in case of resource contention. If this is
+               set, `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
         :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
@@ -988,19 +988,19 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[_builtins.int] memory_limit: The CPU utilization of a vApp container will not
-               exceed this limit, even if there are available resources. Set to `-1` for
+        :param pulumi.Input[_builtins.int] memory_limit: The memory utilization of a vApp container will
+               not exceed this limit, even if there are available resources. Set to `-1` for
                unlimited. Default: `-1`
-        :param pulumi.Input[_builtins.int] memory_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[_builtins.int] memory_reservation: Amount of memory (MB) that is guaranteed
                available to the vApp container. Default: `0`
-        :param pulumi.Input[_builtins.str] memory_share_level: The CPU allocation level. The level is a
+        :param pulumi.Input[_builtins.str] memory_share_level: The memory allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `memory_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for CPU. Used to
-               determine resource allocation in case of resource contention. If this is set,
-               `memory_share_level` must be `custom`.
+        :param pulumi.Input[_builtins.int] memory_shares: The number of shares allocated for memory. Used
+               to determine resource allocation in case of resource contention. If this is
+               set, `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
         :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
@@ -1110,8 +1110,8 @@ class VappContainer(pulumi.CustomResource):
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The CPU utilization of a vApp container will not
-        exceed this limit, even if there are available resources. Set to `-1` for
+        The memory utilization of a vApp container will
+        not exceed this limit, even if there are available resources. Set to `-1` for
         unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
@@ -1120,7 +1120,7 @@ class VappContainer(pulumi.CustomResource):
     @pulumi.getter(name="memoryReservation")
     def memory_reservation(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Amount of CPU (MHz) that is guaranteed
+        Amount of memory (MB) that is guaranteed
         available to the vApp container. Default: `0`
         """
         return pulumi.get(self, "memory_reservation")
@@ -1129,7 +1129,7 @@ class VappContainer(pulumi.CustomResource):
     @pulumi.getter(name="memoryShareLevel")
     def memory_share_level(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The CPU allocation level. The level is a
+        The memory allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
         values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
         `low`, `normal`, or `high` are specified values in `memory_shares` will be
@@ -1141,9 +1141,9 @@ class VappContainer(pulumi.CustomResource):
     @pulumi.getter(name="memoryShares")
     def memory_shares(self) -> pulumi.Output[_builtins.int]:
         """
-        The number of shares allocated for CPU. Used to
-        determine resource allocation in case of resource contention. If this is set,
-        `memory_share_level` must be `custom`.
+        The number of shares allocated for memory. Used
+        to determine resource allocation in case of resource contention. If this is
+        set, `memory_share_level` must be `custom`.
         """
         return pulumi.get(self, "memory_shares")
 

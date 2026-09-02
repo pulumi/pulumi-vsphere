@@ -4255,6 +4255,600 @@ func (o NamespaceVmServiceArrayOutput) Index(i pulumi.IntInput) NamespaceVmServi
 	}).(NamespaceVmServiceOutput)
 }
 
+type NetworkProtocolProfileIpv4 struct {
+	// The number of addresses currently allocated from
+	// this range.
+	AllocatedAddresses *int `pulumi:"allocatedAddresses"`
+	// The number of addresses available for allocation
+	// from this range.
+	AvailableAddresses *int `pulumi:"availableAddresses"`
+	// Whether a DHCP server is available on this network.
+	DhcpAvailable *bool `pulumi:"dhcpAvailable"`
+	// The DNS server addresses to use for this network protocol profile.
+	DnsServers []string `pulumi:"dnsServers"`
+	// Whether addresses can be allocated from this range.
+	Enabled *bool `pulumi:"enabled"`
+	// The IPv4 gateway of the subnet.
+	Gateway *string `pulumi:"gateway"`
+	// The IPv4 netmask of the subnet, for example "255.255.255.0".
+	Netmask string `pulumi:"netmask"`
+	// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+	Range string `pulumi:"range"`
+	// The IPv4 address of the subnet, for example "10.10.10.0".
+	Subnet string `pulumi:"subnet"`
+}
+
+// NetworkProtocolProfileIpv4Input is an input type that accepts NetworkProtocolProfileIpv4Args and NetworkProtocolProfileIpv4Output values.
+// You can construct a concrete instance of `NetworkProtocolProfileIpv4Input` via:
+//
+//	NetworkProtocolProfileIpv4Args{...}
+type NetworkProtocolProfileIpv4Input interface {
+	pulumi.Input
+
+	ToNetworkProtocolProfileIpv4Output() NetworkProtocolProfileIpv4Output
+	ToNetworkProtocolProfileIpv4OutputWithContext(context.Context) NetworkProtocolProfileIpv4Output
+}
+
+type NetworkProtocolProfileIpv4Args struct {
+	// The number of addresses currently allocated from
+	// this range.
+	AllocatedAddresses pulumi.IntPtrInput `pulumi:"allocatedAddresses"`
+	// The number of addresses available for allocation
+	// from this range.
+	AvailableAddresses pulumi.IntPtrInput `pulumi:"availableAddresses"`
+	// Whether a DHCP server is available on this network.
+	DhcpAvailable pulumi.BoolPtrInput `pulumi:"dhcpAvailable"`
+	// The DNS server addresses to use for this network protocol profile.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Whether addresses can be allocated from this range.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The IPv4 gateway of the subnet.
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+	// The IPv4 netmask of the subnet, for example "255.255.255.0".
+	Netmask pulumi.StringInput `pulumi:"netmask"`
+	// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+	Range pulumi.StringInput `pulumi:"range"`
+	// The IPv4 address of the subnet, for example "10.10.10.0".
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+}
+
+func (NetworkProtocolProfileIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProtocolProfileIpv4)(nil)).Elem()
+}
+
+func (i NetworkProtocolProfileIpv4Args) ToNetworkProtocolProfileIpv4Output() NetworkProtocolProfileIpv4Output {
+	return i.ToNetworkProtocolProfileIpv4OutputWithContext(context.Background())
+}
+
+func (i NetworkProtocolProfileIpv4Args) ToNetworkProtocolProfileIpv4OutputWithContext(ctx context.Context) NetworkProtocolProfileIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProtocolProfileIpv4Output)
+}
+
+func (i NetworkProtocolProfileIpv4Args) ToNetworkProtocolProfileIpv4PtrOutput() NetworkProtocolProfileIpv4PtrOutput {
+	return i.ToNetworkProtocolProfileIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i NetworkProtocolProfileIpv4Args) ToNetworkProtocolProfileIpv4PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProtocolProfileIpv4Output).ToNetworkProtocolProfileIpv4PtrOutputWithContext(ctx)
+}
+
+// NetworkProtocolProfileIpv4PtrInput is an input type that accepts NetworkProtocolProfileIpv4Args, NetworkProtocolProfileIpv4Ptr and NetworkProtocolProfileIpv4PtrOutput values.
+// You can construct a concrete instance of `NetworkProtocolProfileIpv4PtrInput` via:
+//
+//	        NetworkProtocolProfileIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type NetworkProtocolProfileIpv4PtrInput interface {
+	pulumi.Input
+
+	ToNetworkProtocolProfileIpv4PtrOutput() NetworkProtocolProfileIpv4PtrOutput
+	ToNetworkProtocolProfileIpv4PtrOutputWithContext(context.Context) NetworkProtocolProfileIpv4PtrOutput
+}
+
+type networkProtocolProfileIpv4PtrType NetworkProtocolProfileIpv4Args
+
+func NetworkProtocolProfileIpv4Ptr(v *NetworkProtocolProfileIpv4Args) NetworkProtocolProfileIpv4PtrInput {
+	return (*networkProtocolProfileIpv4PtrType)(v)
+}
+
+func (*networkProtocolProfileIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProtocolProfileIpv4)(nil)).Elem()
+}
+
+func (i *networkProtocolProfileIpv4PtrType) ToNetworkProtocolProfileIpv4PtrOutput() NetworkProtocolProfileIpv4PtrOutput {
+	return i.ToNetworkProtocolProfileIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *networkProtocolProfileIpv4PtrType) ToNetworkProtocolProfileIpv4PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProtocolProfileIpv4PtrOutput)
+}
+
+type NetworkProtocolProfileIpv4Output struct{ *pulumi.OutputState }
+
+func (NetworkProtocolProfileIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProtocolProfileIpv4)(nil)).Elem()
+}
+
+func (o NetworkProtocolProfileIpv4Output) ToNetworkProtocolProfileIpv4Output() NetworkProtocolProfileIpv4Output {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv4Output) ToNetworkProtocolProfileIpv4OutputWithContext(ctx context.Context) NetworkProtocolProfileIpv4Output {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv4Output) ToNetworkProtocolProfileIpv4PtrOutput() NetworkProtocolProfileIpv4PtrOutput {
+	return o.ToNetworkProtocolProfileIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o NetworkProtocolProfileIpv4Output) ToNetworkProtocolProfileIpv4PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProtocolProfileIpv4) *NetworkProtocolProfileIpv4 {
+		return &v
+	}).(NetworkProtocolProfileIpv4PtrOutput)
+}
+
+// The number of addresses currently allocated from
+// this range.
+func (o NetworkProtocolProfileIpv4Output) AllocatedAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) *int { return v.AllocatedAddresses }).(pulumi.IntPtrOutput)
+}
+
+// The number of addresses available for allocation
+// from this range.
+func (o NetworkProtocolProfileIpv4Output) AvailableAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) *int { return v.AvailableAddresses }).(pulumi.IntPtrOutput)
+}
+
+// Whether a DHCP server is available on this network.
+func (o NetworkProtocolProfileIpv4Output) DhcpAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) *bool { return v.DhcpAvailable }).(pulumi.BoolPtrOutput)
+}
+
+// The DNS server addresses to use for this network protocol profile.
+func (o NetworkProtocolProfileIpv4Output) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Whether addresses can be allocated from this range.
+func (o NetworkProtocolProfileIpv4Output) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The IPv4 gateway of the subnet.
+func (o NetworkProtocolProfileIpv4Output) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 netmask of the subnet, for example "255.255.255.0".
+func (o NetworkProtocolProfileIpv4Output) Netmask() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) string { return v.Netmask }).(pulumi.StringOutput)
+}
+
+// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+func (o NetworkProtocolProfileIpv4Output) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) string { return v.Range }).(pulumi.StringOutput)
+}
+
+// The IPv4 address of the subnet, for example "10.10.10.0".
+func (o NetworkProtocolProfileIpv4Output) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv4) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+type NetworkProtocolProfileIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkProtocolProfileIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProtocolProfileIpv4)(nil)).Elem()
+}
+
+func (o NetworkProtocolProfileIpv4PtrOutput) ToNetworkProtocolProfileIpv4PtrOutput() NetworkProtocolProfileIpv4PtrOutput {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv4PtrOutput) ToNetworkProtocolProfileIpv4PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv4PtrOutput {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv4PtrOutput) Elem() NetworkProtocolProfileIpv4Output {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) NetworkProtocolProfileIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkProtocolProfileIpv4
+		return ret
+	}).(NetworkProtocolProfileIpv4Output)
+}
+
+// The number of addresses currently allocated from
+// this range.
+func (o NetworkProtocolProfileIpv4PtrOutput) AllocatedAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedAddresses
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of addresses available for allocation
+// from this range.
+func (o NetworkProtocolProfileIpv4PtrOutput) AvailableAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableAddresses
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether a DHCP server is available on this network.
+func (o NetworkProtocolProfileIpv4PtrOutput) DhcpAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The DNS server addresses to use for this network protocol profile.
+func (o NetworkProtocolProfileIpv4PtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether addresses can be allocated from this range.
+func (o NetworkProtocolProfileIpv4PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The IPv4 gateway of the subnet.
+func (o NetworkProtocolProfileIpv4PtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 netmask of the subnet, for example "255.255.255.0".
+func (o NetworkProtocolProfileIpv4PtrOutput) Netmask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Netmask
+	}).(pulumi.StringPtrOutput)
+}
+
+// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+func (o NetworkProtocolProfileIpv4PtrOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 address of the subnet, for example "10.10.10.0".
+func (o NetworkProtocolProfileIpv4PtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkProtocolProfileIpv6 struct {
+	// The number of addresses currently allocated from
+	// this range.
+	AllocatedAddresses *int `pulumi:"allocatedAddresses"`
+	// The number of addresses available for allocation
+	// from this range.
+	AvailableAddresses *int `pulumi:"availableAddresses"`
+	// Whether a DHCP server is available on this network.
+	DhcpAvailable *bool `pulumi:"dhcpAvailable"`
+	// The DNS server addresses to use for this network protocol profile.
+	DnsServers []string `pulumi:"dnsServers"`
+	// Whether addresses can be allocated from this range.
+	Enabled *bool `pulumi:"enabled"`
+	// The IPv6 gateway of the subnet.
+	Gateway *string `pulumi:"gateway"`
+	// The IPv6 netmask of the subnet, for example "255.255.255.0".
+	Netmask string `pulumi:"netmask"`
+	// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+	Range string `pulumi:"range"`
+	// The IPv6 address of the subnet, for example "10.10.10.0".
+	Subnet string `pulumi:"subnet"`
+}
+
+// NetworkProtocolProfileIpv6Input is an input type that accepts NetworkProtocolProfileIpv6Args and NetworkProtocolProfileIpv6Output values.
+// You can construct a concrete instance of `NetworkProtocolProfileIpv6Input` via:
+//
+//	NetworkProtocolProfileIpv6Args{...}
+type NetworkProtocolProfileIpv6Input interface {
+	pulumi.Input
+
+	ToNetworkProtocolProfileIpv6Output() NetworkProtocolProfileIpv6Output
+	ToNetworkProtocolProfileIpv6OutputWithContext(context.Context) NetworkProtocolProfileIpv6Output
+}
+
+type NetworkProtocolProfileIpv6Args struct {
+	// The number of addresses currently allocated from
+	// this range.
+	AllocatedAddresses pulumi.IntPtrInput `pulumi:"allocatedAddresses"`
+	// The number of addresses available for allocation
+	// from this range.
+	AvailableAddresses pulumi.IntPtrInput `pulumi:"availableAddresses"`
+	// Whether a DHCP server is available on this network.
+	DhcpAvailable pulumi.BoolPtrInput `pulumi:"dhcpAvailable"`
+	// The DNS server addresses to use for this network protocol profile.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Whether addresses can be allocated from this range.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The IPv6 gateway of the subnet.
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+	// The IPv6 netmask of the subnet, for example "255.255.255.0".
+	Netmask pulumi.StringInput `pulumi:"netmask"`
+	// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+	Range pulumi.StringInput `pulumi:"range"`
+	// The IPv6 address of the subnet, for example "10.10.10.0".
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+}
+
+func (NetworkProtocolProfileIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProtocolProfileIpv6)(nil)).Elem()
+}
+
+func (i NetworkProtocolProfileIpv6Args) ToNetworkProtocolProfileIpv6Output() NetworkProtocolProfileIpv6Output {
+	return i.ToNetworkProtocolProfileIpv6OutputWithContext(context.Background())
+}
+
+func (i NetworkProtocolProfileIpv6Args) ToNetworkProtocolProfileIpv6OutputWithContext(ctx context.Context) NetworkProtocolProfileIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProtocolProfileIpv6Output)
+}
+
+func (i NetworkProtocolProfileIpv6Args) ToNetworkProtocolProfileIpv6PtrOutput() NetworkProtocolProfileIpv6PtrOutput {
+	return i.ToNetworkProtocolProfileIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i NetworkProtocolProfileIpv6Args) ToNetworkProtocolProfileIpv6PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProtocolProfileIpv6Output).ToNetworkProtocolProfileIpv6PtrOutputWithContext(ctx)
+}
+
+// NetworkProtocolProfileIpv6PtrInput is an input type that accepts NetworkProtocolProfileIpv6Args, NetworkProtocolProfileIpv6Ptr and NetworkProtocolProfileIpv6PtrOutput values.
+// You can construct a concrete instance of `NetworkProtocolProfileIpv6PtrInput` via:
+//
+//	        NetworkProtocolProfileIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type NetworkProtocolProfileIpv6PtrInput interface {
+	pulumi.Input
+
+	ToNetworkProtocolProfileIpv6PtrOutput() NetworkProtocolProfileIpv6PtrOutput
+	ToNetworkProtocolProfileIpv6PtrOutputWithContext(context.Context) NetworkProtocolProfileIpv6PtrOutput
+}
+
+type networkProtocolProfileIpv6PtrType NetworkProtocolProfileIpv6Args
+
+func NetworkProtocolProfileIpv6Ptr(v *NetworkProtocolProfileIpv6Args) NetworkProtocolProfileIpv6PtrInput {
+	return (*networkProtocolProfileIpv6PtrType)(v)
+}
+
+func (*networkProtocolProfileIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProtocolProfileIpv6)(nil)).Elem()
+}
+
+func (i *networkProtocolProfileIpv6PtrType) ToNetworkProtocolProfileIpv6PtrOutput() NetworkProtocolProfileIpv6PtrOutput {
+	return i.ToNetworkProtocolProfileIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *networkProtocolProfileIpv6PtrType) ToNetworkProtocolProfileIpv6PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProtocolProfileIpv6PtrOutput)
+}
+
+type NetworkProtocolProfileIpv6Output struct{ *pulumi.OutputState }
+
+func (NetworkProtocolProfileIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProtocolProfileIpv6)(nil)).Elem()
+}
+
+func (o NetworkProtocolProfileIpv6Output) ToNetworkProtocolProfileIpv6Output() NetworkProtocolProfileIpv6Output {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv6Output) ToNetworkProtocolProfileIpv6OutputWithContext(ctx context.Context) NetworkProtocolProfileIpv6Output {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv6Output) ToNetworkProtocolProfileIpv6PtrOutput() NetworkProtocolProfileIpv6PtrOutput {
+	return o.ToNetworkProtocolProfileIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o NetworkProtocolProfileIpv6Output) ToNetworkProtocolProfileIpv6PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProtocolProfileIpv6) *NetworkProtocolProfileIpv6 {
+		return &v
+	}).(NetworkProtocolProfileIpv6PtrOutput)
+}
+
+// The number of addresses currently allocated from
+// this range.
+func (o NetworkProtocolProfileIpv6Output) AllocatedAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) *int { return v.AllocatedAddresses }).(pulumi.IntPtrOutput)
+}
+
+// The number of addresses available for allocation
+// from this range.
+func (o NetworkProtocolProfileIpv6Output) AvailableAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) *int { return v.AvailableAddresses }).(pulumi.IntPtrOutput)
+}
+
+// Whether a DHCP server is available on this network.
+func (o NetworkProtocolProfileIpv6Output) DhcpAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) *bool { return v.DhcpAvailable }).(pulumi.BoolPtrOutput)
+}
+
+// The DNS server addresses to use for this network protocol profile.
+func (o NetworkProtocolProfileIpv6Output) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Whether addresses can be allocated from this range.
+func (o NetworkProtocolProfileIpv6Output) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The IPv6 gateway of the subnet.
+func (o NetworkProtocolProfileIpv6Output) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 netmask of the subnet, for example "255.255.255.0".
+func (o NetworkProtocolProfileIpv6Output) Netmask() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) string { return v.Netmask }).(pulumi.StringOutput)
+}
+
+// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+func (o NetworkProtocolProfileIpv6Output) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) string { return v.Range }).(pulumi.StringOutput)
+}
+
+// The IPv6 address of the subnet, for example "10.10.10.0".
+func (o NetworkProtocolProfileIpv6Output) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkProtocolProfileIpv6) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+type NetworkProtocolProfileIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkProtocolProfileIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProtocolProfileIpv6)(nil)).Elem()
+}
+
+func (o NetworkProtocolProfileIpv6PtrOutput) ToNetworkProtocolProfileIpv6PtrOutput() NetworkProtocolProfileIpv6PtrOutput {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv6PtrOutput) ToNetworkProtocolProfileIpv6PtrOutputWithContext(ctx context.Context) NetworkProtocolProfileIpv6PtrOutput {
+	return o
+}
+
+func (o NetworkProtocolProfileIpv6PtrOutput) Elem() NetworkProtocolProfileIpv6Output {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) NetworkProtocolProfileIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkProtocolProfileIpv6
+		return ret
+	}).(NetworkProtocolProfileIpv6Output)
+}
+
+// The number of addresses currently allocated from
+// this range.
+func (o NetworkProtocolProfileIpv6PtrOutput) AllocatedAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedAddresses
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of addresses available for allocation
+// from this range.
+func (o NetworkProtocolProfileIpv6PtrOutput) AvailableAddresses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableAddresses
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether a DHCP server is available on this network.
+func (o NetworkProtocolProfileIpv6PtrOutput) DhcpAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The DNS server addresses to use for this network protocol profile.
+func (o NetworkProtocolProfileIpv6PtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether addresses can be allocated from this range.
+func (o NetworkProtocolProfileIpv6PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The IPv6 gateway of the subnet.
+func (o NetworkProtocolProfileIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 netmask of the subnet, for example "255.255.255.0".
+func (o NetworkProtocolProfileIpv6PtrOutput) Netmask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Netmask
+	}).(pulumi.StringPtrOutput)
+}
+
+// The range(s) of addresses available for allocation, specified as one or more comma-separated "<start-address>#<count>" pairs, for example "10.10.10.2#250".
+func (o NetworkProtocolProfileIpv6PtrOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 address of the subnet, for example "10.10.10.0".
+func (o NetworkProtocolProfileIpv6PtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProtocolProfileIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
 type OfflineSoftwareDepotComponent struct {
 	// The name of the component. Useful for easier identification.
 	DisplayName *string `pulumi:"displayName"`
@@ -4368,6 +4962,218 @@ func (o OfflineSoftwareDepotComponentArrayOutput) Index(i pulumi.IntInput) Offli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OfflineSoftwareDepotComponent {
 		return vs[0].([]OfflineSoftwareDepotComponent)[vs[1].(int)]
 	}).(OfflineSoftwareDepotComponentOutput)
+}
+
+type SsoGroupMemberGroup struct {
+	// The identity source domain the nested group belongs to.
+	Domain string `pulumi:"domain"`
+	// The name of the nested group.
+	Name string `pulumi:"name"`
+}
+
+// SsoGroupMemberGroupInput is an input type that accepts SsoGroupMemberGroupArgs and SsoGroupMemberGroupOutput values.
+// You can construct a concrete instance of `SsoGroupMemberGroupInput` via:
+//
+//	SsoGroupMemberGroupArgs{...}
+type SsoGroupMemberGroupInput interface {
+	pulumi.Input
+
+	ToSsoGroupMemberGroupOutput() SsoGroupMemberGroupOutput
+	ToSsoGroupMemberGroupOutputWithContext(context.Context) SsoGroupMemberGroupOutput
+}
+
+type SsoGroupMemberGroupArgs struct {
+	// The identity source domain the nested group belongs to.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The name of the nested group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SsoGroupMemberGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (i SsoGroupMemberGroupArgs) ToSsoGroupMemberGroupOutput() SsoGroupMemberGroupOutput {
+	return i.ToSsoGroupMemberGroupOutputWithContext(context.Background())
+}
+
+func (i SsoGroupMemberGroupArgs) ToSsoGroupMemberGroupOutputWithContext(ctx context.Context) SsoGroupMemberGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsoGroupMemberGroupOutput)
+}
+
+// SsoGroupMemberGroupArrayInput is an input type that accepts SsoGroupMemberGroupArray and SsoGroupMemberGroupArrayOutput values.
+// You can construct a concrete instance of `SsoGroupMemberGroupArrayInput` via:
+//
+//	SsoGroupMemberGroupArray{ SsoGroupMemberGroupArgs{...} }
+type SsoGroupMemberGroupArrayInput interface {
+	pulumi.Input
+
+	ToSsoGroupMemberGroupArrayOutput() SsoGroupMemberGroupArrayOutput
+	ToSsoGroupMemberGroupArrayOutputWithContext(context.Context) SsoGroupMemberGroupArrayOutput
+}
+
+type SsoGroupMemberGroupArray []SsoGroupMemberGroupInput
+
+func (SsoGroupMemberGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (i SsoGroupMemberGroupArray) ToSsoGroupMemberGroupArrayOutput() SsoGroupMemberGroupArrayOutput {
+	return i.ToSsoGroupMemberGroupArrayOutputWithContext(context.Background())
+}
+
+func (i SsoGroupMemberGroupArray) ToSsoGroupMemberGroupArrayOutputWithContext(ctx context.Context) SsoGroupMemberGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsoGroupMemberGroupArrayOutput)
+}
+
+type SsoGroupMemberGroupOutput struct{ *pulumi.OutputState }
+
+func (SsoGroupMemberGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (o SsoGroupMemberGroupOutput) ToSsoGroupMemberGroupOutput() SsoGroupMemberGroupOutput {
+	return o
+}
+
+func (o SsoGroupMemberGroupOutput) ToSsoGroupMemberGroupOutputWithContext(ctx context.Context) SsoGroupMemberGroupOutput {
+	return o
+}
+
+// The identity source domain the nested group belongs to.
+func (o SsoGroupMemberGroupOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v SsoGroupMemberGroup) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The name of the nested group.
+func (o SsoGroupMemberGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SsoGroupMemberGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SsoGroupMemberGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (SsoGroupMemberGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (o SsoGroupMemberGroupArrayOutput) ToSsoGroupMemberGroupArrayOutput() SsoGroupMemberGroupArrayOutput {
+	return o
+}
+
+func (o SsoGroupMemberGroupArrayOutput) ToSsoGroupMemberGroupArrayOutputWithContext(ctx context.Context) SsoGroupMemberGroupArrayOutput {
+	return o
+}
+
+func (o SsoGroupMemberGroupArrayOutput) Index(i pulumi.IntInput) SsoGroupMemberGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SsoGroupMemberGroup {
+		return vs[0].([]SsoGroupMemberGroup)[vs[1].(int)]
+	}).(SsoGroupMemberGroupOutput)
+}
+
+type SsoGroupMemberUser struct {
+	// The identity source domain the member belongs to.
+	Domain string `pulumi:"domain"`
+	// The username of the member.
+	Name string `pulumi:"name"`
+}
+
+// SsoGroupMemberUserInput is an input type that accepts SsoGroupMemberUserArgs and SsoGroupMemberUserOutput values.
+// You can construct a concrete instance of `SsoGroupMemberUserInput` via:
+//
+//	SsoGroupMemberUserArgs{...}
+type SsoGroupMemberUserInput interface {
+	pulumi.Input
+
+	ToSsoGroupMemberUserOutput() SsoGroupMemberUserOutput
+	ToSsoGroupMemberUserOutputWithContext(context.Context) SsoGroupMemberUserOutput
+}
+
+type SsoGroupMemberUserArgs struct {
+	// The identity source domain the member belongs to.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The username of the member.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SsoGroupMemberUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsoGroupMemberUser)(nil)).Elem()
+}
+
+func (i SsoGroupMemberUserArgs) ToSsoGroupMemberUserOutput() SsoGroupMemberUserOutput {
+	return i.ToSsoGroupMemberUserOutputWithContext(context.Background())
+}
+
+func (i SsoGroupMemberUserArgs) ToSsoGroupMemberUserOutputWithContext(ctx context.Context) SsoGroupMemberUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsoGroupMemberUserOutput)
+}
+
+// SsoGroupMemberUserArrayInput is an input type that accepts SsoGroupMemberUserArray and SsoGroupMemberUserArrayOutput values.
+// You can construct a concrete instance of `SsoGroupMemberUserArrayInput` via:
+//
+//	SsoGroupMemberUserArray{ SsoGroupMemberUserArgs{...} }
+type SsoGroupMemberUserArrayInput interface {
+	pulumi.Input
+
+	ToSsoGroupMemberUserArrayOutput() SsoGroupMemberUserArrayOutput
+	ToSsoGroupMemberUserArrayOutputWithContext(context.Context) SsoGroupMemberUserArrayOutput
+}
+
+type SsoGroupMemberUserArray []SsoGroupMemberUserInput
+
+func (SsoGroupMemberUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsoGroupMemberUser)(nil)).Elem()
+}
+
+func (i SsoGroupMemberUserArray) ToSsoGroupMemberUserArrayOutput() SsoGroupMemberUserArrayOutput {
+	return i.ToSsoGroupMemberUserArrayOutputWithContext(context.Background())
+}
+
+func (i SsoGroupMemberUserArray) ToSsoGroupMemberUserArrayOutputWithContext(ctx context.Context) SsoGroupMemberUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsoGroupMemberUserArrayOutput)
+}
+
+type SsoGroupMemberUserOutput struct{ *pulumi.OutputState }
+
+func (SsoGroupMemberUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsoGroupMemberUser)(nil)).Elem()
+}
+
+func (o SsoGroupMemberUserOutput) ToSsoGroupMemberUserOutput() SsoGroupMemberUserOutput {
+	return o
+}
+
+func (o SsoGroupMemberUserOutput) ToSsoGroupMemberUserOutputWithContext(ctx context.Context) SsoGroupMemberUserOutput {
+	return o
+}
+
+// The identity source domain the member belongs to.
+func (o SsoGroupMemberUserOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v SsoGroupMemberUser) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The username of the member.
+func (o SsoGroupMemberUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SsoGroupMemberUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SsoGroupMemberUserArrayOutput struct{ *pulumi.OutputState }
+
+func (SsoGroupMemberUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsoGroupMemberUser)(nil)).Elem()
+}
+
+func (o SsoGroupMemberUserArrayOutput) ToSsoGroupMemberUserArrayOutput() SsoGroupMemberUserArrayOutput {
+	return o
+}
+
+func (o SsoGroupMemberUserArrayOutput) ToSsoGroupMemberUserArrayOutputWithContext(ctx context.Context) SsoGroupMemberUserArrayOutput {
+	return o
+}
+
+func (o SsoGroupMemberUserArrayOutput) Index(i pulumi.IntInput) SsoGroupMemberUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SsoGroupMemberUser {
+		return vs[0].([]SsoGroupMemberUser)[vs[1].(int)]
+	}).(SsoGroupMemberUserOutput)
 }
 
 type SupervisorEgressCidr struct {
@@ -18009,6 +18815,224 @@ func (o GetNetworkFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkFilterOu
 	}).(GetNetworkFilterOutput)
 }
 
+type GetSsoGroupMemberGroup struct {
+	// The identity source domain the group belongs to.
+	// Defaults to the local (system) domain.
+	Domain string `pulumi:"domain"`
+	// The name of the group to look up.
+	Name string `pulumi:"name"`
+}
+
+// GetSsoGroupMemberGroupInput is an input type that accepts GetSsoGroupMemberGroupArgs and GetSsoGroupMemberGroupOutput values.
+// You can construct a concrete instance of `GetSsoGroupMemberGroupInput` via:
+//
+//	GetSsoGroupMemberGroupArgs{...}
+type GetSsoGroupMemberGroupInput interface {
+	pulumi.Input
+
+	ToGetSsoGroupMemberGroupOutput() GetSsoGroupMemberGroupOutput
+	ToGetSsoGroupMemberGroupOutputWithContext(context.Context) GetSsoGroupMemberGroupOutput
+}
+
+type GetSsoGroupMemberGroupArgs struct {
+	// The identity source domain the group belongs to.
+	// Defaults to the local (system) domain.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The name of the group to look up.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSsoGroupMemberGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (i GetSsoGroupMemberGroupArgs) ToGetSsoGroupMemberGroupOutput() GetSsoGroupMemberGroupOutput {
+	return i.ToGetSsoGroupMemberGroupOutputWithContext(context.Background())
+}
+
+func (i GetSsoGroupMemberGroupArgs) ToGetSsoGroupMemberGroupOutputWithContext(ctx context.Context) GetSsoGroupMemberGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSsoGroupMemberGroupOutput)
+}
+
+// GetSsoGroupMemberGroupArrayInput is an input type that accepts GetSsoGroupMemberGroupArray and GetSsoGroupMemberGroupArrayOutput values.
+// You can construct a concrete instance of `GetSsoGroupMemberGroupArrayInput` via:
+//
+//	GetSsoGroupMemberGroupArray{ GetSsoGroupMemberGroupArgs{...} }
+type GetSsoGroupMemberGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetSsoGroupMemberGroupArrayOutput() GetSsoGroupMemberGroupArrayOutput
+	ToGetSsoGroupMemberGroupArrayOutputWithContext(context.Context) GetSsoGroupMemberGroupArrayOutput
+}
+
+type GetSsoGroupMemberGroupArray []GetSsoGroupMemberGroupInput
+
+func (GetSsoGroupMemberGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (i GetSsoGroupMemberGroupArray) ToGetSsoGroupMemberGroupArrayOutput() GetSsoGroupMemberGroupArrayOutput {
+	return i.ToGetSsoGroupMemberGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetSsoGroupMemberGroupArray) ToGetSsoGroupMemberGroupArrayOutputWithContext(ctx context.Context) GetSsoGroupMemberGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSsoGroupMemberGroupArrayOutput)
+}
+
+type GetSsoGroupMemberGroupOutput struct{ *pulumi.OutputState }
+
+func (GetSsoGroupMemberGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (o GetSsoGroupMemberGroupOutput) ToGetSsoGroupMemberGroupOutput() GetSsoGroupMemberGroupOutput {
+	return o
+}
+
+func (o GetSsoGroupMemberGroupOutput) ToGetSsoGroupMemberGroupOutputWithContext(ctx context.Context) GetSsoGroupMemberGroupOutput {
+	return o
+}
+
+// The identity source domain the group belongs to.
+// Defaults to the local (system) domain.
+func (o GetSsoGroupMemberGroupOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSsoGroupMemberGroup) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The name of the group to look up.
+func (o GetSsoGroupMemberGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSsoGroupMemberGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetSsoGroupMemberGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSsoGroupMemberGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSsoGroupMemberGroup)(nil)).Elem()
+}
+
+func (o GetSsoGroupMemberGroupArrayOutput) ToGetSsoGroupMemberGroupArrayOutput() GetSsoGroupMemberGroupArrayOutput {
+	return o
+}
+
+func (o GetSsoGroupMemberGroupArrayOutput) ToGetSsoGroupMemberGroupArrayOutputWithContext(ctx context.Context) GetSsoGroupMemberGroupArrayOutput {
+	return o
+}
+
+func (o GetSsoGroupMemberGroupArrayOutput) Index(i pulumi.IntInput) GetSsoGroupMemberGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSsoGroupMemberGroup {
+		return vs[0].([]GetSsoGroupMemberGroup)[vs[1].(int)]
+	}).(GetSsoGroupMemberGroupOutput)
+}
+
+type GetSsoGroupMemberUser struct {
+	// The identity source domain the group belongs to.
+	// Defaults to the local (system) domain.
+	Domain string `pulumi:"domain"`
+	// The name of the group to look up.
+	Name string `pulumi:"name"`
+}
+
+// GetSsoGroupMemberUserInput is an input type that accepts GetSsoGroupMemberUserArgs and GetSsoGroupMemberUserOutput values.
+// You can construct a concrete instance of `GetSsoGroupMemberUserInput` via:
+//
+//	GetSsoGroupMemberUserArgs{...}
+type GetSsoGroupMemberUserInput interface {
+	pulumi.Input
+
+	ToGetSsoGroupMemberUserOutput() GetSsoGroupMemberUserOutput
+	ToGetSsoGroupMemberUserOutputWithContext(context.Context) GetSsoGroupMemberUserOutput
+}
+
+type GetSsoGroupMemberUserArgs struct {
+	// The identity source domain the group belongs to.
+	// Defaults to the local (system) domain.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The name of the group to look up.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSsoGroupMemberUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSsoGroupMemberUser)(nil)).Elem()
+}
+
+func (i GetSsoGroupMemberUserArgs) ToGetSsoGroupMemberUserOutput() GetSsoGroupMemberUserOutput {
+	return i.ToGetSsoGroupMemberUserOutputWithContext(context.Background())
+}
+
+func (i GetSsoGroupMemberUserArgs) ToGetSsoGroupMemberUserOutputWithContext(ctx context.Context) GetSsoGroupMemberUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSsoGroupMemberUserOutput)
+}
+
+// GetSsoGroupMemberUserArrayInput is an input type that accepts GetSsoGroupMemberUserArray and GetSsoGroupMemberUserArrayOutput values.
+// You can construct a concrete instance of `GetSsoGroupMemberUserArrayInput` via:
+//
+//	GetSsoGroupMemberUserArray{ GetSsoGroupMemberUserArgs{...} }
+type GetSsoGroupMemberUserArrayInput interface {
+	pulumi.Input
+
+	ToGetSsoGroupMemberUserArrayOutput() GetSsoGroupMemberUserArrayOutput
+	ToGetSsoGroupMemberUserArrayOutputWithContext(context.Context) GetSsoGroupMemberUserArrayOutput
+}
+
+type GetSsoGroupMemberUserArray []GetSsoGroupMemberUserInput
+
+func (GetSsoGroupMemberUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSsoGroupMemberUser)(nil)).Elem()
+}
+
+func (i GetSsoGroupMemberUserArray) ToGetSsoGroupMemberUserArrayOutput() GetSsoGroupMemberUserArrayOutput {
+	return i.ToGetSsoGroupMemberUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetSsoGroupMemberUserArray) ToGetSsoGroupMemberUserArrayOutputWithContext(ctx context.Context) GetSsoGroupMemberUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSsoGroupMemberUserArrayOutput)
+}
+
+type GetSsoGroupMemberUserOutput struct{ *pulumi.OutputState }
+
+func (GetSsoGroupMemberUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSsoGroupMemberUser)(nil)).Elem()
+}
+
+func (o GetSsoGroupMemberUserOutput) ToGetSsoGroupMemberUserOutput() GetSsoGroupMemberUserOutput {
+	return o
+}
+
+func (o GetSsoGroupMemberUserOutput) ToGetSsoGroupMemberUserOutputWithContext(ctx context.Context) GetSsoGroupMemberUserOutput {
+	return o
+}
+
+// The identity source domain the group belongs to.
+// Defaults to the local (system) domain.
+func (o GetSsoGroupMemberUserOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSsoGroupMemberUser) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The name of the group to look up.
+func (o GetSsoGroupMemberUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSsoGroupMemberUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetSsoGroupMemberUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSsoGroupMemberUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSsoGroupMemberUser)(nil)).Elem()
+}
+
+func (o GetSsoGroupMemberUserArrayOutput) ToGetSsoGroupMemberUserArrayOutput() GetSsoGroupMemberUserArrayOutput {
+	return o
+}
+
+func (o GetSsoGroupMemberUserArrayOutput) ToGetSsoGroupMemberUserArrayOutputWithContext(ctx context.Context) GetSsoGroupMemberUserArrayOutput {
+	return o
+}
+
+func (o GetSsoGroupMemberUserArrayOutput) Index(i pulumi.IntInput) GetSsoGroupMemberUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSsoGroupMemberUser {
+		return vs[0].([]GetSsoGroupMemberUser)[vs[1].(int)]
+	}).(GetSsoGroupMemberUserOutput)
+}
+
 type GetVirtualMachineDisk struct {
 	// Set to `true` if the disk has been eager zeroed.
 	EagerlyScrub bool `pulumi:"eagerlyScrub"`
@@ -18747,8 +19771,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceNtpdPtrInput)(nil)).Elem(), HostServiceNtpdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVmServiceInput)(nil)).Elem(), NamespaceVmServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVmServiceArrayInput)(nil)).Elem(), NamespaceVmServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProtocolProfileIpv4Input)(nil)).Elem(), NetworkProtocolProfileIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProtocolProfileIpv4PtrInput)(nil)).Elem(), NetworkProtocolProfileIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProtocolProfileIpv6Input)(nil)).Elem(), NetworkProtocolProfileIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProtocolProfileIpv6PtrInput)(nil)).Elem(), NetworkProtocolProfileIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentInput)(nil)).Elem(), OfflineSoftwareDepotComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentArrayInput)(nil)).Elem(), OfflineSoftwareDepotComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SsoGroupMemberGroupInput)(nil)).Elem(), SsoGroupMemberGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SsoGroupMemberGroupArrayInput)(nil)).Elem(), SsoGroupMemberGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SsoGroupMemberUserInput)(nil)).Elem(), SsoGroupMemberUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SsoGroupMemberUserArrayInput)(nil)).Elem(), SsoGroupMemberUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorEgressCidrInput)(nil)).Elem(), SupervisorEgressCidrArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorEgressCidrArrayInput)(nil)).Elem(), SupervisorEgressCidrArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorIngressCidrInput)(nil)).Elem(), SupervisorIngressCidrArgs{})
@@ -18916,6 +19948,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVmServiceArrayInput)(nil)).Elem(), GetNamespaceVmServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterInput)(nil)).Elem(), GetNetworkFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterArrayInput)(nil)).Elem(), GetNetworkFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberGroupInput)(nil)).Elem(), GetSsoGroupMemberGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberGroupArrayInput)(nil)).Elem(), GetSsoGroupMemberGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberUserInput)(nil)).Elem(), GetSsoGroupMemberUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberUserArrayInput)(nil)).Elem(), GetSsoGroupMemberUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskInput)(nil)).Elem(), GetVirtualMachineDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskArrayInput)(nil)).Elem(), GetVirtualMachineDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArgs{})
@@ -18982,8 +20018,16 @@ func init() {
 	pulumi.RegisterOutputType(HostServiceNtpdPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceVmServiceOutput{})
 	pulumi.RegisterOutputType(NamespaceVmServiceArrayOutput{})
+	pulumi.RegisterOutputType(NetworkProtocolProfileIpv4Output{})
+	pulumi.RegisterOutputType(NetworkProtocolProfileIpv4PtrOutput{})
+	pulumi.RegisterOutputType(NetworkProtocolProfileIpv6Output{})
+	pulumi.RegisterOutputType(NetworkProtocolProfileIpv6PtrOutput{})
 	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentOutput{})
 	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentArrayOutput{})
+	pulumi.RegisterOutputType(SsoGroupMemberGroupOutput{})
+	pulumi.RegisterOutputType(SsoGroupMemberGroupArrayOutput{})
+	pulumi.RegisterOutputType(SsoGroupMemberUserOutput{})
+	pulumi.RegisterOutputType(SsoGroupMemberUserArrayOutput{})
 	pulumi.RegisterOutputType(SupervisorEgressCidrOutput{})
 	pulumi.RegisterOutputType(SupervisorEgressCidrArrayOutput{})
 	pulumi.RegisterOutputType(SupervisorIngressCidrOutput{})
@@ -19151,6 +20195,10 @@ func init() {
 	pulumi.RegisterOutputType(GetNamespaceVmServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkFilterOutput{})
 	pulumi.RegisterOutputType(GetNetworkFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSsoGroupMemberGroupOutput{})
+	pulumi.RegisterOutputType(GetSsoGroupMemberGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetSsoGroupMemberUserOutput{})
+	pulumi.RegisterOutputType(GetSsoGroupMemberUserArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceOutput{})

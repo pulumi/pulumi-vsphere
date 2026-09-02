@@ -255,6 +255,16 @@ export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
 
+export { GetSsoGroupArgs, GetSsoGroupResult, GetSsoGroupOutputArgs } from "./getSsoGroup";
+export const getSsoGroup: typeof import("./getSsoGroup").getSsoGroup = null as any;
+export const getSsoGroupOutput: typeof import("./getSsoGroup").getSsoGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getSsoGroup","getSsoGroupOutput"], () => require("./getSsoGroup"));
+
+export { GetSsoUserArgs, GetSsoUserResult, GetSsoUserOutputArgs } from "./getSsoUser";
+export const getSsoUser: typeof import("./getSsoUser").getSsoUser = null as any;
+export const getSsoUserOutput: typeof import("./getSsoUser").getSsoUserOutput = null as any;
+utilities.lazyLoad(exports, ["getSsoUser","getSsoUserOutput"], () => require("./getSsoUser"));
+
 export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
 export const getTag: typeof import("./getTag").getTag = null as any;
 export const getTagOutput: typeof import("./getTag").getTagOutput = null as any;
@@ -325,6 +335,11 @@ export type NasDatastore = import("./nasDatastore").NasDatastore;
 export const NasDatastore: typeof import("./nasDatastore").NasDatastore = null as any;
 utilities.lazyLoad(exports, ["NasDatastore"], () => require("./nasDatastore"));
 
+export { NetworkProtocolProfileArgs, NetworkProtocolProfileState } from "./networkProtocolProfile";
+export type NetworkProtocolProfile = import("./networkProtocolProfile").NetworkProtocolProfile;
+export const NetworkProtocolProfile: typeof import("./networkProtocolProfile").NetworkProtocolProfile = null as any;
+utilities.lazyLoad(exports, ["NetworkProtocolProfile"], () => require("./networkProtocolProfile"));
+
 export { OfflineSoftwareDepotArgs, OfflineSoftwareDepotState } from "./offlineSoftwareDepot";
 export type OfflineSoftwareDepot = import("./offlineSoftwareDepot").OfflineSoftwareDepot;
 export const OfflineSoftwareDepot: typeof import("./offlineSoftwareDepot").OfflineSoftwareDepot = null as any;
@@ -342,6 +357,16 @@ export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { SsoGroupArgs, SsoGroupState } from "./ssoGroup";
+export type SsoGroup = import("./ssoGroup").SsoGroup;
+export const SsoGroup: typeof import("./ssoGroup").SsoGroup = null as any;
+utilities.lazyLoad(exports, ["SsoGroup"], () => require("./ssoGroup"));
+
+export { SsoUserArgs, SsoUserState } from "./ssoUser";
+export type SsoUser = import("./ssoUser").SsoUser;
+export const SsoUser: typeof import("./ssoUser").SsoUser = null as any;
+utilities.lazyLoad(exports, ["SsoUser"], () => require("./ssoUser"));
 
 export { StorageDrsVmOverrideArgs, StorageDrsVmOverrideState } from "./storageDrsVmOverride";
 export type StorageDrsVmOverride = import("./storageDrsVmOverride").StorageDrsVmOverride;
@@ -494,12 +519,18 @@ const _module = {
                 return new Namespace(name, <any>undefined, { urn })
             case "vsphere:index/nasDatastore:NasDatastore":
                 return new NasDatastore(name, <any>undefined, { urn })
+            case "vsphere:index/networkProtocolProfile:NetworkProtocolProfile":
+                return new NetworkProtocolProfile(name, <any>undefined, { urn })
             case "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot":
                 return new OfflineSoftwareDepot(name, <any>undefined, { urn })
             case "vsphere:index/resourcePool:ResourcePool":
                 return new ResourcePool(name, <any>undefined, { urn })
             case "vsphere:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "vsphere:index/ssoGroup:SsoGroup":
+                return new SsoGroup(name, <any>undefined, { urn })
+            case "vsphere:index/ssoUser:SsoUser":
+                return new SsoUser(name, <any>undefined, { urn })
             case "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride":
                 return new StorageDrsVmOverride(name, <any>undefined, { urn })
             case "vsphere:index/supervisor:Supervisor":
@@ -566,9 +597,12 @@ pulumi.runtime.registerResourceModule("vsphere", "index/hostVirtualSwitch", _mod
 pulumi.runtime.registerResourceModule("vsphere", "index/license", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/namespace", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/nasDatastore", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/networkProtocolProfile", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/offlineSoftwareDepot", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/resourcePool", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/role", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/ssoGroup", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/ssoUser", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/storageDrsVmOverride", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/supervisor", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/supervisorV2", _module)
