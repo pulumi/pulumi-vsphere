@@ -1,4 +1,0 @@
-[submodule "upstream"]
-	path = upstream
-	url = https://github.com/vmware/terraform-provider-vsphere.git
-	ignore = dirty
