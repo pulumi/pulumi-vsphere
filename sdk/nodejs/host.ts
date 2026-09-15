@@ -76,7 +76,7 @@ import * as utilities from "./utilities";
  * An existing host can be imported into this resource by supplying
  * the host's ID.
  *
- * [docs-import]: /docs/import/index.html
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * Obtain the host's ID using the data source. For example:
  *

@@ -3857,7 +3857,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         An existing virtual machine can be imported into the Terraform state by providing the full path to the virtual machine.
 
-        [docs-import]: /docs/import/index.html
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         **Examples**:
 
@@ -4958,7 +4958,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         An existing virtual machine can be imported into the Terraform state by providing the full path to the virtual machine.
 
-        [docs-import]: /docs/import/index.html
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         **Examples**:
 

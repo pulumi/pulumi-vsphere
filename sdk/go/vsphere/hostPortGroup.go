@@ -155,13 +155,13 @@ import (
 // An existing host port group can be imported into this resource
 // using the host port group's ID. An example is below:
 //
-// [docs-import]: /docs/import/index.html
-//
 // ```sh
 // $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
 // ```
 //
 // The above would import the `management` host port group from host with ID `host-123`.
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type HostPortGroup struct {
 	pulumi.CustomResourceState
 

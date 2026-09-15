@@ -762,7 +762,7 @@ class HostPortGroup(pulumi.CustomResource):
         An existing host port group can be imported into this resource
         using the host port group's ID. An example is below:
 
-        [docs-import]: /docs/import/index.html
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
@@ -881,7 +881,7 @@ class HostPortGroup(pulumi.CustomResource):
         An existing host port group can be imported into this resource
         using the host port group's ID. An example is below:
 
-        [docs-import]: /docs/import/index.html
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management

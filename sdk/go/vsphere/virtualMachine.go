@@ -1327,8 +1327,6 @@ import (
 //
 // An existing virtual machine can be imported into the Terraform state by providing the full path to the virtual machine.
 //
-// [docs-import]: /docs/import/index.html
-//
 // **Examples**:
 //
 // Import a virtual machine resource named `foo` located in the `dc-01` datacenter.
@@ -1377,6 +1375,8 @@ import (
 // [tf-heredoc-strings]: https://www.terraform.io/language/expressions/strings#heredoc-strings
 // [kb-2145518]: https://knowledge.broadcom.com/external/article?articleNumber=320212
 // [ms-docs-valid-sysprep-tzs]: https://msdn.microsoft.com/en-us/library/ms912391(v=winembedded.11).aspx
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
