@@ -163,13 +163,13 @@ import (
 // An existing vNic can be imported into this resource
 // via supplying the vNic's ID. An example is below:
 //
-// [docs-import]: /docs/import/index.html
-//
 // ```sh
 // $ pulumi import vsphere:index/vnic:Vnic vnic host-123_vmk2
 // ```
 //
 // The above would import the vnic `vmk2` from host with ID `host-123`.
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type Vnic struct {
 	pulumi.CustomResourceState
 

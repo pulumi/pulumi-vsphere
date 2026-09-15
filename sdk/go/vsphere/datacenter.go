@@ -76,13 +76,13 @@ import (
 // An existing datacenter can be imported into this resource
 // via supplying the full path to the datacenter. An example is below:
 //
-// [docs-import]: /docs/import/index.html
-//
 // ```sh
 // $ pulumi import vsphere:index/datacenter:Datacenter dc /dc1
 // ```
 //
 // The above would import the datacenter named `dc1`.
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type Datacenter struct {
 	pulumi.CustomResourceState
 

@@ -175,7 +175,7 @@ import javax.annotation.Nullable;
  * An existing vNic can be imported into this resource
  * via supplying the vNic&#39;s ID. An example is below:
  * 
- * [docs-import]: /docs/import/index.html
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
  * $ pulumi import vsphere:index/vnic:Vnic vnic host-123_vmk2

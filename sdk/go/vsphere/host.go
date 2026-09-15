@@ -130,8 +130,6 @@ import (
 // An existing host can be imported into this resource by supplying
 // the host's ID.
 //
-// [docs-import]: /docs/import/index.html
-//
 // Obtain the host's ID using the data source. For example:
 //
 // ```go
@@ -256,6 +254,8 @@ import (
 // ```
 //
 // The above would import the host `esxi-01.example.com` with the host ID `host-123`.
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type Host struct {
 	pulumi.CustomResourceState
 
