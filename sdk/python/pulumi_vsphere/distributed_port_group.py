@@ -1676,7 +1676,7 @@ class DistributedPortGroup(pulumi.CustomResource):
                  uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
                  vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
-                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict', 'outputs.DistributedPortGroupVlanRange']]]]] = None,
                  __props__=None):
         """
         The `DistributedPortGroup` resource can be used to manage
@@ -1891,7 +1891,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[_builtins.bool] vlan_override_allowed: Allow the VLAN configuration on a port to override those on the portgroup.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict', 'outputs.DistributedPortGroupVlanRange']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         ...
     @overload
@@ -2104,7 +2104,7 @@ class DistributedPortGroup(pulumi.CustomResource):
                  uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
                  vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
-                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict', 'outputs.DistributedPortGroupVlanRange']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2221,7 +2221,7 @@ class DistributedPortGroup(pulumi.CustomResource):
             uplink_teaming_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
             vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
             vlan_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
-            vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None) -> 'DistributedPortGroup':
+            vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict', 'outputs.DistributedPortGroupVlanRange']]]]] = None) -> 'DistributedPortGroup':
         """
         Get an existing DistributedPortGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2298,7 +2298,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[_builtins.bool] vlan_override_allowed: Allow the VLAN configuration on a port to override those on the portgroup.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict', 'outputs.DistributedPortGroupVlanRange']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

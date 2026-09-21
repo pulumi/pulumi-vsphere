@@ -172,7 +172,7 @@ class Namespace(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  supervisor: pulumi.Input[Optional[_builtins.str]] = None,
-                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict']]]]] = None,
+                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None,
                  __props__=None):
         """
         Provides a resource for configuring vSphere Namespaces.
@@ -203,7 +203,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the vSphere namespace.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_policies: The list of storage policies that will be available in the vSphere Namespace.
         :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict']]]] vm_services: The configuration for VM Service in the vSphere Namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]] vm_services: The configuration for VM Service in the vSphere Namespace.
         """
         ...
     @overload
@@ -253,7 +253,7 @@ class Namespace(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  supervisor: pulumi.Input[Optional[_builtins.str]] = None,
-                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict']]]]] = None,
+                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,7 +282,7 @@ class Namespace(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             supervisor: pulumi.Input[Optional[_builtins.str]] = None,
-            vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict']]]]] = None) -> 'Namespace':
+            vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -293,7 +293,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the vSphere namespace.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_policies: The list of storage policies that will be available in the vSphere Namespace.
         :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict']]]] vm_services: The configuration for VM Service in the vSphere Namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]] vm_services: The configuration for VM Service in the vSphere Namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

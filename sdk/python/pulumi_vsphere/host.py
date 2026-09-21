@@ -646,7 +646,7 @@ class Host(pulumi.CustomResource):
                  lockdown: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
-                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict', 'outputs.HostService']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
@@ -802,7 +802,7 @@ class Host(pulumi.CustomResource):
                Default is `false`.
         :param pulumi.Input[_builtins.str] password: Password that will be used by vSphere to authenticate
                to the host.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]] services: Set Services on host, the settings to be set are based on service being set as part of import.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict', 'outputs.HostService']]]] services: Set Services on host, the settings to be set are based on service being set as part of import.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
@@ -966,7 +966,7 @@ class Host(pulumi.CustomResource):
                  lockdown: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
-                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict', 'outputs.HostService']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1023,7 +1023,7 @@ class Host(pulumi.CustomResource):
             lockdown: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
-            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict', 'outputs.HostService']]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'Host':
@@ -1065,7 +1065,7 @@ class Host(pulumi.CustomResource):
                Default is `false`.
         :param pulumi.Input[_builtins.str] password: Password that will be used by vSphere to authenticate
                to the host.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]] services: Set Services on host, the settings to be set are based on service being set as part of import.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict', 'outputs.HostService']]]] services: Set Services on host, the settings to be set are based on service being set as part of import.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.

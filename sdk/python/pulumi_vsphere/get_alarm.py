@@ -185,10 +185,10 @@ class AwaitableGetAlarmResult(GetAlarmResult):
 
 def get_alarm(entity_id: Optional[_builtins.str] = None,
               entity_type: Optional[_builtins.str] = None,
-              metric_expressions: Optional[Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict']]] = None,
+              metric_expressions: Optional[Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict', 'outputs.GetAlarmMetricExpressionResult']]] = None,
               name: Optional[_builtins.str] = None,
-              snmp_actions: Optional[Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict']]] = None,
-              state_expressions: Optional[Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict']]] = None,
+              snmp_actions: Optional[Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict', 'outputs.GetAlarmSnmpActionResult']]] = None,
+              state_expressions: Optional[Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict', 'outputs.GetAlarmStateExpressionResult']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlarmResult:
     """
     The `Alarm` data source can be used to retrieve the property of a given alarm.
@@ -208,10 +208,10 @@ def get_alarm(entity_id: Optional[_builtins.str] = None,
 
     :param _builtins.str entity_id: The [managed object reference ID][docs-about-morefs] of the entity the alarm will be created in.
     :param _builtins.str entity_type: The type of the entity the alarm will be created in.
-    :param Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict']] metric_expressions: The metric expressions of the alarm.
+    :param Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict', 'outputs.GetAlarmMetricExpressionResult']] metric_expressions: The metric expressions of the alarm.
     :param _builtins.str name: The name of the host group.
-    :param Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict']] snmp_actions: The snmp alarm actions of the alarm.
-    :param Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict']] state_expressions: The state expressions of the alarm.
+    :param Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict', 'outputs.GetAlarmSnmpActionResult']] snmp_actions: The snmp alarm actions of the alarm.
+    :param Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict', 'outputs.GetAlarmStateExpressionResult']] state_expressions: The state expressions of the alarm.
     """
     __args__ = dict()
     __args__['entityId'] = entity_id
@@ -239,10 +239,10 @@ def get_alarm(entity_id: Optional[_builtins.str] = None,
         state_expressions=pulumi.get(__ret__, 'state_expressions'))
 def get_alarm_output(entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                      entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                     metric_expressions: pulumi.Input[Optional[Optional[Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict']]]]] = None,
+                     metric_expressions: pulumi.Input[Optional[Optional[Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict', 'outputs.GetAlarmMetricExpressionResult']]]]] = None,
                      name: pulumi.Input[Optional[_builtins.str]] = None,
-                     snmp_actions: pulumi.Input[Optional[Optional[Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict']]]]] = None,
-                     state_expressions: pulumi.Input[Optional[Optional[Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict']]]]] = None,
+                     snmp_actions: pulumi.Input[Optional[Optional[Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict', 'outputs.GetAlarmSnmpActionResult']]]]] = None,
+                     state_expressions: pulumi.Input[Optional[Optional[Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict', 'outputs.GetAlarmStateExpressionResult']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlarmResult]:
     """
     The `Alarm` data source can be used to retrieve the property of a given alarm.
@@ -262,10 +262,10 @@ def get_alarm_output(entity_id: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str entity_id: The [managed object reference ID][docs-about-morefs] of the entity the alarm will be created in.
     :param _builtins.str entity_type: The type of the entity the alarm will be created in.
-    :param Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict']] metric_expressions: The metric expressions of the alarm.
+    :param Sequence[Union['GetAlarmMetricExpressionArgs', 'GetAlarmMetricExpressionArgsDict', 'outputs.GetAlarmMetricExpressionResult']] metric_expressions: The metric expressions of the alarm.
     :param _builtins.str name: The name of the host group.
-    :param Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict']] snmp_actions: The snmp alarm actions of the alarm.
-    :param Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict']] state_expressions: The state expressions of the alarm.
+    :param Sequence[Union['GetAlarmSnmpActionArgs', 'GetAlarmSnmpActionArgsDict', 'outputs.GetAlarmSnmpActionResult']] snmp_actions: The snmp alarm actions of the alarm.
+    :param Sequence[Union['GetAlarmStateExpressionArgs', 'GetAlarmStateExpressionArgsDict', 'outputs.GetAlarmStateExpressionResult']] state_expressions: The state expressions of the alarm.
     """
     __args__ = dict()
     __args__['entityId'] = entity_id

@@ -157,7 +157,7 @@ class EntityPermissions(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict', 'outputs.EntityPermissionsPermission']]]]] = None,
                  __props__=None):
         """
         The `EntityPermissions` resource can be used to create and manage
@@ -217,7 +217,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entity_type: The managed object type, types can be found in the
                managed object type section
                [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]] permissions: The permissions to be given on this entity. Keep
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict', 'outputs.EntityPermissionsPermission']]]] permissions: The permissions to be given on this entity. Keep
                the permissions sorted alphabetically on `user_or_group` for a better user
                experience.
         """
@@ -295,7 +295,7 @@ class EntityPermissions(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict', 'outputs.EntityPermissionsPermission']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -326,7 +326,7 @@ class EntityPermissions(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             entity_id: pulumi.Input[Optional[_builtins.str]] = None,
             entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None) -> 'EntityPermissions':
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict', 'outputs.EntityPermissionsPermission']]]]] = None) -> 'EntityPermissions':
         """
         Get an existing EntityPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -339,7 +339,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entity_type: The managed object type, types can be found in the
                managed object type section
                [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]] permissions: The permissions to be given on this entity. Keep
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict', 'outputs.EntityPermissionsPermission']]]] permissions: The permissions to be given on this entity. Keep
                the permissions sorted alphabetically on `user_or_group` for a better user
                experience.
         """

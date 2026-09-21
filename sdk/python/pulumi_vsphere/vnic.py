@@ -364,8 +364,8 @@ class Vnic(pulumi.CustomResource):
                  distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
                  distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
-                 ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
+                 ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict', 'outputs.VnicIpv4']]] = None,
+                 ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict', 'outputs.VnicIpv6']]] = None,
                  mac: pulumi.Input[Optional[_builtins.str]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  netstack: pulumi.Input[Optional[_builtins.str]] = None,
@@ -462,8 +462,8 @@ class Vnic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[_builtins.str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[_builtins.str] host: ESX host the interface belongs to
-        :param pulumi.Input[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
-        :param pulumi.Input[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
+        :param pulumi.Input[Union['VnicIpv4Args', 'VnicIpv4ArgsDict', 'outputs.VnicIpv4']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
+        :param pulumi.Input[Union['VnicIpv6Args', 'VnicIpv6ArgsDict', 'outputs.VnicIpv6']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         :param pulumi.Input[_builtins.str] mac: MAC address of the interface.
         :param pulumi.Input[_builtins.int] mtu: MTU of the interface.
         :param pulumi.Input[_builtins.str] netstack: TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
@@ -579,8 +579,8 @@ class Vnic(pulumi.CustomResource):
                  distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
                  distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
-                 ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
+                 ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict', 'outputs.VnicIpv4']]] = None,
+                 ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict', 'outputs.VnicIpv6']]] = None,
                  mac: pulumi.Input[Optional[_builtins.str]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  netstack: pulumi.Input[Optional[_builtins.str]] = None,
@@ -620,8 +620,8 @@ class Vnic(pulumi.CustomResource):
             distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
             distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
             host: pulumi.Input[Optional[_builtins.str]] = None,
-            ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']]] = None,
-            ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']]] = None,
+            ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict', 'outputs.VnicIpv4']]] = None,
+            ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict', 'outputs.VnicIpv6']]] = None,
             mac: pulumi.Input[Optional[_builtins.str]] = None,
             mtu: pulumi.Input[Optional[_builtins.int]] = None,
             netstack: pulumi.Input[Optional[_builtins.str]] = None,
@@ -637,8 +637,8 @@ class Vnic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[_builtins.str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[_builtins.str] host: ESX host the interface belongs to
-        :param pulumi.Input[Union['VnicIpv4Args', 'VnicIpv4ArgsDict']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
-        :param pulumi.Input[Union['VnicIpv6Args', 'VnicIpv6ArgsDict']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
+        :param pulumi.Input[Union['VnicIpv4Args', 'VnicIpv4ArgsDict', 'outputs.VnicIpv4']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
+        :param pulumi.Input[Union['VnicIpv6Args', 'VnicIpv6ArgsDict', 'outputs.VnicIpv6']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         :param pulumi.Input[_builtins.str] mac: MAC address of the interface.
         :param pulumi.Input[_builtins.int] mtu: MTU of the interface.
         :param pulumi.Input[_builtins.str] netstack: TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)

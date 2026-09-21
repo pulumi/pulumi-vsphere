@@ -382,8 +382,8 @@ class NetworkProtocolProfile(pulumi.CustomResource):
                  dns_search_path: pulumi.Input[Optional[_builtins.str]] = None,
                  host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv4: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict']]] = None,
-                 ipv6: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict']]] = None,
+                 ipv4: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict', 'outputs.NetworkProtocolProfileIpv4']]] = None,
+                 ipv6: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict', 'outputs.NetworkProtocolProfileIpv6']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -471,9 +471,9 @@ class NetworkProtocolProfile(pulumi.CustomResource):
                for this network protocol profile.
         :param pulumi.Input[_builtins.str] http_proxy: The HTTP proxy to use on this network, in the
                form of a host and port, for example `proxy.example.com:3128`.
-        :param pulumi.Input[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict']] ipv4: An IPv4 configuration block, documented below. At
+        :param pulumi.Input[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict', 'outputs.NetworkProtocolProfileIpv4']] ipv4: An IPv4 configuration block, documented below. At
                least one of `ipv4` or `ipv6` must be specified.
-        :param pulumi.Input[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict']] ipv6: An IPv6 configuration block, documented below. At
+        :param pulumi.Input[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict', 'outputs.NetworkProtocolProfileIpv6']] ipv6: An IPv6 configuration block, documented below. At
                least one of `ipv4` or `ipv6` must be specified.
         :param pulumi.Input[_builtins.str] name: The name of the network protocol profile.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_ids: The managed object IDs of the networks
@@ -575,8 +575,8 @@ class NetworkProtocolProfile(pulumi.CustomResource):
                  dns_search_path: pulumi.Input[Optional[_builtins.str]] = None,
                  host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv4: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict']]] = None,
-                 ipv6: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict']]] = None,
+                 ipv4: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict', 'outputs.NetworkProtocolProfileIpv4']]] = None,
+                 ipv6: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict', 'outputs.NetworkProtocolProfileIpv6']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -614,8 +614,8 @@ class NetworkProtocolProfile(pulumi.CustomResource):
             dns_search_path: pulumi.Input[Optional[_builtins.str]] = None,
             host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
-            ipv4: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict']]] = None,
-            ipv6: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict']]] = None,
+            ipv4: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict', 'outputs.NetworkProtocolProfileIpv4']]] = None,
+            ipv6: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict', 'outputs.NetworkProtocolProfileIpv6']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'NetworkProtocolProfile':
         """
@@ -638,9 +638,9 @@ class NetworkProtocolProfile(pulumi.CustomResource):
                for this network protocol profile.
         :param pulumi.Input[_builtins.str] http_proxy: The HTTP proxy to use on this network, in the
                form of a host and port, for example `proxy.example.com:3128`.
-        :param pulumi.Input[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict']] ipv4: An IPv4 configuration block, documented below. At
+        :param pulumi.Input[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict', 'outputs.NetworkProtocolProfileIpv4']] ipv4: An IPv4 configuration block, documented below. At
                least one of `ipv4` or `ipv6` must be specified.
-        :param pulumi.Input[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict']] ipv6: An IPv6 configuration block, documented below. At
+        :param pulumi.Input[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict', 'outputs.NetworkProtocolProfileIpv6']] ipv6: An IPv6 configuration block, documented below. At
                least one of `ipv4` or `ipv6` must be specified.
         :param pulumi.Input[_builtins.str] name: The name of the network protocol profile.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_ids: The managed object IDs of the networks

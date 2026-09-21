@@ -3185,7 +3185,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  hbr_reservation_mbit: pulumi.Input[Optional[_builtins.int]] = None,
                  hbr_share_count: pulumi.Input[Optional[_builtins.int]] = None,
                  hbr_share_level: pulumi.Input[Optional[_builtins.str]] = None,
-                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict']]]]] = None,
+                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict', 'outputs.DistributedVirtualSwitchHost']]]]] = None,
                  ignore_other_pvlan_mappings: pulumi.Input[Optional[_builtins.bool]] = None,
                  ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3224,7 +3224,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  nfs_share_level: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
                  port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 pvlan_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]]] = None,
+                 pvlan_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict', 'outputs.DistributedVirtualSwitchPvlanMapping']]]]] = None,
                  standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3240,7 +3240,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  virtualmachine_share_count: pulumi.Input[Optional[_builtins.int]] = None,
                  virtualmachine_share_level: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict']]]]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict', 'outputs.DistributedVirtualSwitchVlanRange']]]]] = None,
                  vmotion_maximum_mbit: pulumi.Input[Optional[_builtins.int]] = None,
                  vmotion_reservation_mbit: pulumi.Input[Optional[_builtins.int]] = None,
                  vmotion_share_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3424,7 +3424,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] hbr_reservation_mbit: The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict']]]] hosts: A host member specification.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict', 'outputs.DistributedVirtualSwitchHost']]]] hosts: A host member specification.
         :param pulumi.Input[_builtins.bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource.
         :param pulumi.Input[_builtins.int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         :param pulumi.Input[_builtins.int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
@@ -3469,7 +3469,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nfs_share_level: The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         :param pulumi.Input[_builtins.int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict', 'outputs.DistributedVirtualSwitchPvlanMapping']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
@@ -3490,7 +3490,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] virtualmachine_share_count: The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] virtualmachine_share_level: The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict', 'outputs.DistributedVirtualSwitchVlanRange']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[_builtins.int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -3682,7 +3682,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  hbr_reservation_mbit: pulumi.Input[Optional[_builtins.int]] = None,
                  hbr_share_count: pulumi.Input[Optional[_builtins.int]] = None,
                  hbr_share_level: pulumi.Input[Optional[_builtins.str]] = None,
-                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict']]]]] = None,
+                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict', 'outputs.DistributedVirtualSwitchHost']]]]] = None,
                  ignore_other_pvlan_mappings: pulumi.Input[Optional[_builtins.bool]] = None,
                  ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3721,7 +3721,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  nfs_share_level: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
                  port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 pvlan_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]]] = None,
+                 pvlan_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict', 'outputs.DistributedVirtualSwitchPvlanMapping']]]]] = None,
                  standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3737,7 +3737,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  virtualmachine_share_count: pulumi.Input[Optional[_builtins.int]] = None,
                  virtualmachine_share_level: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict']]]]] = None,
+                 vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict', 'outputs.DistributedVirtualSwitchVlanRange']]]]] = None,
                  vmotion_maximum_mbit: pulumi.Input[Optional[_builtins.int]] = None,
                  vmotion_reservation_mbit: pulumi.Input[Optional[_builtins.int]] = None,
                  vmotion_share_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3893,7 +3893,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             hbr_reservation_mbit: pulumi.Input[Optional[_builtins.int]] = None,
             hbr_share_count: pulumi.Input[Optional[_builtins.int]] = None,
             hbr_share_level: pulumi.Input[Optional[_builtins.str]] = None,
-            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict']]]]] = None,
+            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict', 'outputs.DistributedVirtualSwitchHost']]]]] = None,
             ignore_other_pvlan_mappings: pulumi.Input[Optional[_builtins.bool]] = None,
             ingress_shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             ingress_shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3932,7 +3932,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             nfs_share_level: pulumi.Input[Optional[_builtins.str]] = None,
             notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
             port_private_secondary_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
-            pvlan_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]]] = None,
+            pvlan_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict', 'outputs.DistributedVirtualSwitchPvlanMapping']]]]] = None,
             standby_uplinks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             teaming_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3948,7 +3948,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             virtualmachine_share_count: pulumi.Input[Optional[_builtins.int]] = None,
             virtualmachine_share_level: pulumi.Input[Optional[_builtins.str]] = None,
             vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
-            vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict']]]]] = None,
+            vlan_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict', 'outputs.DistributedVirtualSwitchVlanRange']]]]] = None,
             vmotion_maximum_mbit: pulumi.Input[Optional[_builtins.int]] = None,
             vmotion_reservation_mbit: pulumi.Input[Optional[_builtins.int]] = None,
             vmotion_share_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4007,7 +4007,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] hbr_reservation_mbit: The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict']]]] hosts: A host member specification.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict', 'outputs.DistributedVirtualSwitchHost']]]] hosts: A host member specification.
         :param pulumi.Input[_builtins.bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource.
         :param pulumi.Input[_builtins.int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         :param pulumi.Input[_builtins.int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
@@ -4052,7 +4052,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nfs_share_level: The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         :param pulumi.Input[_builtins.int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict', 'outputs.DistributedVirtualSwitchPvlanMapping']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
@@ -4073,7 +4073,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] virtualmachine_share_count: The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] virtualmachine_share_level: The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchVlanRangeArgs', 'DistributedVirtualSwitchVlanRangeArgsDict', 'outputs.DistributedVirtualSwitchVlanRange']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[_builtins.int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
