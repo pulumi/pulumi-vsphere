@@ -851,7 +851,7 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
                         sync_time_with_host_periodically: Optional[_builtins.bool] = None,
                         tools_upgrade_policy: Optional[_builtins.str] = None,
                         uuid: Optional[_builtins.str] = None,
-                        vapp: Optional[Union['GetVirtualMachineVappArgs', 'GetVirtualMachineVappArgsDict']] = None,
+                        vapp: Optional[Union['GetVirtualMachineVappArgs', 'GetVirtualMachineVappArgsDict', 'outputs.GetVirtualMachineVappResult']] = None,
                         vbs_enabled: Optional[_builtins.bool] = None,
                         vvtd_enabled: Optional[_builtins.bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualMachineResult:
@@ -1118,7 +1118,7 @@ def get_virtual_machine_output(alternate_guest_name: pulumi.Input[Optional[Optio
                                sync_time_with_host_periodically: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                tools_upgrade_policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                uuid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               vapp: pulumi.Input[Optional[Optional[Union['GetVirtualMachineVappArgs', 'GetVirtualMachineVappArgsDict']]]] = None,
+                               vapp: pulumi.Input[Optional[Optional[Union['GetVirtualMachineVappArgs', 'GetVirtualMachineVappArgsDict', 'outputs.GetVirtualMachineVappResult']]]] = None,
                                vbs_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                vvtd_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualMachineResult]:

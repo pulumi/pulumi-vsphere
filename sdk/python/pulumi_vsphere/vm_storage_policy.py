@@ -139,7 +139,7 @@ class VmStoragePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
+                 tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict', 'outputs.VmStoragePolicyTagRule']]]]] = None,
                  __props__=None):
         """
         The `VmStoragePolicy` resource can be used to create and manage storage
@@ -252,7 +252,7 @@ class VmStoragePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the storage policy.
         :param pulumi.Input[_builtins.str] name: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict', 'outputs.VmStoragePolicyTagRule']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         """
         ...
     @overload
@@ -384,7 +384,7 @@ class VmStoragePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
+                 tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict', 'outputs.VmStoragePolicyTagRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,7 +411,7 @@ class VmStoragePolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None) -> 'VmStoragePolicy':
+            tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict', 'outputs.VmStoragePolicyTagRule']]]]] = None) -> 'VmStoragePolicy':
         """
         Get an existing VmStoragePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -421,7 +421,7 @@ class VmStoragePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the storage policy.
         :param pulumi.Input[_builtins.str] name: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict', 'outputs.VmStoragePolicyTagRule']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

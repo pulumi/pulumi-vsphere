@@ -976,7 +976,7 @@ class HostPortGroup(pulumi.CustomResource):
             key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
-            ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostPortGroupPortArgs', 'HostPortGroupPortArgsDict']]]]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostPortGroupPortArgs', 'HostPortGroupPortArgsDict', 'outputs.HostPortGroupPort']]]]] = None,
             shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
             shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1007,7 +1007,7 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the port group.  Forces a new resource if
                changed.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HostPortGroupPortArgs', 'HostPortGroupPortArgsDict']]]] ports: A list of ports that currently exist and are used on this port group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostPortGroupPortArgs', 'HostPortGroupPortArgsDict', 'outputs.HostPortGroupPort']]]] ports: A list of ports that currently exist and are used on this port group.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.

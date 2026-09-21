@@ -427,18 +427,18 @@ class Alarm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict']]]]] = None,
+                 advanced_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict', 'outputs.AlarmAdvancedAction']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 email_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict']]]]] = None,
+                 email_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict', 'outputs.AlarmEmailAction']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict']]]]] = None,
+                 event_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict', 'outputs.AlarmEventExpression']]]]] = None,
                  expression_operator: pulumi.Input[Optional[_builtins.str]] = None,
-                 metric_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict']]]]] = None,
+                 metric_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict', 'outputs.AlarmMetricExpression']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 snmp_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict']]]]] = None,
-                 state_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict']]]]] = None,
+                 snmp_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict', 'outputs.AlarmSnmpAction']]]]] = None,
+                 state_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict', 'outputs.AlarmStateExpression']]]]] = None,
                  __props__=None):
         """
         Provides a VMware vSphere alarm resource. This can be used deployed on all kinds of vSphere inventory objects.
@@ -536,19 +536,19 @@ class Alarm(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict']]]] advanced_actions: Advanced alarm action to trigger depending on the alarm state, such as entering maintenance mode.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict', 'outputs.AlarmAdvancedAction']]]] advanced_actions: Advanced alarm action to trigger depending on the alarm state, such as entering maintenance mode.
         :param pulumi.Input[_builtins.str] description: The alarm description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict']]]] email_actions: Email alarm action to trigger depending on the alarm state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict', 'outputs.AlarmEmailAction']]]] email_actions: Email alarm action to trigger depending on the alarm state.
         :param pulumi.Input[_builtins.bool] enabled: Whether or not the alarm is enabled.
         :param pulumi.Input[_builtins.str] entity_id: The [managed object reference ID][docs-about-morefs] of the entity the alarm will be created in.
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity the alarm will be created in.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict']]]] event_expressions: Alarm trigger expressions based on events.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict', 'outputs.AlarmEventExpression']]]] event_expressions: Alarm trigger expressions based on events.
         :param pulumi.Input[_builtins.str] expression_operator: The logical link between expressions.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict']]]] metric_expressions: Alarm trigger expressions based on metric values.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict', 'outputs.AlarmMetricExpression']]]] metric_expressions: Alarm trigger expressions based on metric values.
         :param pulumi.Input[_builtins.str] name: The name of the alarm. This name needs to be unique
                within the vCenter. Forces a new resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict']]]] snmp_actions: Snmp alarm action to trigger depending on the alarm state.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict']]]] state_expressions: Alarm trigger expressions based on object state changes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict', 'outputs.AlarmSnmpAction']]]] snmp_actions: Snmp alarm action to trigger depending on the alarm state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict', 'outputs.AlarmStateExpression']]]] state_expressions: Alarm trigger expressions based on object state changes.
         """
         ...
     @overload
@@ -665,18 +665,18 @@ class Alarm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict']]]]] = None,
+                 advanced_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict', 'outputs.AlarmAdvancedAction']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 email_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict']]]]] = None,
+                 email_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict', 'outputs.AlarmEmailAction']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict']]]]] = None,
+                 event_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict', 'outputs.AlarmEventExpression']]]]] = None,
                  expression_operator: pulumi.Input[Optional[_builtins.str]] = None,
-                 metric_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict']]]]] = None,
+                 metric_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict', 'outputs.AlarmMetricExpression']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 snmp_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict']]]]] = None,
-                 state_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict']]]]] = None,
+                 snmp_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict', 'outputs.AlarmSnmpAction']]]]] = None,
+                 state_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict', 'outputs.AlarmStateExpression']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -714,18 +714,18 @@ class Alarm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict']]]]] = None,
+            advanced_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict', 'outputs.AlarmAdvancedAction']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            email_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict']]]]] = None,
+            email_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict', 'outputs.AlarmEmailAction']]]]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             entity_id: pulumi.Input[Optional[_builtins.str]] = None,
             entity_type: pulumi.Input[Optional[_builtins.str]] = None,
-            event_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict']]]]] = None,
+            event_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict', 'outputs.AlarmEventExpression']]]]] = None,
             expression_operator: pulumi.Input[Optional[_builtins.str]] = None,
-            metric_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict']]]]] = None,
+            metric_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict', 'outputs.AlarmMetricExpression']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            snmp_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict']]]]] = None,
-            state_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict']]]]] = None) -> 'Alarm':
+            snmp_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict', 'outputs.AlarmSnmpAction']]]]] = None,
+            state_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict', 'outputs.AlarmStateExpression']]]]] = None) -> 'Alarm':
         """
         Get an existing Alarm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -733,19 +733,19 @@ class Alarm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict']]]] advanced_actions: Advanced alarm action to trigger depending on the alarm state, such as entering maintenance mode.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict', 'outputs.AlarmAdvancedAction']]]] advanced_actions: Advanced alarm action to trigger depending on the alarm state, such as entering maintenance mode.
         :param pulumi.Input[_builtins.str] description: The alarm description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict']]]] email_actions: Email alarm action to trigger depending on the alarm state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict', 'outputs.AlarmEmailAction']]]] email_actions: Email alarm action to trigger depending on the alarm state.
         :param pulumi.Input[_builtins.bool] enabled: Whether or not the alarm is enabled.
         :param pulumi.Input[_builtins.str] entity_id: The [managed object reference ID][docs-about-morefs] of the entity the alarm will be created in.
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity the alarm will be created in.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict']]]] event_expressions: Alarm trigger expressions based on events.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict', 'outputs.AlarmEventExpression']]]] event_expressions: Alarm trigger expressions based on events.
         :param pulumi.Input[_builtins.str] expression_operator: The logical link between expressions.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict']]]] metric_expressions: Alarm trigger expressions based on metric values.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict', 'outputs.AlarmMetricExpression']]]] metric_expressions: Alarm trigger expressions based on metric values.
         :param pulumi.Input[_builtins.str] name: The name of the alarm. This name needs to be unique
                within the vCenter. Forces a new resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict']]]] snmp_actions: Snmp alarm action to trigger depending on the alarm state.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict']]]] state_expressions: Alarm trigger expressions based on object state changes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict', 'outputs.AlarmSnmpAction']]]] snmp_actions: Snmp alarm action to trigger depending on the alarm state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict', 'outputs.AlarmStateExpression']]]] state_expressions: Alarm trigger expressions based on object state changes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

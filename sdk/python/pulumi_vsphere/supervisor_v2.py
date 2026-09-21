@@ -209,9 +209,9 @@ class SupervisorV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 control_plane: pulumi.Input[Optional[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict', 'outputs.SupervisorV2ControlPlane']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 workloads: pulumi.Input[Optional[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict']]] = None,
+                 workloads: pulumi.Input[Optional[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict', 'outputs.SupervisorV2Workloads']]] = None,
                  zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -512,9 +512,9 @@ class SupervisorV2(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: The name of the compute cluster to enable the Supervisor on. Use this property if you want to create a single zone deployment. Conflicts with `zones`.
-        :param pulumi.Input[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict']] control_plane: The configuration for the control plane VM(s). See control_plane.
+        :param pulumi.Input[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict', 'outputs.SupervisorV2ControlPlane']] control_plane: The configuration for the control plane VM(s). See control_plane.
         :param pulumi.Input[_builtins.str] name: The name of the Supervisor cluster.
-        :param pulumi.Input[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict']] workloads: The configuration for the Supervisor workloads. See workloads.
+        :param pulumi.Input[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict', 'outputs.SupervisorV2Workloads']] workloads: The configuration for the Supervisor workloads. See workloads.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zones: A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
                
                <a id="nestedblock--control-plane"></a>
@@ -836,9 +836,9 @@ class SupervisorV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 control_plane: pulumi.Input[Optional[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict', 'outputs.SupervisorV2ControlPlane']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 workloads: pulumi.Input[Optional[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict']]] = None,
+                 workloads: pulumi.Input[Optional[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict', 'outputs.SupervisorV2Workloads']]] = None,
                  zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -869,9 +869,9 @@ class SupervisorV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
-            control_plane: pulumi.Input[Optional[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict']]] = None,
+            control_plane: pulumi.Input[Optional[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict', 'outputs.SupervisorV2ControlPlane']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            workloads: pulumi.Input[Optional[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict']]] = None,
+            workloads: pulumi.Input[Optional[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict', 'outputs.SupervisorV2Workloads']]] = None,
             zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SupervisorV2':
         """
         Get an existing SupervisorV2 resource's state with the given name, id, and optional extra
@@ -881,9 +881,9 @@ class SupervisorV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: The name of the compute cluster to enable the Supervisor on. Use this property if you want to create a single zone deployment. Conflicts with `zones`.
-        :param pulumi.Input[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict']] control_plane: The configuration for the control plane VM(s). See control_plane.
+        :param pulumi.Input[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict', 'outputs.SupervisorV2ControlPlane']] control_plane: The configuration for the control plane VM(s). See control_plane.
         :param pulumi.Input[_builtins.str] name: The name of the Supervisor cluster.
-        :param pulumi.Input[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict']] workloads: The configuration for the Supervisor workloads. See workloads.
+        :param pulumi.Input[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict', 'outputs.SupervisorV2Workloads']] workloads: The configuration for the Supervisor workloads. See workloads.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zones: A list of vSphere Zones to enable the Supervisor on. Conflicts with `cluster`.
                
                <a id="nestedblock--control-plane"></a>

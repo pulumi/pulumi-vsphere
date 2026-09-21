@@ -140,7 +140,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 
 def get_network(datacenter_id: Optional[_builtins.str] = None,
                 distributed_virtual_switch_uuid: Optional[_builtins.str] = None,
-                filters: Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]] = None,
+                filters: Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict', 'outputs.GetNetworkFilterResult']]] = None,
                 name: Optional[_builtins.str] = None,
                 retry_interval: Optional[_builtins.int] = None,
                 retry_timeout: Optional[_builtins.int] = None,
@@ -189,7 +189,7 @@ def get_network(datacenter_id: Optional[_builtins.str] = None,
            network objects, the ID of the distributed virtual switch for which the port
            group belongs. It is useful to differentiate port groups with same name using
            the distributed virtual switch ID.
-    :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']] filters: Apply a filter for the discovered network.
+    :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict', 'outputs.GetNetworkFilterResult']] filters: Apply a filter for the discovered network.
     :param _builtins.str name: The name of the network. This can be a name or path.
     :param _builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
     :param _builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.
@@ -222,7 +222,7 @@ def get_network(datacenter_id: Optional[_builtins.str] = None,
         vpc_project_id=pulumi.get(__ret__, 'vpc_project_id'))
 def get_network_output(datacenter_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        distributed_virtual_switch_uuid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                       filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]]]] = None,
+                       filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict', 'outputs.GetNetworkFilterResult']]]]] = None,
                        name: pulumi.Input[Optional[_builtins.str]] = None,
                        retry_interval: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                        retry_timeout: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -271,7 +271,7 @@ def get_network_output(datacenter_id: pulumi.Input[Optional[Optional[_builtins.s
            network objects, the ID of the distributed virtual switch for which the port
            group belongs. It is useful to differentiate port groups with same name using
            the distributed virtual switch ID.
-    :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']] filters: Apply a filter for the discovered network.
+    :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict', 'outputs.GetNetworkFilterResult']] filters: Apply a filter for the discovered network.
     :param _builtins.str name: The name of the network. This can be a name or path.
     :param _builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
     :param _builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.

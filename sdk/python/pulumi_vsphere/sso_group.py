@@ -201,8 +201,8 @@ class SsoGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 member_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict']]]]] = None,
-                 member_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict']]]]] = None,
+                 member_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict', 'outputs.SsoGroupMemberGroup']]]]] = None,
+                 member_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict', 'outputs.SsoGroupMemberUser']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -265,9 +265,9 @@ class SsoGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict']]]] member_groups: The set of groups that are nested members of this
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict', 'outputs.SsoGroupMemberGroup']]]] member_groups: The set of groups that are nested members of this
                group. Members may come from any identity source. Each `member_group` block
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict']]]] member_users: The set of users that are members of this group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict', 'outputs.SsoGroupMemberUser']]]] member_users: The set of users that are members of this group.
                Members may come from any identity source. Each `member_user` block supports
                the following:
         :param pulumi.Input[_builtins.str] name: The name of the group. Forces a new resource if changed.
@@ -351,8 +351,8 @@ class SsoGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 member_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict']]]]] = None,
-                 member_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict']]]]] = None,
+                 member_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict', 'outputs.SsoGroupMemberGroup']]]]] = None,
+                 member_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict', 'outputs.SsoGroupMemberUser']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -380,8 +380,8 @@ class SsoGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
-            member_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict']]]]] = None,
-            member_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict']]]]] = None,
+            member_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict', 'outputs.SsoGroupMemberGroup']]]]] = None,
+            member_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict', 'outputs.SsoGroupMemberUser']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'SsoGroup':
         """
         Get an existing SsoGroup resource's state with the given name, id, and optional extra
@@ -393,9 +393,9 @@ class SsoGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description of the group.
         :param pulumi.Input[_builtins.str] domain: The identity source domain the group belongs to (the local/system
                domain).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict']]]] member_groups: The set of groups that are nested members of this
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict', 'outputs.SsoGroupMemberGroup']]]] member_groups: The set of groups that are nested members of this
                group. Members may come from any identity source. Each `member_group` block
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict']]]] member_users: The set of users that are members of this group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict', 'outputs.SsoGroupMemberUser']]]] member_users: The set of users that are members of this group.
                Members may come from any identity source. Each `member_user` block supports
                the following:
         :param pulumi.Input[_builtins.str] name: The name of the group. Forces a new resource if changed.
