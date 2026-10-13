@@ -56,7 +56,7 @@ import * as utilities from "./utilities";
  * const datacenter = vsphere.getDatacenter({
  *     name: "dc-01",
  * });
- * const host = (new Array(hosts.length)).map((_, i) => i).map(__index => (vsphere.getHost({
+ * const host = Array.from({length: Object.keys(hosts).length}, (_, i) => i).map(__index => (vsphere.getHost({
  *     name: hosts[__index],
  *     datacenterId: _arg0_.id,
  * })));

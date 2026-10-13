@@ -150,7 +150,7 @@ public final class VsphereFunctions {
      * 
      *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
      *             .entityType("Datacenter")
-     *             .entityId(dc.id())
+     *             .entityId(dc.get("id"))
      *             .name("example")
      *             .build());
      * 
@@ -197,7 +197,7 @@ public final class VsphereFunctions {
      * 
      *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
      *             .entityType("Datacenter")
-     *             .entityId(dc.id())
+     *             .entityId(dc.get("id"))
      *             .name("example")
      *             .build());
      * 
@@ -244,7 +244,7 @@ public final class VsphereFunctions {
      * 
      *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
      *             .entityType("Datacenter")
-     *             .entityId(dc.id())
+     *             .entityId(dc.get("id"))
      *             .name("example")
      *             .build());
      * 
@@ -291,7 +291,7 @@ public final class VsphereFunctions {
      * 
      *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
      *             .entityType("Datacenter")
-     *             .entityId(dc.id())
+     *             .entityId(dc.get("id"))
      *             .name("example")
      *             .build());
      * 
@@ -338,7 +338,7 @@ public final class VsphereFunctions {
      * 
      *         final var alarm = VsphereFunctions.getAlarm(GetAlarmArgs.builder()
      *             .entityType("Datacenter")
-     *             .entityId(dc.id())
+     *             .entityId(dc.get("id"))
      *             .name("example")
      *             .build());
      * 
@@ -3394,12 +3394,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("FirstTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("SecondTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -3457,12 +3457,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("FirstTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("SecondTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -3520,12 +3520,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("FirstTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("SecondTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -3583,12 +3583,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("FirstTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("SecondTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -3646,12 +3646,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("FirstTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("SecondTag")
-     *             .categoryId(cat.id())
+     *             .categoryId(cat.get("id"))
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -7711,7 +7711,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("esxi-01.example.com/Resources")
-     *             .datacenterId(datacenter.id())
+     *             .datacenterId(datacenter.get("id"))
      *             .build());
      * 
      *     }
@@ -7858,7 +7858,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("esxi-01.example.com/Resources")
-     *             .datacenterId(datacenter.id())
+     *             .datacenterId(datacenter.get("id"))
      *             .build());
      * 
      *     }
@@ -8005,7 +8005,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("esxi-01.example.com/Resources")
-     *             .datacenterId(datacenter.id())
+     *             .datacenterId(datacenter.get("id"))
      *             .build());
      * 
      *     }
@@ -8152,7 +8152,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("esxi-01.example.com/Resources")
-     *             .datacenterId(datacenter.id())
+     *             .datacenterId(datacenter.get("id"))
      *             .build());
      * 
      *     }
@@ -8299,7 +8299,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("esxi-01.example.com/Resources")
-     *             .datacenterId(datacenter.id())
+     *             .datacenterId(datacenter.get("id"))
      *             .build());
      * 
      *     }
@@ -8446,7 +8446,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("esxi-01.example.com/Resources")
-     *             .datacenterId(datacenter.id())
+     *             .datacenterId(datacenter.get("id"))
      *             .build());
      * 
      *     }
@@ -8593,7 +8593,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("esxi-01.example.com/Resources")
-     *             .datacenterId(datacenter.id())
+     *             .datacenterId(datacenter.get("id"))
      *             .build());
      * 
      *     }

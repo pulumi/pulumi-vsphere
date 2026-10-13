@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  * 
  *         var profile1 = new ConfigurationProfile("profile1", ConfigurationProfileArgs.builder()
  *             .clusterId(cluster1.id())
- *             .configuration(StdFunctions.file(Map.of("input", "/path/to/cluster_config_1.json")).result())
+ *             .configuration(StdFunctions.file(Map.of("input", "/path/to/cluster_config_1.json")).get("result"))
  *             .build());
  * 
  *     }

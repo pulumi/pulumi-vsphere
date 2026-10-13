@@ -73,7 +73,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var host = .ToDictionary(item =&gt; {
     ///         var __key = item.Key;
-    ///         return __key;
+    ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
     ///     }, item =&gt; {
     ///         var __value = item.Value;
     ///         return VSphere.GetHost.Invoke(new()

@@ -149,7 +149,7 @@ import (
 //			}
 //			_, err = vsphere.NewConfigurationProfile(ctx, "profile1", &vsphere.ConfigurationProfileArgs{
 //				ClusterId:     pulumi.String(cluster1.Id),
-//				Configuration: invokeFile.Result,
+//				Configuration: invokeFile.Result.(pulumi.String),
 //			})
 //			if err != nil {
 //				return err

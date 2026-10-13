@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var vds = new DistributedVirtualSwitch("vds", DistributedVirtualSwitchArgs.builder()
  *             .name("vds-01")
- *             .datacenterId(datacenter.id())
+ *             .datacenterId(datacenter.get("id"))
  *             .uplinks(            
  *                 "uplink1",
  *                 "uplink2")

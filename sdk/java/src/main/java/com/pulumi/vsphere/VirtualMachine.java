@@ -293,7 +293,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
- *             .templateUuid(template.id())
+ *             .templateUuid(template.get("id"))
  *             .customizationSpec(Arrays.asList(Map.of("id", linux.id())))
  *             .build());
  * 
@@ -368,7 +368,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("args", Arrays.asList(                
  *                     cluster.name(),
  *                     "/Resources"))
- *             )).result())
+ *             )).get("result"))
  *             .datacenterId(datacenter.id())
  *             .build());
  * 
@@ -484,19 +484,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
  *             .name("datastore-cluster-01")
- *             .datacenterId(datacenter.id())
+ *             .datacenterId(datacenter.get("id"))
  *             .build());
  * 
  *         var vmFromOvfDatastoreCluster = new VirtualMachine("vmFromOvfDatastoreCluster", VirtualMachineArgs.builder()
  *             .name("ovf-sdrs-foo")
- *             .datacenterId(datacenter.id())
+ *             .datacenterId(datacenter.get("id"))
  *             .datastoreClusterId(datastoreCluster.id())
- *             .resourcePoolId(default_.id())
+ *             .resourcePoolId(default_.get("id"))
  *             .waitForGuestNetTimeout(0)
  *             .waitForGuestIpTimeout(0)
  *             .ovfDeploy(VirtualMachineOvfDeployArgs.builder()
  *                 .remoteOvfUrl("https://example.com/foo.ova")
- *                 .ovfNetworkMap(Map.of("Network 1", network.id()))
+ *                 .ovfNetworkMap(Map.of("Network 1", network.get("id")))
  *                 .build())
  *             .build());
  * 
@@ -572,7 +572,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("args", Arrays.asList(                
  *                     cluster.name(),
  *                     "/Resources"))
- *             )).result())
+ *             )).get("result"))
  *             .datacenterId(datacenter.id())
  *             .build());
  * 
@@ -597,11 +597,11 @@ import javax.annotation.Nullable;
  *             .datastoreId(datastore.id())
  *             .numCpus(2)
  *             .memory(1024)
- *             .guestId(template.guestId())
- *             .scsiType(template.scsiType())
+ *             .guestId(template.get("guestId"))
+ *             .scsiType(template.get("scsiType"))
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
  *                 .networkId(network.id())
- *                 .adapterType(template.networkInterfaceTypes()[0])
+ *                 .adapterType(template.get("networkInterfaceTypes")[0])
  *                 .build())
  *             .disks(VirtualMachineDiskArgs.builder()
  *                 .name("Hard Disk 1")
@@ -785,10 +785,10 @@ import javax.annotation.Nullable;
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .networkInterfaces(            
  *                 VirtualMachineNetworkInterfaceArgs.builder()
- *                     .networkId(public_.id())
+ *                     .networkId(public_.get("id"))
  *                     .build(),
  *                 VirtualMachineNetworkInterfaceArgs.builder()
- *                     .networkId(private_.id())
+ *                     .networkId(private_.get("id"))
  *                     .build())
  *             .clone(VirtualMachineCloneArgs.builder()
  *                 .customize(VirtualMachineCloneCustomizeArgs.builder()
@@ -846,10 +846,10 @@ import javax.annotation.Nullable;
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .networkInterfaces(            
  *                 VirtualMachineNetworkInterfaceArgs.builder()
- *                     .networkId(public_.id())
+ *                     .networkId(public_.get("id"))
  *                     .build(),
  *                 VirtualMachineNetworkInterfaceArgs.builder()
- *                     .networkId(private_.id())
+ *                     .networkId(private_.get("id"))
  *                     .build())
  *             .clone(VirtualMachineCloneArgs.builder()
  *                 .customize(VirtualMachineCloneCustomizeArgs.builder()
@@ -1132,13 +1132,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .clone(VirtualMachineCloneArgs.builder()
- *                 .templateUuid(templateFromOvf.id())
+ *                 .templateUuid(templateFromOvf.get("id"))
  *                 .build())
  *             .cdroms(VirtualMachineCdromArgs.builder()
  *                 .clientDevice(true)
  *                 .build())
  *             .vapp(VirtualMachineVappArgs.builder()
- *                 .properties(Map.of(terraform.id(), "foo"))
+ *                 .properties(Map.of(terraform.get("id"), "foo"))
  *                 .build())
  *             .build());
  * 
@@ -1179,10 +1179,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .clone(VirtualMachineCloneArgs.builder()
- *                 .templateUuid(templateFromOvf.id())
+ *                 .templateUuid(templateFromOvf.get("id"))
  *                 .build())
  *             .vapp(VirtualMachineVappArgs.builder()
- *                 .properties(Map.of(terraform.id(), "foo"))
+ *                 .properties(Map.of(terraform.get("id"), "foo"))
  *                 .build())
  *             .build());
  * 
@@ -1368,14 +1368,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
- *             .datastoreId(vmDatastore.id())
+ *             .datastoreId(vmDatastore.get("id"))
  *             .disks(            
  *                 VirtualMachineDiskArgs.builder()
  *                     .label("Hard Disk 1")
  *                     .size(10)
  *                     .build(),
  *                 VirtualMachineDiskArgs.builder()
- *                     .datastoreId(pinnedDatastore.id())
+ *                     .datastoreId(pinnedDatastore.get("id"))
  *                     .label("Hard Disk 2")
  *                     .size(100)
  *                     .unitNumber(1)
