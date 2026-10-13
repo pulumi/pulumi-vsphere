@@ -155,18 +155,18 @@ import javax.annotation.Nullable;
  *             .description("prod_platinum_replicated")
  *             .tagRules(            
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(environment.name())
- *                     .tags(production.name())
+ *                     .tagCategory(environment.get("name"))
+ *                     .tags(production.get("name"))
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(serviceLevel.name())
- *                     .tags(platinum.name())
+ *                     .tagCategory(serviceLevel.get("name"))
+ *                     .tags(platinum.get("name"))
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(replication.name())
- *                     .tags(replicated.name())
+ *                     .tagCategory(replication.get("name"))
+ *                     .tags(replicated.get("name"))
  *                     .includeDatastoresWithTags(true)
  *                     .build())
  *             .build());
@@ -176,18 +176,18 @@ import javax.annotation.Nullable;
  *             .description("dev_silver_nonreplicated")
  *             .tagRules(            
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(environment.name())
- *                     .tags(development.name())
+ *                     .tagCategory(environment.get("name"))
+ *                     .tags(development.get("name"))
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(serviceLevel.name())
- *                     .tags(silver.name())
+ *                     .tagCategory(serviceLevel.get("name"))
+ *                     .tags(silver.get("name"))
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(replication.name())
- *                     .tags(nonReplicated.name())
+ *                     .tagCategory(replication.get("name"))
+ *                     .tags(nonReplicated.get("name"))
  *                     .includeDatastoresWithTags(true)
  *                     .build())
  *             .build());
@@ -232,11 +232,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var prodVm = new VirtualMachine("prodVm", VirtualMachineArgs.builder()
- *             .storagePolicyId(storagePolicy.prodPlatinumReplicated().id())
+ *             .storagePolicyId(storagePolicy.get("prodPlatinumReplicated").get("id"))
  *             .build());
  * 
  *         var devVm = new VirtualMachine("devVm", VirtualMachineArgs.builder()
- *             .storagePolicyId(storagePolicy.devSilverNonreplicated().id())
+ *             .storagePolicyId(storagePolicy.get("devSilverNonreplicated").get("id"))
  *             .build());
  * 
  *     }

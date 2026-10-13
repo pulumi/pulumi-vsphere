@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .name("foo")
- *             .resourcePoolId(vappContainerVsphereVappContainer.id())
+ *             .resourcePoolId(vappContainerVsphereVappContainer.get("id"))
  *             .datastoreId(datastore.id())
  *             .numCpus(1)
  *             .memory(1024)

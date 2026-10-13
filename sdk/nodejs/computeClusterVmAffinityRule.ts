@@ -106,7 +106,7 @@ import * as utilities from "./utilities";
  *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
- * const vmsGetVirtualMachine = (new Array(vms.length)).map((_, i) => i).map(__index => (vsphere.getVirtualMachine({
+ * const vmsGetVirtualMachine = Array.from({length: vms.length}, (_, i) => i).map(__index => (vsphere.getVirtualMachine({
  *     name: vms[__index],
  *     datacenterId: _arg0_.id,
  * })));

@@ -92,7 +92,7 @@ namespace Pulumi.VSphere
     ///             "uplink1",
     ///             "uplink2",
     ///         },
-    ///         StandbyUplinks = new[] {},
+    ///         StandbyUplinks = new() {},
     ///     });
     /// 
     /// });

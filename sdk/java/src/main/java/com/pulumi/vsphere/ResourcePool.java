@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
- *             .resourcePoolId(cluster.resourcePoolId())
+ *             .resourcePoolId(cluster.get("resourcePoolId"))
  *             .build());
  * 
  *     }
@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.id())
+ *             .datacenterId(datacenter.get("id"))
  *             .build());
  * 
  *         var resourcePool = new ResourcePool("resourcePool", ResourcePoolArgs.builder()

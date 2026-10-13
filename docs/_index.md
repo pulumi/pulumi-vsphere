@@ -466,7 +466,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     vsphere = {
       source = "pulumi/vsphere"
@@ -474,31 +474,34 @@ pulumi {
   }
 }
 
-data "vsphere_getdatacenter" "datacenter" {
+data "vsphere_datacenter" "datacenter" {
   name = "dc-01"
 }
-data "vsphere_getdatastore" "datastore" {
+data "vsphere_datastore" "datastore" {
   name          = "datastore-01"
-  datacenter_id = data.vsphere_getdatacenter.datacenter.id
+  datacenter_id = data.vsphere_datacenter.datacenter.id
 }
-data "vsphere_getcomputecluster" "cluster" {
+data "vsphere_compute_cluster" "cluster" {
   name          = "cluster-01"
-  datacenter_id = data.vsphere_getdatacenter.datacenter.id
+  datacenter_id = data.vsphere_datacenter.datacenter.id
 }
-data "vsphere_getnetwork" "network" {
+data "vsphere_network" "network" {
   name          = "VM Network"
-  datacenter_id = data.vsphere_getdatacenter.datacenter.id
+  datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
-resource "vsphere_virtualmachine" "vm" {
+resource "vsphere_virtual_machine" "vm" {
+  lifecycle {
+    create_before_destroy = true
+  }
   name             = "foo"
-  resource_pool_id = data.vsphere_getcomputecluster.cluster.resource_pool_id
-  datastore_id     = data.vsphere_getdatastore.datastore.id
+  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  datastore_id     = data.vsphere_datastore.datastore.id
   num_cpus         = 1
   memory           = 1024
   guest_id         = "otherLinux64Guest"
   network_interfaces {
-    network_id = data.vsphere_getnetwork.network.id
+    network_id = data.vsphere_network.network.id
   }
   disks {
     label = "disk0"
