@@ -334,7 +334,7 @@ import (
 //				return err
 //			}
 //			_default, err := vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
-//				Name:         pulumi.StringRef(invokeFormat.Result.(pulumi.String)),
+//				Name:         pulumi.StringRef(invokeFormat.Result.(*string)),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
@@ -532,7 +532,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.GetResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
-//				Name:         pulumi.StringRef(invokeFormat.Result.(pulumi.String)),
+//				Name:         pulumi.StringRef(invokeFormat.Result.(*string)),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {

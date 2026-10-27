@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.GetDynamic(ctx, &vsphere.GetDynamicArgs{
-//				Filters: pulumi.StringArray{
+//				Filters: []string{
 //					tag1.Id,
 //					tag1.Id,
 //				},

@@ -500,10 +500,10 @@ resource "vsphere_virtual_machine" "vm" {
   num_cpus         = 1
   memory           = 1024
   guest_id         = "otherLinux64Guest"
-  network_interfaces {
+  network_interface {
     network_id = data.vsphere_network.network.id
   }
-  disks {
+  disk {
     label = "disk0"
     size  = 20
   }
