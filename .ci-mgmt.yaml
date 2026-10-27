@@ -1,9 +1,0 @@
-provider: vsphere
-major-version: 4
-makeTemplate: bridged
-team: ecosystem
-pulumiConvert: 1
-registryDocs: true
-esc:
-    enabled: true
-    environment: imports/github-secrets # No repo-specific secrets.
