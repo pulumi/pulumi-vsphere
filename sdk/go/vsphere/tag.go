@@ -55,7 +55,7 @@ import (
 //			}
 //			_, err = vsphere.NewTag(ctx, "tag", &vsphere.TagArgs{
 //				Name:        pulumi.String("pulumi-test-tag"),
-//				CategoryId:  category.ID().ToIDOutput().ToStringOutput(),
+//				CategoryId:  category.ID(),
 //				Description: pulumi.String("Managed by Pulumi"),
 //			})
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //			}
 //			tag, err := vsphere.NewTag(ctx, "tag", &vsphere.TagArgs{
 //				Name:        pulumi.String("pulumi-test-tag"),
-//				CategoryId:  category.ID().ToIDOutput().ToStringOutput(),
+//				CategoryId:  category.ID(),
 //				Description: pulumi.String("Managed by Pulumi"),
 //			})
 //			if err != nil {
@@ -112,7 +112,7 @@ import (
 //			}
 //			_, err = vsphere.NewVirtualMachine(ctx, "web", &vsphere.VirtualMachineArgs{
 //				Tags: pulumi.StringArray{
-//					tag.ID().ToIDOutput().ToStringOutput(),
+//					tag.ID(),
 //				},
 //			})
 //			if err != nil {
