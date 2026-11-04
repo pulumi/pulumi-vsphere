@@ -432,6 +432,18 @@ class VmStoragePolicy(pulumi.CustomResource):
         __props__.__dict__["tag_rules"] = tag_rules
         return VmStoragePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict', 'outputs.VmStoragePolicyTagRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["tagRules"] = tag_rules
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/vmStoragePolicy:VmStoragePolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

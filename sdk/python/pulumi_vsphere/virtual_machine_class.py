@@ -402,6 +402,24 @@ class VirtualMachineClass(pulumi.CustomResource):
         __props__.__dict__["vgpu_devices"] = vgpu_devices
         return VirtualMachineClass(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            cpus: pulumi.Input[Optional[_builtins.int]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            vgpu_devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cpuReservation"] = cpu_reservation
+        __props__["cpus"] = cpus
+        __props__["memory"] = memory
+        __props__["memoryReservation"] = memory_reservation
+        __props__["name"] = name
+        __props__["vgpuDevices"] = vgpu_devices
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/virtualMachineClass:VirtualMachineClass', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cpuReservation")
     def cpu_reservation(self) -> pulumi.Output[Optional[_builtins.int]]:

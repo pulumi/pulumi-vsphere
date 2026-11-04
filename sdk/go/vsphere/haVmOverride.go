@@ -276,6 +276,12 @@ func (HaVmOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*haVmOverrideState)(nil)).Elem()
 }
 
+// HaVmOverrideExists checks whether an existing HaVmOverride resource with the given ID exists.
+func HaVmOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HaVmOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/haVmOverride:HaVmOverride", id, state, "", opts...)
+}
+
 type haVmOverrideArgs struct {
 	// The managed object ID of the cluster.
 	ComputeClusterId string `pulumi:"computeClusterId"`

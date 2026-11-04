@@ -12,7 +12,7 @@ namespace Pulumi.VSphere
     public static class GetZone
     {
         /// <summary>
-        /// The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including 
+        /// The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
         /// its associated compute clusters.
         /// 
         /// ## Example Usage
@@ -37,7 +37,7 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("vsphere:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including 
+        /// The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
         /// its associated compute clusters.
         /// 
         /// ## Example Usage
@@ -62,7 +62,7 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("vsphere:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including 
+        /// The `vsphere.Zone` data source can be used to list the properties of a vSphere Zone including
         /// its associated compute clusters.
         /// 
         /// ## Example Usage

@@ -131,6 +131,12 @@ func (LicenseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*licenseState)(nil)).Elem()
 }
 
+// LicenseExists checks whether an existing License resource with the given ID exists.
+func LicenseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LicenseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/license:License", id, state, "", opts...)
+}
+
 type licenseArgs struct {
 	// A map of labels to be applied to the license key.
 	//

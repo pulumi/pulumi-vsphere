@@ -152,6 +152,17 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
         return new DistributedVirtualSwitch(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing DistributedVirtualSwitch resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DistributedVirtualSwitchState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch';
 

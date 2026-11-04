@@ -406,6 +406,22 @@ class ContentLibrary(pulumi.CustomResource):
         __props__.__dict__["subscription"] = subscription
         return ContentLibrary(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            publication: pulumi.Input[Optional[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict', 'outputs.ContentLibraryPublication']]] = None,
+            storage_backings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subscription: pulumi.Input[Optional[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict', 'outputs.ContentLibrarySubscription']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["publication"] = publication
+        __props__["storageBackings"] = storage_backings
+        __props__["subscription"] = subscription
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/contentLibrary:ContentLibrary', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_storage_drs_vm_override.drs_vm_override \
- *   &#39;{&#34;datastore_cluster_path&#34;: &#34;/dc1/datastore/ds-cluster&#34;, \
+ * terraform import vsphere_storage_drs_vm_override.drs_vm_override &#92;
+ *   &#39;{&#34;datastore_cluster_path&#34;: &#34;/dc1/datastore/ds-cluster&#34;, &#92;
  *   &#34;virtual_machine_path&#34;: &#34;/dc1/vm/srv1&#34;}&#39;
  * ```
  * 

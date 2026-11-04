@@ -490,6 +490,20 @@ class DrsVmOverride(pulumi.CustomResource):
         __props__.__dict__["virtual_machine_id"] = virtual_machine_id
         return DrsVmOverride(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            drs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            drs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["computeClusterId"] = compute_cluster_id
+        __props__["drsAutomationLevel"] = drs_automation_level
+        __props__["drsEnabled"] = drs_enabled
+        __props__["virtualMachineId"] = virtual_machine_id
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/drsVmOverride:DrsVmOverride', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:

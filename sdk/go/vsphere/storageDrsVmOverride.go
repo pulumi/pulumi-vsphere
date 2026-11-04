@@ -267,6 +267,12 @@ func (StorageDrsVmOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageDrsVmOverrideState)(nil)).Elem()
 }
 
+// StorageDrsVmOverrideExists checks whether an existing StorageDrsVmOverride resource with the given ID exists.
+func StorageDrsVmOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageDrsVmOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride", id, state, "", opts...)
+}
+
 type storageDrsVmOverrideArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the datastore cluster to put the override in.

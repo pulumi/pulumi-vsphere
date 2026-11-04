@@ -318,6 +318,12 @@ func (ComputeClusterVmDependencyRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmDependencyRuleState)(nil)).Elem()
 }
 
+// ComputeClusterVmDependencyRuleExists checks whether an existing ComputeClusterVmDependencyRule resource with the given ID exists.
+func ComputeClusterVmDependencyRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComputeClusterVmDependencyRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", id, state, "", opts...)
+}
+
 type computeClusterVmDependencyRuleArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new

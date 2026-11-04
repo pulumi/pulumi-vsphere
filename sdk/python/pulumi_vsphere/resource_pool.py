@@ -1098,6 +1098,42 @@ class ResourcePool(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ResourcePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cpu_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+            cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu_shares: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            memory_expandable: pulumi.Input[Optional[_builtins.bool]] = None,
+            memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_share_level: pulumi.Input[Optional[_builtins.str]] = None,
+            memory_shares: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_descendants_shares: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cpuExpandable"] = cpu_expandable
+        __props__["cpuLimit"] = cpu_limit
+        __props__["cpuReservation"] = cpu_reservation
+        __props__["cpuShareLevel"] = cpu_share_level
+        __props__["cpuShares"] = cpu_shares
+        __props__["customAttributes"] = custom_attributes
+        __props__["memoryExpandable"] = memory_expandable
+        __props__["memoryLimit"] = memory_limit
+        __props__["memoryReservation"] = memory_reservation
+        __props__["memoryShareLevel"] = memory_share_level
+        __props__["memoryShares"] = memory_shares
+        __props__["name"] = name
+        __props__["parentResourcePoolId"] = parent_resource_pool_id
+        __props__["scaleDescendantsShares"] = scale_descendants_shares
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/resourcePool:ResourcePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cpuExpandable")
     def cpu_expandable(self) -> pulumi.Output[Optional[_builtins.bool]]:

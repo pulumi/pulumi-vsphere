@@ -281,6 +281,12 @@ func (VappEntityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vappEntityState)(nil)).Elem()
 }
 
+// VappEntityExists checks whether an existing VappEntity resource with the given ID exists.
+func VappEntityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VappEntityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/vappEntity:VappEntity", id, state, "", opts...)
+}
+
 type vappEntityArgs struct {
 	// [Managed object ID|docs-about-morefs] of the vApp
 	// container the entity is a member of.

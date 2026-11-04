@@ -425,6 +425,12 @@ func (VmfsDatastoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmfsDatastoreState)(nil)).Elem()
 }
 
+// VmfsDatastoreExists checks whether an existing VmfsDatastore resource with the given ID exists.
+func VmfsDatastoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VmfsDatastoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/vmfsDatastore:VmfsDatastore", id, state, "", opts...)
+}
+
 type vmfsDatastoreArgs struct {
 	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource. See

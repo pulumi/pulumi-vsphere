@@ -790,6 +790,12 @@ func (DistributedVirtualSwitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributedVirtualSwitchState)(nil)).Elem()
 }
 
+// DistributedVirtualSwitchExists checks whether an existing DistributedVirtualSwitch resource with the given ID exists.
+func DistributedVirtualSwitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DistributedVirtualSwitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", id, state, "", opts...)
+}
+
 type distributedVirtualSwitchArgs struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks []string `pulumi:"activeUplinks"`

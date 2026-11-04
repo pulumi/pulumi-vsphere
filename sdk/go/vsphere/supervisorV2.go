@@ -515,6 +515,12 @@ func (SupervisorV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*supervisorV2State)(nil)).Elem()
 }
 
+// SupervisorV2Exists checks whether an existing SupervisorV2 resource with the given ID exists.
+func SupervisorV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SupervisorV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/supervisorV2:SupervisorV2", id, state, "", opts...)
+}
+
 type supervisorV2Args struct {
 	// The name of the compute cluster to enable the Supervisor on. Use this property if you want to create a single zone deployment. Conflicts with `zones`.
 	Cluster *string `pulumi:"cluster"`

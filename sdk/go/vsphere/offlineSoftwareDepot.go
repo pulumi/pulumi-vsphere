@@ -76,6 +76,12 @@ func (OfflineSoftwareDepotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*offlineSoftwareDepotState)(nil)).Elem()
 }
 
+// OfflineSoftwareDepotExists checks whether an existing OfflineSoftwareDepot resource with the given ID exists.
+func OfflineSoftwareDepotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OfflineSoftwareDepotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot", id, state, "", opts...)
+}
+
 type offlineSoftwareDepotArgs struct {
 	// The URL where the depot source is hosted.
 	Location string `pulumi:"location"`

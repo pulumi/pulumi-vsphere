@@ -160,6 +160,12 @@ func (ComputeClusterHostGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterHostGroupState)(nil)).Elem()
 }
 
+// ComputeClusterHostGroupExists checks whether an existing ComputeClusterHostGroup resource with the given ID exists.
+func ComputeClusterHostGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComputeClusterHostGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup", id, state, "", opts...)
+}
+
 type computeClusterHostGroupArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new

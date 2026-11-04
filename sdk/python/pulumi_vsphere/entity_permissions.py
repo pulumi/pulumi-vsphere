@@ -352,6 +352,18 @@ class EntityPermissions(pulumi.CustomResource):
         __props__.__dict__["permissions"] = permissions
         return EntityPermissions(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict', 'outputs.EntityPermissionsPermission']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["entityId"] = entity_id
+        __props__["entityType"] = entity_type
+        __props__["permissions"] = permissions
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/entityPermissions:EntityPermissions', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="entityId")
     def entity_id(self) -> pulumi.Output[_builtins.str]:

@@ -322,6 +322,12 @@ func (VmStoragePolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmStoragePolicyState)(nil)).Elem()
 }
 
+// VmStoragePolicyExists checks whether an existing VmStoragePolicy resource with the given ID exists.
+func VmStoragePolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VmStoragePolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/vmStoragePolicy:VmStoragePolicy", id, state, "", opts...)
+}
+
 type vmStoragePolicyArgs struct {
 	// Description of the storage policy.
 	Description *string `pulumi:"description"`

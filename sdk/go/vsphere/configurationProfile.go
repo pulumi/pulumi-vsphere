@@ -236,6 +236,12 @@ func (ConfigurationProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationProfileState)(nil)).Elem()
 }
 
+// ConfigurationProfileExists checks whether an existing ConfigurationProfile resource with the given ID exists.
+func ConfigurationProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigurationProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/configurationProfile:ConfigurationProfile", id, state, "", opts...)
+}
+
 type configurationProfileArgs struct {
 	// The identifier of the cluster.
 	ClusterId string `pulumi:"clusterId"`

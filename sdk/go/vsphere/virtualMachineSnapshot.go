@@ -185,6 +185,12 @@ func (VirtualMachineSnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineSnapshotState)(nil)).Elem()
 }
 
+// VirtualMachineSnapshotExists checks whether an existing VirtualMachineSnapshot resource with the given ID exists.
+func VirtualMachineSnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualMachineSnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", id, state, "", opts...)
+}
+
 type virtualMachineSnapshotArgs struct {
 	// If set to `true`, the delta disks involved in this
 	// snapshot will be consolidated into the parent when this resource is

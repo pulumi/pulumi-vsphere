@@ -149,6 +149,12 @@ func (ZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneState)(nil)).Elem()
 }
 
+// ZoneExists checks whether an existing Zone resource with the given ID exists.
+func ZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/zone:Zone", id, state, "", opts...)
+}
+
 type zoneArgs struct {
 	// The identifiers of the compute clusters (_e.g._, `domain-c123`) to associate with this vSphere Zone.
 	ClusterIds []string `pulumi:"clusterIds"`

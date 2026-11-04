@@ -662,6 +662,30 @@ class NetworkProtocolProfile(pulumi.CustomResource):
         __props__.__dict__["network_ids"] = network_ids
         return NetworkProtocolProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_search_path: pulumi.Input[Optional[_builtins.str]] = None,
+            host_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv4Args', 'NetworkProtocolProfileIpv4ArgsDict', 'outputs.NetworkProtocolProfileIpv4']]] = None,
+            ipv6: pulumi.Input[Optional[Union['NetworkProtocolProfileIpv6Args', 'NetworkProtocolProfileIpv6ArgsDict', 'outputs.NetworkProtocolProfileIpv6']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["datacenterId"] = datacenter_id
+        __props__["dnsDomain"] = dns_domain
+        __props__["dnsSearchPath"] = dns_search_path
+        __props__["hostPrefix"] = host_prefix
+        __props__["httpProxy"] = http_proxy
+        __props__["ipv4"] = ipv4
+        __props__["ipv6"] = ipv6
+        __props__["name"] = name
+        __props__["networkIds"] = network_ids
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/networkProtocolProfile:NetworkProtocolProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> pulumi.Output[_builtins.str]:

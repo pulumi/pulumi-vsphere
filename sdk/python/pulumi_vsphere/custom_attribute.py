@@ -266,6 +266,16 @@ class CustomAttribute(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return CustomAttribute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            managed_object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["managedObjectType"] = managed_object_type
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/customAttribute:CustomAttribute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="managedObjectType")
     def managed_object_type(self) -> pulumi.Output[Optional[_builtins.str]]:

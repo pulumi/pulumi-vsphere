@@ -139,8 +139,8 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule \
- *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/datastore/cluster1&#34;, \
+ * terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule &#92;
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/datastore/cluster1&#34;, &#92;
  *   &#34;name&#34;: &#34;pulumi-test-datastore-cluster-vm-anti-affinity-rule&#34;}&#39;
  * ```
  * 

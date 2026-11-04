@@ -632,6 +632,26 @@ class VirtualDisk(pulumi.CustomResource):
         __props__.__dict__["vmdk_path"] = vmdk_path
         return VirtualDisk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            adapter_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vmdk_path: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adapterType"] = adapter_type
+        __props__["createDirectories"] = create_directories
+        __props__["datacenter"] = datacenter
+        __props__["datastore"] = datastore
+        __props__["size"] = size
+        __props__["type"] = type
+        __props__["vmdkPath"] = vmdk_path
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/virtualDisk:VirtualDisk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adapterType")
     @_utilities.deprecated("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")

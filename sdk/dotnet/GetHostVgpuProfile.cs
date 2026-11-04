@@ -46,7 +46,6 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
         /// ### With VGPU Profile Name_regex
         /// 
         /// ```csharp
@@ -115,7 +114,6 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
         /// ### With VGPU Profile Name_regex
         /// 
         /// ```csharp
@@ -183,7 +181,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ### With VGPU Profile Name_regex
         /// 

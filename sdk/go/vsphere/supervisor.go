@@ -293,6 +293,12 @@ func (SupervisorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*supervisorState)(nil)).Elem()
 }
 
+// SupervisorExists checks whether an existing Supervisor resource with the given ID exists.
+func SupervisorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SupervisorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/supervisor:Supervisor", id, state, "", opts...)
+}
+
 type supervisorArgs struct {
 	// The identifier of the compute cluster.
 	Cluster string `pulumi:"cluster"`

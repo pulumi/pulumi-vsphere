@@ -251,6 +251,12 @@ func (DrsVmOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*drsVmOverrideState)(nil)).Elem()
 }
 
+// DrsVmOverrideExists checks whether an existing DrsVmOverride resource with the given ID exists.
+func DrsVmOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DrsVmOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/drsVmOverride:DrsVmOverride", id, state, "", opts...)
+}
+
 type drsVmOverrideArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new

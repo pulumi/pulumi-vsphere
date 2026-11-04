@@ -93,11 +93,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.user);
     }
     /**
-     * @deprecated
-     * This field has been renamed to vsphere_server.
+     * @deprecated This field has been renamed to vsphere_server.
      * 
      */
-    @Deprecated /* This field has been renamed to vsphere_server. */
+    @Deprecated
     @Export(name="vcenterServer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vcenterServer;
 

@@ -197,6 +197,12 @@ func (ContentLibraryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*contentLibraryState)(nil)).Elem()
 }
 
+// ContentLibraryExists checks whether an existing ContentLibrary resource with the given ID exists.
+func ContentLibraryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContentLibraryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/contentLibrary:ContentLibrary", id, state, "", opts...)
+}
+
 type contentLibraryArgs struct {
 	// A description for the content library.
 	Description *string `pulumi:"description"`

@@ -181,6 +181,12 @@ func (EntityPermissionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entityPermissionsState)(nil)).Elem()
 }
 
+// EntityPermissionsExists checks whether an existing EntityPermissions resource with the given ID exists.
+func EntityPermissionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntityPermissionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/entityPermissions:EntityPermissions", id, state, "", opts...)
+}
+
 type entityPermissionsArgs struct {
 	// The managed object id (uuid for some entities) on
 	// which permissions are to be created.

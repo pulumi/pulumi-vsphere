@@ -164,6 +164,12 @@ func (ComputeClusterVmAntiAffinityRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmAntiAffinityRuleState)(nil)).Elem()
 }
 
+// ComputeClusterVmAntiAffinityRuleExists checks whether an existing ComputeClusterVmAntiAffinityRule resource with the given ID exists.
+func ComputeClusterVmAntiAffinityRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComputeClusterVmAntiAffinityRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule", id, state, "", opts...)
+}
+
 type computeClusterVmAntiAffinityRuleArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new

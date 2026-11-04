@@ -940,6 +940,40 @@ class VmfsDatastore(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return VmfsDatastore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accessible: pulumi.Input[Optional[_builtins.bool]] = None,
+            capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            free_space: pulumi.Input[Optional[_builtins.int]] = None,
+            host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            multiple_host_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            uncommitted_space: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessible"] = accessible
+        __props__["capacity"] = capacity
+        __props__["customAttributes"] = custom_attributes
+        __props__["datastoreClusterId"] = datastore_cluster_id
+        __props__["disks"] = disks
+        __props__["folder"] = folder
+        __props__["freeSpace"] = free_space
+        __props__["hostSystemId"] = host_system_id
+        __props__["maintenanceMode"] = maintenance_mode
+        __props__["multipleHostAccess"] = multiple_host_access
+        __props__["name"] = name
+        __props__["tags"] = tags
+        __props__["uncommittedSpace"] = uncommitted_space
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/vmfsDatastore:VmfsDatastore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accessible(self) -> pulumi.Output[_builtins.bool]:

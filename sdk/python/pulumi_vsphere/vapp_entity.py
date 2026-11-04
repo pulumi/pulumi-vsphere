@@ -712,6 +712,32 @@ class VappEntity(pulumi.CustomResource):
         __props__.__dict__["wait_for_guest"] = wait_for_guest
         return VappEntity(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            start_action: pulumi.Input[Optional[_builtins.str]] = None,
+            start_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            start_order: pulumi.Input[Optional[_builtins.int]] = None,
+            stop_action: pulumi.Input[Optional[_builtins.str]] = None,
+            stop_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_guest: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerId"] = container_id
+        __props__["customAttributes"] = custom_attributes
+        __props__["startAction"] = start_action
+        __props__["startDelay"] = start_delay
+        __props__["startOrder"] = start_order
+        __props__["stopAction"] = stop_action
+        __props__["stopDelay"] = stop_delay
+        __props__["tags"] = tags
+        __props__["targetId"] = target_id
+        __props__["waitForGuest"] = wait_for_guest
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/vappEntity:VappEntity', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[_builtins.str]:

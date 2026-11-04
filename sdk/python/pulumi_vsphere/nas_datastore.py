@@ -1018,6 +1018,50 @@ class NasDatastore(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return NasDatastore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            accessible: pulumi.Input[Optional[_builtins.bool]] = None,
+            capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            free_space: pulumi.Input[Optional[_builtins.int]] = None,
+            host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            maintenance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            multiple_host_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
+            remote_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            remote_path: pulumi.Input[Optional[_builtins.str]] = None,
+            security_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uncommitted_space: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["accessible"] = accessible
+        __props__["capacity"] = capacity
+        __props__["customAttributes"] = custom_attributes
+        __props__["datastoreClusterId"] = datastore_cluster_id
+        __props__["folder"] = folder
+        __props__["freeSpace"] = free_space
+        __props__["hostSystemIds"] = host_system_ids
+        __props__["maintenanceMode"] = maintenance_mode
+        __props__["multipleHostAccess"] = multiple_host_access
+        __props__["name"] = name
+        __props__["protocolEndpoint"] = protocol_endpoint
+        __props__["remoteHosts"] = remote_hosts
+        __props__["remotePath"] = remote_path
+        __props__["securityType"] = security_type
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["uncommittedSpace"] = uncommitted_space
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/nasDatastore:NasDatastore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -386,6 +386,20 @@ class ConfigurationProfile(pulumi.CustomResource):
         __props__.__dict__["schema"] = schema
         return ConfigurationProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["configuration"] = configuration
+        __props__["referenceHostId"] = reference_host_id
+        __props__["schema"] = schema
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/configurationProfile:ConfigurationProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

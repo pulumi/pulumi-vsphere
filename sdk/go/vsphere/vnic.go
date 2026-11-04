@@ -277,6 +277,12 @@ func (VnicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vnicState)(nil)).Elem()
 }
 
+// VnicExists checks whether an existing Vnic resource with the given ID exists.
+func VnicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VnicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/vnic:Vnic", id, state, "", opts...)
+}
+
 type vnicArgs struct {
 	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup *string `pulumi:"distributedPortGroup"`

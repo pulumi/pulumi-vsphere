@@ -323,6 +323,12 @@ func (NasDatastoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nasDatastoreState)(nil)).Elem()
 }
 
+// NasDatastoreExists checks whether an existing NasDatastore resource with the given ID exists.
+func NasDatastoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NasDatastoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/nasDatastore:NasDatastore", id, state, "", opts...)
+}
+
 type nasDatastoreArgs struct {
 	// Access mode for the mount point. Can be one of
 	// `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean

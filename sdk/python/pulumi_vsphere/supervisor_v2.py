@@ -899,6 +899,22 @@ class SupervisorV2(pulumi.CustomResource):
         __props__.__dict__["zones"] = zones
         return SupervisorV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane: pulumi.Input[Optional[Union['SupervisorV2ControlPlaneArgs', 'SupervisorV2ControlPlaneArgsDict', 'outputs.SupervisorV2ControlPlane']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            workloads: pulumi.Input[Optional[Union['SupervisorV2WorkloadsArgs', 'SupervisorV2WorkloadsArgsDict', 'outputs.SupervisorV2Workloads']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cluster"] = cluster
+        __props__["controlPlane"] = control_plane
+        __props__["name"] = name
+        __props__["workloads"] = workloads
+        __props__["zones"] = zones
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/supervisorV2:SupervisorV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cluster(self) -> pulumi.Output[Optional[_builtins.str]]:
