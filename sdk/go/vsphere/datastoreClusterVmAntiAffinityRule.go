@@ -257,6 +257,12 @@ func (DatastoreClusterVmAntiAffinityRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datastoreClusterVmAntiAffinityRuleState)(nil)).Elem()
 }
 
+// DatastoreClusterVmAntiAffinityRuleExists checks whether an existing DatastoreClusterVmAntiAffinityRule resource with the given ID exists.
+func DatastoreClusterVmAntiAffinityRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatastoreClusterVmAntiAffinityRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule", id, state, "", opts...)
+}
+
 type datastoreClusterVmAntiAffinityRuleArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces

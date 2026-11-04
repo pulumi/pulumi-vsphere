@@ -173,6 +173,12 @@ func (SsoUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ssoUserState)(nil)).Elem()
 }
 
+// SsoUserExists checks whether an existing SsoUser resource with the given ID exists.
+func SsoUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SsoUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/ssoUser:SsoUser", id, state, "", opts...)
+}
+
 type ssoUserArgs struct {
 	// A description of the user.
 	Description *string `pulumi:"description"`

@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_virtual_disk.virtual_disk \
- *   &#39;{&#34;virtual_disk_path&#34;: &#34;/dc-01/[datastore-01]foo/bar.vmdk&#34;, \ &#34;create_directories&#34;: &#34;true&#34;}&#39;
+ * terraform import vsphere_virtual_disk.virtual_disk &#92;
+ *   &#39;{&#34;virtual_disk_path&#34;: &#34;/dc-01/[datastore-01]foo/bar.vmdk&#34;, &#92; &#34;create_directories&#34;: &#34;true&#34;}&#39;
  * ```
  * 
  * The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
@@ -107,11 +107,10 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * 
      * [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
      * 
-     * @deprecated
-     * this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
+     * @deprecated this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      * 
      */
-    @Deprecated /* this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead */
+    @Deprecated
     @Export(name="adapterType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> adapterType;
 

@@ -362,6 +362,12 @@ func (HostPortGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostPortGroupState)(nil)).Elem()
 }
 
+// HostPortGroupExists checks whether an existing HostPortGroup resource with the given ID exists.
+func HostPortGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostPortGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/hostPortGroup:HostPortGroup", id, state, "", opts...)
+}
+
 type hostPortGroupArgs struct {
 	// List of active network adapters used for load balancing.
 	ActiveNics []string `pulumi:"activeNics"`

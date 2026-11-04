@@ -658,6 +658,12 @@ func (ComputeClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterState)(nil)).Elem()
 }
 
+// ComputeClusterExists checks whether an existing ComputeCluster resource with the given ID exists.
+func ComputeClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComputeClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/computeCluster:ComputeCluster", id, state, "", opts...)
+}
+
 type computeClusterArgs struct {
 	// A map of custom attribute ids to attribute
 	// value strings to set for the datastore cluster. See

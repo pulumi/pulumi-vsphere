@@ -125,6 +125,12 @@ func (CustomAttributeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customAttributeState)(nil)).Elem()
 }
 
+// CustomAttributeExists checks whether an existing CustomAttribute resource with the given ID exists.
+func CustomAttributeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomAttributeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/customAttribute:CustomAttribute", id, state, "", opts...)
+}
+
 type customAttributeArgs struct {
 	// The object type that this attribute may be
 	// applied to. If not set, the custom attribute may be applied to any object

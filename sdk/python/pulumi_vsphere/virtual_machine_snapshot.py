@@ -494,6 +494,26 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         __props__.__dict__["virtual_machine_uuid"] = virtual_machine_uuid
         return VirtualMachineSnapshot(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            consolidate: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[_builtins.bool]] = None,
+            quiesce: pulumi.Input[Optional[_builtins.bool]] = None,
+            remove_children: pulumi.Input[Optional[_builtins.bool]] = None,
+            snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["consolidate"] = consolidate
+        __props__["description"] = description
+        __props__["memory"] = memory
+        __props__["quiesce"] = quiesce
+        __props__["removeChildren"] = remove_children
+        __props__["snapshotName"] = snapshot_name
+        __props__["virtualMachineUuid"] = virtual_machine_uuid
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def consolidate(self) -> pulumi.Output[Optional[_builtins.bool]]:

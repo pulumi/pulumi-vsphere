@@ -549,6 +549,22 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         __props__.__dict__["virtual_machine_id"] = virtual_machine_id
         return StorageDrsVmOverride(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            datastore_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_intra_vm_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["datastoreClusterId"] = datastore_cluster_id
+        __props__["sdrsAutomationLevel"] = sdrs_automation_level
+        __props__["sdrsEnabled"] = sdrs_enabled
+        __props__["sdrsIntraVmAffinity"] = sdrs_intra_vm_affinity
+        __props__["virtualMachineId"] = virtual_machine_id
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/storageDrsVmOverride:StorageDrsVmOverride', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> pulumi.Output[_builtins.str]:

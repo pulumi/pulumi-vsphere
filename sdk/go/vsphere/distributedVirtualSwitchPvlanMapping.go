@@ -92,6 +92,12 @@ func (DistributedVirtualSwitchPvlanMappingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributedVirtualSwitchPvlanMappingState)(nil)).Elem()
 }
 
+// DistributedVirtualSwitchPvlanMappingExists checks whether an existing DistributedVirtualSwitchPvlanMapping resource with the given ID exists.
+func DistributedVirtualSwitchPvlanMappingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DistributedVirtualSwitchPvlanMappingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/distributedVirtualSwitchPvlanMapping:DistributedVirtualSwitchPvlanMapping", id, state, "", opts...)
+}
+
 type distributedVirtualSwitchPvlanMappingArgs struct {
 	// The ID of the distributed virtual switch to attach this mapping to.
 	DistributedVirtualSwitchId string `pulumi:"distributedVirtualSwitchId"`

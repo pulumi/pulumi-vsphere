@@ -446,6 +446,18 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return ComputeClusterHostGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_system_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["computeClusterId"] = compute_cluster_id
+        __props__["hostSystemIds"] = host_system_ids
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:

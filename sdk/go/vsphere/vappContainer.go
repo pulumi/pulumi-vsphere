@@ -392,6 +392,12 @@ func (VappContainerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vappContainerState)(nil)).Elem()
 }
 
+// VappContainerExists checks whether an existing VappContainer resource with the given ID exists.
+func VappContainerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VappContainerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/vappContainer:VappContainer", id, state, "", opts...)
+}
+
 type vappContainerArgs struct {
 	// Determines if the reservation on a vApp
 	// container can grow beyond the specified value if the parent resource pool has

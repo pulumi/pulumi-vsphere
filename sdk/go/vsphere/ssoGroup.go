@@ -178,6 +178,12 @@ func (SsoGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ssoGroupState)(nil)).Elem()
 }
 
+// SsoGroupExists checks whether an existing SsoGroup resource with the given ID exists.
+func SsoGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SsoGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/ssoGroup:SsoGroup", id, state, "", opts...)
+}
+
 type ssoGroupArgs struct {
 	// A description of the group.
 	Description *string `pulumi:"description"`

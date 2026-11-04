@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_ha_vm_override.ha_vm_override \
- *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
+ * terraform import vsphere_ha_vm_override.ha_vm_override &#92;
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, &#92;
  *   &#34;virtual_machine_path&#34;: &#34;/dc1/vm/srv1&#34;}&#39;
  * ```
  * 

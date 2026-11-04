@@ -493,6 +493,12 @@ func (HostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostState)(nil)).Elem()
 }
 
+// HostExists checks whether an existing Host resource with the given ID exists.
+func HostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/host:Host", id, state, "", opts...)
+}
+
 type hostArgs struct {
 	// The ID of the Compute Cluster this host should
 	// be added to. This should not be set if `datacenter` is set. Conflicts with:

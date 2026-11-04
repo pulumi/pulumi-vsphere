@@ -508,6 +508,26 @@ class File(pulumi.CustomResource):
         __props__.__dict__["source_file"] = source_file
         return File(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_directories: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_file: pulumi.Input[Optional[_builtins.str]] = None,
+            source_datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            source_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            source_file: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createDirectories"] = create_directories
+        __props__["datacenter"] = datacenter
+        __props__["datastore"] = datastore
+        __props__["destinationFile"] = destination_file
+        __props__["sourceDatacenter"] = source_datacenter
+        __props__["sourceDatastore"] = source_datastore
+        __props__["sourceFile"] = source_file
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/file:File', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createDirectories")
     def create_directories(self) -> pulumi.Output[Optional[_builtins.bool]]:

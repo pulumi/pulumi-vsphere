@@ -142,6 +142,12 @@ func (GuestOsCustomizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*guestOsCustomizationState)(nil)).Elem()
 }
 
+// GuestOsCustomizationExists checks whether an existing GuestOsCustomization resource with the given ID exists.
+func GuestOsCustomizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GuestOsCustomizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/guestOsCustomization:GuestOsCustomization", id, state, "", opts...)
+}
+
 type guestOsCustomizationArgs struct {
 	// The description for the customization specification.
 	Description *string `pulumi:"description"`

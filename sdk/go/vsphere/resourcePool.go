@@ -473,6 +473,12 @@ func (ResourcePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourcePoolState)(nil)).Elem()
 }
 
+// ResourcePoolExists checks whether an existing ResourcePool resource with the given ID exists.
+func ResourcePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourcePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/resourcePool:ResourcePool", id, state, "", opts...)
+}
+
 type resourcePoolArgs struct {
 	// Determines if the reservation on a resource
 	// pool can grow beyond the specified value if the parent resource pool has

@@ -519,6 +519,12 @@ func (DistributedPortGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributedPortGroupState)(nil)).Elem()
 }
 
+// DistributedPortGroupExists checks whether an existing DistributedPortGroup resource with the given ID exists.
+func DistributedPortGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DistributedPortGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/distributedPortGroup:DistributedPortGroup", id, state, "", opts...)
+}
+
 type distributedPortGroupArgs struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks []string `pulumi:"activeUplinks"`

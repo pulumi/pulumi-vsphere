@@ -176,6 +176,16 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         return OfflineSoftwareDepot(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OfflineSoftwareDepotComponentArgs', 'OfflineSoftwareDepotComponentArgsDict', 'outputs.OfflineSoftwareDepotComponent']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["components"] = components
+        __props__["location"] = location
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def components(self) -> pulumi.Output[Sequence['outputs.OfflineSoftwareDepotComponent']]:

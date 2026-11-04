@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_dpm_host_override.dpm_host_override \
- *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
+ * terraform import vsphere_dpm_host_override.dpm_host_override &#92;
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, &#92;
  *   &#34;host_path&#34;: &#34;/dc1/host/esxi1&#34;}&#39;
  * ```
  * 

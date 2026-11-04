@@ -262,6 +262,12 @@ func (ComputeClusterVmGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmGroupState)(nil)).Elem()
 }
 
+// ComputeClusterVmGroupExists checks whether an existing ComputeClusterVmGroup resource with the given ID exists.
+func ComputeClusterVmGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComputeClusterVmGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup", id, state, "", opts...)
+}
+
 type computeClusterVmGroupArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new

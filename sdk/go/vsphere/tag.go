@@ -211,6 +211,12 @@ func (TagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagState)(nil)).Elem()
 }
 
+// TagExists checks whether an existing Tag resource with the given ID exists.
+func TagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/tag:Tag", id, state, "", opts...)
+}
+
 type tagArgs struct {
 	// The unique identifier of the parent category in
 	// which this tag will be created. Forces a new resource if changed.

@@ -163,6 +163,12 @@ func (VirtualMachineClassState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineClassState)(nil)).Elem()
 }
 
+// VirtualMachineClassExists checks whether an existing VirtualMachineClass resource with the given ID exists.
+func VirtualMachineClassExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualMachineClassState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/virtualMachineClass:VirtualMachineClass", id, state, "", opts...)
+}
+
 type virtualMachineClassArgs struct {
 	// The percentage of the available CPU capacity which will be reserved.
 	CpuReservation *int `pulumi:"cpuReservation"`

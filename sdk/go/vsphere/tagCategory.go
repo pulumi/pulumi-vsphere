@@ -165,6 +165,12 @@ func (TagCategoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagCategoryState)(nil)).Elem()
 }
 
+// TagCategoryExists checks whether an existing TagCategory resource with the given ID exists.
+func TagCategoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagCategoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/tagCategory:TagCategory", id, state, "", opts...)
+}
+
 type tagCategoryArgs struct {
 	// A list object types that this category is
 	// valid to be assigned to. For a full list, click

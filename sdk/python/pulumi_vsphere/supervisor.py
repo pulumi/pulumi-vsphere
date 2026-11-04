@@ -899,6 +899,46 @@ class Supervisor(pulumi.CustomResource):
         __props__.__dict__["worker_ntps"] = worker_ntps
         return Supervisor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            content_library: pulumi.Input[Optional[_builtins.str]] = None,
+            dvs_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict', 'outputs.SupervisorEgressCidr']]]]] = None,
+            ingress_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict', 'outputs.SupervisorIngressCidr']]]]] = None,
+            main_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            main_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            management_network: pulumi.Input[Optional[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict', 'outputs.SupervisorManagementNetwork']]] = None,
+            namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict', 'outputs.SupervisorNamespace']]]]] = None,
+            pod_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict', 'outputs.SupervisorPodCidr']]]]] = None,
+            search_domains: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr: pulumi.Input[Optional[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict', 'outputs.SupervisorServiceCidr']]] = None,
+            sizing_hint: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_dns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            worker_ntps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cluster"] = cluster
+        __props__["contentLibrary"] = content_library
+        __props__["dvsUuid"] = dvs_uuid
+        __props__["edgeCluster"] = edge_cluster
+        __props__["egressCidrs"] = egress_cidrs
+        __props__["ingressCidrs"] = ingress_cidrs
+        __props__["mainDns"] = main_dns
+        __props__["mainNtps"] = main_ntps
+        __props__["managementNetwork"] = management_network
+        __props__["namespaces"] = namespaces
+        __props__["podCidrs"] = pod_cidrs
+        __props__["searchDomains"] = search_domains
+        __props__["serviceCidr"] = service_cidr
+        __props__["sizingHint"] = sizing_hint
+        __props__["storagePolicy"] = storage_policy
+        __props__["workerDns"] = worker_dns
+        __props__["workerNtps"] = worker_ntps
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/supervisor:Supervisor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cluster(self) -> pulumi.Output[_builtins.str]:

@@ -161,6 +161,12 @@ func (DpmHostOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dpmHostOverrideState)(nil)).Elem()
 }
 
+// DpmHostOverrideExists checks whether an existing DpmHostOverride resource with the given ID exists.
+func DpmHostOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DpmHostOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/dpmHostOverride:DpmHostOverride", id, state, "", opts...)
+}
+
 type dpmHostOverrideArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new

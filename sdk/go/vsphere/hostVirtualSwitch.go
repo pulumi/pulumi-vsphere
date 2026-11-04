@@ -357,6 +357,12 @@ func (HostVirtualSwitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostVirtualSwitchState)(nil)).Elem()
 }
 
+// HostVirtualSwitchExists checks whether an existing HostVirtualSwitch resource with the given ID exists.
+func HostVirtualSwitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostVirtualSwitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/hostVirtualSwitch:HostVirtualSwitch", id, state, "", opts...)
+}
+
 type hostVirtualSwitchArgs struct {
 	// List of active network adapters used for load balancing.
 	ActiveNics []string `pulumi:"activeNics"`

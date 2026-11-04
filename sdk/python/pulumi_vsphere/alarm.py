@@ -765,6 +765,36 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["state_expressions"] = state_expressions
         return Alarm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmAdvancedActionArgs', 'AlarmAdvancedActionArgsDict', 'outputs.AlarmAdvancedAction']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEmailActionArgs', 'AlarmEmailActionArgsDict', 'outputs.AlarmEmailAction']]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            event_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmEventExpressionArgs', 'AlarmEventExpressionArgsDict', 'outputs.AlarmEventExpression']]]]] = None,
+            expression_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmMetricExpressionArgs', 'AlarmMetricExpressionArgsDict', 'outputs.AlarmMetricExpression']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            snmp_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmSnmpActionArgs', 'AlarmSnmpActionArgsDict', 'outputs.AlarmSnmpAction']]]]] = None,
+            state_expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmStateExpressionArgs', 'AlarmStateExpressionArgsDict', 'outputs.AlarmStateExpression']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedActions"] = advanced_actions
+        __props__["description"] = description
+        __props__["emailActions"] = email_actions
+        __props__["enabled"] = enabled
+        __props__["entityId"] = entity_id
+        __props__["entityType"] = entity_type
+        __props__["eventExpressions"] = event_expressions
+        __props__["expressionOperator"] = expression_operator
+        __props__["metricExpressions"] = metric_expressions
+        __props__["name"] = name
+        __props__["snmpActions"] = snmp_actions
+        __props__["stateExpressions"] = state_expressions
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/alarm:Alarm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedActions")
     def advanced_actions(self) -> pulumi.Output[Optional[Sequence['outputs.AlarmAdvancedAction']]]:

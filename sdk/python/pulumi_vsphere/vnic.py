@@ -661,6 +661,32 @@ class Vnic(pulumi.CustomResource):
         __props__.__dict__["services"] = services
         return Vnic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            distributed_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+            distributed_switch_port: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4: pulumi.Input[Optional[Union['VnicIpv4Args', 'VnicIpv4ArgsDict', 'outputs.VnicIpv4']]] = None,
+            ipv6: pulumi.Input[Optional[Union['VnicIpv6Args', 'VnicIpv6ArgsDict', 'outputs.VnicIpv6']]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            netstack: pulumi.Input[Optional[_builtins.str]] = None,
+            portgroup: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["distributedPortGroup"] = distributed_port_group
+        __props__["distributedSwitchPort"] = distributed_switch_port
+        __props__["host"] = host
+        __props__["ipv4"] = ipv4
+        __props__["ipv6"] = ipv6
+        __props__["mac"] = mac
+        __props__["mtu"] = mtu
+        __props__["netstack"] = netstack
+        __props__["portgroup"] = portgroup
+        __props__["services"] = services
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/vnic:Vnic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="distributedPortGroup")
     def distributed_port_group(self) -> pulumi.Output[Optional[_builtins.str]]:

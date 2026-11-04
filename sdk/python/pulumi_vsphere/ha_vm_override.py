@@ -847,6 +847,42 @@ class HaVmOverride(pulumi.CustomResource):
         __props__.__dict__["virtual_machine_id"] = virtual_machine_id
         return HaVmOverride(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_recovery_action: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_datastore_apd_response_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_datastore_pdl_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_host_isolation_response: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_failure_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_maximum_failure_window: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_maximum_resets: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_minimum_uptime: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_vm_monitoring: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_monitoring_use_cluster_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_vm_restart_priority: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vm_restart_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            virtual_machine_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["computeClusterId"] = compute_cluster_id
+        __props__["haDatastoreApdRecoveryAction"] = ha_datastore_apd_recovery_action
+        __props__["haDatastoreApdResponse"] = ha_datastore_apd_response
+        __props__["haDatastoreApdResponseDelay"] = ha_datastore_apd_response_delay
+        __props__["haDatastorePdlResponse"] = ha_datastore_pdl_response
+        __props__["haHostIsolationResponse"] = ha_host_isolation_response
+        __props__["haVmFailureInterval"] = ha_vm_failure_interval
+        __props__["haVmMaximumFailureWindow"] = ha_vm_maximum_failure_window
+        __props__["haVmMaximumResets"] = ha_vm_maximum_resets
+        __props__["haVmMinimumUptime"] = ha_vm_minimum_uptime
+        __props__["haVmMonitoring"] = ha_vm_monitoring
+        __props__["haVmMonitoringUseClusterDefaults"] = ha_vm_monitoring_use_cluster_defaults
+        __props__["haVmRestartPriority"] = ha_vm_restart_priority
+        __props__["haVmRestartTimeout"] = ha_vm_restart_timeout
+        __props__["virtualMachineId"] = virtual_machine_id
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/haVmOverride:HaVmOverride', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:

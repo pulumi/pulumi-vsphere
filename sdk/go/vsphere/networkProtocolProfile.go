@@ -243,6 +243,12 @@ func (NetworkProtocolProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkProtocolProfileState)(nil)).Elem()
 }
 
+// NetworkProtocolProfileExists checks whether an existing NetworkProtocolProfile resource with the given ID exists.
+func NetworkProtocolProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkProtocolProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/networkProtocolProfile:NetworkProtocolProfile", id, state, "", opts...)
+}
+
 type networkProtocolProfileArgs struct {
 	// The [managed object ID][docs-about-morefs] of
 	// the datacenter this network protocol profile is associated with. Forces a

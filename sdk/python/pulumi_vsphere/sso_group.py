@@ -411,6 +411,22 @@ class SsoGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return SsoGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            member_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberGroupArgs', 'SsoGroupMemberGroupArgsDict', 'outputs.SsoGroupMemberGroup']]]]] = None,
+            member_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoGroupMemberUserArgs', 'SsoGroupMemberUserArgsDict', 'outputs.SsoGroupMemberUser']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["domain"] = domain
+        __props__["memberGroups"] = member_groups
+        __props__["memberUsers"] = member_users
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/ssoGroup:SsoGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

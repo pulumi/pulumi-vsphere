@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_tag.tag \
+ * terraform import vsphere_tag.tag &#92;
  *   &#39;{&#34;category_name&#34;: &#34;pulumi-test-category&#34;, &#34;tag_name&#34;: &#34;pulumi-test-tag&#34;}&#39;
  * ```
  * 

@@ -169,8 +169,8 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_compute_cluster_vm_dependency_rule.cluster_vm_dependency_rule \
- *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
+ * terraform import vsphere_compute_cluster_vm_dependency_rule.cluster_vm_dependency_rule &#92;
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, &#92;
  *   &#34;name&#34;: &#34;pulumi-test-cluster-vm-dependency-rule&#34;}&#39;
  * ```
  * 

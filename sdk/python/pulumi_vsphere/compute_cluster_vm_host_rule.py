@@ -695,6 +695,26 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         __props__.__dict__["vm_group_name"] = vm_group_name
         return ComputeClusterVmHostRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            anti_affinity_host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["affinityHostGroupName"] = affinity_host_group_name
+        __props__["antiAffinityHostGroupName"] = anti_affinity_host_group_name
+        __props__["computeClusterId"] = compute_cluster_id
+        __props__["enabled"] = enabled
+        __props__["mandatory"] = mandatory
+        __props__["name"] = name
+        __props__["vmGroupName"] = vm_group_name
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="affinityHostGroupName")
     def affinity_host_group_name(self) -> pulumi.Output[Optional[_builtins.str]]:

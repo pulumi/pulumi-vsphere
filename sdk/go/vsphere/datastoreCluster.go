@@ -309,6 +309,12 @@ func (DatastoreClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datastoreClusterState)(nil)).Elem()
 }
 
+// DatastoreClusterExists checks whether an existing DatastoreCluster resource with the given ID exists.
+func DatastoreClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatastoreClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/datastoreCluster:DatastoreCluster", id, state, "", opts...)
+}
+
 type datastoreClusterArgs struct {
 	// A map of custom attribute ids to attribute
 	// value strings to set for the datastore cluster. See

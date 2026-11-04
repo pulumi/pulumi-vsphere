@@ -49,7 +49,6 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
         /// ### With Name Regular Expression
         /// 
         /// ```csharp
@@ -121,7 +120,6 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
         /// ### With Name Regular Expression
         /// 
         /// ```csharp
@@ -192,7 +190,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ### With Name Regular Expression
         /// 

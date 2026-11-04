@@ -1100,6 +1100,42 @@ class Host(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return Host(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            connected: pulumi.Input[Optional[_builtins.bool]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            lockdown: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict', 'outputs.HostService']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cluster"] = cluster
+        __props__["clusterManaged"] = cluster_managed
+        __props__["connected"] = connected
+        __props__["customAttributes"] = custom_attributes
+        __props__["datacenter"] = datacenter
+        __props__["force"] = force
+        __props__["hostname"] = hostname
+        __props__["license"] = license
+        __props__["lockdown"] = lockdown
+        __props__["maintenance"] = maintenance
+        __props__["password"] = password
+        __props__["services"] = services
+        __props__["tags"] = tags
+        __props__["thumbprint"] = thumbprint
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/host:Host', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cluster(self) -> pulumi.Output[Optional[_builtins.str]]:

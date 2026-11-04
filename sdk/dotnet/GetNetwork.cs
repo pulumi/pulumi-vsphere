@@ -42,7 +42,6 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
         /// ### Additional Examples
         /// 
         /// ```csharp
@@ -108,7 +107,6 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
         /// ### Additional Examples
         /// 
         /// ```csharp
@@ -173,7 +171,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ### Additional Examples
         /// 

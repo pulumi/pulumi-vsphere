@@ -305,6 +305,20 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["vm_services"] = vm_services
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supervisor: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["name"] = name
+        __props__["storagePolicies"] = storage_policies
+        __props__["supervisor"] = supervisor
+        __props__["vmServices"] = vm_services
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/namespace:Namespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:

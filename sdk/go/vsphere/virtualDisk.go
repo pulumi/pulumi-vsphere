@@ -263,6 +263,12 @@ func (VirtualDiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualDiskState)(nil)).Elem()
 }
 
+// VirtualDiskExists checks whether an existing VirtualDisk resource with the given ID exists.
+func VirtualDiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualDiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/virtualDisk:VirtualDisk", id, state, "", opts...)
+}
+
 type virtualDiskArgs struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.

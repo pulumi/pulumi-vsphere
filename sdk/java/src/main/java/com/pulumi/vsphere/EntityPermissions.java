@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
  *             .name("Sample_DC_2")
  *             .build());
@@ -86,21 +86,21 @@ import javax.annotation.Nullable;
  *             .entityType("VirtualMachine")
  *             .permissions(            
  *                 EntityPermissionsPermissionArgs.builder()
- *                     .userOrGroup("vsphere.local\\DCClients")
+ *                     .userOrGroup("vsphere.local}&#92;&#92;{@code DCClients")
  *                     .propagate(true)
  *                     .isGroup(true)
  *                     .roleId(role1.id())
  *                     .build(),
  *                 EntityPermissionsPermissionArgs.builder()
- *                     .userOrGroup("vsphere.local\\ExternalIDPUsers")
+ *                     .userOrGroup("vsphere.local}&#92;&#92;{@code ExternalIDPUsers")
  *                     .propagate(true)
  *                     .isGroup(true)
  *                     .roleId(role2.id())
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

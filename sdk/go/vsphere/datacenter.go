@@ -196,6 +196,12 @@ func (DatacenterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datacenterState)(nil)).Elem()
 }
 
+// DatacenterExists checks whether an existing Datacenter resource with the given ID exists.
+func DatacenterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatacenterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/datacenter:Datacenter", id, state, "", opts...)
+}
+
 type datacenterArgs struct {
 	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See

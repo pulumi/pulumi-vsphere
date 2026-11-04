@@ -436,6 +436,22 @@ class Datacenter(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Datacenter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            moid: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customAttributes"] = custom_attributes
+        __props__["folder"] = folder
+        __props__["moid"] = moid
+        __props__["name"] = name
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/datacenter:Datacenter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

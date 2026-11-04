@@ -1350,6 +1350,62 @@ class DatastoreCluster(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DatastoreCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_advanced_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            sdrs_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_default_intra_vm_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+            sdrs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sdrs_free_space_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_free_space_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_free_space_utilization_difference: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_io_latency_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_load_balance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sdrs_io_load_imbalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_reservable_iops_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_reservable_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_io_reservable_threshold_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_load_balance_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_policy_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_rule_enforcement_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_space_balance_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            sdrs_space_utilization_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            sdrs_vm_evacuation_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customAttributes"] = custom_attributes
+        __props__["datacenterId"] = datacenter_id
+        __props__["folder"] = folder
+        __props__["name"] = name
+        __props__["sdrsAdvancedOptions"] = sdrs_advanced_options
+        __props__["sdrsAutomationLevel"] = sdrs_automation_level
+        __props__["sdrsDefaultIntraVmAffinity"] = sdrs_default_intra_vm_affinity
+        __props__["sdrsEnabled"] = sdrs_enabled
+        __props__["sdrsFreeSpaceThreshold"] = sdrs_free_space_threshold
+        __props__["sdrsFreeSpaceThresholdMode"] = sdrs_free_space_threshold_mode
+        __props__["sdrsFreeSpaceUtilizationDifference"] = sdrs_free_space_utilization_difference
+        __props__["sdrsIoBalanceAutomationLevel"] = sdrs_io_balance_automation_level
+        __props__["sdrsIoLatencyThreshold"] = sdrs_io_latency_threshold
+        __props__["sdrsIoLoadBalanceEnabled"] = sdrs_io_load_balance_enabled
+        __props__["sdrsIoLoadImbalanceThreshold"] = sdrs_io_load_imbalance_threshold
+        __props__["sdrsIoReservableIopsThreshold"] = sdrs_io_reservable_iops_threshold
+        __props__["sdrsIoReservablePercentThreshold"] = sdrs_io_reservable_percent_threshold
+        __props__["sdrsIoReservableThresholdMode"] = sdrs_io_reservable_threshold_mode
+        __props__["sdrsLoadBalanceInterval"] = sdrs_load_balance_interval
+        __props__["sdrsPolicyEnforcementAutomationLevel"] = sdrs_policy_enforcement_automation_level
+        __props__["sdrsRuleEnforcementAutomationLevel"] = sdrs_rule_enforcement_automation_level
+        __props__["sdrsSpaceBalanceAutomationLevel"] = sdrs_space_balance_automation_level
+        __props__["sdrsSpaceUtilizationThreshold"] = sdrs_space_utilization_threshold
+        __props__["sdrsVmEvacuationAutomationLevel"] = sdrs_vm_evacuation_automation_level
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/datastoreCluster:DatastoreCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

@@ -325,6 +325,12 @@ func (ComputeClusterVmHostRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmHostRuleState)(nil)).Elem()
 }
 
+// ComputeClusterVmHostRuleExists checks whether an existing ComputeClusterVmHostRule resource with the given ID exists.
+func ComputeClusterVmHostRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComputeClusterVmHostRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", id, state, "", opts...)
+}
+
 type computeClusterVmHostRuleArgs struct {
 	// When this field is used, the virtual
 	// machines defined in `vmGroupName` will be run on the

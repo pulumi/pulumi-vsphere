@@ -470,6 +470,20 @@ class DpmHostOverride(pulumi.CustomResource):
         __props__.__dict__["host_system_id"] = host_system_id
         return DpmHostOverride(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dpm_automation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            dpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_system_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["computeClusterId"] = compute_cluster_id
+        __props__["dpmAutomationLevel"] = dpm_automation_level
+        __props__["dpmEnabled"] = dpm_enabled
+        __props__["hostSystemId"] = host_system_id
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/dpmHostOverride:DpmHostOverride', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:

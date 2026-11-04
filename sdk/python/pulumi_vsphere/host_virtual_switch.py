@@ -1138,6 +1138,54 @@ class HostVirtualSwitch(pulumi.CustomResource):
         __props__.__dict__["teaming_policy"] = teaming_policy
         return HostVirtualSwitch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_nics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allow_forged_transmits: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_mac_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_promiscuous: pulumi.Input[Optional[_builtins.bool]] = None,
+            beacon_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            check_beacon: pulumi.Input[Optional[_builtins.bool]] = None,
+            failback: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            link_discovery_operation: pulumi.Input[Optional[_builtins.str]] = None,
+            link_discovery_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_adapters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notify_switches: pulumi.Input[Optional[_builtins.bool]] = None,
+            number_of_ports: pulumi.Input[Optional[_builtins.int]] = None,
+            shaping_average_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            shaping_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+            shaping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            shaping_peak_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            standby_nics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            teaming_policy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeNics"] = active_nics
+        __props__["allowForgedTransmits"] = allow_forged_transmits
+        __props__["allowMacChanges"] = allow_mac_changes
+        __props__["allowPromiscuous"] = allow_promiscuous
+        __props__["beaconInterval"] = beacon_interval
+        __props__["checkBeacon"] = check_beacon
+        __props__["failback"] = failback
+        __props__["hostSystemId"] = host_system_id
+        __props__["linkDiscoveryOperation"] = link_discovery_operation
+        __props__["linkDiscoveryProtocol"] = link_discovery_protocol
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["networkAdapters"] = network_adapters
+        __props__["notifySwitches"] = notify_switches
+        __props__["numberOfPorts"] = number_of_ports
+        __props__["shapingAverageBandwidth"] = shaping_average_bandwidth
+        __props__["shapingBurstSize"] = shaping_burst_size
+        __props__["shapingEnabled"] = shaping_enabled
+        __props__["shapingPeakBandwidth"] = shaping_peak_bandwidth
+        __props__["standbyNics"] = standby_nics
+        __props__["teamingPolicy"] = teaming_policy
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/hostVirtualSwitch:HostVirtualSwitch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeNics")
     def active_nics(self) -> pulumi.Output[Sequence[_builtins.str]]:

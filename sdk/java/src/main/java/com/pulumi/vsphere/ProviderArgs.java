@@ -154,20 +154,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * This field has been renamed to vsphere_server.
+     * @deprecated This field has been renamed to vsphere_server.
      * 
      */
-    @Deprecated /* This field has been renamed to vsphere_server. */
+    @Deprecated
     @Import(name="vcenterServer")
     private @Nullable Output<String> vcenterServer;
 
     /**
-     * @deprecated
-     * This field has been renamed to vsphere_server.
+     * @deprecated This field has been renamed to vsphere_server.
      * 
      */
-    @Deprecated /* This field has been renamed to vsphere_server. */
+    @Deprecated
     public Optional<Output<String>> vcenterServer() {
         return Optional.ofNullable(this.vcenterServer);
     }
@@ -445,11 +443,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * This field has been renamed to vsphere_server.
+         * @deprecated This field has been renamed to vsphere_server.
          * 
          */
-        @Deprecated /* This field has been renamed to vsphere_server. */
+        @Deprecated
         public Builder vcenterServer(@Nullable Output<String> vcenterServer) {
             $.vcenterServer = vcenterServer;
             return this;
@@ -458,11 +455,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * This field has been renamed to vsphere_server.
+         * @deprecated This field has been renamed to vsphere_server.
          * 
          */
-        @Deprecated /* This field has been renamed to vsphere_server. */
+        @Deprecated
         public Builder vcenterServer(String vcenterServer) {
             return vcenterServer(Output.of(vcenterServer));
         }

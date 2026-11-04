@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * terraform import vsphere_compute_cluster_vm_anti_affinity_rule.vm_anti_affinity_rule \
- *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc-01/host/cluster-01&#34;, \
+ * terraform import vsphere_compute_cluster_vm_anti_affinity_rule.vm_anti_affinity_rule &#92;
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc-01/host/cluster-01&#34;, &#92;
  *   &#34;name&#34;: &#34;vm-anti-affinity-rule&#34;}&#39;
  * ```
  * 

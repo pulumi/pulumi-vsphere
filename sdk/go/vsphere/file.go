@@ -203,6 +203,12 @@ func (FileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileState)(nil)).Elem()
 }
 
+// FileExists checks whether an existing File resource with the given ID exists.
+func FileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("vsphere:index/file:File", id, state, "", opts...)
+}
+
 type fileArgs struct {
 	// Specifies whether to create the parent directories of the destination file if they do not exist.
 	CreateDirectories *bool `pulumi:"createDirectories"`

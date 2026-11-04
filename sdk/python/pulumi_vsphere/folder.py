@@ -607,6 +607,22 @@ class Folder(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Folder(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            datacenter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customAttributes"] = custom_attributes
+        __props__["datacenterId"] = datacenter_id
+        __props__["path"] = path
+        __props__["tags"] = tags
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'vsphere:index/folder:Folder', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
