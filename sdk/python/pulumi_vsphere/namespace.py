@@ -22,30 +22,56 @@ __all__ = ['NamespaceArgs', 'Namespace']
 class NamespaceArgs:
     def __init__(__self__, *,
                  supervisor: pulumi.Input[_builtins.str],
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceGroupArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVmServiceArgs']]]] = None):
+                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceUserArgs']]]] = None,
+                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVmServiceArgs']]]] = None,
+                 vpc_network: pulumi.Input[Optional['NamespaceVpcNetworkArgs']] = None,
+                 vsphere_network: pulumi.Input[Optional['NamespaceVsphereNetworkArgs']] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneArgs']]]] = None):
         """
         The set of arguments for constructing a Namespace resource.
 
-        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the namespace.
-        :param pulumi.Input[_builtins.str] name: The name of the vSphere namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_policies: The list of storage policies that will be available in the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceGroupArgs']]] groups: A group with access to the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] name: The name of the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]] storage_policies: A storage policy that will be available in the vSphere Namespace.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceUserArgs']]] users: A user with access to the vSphere Namespace.
         :param pulumi.Input[Sequence[pulumi.Input['NamespaceVmServiceArgs']]] vm_services: The configuration for VM Service in the vSphere Namespace.
+        :param pulumi.Input['NamespaceVpcNetworkArgs'] vpc_network: The NSX VPC network configuration. Conflicts with `get_network`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
+        :param pulumi.Input['NamespaceVsphereNetworkArgs'] vsphere_network: The vSphere networking configuration. Conflicts with `vpc_network`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+               
+               > **NOTE:** Requires vCenter 9.1.0 or later.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceZoneArgs']]] zones: A vSphere Zone to associate with the vSphere Namespace. See Zone.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
         """
         pulumi.set(__self__, "supervisor", supervisor)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if storage_policies is not None:
             pulumi.set(__self__, "storage_policies", storage_policies)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
         if vm_services is not None:
             pulumi.set(__self__, "vm_services", vm_services)
+        if vpc_network is not None:
+            pulumi.set(__self__, "vpc_network", vpc_network)
+        if vsphere_network is not None:
+            pulumi.set(__self__, "vsphere_network", vsphere_network)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
 
     @_builtins.property
     @pulumi.getter
     def supervisor(self) -> pulumi.Input[_builtins.str]:
         """
-        The identifier of the vSphere Supervisor managing the namespace.
+        The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "supervisor")
 
@@ -55,9 +81,21 @@ class NamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceGroupArgs']]]]:
+        """
+        A group with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceGroupArgs']]]]):
+        pulumi.set(self, "groups", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the vSphere namespace.
+        The name of the vSphere Namespace. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "name")
 
@@ -67,15 +105,27 @@ class NamespaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="storagePolicies")
-    def storage_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+    def storage_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]]]:
         """
-        The list of storage policies that will be available in the vSphere Namespace.
+        A storage policy that will be available in the vSphere Namespace.
         """
         return pulumi.get(self, "storage_policies")
 
     @storage_policies.setter
-    def storage_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+    def storage_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]]]):
         pulumi.set(self, "storage_policies", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceUserArgs']]]]:
+        """
+        A user with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceUserArgs']]]]):
+        pulumi.set(self, "users", value)
 
     @_builtins.property
     @pulumi.getter(name="vmServices")
@@ -89,36 +139,116 @@ class NamespaceArgs:
     def vm_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVmServiceArgs']]]]):
         pulumi.set(self, "vm_services", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> pulumi.Input[Optional['NamespaceVpcNetworkArgs']]:
+        """
+        The NSX VPC network configuration. Conflicts with `get_network`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+
+        > **NOTE:** Requires vCenter 9.0.0 or later.
+        """
+        return pulumi.get(self, "vpc_network")
+
+    @vpc_network.setter
+    def vpc_network(self, value: pulumi.Input[Optional['NamespaceVpcNetworkArgs']]):
+        pulumi.set(self, "vpc_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vsphereNetwork")
+    def vsphere_network(self) -> pulumi.Input[Optional['NamespaceVsphereNetworkArgs']]:
+        """
+        The vSphere networking configuration. Conflicts with `vpc_network`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+
+        > **NOTE:** Requires vCenter 9.1.0 or later.
+        """
+        return pulumi.get(self, "vsphere_network")
+
+    @vsphere_network.setter
+    def vsphere_network(self, value: pulumi.Input[Optional['NamespaceVsphereNetworkArgs']]):
+        pulumi.set(self, "vsphere_network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneArgs']]]]:
+        """
+        A vSphere Zone to associate with the vSphere Namespace. See Zone.
+
+        > **NOTE:** Requires vCenter 9.0.0 or later.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneArgs']]]]):
+        pulumi.set(self, "zones", value)
+
 
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceGroupArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]]] = None,
                  supervisor: pulumi.Input[Optional[_builtins.str]] = None,
-                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVmServiceArgs']]]] = None):
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceUserArgs']]]] = None,
+                 vm_services: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVmServiceArgs']]]] = None,
+                 vpc_network: pulumi.Input[Optional['NamespaceVpcNetworkArgs']] = None,
+                 vsphere_network: pulumi.Input[Optional['NamespaceVsphereNetworkArgs']] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneArgs']]]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
 
-        :param pulumi.Input[_builtins.str] name: The name of the vSphere namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_policies: The list of storage policies that will be available in the vSphere Namespace.
-        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the namespace.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceGroupArgs']]] groups: A group with access to the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] name: The name of the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]] storage_policies: A storage policy that will be available in the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceUserArgs']]] users: A user with access to the vSphere Namespace.
         :param pulumi.Input[Sequence[pulumi.Input['NamespaceVmServiceArgs']]] vm_services: The configuration for VM Service in the vSphere Namespace.
+        :param pulumi.Input['NamespaceVpcNetworkArgs'] vpc_network: The NSX VPC network configuration. Conflicts with `get_network`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
+        :param pulumi.Input['NamespaceVsphereNetworkArgs'] vsphere_network: The vSphere networking configuration. Conflicts with `vpc_network`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+               
+               > **NOTE:** Requires vCenter 9.1.0 or later.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceZoneArgs']]] zones: A vSphere Zone to associate with the vSphere Namespace. See Zone.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
         """
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if storage_policies is not None:
             pulumi.set(__self__, "storage_policies", storage_policies)
         if supervisor is not None:
             pulumi.set(__self__, "supervisor", supervisor)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
         if vm_services is not None:
             pulumi.set(__self__, "vm_services", vm_services)
+        if vpc_network is not None:
+            pulumi.set(__self__, "vpc_network", vpc_network)
+        if vsphere_network is not None:
+            pulumi.set(__self__, "vsphere_network", vsphere_network)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceGroupArgs']]]]:
+        """
+        A group with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceGroupArgs']]]]):
+        pulumi.set(self, "groups", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the vSphere namespace.
+        The name of the vSphere Namespace. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "name")
 
@@ -128,21 +258,21 @@ class _NamespaceState:
 
     @_builtins.property
     @pulumi.getter(name="storagePolicies")
-    def storage_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+    def storage_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]]]:
         """
-        The list of storage policies that will be available in the vSphere Namespace.
+        A storage policy that will be available in the vSphere Namespace.
         """
         return pulumi.get(self, "storage_policies")
 
     @storage_policies.setter
-    def storage_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+    def storage_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceStoragePolicyArgs']]]]):
         pulumi.set(self, "storage_policies", value)
 
     @_builtins.property
     @pulumi.getter
     def supervisor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The identifier of the vSphere Supervisor managing the namespace.
+        The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "supervisor")
 
@@ -151,6 +281,18 @@ class _NamespaceState:
         pulumi.set(self, "supervisor", value)
 
     @_builtins.property
+    @pulumi.getter
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceUserArgs']]]]:
+        """
+        A user with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceUserArgs']]]]):
+        pulumi.set(self, "users", value)
+
+    @_builtins.property
     @pulumi.getter(name="vmServices")
     def vm_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVmServiceArgs']]]]:
         """
@@ -162,6 +304,48 @@ class _NamespaceState:
     def vm_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVmServiceArgs']]]]):
         pulumi.set(self, "vm_services", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> pulumi.Input[Optional['NamespaceVpcNetworkArgs']]:
+        """
+        The NSX VPC network configuration. Conflicts with `get_network`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+
+        > **NOTE:** Requires vCenter 9.0.0 or later.
+        """
+        return pulumi.get(self, "vpc_network")
+
+    @vpc_network.setter
+    def vpc_network(self, value: pulumi.Input[Optional['NamespaceVpcNetworkArgs']]):
+        pulumi.set(self, "vpc_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vsphereNetwork")
+    def vsphere_network(self) -> pulumi.Input[Optional['NamespaceVsphereNetworkArgs']]:
+        """
+        The vSphere networking configuration. Conflicts with `vpc_network`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+
+        > **NOTE:** Requires vCenter 9.1.0 or later.
+        """
+        return pulumi.get(self, "vsphere_network")
+
+    @vsphere_network.setter
+    def vsphere_network(self, value: pulumi.Input[Optional['NamespaceVsphereNetworkArgs']]):
+        pulumi.set(self, "vsphere_network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneArgs']]]]:
+        """
+        A vSphere Zone to associate with the vSphere Namespace. See Zone.
+
+        > **NOTE:** Requires vCenter 9.0.0 or later.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneArgs']]]]):
+        pulumi.set(self, "zones", value)
+
 
 @pulumi.type_token("vsphere:index/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
@@ -169,10 +353,15 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceGroupArgs', 'NamespaceGroupArgsDict', 'outputs.NamespaceGroup']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceStoragePolicyArgs', 'NamespaceStoragePolicyArgsDict', 'outputs.NamespaceStoragePolicy']]]]] = None,
                  supervisor: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceUserArgs', 'NamespaceUserArgsDict', 'outputs.NamespaceUser']]]]] = None,
                  vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None,
+                 vpc_network: pulumi.Input[Optional[Union['NamespaceVpcNetworkArgs', 'NamespaceVpcNetworkArgsDict', 'outputs.NamespaceVpcNetwork']]] = None,
+                 vsphere_network: pulumi.Input[Optional[Union['NamespaceVsphereNetworkArgs', 'NamespaceVsphereNetworkArgsDict', 'outputs.NamespaceVsphereNetwork']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceZoneArgs', 'NamespaceZoneArgsDict', 'outputs.NamespaceZone']]]]] = None,
                  __props__=None):
         """
         Provides a resource for configuring vSphere Namespaces.
@@ -181,7 +370,7 @@ class Namespace(pulumi.CustomResource):
 
         ### S
 
-        ### Create a namespace
+        ### Create a Namespace
 
         ```python
         import pulumi
@@ -194,16 +383,68 @@ class Namespace(pulumi.CustomResource):
                 "content_libraries": ["ca616f93-506d-4f00-98bf-7708d30f68bc"],
                 "vm_classes": ["example-vm-class"],
             }],
-            storage_policies=["1bb87d1e-49a5-49f8-ad4a-7094be13d4a0"])
+            storage_policies=[{
+                "policy": "1bb87d1e-49a5-49f8-ad4a-7094be13d4a0",
+                "limit": 102400,
+            }],
+            users=[{
+                "name": "administrator",
+                "domain": "vsphere.local",
+                "role": "OWNER",
+            }],
+            groups=[{
+                "name": "developers",
+                "domain": "vsphere.local",
+                "role": "EDIT",
+            }],
+            zones=[{
+                "name": "zone-1",
+                "cpu_limit": 4000,
+                "cpu_reservation": 1000,
+                "memory_limit": 8192,
+                "memory_reservation": 2048,
+                "vm_class_reservations": [{
+                    "vm_class": "example-vm-class",
+                    "count": 2,
+                }],
+            }],
+            vpc_network={
+                "vpc": "/orgs/default/projects/example-project/vpcs/example-vpc",
+            })
         ```
+
+        ## Import
+
+        An existing vSphere Namespace can be imported into this resource by supplying
+        its name:
+
+        ```sh
+        $ pulumi import vsphere:index/namespace:Namespace example example-namespace
+        ```
+
+        > **NOTE:** vCenter does not return the zone limits, reservations,
+        `vm_class_reservation` or `disallow_unreserved_direct_path_usage`, so they are not
+        populated by an import. If they are set in the configuration, the next apply
+        updates the vSphere Namespace in place to match.
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the vSphere namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_policies: The list of storage policies that will be available in the vSphere Namespace.
-        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceGroupArgs', 'NamespaceGroupArgsDict', 'outputs.NamespaceGroup']]]] groups: A group with access to the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] name: The name of the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceStoragePolicyArgs', 'NamespaceStoragePolicyArgsDict', 'outputs.NamespaceStoragePolicy']]]] storage_policies: A storage policy that will be available in the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceUserArgs', 'NamespaceUserArgsDict', 'outputs.NamespaceUser']]]] users: A user with access to the vSphere Namespace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]] vm_services: The configuration for VM Service in the vSphere Namespace.
+        :param pulumi.Input[Union['NamespaceVpcNetworkArgs', 'NamespaceVpcNetworkArgsDict', 'outputs.NamespaceVpcNetwork']] vpc_network: The NSX VPC network configuration. Conflicts with `get_network`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
+        :param pulumi.Input[Union['NamespaceVsphereNetworkArgs', 'NamespaceVsphereNetworkArgsDict', 'outputs.NamespaceVsphereNetwork']] vsphere_network: The vSphere networking configuration. Conflicts with `vpc_network`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+               
+               > **NOTE:** Requires vCenter 9.1.0 or later.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceZoneArgs', 'NamespaceZoneArgsDict', 'outputs.NamespaceZone']]]] zones: A vSphere Zone to associate with the vSphere Namespace. See Zone.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
         """
         ...
     @overload
@@ -218,7 +459,7 @@ class Namespace(pulumi.CustomResource):
 
         ### S
 
-        ### Create a namespace
+        ### Create a Namespace
 
         ```python
         import pulumi
@@ -231,8 +472,49 @@ class Namespace(pulumi.CustomResource):
                 "content_libraries": ["ca616f93-506d-4f00-98bf-7708d30f68bc"],
                 "vm_classes": ["example-vm-class"],
             }],
-            storage_policies=["1bb87d1e-49a5-49f8-ad4a-7094be13d4a0"])
+            storage_policies=[{
+                "policy": "1bb87d1e-49a5-49f8-ad4a-7094be13d4a0",
+                "limit": 102400,
+            }],
+            users=[{
+                "name": "administrator",
+                "domain": "vsphere.local",
+                "role": "OWNER",
+            }],
+            groups=[{
+                "name": "developers",
+                "domain": "vsphere.local",
+                "role": "EDIT",
+            }],
+            zones=[{
+                "name": "zone-1",
+                "cpu_limit": 4000,
+                "cpu_reservation": 1000,
+                "memory_limit": 8192,
+                "memory_reservation": 2048,
+                "vm_class_reservations": [{
+                    "vm_class": "example-vm-class",
+                    "count": 2,
+                }],
+            }],
+            vpc_network={
+                "vpc": "/orgs/default/projects/example-project/vpcs/example-vpc",
+            })
         ```
+
+        ## Import
+
+        An existing vSphere Namespace can be imported into this resource by supplying
+        its name:
+
+        ```sh
+        $ pulumi import vsphere:index/namespace:Namespace example example-namespace
+        ```
+
+        > **NOTE:** vCenter does not return the zone limits, reservations,
+        `vm_class_reservation` or `disallow_unreserved_direct_path_usage`, so they are not
+        populated by an import. If they are set in the configuration, the next apply
+        updates the vSphere Namespace in place to match.
 
 
         :param str resource_name: The name of the resource.
@@ -250,10 +532,15 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceGroupArgs', 'NamespaceGroupArgsDict', 'outputs.NamespaceGroup']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceStoragePolicyArgs', 'NamespaceStoragePolicyArgsDict', 'outputs.NamespaceStoragePolicy']]]]] = None,
                  supervisor: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceUserArgs', 'NamespaceUserArgsDict', 'outputs.NamespaceUser']]]]] = None,
                  vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None,
+                 vpc_network: pulumi.Input[Optional[Union['NamespaceVpcNetworkArgs', 'NamespaceVpcNetworkArgsDict', 'outputs.NamespaceVpcNetwork']]] = None,
+                 vsphere_network: pulumi.Input[Optional[Union['NamespaceVsphereNetworkArgs', 'NamespaceVsphereNetworkArgsDict', 'outputs.NamespaceVsphereNetwork']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceZoneArgs', 'NamespaceZoneArgsDict', 'outputs.NamespaceZone']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,12 +550,17 @@ class Namespace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
+            __props__.__dict__["groups"] = groups
             __props__.__dict__["name"] = name
             __props__.__dict__["storage_policies"] = storage_policies
             if supervisor is None and not opts.urn:
                 raise TypeError("Missing required property 'supervisor'")
             __props__.__dict__["supervisor"] = supervisor
+            __props__.__dict__["users"] = users
             __props__.__dict__["vm_services"] = vm_services
+            __props__.__dict__["vpc_network"] = vpc_network
+            __props__.__dict__["vsphere_network"] = vsphere_network
+            __props__.__dict__["zones"] = zones
         super(Namespace, __self__).__init__(
             'vsphere:index/namespace:Namespace',
             resource_name,
@@ -279,10 +571,15 @@ class Namespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceGroupArgs', 'NamespaceGroupArgsDict', 'outputs.NamespaceGroup']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceStoragePolicyArgs', 'NamespaceStoragePolicyArgsDict', 'outputs.NamespaceStoragePolicy']]]]] = None,
             supervisor: pulumi.Input[Optional[_builtins.str]] = None,
-            vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None) -> 'Namespace':
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceUserArgs', 'NamespaceUserArgsDict', 'outputs.NamespaceUser']]]]] = None,
+            vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None,
+            vpc_network: pulumi.Input[Optional[Union['NamespaceVpcNetworkArgs', 'NamespaceVpcNetworkArgsDict', 'outputs.NamespaceVpcNetwork']]] = None,
+            vsphere_network: pulumi.Input[Optional[Union['NamespaceVsphereNetworkArgs', 'NamespaceVsphereNetworkArgsDict', 'outputs.NamespaceVsphereNetwork']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceZoneArgs', 'NamespaceZoneArgsDict', 'outputs.NamespaceZone']]]]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -290,48 +587,82 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the vSphere namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_policies: The list of storage policies that will be available in the vSphere Namespace.
-        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceGroupArgs', 'NamespaceGroupArgsDict', 'outputs.NamespaceGroup']]]] groups: A group with access to the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] name: The name of the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceStoragePolicyArgs', 'NamespaceStoragePolicyArgsDict', 'outputs.NamespaceStoragePolicy']]]] storage_policies: A storage policy that will be available in the vSphere Namespace.
+        :param pulumi.Input[_builtins.str] supervisor: The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceUserArgs', 'NamespaceUserArgsDict', 'outputs.NamespaceUser']]]] users: A user with access to the vSphere Namespace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]] vm_services: The configuration for VM Service in the vSphere Namespace.
+        :param pulumi.Input[Union['NamespaceVpcNetworkArgs', 'NamespaceVpcNetworkArgsDict', 'outputs.NamespaceVpcNetwork']] vpc_network: The NSX VPC network configuration. Conflicts with `get_network`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
+        :param pulumi.Input[Union['NamespaceVsphereNetworkArgs', 'NamespaceVsphereNetworkArgsDict', 'outputs.NamespaceVsphereNetwork']] vsphere_network: The vSphere networking configuration. Conflicts with `vpc_network`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+               
+               > **NOTE:** Requires vCenter 9.1.0 or later.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceZoneArgs', 'NamespaceZoneArgsDict', 'outputs.NamespaceZone']]]] zones: A vSphere Zone to associate with the vSphere Namespace. See Zone.
+               
+               > **NOTE:** Requires vCenter 9.0.0 or later.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _NamespaceState.__new__(_NamespaceState)
 
+        __props__.__dict__["groups"] = groups
         __props__.__dict__["name"] = name
         __props__.__dict__["storage_policies"] = storage_policies
         __props__.__dict__["supervisor"] = supervisor
+        __props__.__dict__["users"] = users
         __props__.__dict__["vm_services"] = vm_services
+        __props__.__dict__["vpc_network"] = vpc_network
+        __props__.__dict__["vsphere_network"] = vsphere_network
+        __props__.__dict__["zones"] = zones
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceGroupArgs', 'NamespaceGroupArgsDict', 'outputs.NamespaceGroup']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            storage_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceStoragePolicyArgs', 'NamespaceStoragePolicyArgsDict', 'outputs.NamespaceStoragePolicy']]]]] = None,
             supervisor: pulumi.Input[Optional[_builtins.str]] = None,
-            vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None) -> pulumi.Output[bool]:
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceUserArgs', 'NamespaceUserArgsDict', 'outputs.NamespaceUser']]]]] = None,
+            vm_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceVmServiceArgs', 'NamespaceVmServiceArgsDict', 'outputs.NamespaceVmService']]]]] = None,
+            vpc_network: pulumi.Input[Optional[Union['NamespaceVpcNetworkArgs', 'NamespaceVpcNetworkArgsDict', 'outputs.NamespaceVpcNetwork']]] = None,
+            vsphere_network: pulumi.Input[Optional[Union['NamespaceVsphereNetworkArgs', 'NamespaceVsphereNetworkArgsDict', 'outputs.NamespaceVsphereNetwork']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceZoneArgs', 'NamespaceZoneArgsDict', 'outputs.NamespaceZone']]]]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["groups"] = groups
         __props__["name"] = name
         __props__["storagePolicies"] = storage_policies
         __props__["supervisor"] = supervisor
+        __props__["users"] = users
         __props__["vmServices"] = vm_services
+        __props__["vpcNetwork"] = vpc_network
+        __props__["vsphereNetwork"] = vsphere_network
+        __props__["zones"] = zones
         return pulumi.runtime.exists_resource(None, 'vsphere:index/namespace:Namespace', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> pulumi.Output[Optional[Sequence['outputs.NamespaceGroup']]]:
+        """
+        A group with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "groups")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the vSphere namespace.
+        The name of the vSphere Namespace. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="storagePolicies")
-    def storage_policies(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def storage_policies(self) -> pulumi.Output[Optional[Sequence['outputs.NamespaceStoragePolicy']]]:
         """
-        The list of storage policies that will be available in the vSphere Namespace.
+        A storage policy that will be available in the vSphere Namespace.
         """
         return pulumi.get(self, "storage_policies")
 
@@ -339,9 +670,17 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def supervisor(self) -> pulumi.Output[_builtins.str]:
         """
-        The identifier of the vSphere Supervisor managing the namespace.
+        The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "supervisor")
+
+    @_builtins.property
+    @pulumi.getter
+    def users(self) -> pulumi.Output[Optional[Sequence['outputs.NamespaceUser']]]:
+        """
+        A user with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "users")
 
     @_builtins.property
     @pulumi.getter(name="vmServices")
@@ -350,4 +689,34 @@ class Namespace(pulumi.CustomResource):
         The configuration for VM Service in the vSphere Namespace.
         """
         return pulumi.get(self, "vm_services")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> pulumi.Output['outputs.NamespaceVpcNetwork']:
+        """
+        The NSX VPC network configuration. Conflicts with `get_network`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+
+        > **NOTE:** Requires vCenter 9.0.0 or later.
+        """
+        return pulumi.get(self, "vpc_network")
+
+    @_builtins.property
+    @pulumi.getter(name="vsphereNetwork")
+    def vsphere_network(self) -> pulumi.Output['outputs.NamespaceVsphereNetwork']:
+        """
+        The vSphere networking configuration. Conflicts with `vpc_network`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+
+        > **NOTE:** Requires vCenter 9.1.0 or later.
+        """
+        return pulumi.get(self, "vsphere_network")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> pulumi.Output[Sequence['outputs.NamespaceZone']]:
+        """
+        A vSphere Zone to associate with the vSphere Namespace. See Zone.
+
+        > **NOTE:** Requires vCenter 9.0.0 or later.
+        """
+        return pulumi.get(self, "zones")
 

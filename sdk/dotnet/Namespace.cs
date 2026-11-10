@@ -16,7 +16,7 @@ namespace Pulumi.VSphere
     /// 
     /// ### S
     /// 
-    /// ### Create a namespace
+    /// ### Create a Namespace
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,39 +46,134 @@ namespace Pulumi.VSphere
     ///         },
     ///         StoragePolicies = new[]
     ///         {
-    ///             "1bb87d1e-49a5-49f8-ad4a-7094be13d4a0",
+    ///             new VSphere.Inputs.NamespaceStoragePolicyArgs
+    ///             {
+    ///                 Policy = "1bb87d1e-49a5-49f8-ad4a-7094be13d4a0",
+    ///                 Limit = 102400,
+    ///             },
+    ///         },
+    ///         Users = new[]
+    ///         {
+    ///             new VSphere.Inputs.NamespaceUserArgs
+    ///             {
+    ///                 Name = "administrator",
+    ///                 Domain = "vsphere.local",
+    ///                 Role = "OWNER",
+    ///             },
+    ///         },
+    ///         Groups = new[]
+    ///         {
+    ///             new VSphere.Inputs.NamespaceGroupArgs
+    ///             {
+    ///                 Name = "developers",
+    ///                 Domain = "vsphere.local",
+    ///                 Role = "EDIT",
+    ///             },
+    ///         },
+    ///         Zones = new[]
+    ///         {
+    ///             new VSphere.Inputs.NamespaceZoneArgs
+    ///             {
+    ///                 Name = "zone-1",
+    ///                 CpuLimit = 4000,
+    ///                 CpuReservation = 1000,
+    ///                 MemoryLimit = 8192,
+    ///                 MemoryReservation = 2048,
+    ///                 VmClassReservations = new[]
+    ///                 {
+    ///                     new VSphere.Inputs.NamespaceZoneVmClassReservationArgs
+    ///                     {
+    ///                         VmClass = "example-vm-class",
+    ///                         Count = 2,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         VpcNetwork = new VSphere.Inputs.NamespaceVpcNetworkArgs
+    ///         {
+    ///             Vpc = "/orgs/default/projects/example-project/vpcs/example-vpc",
     ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing vSphere Namespace can be imported into this resource by supplying
+    /// its name:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/namespace:Namespace example example-namespace
+    /// ```
+    /// 
+    /// &gt; **NOTE:** vCenter does not return the zone limits, reservations,
+    /// `VmClassReservation` or `DisallowUnreservedDirectPathUsage`, so they are not
+    /// populated by an import. If they are set in the configuration, the next apply
+    /// updates the vSphere Namespace in place to match.
     /// </summary>
     [VSphereResourceType("vsphere:index/namespace:Namespace")]
     public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the vSphere namespace.
+        /// A group with access to the vSphere Namespace.
+        /// </summary>
+        [Output("groups")]
+        public Output<ImmutableArray<Outputs.NamespaceGroup>> Groups { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the vSphere Namespace. Changing this forces a new resource to be created.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of storage policies that will be available in the vSphere Namespace.
+        /// A storage policy that will be available in the vSphere Namespace.
         /// </summary>
         [Output("storagePolicies")]
-        public Output<ImmutableArray<string>> StoragePolicies { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.NamespaceStoragePolicy>> StoragePolicies { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier of the vSphere Supervisor managing the namespace.
+        /// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
         /// </summary>
         [Output("supervisor")]
         public Output<string> Supervisor { get; private set; } = null!;
+
+        /// <summary>
+        /// A user with access to the vSphere Namespace.
+        /// </summary>
+        [Output("users")]
+        public Output<ImmutableArray<Outputs.NamespaceUser>> Users { get; private set; } = null!;
 
         /// <summary>
         /// The configuration for VM Service in the vSphere Namespace.
         /// </summary>
         [Output("vmServices")]
         public Output<ImmutableArray<Outputs.NamespaceVmService>> VmServices { get; private set; } = null!;
+
+        /// <summary>
+        /// The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `Vpc`.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+        /// </summary>
+        [Output("vpcNetwork")]
+        public Output<Outputs.NamespaceVpcNetwork> VpcNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// The vSphere networking configuration. Conflicts with `VpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+        /// </summary>
+        [Output("vsphereNetwork")]
+        public Output<Outputs.NamespaceVsphereNetwork> VsphereNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+        /// </summary>
+        [Output("zones")]
+        public Output<ImmutableArray<Outputs.NamespaceZone>> Zones { get; private set; } = null!;
 
 
         /// <summary>
@@ -126,29 +221,53 @@ namespace Pulumi.VSphere
 
     public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("groups")]
+        private InputList<Inputs.NamespaceGroupArgs>? _groups;
+
         /// <summary>
-        /// The name of the vSphere namespace.
+        /// A group with access to the vSphere Namespace.
+        /// </summary>
+        public InputList<Inputs.NamespaceGroupArgs> Groups
+        {
+            get => _groups ?? (_groups = new InputList<Inputs.NamespaceGroupArgs>());
+            set => _groups = value;
+        }
+
+        /// <summary>
+        /// The name of the vSphere Namespace. Changing this forces a new resource to be created.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("storagePolicies")]
-        private InputList<string>? _storagePolicies;
+        private InputList<Inputs.NamespaceStoragePolicyArgs>? _storagePolicies;
 
         /// <summary>
-        /// The list of storage policies that will be available in the vSphere Namespace.
+        /// A storage policy that will be available in the vSphere Namespace.
         /// </summary>
-        public InputList<string> StoragePolicies
+        public InputList<Inputs.NamespaceStoragePolicyArgs> StoragePolicies
         {
-            get => _storagePolicies ?? (_storagePolicies = new InputList<string>());
+            get => _storagePolicies ?? (_storagePolicies = new InputList<Inputs.NamespaceStoragePolicyArgs>());
             set => _storagePolicies = value;
         }
 
         /// <summary>
-        /// The identifier of the vSphere Supervisor managing the namespace.
+        /// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
         /// </summary>
         [Input("supervisor", required: true)]
         public Input<string> Supervisor { get; set; } = null!;
+
+        [Input("users")]
+        private InputList<Inputs.NamespaceUserArgs>? _users;
+
+        /// <summary>
+        /// A user with access to the vSphere Namespace.
+        /// </summary>
+        public InputList<Inputs.NamespaceUserArgs> Users
+        {
+            get => _users ?? (_users = new InputList<Inputs.NamespaceUserArgs>());
+            set => _users = value;
+        }
 
         [Input("vmServices")]
         private InputList<Inputs.NamespaceVmServiceArgs>? _vmServices;
@@ -162,6 +281,36 @@ namespace Pulumi.VSphere
             set => _vmServices = value;
         }
 
+        /// <summary>
+        /// The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `Vpc`.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+        /// </summary>
+        [Input("vpcNetwork")]
+        public Input<Inputs.NamespaceVpcNetworkArgs>? VpcNetwork { get; set; }
+
+        /// <summary>
+        /// The vSphere networking configuration. Conflicts with `VpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+        /// </summary>
+        [Input("vsphereNetwork")]
+        public Input<Inputs.NamespaceVsphereNetworkArgs>? VsphereNetwork { get; set; }
+
+        [Input("zones")]
+        private InputList<Inputs.NamespaceZoneArgs>? _zones;
+
+        /// <summary>
+        /// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+        /// </summary>
+        public InputList<Inputs.NamespaceZoneArgs> Zones
+        {
+            get => _zones ?? (_zones = new InputList<Inputs.NamespaceZoneArgs>());
+            set => _zones = value;
+        }
+
         public NamespaceArgs()
         {
         }
@@ -170,29 +319,53 @@ namespace Pulumi.VSphere
 
     public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
+        [Input("groups")]
+        private InputList<Inputs.NamespaceGroupGetArgs>? _groups;
+
         /// <summary>
-        /// The name of the vSphere namespace.
+        /// A group with access to the vSphere Namespace.
+        /// </summary>
+        public InputList<Inputs.NamespaceGroupGetArgs> Groups
+        {
+            get => _groups ?? (_groups = new InputList<Inputs.NamespaceGroupGetArgs>());
+            set => _groups = value;
+        }
+
+        /// <summary>
+        /// The name of the vSphere Namespace. Changing this forces a new resource to be created.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("storagePolicies")]
-        private InputList<string>? _storagePolicies;
+        private InputList<Inputs.NamespaceStoragePolicyGetArgs>? _storagePolicies;
 
         /// <summary>
-        /// The list of storage policies that will be available in the vSphere Namespace.
+        /// A storage policy that will be available in the vSphere Namespace.
         /// </summary>
-        public InputList<string> StoragePolicies
+        public InputList<Inputs.NamespaceStoragePolicyGetArgs> StoragePolicies
         {
-            get => _storagePolicies ?? (_storagePolicies = new InputList<string>());
+            get => _storagePolicies ?? (_storagePolicies = new InputList<Inputs.NamespaceStoragePolicyGetArgs>());
             set => _storagePolicies = value;
         }
 
         /// <summary>
-        /// The identifier of the vSphere Supervisor managing the namespace.
+        /// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
         /// </summary>
         [Input("supervisor")]
         public Input<string>? Supervisor { get; set; }
+
+        [Input("users")]
+        private InputList<Inputs.NamespaceUserGetArgs>? _users;
+
+        /// <summary>
+        /// A user with access to the vSphere Namespace.
+        /// </summary>
+        public InputList<Inputs.NamespaceUserGetArgs> Users
+        {
+            get => _users ?? (_users = new InputList<Inputs.NamespaceUserGetArgs>());
+            set => _users = value;
+        }
 
         [Input("vmServices")]
         private InputList<Inputs.NamespaceVmServiceGetArgs>? _vmServices;
@@ -204,6 +377,36 @@ namespace Pulumi.VSphere
         {
             get => _vmServices ?? (_vmServices = new InputList<Inputs.NamespaceVmServiceGetArgs>());
             set => _vmServices = value;
+        }
+
+        /// <summary>
+        /// The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `Vpc`.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+        /// </summary>
+        [Input("vpcNetwork")]
+        public Input<Inputs.NamespaceVpcNetworkGetArgs>? VpcNetwork { get; set; }
+
+        /// <summary>
+        /// The vSphere networking configuration. Conflicts with `VpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+        /// </summary>
+        [Input("vsphereNetwork")]
+        public Input<Inputs.NamespaceVsphereNetworkGetArgs>? VsphereNetwork { get; set; }
+
+        [Input("zones")]
+        private InputList<Inputs.NamespaceZoneGetArgs>? _zones;
+
+        /// <summary>
+        /// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+        /// 
+        /// &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+        /// </summary>
+        public InputList<Inputs.NamespaceZoneGetArgs> Zones
+        {
+            get => _zones ?? (_zones = new InputList<Inputs.NamespaceZoneGetArgs>());
+            set => _zones = value;
         }
 
         public NamespaceState()

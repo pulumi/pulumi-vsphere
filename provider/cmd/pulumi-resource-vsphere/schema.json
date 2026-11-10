@@ -900,6 +900,74 @@
                 }
             }
         },
+        "vsphere:index/NamespaceGroup:NamespaceGroup": {
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain of the identity source that owns the group.\n"
+                },
+                "identityProvider": {
+                    "type": "string",
+                    "description": "The identifier of the identity provider. If unset, vCenter Single Sign-On is used.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the group, without the domain.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "name",
+                "role"
+            ]
+        },
+        "vsphere:index/NamespaceStoragePolicy:NamespaceStoragePolicy": {
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means no limit.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The identifier of the storage policy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "policy"
+            ]
+        },
+        "vsphere:index/NamespaceUser:NamespaceUser": {
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain of the identity source that owns the user.\n"
+                },
+                "identityProvider": {
+                    "type": "string",
+                    "description": "The identifier of the identity provider. If unset, vCenter Single Sign-On is used.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user, without the domain.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "name",
+                "role"
+            ]
+        },
         "vsphere:index/NamespaceVmService:NamespaceVmService": {
             "properties": {
                 "contentLibraries": {
@@ -918,6 +986,123 @@
                 }
             },
             "type": "object"
+        },
+        "vsphere:index/NamespaceVpcNetwork:NamespaceVpcNetwork": {
+            "properties": {
+                "sharedSubnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceVpcNetworkSharedSubnet:NamespaceVpcNetworkSharedSubnet"
+                    },
+                    "description": "An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.\n\n\u003e **NOTE:** Requires vCenter 9.1.0 or later. \u003cspan pulumi-lang-nodejs=\"`podDefault`\" pulumi-lang-dotnet=\"`PodDefault`\" pulumi-lang-go=\"`podDefault`\" pulumi-lang-python=\"`pod_default`\" pulumi-lang-yaml=\"`podDefault`\" pulumi-lang-java=\"`podDefault`\" pulumi-lang-hcl=\"`pod_default`\"\u003e`podDefault`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`vmDefault`\" pulumi-lang-dotnet=\"`VmDefault`\" pulumi-lang-go=\"`vmDefault`\" pulumi-lang-python=\"`vm_default`\" pulumi-lang-yaml=\"`vmDefault`\" pulumi-lang-java=\"`vmDefault`\" pulumi-lang-hcl=\"`vm_default`\"\u003e`vmDefault`\u003c/span\u003e require vCenter 9.1.1 or later.\n"
+                },
+                "vpc": {
+                    "type": "string",
+                    "description": "The NSX path of an existing VPC, for example `/orgs/default/projects/\u003cproject\u003e/vpcs/\u003cvpc\u003e`. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "vpc"
+            ]
+        },
+        "vsphere:index/NamespaceVpcNetworkSharedSubnet:NamespaceVpcNetworkSharedSubnet": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "The NSX path of the subnet.\n"
+                },
+                "podDefault": {
+                    "type": "boolean",
+                    "description": "Whether the subnet is the default network for vSphere Pods.\n"
+                },
+                "vmDefault": {
+                    "type": "boolean",
+                    "description": "Whether the subnet is the default network for VMs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path"
+            ]
+        },
+        "vsphere:index/NamespaceVsphereNetwork:NamespaceVsphereNetwork": {
+            "properties": {
+                "defaultWorkloadNetwork": {
+                    "type": "string",
+                    "description": "The name of the Supervisor network used by workloads that do not specify a network. It must be one of \u003cspan pulumi-lang-nodejs=\"`networks`\" pulumi-lang-dotnet=\"`Networks`\" pulumi-lang-go=\"`networks`\" pulumi-lang-python=\"`networks`\" pulumi-lang-yaml=\"`networks`\" pulumi-lang-java=\"`networks`\" pulumi-lang-hcl=\"`networks`\"\u003e`networks`\u003c/span\u003e. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The names of the Supervisor networks to associate with the vSphere Namespace, including \u003cspan pulumi-lang-nodejs=\"`defaultWorkloadNetwork`\" pulumi-lang-dotnet=\"`DefaultWorkloadNetwork`\" pulumi-lang-go=\"`defaultWorkloadNetwork`\" pulumi-lang-python=\"`default_workload_network`\" pulumi-lang-yaml=\"`defaultWorkloadNetwork`\" pulumi-lang-java=\"`defaultWorkloadNetwork`\" pulumi-lang-hcl=\"`default_workload_network`\"\u003e`defaultWorkloadNetwork`\u003c/span\u003e. These are Supervisor network names, not port group IDs. See the \u003cspan pulumi-lang-nodejs=\"`workloadNetwork`\" pulumi-lang-dotnet=\"`WorkloadNetwork`\" pulumi-lang-go=\"`workloadNetwork`\" pulumi-lang-python=\"`workload_network`\" pulumi-lang-yaml=\"`workloadNetwork`\" pulumi-lang-java=\"`workloadNetwork`\" pulumi-lang-hcl=\"`workload_network`\"\u003e`workloadNetwork`\u003c/span\u003e attribute of the [\u003cspan pulumi-lang-nodejs=\"`vsphere.Supervisor`\" pulumi-lang-dotnet=\"`vsphere.Supervisor`\" pulumi-lang-go=\"`Supervisor`\" pulumi-lang-python=\"`Supervisor`\" pulumi-lang-yaml=\"`vsphere.Supervisor`\" pulumi-lang-java=\"`vsphere.Supervisor`\" pulumi-lang-hcl=\"`vsphere_supervisor`\"\u003e`vsphere.Supervisor`\u003c/span\u003e](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.\n\n\u003e **NOTE:** In v2.18.0, \u003cspan pulumi-lang-nodejs=\"`storagePolicy`\" pulumi-lang-dotnet=\"`StoragePolicy`\" pulumi-lang-go=\"`storagePolicy`\" pulumi-lang-python=\"`storage_policy`\" pulumi-lang-yaml=\"`storagePolicy`\" pulumi-lang-java=\"`storagePolicy`\" pulumi-lang-hcl=\"`storage_policy`\"\u003e`storagePolicy`\u003c/span\u003e superseded the \u003cspan pulumi-lang-nodejs=\"`storagePolicies`\" pulumi-lang-dotnet=\"`StoragePolicies`\" pulumi-lang-go=\"`storagePolicies`\" pulumi-lang-python=\"`storage_policies`\" pulumi-lang-yaml=\"`storagePolicies`\" pulumi-lang-java=\"`storagePolicies`\" pulumi-lang-hcl=\"`storage_policies`\"\u003e`storagePolicies`\u003c/span\u003e argument. To upgrade, replace\n\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultWorkloadNetwork",
+                "networks"
+            ]
+        },
+        "vsphere:index/NamespaceZone:NamespaceZone": {
+            "properties": {
+                "cpuLimit": {
+                    "type": "integer",
+                    "description": "The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means no zone limit.\n"
+                },
+                "cpuReservation": {
+                    "type": "integer",
+                    "description": "The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means no reservation.\n"
+                },
+                "disallowUnreservedDirectPathUsage": {
+                    "type": "boolean",
+                    "description": "Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
+                "memoryLimit": {
+                    "type": "integer",
+                    "description": "The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means no zone limit.\n"
+                },
+                "memoryReservation": {
+                    "type": "integer",
+                    "description": "The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means no reservation.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The identifier of the vSphere Zone.\n"
+                },
+                "vmClassReservations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceZoneVmClassReservation:NamespaceZoneVmClassReservation"
+                    },
+                    "description": "A reservation of VM class instances for the vSphere Namespace in the zone.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "vsphere:index/NamespaceZoneVmClassReservation:NamespaceZoneVmClassReservation": {
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "The number of VM class instances to reserve.\n"
+                },
+                "vmClass": {
+                    "type": "string",
+                    "description": "The name of the VM class.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "count",
+                "vmClass"
+            ]
         },
         "vsphere:index/NetworkProtocolProfileIpv4:NetworkProtocolProfileIpv4": {
             "properties": {
@@ -3111,6 +3296,43 @@
                 }
             }
         },
+        "vsphere:index/getContentLibraryItemsItem:getContentLibraryItemsItem": {
+            "properties": {
+                "creationTime": {
+                    "type": "string",
+                    "description": "The creation time of the item (RFC3339).\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The UUID of the content library item.\n"
+                },
+                "lastModifiedTime": {
+                    "type": "string",
+                    "description": "The last modification time of the item (RFC3339).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Filter items by exact name. Mutually exclusive with\n\u003cspan pulumi-lang-nodejs=\"`nameRegex`\" pulumi-lang-dotnet=\"`NameRegex`\" pulumi-lang-go=\"`nameRegex`\" pulumi-lang-python=\"`name_regex`\" pulumi-lang-yaml=\"`nameRegex`\" pulumi-lang-java=\"`nameRegex`\" pulumi-lang-hcl=\"`name_regex`\"\u003e`nameRegex`\u003c/span\u003e. If omitted, items of any name are returned.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Filter items by type (e.g. \u003cspan pulumi-lang-nodejs=\"`ovf`\" pulumi-lang-dotnet=\"`Ovf`\" pulumi-lang-go=\"`ovf`\" pulumi-lang-python=\"`ovf`\" pulumi-lang-yaml=\"`ovf`\" pulumi-lang-java=\"`ovf`\" pulumi-lang-hcl=\"`ovf`\"\u003e`ovf`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`iso`\" pulumi-lang-dotnet=\"`Iso`\" pulumi-lang-go=\"`iso`\" pulumi-lang-python=\"`iso`\" pulumi-lang-yaml=\"`iso`\" pulumi-lang-java=\"`iso`\" pulumi-lang-hcl=\"`iso`\"\u003e`iso`\u003c/span\u003e, `vm-template`).\nIf omitted, items of any type are returned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "creationTime",
+                "id",
+                "lastModifiedTime",
+                "name",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "vsphere:index/getGuestOsCustomizationSpec:getGuestOsCustomizationSpec": {
             "properties": {
                 "dnsServerLists": {
@@ -3376,6 +3598,92 @@
                 }
             }
         },
+        "vsphere:index/getNamespaceGroup:getNamespaceGroup": {
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain of the identity source that owns the group.\n"
+                },
+                "identityProvider": {
+                    "type": "string",
+                    "description": "The identifier of the identity provider.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the vSphere Namespace.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role of the group in the vSphere Namespace.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "identityProvider",
+                "name",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getNamespaceStoragePolicy:getNamespaceStoragePolicy": {
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means no limit.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The identifier of the storage policy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "limit",
+                "policy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getNamespaceUser:getNamespaceUser": {
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain of the identity source that owns the group.\n"
+                },
+                "identityProvider": {
+                    "type": "string",
+                    "description": "The identifier of the identity provider.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the vSphere Namespace.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role of the group in the vSphere Namespace.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "identityProvider",
+                "name",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "vsphere:index/getNamespaceVmService:getNamespaceVmService": {
             "properties": {
                 "contentLibraries": {
@@ -3397,6 +3705,105 @@
             "required": [
                 "contentLibraries",
                 "vmClasses"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getNamespaceVpcNetwork:getNamespaceVpcNetwork": {
+            "properties": {
+                "sharedSubnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/getNamespaceVpcNetworkSharedSubnet:getNamespaceVpcNetworkSharedSubnet"
+                    },
+                    "description": "An NSX subnet created outside the Supervisor that is associated with the vSphere Namespace.\n"
+                },
+                "vpc": {
+                    "type": "string",
+                    "description": "The NSX path of the VPC.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sharedSubnets",
+                "vpc"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getNamespaceVpcNetworkSharedSubnet:getNamespaceVpcNetworkSharedSubnet": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "The NSX path of the subnet.\n"
+                },
+                "podDefault": {
+                    "type": "boolean",
+                    "description": "Whether the subnet is the default network for vSphere Pods.\n"
+                },
+                "vmDefault": {
+                    "type": "boolean",
+                    "description": "Whether the subnet is the default network for VMs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path",
+                "podDefault",
+                "vmDefault"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getNamespaceVsphereNetwork:getNamespaceVsphereNetwork": {
+            "properties": {
+                "defaultWorkloadNetwork": {
+                    "type": "string",
+                    "description": "The name of the Supervisor network used by workloads that do not specify a network.\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The names of the Supervisor networks associated with the vSphere Namespace. Networks that are being removed are not exported.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultWorkloadNetwork",
+                "networks"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getNamespaceZone:getNamespaceZone": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the vSphere Namespace.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the vSphere Zone.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "type"
             ],
             "language": {
                 "nodejs": {
@@ -3450,6 +3857,81 @@
             "required": [
                 "domain",
                 "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getSupervisorWorkloadNetwork:getSupervisorWorkloadNetwork": {
+            "properties": {
+                "gateway": {
+                    "type": "string",
+                    "description": "The gateway of the Supervisor network. Empty for NSX-backed networks.\n"
+                },
+                "ipAssignmentMode": {
+                    "type": "string",
+                    "description": "The IP assignment mode of the Supervisor network. Empty for NSX-backed networks.\n"
+                },
+                "namespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The vSphere Namespaces that use the Supervisor network.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "The name of the Supervisor network. Use it in the \u003cspan pulumi-lang-nodejs=\"`vsphere.getNetwork`\" pulumi-lang-dotnet=\"`vsphere.getNetwork`\" pulumi-lang-go=\"`getNetwork`\" pulumi-lang-python=\"`get_network`\" pulumi-lang-yaml=\"`vsphere.getNetwork`\" pulumi-lang-java=\"`vsphere.getNetwork`\" pulumi-lang-hcl=\"`data.vsphere_network`\"\u003e`vsphere.getNetwork`\u003c/span\u003e block of the [\u003cspan pulumi-lang-nodejs=\"`vsphere.Namespace`\" pulumi-lang-dotnet=\"`vsphere.Namespace`\" pulumi-lang-go=\"`Namespace`\" pulumi-lang-python=\"`Namespace`\" pulumi-lang-yaml=\"`vsphere.Namespace`\" pulumi-lang-java=\"`vsphere.Namespace`\" pulumi-lang-hcl=\"`vsphere_namespace`\"\u003e`vsphere.Namespace`\u003c/span\u003e](https://www.terraform.io/docs/providers/vsphere/r/namespace.html) resource.\n"
+                },
+                "networkProvider": {
+                    "type": "string",
+                    "description": "The network provider of the Supervisor network, for example `VSPHERE_NETWORK`.\n"
+                },
+                "portgroup": {
+                    "type": "string",
+                    "description": "The ID of the distributed port group backing the Supervisor network. Empty for NSX-backed networks.\n"
+                },
+                "subnetMask": {
+                    "type": "string",
+                    "description": "The subnet mask of the Supervisor network. Empty for NSX-backed networks.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "gateway",
+                "ipAssignmentMode",
+                "namespaces",
+                "network",
+                "networkProvider",
+                "portgroup",
+                "subnetMask"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getSupervisorZone:getSupervisorZone": {
+            "properties": {
+                "clusters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IDs of the compute clusters in the vSphere Zone.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "The ID of the vSphere Zone.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusters",
+                "zone"
             ],
             "language": {
                 "nodejs": {
@@ -10041,22 +10523,36 @@
             }
         },
         "vsphere:index/namespace:Namespace": {
-            "description": "Provides a resource for configuring vSphere Namespaces.\n\n## Example Usage\n\n### S\n\n### Create a namespace\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst example = new vsphere.Namespace(\"example\", {\n    name: \"example-namespace\",\n    supervisor: \"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\",\n    vmServices: [{\n        contentLibraries: [\"ca616f93-506d-4f00-98bf-7708d30f68bc\"],\n        vmClasses: [\"example-vm-class\"],\n    }],\n    storagePolicies: [\"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nexample = vsphere.Namespace(\"example\",\n    name=\"example-namespace\",\n    supervisor=\"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\",\n    vm_services=[{\n        \"content_libraries\": [\"ca616f93-506d-4f00-98bf-7708d30f68bc\"],\n        \"vm_classes\": [\"example-vm-class\"],\n    }],\n    storage_policies=[\"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new VSphere.Namespace(\"example\", new()\n    {\n        Name = \"example-namespace\",\n        Supervisor = \"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\",\n        VmServices = new[]\n        {\n            new VSphere.Inputs.NamespaceVmServiceArgs\n            {\n                ContentLibraries = new[]\n                {\n                    \"ca616f93-506d-4f00-98bf-7708d30f68bc\",\n                },\n                VmClasses = new[]\n                {\n                    \"example-vm-class\",\n                },\n            },\n        },\n        StoragePolicies = new[]\n        {\n            \"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewNamespace(ctx, \"example\", \u0026vsphere.NamespaceArgs{\n\t\t\tName:       pulumi.String(\"example-namespace\"),\n\t\t\tSupervisor: pulumi.String(\"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\"),\n\t\t\tVmServices: vsphere.NamespaceVmServiceArray{\n\t\t\t\t\u0026vsphere.NamespaceVmServiceArgs{\n\t\t\t\t\tContentLibraries: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"ca616f93-506d-4f00-98bf-7708d30f68bc\"),\n\t\t\t\t\t},\n\t\t\t\t\tVmClasses: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"example-vm-class\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tStoragePolicies: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\nresource \"vsphere_namespace\" \"example\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name       = \"example-namespace\"\n  supervisor = \"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\"\n  vm_service {\n    content_libraries = [\"ca616f93-506d-4f00-98bf-7708d30f68bc\"]\n    vm_classes        = [\"example-vm-class\"]\n  }\n  storage_policies = [\"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\"]\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.Namespace;\nimport com.pulumi.vsphere.NamespaceArgs;\nimport com.pulumi.vsphere.inputs.NamespaceVmServiceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Namespace(\"example\", NamespaceArgs.builder()\n            .name(\"example-namespace\")\n            .supervisor(\"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\")\n            .vmServices(NamespaceVmServiceArgs.builder()\n                .contentLibraries(\"ca616f93-506d-4f00-98bf-7708d30f68bc\")\n                .vmClasses(\"example-vm-class\")\n                .build())\n            .storagePolicies(\"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: vsphere:Namespace\n    properties:\n      name: example-namespace\n      supervisor: ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\n      vmServices:\n        - contentLibraries:\n            - ca616f93-506d-4f00-98bf-7708d30f68bc\n          vmClasses:\n            - example-vm-class\n      storagePolicies:\n        - 1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a resource for configuring vSphere Namespaces.\n\n## Example Usage\n\n### S\n\n### Create a Namespace\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst example = new vsphere.Namespace(\"example\", {\n    name: \"example-namespace\",\n    supervisor: \"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\",\n    vmServices: [{\n        contentLibraries: [\"ca616f93-506d-4f00-98bf-7708d30f68bc\"],\n        vmClasses: [\"example-vm-class\"],\n    }],\n    storagePolicies: [{\n        policy: \"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\",\n        limit: 102400,\n    }],\n    users: [{\n        name: \"administrator\",\n        domain: \"vsphere.local\",\n        role: \"OWNER\",\n    }],\n    groups: [{\n        name: \"developers\",\n        domain: \"vsphere.local\",\n        role: \"EDIT\",\n    }],\n    zones: [{\n        name: \"zone-1\",\n        cpuLimit: 4000,\n        cpuReservation: 1000,\n        memoryLimit: 8192,\n        memoryReservation: 2048,\n        vmClassReservations: [{\n            vmClass: \"example-vm-class\",\n            count: 2,\n        }],\n    }],\n    vpcNetwork: {\n        vpc: \"/orgs/default/projects/example-project/vpcs/example-vpc\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nexample = vsphere.Namespace(\"example\",\n    name=\"example-namespace\",\n    supervisor=\"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\",\n    vm_services=[{\n        \"content_libraries\": [\"ca616f93-506d-4f00-98bf-7708d30f68bc\"],\n        \"vm_classes\": [\"example-vm-class\"],\n    }],\n    storage_policies=[{\n        \"policy\": \"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\",\n        \"limit\": 102400,\n    }],\n    users=[{\n        \"name\": \"administrator\",\n        \"domain\": \"vsphere.local\",\n        \"role\": \"OWNER\",\n    }],\n    groups=[{\n        \"name\": \"developers\",\n        \"domain\": \"vsphere.local\",\n        \"role\": \"EDIT\",\n    }],\n    zones=[{\n        \"name\": \"zone-1\",\n        \"cpu_limit\": 4000,\n        \"cpu_reservation\": 1000,\n        \"memory_limit\": 8192,\n        \"memory_reservation\": 2048,\n        \"vm_class_reservations\": [{\n            \"vm_class\": \"example-vm-class\",\n            \"count\": 2,\n        }],\n    }],\n    vpc_network={\n        \"vpc\": \"/orgs/default/projects/example-project/vpcs/example-vpc\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new VSphere.Namespace(\"example\", new()\n    {\n        Name = \"example-namespace\",\n        Supervisor = \"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\",\n        VmServices = new[]\n        {\n            new VSphere.Inputs.NamespaceVmServiceArgs\n            {\n                ContentLibraries = new[]\n                {\n                    \"ca616f93-506d-4f00-98bf-7708d30f68bc\",\n                },\n                VmClasses = new[]\n                {\n                    \"example-vm-class\",\n                },\n            },\n        },\n        StoragePolicies = new[]\n        {\n            new VSphere.Inputs.NamespaceStoragePolicyArgs\n            {\n                Policy = \"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\",\n                Limit = 102400,\n            },\n        },\n        Users = new[]\n        {\n            new VSphere.Inputs.NamespaceUserArgs\n            {\n                Name = \"administrator\",\n                Domain = \"vsphere.local\",\n                Role = \"OWNER\",\n            },\n        },\n        Groups = new[]\n        {\n            new VSphere.Inputs.NamespaceGroupArgs\n            {\n                Name = \"developers\",\n                Domain = \"vsphere.local\",\n                Role = \"EDIT\",\n            },\n        },\n        Zones = new[]\n        {\n            new VSphere.Inputs.NamespaceZoneArgs\n            {\n                Name = \"zone-1\",\n                CpuLimit = 4000,\n                CpuReservation = 1000,\n                MemoryLimit = 8192,\n                MemoryReservation = 2048,\n                VmClassReservations = new[]\n                {\n                    new VSphere.Inputs.NamespaceZoneVmClassReservationArgs\n                    {\n                        VmClass = \"example-vm-class\",\n                        Count = 2,\n                    },\n                },\n            },\n        },\n        VpcNetwork = new VSphere.Inputs.NamespaceVpcNetworkArgs\n        {\n            Vpc = \"/orgs/default/projects/example-project/vpcs/example-vpc\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewNamespace(ctx, \"example\", \u0026vsphere.NamespaceArgs{\n\t\t\tName:       pulumi.String(\"example-namespace\"),\n\t\t\tSupervisor: pulumi.String(\"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\"),\n\t\t\tVmServices: vsphere.NamespaceVmServiceArray{\n\t\t\t\t\u0026vsphere.NamespaceVmServiceArgs{\n\t\t\t\t\tContentLibraries: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"ca616f93-506d-4f00-98bf-7708d30f68bc\"),\n\t\t\t\t\t},\n\t\t\t\t\tVmClasses: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"example-vm-class\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tStoragePolicies: vsphere.NamespaceStoragePolicyArray{\n\t\t\t\t\u0026vsphere.NamespaceStoragePolicyArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\"),\n\t\t\t\t\tLimit:  pulumi.Int(102400),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUsers: vsphere.NamespaceUserArray{\n\t\t\t\t\u0026vsphere.NamespaceUserArgs{\n\t\t\t\t\tName:   pulumi.String(\"administrator\"),\n\t\t\t\t\tDomain: pulumi.String(\"vsphere.local\"),\n\t\t\t\t\tRole:   pulumi.String(\"OWNER\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tGroups: vsphere.NamespaceGroupArray{\n\t\t\t\t\u0026vsphere.NamespaceGroupArgs{\n\t\t\t\t\tName:   pulumi.String(\"developers\"),\n\t\t\t\t\tDomain: pulumi.String(\"vsphere.local\"),\n\t\t\t\t\tRole:   pulumi.String(\"EDIT\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZones: vsphere.NamespaceZoneArray{\n\t\t\t\t\u0026vsphere.NamespaceZoneArgs{\n\t\t\t\t\tName:              pulumi.String(\"zone-1\"),\n\t\t\t\t\tCpuLimit:          pulumi.Int(4000),\n\t\t\t\t\tCpuReservation:    pulumi.Int(1000),\n\t\t\t\t\tMemoryLimit:       pulumi.Int(8192),\n\t\t\t\t\tMemoryReservation: pulumi.Int(2048),\n\t\t\t\t\tVmClassReservations: vsphere.NamespaceZoneVmClassReservationArray{\n\t\t\t\t\t\t\u0026vsphere.NamespaceZoneVmClassReservationArgs{\n\t\t\t\t\t\t\tVmClass: pulumi.String(\"example-vm-class\"),\n\t\t\t\t\t\t\tCount:   pulumi.Int(2),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tVpcNetwork: \u0026vsphere.NamespaceVpcNetworkArgs{\n\t\t\t\tVpc: pulumi.String(\"/orgs/default/projects/example-project/vpcs/example-vpc\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\nresource \"vsphere_namespace\" \"example\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name       = \"example-namespace\"\n  supervisor = \"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\"\n  vm_service {\n    content_libraries = [\"ca616f93-506d-4f00-98bf-7708d30f68bc\"]\n    vm_classes        = [\"example-vm-class\"]\n  }\n  storage_policy {\n    policy = \"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\"\n    limit  = 102400\n  }\n  user {\n    name   = \"administrator\"\n    domain = \"vsphere.local\"\n    role   = \"OWNER\"\n  }\n  group {\n    name   = \"developers\"\n    domain = \"vsphere.local\"\n    role   = \"EDIT\"\n  }\n  zone {\n    name               = \"zone-1\"\n    cpu_limit          = 4000\n    cpu_reservation    = 1000\n    memory_limit       = 8192\n    memory_reservation = 2048\n    vm_class_reservation {\n      vm_class = \"example-vm-class\"\n      count    = 2\n    }\n  }\n  vpc_network {\n    vpc = \"/orgs/default/projects/example-project/vpcs/example-vpc\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.Namespace;\nimport com.pulumi.vsphere.NamespaceArgs;\nimport com.pulumi.vsphere.inputs.NamespaceVmServiceArgs;\nimport com.pulumi.vsphere.inputs.NamespaceStoragePolicyArgs;\nimport com.pulumi.vsphere.inputs.NamespaceUserArgs;\nimport com.pulumi.vsphere.inputs.NamespaceGroupArgs;\nimport com.pulumi.vsphere.inputs.NamespaceZoneArgs;\nimport com.pulumi.vsphere.inputs.NamespaceZoneVmClassReservationArgs;\nimport com.pulumi.vsphere.inputs.NamespaceVpcNetworkArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Namespace(\"example\", NamespaceArgs.builder()\n            .name(\"example-namespace\")\n            .supervisor(\"ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\")\n            .vmServices(NamespaceVmServiceArgs.builder()\n                .contentLibraries(\"ca616f93-506d-4f00-98bf-7708d30f68bc\")\n                .vmClasses(\"example-vm-class\")\n                .build())\n            .storagePolicies(NamespaceStoragePolicyArgs.builder()\n                .policy(\"1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\")\n                .limit(102400)\n                .build())\n            .users(NamespaceUserArgs.builder()\n                .name(\"administrator\")\n                .domain(\"vsphere.local\")\n                .role(\"OWNER\")\n                .build())\n            .groups(NamespaceGroupArgs.builder()\n                .name(\"developers\")\n                .domain(\"vsphere.local\")\n                .role(\"EDIT\")\n                .build())\n            .zones(NamespaceZoneArgs.builder()\n                .name(\"zone-1\")\n                .cpuLimit(4000)\n                .cpuReservation(1000)\n                .memoryLimit(8192)\n                .memoryReservation(2048)\n                .vmClassReservations(NamespaceZoneVmClassReservationArgs.builder()\n                    .vmClass(\"example-vm-class\")\n                    .count(2)\n                    .build())\n                .build())\n            .vpcNetwork(NamespaceVpcNetworkArgs.builder()\n                .vpc(\"/orgs/default/projects/example-project/vpcs/example-vpc\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: vsphere:Namespace\n    properties:\n      name: example-namespace\n      supervisor: ff69d7fb-4ad4-44a2-8d91-8b3bede80eaa\n      vmServices:\n        - contentLibraries:\n            - ca616f93-506d-4f00-98bf-7708d30f68bc\n          vmClasses:\n            - example-vm-class\n      storagePolicies:\n        - policy: 1bb87d1e-49a5-49f8-ad4a-7094be13d4a0\n          limit: 102400\n      users:\n        - name: administrator\n          domain: vsphere.local\n          role: OWNER\n      groups:\n        - name: developers\n          domain: vsphere.local\n          role: EDIT\n      zones:\n        - name: zone-1\n          cpuLimit: 4000\n          cpuReservation: 1000\n          memoryLimit: 8192\n          memoryReservation: 2048\n          vmClassReservations:\n            - vmClass: example-vm-class\n              count: 2\n      vpcNetwork:\n        vpc: /orgs/default/projects/example-project/vpcs/example-vpc\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn existing vSphere Namespace can be imported into this resource by supplying\nits name:\n\n```sh\n$ pulumi import vsphere:index/namespace:Namespace example example-namespace\n```\n\n\u003e **NOTE:** vCenter does not return the zone limits, reservations,\n\u003cspan pulumi-lang-nodejs=\"`vmClassReservation`\" pulumi-lang-dotnet=\"`VmClassReservation`\" pulumi-lang-go=\"`vmClassReservation`\" pulumi-lang-python=\"`vm_class_reservation`\" pulumi-lang-yaml=\"`vmClassReservation`\" pulumi-lang-java=\"`vmClassReservation`\" pulumi-lang-hcl=\"`vm_class_reservation`\"\u003e`vmClassReservation`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`disallowUnreservedDirectPathUsage`\" pulumi-lang-dotnet=\"`DisallowUnreservedDirectPathUsage`\" pulumi-lang-go=\"`disallowUnreservedDirectPathUsage`\" pulumi-lang-python=\"`disallow_unreserved_direct_path_usage`\" pulumi-lang-yaml=\"`disallowUnreservedDirectPathUsage`\" pulumi-lang-java=\"`disallowUnreservedDirectPathUsage`\" pulumi-lang-hcl=\"`disallow_unreserved_direct_path_usage`\"\u003e`disallowUnreservedDirectPathUsage`\u003c/span\u003e, so they are not\npopulated by an import. If they are set in the configuration, the next apply\nupdates the vSphere Namespace in place to match.\n\n",
             "properties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceGroup:NamespaceGroup"
+                    },
+                    "description": "A group with access to the vSphere Namespace.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "The name of the vSphere namespace.\n"
+                    "description": "The name of the vSphere Namespace. Changing this forces a new resource to be created.\n"
                 },
                 "storagePolicies": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/types/vsphere:index/NamespaceStoragePolicy:NamespaceStoragePolicy"
                     },
-                    "description": "The list of storage policies that will be available in the vSphere Namespace.\n"
+                    "description": "A storage policy that will be available in the vSphere Namespace.\n"
                 },
                 "supervisor": {
                     "type": "string",
-                    "description": "The identifier of the vSphere Supervisor managing the namespace.\n"
+                    "description": "The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceUser:NamespaceUser"
+                    },
+                    "description": "A user with access to the vSphere Namespace.\n"
                 },
                 "vmServices": {
                     "type": "array",
@@ -10064,27 +10560,61 @@
                         "$ref": "#/types/vsphere:index/NamespaceVmService:NamespaceVmService"
                     },
                     "description": "The configuration for VM Service in the vSphere Namespace.\n"
+                },
+                "vpcNetwork": {
+                    "$ref": "#/types/vsphere:index/NamespaceVpcNetwork:NamespaceVpcNetwork",
+                    "description": "The NSX VPC network configuration. Conflicts with \u003cspan pulumi-lang-nodejs=\"`vsphere.getNetwork`\" pulumi-lang-dotnet=\"`vsphere.getNetwork`\" pulumi-lang-go=\"`getNetwork`\" pulumi-lang-python=\"`get_network`\" pulumi-lang-yaml=\"`vsphere.getNetwork`\" pulumi-lang-java=\"`vsphere.getNetwork`\" pulumi-lang-hcl=\"`data.vsphere_network`\"\u003e`vsphere.getNetwork`\u003c/span\u003e. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n\n\u003e **NOTE:** Requires vCenter 9.0.0 or later.\n"
+                },
+                "vsphereNetwork": {
+                    "$ref": "#/types/vsphere:index/NamespaceVsphereNetwork:NamespaceVsphereNetwork",
+                    "description": "The vSphere networking configuration. Conflicts with \u003cspan pulumi-lang-nodejs=\"`vpcNetwork`\" pulumi-lang-dotnet=\"`VpcNetwork`\" pulumi-lang-go=\"`vpcNetwork`\" pulumi-lang-python=\"`vpc_network`\" pulumi-lang-yaml=\"`vpcNetwork`\" pulumi-lang-java=\"`vpcNetwork`\" pulumi-lang-hcl=\"`vpc_network`\"\u003e`vpcNetwork`\u003c/span\u003e. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.\n\n\u003e **NOTE:** Requires vCenter 9.1.0 or later.\n"
+                },
+                "zones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceZone:NamespaceZone"
+                    },
+                    "description": "A vSphere Zone to associate with the vSphere Namespace. See Zone.\n\n\u003e **NOTE:** Requires vCenter 9.0.0 or later.\n"
                 }
             },
             "required": [
                 "name",
-                "supervisor"
+                "supervisor",
+                "vpcNetwork",
+                "vsphereNetwork",
+                "zones"
             ],
             "inputProperties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceGroup:NamespaceGroup"
+                    },
+                    "description": "A group with access to the vSphere Namespace.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "The name of the vSphere namespace.\n"
+                    "description": "The name of the vSphere Namespace. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
                 },
                 "storagePolicies": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/types/vsphere:index/NamespaceStoragePolicy:NamespaceStoragePolicy"
                     },
-                    "description": "The list of storage policies that will be available in the vSphere Namespace.\n"
+                    "description": "A storage policy that will be available in the vSphere Namespace.\n"
                 },
                 "supervisor": {
                     "type": "string",
-                    "description": "The identifier of the vSphere Supervisor managing the namespace.\n"
+                    "description": "The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceUser:NamespaceUser"
+                    },
+                    "description": "A user with access to the vSphere Namespace.\n"
                 },
                 "vmServices": {
                     "type": "array",
@@ -10092,6 +10622,21 @@
                         "$ref": "#/types/vsphere:index/NamespaceVmService:NamespaceVmService"
                     },
                     "description": "The configuration for VM Service in the vSphere Namespace.\n"
+                },
+                "vpcNetwork": {
+                    "$ref": "#/types/vsphere:index/NamespaceVpcNetwork:NamespaceVpcNetwork",
+                    "description": "The NSX VPC network configuration. Conflicts with \u003cspan pulumi-lang-nodejs=\"`vsphere.getNetwork`\" pulumi-lang-dotnet=\"`vsphere.getNetwork`\" pulumi-lang-go=\"`getNetwork`\" pulumi-lang-python=\"`get_network`\" pulumi-lang-yaml=\"`vsphere.getNetwork`\" pulumi-lang-java=\"`vsphere.getNetwork`\" pulumi-lang-hcl=\"`data.vsphere_network`\"\u003e`vsphere.getNetwork`\u003c/span\u003e. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n\n\u003e **NOTE:** Requires vCenter 9.0.0 or later.\n"
+                },
+                "vsphereNetwork": {
+                    "$ref": "#/types/vsphere:index/NamespaceVsphereNetwork:NamespaceVsphereNetwork",
+                    "description": "The vSphere networking configuration. Conflicts with \u003cspan pulumi-lang-nodejs=\"`vpcNetwork`\" pulumi-lang-dotnet=\"`VpcNetwork`\" pulumi-lang-go=\"`vpcNetwork`\" pulumi-lang-python=\"`vpc_network`\" pulumi-lang-yaml=\"`vpcNetwork`\" pulumi-lang-java=\"`vpcNetwork`\" pulumi-lang-hcl=\"`vpc_network`\"\u003e`vpcNetwork`\u003c/span\u003e. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.\n\n\u003e **NOTE:** Requires vCenter 9.1.0 or later.\n"
+                },
+                "zones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/NamespaceZone:NamespaceZone"
+                    },
+                    "description": "A vSphere Zone to associate with the vSphere Namespace. See Zone.\n\n\u003e **NOTE:** Requires vCenter 9.0.0 or later.\n"
                 }
             },
             "requiredInputs": [
@@ -10100,20 +10645,36 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Namespace resources.\n",
                 "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/NamespaceGroup:NamespaceGroup"
+                        },
+                        "description": "A group with access to the vSphere Namespace.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "The name of the vSphere namespace.\n"
+                        "description": "The name of the vSphere Namespace. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
                     },
                     "storagePolicies": {
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "$ref": "#/types/vsphere:index/NamespaceStoragePolicy:NamespaceStoragePolicy"
                         },
-                        "description": "The list of storage policies that will be available in the vSphere Namespace.\n"
+                        "description": "A storage policy that will be available in the vSphere Namespace.\n"
                     },
                     "supervisor": {
                         "type": "string",
-                        "description": "The identifier of the vSphere Supervisor managing the namespace.\n"
+                        "description": "The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/NamespaceUser:NamespaceUser"
+                        },
+                        "description": "A user with access to the vSphere Namespace.\n"
                     },
                     "vmServices": {
                         "type": "array",
@@ -10121,6 +10682,21 @@
                             "$ref": "#/types/vsphere:index/NamespaceVmService:NamespaceVmService"
                         },
                         "description": "The configuration for VM Service in the vSphere Namespace.\n"
+                    },
+                    "vpcNetwork": {
+                        "$ref": "#/types/vsphere:index/NamespaceVpcNetwork:NamespaceVpcNetwork",
+                        "description": "The NSX VPC network configuration. Conflicts with \u003cspan pulumi-lang-nodejs=\"`vsphere.getNetwork`\" pulumi-lang-dotnet=\"`vsphere.getNetwork`\" pulumi-lang-go=\"`getNetwork`\" pulumi-lang-python=\"`get_network`\" pulumi-lang-yaml=\"`vsphere.getNetwork`\" pulumi-lang-java=\"`vsphere.getNetwork`\" pulumi-lang-hcl=\"`data.vsphere_network`\"\u003e`vsphere.getNetwork`\u003c/span\u003e. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n\n\u003e **NOTE:** Requires vCenter 9.0.0 or later.\n"
+                    },
+                    "vsphereNetwork": {
+                        "$ref": "#/types/vsphere:index/NamespaceVsphereNetwork:NamespaceVsphereNetwork",
+                        "description": "The vSphere networking configuration. Conflicts with \u003cspan pulumi-lang-nodejs=\"`vpcNetwork`\" pulumi-lang-dotnet=\"`VpcNetwork`\" pulumi-lang-go=\"`vpcNetwork`\" pulumi-lang-python=\"`vpc_network`\" pulumi-lang-yaml=\"`vpcNetwork`\" pulumi-lang-java=\"`vpcNetwork`\" pulumi-lang-hcl=\"`vpc_network`\"\u003e`vpcNetwork`\u003c/span\u003e. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.\n\n\u003e **NOTE:** Requires vCenter 9.1.0 or later.\n"
+                    },
+                    "zones": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/NamespaceZone:NamespaceZone"
+                        },
+                        "description": "A vSphere Zone to associate with the vSphere Namespace. See Zone.\n\n\u003e **NOTE:** Requires vCenter 9.0.0 or later.\n"
                     }
                 },
                 "type": "object"
@@ -14511,6 +15087,98 @@
                 "type": "object"
             }
         },
+        "vsphere:index/getContentLibraryItems:getContentLibraryItems": {
+            "description": "The \u003cspan pulumi-lang-nodejs=\"`vsphere.getContentLibraryItems`\" pulumi-lang-dotnet=\"`vsphere.getContentLibraryItems`\" pulumi-lang-go=\"`getContentLibraryItems`\" pulumi-lang-python=\"`get_content_library_items`\" pulumi-lang-yaml=\"`vsphere.getContentLibraryItems`\" pulumi-lang-java=\"`vsphere.getContentLibraryItems`\" pulumi-lang-hcl=\"`data.vsphere_content_library_items`\"\u003e`vsphere.getContentLibraryItems`\u003c/span\u003e data source can be used to search for\nitems in a content library by name, regular expression, and/or type, and\nreturns the list of matching items.\n\n\u003e **NOTE:** This resource requires vCenter and is not available on direct ESXi\nhost connections.\n\n## Example Usage\n\n### Search by name and type\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst library = vsphere.getContentLibrary({\n    name: \"Content Library\",\n});\nconst ovfItems = library.then(library =\u003e vsphere.getContentLibraryItems({\n    libraryId: library.id,\n    name: \"ubuntu-server-lts\",\n    type: \"ovf\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nlibrary = vsphere.get_content_library(name=\"Content Library\")\novf_items = vsphere.get_content_library_items(library_id=library.id,\n    name=\"ubuntu-server-lts\",\n    type=\"ovf\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var library = VSphere.GetContentLibrary.Invoke(new()\n    {\n        Name = \"Content Library\",\n    });\n\n    var ovfItems = VSphere.GetContentLibraryItems.Invoke(new()\n    {\n        LibraryId = library.Apply(getContentLibraryResult =\u003e getContentLibraryResult.Id),\n        Name = \"ubuntu-server-lts\",\n        Type = \"ovf\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlibrary, err := vsphere.GetContentLibrary(ctx, \u0026vsphere.LookupContentLibraryArgs{\n\t\t\tName: \"Content Library\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetContentLibraryItems(ctx, \u0026vsphere.GetContentLibraryItemsArgs{\n\t\t\tLibraryId: library.Id,\n\t\t\tName:      pulumi.StringRef(\"ubuntu-server-lts\"),\n\t\t\tType:      pulumi.StringRef(\"ovf\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_content_library\" \"library\" {\n  name = \"Content Library\"\n}\ndata \"vsphere_content_library_items\" \"ovfItems\" {\n  library_id = data.vsphere_content_library.library.id\n  name       = \"ubuntu-server-lts\"\n  type       = \"ovf\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetContentLibraryArgs;\nimport com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()\n            .name(\"Content Library\")\n            .build());\n\n        final var ovfItems = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()\n            .libraryId(library.id())\n            .name(\"ubuntu-server-lts\")\n            .type(\"ovf\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  library:\n    fn::invoke:\n      function: vsphere:getContentLibrary\n      arguments:\n        name: Content Library\n  ovfItems:\n    fn::invoke:\n      function: vsphere:getContentLibraryItems\n      arguments:\n        libraryId: ${library.id}\n        name: ubuntu-server-lts\n        type: ovf\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Search by name regex\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst library = vsphere.getContentLibrary({\n    name: \"Content Library\",\n});\nconst ubuntu = library.then(library =\u003e vsphere.getContentLibraryItems({\n    libraryId: library.id,\n    nameRegex: \"^ubuntu-.*-lts$\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nlibrary = vsphere.get_content_library(name=\"Content Library\")\nubuntu = vsphere.get_content_library_items(library_id=library.id,\n    name_regex=\"^ubuntu-.*-lts$\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var library = VSphere.GetContentLibrary.Invoke(new()\n    {\n        Name = \"Content Library\",\n    });\n\n    var ubuntu = VSphere.GetContentLibraryItems.Invoke(new()\n    {\n        LibraryId = library.Apply(getContentLibraryResult =\u003e getContentLibraryResult.Id),\n        NameRegex = \"^ubuntu-.*-lts$\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlibrary, err := vsphere.GetContentLibrary(ctx, \u0026vsphere.LookupContentLibraryArgs{\n\t\t\tName: \"Content Library\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetContentLibraryItems(ctx, \u0026vsphere.GetContentLibraryItemsArgs{\n\t\t\tLibraryId: library.Id,\n\t\t\tNameRegex: pulumi.StringRef(\"^ubuntu-.*-lts$\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_content_library\" \"library\" {\n  name = \"Content Library\"\n}\ndata \"vsphere_content_library_items\" \"ubuntu\" {\n  library_id = data.vsphere_content_library.library.id\n  name_regex = \"^ubuntu-.*-lts$\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetContentLibraryArgs;\nimport com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()\n            .name(\"Content Library\")\n            .build());\n\n        final var ubuntu = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()\n            .libraryId(library.id())\n            .nameRegex(\"^ubuntu-.*-lts$\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  library:\n    fn::invoke:\n      function: vsphere:getContentLibrary\n      arguments:\n        name: Content Library\n  ubuntu:\n    fn::invoke:\n      function: vsphere:getContentLibraryItems\n      arguments:\n        libraryId: ${library.id}\n        nameRegex: ^ubuntu-.*-lts$\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Search all items of a given type\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst library = vsphere.getContentLibrary({\n    name: \"Content Library\",\n});\nconst allOvf = library.then(library =\u003e vsphere.getContentLibraryItems({\n    libraryId: library.id,\n    type: \"ovf\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nlibrary = vsphere.get_content_library(name=\"Content Library\")\nall_ovf = vsphere.get_content_library_items(library_id=library.id,\n    type=\"ovf\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var library = VSphere.GetContentLibrary.Invoke(new()\n    {\n        Name = \"Content Library\",\n    });\n\n    var allOvf = VSphere.GetContentLibraryItems.Invoke(new()\n    {\n        LibraryId = library.Apply(getContentLibraryResult =\u003e getContentLibraryResult.Id),\n        Type = \"ovf\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlibrary, err := vsphere.GetContentLibrary(ctx, \u0026vsphere.LookupContentLibraryArgs{\n\t\t\tName: \"Content Library\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetContentLibraryItems(ctx, \u0026vsphere.GetContentLibraryItemsArgs{\n\t\t\tLibraryId: library.Id,\n\t\t\tType:      pulumi.StringRef(\"ovf\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_content_library\" \"library\" {\n  name = \"Content Library\"\n}\ndata \"vsphere_content_library_items\" \"allOvf\" {\n  library_id = data.vsphere_content_library.library.id\n  type       = \"ovf\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetContentLibraryArgs;\nimport com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()\n            .name(\"Content Library\")\n            .build());\n\n        final var allOvf = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()\n            .libraryId(library.id())\n            .type(\"ovf\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  library:\n    fn::invoke:\n      function: vsphere:getContentLibrary\n      arguments:\n        name: Content Library\n  allOvf:\n    fn::invoke:\n      function: vsphere:getContentLibraryItems\n      arguments:\n        libraryId: ${library.id}\n        type: ovf\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### List all items in a library\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst library = vsphere.getContentLibrary({\n    name: \"Content Library\",\n});\nconst all = library.then(library =\u003e vsphere.getContentLibraryItems({\n    libraryId: library.id,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nlibrary = vsphere.get_content_library(name=\"Content Library\")\nall = vsphere.get_content_library_items(library_id=library.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var library = VSphere.GetContentLibrary.Invoke(new()\n    {\n        Name = \"Content Library\",\n    });\n\n    var all = VSphere.GetContentLibraryItems.Invoke(new()\n    {\n        LibraryId = library.Apply(getContentLibraryResult =\u003e getContentLibraryResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlibrary, err := vsphere.GetContentLibrary(ctx, \u0026vsphere.LookupContentLibraryArgs{\n\t\t\tName: \"Content Library\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetContentLibraryItems(ctx, \u0026vsphere.GetContentLibraryItemsArgs{\n\t\t\tLibraryId: library.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_content_library\" \"library\" {\n  name = \"Content Library\"\n}\ndata \"vsphere_content_library_items\" \"all\" {\n  library_id = data.vsphere_content_library.library.id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetContentLibraryArgs;\nimport com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()\n            .name(\"Content Library\")\n            .build());\n\n        final var all = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()\n            .libraryId(library.id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  library:\n    fn::invoke:\n      function: vsphere:getContentLibrary\n      arguments:\n        name: Content Library\n  all:\n    fn::invoke:\n      function: vsphere:getContentLibraryItems\n      arguments:\n        libraryId: ${library.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getContentLibraryItems.\n",
+                "properties": {
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the content library to search.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "Maximum number of items to return after sorting. If\nomitted, all matching items are returned.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Filter items by exact name. Mutually exclusive with\n\u003cspan pulumi-lang-nodejs=\"`nameRegex`\" pulumi-lang-dotnet=\"`NameRegex`\" pulumi-lang-go=\"`nameRegex`\" pulumi-lang-python=\"`name_regex`\" pulumi-lang-yaml=\"`nameRegex`\" pulumi-lang-java=\"`nameRegex`\" pulumi-lang-hcl=\"`name_regex`\"\u003e`nameRegex`\u003c/span\u003e. If omitted, items of any name are returned.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "Filter items by name using a regular expression.\nMutually exclusive with \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. If omitted, items of any name are returned.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "sortBy": {
+                        "type": "string",
+                        "description": "Sort items by field. Accepted values:\n\u003cspan pulumi-lang-nodejs=\"`lastModifiedTime`\" pulumi-lang-dotnet=\"`LastModifiedTime`\" pulumi-lang-go=\"`lastModifiedTime`\" pulumi-lang-python=\"`last_modified_time`\" pulumi-lang-yaml=\"`lastModifiedTime`\" pulumi-lang-java=\"`lastModifiedTime`\" pulumi-lang-hcl=\"`last_modified_time`\"\u003e`lastModifiedTime`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`creationTime`\" pulumi-lang-dotnet=\"`CreationTime`\" pulumi-lang-go=\"`creationTime`\" pulumi-lang-python=\"`creation_time`\" pulumi-lang-yaml=\"`creationTime`\" pulumi-lang-java=\"`creationTime`\" pulumi-lang-hcl=\"`creation_time`\"\u003e`creationTime`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`lastModifiedTime`\" pulumi-lang-dotnet=\"`LastModifiedTime`\" pulumi-lang-go=\"`lastModifiedTime`\" pulumi-lang-python=\"`last_modified_time`\" pulumi-lang-yaml=\"`lastModifiedTime`\" pulumi-lang-java=\"`lastModifiedTime`\" pulumi-lang-hcl=\"`last_modified_time`\"\u003e`lastModifiedTime`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "sortOrder": {
+                        "type": "string",
+                        "description": "Sort order. Accepted values: \u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\" pulumi-lang-hcl=\"`asc`\"\u003e`asc`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\" pulumi-lang-hcl=\"`desc`\"\u003e`desc`\u003c/span\u003e.\nDefaults to \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\" pulumi-lang-hcl=\"`desc`\"\u003e`desc`\u003c/span\u003e (most recent first).\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Filter items by type (e.g. \u003cspan pulumi-lang-nodejs=\"`ovf`\" pulumi-lang-dotnet=\"`Ovf`\" pulumi-lang-go=\"`ovf`\" pulumi-lang-python=\"`ovf`\" pulumi-lang-yaml=\"`ovf`\" pulumi-lang-java=\"`ovf`\" pulumi-lang-hcl=\"`ovf`\"\u003e`ovf`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`iso`\" pulumi-lang-dotnet=\"`Iso`\" pulumi-lang-go=\"`iso`\" pulumi-lang-python=\"`iso`\" pulumi-lang-yaml=\"`iso`\" pulumi-lang-java=\"`iso`\" pulumi-lang-hcl=\"`iso`\"\u003e`iso`\u003c/span\u003e, `vm-template`).\nIf omitted, items of any type are returned.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "libraryId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getContentLibraryItems.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "items": {
+                        "description": "A list of content library items matching the search criteria. Each\nelement contains:\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getContentLibraryItemsItem:getContentLibraryItemsItem"
+                        },
+                        "type": "array"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "The name of the content library item.\n",
+                        "type": "string"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "sortBy": {
+                        "type": "string"
+                    },
+                    "sortOrder": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "The type of the content library item.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "items",
+                    "libraryId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "vsphere:index/getCustomAttribute:getCustomAttribute": {
             "description": "The \u003cspan pulumi-lang-nodejs=\"`vsphere.CustomAttribute`\" pulumi-lang-dotnet=\"`vsphere.CustomAttribute`\" pulumi-lang-go=\"`CustomAttribute`\" pulumi-lang-python=\"`CustomAttribute`\" pulumi-lang-yaml=\"`vsphere.CustomAttribute`\" pulumi-lang-java=\"`vsphere.CustomAttribute`\" pulumi-lang-hcl=\"`vsphere_custom_attribute`\"\u003e`vsphere.CustomAttribute`\u003c/span\u003e data source can be used to reference custom\nattributes that are not managed by Terraform. Its attributes are exactly the\nsame as the [\u003cspan pulumi-lang-nodejs=\"`vsphere.CustomAttribute`\" pulumi-lang-dotnet=\"`vsphere.CustomAttribute`\" pulumi-lang-go=\"`CustomAttribute`\" pulumi-lang-python=\"`CustomAttribute`\" pulumi-lang-yaml=\"`vsphere.CustomAttribute`\" pulumi-lang-java=\"`vsphere.CustomAttribute`\" pulumi-lang-hcl=\"`vsphere_custom_attribute`\"\u003e`vsphere.CustomAttribute`\u003c/span\u003e resource][resource-custom-attribute],\nand, like importing, the data source takes a name argument for the search. The\n\u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and other attributes are then populated with the data found by the search.\n\n[resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi host connections\nand require vCenter Server.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst attribute = vsphere.getCustomAttribute({\n    name: \"pulumi-test-attribute\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nattribute = vsphere.get_custom_attribute(name=\"pulumi-test-attribute\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var attribute = VSphere.GetCustomAttribute.Invoke(new()\n    {\n        Name = \"pulumi-test-attribute\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetCustomAttribute(ctx, \u0026vsphere.LookupCustomAttributeArgs{\n\t\t\tName: \"pulumi-test-attribute\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_custom_attribute\" \"attribute\" {\n  name = \"pulumi-test-attribute\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetCustomAttributeArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()\n            .name(\"pulumi-test-attribute\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  attribute:\n    fn::invoke:\n      function: vsphere:getCustomAttribute\n      arguments:\n        name: pulumi-test-attribute\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -15231,13 +15899,13 @@
             }
         },
         "vsphere:index/getNamespace:getNamespace": {
-            "description": "This data source can be used to read the properties of a vSphere Namespace.\n\n## Example Usage\n\n### S\n\n### Create a Namespace\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst example = vsphere.getNamespace({\n    name: \"example-namespace\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nexample = vsphere.get_namespace(name=\"example-namespace\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = VSphere.GetNamespace.Invoke(new()\n    {\n        Name = \"example-namespace\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetNamespace(ctx, \u0026vsphere.LookupNamespaceArgs{\n\t\t\tName: \"example-namespace\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_namespace\" \"example\" {\n  name = \"example-namespace\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetNamespaceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = VsphereFunctions.getNamespace(GetNamespaceArgs.builder()\n            .name(\"example-namespace\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: vsphere:getNamespace\n      arguments:\n        name: example-namespace\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.\n\n## Example Usage\n\n### S\n\n### Read a Namespace\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst example = vsphere.getNamespace({\n    name: \"example-namespace\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nexample = vsphere.get_namespace(name=\"example-namespace\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = VSphere.GetNamespace.Invoke(new()\n    {\n        Name = \"example-namespace\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetNamespace(ctx, \u0026vsphere.LookupNamespaceArgs{\n\t\t\tName: \"example-namespace\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_namespace\" \"example\" {\n  name = \"example-namespace\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetNamespaceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = VsphereFunctions.getNamespace(GetNamespaceArgs.builder()\n            .name(\"example-namespace\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: vsphere:getNamespace\n      arguments:\n        name: example-namespace\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Read the storage policies of a Namespace\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const storagePolicyIds = .map(s =\u003e (s.policy));\n```\n```python\nimport pulumi\n\npulumi.export(\"storagePolicyIds\", [s[\"policy\"] for s in example[\"storagePolicy\"]])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"storagePolicyIds\"] = .Select(s =\u003e \n        {\n            return s.Policy;\n        }).ToList(),\n    };\n});\n```\n```hcl\noutput \"storagePolicyIds\" {\n  value = [for s in example.storagePolicy : s.policy]\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNamespace.\n",
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The name of the vSphere namespace.\n"
+                        "description": "The name of the vSphere Namespace.\n"
                     }
                 },
                 "type": "object",
@@ -15249,34 +15917,53 @@
                 "description": "A collection of values returned by getNamespace.\n",
                 "properties": {
                     "configStatus": {
+                        "description": "The configuration status of the vSphere Namespace.\n",
                         "type": "string"
                     },
                     "cpuUsage": {
+                        "description": "The CPU usage of the vSphere Namespace in MHz.\n",
                         "type": "integer"
+                    },
+                    "groups": {
+                        "description": "A group with access to the vSphere Namespace.\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getNamespaceGroup:getNamespaceGroup"
+                        },
+                        "type": "array"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "memoryUsage": {
+                        "description": "The memory usage of the vSphere Namespace in MiB.\n",
                         "type": "integer"
                     },
                     "name": {
+                        "description": "The identifier of the vSphere Zone.\n",
                         "type": "string"
                     },
                     "storagePolicies": {
-                        "description": "The list of storage policies that are available in the vSphere Namespace.\n",
+                        "description": "A storage policy assigned to the vSphere Namespace.\n",
                         "items": {
-                            "type": "string"
+                            "$ref": "#/types/vsphere:index/getNamespaceStoragePolicy:getNamespaceStoragePolicy"
                         },
                         "type": "array"
                     },
                     "storageUsage": {
+                        "description": "The storage usage of the vSphere Namespace in MiB.\n",
                         "type": "integer"
                     },
                     "supervisor": {
                         "description": "The identifier of the vSphere Supervisor managing the namespace.\n",
                         "type": "string"
+                    },
+                    "users": {
+                        "description": "A user with access to the vSphere Namespace.\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getNamespaceUser:getNamespaceUser"
+                        },
+                        "type": "array"
                     },
                     "vmServices": {
                         "description": "The configuration for VM Service in the vSphere Namespace.\n",
@@ -15284,17 +15971,43 @@
                             "$ref": "#/types/vsphere:index/getNamespaceVmService:getNamespaceVmService"
                         },
                         "type": "array"
+                    },
+                    "vpcNetworks": {
+                        "description": "The NSX VPC network configuration.\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getNamespaceVpcNetwork:getNamespaceVpcNetwork"
+                        },
+                        "type": "array"
+                    },
+                    "vsphereNetworks": {
+                        "description": "The vSphere networking configuration.\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getNamespaceVsphereNetwork:getNamespaceVsphereNetwork"
+                        },
+                        "type": "array"
+                    },
+                    "zones": {
+                        "description": "A vSphere Zone assigned to the vSphere Namespace.\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getNamespaceZone:getNamespaceZone"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
                     "configStatus",
                     "cpuUsage",
+                    "groups",
                     "memoryUsage",
                     "name",
                     "storagePolicies",
                     "storageUsage",
                     "supervisor",
+                    "users",
                     "vmServices",
+                    "vpcNetworks",
+                    "vsphereNetworks",
+                    "zones",
                     "id"
                 ],
                 "type": "object"
@@ -15882,6 +16595,89 @@
                     "lastName",
                     "name",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "vsphere:index/getSupervisor:getSupervisor": {
+            "description": "This data source can be used to read the properties of a vSphere Supervisor.\n\n## Example Usage\n\n### S\n\n### Look up a Supervisor by Name\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst example = vsphere.getSupervisor({\n    name: \"example-supervisor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nexample = vsphere.get_supervisor(name=\"example-supervisor\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = VSphere.GetSupervisor.Invoke(new()\n    {\n        Name = \"example-supervisor\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetSupervisor(ctx, \u0026vsphere.LookupSupervisorArgs{\n\t\t\tName: pulumi.StringRef(\"example-supervisor\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_supervisor\" \"example\" {\n  name = \"example-supervisor\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetSupervisorArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()\n            .name(\"example-supervisor\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: vsphere:getSupervisor\n      arguments:\n        name: example-supervisor\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Look up a Supervisor by Compute Cluster\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst example = vsphere.getSupervisor({\n    cluster: cluster.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nexample = vsphere.get_supervisor(cluster=cluster[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = VSphere.GetSupervisor.Invoke(new()\n    {\n        Cluster = cluster.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetSupervisor(ctx, \u0026vsphere.LookupSupervisorArgs{\n\t\t\tCluster: pulumi.StringRef(cluster.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_supervisor\" \"example\" {\n  cluster = cluster.id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetSupervisorArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()\n            .cluster(cluster.get(\"id\"))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: vsphere:getSupervisor\n      arguments:\n        cluster: ${cluster.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Look up a Supervisor by ID\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst example = vsphere.getSupervisor({\n    id: \"435a6f10-ffd2-44f4-a2a8-65b4059b0b5f\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nexample = vsphere.get_supervisor(id=\"435a6f10-ffd2-44f4-a2a8-65b4059b0b5f\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = VSphere.GetSupervisor.Invoke(new()\n    {\n        Id = \"435a6f10-ffd2-44f4-a2a8-65b4059b0b5f\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetSupervisor(ctx, \u0026vsphere.LookupSupervisorArgs{\n\t\t\tId: pulumi.StringRef(\"435a6f10-ffd2-44f4-a2a8-65b4059b0b5f\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    vsphere = {\n      source = \"pulumi/vsphere\"\n    }\n  }\n}\n\ndata \"vsphere_supervisor\" \"example\" {\n  id = \"435a6f10-ffd2-44f4-a2a8-65b4059b0b5f\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetSupervisorArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()\n            .id(\"435a6f10-ffd2-44f4-a2a8-65b4059b0b5f\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: vsphere:getSupervisor\n      arguments:\n        id: 435a6f10-ffd2-44f4-a2a8-65b4059b0b5f\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSupervisor.\n",
+                "properties": {
+                    "cluster": {
+                        "type": "string",
+                        "description": "The ID of a compute cluster managed by the Supervisor.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the Supervisor.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Supervisor. The lookup fails if more than one Supervisor has this name.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSupervisor.\n",
+                "properties": {
+                    "cluster": {
+                        "type": "string"
+                    },
+                    "configStatus": {
+                        "description": "The configuration status of the Supervisor.\n",
+                        "type": "string"
+                    },
+                    "cpuUsage": {
+                        "description": "The CPU usage of the Supervisor in megahertz.\n",
+                        "type": "integer"
+                    },
+                    "id": {
+                        "description": "The ID of the Supervisor.\n",
+                        "type": "string"
+                    },
+                    "kubernetesStatus": {
+                        "description": "The Kubernetes status of the Supervisor.\n",
+                        "type": "string"
+                    },
+                    "memoryUsage": {
+                        "description": "The memory usage of the Supervisor in mebibytes.\n",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "The name of the Supervisor.\n",
+                        "type": "string"
+                    },
+                    "storageUsage": {
+                        "description": "The storage usage of the Supervisor in mebibytes.\n",
+                        "type": "integer"
+                    },
+                    "workloadNetworks": {
+                        "description": "A workload network of the Supervisor.\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getSupervisorWorkloadNetwork:getSupervisorWorkloadNetwork"
+                        },
+                        "type": "array"
+                    },
+                    "zones": {
+                        "description": "The vSphere Zones of the Supervisor.\n",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getSupervisorZone:getSupervisorZone"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "configStatus",
+                    "cpuUsage",
+                    "id",
+                    "kubernetesStatus",
+                    "memoryUsage",
+                    "name",
+                    "storageUsage",
+                    "workloadNetworks",
+                    "zones"
                 ],
                 "type": "object"
             }

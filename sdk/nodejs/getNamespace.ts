@@ -7,13 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This data source can be used to read the properties of a vSphere Namespace.
+ * This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
  *
  * ## Example Usage
  *
  * ### S
  *
- * ### Create a Namespace
+ * ### Read a Namespace
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,14 @@ import * as utilities from "./utilities";
  * const example = vsphere.getNamespace({
  *     name: "example-namespace",
  * });
+ * ```
+ *
+ * ### Read the storage policies of a Namespace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const storagePolicyIds = .map(s => (s.policy));
  * ```
  */
 export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {
@@ -36,7 +44,7 @@ export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetNamespaceArgs {
     /**
-     * The name of the vSphere namespace.
+     * The name of the vSphere Namespace.
      */
     name: string;
 }
@@ -45,36 +53,71 @@ export interface GetNamespaceArgs {
  * A collection of values returned by getNamespace.
  */
 export interface GetNamespaceResult {
+    /**
+     * The configuration status of the vSphere Namespace.
+     */
     readonly configStatus: string;
+    /**
+     * The CPU usage of the vSphere Namespace in MHz.
+     */
     readonly cpuUsage: number;
+    /**
+     * A group with access to the vSphere Namespace.
+     */
+    readonly groups: outputs.GetNamespaceGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The memory usage of the vSphere Namespace in MiB.
+     */
     readonly memoryUsage: number;
+    /**
+     * The identifier of the vSphere Zone.
+     */
     readonly name: string;
     /**
-     * The list of storage policies that are available in the vSphere Namespace.
+     * A storage policy assigned to the vSphere Namespace.
      */
-    readonly storagePolicies: string[];
+    readonly storagePolicies: outputs.GetNamespaceStoragePolicy[];
+    /**
+     * The storage usage of the vSphere Namespace in MiB.
+     */
     readonly storageUsage: number;
     /**
      * The identifier of the vSphere Supervisor managing the namespace.
      */
     readonly supervisor: string;
     /**
+     * A user with access to the vSphere Namespace.
+     */
+    readonly users: outputs.GetNamespaceUser[];
+    /**
      * The configuration for VM Service in the vSphere Namespace.
      */
     readonly vmServices: outputs.GetNamespaceVmService[];
+    /**
+     * The NSX VPC network configuration.
+     */
+    readonly vpcNetworks: outputs.GetNamespaceVpcNetwork[];
+    /**
+     * The vSphere networking configuration.
+     */
+    readonly vsphereNetworks: outputs.GetNamespaceVsphereNetwork[];
+    /**
+     * A vSphere Zone assigned to the vSphere Namespace.
+     */
+    readonly zones: outputs.GetNamespaceZone[];
 }
 /**
- * This data source can be used to read the properties of a vSphere Namespace.
+ * This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
  *
  * ## Example Usage
  *
  * ### S
  *
- * ### Create a Namespace
+ * ### Read a Namespace
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,6 +126,14 @@ export interface GetNamespaceResult {
  * const example = vsphere.getNamespace({
  *     name: "example-namespace",
  * });
+ * ```
+ *
+ * ### Read the storage policies of a Namespace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const storagePolicyIds = .map(s => (s.policy));
  * ```
  */
 export function getNamespaceOutput(args: GetNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamespaceResult> {
@@ -97,7 +148,7 @@ export function getNamespaceOutput(args: GetNamespaceOutputArgs, opts?: pulumi.I
  */
 export interface GetNamespaceOutputArgs {
     /**
-     * The name of the vSphere namespace.
+     * The name of the vSphere Namespace.
      */
     name: pulumi.Input<string>;
 }

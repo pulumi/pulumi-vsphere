@@ -4149,6 +4149,360 @@ func (o HostServiceNtpdPtrOutput) Policy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type NamespaceGroup struct {
+	// The domain of the identity source that owns the group.
+	Domain string `pulumi:"domain"`
+	// The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+	IdentityProvider *string `pulumi:"identityProvider"`
+	// The name of the group, without the domain.
+	Name string `pulumi:"name"`
+	// The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+	Role string `pulumi:"role"`
+}
+
+// NamespaceGroupInput is an input type that accepts NamespaceGroupArgs and NamespaceGroupOutput values.
+// You can construct a concrete instance of `NamespaceGroupInput` via:
+//
+//	NamespaceGroupArgs{...}
+type NamespaceGroupInput interface {
+	pulumi.Input
+
+	ToNamespaceGroupOutput() NamespaceGroupOutput
+	ToNamespaceGroupOutputWithContext(context.Context) NamespaceGroupOutput
+}
+
+type NamespaceGroupArgs struct {
+	// The domain of the identity source that owns the group.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+	IdentityProvider pulumi.StringPtrInput `pulumi:"identityProvider"`
+	// The name of the group, without the domain.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (NamespaceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceGroup)(nil)).Elem()
+}
+
+func (i NamespaceGroupArgs) ToNamespaceGroupOutput() NamespaceGroupOutput {
+	return i.ToNamespaceGroupOutputWithContext(context.Background())
+}
+
+func (i NamespaceGroupArgs) ToNamespaceGroupOutputWithContext(ctx context.Context) NamespaceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceGroupOutput)
+}
+
+// NamespaceGroupArrayInput is an input type that accepts NamespaceGroupArray and NamespaceGroupArrayOutput values.
+// You can construct a concrete instance of `NamespaceGroupArrayInput` via:
+//
+//	NamespaceGroupArray{ NamespaceGroupArgs{...} }
+type NamespaceGroupArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceGroupArrayOutput() NamespaceGroupArrayOutput
+	ToNamespaceGroupArrayOutputWithContext(context.Context) NamespaceGroupArrayOutput
+}
+
+type NamespaceGroupArray []NamespaceGroupInput
+
+func (NamespaceGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceGroup)(nil)).Elem()
+}
+
+func (i NamespaceGroupArray) ToNamespaceGroupArrayOutput() NamespaceGroupArrayOutput {
+	return i.ToNamespaceGroupArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceGroupArray) ToNamespaceGroupArrayOutputWithContext(ctx context.Context) NamespaceGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceGroupArrayOutput)
+}
+
+type NamespaceGroupOutput struct{ *pulumi.OutputState }
+
+func (NamespaceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceGroup)(nil)).Elem()
+}
+
+func (o NamespaceGroupOutput) ToNamespaceGroupOutput() NamespaceGroupOutput {
+	return o
+}
+
+func (o NamespaceGroupOutput) ToNamespaceGroupOutputWithContext(ctx context.Context) NamespaceGroupOutput {
+	return o
+}
+
+// The domain of the identity source that owns the group.
+func (o NamespaceGroupOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceGroup) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+func (o NamespaceGroupOutput) IdentityProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceGroup) *string { return v.IdentityProvider }).(pulumi.StringPtrOutput)
+}
+
+// The name of the group, without the domain.
+func (o NamespaceGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+func (o NamespaceGroupOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceGroup) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type NamespaceGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceGroup)(nil)).Elem()
+}
+
+func (o NamespaceGroupArrayOutput) ToNamespaceGroupArrayOutput() NamespaceGroupArrayOutput {
+	return o
+}
+
+func (o NamespaceGroupArrayOutput) ToNamespaceGroupArrayOutputWithContext(ctx context.Context) NamespaceGroupArrayOutput {
+	return o
+}
+
+func (o NamespaceGroupArrayOutput) Index(i pulumi.IntInput) NamespaceGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceGroup {
+		return vs[0].([]NamespaceGroup)[vs[1].(int)]
+	}).(NamespaceGroupOutput)
+}
+
+type NamespaceStoragePolicy struct {
+	// The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+	Limit *int `pulumi:"limit"`
+	// The identifier of the storage policy.
+	Policy string `pulumi:"policy"`
+}
+
+// NamespaceStoragePolicyInput is an input type that accepts NamespaceStoragePolicyArgs and NamespaceStoragePolicyOutput values.
+// You can construct a concrete instance of `NamespaceStoragePolicyInput` via:
+//
+//	NamespaceStoragePolicyArgs{...}
+type NamespaceStoragePolicyInput interface {
+	pulumi.Input
+
+	ToNamespaceStoragePolicyOutput() NamespaceStoragePolicyOutput
+	ToNamespaceStoragePolicyOutputWithContext(context.Context) NamespaceStoragePolicyOutput
+}
+
+type NamespaceStoragePolicyArgs struct {
+	// The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// The identifier of the storage policy.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (NamespaceStoragePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (i NamespaceStoragePolicyArgs) ToNamespaceStoragePolicyOutput() NamespaceStoragePolicyOutput {
+	return i.ToNamespaceStoragePolicyOutputWithContext(context.Background())
+}
+
+func (i NamespaceStoragePolicyArgs) ToNamespaceStoragePolicyOutputWithContext(ctx context.Context) NamespaceStoragePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStoragePolicyOutput)
+}
+
+// NamespaceStoragePolicyArrayInput is an input type that accepts NamespaceStoragePolicyArray and NamespaceStoragePolicyArrayOutput values.
+// You can construct a concrete instance of `NamespaceStoragePolicyArrayInput` via:
+//
+//	NamespaceStoragePolicyArray{ NamespaceStoragePolicyArgs{...} }
+type NamespaceStoragePolicyArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceStoragePolicyArrayOutput() NamespaceStoragePolicyArrayOutput
+	ToNamespaceStoragePolicyArrayOutputWithContext(context.Context) NamespaceStoragePolicyArrayOutput
+}
+
+type NamespaceStoragePolicyArray []NamespaceStoragePolicyInput
+
+func (NamespaceStoragePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (i NamespaceStoragePolicyArray) ToNamespaceStoragePolicyArrayOutput() NamespaceStoragePolicyArrayOutput {
+	return i.ToNamespaceStoragePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceStoragePolicyArray) ToNamespaceStoragePolicyArrayOutputWithContext(ctx context.Context) NamespaceStoragePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStoragePolicyArrayOutput)
+}
+
+type NamespaceStoragePolicyOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStoragePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (o NamespaceStoragePolicyOutput) ToNamespaceStoragePolicyOutput() NamespaceStoragePolicyOutput {
+	return o
+}
+
+func (o NamespaceStoragePolicyOutput) ToNamespaceStoragePolicyOutputWithContext(ctx context.Context) NamespaceStoragePolicyOutput {
+	return o
+}
+
+// The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+func (o NamespaceStoragePolicyOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceStoragePolicy) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// The identifier of the storage policy.
+func (o NamespaceStoragePolicyOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceStoragePolicy) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type NamespaceStoragePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStoragePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (o NamespaceStoragePolicyArrayOutput) ToNamespaceStoragePolicyArrayOutput() NamespaceStoragePolicyArrayOutput {
+	return o
+}
+
+func (o NamespaceStoragePolicyArrayOutput) ToNamespaceStoragePolicyArrayOutputWithContext(ctx context.Context) NamespaceStoragePolicyArrayOutput {
+	return o
+}
+
+func (o NamespaceStoragePolicyArrayOutput) Index(i pulumi.IntInput) NamespaceStoragePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceStoragePolicy {
+		return vs[0].([]NamespaceStoragePolicy)[vs[1].(int)]
+	}).(NamespaceStoragePolicyOutput)
+}
+
+type NamespaceUser struct {
+	// The domain of the identity source that owns the user.
+	Domain string `pulumi:"domain"`
+	// The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+	IdentityProvider *string `pulumi:"identityProvider"`
+	// The name of the user, without the domain.
+	Name string `pulumi:"name"`
+	// The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+	Role string `pulumi:"role"`
+}
+
+// NamespaceUserInput is an input type that accepts NamespaceUserArgs and NamespaceUserOutput values.
+// You can construct a concrete instance of `NamespaceUserInput` via:
+//
+//	NamespaceUserArgs{...}
+type NamespaceUserInput interface {
+	pulumi.Input
+
+	ToNamespaceUserOutput() NamespaceUserOutput
+	ToNamespaceUserOutputWithContext(context.Context) NamespaceUserOutput
+}
+
+type NamespaceUserArgs struct {
+	// The domain of the identity source that owns the user.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+	IdentityProvider pulumi.StringPtrInput `pulumi:"identityProvider"`
+	// The name of the user, without the domain.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (NamespaceUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceUser)(nil)).Elem()
+}
+
+func (i NamespaceUserArgs) ToNamespaceUserOutput() NamespaceUserOutput {
+	return i.ToNamespaceUserOutputWithContext(context.Background())
+}
+
+func (i NamespaceUserArgs) ToNamespaceUserOutputWithContext(ctx context.Context) NamespaceUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceUserOutput)
+}
+
+// NamespaceUserArrayInput is an input type that accepts NamespaceUserArray and NamespaceUserArrayOutput values.
+// You can construct a concrete instance of `NamespaceUserArrayInput` via:
+//
+//	NamespaceUserArray{ NamespaceUserArgs{...} }
+type NamespaceUserArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceUserArrayOutput() NamespaceUserArrayOutput
+	ToNamespaceUserArrayOutputWithContext(context.Context) NamespaceUserArrayOutput
+}
+
+type NamespaceUserArray []NamespaceUserInput
+
+func (NamespaceUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceUser)(nil)).Elem()
+}
+
+func (i NamespaceUserArray) ToNamespaceUserArrayOutput() NamespaceUserArrayOutput {
+	return i.ToNamespaceUserArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceUserArray) ToNamespaceUserArrayOutputWithContext(ctx context.Context) NamespaceUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceUserArrayOutput)
+}
+
+type NamespaceUserOutput struct{ *pulumi.OutputState }
+
+func (NamespaceUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceUser)(nil)).Elem()
+}
+
+func (o NamespaceUserOutput) ToNamespaceUserOutput() NamespaceUserOutput {
+	return o
+}
+
+func (o NamespaceUserOutput) ToNamespaceUserOutputWithContext(ctx context.Context) NamespaceUserOutput {
+	return o
+}
+
+// The domain of the identity source that owns the user.
+func (o NamespaceUserOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceUser) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+func (o NamespaceUserOutput) IdentityProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceUser) *string { return v.IdentityProvider }).(pulumi.StringPtrOutput)
+}
+
+// The name of the user, without the domain.
+func (o NamespaceUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+func (o NamespaceUserOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceUser) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type NamespaceUserArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceUser)(nil)).Elem()
+}
+
+func (o NamespaceUserArrayOutput) ToNamespaceUserArrayOutput() NamespaceUserArrayOutput {
+	return o
+}
+
+func (o NamespaceUserArrayOutput) ToNamespaceUserArrayOutputWithContext(ctx context.Context) NamespaceUserArrayOutput {
+	return o
+}
+
+func (o NamespaceUserArrayOutput) Index(i pulumi.IntInput) NamespaceUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceUser {
+		return vs[0].([]NamespaceUser)[vs[1].(int)]
+	}).(NamespaceUserOutput)
+}
+
 type NamespaceVmService struct {
 	// The list of content libraries to associate with the VM Service.
 	ContentLibraries []string `pulumi:"contentLibraries"`
@@ -4253,6 +4607,706 @@ func (o NamespaceVmServiceArrayOutput) Index(i pulumi.IntInput) NamespaceVmServi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceVmService {
 		return vs[0].([]NamespaceVmService)[vs[1].(int)]
 	}).(NamespaceVmServiceOutput)
+}
+
+type NamespaceVpcNetwork struct {
+	// An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+	//
+	// > **NOTE:** Requires vCenter 9.1.0 or later. `podDefault` and `vmDefault` require vCenter 9.1.1 or later.
+	SharedSubnets []NamespaceVpcNetworkSharedSubnet `pulumi:"sharedSubnets"`
+	// The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+	Vpc string `pulumi:"vpc"`
+}
+
+// NamespaceVpcNetworkInput is an input type that accepts NamespaceVpcNetworkArgs and NamespaceVpcNetworkOutput values.
+// You can construct a concrete instance of `NamespaceVpcNetworkInput` via:
+//
+//	NamespaceVpcNetworkArgs{...}
+type NamespaceVpcNetworkInput interface {
+	pulumi.Input
+
+	ToNamespaceVpcNetworkOutput() NamespaceVpcNetworkOutput
+	ToNamespaceVpcNetworkOutputWithContext(context.Context) NamespaceVpcNetworkOutput
+}
+
+type NamespaceVpcNetworkArgs struct {
+	// An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+	//
+	// > **NOTE:** Requires vCenter 9.1.0 or later. `podDefault` and `vmDefault` require vCenter 9.1.1 or later.
+	SharedSubnets NamespaceVpcNetworkSharedSubnetArrayInput `pulumi:"sharedSubnets"`
+	// The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+	Vpc pulumi.StringInput `pulumi:"vpc"`
+}
+
+func (NamespaceVpcNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (i NamespaceVpcNetworkArgs) ToNamespaceVpcNetworkOutput() NamespaceVpcNetworkOutput {
+	return i.ToNamespaceVpcNetworkOutputWithContext(context.Background())
+}
+
+func (i NamespaceVpcNetworkArgs) ToNamespaceVpcNetworkOutputWithContext(ctx context.Context) NamespaceVpcNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVpcNetworkOutput)
+}
+
+func (i NamespaceVpcNetworkArgs) ToNamespaceVpcNetworkPtrOutput() NamespaceVpcNetworkPtrOutput {
+	return i.ToNamespaceVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceVpcNetworkArgs) ToNamespaceVpcNetworkPtrOutputWithContext(ctx context.Context) NamespaceVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVpcNetworkOutput).ToNamespaceVpcNetworkPtrOutputWithContext(ctx)
+}
+
+// NamespaceVpcNetworkPtrInput is an input type that accepts NamespaceVpcNetworkArgs, NamespaceVpcNetworkPtr and NamespaceVpcNetworkPtrOutput values.
+// You can construct a concrete instance of `NamespaceVpcNetworkPtrInput` via:
+//
+//	        NamespaceVpcNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamespaceVpcNetworkPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceVpcNetworkPtrOutput() NamespaceVpcNetworkPtrOutput
+	ToNamespaceVpcNetworkPtrOutputWithContext(context.Context) NamespaceVpcNetworkPtrOutput
+}
+
+type namespaceVpcNetworkPtrType NamespaceVpcNetworkArgs
+
+func NamespaceVpcNetworkPtr(v *NamespaceVpcNetworkArgs) NamespaceVpcNetworkPtrInput {
+	return (*namespaceVpcNetworkPtrType)(v)
+}
+
+func (*namespaceVpcNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (i *namespaceVpcNetworkPtrType) ToNamespaceVpcNetworkPtrOutput() NamespaceVpcNetworkPtrOutput {
+	return i.ToNamespaceVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceVpcNetworkPtrType) ToNamespaceVpcNetworkPtrOutputWithContext(ctx context.Context) NamespaceVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVpcNetworkPtrOutput)
+}
+
+type NamespaceVpcNetworkOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVpcNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (o NamespaceVpcNetworkOutput) ToNamespaceVpcNetworkOutput() NamespaceVpcNetworkOutput {
+	return o
+}
+
+func (o NamespaceVpcNetworkOutput) ToNamespaceVpcNetworkOutputWithContext(ctx context.Context) NamespaceVpcNetworkOutput {
+	return o
+}
+
+func (o NamespaceVpcNetworkOutput) ToNamespaceVpcNetworkPtrOutput() NamespaceVpcNetworkPtrOutput {
+	return o.ToNamespaceVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceVpcNetworkOutput) ToNamespaceVpcNetworkPtrOutputWithContext(ctx context.Context) NamespaceVpcNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceVpcNetwork) *NamespaceVpcNetwork {
+		return &v
+	}).(NamespaceVpcNetworkPtrOutput)
+}
+
+// An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+//
+// > **NOTE:** Requires vCenter 9.1.0 or later. `podDefault` and `vmDefault` require vCenter 9.1.1 or later.
+func (o NamespaceVpcNetworkOutput) SharedSubnets() NamespaceVpcNetworkSharedSubnetArrayOutput {
+	return o.ApplyT(func(v NamespaceVpcNetwork) []NamespaceVpcNetworkSharedSubnet { return v.SharedSubnets }).(NamespaceVpcNetworkSharedSubnetArrayOutput)
+}
+
+// The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+func (o NamespaceVpcNetworkOutput) Vpc() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceVpcNetwork) string { return v.Vpc }).(pulumi.StringOutput)
+}
+
+type NamespaceVpcNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVpcNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (o NamespaceVpcNetworkPtrOutput) ToNamespaceVpcNetworkPtrOutput() NamespaceVpcNetworkPtrOutput {
+	return o
+}
+
+func (o NamespaceVpcNetworkPtrOutput) ToNamespaceVpcNetworkPtrOutputWithContext(ctx context.Context) NamespaceVpcNetworkPtrOutput {
+	return o
+}
+
+func (o NamespaceVpcNetworkPtrOutput) Elem() NamespaceVpcNetworkOutput {
+	return o.ApplyT(func(v *NamespaceVpcNetwork) NamespaceVpcNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceVpcNetwork
+		return ret
+	}).(NamespaceVpcNetworkOutput)
+}
+
+// An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+//
+// > **NOTE:** Requires vCenter 9.1.0 or later. `podDefault` and `vmDefault` require vCenter 9.1.1 or later.
+func (o NamespaceVpcNetworkPtrOutput) SharedSubnets() NamespaceVpcNetworkSharedSubnetArrayOutput {
+	return o.ApplyT(func(v *NamespaceVpcNetwork) []NamespaceVpcNetworkSharedSubnet {
+		if v == nil {
+			return nil
+		}
+		return v.SharedSubnets
+	}).(NamespaceVpcNetworkSharedSubnetArrayOutput)
+}
+
+// The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+func (o NamespaceVpcNetworkPtrOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Vpc
+	}).(pulumi.StringPtrOutput)
+}
+
+type NamespaceVpcNetworkSharedSubnet struct {
+	// The NSX path of the subnet.
+	Path string `pulumi:"path"`
+	// Whether the subnet is the default network for vSphere Pods.
+	PodDefault *bool `pulumi:"podDefault"`
+	// Whether the subnet is the default network for VMs.
+	VmDefault *bool `pulumi:"vmDefault"`
+}
+
+// NamespaceVpcNetworkSharedSubnetInput is an input type that accepts NamespaceVpcNetworkSharedSubnetArgs and NamespaceVpcNetworkSharedSubnetOutput values.
+// You can construct a concrete instance of `NamespaceVpcNetworkSharedSubnetInput` via:
+//
+//	NamespaceVpcNetworkSharedSubnetArgs{...}
+type NamespaceVpcNetworkSharedSubnetInput interface {
+	pulumi.Input
+
+	ToNamespaceVpcNetworkSharedSubnetOutput() NamespaceVpcNetworkSharedSubnetOutput
+	ToNamespaceVpcNetworkSharedSubnetOutputWithContext(context.Context) NamespaceVpcNetworkSharedSubnetOutput
+}
+
+type NamespaceVpcNetworkSharedSubnetArgs struct {
+	// The NSX path of the subnet.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether the subnet is the default network for vSphere Pods.
+	PodDefault pulumi.BoolPtrInput `pulumi:"podDefault"`
+	// Whether the subnet is the default network for VMs.
+	VmDefault pulumi.BoolPtrInput `pulumi:"vmDefault"`
+}
+
+func (NamespaceVpcNetworkSharedSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (i NamespaceVpcNetworkSharedSubnetArgs) ToNamespaceVpcNetworkSharedSubnetOutput() NamespaceVpcNetworkSharedSubnetOutput {
+	return i.ToNamespaceVpcNetworkSharedSubnetOutputWithContext(context.Background())
+}
+
+func (i NamespaceVpcNetworkSharedSubnetArgs) ToNamespaceVpcNetworkSharedSubnetOutputWithContext(ctx context.Context) NamespaceVpcNetworkSharedSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVpcNetworkSharedSubnetOutput)
+}
+
+// NamespaceVpcNetworkSharedSubnetArrayInput is an input type that accepts NamespaceVpcNetworkSharedSubnetArray and NamespaceVpcNetworkSharedSubnetArrayOutput values.
+// You can construct a concrete instance of `NamespaceVpcNetworkSharedSubnetArrayInput` via:
+//
+//	NamespaceVpcNetworkSharedSubnetArray{ NamespaceVpcNetworkSharedSubnetArgs{...} }
+type NamespaceVpcNetworkSharedSubnetArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceVpcNetworkSharedSubnetArrayOutput() NamespaceVpcNetworkSharedSubnetArrayOutput
+	ToNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(context.Context) NamespaceVpcNetworkSharedSubnetArrayOutput
+}
+
+type NamespaceVpcNetworkSharedSubnetArray []NamespaceVpcNetworkSharedSubnetInput
+
+func (NamespaceVpcNetworkSharedSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (i NamespaceVpcNetworkSharedSubnetArray) ToNamespaceVpcNetworkSharedSubnetArrayOutput() NamespaceVpcNetworkSharedSubnetArrayOutput {
+	return i.ToNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceVpcNetworkSharedSubnetArray) ToNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(ctx context.Context) NamespaceVpcNetworkSharedSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVpcNetworkSharedSubnetArrayOutput)
+}
+
+type NamespaceVpcNetworkSharedSubnetOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVpcNetworkSharedSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (o NamespaceVpcNetworkSharedSubnetOutput) ToNamespaceVpcNetworkSharedSubnetOutput() NamespaceVpcNetworkSharedSubnetOutput {
+	return o
+}
+
+func (o NamespaceVpcNetworkSharedSubnetOutput) ToNamespaceVpcNetworkSharedSubnetOutputWithContext(ctx context.Context) NamespaceVpcNetworkSharedSubnetOutput {
+	return o
+}
+
+// The NSX path of the subnet.
+func (o NamespaceVpcNetworkSharedSubnetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceVpcNetworkSharedSubnet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether the subnet is the default network for vSphere Pods.
+func (o NamespaceVpcNetworkSharedSubnetOutput) PodDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NamespaceVpcNetworkSharedSubnet) *bool { return v.PodDefault }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the subnet is the default network for VMs.
+func (o NamespaceVpcNetworkSharedSubnetOutput) VmDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NamespaceVpcNetworkSharedSubnet) *bool { return v.VmDefault }).(pulumi.BoolPtrOutput)
+}
+
+type NamespaceVpcNetworkSharedSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVpcNetworkSharedSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (o NamespaceVpcNetworkSharedSubnetArrayOutput) ToNamespaceVpcNetworkSharedSubnetArrayOutput() NamespaceVpcNetworkSharedSubnetArrayOutput {
+	return o
+}
+
+func (o NamespaceVpcNetworkSharedSubnetArrayOutput) ToNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(ctx context.Context) NamespaceVpcNetworkSharedSubnetArrayOutput {
+	return o
+}
+
+func (o NamespaceVpcNetworkSharedSubnetArrayOutput) Index(i pulumi.IntInput) NamespaceVpcNetworkSharedSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceVpcNetworkSharedSubnet {
+		return vs[0].([]NamespaceVpcNetworkSharedSubnet)[vs[1].(int)]
+	}).(NamespaceVpcNetworkSharedSubnetOutput)
+}
+
+type NamespaceVsphereNetwork struct {
+	// The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+	DefaultWorkloadNetwork string `pulumi:"defaultWorkloadNetwork"`
+	// The names of the Supervisor networks to associate with the vSphere Namespace, including `defaultWorkloadNetwork`. These are Supervisor network names, not port group IDs. See the `workloadNetwork` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+	//
+	// > **NOTE:** In v2.18.0, `storagePolicy` superseded the `storagePolicies` argument. To upgrade, replace
+	Networks []string `pulumi:"networks"`
+}
+
+// NamespaceVsphereNetworkInput is an input type that accepts NamespaceVsphereNetworkArgs and NamespaceVsphereNetworkOutput values.
+// You can construct a concrete instance of `NamespaceVsphereNetworkInput` via:
+//
+//	NamespaceVsphereNetworkArgs{...}
+type NamespaceVsphereNetworkInput interface {
+	pulumi.Input
+
+	ToNamespaceVsphereNetworkOutput() NamespaceVsphereNetworkOutput
+	ToNamespaceVsphereNetworkOutputWithContext(context.Context) NamespaceVsphereNetworkOutput
+}
+
+type NamespaceVsphereNetworkArgs struct {
+	// The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+	DefaultWorkloadNetwork pulumi.StringInput `pulumi:"defaultWorkloadNetwork"`
+	// The names of the Supervisor networks to associate with the vSphere Namespace, including `defaultWorkloadNetwork`. These are Supervisor network names, not port group IDs. See the `workloadNetwork` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+	//
+	// > **NOTE:** In v2.18.0, `storagePolicy` superseded the `storagePolicies` argument. To upgrade, replace
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+}
+
+func (NamespaceVsphereNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (i NamespaceVsphereNetworkArgs) ToNamespaceVsphereNetworkOutput() NamespaceVsphereNetworkOutput {
+	return i.ToNamespaceVsphereNetworkOutputWithContext(context.Background())
+}
+
+func (i NamespaceVsphereNetworkArgs) ToNamespaceVsphereNetworkOutputWithContext(ctx context.Context) NamespaceVsphereNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVsphereNetworkOutput)
+}
+
+func (i NamespaceVsphereNetworkArgs) ToNamespaceVsphereNetworkPtrOutput() NamespaceVsphereNetworkPtrOutput {
+	return i.ToNamespaceVsphereNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceVsphereNetworkArgs) ToNamespaceVsphereNetworkPtrOutputWithContext(ctx context.Context) NamespaceVsphereNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVsphereNetworkOutput).ToNamespaceVsphereNetworkPtrOutputWithContext(ctx)
+}
+
+// NamespaceVsphereNetworkPtrInput is an input type that accepts NamespaceVsphereNetworkArgs, NamespaceVsphereNetworkPtr and NamespaceVsphereNetworkPtrOutput values.
+// You can construct a concrete instance of `NamespaceVsphereNetworkPtrInput` via:
+//
+//	        NamespaceVsphereNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamespaceVsphereNetworkPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceVsphereNetworkPtrOutput() NamespaceVsphereNetworkPtrOutput
+	ToNamespaceVsphereNetworkPtrOutputWithContext(context.Context) NamespaceVsphereNetworkPtrOutput
+}
+
+type namespaceVsphereNetworkPtrType NamespaceVsphereNetworkArgs
+
+func NamespaceVsphereNetworkPtr(v *NamespaceVsphereNetworkArgs) NamespaceVsphereNetworkPtrInput {
+	return (*namespaceVsphereNetworkPtrType)(v)
+}
+
+func (*namespaceVsphereNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (i *namespaceVsphereNetworkPtrType) ToNamespaceVsphereNetworkPtrOutput() NamespaceVsphereNetworkPtrOutput {
+	return i.ToNamespaceVsphereNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceVsphereNetworkPtrType) ToNamespaceVsphereNetworkPtrOutputWithContext(ctx context.Context) NamespaceVsphereNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVsphereNetworkPtrOutput)
+}
+
+type NamespaceVsphereNetworkOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVsphereNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (o NamespaceVsphereNetworkOutput) ToNamespaceVsphereNetworkOutput() NamespaceVsphereNetworkOutput {
+	return o
+}
+
+func (o NamespaceVsphereNetworkOutput) ToNamespaceVsphereNetworkOutputWithContext(ctx context.Context) NamespaceVsphereNetworkOutput {
+	return o
+}
+
+func (o NamespaceVsphereNetworkOutput) ToNamespaceVsphereNetworkPtrOutput() NamespaceVsphereNetworkPtrOutput {
+	return o.ToNamespaceVsphereNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceVsphereNetworkOutput) ToNamespaceVsphereNetworkPtrOutputWithContext(ctx context.Context) NamespaceVsphereNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceVsphereNetwork) *NamespaceVsphereNetwork {
+		return &v
+	}).(NamespaceVsphereNetworkPtrOutput)
+}
+
+// The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+func (o NamespaceVsphereNetworkOutput) DefaultWorkloadNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceVsphereNetwork) string { return v.DefaultWorkloadNetwork }).(pulumi.StringOutput)
+}
+
+// The names of the Supervisor networks to associate with the vSphere Namespace, including `defaultWorkloadNetwork`. These are Supervisor network names, not port group IDs. See the `workloadNetwork` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+//
+// > **NOTE:** In v2.18.0, `storagePolicy` superseded the `storagePolicies` argument. To upgrade, replace
+func (o NamespaceVsphereNetworkOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NamespaceVsphereNetwork) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+type NamespaceVsphereNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceVsphereNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (o NamespaceVsphereNetworkPtrOutput) ToNamespaceVsphereNetworkPtrOutput() NamespaceVsphereNetworkPtrOutput {
+	return o
+}
+
+func (o NamespaceVsphereNetworkPtrOutput) ToNamespaceVsphereNetworkPtrOutputWithContext(ctx context.Context) NamespaceVsphereNetworkPtrOutput {
+	return o
+}
+
+func (o NamespaceVsphereNetworkPtrOutput) Elem() NamespaceVsphereNetworkOutput {
+	return o.ApplyT(func(v *NamespaceVsphereNetwork) NamespaceVsphereNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceVsphereNetwork
+		return ret
+	}).(NamespaceVsphereNetworkOutput)
+}
+
+// The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+func (o NamespaceVsphereNetworkPtrOutput) DefaultWorkloadNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceVsphereNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultWorkloadNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// The names of the Supervisor networks to associate with the vSphere Namespace, including `defaultWorkloadNetwork`. These are Supervisor network names, not port group IDs. See the `workloadNetwork` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+//
+// > **NOTE:** In v2.18.0, `storagePolicy` superseded the `storagePolicies` argument. To upgrade, replace
+func (o NamespaceVsphereNetworkPtrOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NamespaceVsphereNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(pulumi.StringArrayOutput)
+}
+
+type NamespaceZone struct {
+	// The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+	CpuLimit *int `pulumi:"cpuLimit"`
+	// The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+	CpuReservation *int `pulumi:"cpuReservation"`
+	// Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+	DisallowUnreservedDirectPathUsage *bool `pulumi:"disallowUnreservedDirectPathUsage"`
+	// The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+	MemoryLimit *int `pulumi:"memoryLimit"`
+	// The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+	MemoryReservation *int `pulumi:"memoryReservation"`
+	// The identifier of the vSphere Zone.
+	Name string `pulumi:"name"`
+	// A reservation of VM class instances for the vSphere Namespace in the zone.
+	VmClassReservations []NamespaceZoneVmClassReservation `pulumi:"vmClassReservations"`
+}
+
+// NamespaceZoneInput is an input type that accepts NamespaceZoneArgs and NamespaceZoneOutput values.
+// You can construct a concrete instance of `NamespaceZoneInput` via:
+//
+//	NamespaceZoneArgs{...}
+type NamespaceZoneInput interface {
+	pulumi.Input
+
+	ToNamespaceZoneOutput() NamespaceZoneOutput
+	ToNamespaceZoneOutputWithContext(context.Context) NamespaceZoneOutput
+}
+
+type NamespaceZoneArgs struct {
+	// The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+	CpuLimit pulumi.IntPtrInput `pulumi:"cpuLimit"`
+	// The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+	CpuReservation pulumi.IntPtrInput `pulumi:"cpuReservation"`
+	// Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+	DisallowUnreservedDirectPathUsage pulumi.BoolPtrInput `pulumi:"disallowUnreservedDirectPathUsage"`
+	// The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+	MemoryLimit pulumi.IntPtrInput `pulumi:"memoryLimit"`
+	// The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+	MemoryReservation pulumi.IntPtrInput `pulumi:"memoryReservation"`
+	// The identifier of the vSphere Zone.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A reservation of VM class instances for the vSphere Namespace in the zone.
+	VmClassReservations NamespaceZoneVmClassReservationArrayInput `pulumi:"vmClassReservations"`
+}
+
+func (NamespaceZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceZone)(nil)).Elem()
+}
+
+func (i NamespaceZoneArgs) ToNamespaceZoneOutput() NamespaceZoneOutput {
+	return i.ToNamespaceZoneOutputWithContext(context.Background())
+}
+
+func (i NamespaceZoneArgs) ToNamespaceZoneOutputWithContext(ctx context.Context) NamespaceZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceZoneOutput)
+}
+
+// NamespaceZoneArrayInput is an input type that accepts NamespaceZoneArray and NamespaceZoneArrayOutput values.
+// You can construct a concrete instance of `NamespaceZoneArrayInput` via:
+//
+//	NamespaceZoneArray{ NamespaceZoneArgs{...} }
+type NamespaceZoneArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceZoneArrayOutput() NamespaceZoneArrayOutput
+	ToNamespaceZoneArrayOutputWithContext(context.Context) NamespaceZoneArrayOutput
+}
+
+type NamespaceZoneArray []NamespaceZoneInput
+
+func (NamespaceZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceZone)(nil)).Elem()
+}
+
+func (i NamespaceZoneArray) ToNamespaceZoneArrayOutput() NamespaceZoneArrayOutput {
+	return i.ToNamespaceZoneArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceZoneArray) ToNamespaceZoneArrayOutputWithContext(ctx context.Context) NamespaceZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceZoneArrayOutput)
+}
+
+type NamespaceZoneOutput struct{ *pulumi.OutputState }
+
+func (NamespaceZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceZone)(nil)).Elem()
+}
+
+func (o NamespaceZoneOutput) ToNamespaceZoneOutput() NamespaceZoneOutput {
+	return o
+}
+
+func (o NamespaceZoneOutput) ToNamespaceZoneOutputWithContext(ctx context.Context) NamespaceZoneOutput {
+	return o
+}
+
+// The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+func (o NamespaceZoneOutput) CpuLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceZone) *int { return v.CpuLimit }).(pulumi.IntPtrOutput)
+}
+
+// The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+func (o NamespaceZoneOutput) CpuReservation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceZone) *int { return v.CpuReservation }).(pulumi.IntPtrOutput)
+}
+
+// Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+func (o NamespaceZoneOutput) DisallowUnreservedDirectPathUsage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NamespaceZone) *bool { return v.DisallowUnreservedDirectPathUsage }).(pulumi.BoolPtrOutput)
+}
+
+// The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+func (o NamespaceZoneOutput) MemoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceZone) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+func (o NamespaceZoneOutput) MemoryReservation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceZone) *int { return v.MemoryReservation }).(pulumi.IntPtrOutput)
+}
+
+// The identifier of the vSphere Zone.
+func (o NamespaceZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceZone) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A reservation of VM class instances for the vSphere Namespace in the zone.
+func (o NamespaceZoneOutput) VmClassReservations() NamespaceZoneVmClassReservationArrayOutput {
+	return o.ApplyT(func(v NamespaceZone) []NamespaceZoneVmClassReservation { return v.VmClassReservations }).(NamespaceZoneVmClassReservationArrayOutput)
+}
+
+type NamespaceZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceZone)(nil)).Elem()
+}
+
+func (o NamespaceZoneArrayOutput) ToNamespaceZoneArrayOutput() NamespaceZoneArrayOutput {
+	return o
+}
+
+func (o NamespaceZoneArrayOutput) ToNamespaceZoneArrayOutputWithContext(ctx context.Context) NamespaceZoneArrayOutput {
+	return o
+}
+
+func (o NamespaceZoneArrayOutput) Index(i pulumi.IntInput) NamespaceZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceZone {
+		return vs[0].([]NamespaceZone)[vs[1].(int)]
+	}).(NamespaceZoneOutput)
+}
+
+type NamespaceZoneVmClassReservation struct {
+	// The number of VM class instances to reserve.
+	Count int `pulumi:"count"`
+	// The name of the VM class.
+	VmClass string `pulumi:"vmClass"`
+}
+
+// NamespaceZoneVmClassReservationInput is an input type that accepts NamespaceZoneVmClassReservationArgs and NamespaceZoneVmClassReservationOutput values.
+// You can construct a concrete instance of `NamespaceZoneVmClassReservationInput` via:
+//
+//	NamespaceZoneVmClassReservationArgs{...}
+type NamespaceZoneVmClassReservationInput interface {
+	pulumi.Input
+
+	ToNamespaceZoneVmClassReservationOutput() NamespaceZoneVmClassReservationOutput
+	ToNamespaceZoneVmClassReservationOutputWithContext(context.Context) NamespaceZoneVmClassReservationOutput
+}
+
+type NamespaceZoneVmClassReservationArgs struct {
+	// The number of VM class instances to reserve.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The name of the VM class.
+	VmClass pulumi.StringInput `pulumi:"vmClass"`
+}
+
+func (NamespaceZoneVmClassReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceZoneVmClassReservation)(nil)).Elem()
+}
+
+func (i NamespaceZoneVmClassReservationArgs) ToNamespaceZoneVmClassReservationOutput() NamespaceZoneVmClassReservationOutput {
+	return i.ToNamespaceZoneVmClassReservationOutputWithContext(context.Background())
+}
+
+func (i NamespaceZoneVmClassReservationArgs) ToNamespaceZoneVmClassReservationOutputWithContext(ctx context.Context) NamespaceZoneVmClassReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceZoneVmClassReservationOutput)
+}
+
+// NamespaceZoneVmClassReservationArrayInput is an input type that accepts NamespaceZoneVmClassReservationArray and NamespaceZoneVmClassReservationArrayOutput values.
+// You can construct a concrete instance of `NamespaceZoneVmClassReservationArrayInput` via:
+//
+//	NamespaceZoneVmClassReservationArray{ NamespaceZoneVmClassReservationArgs{...} }
+type NamespaceZoneVmClassReservationArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceZoneVmClassReservationArrayOutput() NamespaceZoneVmClassReservationArrayOutput
+	ToNamespaceZoneVmClassReservationArrayOutputWithContext(context.Context) NamespaceZoneVmClassReservationArrayOutput
+}
+
+type NamespaceZoneVmClassReservationArray []NamespaceZoneVmClassReservationInput
+
+func (NamespaceZoneVmClassReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceZoneVmClassReservation)(nil)).Elem()
+}
+
+func (i NamespaceZoneVmClassReservationArray) ToNamespaceZoneVmClassReservationArrayOutput() NamespaceZoneVmClassReservationArrayOutput {
+	return i.ToNamespaceZoneVmClassReservationArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceZoneVmClassReservationArray) ToNamespaceZoneVmClassReservationArrayOutputWithContext(ctx context.Context) NamespaceZoneVmClassReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceZoneVmClassReservationArrayOutput)
+}
+
+type NamespaceZoneVmClassReservationOutput struct{ *pulumi.OutputState }
+
+func (NamespaceZoneVmClassReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceZoneVmClassReservation)(nil)).Elem()
+}
+
+func (o NamespaceZoneVmClassReservationOutput) ToNamespaceZoneVmClassReservationOutput() NamespaceZoneVmClassReservationOutput {
+	return o
+}
+
+func (o NamespaceZoneVmClassReservationOutput) ToNamespaceZoneVmClassReservationOutputWithContext(ctx context.Context) NamespaceZoneVmClassReservationOutput {
+	return o
+}
+
+// The number of VM class instances to reserve.
+func (o NamespaceZoneVmClassReservationOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v NamespaceZoneVmClassReservation) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The name of the VM class.
+func (o NamespaceZoneVmClassReservationOutput) VmClass() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceZoneVmClassReservation) string { return v.VmClass }).(pulumi.StringOutput)
+}
+
+type NamespaceZoneVmClassReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceZoneVmClassReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceZoneVmClassReservation)(nil)).Elem()
+}
+
+func (o NamespaceZoneVmClassReservationArrayOutput) ToNamespaceZoneVmClassReservationArrayOutput() NamespaceZoneVmClassReservationArrayOutput {
+	return o
+}
+
+func (o NamespaceZoneVmClassReservationArrayOutput) ToNamespaceZoneVmClassReservationArrayOutputWithContext(ctx context.Context) NamespaceZoneVmClassReservationArrayOutput {
+	return o
+}
+
+func (o NamespaceZoneVmClassReservationArrayOutput) Index(i pulumi.IntInput) NamespaceZoneVmClassReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceZoneVmClassReservation {
+		return vs[0].([]NamespaceZoneVmClassReservation)[vs[1].(int)]
+	}).(NamespaceZoneVmClassReservationOutput)
 }
 
 type NetworkProtocolProfileIpv4 struct {
@@ -17829,6 +18883,145 @@ func (o GetAlarmStateExpressionArrayOutput) Index(i pulumi.IntInput) GetAlarmSta
 	}).(GetAlarmStateExpressionOutput)
 }
 
+type GetContentLibraryItemsItem struct {
+	// The creation time of the item (RFC3339).
+	CreationTime string `pulumi:"creationTime"`
+	// The UUID of the content library item.
+	Id string `pulumi:"id"`
+	// The last modification time of the item (RFC3339).
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// Filter items by exact name. Mutually exclusive with
+	// `nameRegex`. If omitted, items of any name are returned.
+	Name string `pulumi:"name"`
+	// Filter items by type (e.g. `ovf`, `iso`, `vm-template`).
+	// If omitted, items of any type are returned.
+	Type string `pulumi:"type"`
+}
+
+// GetContentLibraryItemsItemInput is an input type that accepts GetContentLibraryItemsItemArgs and GetContentLibraryItemsItemOutput values.
+// You can construct a concrete instance of `GetContentLibraryItemsItemInput` via:
+//
+//	GetContentLibraryItemsItemArgs{...}
+type GetContentLibraryItemsItemInput interface {
+	pulumi.Input
+
+	ToGetContentLibraryItemsItemOutput() GetContentLibraryItemsItemOutput
+	ToGetContentLibraryItemsItemOutputWithContext(context.Context) GetContentLibraryItemsItemOutput
+}
+
+type GetContentLibraryItemsItemArgs struct {
+	// The creation time of the item (RFC3339).
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The UUID of the content library item.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last modification time of the item (RFC3339).
+	LastModifiedTime pulumi.StringInput `pulumi:"lastModifiedTime"`
+	// Filter items by exact name. Mutually exclusive with
+	// `nameRegex`. If omitted, items of any name are returned.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Filter items by type (e.g. `ovf`, `iso`, `vm-template`).
+	// If omitted, items of any type are returned.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetContentLibraryItemsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContentLibraryItemsItem)(nil)).Elem()
+}
+
+func (i GetContentLibraryItemsItemArgs) ToGetContentLibraryItemsItemOutput() GetContentLibraryItemsItemOutput {
+	return i.ToGetContentLibraryItemsItemOutputWithContext(context.Background())
+}
+
+func (i GetContentLibraryItemsItemArgs) ToGetContentLibraryItemsItemOutputWithContext(ctx context.Context) GetContentLibraryItemsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContentLibraryItemsItemOutput)
+}
+
+// GetContentLibraryItemsItemArrayInput is an input type that accepts GetContentLibraryItemsItemArray and GetContentLibraryItemsItemArrayOutput values.
+// You can construct a concrete instance of `GetContentLibraryItemsItemArrayInput` via:
+//
+//	GetContentLibraryItemsItemArray{ GetContentLibraryItemsItemArgs{...} }
+type GetContentLibraryItemsItemArrayInput interface {
+	pulumi.Input
+
+	ToGetContentLibraryItemsItemArrayOutput() GetContentLibraryItemsItemArrayOutput
+	ToGetContentLibraryItemsItemArrayOutputWithContext(context.Context) GetContentLibraryItemsItemArrayOutput
+}
+
+type GetContentLibraryItemsItemArray []GetContentLibraryItemsItemInput
+
+func (GetContentLibraryItemsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContentLibraryItemsItem)(nil)).Elem()
+}
+
+func (i GetContentLibraryItemsItemArray) ToGetContentLibraryItemsItemArrayOutput() GetContentLibraryItemsItemArrayOutput {
+	return i.ToGetContentLibraryItemsItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetContentLibraryItemsItemArray) ToGetContentLibraryItemsItemArrayOutputWithContext(ctx context.Context) GetContentLibraryItemsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContentLibraryItemsItemArrayOutput)
+}
+
+type GetContentLibraryItemsItemOutput struct{ *pulumi.OutputState }
+
+func (GetContentLibraryItemsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContentLibraryItemsItem)(nil)).Elem()
+}
+
+func (o GetContentLibraryItemsItemOutput) ToGetContentLibraryItemsItemOutput() GetContentLibraryItemsItemOutput {
+	return o
+}
+
+func (o GetContentLibraryItemsItemOutput) ToGetContentLibraryItemsItemOutputWithContext(ctx context.Context) GetContentLibraryItemsItemOutput {
+	return o
+}
+
+// The creation time of the item (RFC3339).
+func (o GetContentLibraryItemsItemOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContentLibraryItemsItem) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The UUID of the content library item.
+func (o GetContentLibraryItemsItemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContentLibraryItemsItem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last modification time of the item (RFC3339).
+func (o GetContentLibraryItemsItemOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContentLibraryItemsItem) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// Filter items by exact name. Mutually exclusive with
+// `nameRegex`. If omitted, items of any name are returned.
+func (o GetContentLibraryItemsItemOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContentLibraryItemsItem) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Filter items by type (e.g. `ovf`, `iso`, `vm-template`).
+// If omitted, items of any type are returned.
+func (o GetContentLibraryItemsItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContentLibraryItemsItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetContentLibraryItemsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetContentLibraryItemsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContentLibraryItemsItem)(nil)).Elem()
+}
+
+func (o GetContentLibraryItemsItemArrayOutput) ToGetContentLibraryItemsItemArrayOutput() GetContentLibraryItemsItemArrayOutput {
+	return o
+}
+
+func (o GetContentLibraryItemsItemArrayOutput) ToGetContentLibraryItemsItemArrayOutputWithContext(ctx context.Context) GetContentLibraryItemsItemArrayOutput {
+	return o
+}
+
+func (o GetContentLibraryItemsItemArrayOutput) Index(i pulumi.IntInput) GetContentLibraryItemsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContentLibraryItemsItem {
+		return vs[0].([]GetContentLibraryItemsItem)[vs[1].(int)]
+	}).(GetContentLibraryItemsItemOutput)
+}
+
 type GetGuestOsCustomizationSpec struct {
 	// A list of DNS servers for a virtual network adapter with a static IP address.
 	DnsServerLists []string `pulumi:"dnsServerLists"`
@@ -18612,6 +19805,360 @@ func (o GetHostVgpuProfileVgpuProfileArrayOutput) Index(i pulumi.IntInput) GetHo
 	}).(GetHostVgpuProfileVgpuProfileOutput)
 }
 
+type GetNamespaceGroup struct {
+	// The domain of the identity source that owns the group.
+	Domain string `pulumi:"domain"`
+	// The identifier of the identity provider.
+	IdentityProvider string `pulumi:"identityProvider"`
+	// The name of the vSphere Namespace.
+	Name string `pulumi:"name"`
+	// The role of the group in the vSphere Namespace.
+	Role string `pulumi:"role"`
+}
+
+// GetNamespaceGroupInput is an input type that accepts GetNamespaceGroupArgs and GetNamespaceGroupOutput values.
+// You can construct a concrete instance of `GetNamespaceGroupInput` via:
+//
+//	GetNamespaceGroupArgs{...}
+type GetNamespaceGroupInput interface {
+	pulumi.Input
+
+	ToGetNamespaceGroupOutput() GetNamespaceGroupOutput
+	ToGetNamespaceGroupOutputWithContext(context.Context) GetNamespaceGroupOutput
+}
+
+type GetNamespaceGroupArgs struct {
+	// The domain of the identity source that owns the group.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The identifier of the identity provider.
+	IdentityProvider pulumi.StringInput `pulumi:"identityProvider"`
+	// The name of the vSphere Namespace.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The role of the group in the vSphere Namespace.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetNamespaceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceGroup)(nil)).Elem()
+}
+
+func (i GetNamespaceGroupArgs) ToGetNamespaceGroupOutput() GetNamespaceGroupOutput {
+	return i.ToGetNamespaceGroupOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceGroupArgs) ToGetNamespaceGroupOutputWithContext(ctx context.Context) GetNamespaceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceGroupOutput)
+}
+
+// GetNamespaceGroupArrayInput is an input type that accepts GetNamespaceGroupArray and GetNamespaceGroupArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceGroupArrayInput` via:
+//
+//	GetNamespaceGroupArray{ GetNamespaceGroupArgs{...} }
+type GetNamespaceGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceGroupArrayOutput() GetNamespaceGroupArrayOutput
+	ToGetNamespaceGroupArrayOutputWithContext(context.Context) GetNamespaceGroupArrayOutput
+}
+
+type GetNamespaceGroupArray []GetNamespaceGroupInput
+
+func (GetNamespaceGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceGroup)(nil)).Elem()
+}
+
+func (i GetNamespaceGroupArray) ToGetNamespaceGroupArrayOutput() GetNamespaceGroupArrayOutput {
+	return i.ToGetNamespaceGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceGroupArray) ToGetNamespaceGroupArrayOutputWithContext(ctx context.Context) GetNamespaceGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceGroupArrayOutput)
+}
+
+type GetNamespaceGroupOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceGroup)(nil)).Elem()
+}
+
+func (o GetNamespaceGroupOutput) ToGetNamespaceGroupOutput() GetNamespaceGroupOutput {
+	return o
+}
+
+func (o GetNamespaceGroupOutput) ToGetNamespaceGroupOutputWithContext(ctx context.Context) GetNamespaceGroupOutput {
+	return o
+}
+
+// The domain of the identity source that owns the group.
+func (o GetNamespaceGroupOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceGroup) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The identifier of the identity provider.
+func (o GetNamespaceGroupOutput) IdentityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceGroup) string { return v.IdentityProvider }).(pulumi.StringOutput)
+}
+
+// The name of the vSphere Namespace.
+func (o GetNamespaceGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The role of the group in the vSphere Namespace.
+func (o GetNamespaceGroupOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceGroup) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetNamespaceGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceGroup)(nil)).Elem()
+}
+
+func (o GetNamespaceGroupArrayOutput) ToGetNamespaceGroupArrayOutput() GetNamespaceGroupArrayOutput {
+	return o
+}
+
+func (o GetNamespaceGroupArrayOutput) ToGetNamespaceGroupArrayOutputWithContext(ctx context.Context) GetNamespaceGroupArrayOutput {
+	return o
+}
+
+func (o GetNamespaceGroupArrayOutput) Index(i pulumi.IntInput) GetNamespaceGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceGroup {
+		return vs[0].([]GetNamespaceGroup)[vs[1].(int)]
+	}).(GetNamespaceGroupOutput)
+}
+
+type GetNamespaceStoragePolicy struct {
+	// The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. `0` means no limit.
+	Limit int `pulumi:"limit"`
+	// The identifier of the storage policy.
+	Policy string `pulumi:"policy"`
+}
+
+// GetNamespaceStoragePolicyInput is an input type that accepts GetNamespaceStoragePolicyArgs and GetNamespaceStoragePolicyOutput values.
+// You can construct a concrete instance of `GetNamespaceStoragePolicyInput` via:
+//
+//	GetNamespaceStoragePolicyArgs{...}
+type GetNamespaceStoragePolicyInput interface {
+	pulumi.Input
+
+	ToGetNamespaceStoragePolicyOutput() GetNamespaceStoragePolicyOutput
+	ToGetNamespaceStoragePolicyOutputWithContext(context.Context) GetNamespaceStoragePolicyOutput
+}
+
+type GetNamespaceStoragePolicyArgs struct {
+	// The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. `0` means no limit.
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The identifier of the storage policy.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetNamespaceStoragePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (i GetNamespaceStoragePolicyArgs) ToGetNamespaceStoragePolicyOutput() GetNamespaceStoragePolicyOutput {
+	return i.ToGetNamespaceStoragePolicyOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceStoragePolicyArgs) ToGetNamespaceStoragePolicyOutputWithContext(ctx context.Context) GetNamespaceStoragePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceStoragePolicyOutput)
+}
+
+// GetNamespaceStoragePolicyArrayInput is an input type that accepts GetNamespaceStoragePolicyArray and GetNamespaceStoragePolicyArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceStoragePolicyArrayInput` via:
+//
+//	GetNamespaceStoragePolicyArray{ GetNamespaceStoragePolicyArgs{...} }
+type GetNamespaceStoragePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceStoragePolicyArrayOutput() GetNamespaceStoragePolicyArrayOutput
+	ToGetNamespaceStoragePolicyArrayOutputWithContext(context.Context) GetNamespaceStoragePolicyArrayOutput
+}
+
+type GetNamespaceStoragePolicyArray []GetNamespaceStoragePolicyInput
+
+func (GetNamespaceStoragePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (i GetNamespaceStoragePolicyArray) ToGetNamespaceStoragePolicyArrayOutput() GetNamespaceStoragePolicyArrayOutput {
+	return i.ToGetNamespaceStoragePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceStoragePolicyArray) ToGetNamespaceStoragePolicyArrayOutputWithContext(ctx context.Context) GetNamespaceStoragePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceStoragePolicyArrayOutput)
+}
+
+type GetNamespaceStoragePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceStoragePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (o GetNamespaceStoragePolicyOutput) ToGetNamespaceStoragePolicyOutput() GetNamespaceStoragePolicyOutput {
+	return o
+}
+
+func (o GetNamespaceStoragePolicyOutput) ToGetNamespaceStoragePolicyOutputWithContext(ctx context.Context) GetNamespaceStoragePolicyOutput {
+	return o
+}
+
+// The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. `0` means no limit.
+func (o GetNamespaceStoragePolicyOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNamespaceStoragePolicy) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The identifier of the storage policy.
+func (o GetNamespaceStoragePolicyOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceStoragePolicy) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetNamespaceStoragePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceStoragePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceStoragePolicy)(nil)).Elem()
+}
+
+func (o GetNamespaceStoragePolicyArrayOutput) ToGetNamespaceStoragePolicyArrayOutput() GetNamespaceStoragePolicyArrayOutput {
+	return o
+}
+
+func (o GetNamespaceStoragePolicyArrayOutput) ToGetNamespaceStoragePolicyArrayOutputWithContext(ctx context.Context) GetNamespaceStoragePolicyArrayOutput {
+	return o
+}
+
+func (o GetNamespaceStoragePolicyArrayOutput) Index(i pulumi.IntInput) GetNamespaceStoragePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceStoragePolicy {
+		return vs[0].([]GetNamespaceStoragePolicy)[vs[1].(int)]
+	}).(GetNamespaceStoragePolicyOutput)
+}
+
+type GetNamespaceUser struct {
+	// The domain of the identity source that owns the group.
+	Domain string `pulumi:"domain"`
+	// The identifier of the identity provider.
+	IdentityProvider string `pulumi:"identityProvider"`
+	// The name of the vSphere Namespace.
+	Name string `pulumi:"name"`
+	// The role of the group in the vSphere Namespace.
+	Role string `pulumi:"role"`
+}
+
+// GetNamespaceUserInput is an input type that accepts GetNamespaceUserArgs and GetNamespaceUserOutput values.
+// You can construct a concrete instance of `GetNamespaceUserInput` via:
+//
+//	GetNamespaceUserArgs{...}
+type GetNamespaceUserInput interface {
+	pulumi.Input
+
+	ToGetNamespaceUserOutput() GetNamespaceUserOutput
+	ToGetNamespaceUserOutputWithContext(context.Context) GetNamespaceUserOutput
+}
+
+type GetNamespaceUserArgs struct {
+	// The domain of the identity source that owns the group.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The identifier of the identity provider.
+	IdentityProvider pulumi.StringInput `pulumi:"identityProvider"`
+	// The name of the vSphere Namespace.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The role of the group in the vSphere Namespace.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetNamespaceUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceUser)(nil)).Elem()
+}
+
+func (i GetNamespaceUserArgs) ToGetNamespaceUserOutput() GetNamespaceUserOutput {
+	return i.ToGetNamespaceUserOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceUserArgs) ToGetNamespaceUserOutputWithContext(ctx context.Context) GetNamespaceUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceUserOutput)
+}
+
+// GetNamespaceUserArrayInput is an input type that accepts GetNamespaceUserArray and GetNamespaceUserArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceUserArrayInput` via:
+//
+//	GetNamespaceUserArray{ GetNamespaceUserArgs{...} }
+type GetNamespaceUserArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceUserArrayOutput() GetNamespaceUserArrayOutput
+	ToGetNamespaceUserArrayOutputWithContext(context.Context) GetNamespaceUserArrayOutput
+}
+
+type GetNamespaceUserArray []GetNamespaceUserInput
+
+func (GetNamespaceUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceUser)(nil)).Elem()
+}
+
+func (i GetNamespaceUserArray) ToGetNamespaceUserArrayOutput() GetNamespaceUserArrayOutput {
+	return i.ToGetNamespaceUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceUserArray) ToGetNamespaceUserArrayOutputWithContext(ctx context.Context) GetNamespaceUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceUserArrayOutput)
+}
+
+type GetNamespaceUserOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceUser)(nil)).Elem()
+}
+
+func (o GetNamespaceUserOutput) ToGetNamespaceUserOutput() GetNamespaceUserOutput {
+	return o
+}
+
+func (o GetNamespaceUserOutput) ToGetNamespaceUserOutputWithContext(ctx context.Context) GetNamespaceUserOutput {
+	return o
+}
+
+// The domain of the identity source that owns the group.
+func (o GetNamespaceUserOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceUser) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The identifier of the identity provider.
+func (o GetNamespaceUserOutput) IdentityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceUser) string { return v.IdentityProvider }).(pulumi.StringOutput)
+}
+
+// The name of the vSphere Namespace.
+func (o GetNamespaceUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The role of the group in the vSphere Namespace.
+func (o GetNamespaceUserOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceUser) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetNamespaceUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceUser)(nil)).Elem()
+}
+
+func (o GetNamespaceUserArrayOutput) ToGetNamespaceUserArrayOutput() GetNamespaceUserArrayOutput {
+	return o
+}
+
+func (o GetNamespaceUserArrayOutput) ToGetNamespaceUserArrayOutputWithContext(ctx context.Context) GetNamespaceUserArrayOutput {
+	return o
+}
+
+func (o GetNamespaceUserArrayOutput) Index(i pulumi.IntInput) GetNamespaceUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceUser {
+		return vs[0].([]GetNamespaceUser)[vs[1].(int)]
+	}).(GetNamespaceUserOutput)
+}
+
 type GetNamespaceVmService struct {
 	// The list of content libraries associated with the VM Service.
 	ContentLibraries []string `pulumi:"contentLibraries"`
@@ -18716,6 +20263,439 @@ func (o GetNamespaceVmServiceArrayOutput) Index(i pulumi.IntInput) GetNamespaceV
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceVmService {
 		return vs[0].([]GetNamespaceVmService)[vs[1].(int)]
 	}).(GetNamespaceVmServiceOutput)
+}
+
+type GetNamespaceVpcNetwork struct {
+	// An NSX subnet created outside the Supervisor that is associated with the vSphere Namespace.
+	SharedSubnets []GetNamespaceVpcNetworkSharedSubnet `pulumi:"sharedSubnets"`
+	// The NSX path of the VPC.
+	Vpc string `pulumi:"vpc"`
+}
+
+// GetNamespaceVpcNetworkInput is an input type that accepts GetNamespaceVpcNetworkArgs and GetNamespaceVpcNetworkOutput values.
+// You can construct a concrete instance of `GetNamespaceVpcNetworkInput` via:
+//
+//	GetNamespaceVpcNetworkArgs{...}
+type GetNamespaceVpcNetworkInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVpcNetworkOutput() GetNamespaceVpcNetworkOutput
+	ToGetNamespaceVpcNetworkOutputWithContext(context.Context) GetNamespaceVpcNetworkOutput
+}
+
+type GetNamespaceVpcNetworkArgs struct {
+	// An NSX subnet created outside the Supervisor that is associated with the vSphere Namespace.
+	SharedSubnets GetNamespaceVpcNetworkSharedSubnetArrayInput `pulumi:"sharedSubnets"`
+	// The NSX path of the VPC.
+	Vpc pulumi.StringInput `pulumi:"vpc"`
+}
+
+func (GetNamespaceVpcNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (i GetNamespaceVpcNetworkArgs) ToGetNamespaceVpcNetworkOutput() GetNamespaceVpcNetworkOutput {
+	return i.ToGetNamespaceVpcNetworkOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVpcNetworkArgs) ToGetNamespaceVpcNetworkOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVpcNetworkOutput)
+}
+
+// GetNamespaceVpcNetworkArrayInput is an input type that accepts GetNamespaceVpcNetworkArray and GetNamespaceVpcNetworkArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceVpcNetworkArrayInput` via:
+//
+//	GetNamespaceVpcNetworkArray{ GetNamespaceVpcNetworkArgs{...} }
+type GetNamespaceVpcNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVpcNetworkArrayOutput() GetNamespaceVpcNetworkArrayOutput
+	ToGetNamespaceVpcNetworkArrayOutputWithContext(context.Context) GetNamespaceVpcNetworkArrayOutput
+}
+
+type GetNamespaceVpcNetworkArray []GetNamespaceVpcNetworkInput
+
+func (GetNamespaceVpcNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (i GetNamespaceVpcNetworkArray) ToGetNamespaceVpcNetworkArrayOutput() GetNamespaceVpcNetworkArrayOutput {
+	return i.ToGetNamespaceVpcNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVpcNetworkArray) ToGetNamespaceVpcNetworkArrayOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVpcNetworkArrayOutput)
+}
+
+type GetNamespaceVpcNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVpcNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (o GetNamespaceVpcNetworkOutput) ToGetNamespaceVpcNetworkOutput() GetNamespaceVpcNetworkOutput {
+	return o
+}
+
+func (o GetNamespaceVpcNetworkOutput) ToGetNamespaceVpcNetworkOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkOutput {
+	return o
+}
+
+// An NSX subnet created outside the Supervisor that is associated with the vSphere Namespace.
+func (o GetNamespaceVpcNetworkOutput) SharedSubnets() GetNamespaceVpcNetworkSharedSubnetArrayOutput {
+	return o.ApplyT(func(v GetNamespaceVpcNetwork) []GetNamespaceVpcNetworkSharedSubnet { return v.SharedSubnets }).(GetNamespaceVpcNetworkSharedSubnetArrayOutput)
+}
+
+// The NSX path of the VPC.
+func (o GetNamespaceVpcNetworkOutput) Vpc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceVpcNetwork) string { return v.Vpc }).(pulumi.StringOutput)
+}
+
+type GetNamespaceVpcNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVpcNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVpcNetwork)(nil)).Elem()
+}
+
+func (o GetNamespaceVpcNetworkArrayOutput) ToGetNamespaceVpcNetworkArrayOutput() GetNamespaceVpcNetworkArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVpcNetworkArrayOutput) ToGetNamespaceVpcNetworkArrayOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVpcNetworkArrayOutput) Index(i pulumi.IntInput) GetNamespaceVpcNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceVpcNetwork {
+		return vs[0].([]GetNamespaceVpcNetwork)[vs[1].(int)]
+	}).(GetNamespaceVpcNetworkOutput)
+}
+
+type GetNamespaceVpcNetworkSharedSubnet struct {
+	// The NSX path of the subnet.
+	Path string `pulumi:"path"`
+	// Whether the subnet is the default network for vSphere Pods.
+	PodDefault bool `pulumi:"podDefault"`
+	// Whether the subnet is the default network for VMs.
+	VmDefault bool `pulumi:"vmDefault"`
+}
+
+// GetNamespaceVpcNetworkSharedSubnetInput is an input type that accepts GetNamespaceVpcNetworkSharedSubnetArgs and GetNamespaceVpcNetworkSharedSubnetOutput values.
+// You can construct a concrete instance of `GetNamespaceVpcNetworkSharedSubnetInput` via:
+//
+//	GetNamespaceVpcNetworkSharedSubnetArgs{...}
+type GetNamespaceVpcNetworkSharedSubnetInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVpcNetworkSharedSubnetOutput() GetNamespaceVpcNetworkSharedSubnetOutput
+	ToGetNamespaceVpcNetworkSharedSubnetOutputWithContext(context.Context) GetNamespaceVpcNetworkSharedSubnetOutput
+}
+
+type GetNamespaceVpcNetworkSharedSubnetArgs struct {
+	// The NSX path of the subnet.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether the subnet is the default network for vSphere Pods.
+	PodDefault pulumi.BoolInput `pulumi:"podDefault"`
+	// Whether the subnet is the default network for VMs.
+	VmDefault pulumi.BoolInput `pulumi:"vmDefault"`
+}
+
+func (GetNamespaceVpcNetworkSharedSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (i GetNamespaceVpcNetworkSharedSubnetArgs) ToGetNamespaceVpcNetworkSharedSubnetOutput() GetNamespaceVpcNetworkSharedSubnetOutput {
+	return i.ToGetNamespaceVpcNetworkSharedSubnetOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVpcNetworkSharedSubnetArgs) ToGetNamespaceVpcNetworkSharedSubnetOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkSharedSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVpcNetworkSharedSubnetOutput)
+}
+
+// GetNamespaceVpcNetworkSharedSubnetArrayInput is an input type that accepts GetNamespaceVpcNetworkSharedSubnetArray and GetNamespaceVpcNetworkSharedSubnetArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceVpcNetworkSharedSubnetArrayInput` via:
+//
+//	GetNamespaceVpcNetworkSharedSubnetArray{ GetNamespaceVpcNetworkSharedSubnetArgs{...} }
+type GetNamespaceVpcNetworkSharedSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVpcNetworkSharedSubnetArrayOutput() GetNamespaceVpcNetworkSharedSubnetArrayOutput
+	ToGetNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(context.Context) GetNamespaceVpcNetworkSharedSubnetArrayOutput
+}
+
+type GetNamespaceVpcNetworkSharedSubnetArray []GetNamespaceVpcNetworkSharedSubnetInput
+
+func (GetNamespaceVpcNetworkSharedSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (i GetNamespaceVpcNetworkSharedSubnetArray) ToGetNamespaceVpcNetworkSharedSubnetArrayOutput() GetNamespaceVpcNetworkSharedSubnetArrayOutput {
+	return i.ToGetNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVpcNetworkSharedSubnetArray) ToGetNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkSharedSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVpcNetworkSharedSubnetArrayOutput)
+}
+
+type GetNamespaceVpcNetworkSharedSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVpcNetworkSharedSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (o GetNamespaceVpcNetworkSharedSubnetOutput) ToGetNamespaceVpcNetworkSharedSubnetOutput() GetNamespaceVpcNetworkSharedSubnetOutput {
+	return o
+}
+
+func (o GetNamespaceVpcNetworkSharedSubnetOutput) ToGetNamespaceVpcNetworkSharedSubnetOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkSharedSubnetOutput {
+	return o
+}
+
+// The NSX path of the subnet.
+func (o GetNamespaceVpcNetworkSharedSubnetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceVpcNetworkSharedSubnet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether the subnet is the default network for vSphere Pods.
+func (o GetNamespaceVpcNetworkSharedSubnetOutput) PodDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNamespaceVpcNetworkSharedSubnet) bool { return v.PodDefault }).(pulumi.BoolOutput)
+}
+
+// Whether the subnet is the default network for VMs.
+func (o GetNamespaceVpcNetworkSharedSubnetOutput) VmDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNamespaceVpcNetworkSharedSubnet) bool { return v.VmDefault }).(pulumi.BoolOutput)
+}
+
+type GetNamespaceVpcNetworkSharedSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVpcNetworkSharedSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVpcNetworkSharedSubnet)(nil)).Elem()
+}
+
+func (o GetNamespaceVpcNetworkSharedSubnetArrayOutput) ToGetNamespaceVpcNetworkSharedSubnetArrayOutput() GetNamespaceVpcNetworkSharedSubnetArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVpcNetworkSharedSubnetArrayOutput) ToGetNamespaceVpcNetworkSharedSubnetArrayOutputWithContext(ctx context.Context) GetNamespaceVpcNetworkSharedSubnetArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVpcNetworkSharedSubnetArrayOutput) Index(i pulumi.IntInput) GetNamespaceVpcNetworkSharedSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceVpcNetworkSharedSubnet {
+		return vs[0].([]GetNamespaceVpcNetworkSharedSubnet)[vs[1].(int)]
+	}).(GetNamespaceVpcNetworkSharedSubnetOutput)
+}
+
+type GetNamespaceVsphereNetwork struct {
+	// The name of the Supervisor network used by workloads that do not specify a network.
+	DefaultWorkloadNetwork string `pulumi:"defaultWorkloadNetwork"`
+	// The names of the Supervisor networks associated with the vSphere Namespace. Networks that are being removed are not exported.
+	Networks []string `pulumi:"networks"`
+}
+
+// GetNamespaceVsphereNetworkInput is an input type that accepts GetNamespaceVsphereNetworkArgs and GetNamespaceVsphereNetworkOutput values.
+// You can construct a concrete instance of `GetNamespaceVsphereNetworkInput` via:
+//
+//	GetNamespaceVsphereNetworkArgs{...}
+type GetNamespaceVsphereNetworkInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVsphereNetworkOutput() GetNamespaceVsphereNetworkOutput
+	ToGetNamespaceVsphereNetworkOutputWithContext(context.Context) GetNamespaceVsphereNetworkOutput
+}
+
+type GetNamespaceVsphereNetworkArgs struct {
+	// The name of the Supervisor network used by workloads that do not specify a network.
+	DefaultWorkloadNetwork pulumi.StringInput `pulumi:"defaultWorkloadNetwork"`
+	// The names of the Supervisor networks associated with the vSphere Namespace. Networks that are being removed are not exported.
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+}
+
+func (GetNamespaceVsphereNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (i GetNamespaceVsphereNetworkArgs) ToGetNamespaceVsphereNetworkOutput() GetNamespaceVsphereNetworkOutput {
+	return i.ToGetNamespaceVsphereNetworkOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVsphereNetworkArgs) ToGetNamespaceVsphereNetworkOutputWithContext(ctx context.Context) GetNamespaceVsphereNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVsphereNetworkOutput)
+}
+
+// GetNamespaceVsphereNetworkArrayInput is an input type that accepts GetNamespaceVsphereNetworkArray and GetNamespaceVsphereNetworkArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceVsphereNetworkArrayInput` via:
+//
+//	GetNamespaceVsphereNetworkArray{ GetNamespaceVsphereNetworkArgs{...} }
+type GetNamespaceVsphereNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceVsphereNetworkArrayOutput() GetNamespaceVsphereNetworkArrayOutput
+	ToGetNamespaceVsphereNetworkArrayOutputWithContext(context.Context) GetNamespaceVsphereNetworkArrayOutput
+}
+
+type GetNamespaceVsphereNetworkArray []GetNamespaceVsphereNetworkInput
+
+func (GetNamespaceVsphereNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (i GetNamespaceVsphereNetworkArray) ToGetNamespaceVsphereNetworkArrayOutput() GetNamespaceVsphereNetworkArrayOutput {
+	return i.ToGetNamespaceVsphereNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceVsphereNetworkArray) ToGetNamespaceVsphereNetworkArrayOutputWithContext(ctx context.Context) GetNamespaceVsphereNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceVsphereNetworkArrayOutput)
+}
+
+type GetNamespaceVsphereNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVsphereNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (o GetNamespaceVsphereNetworkOutput) ToGetNamespaceVsphereNetworkOutput() GetNamespaceVsphereNetworkOutput {
+	return o
+}
+
+func (o GetNamespaceVsphereNetworkOutput) ToGetNamespaceVsphereNetworkOutputWithContext(ctx context.Context) GetNamespaceVsphereNetworkOutput {
+	return o
+}
+
+// The name of the Supervisor network used by workloads that do not specify a network.
+func (o GetNamespaceVsphereNetworkOutput) DefaultWorkloadNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceVsphereNetwork) string { return v.DefaultWorkloadNetwork }).(pulumi.StringOutput)
+}
+
+// The names of the Supervisor networks associated with the vSphere Namespace. Networks that are being removed are not exported.
+func (o GetNamespaceVsphereNetworkOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamespaceVsphereNetwork) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+type GetNamespaceVsphereNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceVsphereNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceVsphereNetwork)(nil)).Elem()
+}
+
+func (o GetNamespaceVsphereNetworkArrayOutput) ToGetNamespaceVsphereNetworkArrayOutput() GetNamespaceVsphereNetworkArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVsphereNetworkArrayOutput) ToGetNamespaceVsphereNetworkArrayOutputWithContext(ctx context.Context) GetNamespaceVsphereNetworkArrayOutput {
+	return o
+}
+
+func (o GetNamespaceVsphereNetworkArrayOutput) Index(i pulumi.IntInput) GetNamespaceVsphereNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceVsphereNetwork {
+		return vs[0].([]GetNamespaceVsphereNetwork)[vs[1].(int)]
+	}).(GetNamespaceVsphereNetworkOutput)
+}
+
+type GetNamespaceZone struct {
+	// The name of the vSphere Namespace.
+	Name string `pulumi:"name"`
+	// The type of the vSphere Zone.
+	Type string `pulumi:"type"`
+}
+
+// GetNamespaceZoneInput is an input type that accepts GetNamespaceZoneArgs and GetNamespaceZoneOutput values.
+// You can construct a concrete instance of `GetNamespaceZoneInput` via:
+//
+//	GetNamespaceZoneArgs{...}
+type GetNamespaceZoneInput interface {
+	pulumi.Input
+
+	ToGetNamespaceZoneOutput() GetNamespaceZoneOutput
+	ToGetNamespaceZoneOutputWithContext(context.Context) GetNamespaceZoneOutput
+}
+
+type GetNamespaceZoneArgs struct {
+	// The name of the vSphere Namespace.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of the vSphere Zone.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetNamespaceZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceZone)(nil)).Elem()
+}
+
+func (i GetNamespaceZoneArgs) ToGetNamespaceZoneOutput() GetNamespaceZoneOutput {
+	return i.ToGetNamespaceZoneOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceZoneArgs) ToGetNamespaceZoneOutputWithContext(ctx context.Context) GetNamespaceZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceZoneOutput)
+}
+
+// GetNamespaceZoneArrayInput is an input type that accepts GetNamespaceZoneArray and GetNamespaceZoneArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceZoneArrayInput` via:
+//
+//	GetNamespaceZoneArray{ GetNamespaceZoneArgs{...} }
+type GetNamespaceZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceZoneArrayOutput() GetNamespaceZoneArrayOutput
+	ToGetNamespaceZoneArrayOutputWithContext(context.Context) GetNamespaceZoneArrayOutput
+}
+
+type GetNamespaceZoneArray []GetNamespaceZoneInput
+
+func (GetNamespaceZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceZone)(nil)).Elem()
+}
+
+func (i GetNamespaceZoneArray) ToGetNamespaceZoneArrayOutput() GetNamespaceZoneArrayOutput {
+	return i.ToGetNamespaceZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceZoneArray) ToGetNamespaceZoneArrayOutputWithContext(ctx context.Context) GetNamespaceZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceZoneArrayOutput)
+}
+
+type GetNamespaceZoneOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceZone)(nil)).Elem()
+}
+
+func (o GetNamespaceZoneOutput) ToGetNamespaceZoneOutput() GetNamespaceZoneOutput {
+	return o
+}
+
+func (o GetNamespaceZoneOutput) ToGetNamespaceZoneOutputWithContext(ctx context.Context) GetNamespaceZoneOutput {
+	return o
+}
+
+// The name of the vSphere Namespace.
+func (o GetNamespaceZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceZone) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the vSphere Zone.
+func (o GetNamespaceZoneOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceZone) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNamespaceZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceZone)(nil)).Elem()
+}
+
+func (o GetNamespaceZoneArrayOutput) ToGetNamespaceZoneArrayOutput() GetNamespaceZoneArrayOutput {
+	return o
+}
+
+func (o GetNamespaceZoneArrayOutput) ToGetNamespaceZoneArrayOutputWithContext(ctx context.Context) GetNamespaceZoneArrayOutput {
+	return o
+}
+
+func (o GetNamespaceZoneArrayOutput) Index(i pulumi.IntInput) GetNamespaceZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceZone {
+		return vs[0].([]GetNamespaceZone)[vs[1].(int)]
+	}).(GetNamespaceZoneOutput)
 }
 
 type GetNetworkFilter struct {
@@ -19031,6 +21011,263 @@ func (o GetSsoGroupMemberUserArrayOutput) Index(i pulumi.IntInput) GetSsoGroupMe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSsoGroupMemberUser {
 		return vs[0].([]GetSsoGroupMemberUser)[vs[1].(int)]
 	}).(GetSsoGroupMemberUserOutput)
+}
+
+type GetSupervisorWorkloadNetwork struct {
+	// The gateway of the Supervisor network. Empty for NSX-backed networks.
+	Gateway string `pulumi:"gateway"`
+	// The IP assignment mode of the Supervisor network. Empty for NSX-backed networks.
+	IpAssignmentMode string `pulumi:"ipAssignmentMode"`
+	// The vSphere Namespaces that use the Supervisor network.
+	Namespaces []string `pulumi:"namespaces"`
+	// The name of the Supervisor network. Use it in the `getNetwork` block of the [`Namespace`](https://www.terraform.io/docs/providers/vsphere/r/namespace.html) resource.
+	Network string `pulumi:"network"`
+	// The network provider of the Supervisor network, for example `VSPHERE_NETWORK`.
+	NetworkProvider string `pulumi:"networkProvider"`
+	// The ID of the distributed port group backing the Supervisor network. Empty for NSX-backed networks.
+	Portgroup string `pulumi:"portgroup"`
+	// The subnet mask of the Supervisor network. Empty for NSX-backed networks.
+	SubnetMask string `pulumi:"subnetMask"`
+}
+
+// GetSupervisorWorkloadNetworkInput is an input type that accepts GetSupervisorWorkloadNetworkArgs and GetSupervisorWorkloadNetworkOutput values.
+// You can construct a concrete instance of `GetSupervisorWorkloadNetworkInput` via:
+//
+//	GetSupervisorWorkloadNetworkArgs{...}
+type GetSupervisorWorkloadNetworkInput interface {
+	pulumi.Input
+
+	ToGetSupervisorWorkloadNetworkOutput() GetSupervisorWorkloadNetworkOutput
+	ToGetSupervisorWorkloadNetworkOutputWithContext(context.Context) GetSupervisorWorkloadNetworkOutput
+}
+
+type GetSupervisorWorkloadNetworkArgs struct {
+	// The gateway of the Supervisor network. Empty for NSX-backed networks.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The IP assignment mode of the Supervisor network. Empty for NSX-backed networks.
+	IpAssignmentMode pulumi.StringInput `pulumi:"ipAssignmentMode"`
+	// The vSphere Namespaces that use the Supervisor network.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// The name of the Supervisor network. Use it in the `getNetwork` block of the [`Namespace`](https://www.terraform.io/docs/providers/vsphere/r/namespace.html) resource.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The network provider of the Supervisor network, for example `VSPHERE_NETWORK`.
+	NetworkProvider pulumi.StringInput `pulumi:"networkProvider"`
+	// The ID of the distributed port group backing the Supervisor network. Empty for NSX-backed networks.
+	Portgroup pulumi.StringInput `pulumi:"portgroup"`
+	// The subnet mask of the Supervisor network. Empty for NSX-backed networks.
+	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
+}
+
+func (GetSupervisorWorkloadNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupervisorWorkloadNetwork)(nil)).Elem()
+}
+
+func (i GetSupervisorWorkloadNetworkArgs) ToGetSupervisorWorkloadNetworkOutput() GetSupervisorWorkloadNetworkOutput {
+	return i.ToGetSupervisorWorkloadNetworkOutputWithContext(context.Background())
+}
+
+func (i GetSupervisorWorkloadNetworkArgs) ToGetSupervisorWorkloadNetworkOutputWithContext(ctx context.Context) GetSupervisorWorkloadNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupervisorWorkloadNetworkOutput)
+}
+
+// GetSupervisorWorkloadNetworkArrayInput is an input type that accepts GetSupervisorWorkloadNetworkArray and GetSupervisorWorkloadNetworkArrayOutput values.
+// You can construct a concrete instance of `GetSupervisorWorkloadNetworkArrayInput` via:
+//
+//	GetSupervisorWorkloadNetworkArray{ GetSupervisorWorkloadNetworkArgs{...} }
+type GetSupervisorWorkloadNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetSupervisorWorkloadNetworkArrayOutput() GetSupervisorWorkloadNetworkArrayOutput
+	ToGetSupervisorWorkloadNetworkArrayOutputWithContext(context.Context) GetSupervisorWorkloadNetworkArrayOutput
+}
+
+type GetSupervisorWorkloadNetworkArray []GetSupervisorWorkloadNetworkInput
+
+func (GetSupervisorWorkloadNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupervisorWorkloadNetwork)(nil)).Elem()
+}
+
+func (i GetSupervisorWorkloadNetworkArray) ToGetSupervisorWorkloadNetworkArrayOutput() GetSupervisorWorkloadNetworkArrayOutput {
+	return i.ToGetSupervisorWorkloadNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetSupervisorWorkloadNetworkArray) ToGetSupervisorWorkloadNetworkArrayOutputWithContext(ctx context.Context) GetSupervisorWorkloadNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupervisorWorkloadNetworkArrayOutput)
+}
+
+type GetSupervisorWorkloadNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetSupervisorWorkloadNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupervisorWorkloadNetwork)(nil)).Elem()
+}
+
+func (o GetSupervisorWorkloadNetworkOutput) ToGetSupervisorWorkloadNetworkOutput() GetSupervisorWorkloadNetworkOutput {
+	return o
+}
+
+func (o GetSupervisorWorkloadNetworkOutput) ToGetSupervisorWorkloadNetworkOutputWithContext(ctx context.Context) GetSupervisorWorkloadNetworkOutput {
+	return o
+}
+
+// The gateway of the Supervisor network. Empty for NSX-backed networks.
+func (o GetSupervisorWorkloadNetworkOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupervisorWorkloadNetwork) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The IP assignment mode of the Supervisor network. Empty for NSX-backed networks.
+func (o GetSupervisorWorkloadNetworkOutput) IpAssignmentMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupervisorWorkloadNetwork) string { return v.IpAssignmentMode }).(pulumi.StringOutput)
+}
+
+// The vSphere Namespaces that use the Supervisor network.
+func (o GetSupervisorWorkloadNetworkOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSupervisorWorkloadNetwork) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// The name of the Supervisor network. Use it in the `getNetwork` block of the [`Namespace`](https://www.terraform.io/docs/providers/vsphere/r/namespace.html) resource.
+func (o GetSupervisorWorkloadNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupervisorWorkloadNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The network provider of the Supervisor network, for example `VSPHERE_NETWORK`.
+func (o GetSupervisorWorkloadNetworkOutput) NetworkProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupervisorWorkloadNetwork) string { return v.NetworkProvider }).(pulumi.StringOutput)
+}
+
+// The ID of the distributed port group backing the Supervisor network. Empty for NSX-backed networks.
+func (o GetSupervisorWorkloadNetworkOutput) Portgroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupervisorWorkloadNetwork) string { return v.Portgroup }).(pulumi.StringOutput)
+}
+
+// The subnet mask of the Supervisor network. Empty for NSX-backed networks.
+func (o GetSupervisorWorkloadNetworkOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupervisorWorkloadNetwork) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+type GetSupervisorWorkloadNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSupervisorWorkloadNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupervisorWorkloadNetwork)(nil)).Elem()
+}
+
+func (o GetSupervisorWorkloadNetworkArrayOutput) ToGetSupervisorWorkloadNetworkArrayOutput() GetSupervisorWorkloadNetworkArrayOutput {
+	return o
+}
+
+func (o GetSupervisorWorkloadNetworkArrayOutput) ToGetSupervisorWorkloadNetworkArrayOutputWithContext(ctx context.Context) GetSupervisorWorkloadNetworkArrayOutput {
+	return o
+}
+
+func (o GetSupervisorWorkloadNetworkArrayOutput) Index(i pulumi.IntInput) GetSupervisorWorkloadNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSupervisorWorkloadNetwork {
+		return vs[0].([]GetSupervisorWorkloadNetwork)[vs[1].(int)]
+	}).(GetSupervisorWorkloadNetworkOutput)
+}
+
+type GetSupervisorZone struct {
+	// The IDs of the compute clusters in the vSphere Zone.
+	Clusters []string `pulumi:"clusters"`
+	// The ID of the vSphere Zone.
+	Zone string `pulumi:"zone"`
+}
+
+// GetSupervisorZoneInput is an input type that accepts GetSupervisorZoneArgs and GetSupervisorZoneOutput values.
+// You can construct a concrete instance of `GetSupervisorZoneInput` via:
+//
+//	GetSupervisorZoneArgs{...}
+type GetSupervisorZoneInput interface {
+	pulumi.Input
+
+	ToGetSupervisorZoneOutput() GetSupervisorZoneOutput
+	ToGetSupervisorZoneOutputWithContext(context.Context) GetSupervisorZoneOutput
+}
+
+type GetSupervisorZoneArgs struct {
+	// The IDs of the compute clusters in the vSphere Zone.
+	Clusters pulumi.StringArrayInput `pulumi:"clusters"`
+	// The ID of the vSphere Zone.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetSupervisorZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupervisorZone)(nil)).Elem()
+}
+
+func (i GetSupervisorZoneArgs) ToGetSupervisorZoneOutput() GetSupervisorZoneOutput {
+	return i.ToGetSupervisorZoneOutputWithContext(context.Background())
+}
+
+func (i GetSupervisorZoneArgs) ToGetSupervisorZoneOutputWithContext(ctx context.Context) GetSupervisorZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupervisorZoneOutput)
+}
+
+// GetSupervisorZoneArrayInput is an input type that accepts GetSupervisorZoneArray and GetSupervisorZoneArrayOutput values.
+// You can construct a concrete instance of `GetSupervisorZoneArrayInput` via:
+//
+//	GetSupervisorZoneArray{ GetSupervisorZoneArgs{...} }
+type GetSupervisorZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetSupervisorZoneArrayOutput() GetSupervisorZoneArrayOutput
+	ToGetSupervisorZoneArrayOutputWithContext(context.Context) GetSupervisorZoneArrayOutput
+}
+
+type GetSupervisorZoneArray []GetSupervisorZoneInput
+
+func (GetSupervisorZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupervisorZone)(nil)).Elem()
+}
+
+func (i GetSupervisorZoneArray) ToGetSupervisorZoneArrayOutput() GetSupervisorZoneArrayOutput {
+	return i.ToGetSupervisorZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetSupervisorZoneArray) ToGetSupervisorZoneArrayOutputWithContext(ctx context.Context) GetSupervisorZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupervisorZoneArrayOutput)
+}
+
+type GetSupervisorZoneOutput struct{ *pulumi.OutputState }
+
+func (GetSupervisorZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupervisorZone)(nil)).Elem()
+}
+
+func (o GetSupervisorZoneOutput) ToGetSupervisorZoneOutput() GetSupervisorZoneOutput {
+	return o
+}
+
+func (o GetSupervisorZoneOutput) ToGetSupervisorZoneOutputWithContext(ctx context.Context) GetSupervisorZoneOutput {
+	return o
+}
+
+// The IDs of the compute clusters in the vSphere Zone.
+func (o GetSupervisorZoneOutput) Clusters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSupervisorZone) []string { return v.Clusters }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the vSphere Zone.
+func (o GetSupervisorZoneOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupervisorZone) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetSupervisorZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSupervisorZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupervisorZone)(nil)).Elem()
+}
+
+func (o GetSupervisorZoneArrayOutput) ToGetSupervisorZoneArrayOutput() GetSupervisorZoneArrayOutput {
+	return o
+}
+
+func (o GetSupervisorZoneArrayOutput) ToGetSupervisorZoneArrayOutputWithContext(ctx context.Context) GetSupervisorZoneArrayOutput {
+	return o
+}
+
+func (o GetSupervisorZoneArrayOutput) Index(i pulumi.IntInput) GetSupervisorZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSupervisorZone {
+		return vs[0].([]GetSupervisorZone)[vs[1].(int)]
+	}).(GetSupervisorZoneOutput)
 }
 
 type GetVirtualMachineDisk struct {
@@ -19769,8 +22006,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceArrayInput)(nil)).Elem(), HostServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceNtpdInput)(nil)).Elem(), HostServiceNtpdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceNtpdPtrInput)(nil)).Elem(), HostServiceNtpdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceGroupInput)(nil)).Elem(), NamespaceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceGroupArrayInput)(nil)).Elem(), NamespaceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStoragePolicyInput)(nil)).Elem(), NamespaceStoragePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStoragePolicyArrayInput)(nil)).Elem(), NamespaceStoragePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceUserInput)(nil)).Elem(), NamespaceUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceUserArrayInput)(nil)).Elem(), NamespaceUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVmServiceInput)(nil)).Elem(), NamespaceVmServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVmServiceArrayInput)(nil)).Elem(), NamespaceVmServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVpcNetworkInput)(nil)).Elem(), NamespaceVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVpcNetworkPtrInput)(nil)).Elem(), NamespaceVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVpcNetworkSharedSubnetInput)(nil)).Elem(), NamespaceVpcNetworkSharedSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVpcNetworkSharedSubnetArrayInput)(nil)).Elem(), NamespaceVpcNetworkSharedSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVsphereNetworkInput)(nil)).Elem(), NamespaceVsphereNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceVsphereNetworkPtrInput)(nil)).Elem(), NamespaceVsphereNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceZoneInput)(nil)).Elem(), NamespaceZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceZoneArrayInput)(nil)).Elem(), NamespaceZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceZoneVmClassReservationInput)(nil)).Elem(), NamespaceZoneVmClassReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceZoneVmClassReservationArrayInput)(nil)).Elem(), NamespaceZoneVmClassReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProtocolProfileIpv4Input)(nil)).Elem(), NetworkProtocolProfileIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProtocolProfileIpv4PtrInput)(nil)).Elem(), NetworkProtocolProfileIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProtocolProfileIpv6Input)(nil)).Elem(), NetworkProtocolProfileIpv6Args{})
@@ -19934,6 +22187,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmSnmpActionArrayInput)(nil)).Elem(), GetAlarmSnmpActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmStateExpressionInput)(nil)).Elem(), GetAlarmStateExpressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmStateExpressionArrayInput)(nil)).Elem(), GetAlarmStateExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContentLibraryItemsItemInput)(nil)).Elem(), GetContentLibraryItemsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContentLibraryItemsItemArrayInput)(nil)).Elem(), GetContentLibraryItemsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecInput)(nil)).Elem(), GetGuestOsCustomizationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecLinuxOptionInput)(nil)).Elem(), GetGuestOsCustomizationSpecLinuxOptionArgs{})
@@ -19944,14 +22199,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOptionArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecWindowsOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileArrayInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceGroupInput)(nil)).Elem(), GetNamespaceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceGroupArrayInput)(nil)).Elem(), GetNamespaceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceStoragePolicyInput)(nil)).Elem(), GetNamespaceStoragePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceStoragePolicyArrayInput)(nil)).Elem(), GetNamespaceStoragePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceUserInput)(nil)).Elem(), GetNamespaceUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceUserArrayInput)(nil)).Elem(), GetNamespaceUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVmServiceInput)(nil)).Elem(), GetNamespaceVmServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVmServiceArrayInput)(nil)).Elem(), GetNamespaceVmServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVpcNetworkInput)(nil)).Elem(), GetNamespaceVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVpcNetworkArrayInput)(nil)).Elem(), GetNamespaceVpcNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVpcNetworkSharedSubnetInput)(nil)).Elem(), GetNamespaceVpcNetworkSharedSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVpcNetworkSharedSubnetArrayInput)(nil)).Elem(), GetNamespaceVpcNetworkSharedSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVsphereNetworkInput)(nil)).Elem(), GetNamespaceVsphereNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceVsphereNetworkArrayInput)(nil)).Elem(), GetNamespaceVsphereNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceZoneInput)(nil)).Elem(), GetNamespaceZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceZoneArrayInput)(nil)).Elem(), GetNamespaceZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterInput)(nil)).Elem(), GetNetworkFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterArrayInput)(nil)).Elem(), GetNetworkFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberGroupInput)(nil)).Elem(), GetSsoGroupMemberGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberGroupArrayInput)(nil)).Elem(), GetSsoGroupMemberGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberUserInput)(nil)).Elem(), GetSsoGroupMemberUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoGroupMemberUserArrayInput)(nil)).Elem(), GetSsoGroupMemberUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupervisorWorkloadNetworkInput)(nil)).Elem(), GetSupervisorWorkloadNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupervisorWorkloadNetworkArrayInput)(nil)).Elem(), GetSupervisorWorkloadNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupervisorZoneInput)(nil)).Elem(), GetSupervisorZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupervisorZoneArrayInput)(nil)).Elem(), GetSupervisorZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskInput)(nil)).Elem(), GetVirtualMachineDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskArrayInput)(nil)).Elem(), GetVirtualMachineDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArgs{})
@@ -20016,8 +22289,24 @@ func init() {
 	pulumi.RegisterOutputType(HostServiceArrayOutput{})
 	pulumi.RegisterOutputType(HostServiceNtpdOutput{})
 	pulumi.RegisterOutputType(HostServiceNtpdPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceGroupOutput{})
+	pulumi.RegisterOutputType(NamespaceGroupArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceStoragePolicyOutput{})
+	pulumi.RegisterOutputType(NamespaceStoragePolicyArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceUserOutput{})
+	pulumi.RegisterOutputType(NamespaceUserArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceVmServiceOutput{})
 	pulumi.RegisterOutputType(NamespaceVmServiceArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceVpcNetworkOutput{})
+	pulumi.RegisterOutputType(NamespaceVpcNetworkPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceVpcNetworkSharedSubnetOutput{})
+	pulumi.RegisterOutputType(NamespaceVpcNetworkSharedSubnetArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceVsphereNetworkOutput{})
+	pulumi.RegisterOutputType(NamespaceVsphereNetworkPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceZoneOutput{})
+	pulumi.RegisterOutputType(NamespaceZoneArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceZoneVmClassReservationOutput{})
+	pulumi.RegisterOutputType(NamespaceZoneVmClassReservationArrayOutput{})
 	pulumi.RegisterOutputType(NetworkProtocolProfileIpv4Output{})
 	pulumi.RegisterOutputType(NetworkProtocolProfileIpv4PtrOutput{})
 	pulumi.RegisterOutputType(NetworkProtocolProfileIpv6Output{})
@@ -20181,6 +22470,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAlarmSnmpActionArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmStateExpressionOutput{})
 	pulumi.RegisterOutputType(GetAlarmStateExpressionArrayOutput{})
+	pulumi.RegisterOutputType(GetContentLibraryItemsItemOutput{})
+	pulumi.RegisterOutputType(GetContentLibraryItemsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecLinuxOptionOutput{})
@@ -20191,14 +22482,32 @@ func init() {
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecWindowsOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileOutput{})
 	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceGroupOutput{})
+	pulumi.RegisterOutputType(GetNamespaceGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceStoragePolicyOutput{})
+	pulumi.RegisterOutputType(GetNamespaceStoragePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceUserOutput{})
+	pulumi.RegisterOutputType(GetNamespaceUserArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespaceVmServiceOutput{})
 	pulumi.RegisterOutputType(GetNamespaceVmServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVpcNetworkOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVpcNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVpcNetworkSharedSubnetOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVpcNetworkSharedSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVsphereNetworkOutput{})
+	pulumi.RegisterOutputType(GetNamespaceVsphereNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceZoneOutput{})
+	pulumi.RegisterOutputType(GetNamespaceZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkFilterOutput{})
 	pulumi.RegisterOutputType(GetNetworkFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSsoGroupMemberGroupOutput{})
 	pulumi.RegisterOutputType(GetSsoGroupMemberGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetSsoGroupMemberUserOutput{})
 	pulumi.RegisterOutputType(GetSsoGroupMemberUserArrayOutput{})
+	pulumi.RegisterOutputType(GetSupervisorWorkloadNetworkOutput{})
+	pulumi.RegisterOutputType(GetSupervisorWorkloadNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetSupervisorZoneOutput{})
+	pulumi.RegisterOutputType(GetSupervisorZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceOutput{})

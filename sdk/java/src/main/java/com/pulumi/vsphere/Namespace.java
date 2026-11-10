@@ -10,7 +10,13 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.vsphere.NamespaceArgs;
 import com.pulumi.vsphere.Utilities;
 import com.pulumi.vsphere.inputs.NamespaceState;
+import com.pulumi.vsphere.outputs.NamespaceGroup;
+import com.pulumi.vsphere.outputs.NamespaceStoragePolicy;
+import com.pulumi.vsphere.outputs.NamespaceUser;
 import com.pulumi.vsphere.outputs.NamespaceVmService;
+import com.pulumi.vsphere.outputs.NamespaceVpcNetwork;
+import com.pulumi.vsphere.outputs.NamespaceVsphereNetwork;
+import com.pulumi.vsphere.outputs.NamespaceZone;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * ### S
  * 
- * ### Create a namespace
+ * ### Create a Namespace
  * 
  * <pre>
  * {@code
@@ -35,6 +41,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.vsphere.Namespace;
  * import com.pulumi.vsphere.NamespaceArgs;
  * import com.pulumi.vsphere.inputs.NamespaceVmServiceArgs;
+ * import com.pulumi.vsphere.inputs.NamespaceStoragePolicyArgs;
+ * import com.pulumi.vsphere.inputs.NamespaceUserArgs;
+ * import com.pulumi.vsphere.inputs.NamespaceGroupArgs;
+ * import com.pulumi.vsphere.inputs.NamespaceZoneArgs;
+ * import com.pulumi.vsphere.inputs.NamespaceZoneVmClassReservationArgs;
+ * import com.pulumi.vsphere.inputs.NamespaceVpcNetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -55,7 +67,34 @@ import javax.annotation.Nullable;
  *                 .contentLibraries("ca616f93-506d-4f00-98bf-7708d30f68bc")
  *                 .vmClasses("example-vm-class")
  *                 .build())
- *             .storagePolicies("1bb87d1e-49a5-49f8-ad4a-7094be13d4a0")
+ *             .storagePolicies(NamespaceStoragePolicyArgs.builder()
+ *                 .policy("1bb87d1e-49a5-49f8-ad4a-7094be13d4a0")
+ *                 .limit(102400)
+ *                 .build())
+ *             .users(NamespaceUserArgs.builder()
+ *                 .name("administrator")
+ *                 .domain("vsphere.local")
+ *                 .role("OWNER")
+ *                 .build())
+ *             .groups(NamespaceGroupArgs.builder()
+ *                 .name("developers")
+ *                 .domain("vsphere.local")
+ *                 .role("EDIT")
+ *                 .build())
+ *             .zones(NamespaceZoneArgs.builder()
+ *                 .name("zone-1")
+ *                 .cpuLimit(4000)
+ *                 .cpuReservation(1000)
+ *                 .memoryLimit(8192)
+ *                 .memoryReservation(2048)
+ *                 .vmClassReservations(NamespaceZoneVmClassReservationArgs.builder()
+ *                     .vmClass("example-vm-class")
+ *                     .count(2)
+ *                     .build())
+ *                 .build())
+ *             .vpcNetwork(NamespaceVpcNetworkArgs.builder()
+ *                 .vpc("/orgs/default/projects/example-project/vpcs/example-vpc")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -63,50 +102,92 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * An existing vSphere Namespace can be imported into this resource by supplying
+ * its name:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/namespace:Namespace example example-namespace
+ * ```
+ * 
+ * &gt; **NOTE:** vCenter does not return the zone limits, reservations,
+ * `vmClassReservation` or `disallowUnreservedDirectPathUsage`, so they are not
+ * populated by an import. If they are set in the configuration, the next apply
+ * updates the vSphere Namespace in place to match.
+ * 
  */
 @ResourceType(type="vsphere:index/namespace:Namespace")
 public class Namespace extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the vSphere namespace.
+     * A group with access to the vSphere Namespace.
+     * 
+     */
+    @Export(name="groups", refs={List.class,NamespaceGroup.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NamespaceGroup>> groups;
+
+    /**
+     * @return A group with access to the vSphere Namespace.
+     * 
+     */
+    public Output<Optional<List<NamespaceGroup>>> groups() {
+        return Codegen.optional(this.groups);
+    }
+    /**
+     * The name of the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the vSphere namespace.
+     * @return The name of the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The list of storage policies that will be available in the vSphere Namespace.
+     * A storage policy that will be available in the vSphere Namespace.
      * 
      */
-    @Export(name="storagePolicies", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> storagePolicies;
+    @Export(name="storagePolicies", refs={List.class,NamespaceStoragePolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NamespaceStoragePolicy>> storagePolicies;
 
     /**
-     * @return The list of storage policies that will be available in the vSphere Namespace.
+     * @return A storage policy that will be available in the vSphere Namespace.
      * 
      */
-    public Output<Optional<List<String>>> storagePolicies() {
+    public Output<Optional<List<NamespaceStoragePolicy>>> storagePolicies() {
         return Codegen.optional(this.storagePolicies);
     }
     /**
-     * The identifier of the vSphere Supervisor managing the namespace.
+     * The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="supervisor", refs={String.class}, tree="[0]")
     private Output<String> supervisor;
 
     /**
-     * @return The identifier of the vSphere Supervisor managing the namespace.
+     * @return The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> supervisor() {
         return this.supervisor;
+    }
+    /**
+     * A user with access to the vSphere Namespace.
+     * 
+     */
+    @Export(name="users", refs={List.class,NamespaceUser.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NamespaceUser>> users;
+
+    /**
+     * @return A user with access to the vSphere Namespace.
+     * 
+     */
+    public Output<Optional<List<NamespaceUser>>> users() {
+        return Codegen.optional(this.users);
     }
     /**
      * The configuration for VM Service in the vSphere Namespace.
@@ -121,6 +202,60 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<NamespaceVmService>>> vmServices() {
         return Codegen.optional(this.vmServices);
+    }
+    /**
+     * The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    @Export(name="vpcNetwork", refs={NamespaceVpcNetwork.class}, tree="[0]")
+    private Output<NamespaceVpcNetwork> vpcNetwork;
+
+    /**
+     * @return The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    public Output<NamespaceVpcNetwork> vpcNetwork() {
+        return this.vpcNetwork;
+    }
+    /**
+     * The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+     * 
+     */
+    @Export(name="vsphereNetwork", refs={NamespaceVsphereNetwork.class}, tree="[0]")
+    private Output<NamespaceVsphereNetwork> vsphereNetwork;
+
+    /**
+     * @return The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+     * 
+     */
+    public Output<NamespaceVsphereNetwork> vsphereNetwork() {
+        return this.vsphereNetwork;
+    }
+    /**
+     * A vSphere Zone to associate with the vSphere Namespace. See Zone.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    @Export(name="zones", refs={List.class,NamespaceZone.class}, tree="[0,1]")
+    private Output<List<NamespaceZone>> zones;
+
+    /**
+     * @return A vSphere Zone to associate with the vSphere Namespace. See Zone.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    public Output<List<NamespaceZone>> zones() {
+        return this.zones;
     }
 
     /**

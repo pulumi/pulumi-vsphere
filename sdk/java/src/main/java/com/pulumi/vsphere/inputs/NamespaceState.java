@@ -5,7 +5,13 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.vsphere.inputs.NamespaceGroupArgs;
+import com.pulumi.vsphere.inputs.NamespaceStoragePolicyArgs;
+import com.pulumi.vsphere.inputs.NamespaceUserArgs;
 import com.pulumi.vsphere.inputs.NamespaceVmServiceArgs;
+import com.pulumi.vsphere.inputs.NamespaceVpcNetworkArgs;
+import com.pulumi.vsphere.inputs.NamespaceVsphereNetworkArgs;
+import com.pulumi.vsphere.inputs.NamespaceZoneArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,14 +24,29 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     public static final NamespaceState Empty = new NamespaceState();
 
     /**
-     * The name of the vSphere namespace.
+     * A group with access to the vSphere Namespace.
+     * 
+     */
+    @Import(name="groups")
+    private @Nullable Output<List<NamespaceGroupArgs>> groups;
+
+    /**
+     * @return A group with access to the vSphere Namespace.
+     * 
+     */
+    public Optional<Output<List<NamespaceGroupArgs>>> groups() {
+        return Optional.ofNullable(this.groups);
+    }
+
+    /**
+     * The name of the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the vSphere namespace.
+     * @return The name of the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> name() {
@@ -33,33 +54,48 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of storage policies that will be available in the vSphere Namespace.
+     * A storage policy that will be available in the vSphere Namespace.
      * 
      */
     @Import(name="storagePolicies")
-    private @Nullable Output<List<String>> storagePolicies;
+    private @Nullable Output<List<NamespaceStoragePolicyArgs>> storagePolicies;
 
     /**
-     * @return The list of storage policies that will be available in the vSphere Namespace.
+     * @return A storage policy that will be available in the vSphere Namespace.
      * 
      */
-    public Optional<Output<List<String>>> storagePolicies() {
+    public Optional<Output<List<NamespaceStoragePolicyArgs>>> storagePolicies() {
         return Optional.ofNullable(this.storagePolicies);
     }
 
     /**
-     * The identifier of the vSphere Supervisor managing the namespace.
+     * The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="supervisor")
     private @Nullable Output<String> supervisor;
 
     /**
-     * @return The identifier of the vSphere Supervisor managing the namespace.
+     * @return The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> supervisor() {
         return Optional.ofNullable(this.supervisor);
+    }
+
+    /**
+     * A user with access to the vSphere Namespace.
+     * 
+     */
+    @Import(name="users")
+    private @Nullable Output<List<NamespaceUserArgs>> users;
+
+    /**
+     * @return A user with access to the vSphere Namespace.
+     * 
+     */
+    public Optional<Output<List<NamespaceUserArgs>>> users() {
+        return Optional.ofNullable(this.users);
     }
 
     /**
@@ -77,13 +113,75 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vmServices);
     }
 
+    /**
+     * The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    @Import(name="vpcNetwork")
+    private @Nullable Output<NamespaceVpcNetworkArgs> vpcNetwork;
+
+    /**
+     * @return The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    public Optional<Output<NamespaceVpcNetworkArgs>> vpcNetwork() {
+        return Optional.ofNullable(this.vpcNetwork);
+    }
+
+    /**
+     * The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+     * 
+     */
+    @Import(name="vsphereNetwork")
+    private @Nullable Output<NamespaceVsphereNetworkArgs> vsphereNetwork;
+
+    /**
+     * @return The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+     * 
+     */
+    public Optional<Output<NamespaceVsphereNetworkArgs>> vsphereNetwork() {
+        return Optional.ofNullable(this.vsphereNetwork);
+    }
+
+    /**
+     * A vSphere Zone to associate with the vSphere Namespace. See Zone.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    @Import(name="zones")
+    private @Nullable Output<List<NamespaceZoneArgs>> zones;
+
+    /**
+     * @return A vSphere Zone to associate with the vSphere Namespace. See Zone.
+     * 
+     * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+     * 
+     */
+    public Optional<Output<List<NamespaceZoneArgs>>> zones() {
+        return Optional.ofNullable(this.zones);
+    }
+
     private NamespaceState() {}
 
     private NamespaceState(NamespaceState $) {
+        this.groups = $.groups;
         this.name = $.name;
         this.storagePolicies = $.storagePolicies;
         this.supervisor = $.supervisor;
+        this.users = $.users;
         this.vmServices = $.vmServices;
+        this.vpcNetwork = $.vpcNetwork;
+        this.vsphereNetwork = $.vsphereNetwork;
+        this.zones = $.zones;
     }
 
     public static Builder builder() {
@@ -105,7 +203,38 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the vSphere namespace.
+         * @param groups A group with access to the vSphere Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groups(@Nullable Output<List<NamespaceGroupArgs>> groups) {
+            $.groups = groups;
+            return this;
+        }
+
+        /**
+         * @param groups A group with access to the vSphere Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groups(List<NamespaceGroupArgs> groups) {
+            return groups(Output.of(groups));
+        }
+
+        /**
+         * @param groups A group with access to the vSphere Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groups(NamespaceGroupArgs... groups) {
+            return groups(List.of(groups));
+        }
+
+        /**
+         * @param name The name of the vSphere Namespace. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -116,7 +245,7 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the vSphere namespace.
+         * @param name The name of the vSphere Namespace. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -126,38 +255,38 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePolicies The list of storage policies that will be available in the vSphere Namespace.
+         * @param storagePolicies A storage policy that will be available in the vSphere Namespace.
          * 
          * @return builder
          * 
          */
-        public Builder storagePolicies(@Nullable Output<List<String>> storagePolicies) {
+        public Builder storagePolicies(@Nullable Output<List<NamespaceStoragePolicyArgs>> storagePolicies) {
             $.storagePolicies = storagePolicies;
             return this;
         }
 
         /**
-         * @param storagePolicies The list of storage policies that will be available in the vSphere Namespace.
+         * @param storagePolicies A storage policy that will be available in the vSphere Namespace.
          * 
          * @return builder
          * 
          */
-        public Builder storagePolicies(List<String> storagePolicies) {
+        public Builder storagePolicies(List<NamespaceStoragePolicyArgs> storagePolicies) {
             return storagePolicies(Output.of(storagePolicies));
         }
 
         /**
-         * @param storagePolicies The list of storage policies that will be available in the vSphere Namespace.
+         * @param storagePolicies A storage policy that will be available in the vSphere Namespace.
          * 
          * @return builder
          * 
          */
-        public Builder storagePolicies(String... storagePolicies) {
+        public Builder storagePolicies(NamespaceStoragePolicyArgs... storagePolicies) {
             return storagePolicies(List.of(storagePolicies));
         }
 
         /**
-         * @param supervisor The identifier of the vSphere Supervisor managing the namespace.
+         * @param supervisor The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -168,13 +297,44 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supervisor The identifier of the vSphere Supervisor managing the namespace.
+         * @param supervisor The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
          */
         public Builder supervisor(String supervisor) {
             return supervisor(Output.of(supervisor));
+        }
+
+        /**
+         * @param users A user with access to the vSphere Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(@Nullable Output<List<NamespaceUserArgs>> users) {
+            $.users = users;
+            return this;
+        }
+
+        /**
+         * @param users A user with access to the vSphere Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(List<NamespaceUserArgs> users) {
+            return users(Output.of(users));
+        }
+
+        /**
+         * @param users A user with access to the vSphere Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(NamespaceUserArgs... users) {
+            return users(List.of(users));
         }
 
         /**
@@ -206,6 +366,93 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vmServices(NamespaceVmServiceArgs... vmServices) {
             return vmServices(List.of(vmServices));
+        }
+
+        /**
+         * @param vpcNetwork The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+         * 
+         * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNetwork(@Nullable Output<NamespaceVpcNetworkArgs> vpcNetwork) {
+            $.vpcNetwork = vpcNetwork;
+            return this;
+        }
+
+        /**
+         * @param vpcNetwork The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+         * 
+         * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNetwork(NamespaceVpcNetworkArgs vpcNetwork) {
+            return vpcNetwork(Output.of(vpcNetwork));
+        }
+
+        /**
+         * @param vsphereNetwork The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+         * 
+         * &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsphereNetwork(@Nullable Output<NamespaceVsphereNetworkArgs> vsphereNetwork) {
+            $.vsphereNetwork = vsphereNetwork;
+            return this;
+        }
+
+        /**
+         * @param vsphereNetwork The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+         * 
+         * &gt; **NOTE:** Requires vCenter 9.1.0 or later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsphereNetwork(NamespaceVsphereNetworkArgs vsphereNetwork) {
+            return vsphereNetwork(Output.of(vsphereNetwork));
+        }
+
+        /**
+         * @param zones A vSphere Zone to associate with the vSphere Namespace. See Zone.
+         * 
+         * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(@Nullable Output<List<NamespaceZoneArgs>> zones) {
+            $.zones = zones;
+            return this;
+        }
+
+        /**
+         * @param zones A vSphere Zone to associate with the vSphere Namespace. See Zone.
+         * 
+         * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(List<NamespaceZoneArgs> zones) {
+            return zones(Output.of(zones));
+        }
+
+        /**
+         * @param zones A vSphere Zone to associate with the vSphere Namespace. See Zone.
+         * 
+         * &gt; **NOTE:** Requires vCenter 9.0.0 or later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(NamespaceZoneArgs... zones) {
+            return zones(List.of(zones));
         }
 
         public NamespaceState build() {

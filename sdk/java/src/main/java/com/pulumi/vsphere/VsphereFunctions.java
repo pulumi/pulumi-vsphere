@@ -21,6 +21,8 @@ import com.pulumi.vsphere.inputs.GetConfigurationProfilePlainArgs;
 import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
 import com.pulumi.vsphere.inputs.GetContentLibraryItemArgs;
 import com.pulumi.vsphere.inputs.GetContentLibraryItemPlainArgs;
+import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+import com.pulumi.vsphere.inputs.GetContentLibraryItemsPlainArgs;
 import com.pulumi.vsphere.inputs.GetContentLibraryPlainArgs;
 import com.pulumi.vsphere.inputs.GetCustomAttributeArgs;
 import com.pulumi.vsphere.inputs.GetCustomAttributePlainArgs;
@@ -66,6 +68,8 @@ import com.pulumi.vsphere.inputs.GetSsoGroupArgs;
 import com.pulumi.vsphere.inputs.GetSsoGroupPlainArgs;
 import com.pulumi.vsphere.inputs.GetSsoUserArgs;
 import com.pulumi.vsphere.inputs.GetSsoUserPlainArgs;
+import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+import com.pulumi.vsphere.inputs.GetSupervisorPlainArgs;
 import com.pulumi.vsphere.inputs.GetTagArgs;
 import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
 import com.pulumi.vsphere.inputs.GetTagCategoryPlainArgs;
@@ -83,6 +87,7 @@ import com.pulumi.vsphere.outputs.GetComputeClusterHostGroupResult;
 import com.pulumi.vsphere.outputs.GetComputeClusterResult;
 import com.pulumi.vsphere.outputs.GetConfigurationProfileResult;
 import com.pulumi.vsphere.outputs.GetContentLibraryItemResult;
+import com.pulumi.vsphere.outputs.GetContentLibraryItemsResult;
 import com.pulumi.vsphere.outputs.GetContentLibraryResult;
 import com.pulumi.vsphere.outputs.GetCustomAttributeResult;
 import com.pulumi.vsphere.outputs.GetDatacenterResult;
@@ -107,6 +112,7 @@ import com.pulumi.vsphere.outputs.GetResourcePoolResult;
 import com.pulumi.vsphere.outputs.GetRoleResult;
 import com.pulumi.vsphere.outputs.GetSsoGroupResult;
 import com.pulumi.vsphere.outputs.GetSsoUserResult;
+import com.pulumi.vsphere.outputs.GetSupervisorResult;
 import com.pulumi.vsphere.outputs.GetTagCategoryResult;
 import com.pulumi.vsphere.outputs.GetTagResult;
 import com.pulumi.vsphere.outputs.GetVappContainerResult;
@@ -1505,6 +1511,856 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetContentLibraryItemResult> getContentLibraryItemPlain(GetContentLibraryItemPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getContentLibraryItem:getContentLibraryItem", TypeShape.of(GetContentLibraryItemResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getContentLibraryItems` data source can be used to search for
+     * items in a content library by name, regular expression, and/or type, and
+     * returns the list of matching items.
+     * 
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
+     * 
+     * ## Example Usage
+     * 
+     * ### Search by name and type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ovfItems = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .name("ubuntu-server-lts")
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search by name regex
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ubuntu = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .nameRegex("^ubuntu-.*-lts$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search all items of a given type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var allOvf = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### List all items in a library
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var all = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContentLibraryItemsResult> getContentLibraryItems(GetContentLibraryItemsArgs args) {
+        return getContentLibraryItems(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getContentLibraryItems` data source can be used to search for
+     * items in a content library by name, regular expression, and/or type, and
+     * returns the list of matching items.
+     * 
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
+     * 
+     * ## Example Usage
+     * 
+     * ### Search by name and type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ovfItems = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .name("ubuntu-server-lts")
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search by name regex
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ubuntu = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .nameRegex("^ubuntu-.*-lts$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search all items of a given type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var allOvf = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### List all items in a library
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var all = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetContentLibraryItemsResult> getContentLibraryItemsPlain(GetContentLibraryItemsPlainArgs args) {
+        return getContentLibraryItemsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getContentLibraryItems` data source can be used to search for
+     * items in a content library by name, regular expression, and/or type, and
+     * returns the list of matching items.
+     * 
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
+     * 
+     * ## Example Usage
+     * 
+     * ### Search by name and type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ovfItems = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .name("ubuntu-server-lts")
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search by name regex
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ubuntu = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .nameRegex("^ubuntu-.*-lts$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search all items of a given type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var allOvf = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### List all items in a library
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var all = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContentLibraryItemsResult> getContentLibraryItems(GetContentLibraryItemsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getContentLibraryItems:getContentLibraryItems", TypeShape.of(GetContentLibraryItemsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getContentLibraryItems` data source can be used to search for
+     * items in a content library by name, regular expression, and/or type, and
+     * returns the list of matching items.
+     * 
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
+     * 
+     * ## Example Usage
+     * 
+     * ### Search by name and type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ovfItems = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .name("ubuntu-server-lts")
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search by name regex
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ubuntu = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .nameRegex("^ubuntu-.*-lts$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search all items of a given type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var allOvf = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### List all items in a library
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var all = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContentLibraryItemsResult> getContentLibraryItems(GetContentLibraryItemsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getContentLibraryItems:getContentLibraryItems", TypeShape.of(GetContentLibraryItemsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getContentLibraryItems` data source can be used to search for
+     * items in a content library by name, regular expression, and/or type, and
+     * returns the list of matching items.
+     * 
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
+     * 
+     * ## Example Usage
+     * 
+     * ### Search by name and type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ovfItems = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .name("ubuntu-server-lts")
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search by name regex
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var ubuntu = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .nameRegex("^ubuntu-.*-lts$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Search all items of a given type
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var allOvf = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .type("ovf")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### List all items in a library
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryItemsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *         final var all = VsphereFunctions.getContentLibraryItems(GetContentLibraryItemsArgs.builder()
+     *             .libraryId(library.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetContentLibraryItemsResult> getContentLibraryItemsPlain(GetContentLibraryItemsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getContentLibraryItems:getContentLibraryItems", TypeShape.of(GetContentLibraryItemsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.CustomAttribute` data source can be used to reference custom
@@ -6598,13 +7454,13 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getLicense:getLicense", TypeShape.of(GetLicenseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to read the properties of a vSphere Namespace.
+     * This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
      * 
      * ## Example Usage
      * 
      * ### S
      * 
-     * ### Create a Namespace
+     * ### Read a Namespace
      * 
      * <pre>
      * {@code
@@ -6636,19 +7492,21 @@ public final class VsphereFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Read the storage policies of a Namespace
      * 
      */
     public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args) {
         return getNamespace(args, InvokeOptions.Empty);
     }
     /**
-     * This data source can be used to read the properties of a vSphere Namespace.
+     * This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
      * 
      * ## Example Usage
      * 
      * ### S
      * 
-     * ### Create a Namespace
+     * ### Read a Namespace
      * 
      * <pre>
      * {@code
@@ -6680,19 +7538,21 @@ public final class VsphereFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Read the storage policies of a Namespace
      * 
      */
     public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args) {
         return getNamespacePlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source can be used to read the properties of a vSphere Namespace.
+     * This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
      * 
      * ## Example Usage
      * 
      * ### S
      * 
-     * ### Create a Namespace
+     * ### Read a Namespace
      * 
      * <pre>
      * {@code
@@ -6724,19 +7584,21 @@ public final class VsphereFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Read the storage policies of a Namespace
      * 
      */
     public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getNamespace:getNamespace", TypeShape.of(GetNamespaceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to read the properties of a vSphere Namespace.
+     * This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
      * 
      * ## Example Usage
      * 
      * ### S
      * 
-     * ### Create a Namespace
+     * ### Read a Namespace
      * 
      * <pre>
      * {@code
@@ -6768,19 +7630,21 @@ public final class VsphereFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Read the storage policies of a Namespace
      * 
      */
     public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getNamespace:getNamespace", TypeShape.of(GetNamespaceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to read the properties of a vSphere Namespace.
+     * This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
      * 
      * ## Example Usage
      * 
      * ### S
      * 
-     * ### Create a Namespace
+     * ### Read a Namespace
      * 
      * <pre>
      * {@code
@@ -6812,6 +7676,8 @@ public final class VsphereFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Read the storage policies of a Namespace
      * 
      */
     public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args, InvokeOptions options) {
@@ -9270,6 +10136,776 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetSsoUserResult> getSsoUserPlain(GetSsoUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getSsoUser:getSsoUser", TypeShape.of(GetSsoUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Supervisor.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Look up a Supervisor by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .name("example-supervisor")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by Compute Cluster
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .cluster(cluster.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .id("435a6f10-ffd2-44f4-a2a8-65b4059b0b5f")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSupervisorResult> getSupervisor() {
+        return getSupervisor(GetSupervisorArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Supervisor.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Look up a Supervisor by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .name("example-supervisor")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by Compute Cluster
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .cluster(cluster.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .id("435a6f10-ffd2-44f4-a2a8-65b4059b0b5f")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSupervisorResult> getSupervisorPlain() {
+        return getSupervisorPlain(GetSupervisorPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Supervisor.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Look up a Supervisor by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .name("example-supervisor")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by Compute Cluster
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .cluster(cluster.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .id("435a6f10-ffd2-44f4-a2a8-65b4059b0b5f")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSupervisorResult> getSupervisor(GetSupervisorArgs args) {
+        return getSupervisor(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Supervisor.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Look up a Supervisor by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .name("example-supervisor")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by Compute Cluster
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .cluster(cluster.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .id("435a6f10-ffd2-44f4-a2a8-65b4059b0b5f")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSupervisorResult> getSupervisorPlain(GetSupervisorPlainArgs args) {
+        return getSupervisorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Supervisor.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Look up a Supervisor by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .name("example-supervisor")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by Compute Cluster
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .cluster(cluster.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .id("435a6f10-ffd2-44f4-a2a8-65b4059b0b5f")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSupervisorResult> getSupervisor(GetSupervisorArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getSupervisor:getSupervisor", TypeShape.of(GetSupervisorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Supervisor.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Look up a Supervisor by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .name("example-supervisor")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by Compute Cluster
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .cluster(cluster.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .id("435a6f10-ffd2-44f4-a2a8-65b4059b0b5f")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSupervisorResult> getSupervisor(GetSupervisorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getSupervisor:getSupervisor", TypeShape.of(GetSupervisorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to read the properties of a vSphere Supervisor.
+     * 
+     * ## Example Usage
+     * 
+     * ### S
+     * 
+     * ### Look up a Supervisor by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .name("example-supervisor")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by Compute Cluster
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .cluster(cluster.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Look up a Supervisor by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetSupervisorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VsphereFunctions.getSupervisor(GetSupervisorArgs.builder()
+     *             .id("435a6f10-ffd2-44f4-a2a8-65b4059b0b5f")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSupervisorResult> getSupervisorPlain(GetSupervisorPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getSupervisor:getSupervisor", TypeShape.of(GetSupervisorResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.Tag` data source can be used to reference tags that are not managed

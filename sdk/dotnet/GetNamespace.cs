@@ -12,13 +12,13 @@ namespace Pulumi.VSphere
     public static class GetNamespace
     {
         /// <summary>
-        /// This data source can be used to read the properties of a vSphere Namespace.
+        /// This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
         /// 
         /// ## Example Usage
         /// 
         /// ### S
         /// 
-        /// ### Create a Namespace
+        /// ### Read a Namespace
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,6 +33,25 @@ namespace Pulumi.VSphere
         ///         Name = "example-namespace",
         ///     });
         /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Read the storage policies of a Namespace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["storagePolicyIds"] = .Select(s =&gt; 
+        ///         {
+        ///             return s.Policy;
+        ///         }).ToList(),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -40,13 +59,13 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("vsphere:index/getNamespace:getNamespace", args ?? new GetNamespaceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source can be used to read the properties of a vSphere Namespace.
+        /// This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
         /// 
         /// ## Example Usage
         /// 
         /// ### S
         /// 
-        /// ### Create a Namespace
+        /// ### Read a Namespace
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,18 +82,37 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Read the storage policies of a Namespace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["storagePolicyIds"] = .Select(s =&gt; 
+        ///         {
+        ///             return s.Policy;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNamespaceResult> Invoke(GetNamespaceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespaceResult>("vsphere:index/getNamespace:getNamespace", args ?? new GetNamespaceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source can be used to read the properties of a vSphere Namespace.
+        /// This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
         /// 
         /// ## Example Usage
         /// 
         /// ### S
         /// 
-        /// ### Create a Namespace
+        /// ### Read a Namespace
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -89,6 +127,25 @@ namespace Pulumi.VSphere
         ///         Name = "example-namespace",
         ///     });
         /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Read the storage policies of a Namespace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["storagePolicyIds"] = .Select(s =&gt; 
+        ///         {
+        ///             return s.Policy;
+        ///         }).ToList(),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -100,7 +157,7 @@ namespace Pulumi.VSphere
     public sealed class GetNamespaceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the vSphere namespace.
+        /// The name of the vSphere Namespace.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -114,7 +171,7 @@ namespace Pulumi.VSphere
     public sealed class GetNamespaceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the vSphere namespace.
+        /// The name of the vSphere Namespace.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -129,27 +186,62 @@ namespace Pulumi.VSphere
     [OutputType]
     public sealed class GetNamespaceResult
     {
+        /// <summary>
+        /// The configuration status of the vSphere Namespace.
+        /// </summary>
         public readonly string ConfigStatus;
+        /// <summary>
+        /// The CPU usage of the vSphere Namespace in MHz.
+        /// </summary>
         public readonly int CpuUsage;
+        /// <summary>
+        /// A group with access to the vSphere Namespace.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNamespaceGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The memory usage of the vSphere Namespace in MiB.
+        /// </summary>
         public readonly int MemoryUsage;
+        /// <summary>
+        /// The identifier of the vSphere Zone.
+        /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The list of storage policies that are available in the vSphere Namespace.
+        /// A storage policy assigned to the vSphere Namespace.
         /// </summary>
-        public readonly ImmutableArray<string> StoragePolicies;
+        public readonly ImmutableArray<Outputs.GetNamespaceStoragePolicyResult> StoragePolicies;
+        /// <summary>
+        /// The storage usage of the vSphere Namespace in MiB.
+        /// </summary>
         public readonly int StorageUsage;
         /// <summary>
         /// The identifier of the vSphere Supervisor managing the namespace.
         /// </summary>
         public readonly string Supervisor;
         /// <summary>
+        /// A user with access to the vSphere Namespace.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNamespaceUserResult> Users;
+        /// <summary>
         /// The configuration for VM Service in the vSphere Namespace.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNamespaceVmServiceResult> VmServices;
+        /// <summary>
+        /// The NSX VPC network configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNamespaceVpcNetworkResult> VpcNetworks;
+        /// <summary>
+        /// The vSphere networking configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNamespaceVsphereNetworkResult> VsphereNetworks;
+        /// <summary>
+        /// A vSphere Zone assigned to the vSphere Namespace.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNamespaceZoneResult> Zones;
 
         [OutputConstructor]
         private GetNamespaceResult(
@@ -157,29 +249,44 @@ namespace Pulumi.VSphere
 
             int cpuUsage,
 
+            ImmutableArray<Outputs.GetNamespaceGroupResult> groups,
+
             string id,
 
             int memoryUsage,
 
             string name,
 
-            ImmutableArray<string> storagePolicies,
+            ImmutableArray<Outputs.GetNamespaceStoragePolicyResult> storagePolicies,
 
             int storageUsage,
 
             string supervisor,
 
-            ImmutableArray<Outputs.GetNamespaceVmServiceResult> vmServices)
+            ImmutableArray<Outputs.GetNamespaceUserResult> users,
+
+            ImmutableArray<Outputs.GetNamespaceVmServiceResult> vmServices,
+
+            ImmutableArray<Outputs.GetNamespaceVpcNetworkResult> vpcNetworks,
+
+            ImmutableArray<Outputs.GetNamespaceVsphereNetworkResult> vsphereNetworks,
+
+            ImmutableArray<Outputs.GetNamespaceZoneResult> zones)
         {
             ConfigStatus = configStatus;
             CpuUsage = cpuUsage;
+            Groups = groups;
             Id = id;
             MemoryUsage = memoryUsage;
             Name = name;
             StoragePolicies = storagePolicies;
             StorageUsage = storageUsage;
             Supervisor = supervisor;
+            Users = users;
             VmServices = vmServices;
+            VpcNetworks = vpcNetworks;
+            VsphereNetworks = vsphereNetworks;
+            Zones = zones;
         }
     }
 }

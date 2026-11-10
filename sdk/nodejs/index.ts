@@ -150,6 +150,11 @@ export const getContentLibraryItem: typeof import("./getContentLibraryItem").get
 export const getContentLibraryItemOutput: typeof import("./getContentLibraryItem").getContentLibraryItemOutput = null as any;
 utilities.lazyLoad(exports, ["getContentLibraryItem","getContentLibraryItemOutput"], () => require("./getContentLibraryItem"));
 
+export { GetContentLibraryItemsArgs, GetContentLibraryItemsResult, GetContentLibraryItemsOutputArgs } from "./getContentLibraryItems";
+export const getContentLibraryItems: typeof import("./getContentLibraryItems").getContentLibraryItems = null as any;
+export const getContentLibraryItemsOutput: typeof import("./getContentLibraryItems").getContentLibraryItemsOutput = null as any;
+utilities.lazyLoad(exports, ["getContentLibraryItems","getContentLibraryItemsOutput"], () => require("./getContentLibraryItems"));
+
 export { GetCustomAttributeArgs, GetCustomAttributeResult, GetCustomAttributeOutputArgs } from "./getCustomAttribute";
 export const getCustomAttribute: typeof import("./getCustomAttribute").getCustomAttribute = null as any;
 export const getCustomAttributeOutput: typeof import("./getCustomAttribute").getCustomAttributeOutput = null as any;
@@ -264,6 +269,11 @@ export { GetSsoUserArgs, GetSsoUserResult, GetSsoUserOutputArgs } from "./getSso
 export const getSsoUser: typeof import("./getSsoUser").getSsoUser = null as any;
 export const getSsoUserOutput: typeof import("./getSsoUser").getSsoUserOutput = null as any;
 utilities.lazyLoad(exports, ["getSsoUser","getSsoUserOutput"], () => require("./getSsoUser"));
+
+export { GetSupervisorArgs, GetSupervisorResult, GetSupervisorOutputArgs } from "./getSupervisor";
+export const getSupervisor: typeof import("./getSupervisor").getSupervisor = null as any;
+export const getSupervisorOutput: typeof import("./getSupervisor").getSupervisorOutput = null as any;
+utilities.lazyLoad(exports, ["getSupervisor","getSupervisorOutput"], () => require("./getSupervisor"));
 
 export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
 export const getTag: typeof import("./getTag").getTag = null as any;
