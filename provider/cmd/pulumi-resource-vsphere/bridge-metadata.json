@@ -407,7 +407,13 @@
                 "current": "vsphere:index/namespace:Namespace",
                 "majorVersion": 4,
                 "fields": {
-                    "storage_policies": {
+                    "group": {
+                        "maxItemsOne": false
+                    },
+                    "storage_policy": {
+                        "maxItemsOne": false
+                    },
+                    "user": {
                         "maxItemsOne": false
                     },
                     "vm_service": {
@@ -418,6 +424,36 @@
                                     "maxItemsOne": false
                                 },
                                 "vm_classes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vpc_network": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "shared_subnet": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vsphere_network": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "zone": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "vm_class_reservation": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1170,6 +1206,15 @@
                 "current": "vsphere:index/getContentLibraryItem:getContentLibraryItem",
                 "majorVersion": 4
             },
+            "vsphere_content_library_items": {
+                "current": "vsphere:index/getContentLibraryItems:getContentLibraryItems",
+                "majorVersion": 4,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "vsphere_custom_attribute": {
                 "current": "vsphere:index/getCustomAttribute:getCustomAttribute",
                 "majorVersion": 4
@@ -1302,7 +1347,13 @@
                 "current": "vsphere:index/getNamespace:getNamespace",
                 "majorVersion": 4,
                 "fields": {
-                    "storage_policies": {
+                    "group": {
+                        "maxItemsOne": false
+                    },
+                    "storage_policy": {
+                        "maxItemsOne": false
+                    },
+                    "user": {
                         "maxItemsOne": false
                     },
                     "vm_service": {
@@ -1317,6 +1368,29 @@
                                 }
                             }
                         }
+                    },
+                    "vpc_network": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "shared_subnet": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vsphere_network": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "zone": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1365,6 +1439,32 @@
             "vsphere_storage_policy": {
                 "current": "vsphere:index/getPolicy:getPolicy",
                 "majorVersion": 4
+            },
+            "vsphere_supervisor": {
+                "current": "vsphere:index/getSupervisor:getSupervisor",
+                "majorVersion": 4,
+                "fields": {
+                    "workload_network": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "namespaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "zones": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "clusters": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "vsphere_tag": {
                 "current": "vsphere:index/getTag:getTag",
@@ -1440,5 +1540,13 @@
             }
         }
     },
-    "auto-settings": {}
+    "auto-settings": {
+        "resources": {
+            "vsphere_namespace": {
+                "maxItemsOneOverrides": {
+                    "vm_service": false
+                }
+            }
+        }
+    }
 }
