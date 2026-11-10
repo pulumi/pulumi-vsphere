@@ -708,6 +708,55 @@ export interface HostServiceNtpd {
     policy?: pulumi.Input<string | undefined>;
 }
 
+export interface NamespaceGroup {
+    /**
+     * The domain of the identity source that owns the group.
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+     */
+    identityProvider?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the group, without the domain.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+     */
+    role: pulumi.Input<string>;
+}
+
+export interface NamespaceStoragePolicy {
+    /**
+     * The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+     */
+    limit?: pulumi.Input<number | undefined>;
+    /**
+     * The identifier of the storage policy.
+     */
+    policy: pulumi.Input<string>;
+}
+
+export interface NamespaceUser {
+    /**
+     * The domain of the identity source that owns the user.
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+     */
+    identityProvider?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the user, without the domain.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+     */
+    role: pulumi.Input<string>;
+}
+
 export interface NamespaceVmService {
     /**
      * The list of content libraries to associate with the VM Service.
@@ -717,6 +766,89 @@ export interface NamespaceVmService {
      * The list of VM Classes to associate with the VM Service.
      */
     vmClasses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface NamespaceVpcNetwork {
+    /**
+     * An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+     *
+     * > **NOTE:** Requires vCenter 9.1.0 or later. `podDefault` and `vmDefault` require vCenter 9.1.1 or later.
+     */
+    sharedSubnets?: pulumi.Input<pulumi.Input<inputs.NamespaceVpcNetworkSharedSubnet>[] | undefined>;
+    /**
+     * The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+     */
+    vpc: pulumi.Input<string>;
+}
+
+export interface NamespaceVpcNetworkSharedSubnet {
+    /**
+     * The NSX path of the subnet.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Whether the subnet is the default network for vSphere Pods.
+     */
+    podDefault?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the subnet is the default network for VMs.
+     */
+    vmDefault?: pulumi.Input<boolean | undefined>;
+}
+
+export interface NamespaceVsphereNetwork {
+    /**
+     * The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+     */
+    defaultWorkloadNetwork: pulumi.Input<string>;
+    /**
+     * The names of the Supervisor networks to associate with the vSphere Namespace, including `defaultWorkloadNetwork`. These are Supervisor network names, not port group IDs. See the `workloadNetwork` attribute of the [`vsphere.Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+     *
+     * > **NOTE:** In v2.18.0, `storagePolicy` superseded the `storagePolicies` argument. To upgrade, replace
+     */
+    networks: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface NamespaceZone {
+    /**
+     * The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+     */
+    cpuLimit?: pulumi.Input<number | undefined>;
+    /**
+     * The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+     */
+    cpuReservation?: pulumi.Input<number | undefined>;
+    /**
+     * Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+     */
+    disallowUnreservedDirectPathUsage?: pulumi.Input<boolean | undefined>;
+    /**
+     * The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+     */
+    memoryLimit?: pulumi.Input<number | undefined>;
+    /**
+     * The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+     */
+    memoryReservation?: pulumi.Input<number | undefined>;
+    /**
+     * The identifier of the vSphere Zone.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A reservation of VM class instances for the vSphere Namespace in the zone.
+     */
+    vmClassReservations?: pulumi.Input<pulumi.Input<inputs.NamespaceZoneVmClassReservation>[] | undefined>;
+}
+
+export interface NamespaceZoneVmClassReservation {
+    /**
+     * The number of VM class instances to reserve.
+     */
+    count: pulumi.Input<number>;
+    /**
+     * The name of the VM class.
+     */
+    vmClass: pulumi.Input<string>;
 }
 
 export interface NetworkProtocolProfileIpv4 {

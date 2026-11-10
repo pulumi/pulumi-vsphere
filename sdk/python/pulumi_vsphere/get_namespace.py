@@ -27,13 +27,16 @@ class GetNamespaceResult:
     """
     A collection of values returned by getNamespace.
     """
-    def __init__(__self__, config_status=None, cpu_usage=None, id=None, memory_usage=None, name=None, storage_policies=None, storage_usage=None, supervisor=None, vm_services=None):
+    def __init__(__self__, config_status=None, cpu_usage=None, groups=None, id=None, memory_usage=None, name=None, storage_policies=None, storage_usage=None, supervisor=None, users=None, vm_services=None, vpc_networks=None, vsphere_networks=None, zones=None):
         if config_status and not isinstance(config_status, str):
             raise TypeError("Expected argument 'config_status' to be a str")
         pulumi.set(__self__, "config_status", config_status)
         if cpu_usage and not isinstance(cpu_usage, int):
             raise TypeError("Expected argument 'cpu_usage' to be a int")
         pulumi.set(__self__, "cpu_usage", cpu_usage)
+        if groups and not isinstance(groups, list):
+            raise TypeError("Expected argument 'groups' to be a list")
+        pulumi.set(__self__, "groups", groups)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,19 +55,45 @@ class GetNamespaceResult:
         if supervisor and not isinstance(supervisor, str):
             raise TypeError("Expected argument 'supervisor' to be a str")
         pulumi.set(__self__, "supervisor", supervisor)
+        if users and not isinstance(users, list):
+            raise TypeError("Expected argument 'users' to be a list")
+        pulumi.set(__self__, "users", users)
         if vm_services and not isinstance(vm_services, list):
             raise TypeError("Expected argument 'vm_services' to be a list")
         pulumi.set(__self__, "vm_services", vm_services)
+        if vpc_networks and not isinstance(vpc_networks, list):
+            raise TypeError("Expected argument 'vpc_networks' to be a list")
+        pulumi.set(__self__, "vpc_networks", vpc_networks)
+        if vsphere_networks and not isinstance(vsphere_networks, list):
+            raise TypeError("Expected argument 'vsphere_networks' to be a list")
+        pulumi.set(__self__, "vsphere_networks", vsphere_networks)
+        if zones and not isinstance(zones, list):
+            raise TypeError("Expected argument 'zones' to be a list")
+        pulumi.set(__self__, "zones", zones)
 
     @_builtins.property
     @pulumi.getter(name="configStatus")
     def config_status(self) -> _builtins.str:
+        """
+        The configuration status of the vSphere Namespace.
+        """
         return pulumi.get(self, "config_status")
 
     @_builtins.property
     @pulumi.getter(name="cpuUsage")
     def cpu_usage(self) -> _builtins.int:
+        """
+        The CPU usage of the vSphere Namespace in MHz.
+        """
         return pulumi.get(self, "cpu_usage")
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> Sequence['outputs.GetNamespaceGroupResult']:
+        """
+        A group with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "groups")
 
     @_builtins.property
     @pulumi.getter
@@ -77,24 +106,33 @@ class GetNamespaceResult:
     @_builtins.property
     @pulumi.getter(name="memoryUsage")
     def memory_usage(self) -> _builtins.int:
+        """
+        The memory usage of the vSphere Namespace in MiB.
+        """
         return pulumi.get(self, "memory_usage")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The identifier of the vSphere Zone.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="storagePolicies")
-    def storage_policies(self) -> Sequence[_builtins.str]:
+    def storage_policies(self) -> Sequence['outputs.GetNamespaceStoragePolicyResult']:
         """
-        The list of storage policies that are available in the vSphere Namespace.
+        A storage policy assigned to the vSphere Namespace.
         """
         return pulumi.get(self, "storage_policies")
 
     @_builtins.property
     @pulumi.getter(name="storageUsage")
     def storage_usage(self) -> _builtins.int:
+        """
+        The storage usage of the vSphere Namespace in MiB.
+        """
         return pulumi.get(self, "storage_usage")
 
     @_builtins.property
@@ -106,12 +144,44 @@ class GetNamespaceResult:
         return pulumi.get(self, "supervisor")
 
     @_builtins.property
+    @pulumi.getter
+    def users(self) -> Sequence['outputs.GetNamespaceUserResult']:
+        """
+        A user with access to the vSphere Namespace.
+        """
+        return pulumi.get(self, "users")
+
+    @_builtins.property
     @pulumi.getter(name="vmServices")
     def vm_services(self) -> Sequence['outputs.GetNamespaceVmServiceResult']:
         """
         The configuration for VM Service in the vSphere Namespace.
         """
         return pulumi.get(self, "vm_services")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcNetworks")
+    def vpc_networks(self) -> Sequence['outputs.GetNamespaceVpcNetworkResult']:
+        """
+        The NSX VPC network configuration.
+        """
+        return pulumi.get(self, "vpc_networks")
+
+    @_builtins.property
+    @pulumi.getter(name="vsphereNetworks")
+    def vsphere_networks(self) -> Sequence['outputs.GetNamespaceVsphereNetworkResult']:
+        """
+        The vSphere networking configuration.
+        """
+        return pulumi.get(self, "vsphere_networks")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> Sequence['outputs.GetNamespaceZoneResult']:
+        """
+        A vSphere Zone assigned to the vSphere Namespace.
+        """
+        return pulumi.get(self, "zones")
 
 
 class AwaitableGetNamespaceResult(GetNamespaceResult):
@@ -122,25 +192,30 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
         return GetNamespaceResult(
             config_status=self.config_status,
             cpu_usage=self.cpu_usage,
+            groups=self.groups,
             id=self.id,
             memory_usage=self.memory_usage,
             name=self.name,
             storage_policies=self.storage_policies,
             storage_usage=self.storage_usage,
             supervisor=self.supervisor,
-            vm_services=self.vm_services)
+            users=self.users,
+            vm_services=self.vm_services,
+            vpc_networks=self.vpc_networks,
+            vsphere_networks=self.vsphere_networks,
+            zones=self.zones)
 
 
 def get_namespace(name: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceResult:
     """
-    This data source can be used to read the properties of a vSphere Namespace.
+    This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
 
     ## Example Usage
 
     ### S
 
-    ### Create a Namespace
+    ### Read a Namespace
 
     ```python
     import pulumi
@@ -149,8 +224,16 @@ def get_namespace(name: Optional[_builtins.str] = None,
     example = vsphere.get_namespace(name="example-namespace")
     ```
 
+    ### Read the storage policies of a Namespace
 
-    :param _builtins.str name: The name of the vSphere namespace.
+    ```python
+    import pulumi
+
+    pulumi.export("storagePolicyIds", [s["policy"] for s in example["storagePolicy"]])
+    ```
+
+
+    :param _builtins.str name: The name of the vSphere Namespace.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -160,23 +243,28 @@ def get_namespace(name: Optional[_builtins.str] = None,
     return AwaitableGetNamespaceResult(
         config_status=pulumi.get(__ret__, 'config_status'),
         cpu_usage=pulumi.get(__ret__, 'cpu_usage'),
+        groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'),
         memory_usage=pulumi.get(__ret__, 'memory_usage'),
         name=pulumi.get(__ret__, 'name'),
         storage_policies=pulumi.get(__ret__, 'storage_policies'),
         storage_usage=pulumi.get(__ret__, 'storage_usage'),
         supervisor=pulumi.get(__ret__, 'supervisor'),
-        vm_services=pulumi.get(__ret__, 'vm_services'))
+        users=pulumi.get(__ret__, 'users'),
+        vm_services=pulumi.get(__ret__, 'vm_services'),
+        vpc_networks=pulumi.get(__ret__, 'vpc_networks'),
+        vsphere_networks=pulumi.get(__ret__, 'vsphere_networks'),
+        zones=pulumi.get(__ret__, 'zones'))
 def get_namespace_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamespaceResult]:
     """
-    This data source can be used to read the properties of a vSphere Namespace.
+    This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
 
     ## Example Usage
 
     ### S
 
-    ### Create a Namespace
+    ### Read a Namespace
 
     ```python
     import pulumi
@@ -185,8 +273,16 @@ def get_namespace_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     example = vsphere.get_namespace(name="example-namespace")
     ```
 
+    ### Read the storage policies of a Namespace
 
-    :param _builtins.str name: The name of the vSphere namespace.
+    ```python
+    import pulumi
+
+    pulumi.export("storagePolicyIds", [s["policy"] for s in example["storagePolicy"]])
+    ```
+
+
+    :param _builtins.str name: The name of the vSphere Namespace.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -195,10 +291,15 @@ def get_namespace_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetNamespaceResult(
         config_status=pulumi.get(__response__, 'config_status'),
         cpu_usage=pulumi.get(__response__, 'cpu_usage'),
+        groups=pulumi.get(__response__, 'groups'),
         id=pulumi.get(__response__, 'id'),
         memory_usage=pulumi.get(__response__, 'memory_usage'),
         name=pulumi.get(__response__, 'name'),
         storage_policies=pulumi.get(__response__, 'storage_policies'),
         storage_usage=pulumi.get(__response__, 'storage_usage'),
         supervisor=pulumi.get(__response__, 'supervisor'),
-        vm_services=pulumi.get(__response__, 'vm_services')))
+        users=pulumi.get(__response__, 'users'),
+        vm_services=pulumi.get(__response__, 'vm_services'),
+        vpc_networks=pulumi.get(__response__, 'vpc_networks'),
+        vsphere_networks=pulumi.get(__response__, 'vsphere_networks'),
+        zones=pulumi.get(__response__, 'zones')))

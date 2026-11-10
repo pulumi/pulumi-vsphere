@@ -5,7 +5,13 @@ package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.vsphere.outputs.GetNamespaceGroup;
+import com.pulumi.vsphere.outputs.GetNamespaceStoragePolicy;
+import com.pulumi.vsphere.outputs.GetNamespaceUser;
 import com.pulumi.vsphere.outputs.GetNamespaceVmService;
+import com.pulumi.vsphere.outputs.GetNamespaceVpcNetwork;
+import com.pulumi.vsphere.outputs.GetNamespaceVsphereNetwork;
+import com.pulumi.vsphere.outputs.GetNamespaceZone;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -13,20 +19,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNamespaceResult {
+    /**
+     * @return The configuration status of the vSphere Namespace.
+     * 
+     */
     private String configStatus;
+    /**
+     * @return The CPU usage of the vSphere Namespace in MHz.
+     * 
+     */
     private Integer cpuUsage;
+    /**
+     * @return A group with access to the vSphere Namespace.
+     * 
+     */
+    private List<GetNamespaceGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    private Integer memoryUsage;
-    private String name;
     /**
-     * @return The list of storage policies that are available in the vSphere Namespace.
+     * @return The memory usage of the vSphere Namespace in MiB.
      * 
      */
-    private List<String> storagePolicies;
+    private Integer memoryUsage;
+    /**
+     * @return The identifier of the vSphere Zone.
+     * 
+     */
+    private String name;
+    /**
+     * @return A storage policy assigned to the vSphere Namespace.
+     * 
+     */
+    private List<GetNamespaceStoragePolicy> storagePolicies;
+    /**
+     * @return The storage usage of the vSphere Namespace in MiB.
+     * 
+     */
     private Integer storageUsage;
     /**
      * @return The identifier of the vSphere Supervisor managing the namespace.
@@ -34,17 +65,52 @@ public final class GetNamespaceResult {
      */
     private String supervisor;
     /**
+     * @return A user with access to the vSphere Namespace.
+     * 
+     */
+    private List<GetNamespaceUser> users;
+    /**
      * @return The configuration for VM Service in the vSphere Namespace.
      * 
      */
     private List<GetNamespaceVmService> vmServices;
+    /**
+     * @return The NSX VPC network configuration.
+     * 
+     */
+    private List<GetNamespaceVpcNetwork> vpcNetworks;
+    /**
+     * @return The vSphere networking configuration.
+     * 
+     */
+    private List<GetNamespaceVsphereNetwork> vsphereNetworks;
+    /**
+     * @return A vSphere Zone assigned to the vSphere Namespace.
+     * 
+     */
+    private List<GetNamespaceZone> zones;
 
     private GetNamespaceResult() {}
+    /**
+     * @return The configuration status of the vSphere Namespace.
+     * 
+     */
     public String configStatus() {
         return this.configStatus;
     }
+    /**
+     * @return The CPU usage of the vSphere Namespace in MHz.
+     * 
+     */
     public Integer cpuUsage() {
         return this.cpuUsage;
+    }
+    /**
+     * @return A group with access to the vSphere Namespace.
+     * 
+     */
+    public List<GetNamespaceGroup> groups() {
+        return this.groups;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -53,19 +119,31 @@ public final class GetNamespaceResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The memory usage of the vSphere Namespace in MiB.
+     * 
+     */
     public Integer memoryUsage() {
         return this.memoryUsage;
     }
+    /**
+     * @return The identifier of the vSphere Zone.
+     * 
+     */
     public String name() {
         return this.name;
     }
     /**
-     * @return The list of storage policies that are available in the vSphere Namespace.
+     * @return A storage policy assigned to the vSphere Namespace.
      * 
      */
-    public List<String> storagePolicies() {
+    public List<GetNamespaceStoragePolicy> storagePolicies() {
         return this.storagePolicies;
     }
+    /**
+     * @return The storage usage of the vSphere Namespace in MiB.
+     * 
+     */
     public Integer storageUsage() {
         return this.storageUsage;
     }
@@ -77,11 +155,39 @@ public final class GetNamespaceResult {
         return this.supervisor;
     }
     /**
+     * @return A user with access to the vSphere Namespace.
+     * 
+     */
+    public List<GetNamespaceUser> users() {
+        return this.users;
+    }
+    /**
      * @return The configuration for VM Service in the vSphere Namespace.
      * 
      */
     public List<GetNamespaceVmService> vmServices() {
         return this.vmServices;
+    }
+    /**
+     * @return The NSX VPC network configuration.
+     * 
+     */
+    public List<GetNamespaceVpcNetwork> vpcNetworks() {
+        return this.vpcNetworks;
+    }
+    /**
+     * @return The vSphere networking configuration.
+     * 
+     */
+    public List<GetNamespaceVsphereNetwork> vsphereNetworks() {
+        return this.vsphereNetworks;
+    }
+    /**
+     * @return A vSphere Zone assigned to the vSphere Namespace.
+     * 
+     */
+    public List<GetNamespaceZone> zones() {
+        return this.zones;
     }
 
     public static Builder builder() {
@@ -95,25 +201,35 @@ public final class GetNamespaceResult {
     public static final class Builder {
         private String configStatus;
         private Integer cpuUsage;
+        private List<GetNamespaceGroup> groups;
         private String id;
         private Integer memoryUsage;
         private String name;
-        private List<String> storagePolicies;
+        private List<GetNamespaceStoragePolicy> storagePolicies;
         private Integer storageUsage;
         private String supervisor;
+        private List<GetNamespaceUser> users;
         private List<GetNamespaceVmService> vmServices;
+        private List<GetNamespaceVpcNetwork> vpcNetworks;
+        private List<GetNamespaceVsphereNetwork> vsphereNetworks;
+        private List<GetNamespaceZone> zones;
         public Builder() {}
         public Builder(GetNamespaceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configStatus = defaults.configStatus;
     	      this.cpuUsage = defaults.cpuUsage;
+    	      this.groups = defaults.groups;
     	      this.id = defaults.id;
     	      this.memoryUsage = defaults.memoryUsage;
     	      this.name = defaults.name;
     	      this.storagePolicies = defaults.storagePolicies;
     	      this.storageUsage = defaults.storageUsage;
     	      this.supervisor = defaults.supervisor;
+    	      this.users = defaults.users;
     	      this.vmServices = defaults.vmServices;
+    	      this.vpcNetworks = defaults.vpcNetworks;
+    	      this.vsphereNetworks = defaults.vsphereNetworks;
+    	      this.zones = defaults.zones;
         }
 
         @CustomType.Setter
@@ -131,6 +247,17 @@ public final class GetNamespaceResult {
             }
             this.cpuUsage = cpuUsage;
             return this;
+        }
+        @CustomType.Setter
+        public Builder groups(List<GetNamespaceGroup> groups) {
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetNamespaceResult", "groups");
+            }
+            this.groups = groups;
+            return this;
+        }
+        public Builder groups(GetNamespaceGroup... groups) {
+            return groups(List.of(groups));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -157,14 +284,14 @@ public final class GetNamespaceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder storagePolicies(List<String> storagePolicies) {
+        public Builder storagePolicies(List<GetNamespaceStoragePolicy> storagePolicies) {
             if (storagePolicies == null) {
               throw new MissingRequiredPropertyException("GetNamespaceResult", "storagePolicies");
             }
             this.storagePolicies = storagePolicies;
             return this;
         }
-        public Builder storagePolicies(String... storagePolicies) {
+        public Builder storagePolicies(GetNamespaceStoragePolicy... storagePolicies) {
             return storagePolicies(List.of(storagePolicies));
         }
         @CustomType.Setter
@@ -184,6 +311,17 @@ public final class GetNamespaceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder users(List<GetNamespaceUser> users) {
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetNamespaceResult", "users");
+            }
+            this.users = users;
+            return this;
+        }
+        public Builder users(GetNamespaceUser... users) {
+            return users(List.of(users));
+        }
+        @CustomType.Setter
         public Builder vmServices(List<GetNamespaceVmService> vmServices) {
             if (vmServices == null) {
               throw new MissingRequiredPropertyException("GetNamespaceResult", "vmServices");
@@ -194,17 +332,55 @@ public final class GetNamespaceResult {
         public Builder vmServices(GetNamespaceVmService... vmServices) {
             return vmServices(List.of(vmServices));
         }
+        @CustomType.Setter
+        public Builder vpcNetworks(List<GetNamespaceVpcNetwork> vpcNetworks) {
+            if (vpcNetworks == null) {
+              throw new MissingRequiredPropertyException("GetNamespaceResult", "vpcNetworks");
+            }
+            this.vpcNetworks = vpcNetworks;
+            return this;
+        }
+        public Builder vpcNetworks(GetNamespaceVpcNetwork... vpcNetworks) {
+            return vpcNetworks(List.of(vpcNetworks));
+        }
+        @CustomType.Setter
+        public Builder vsphereNetworks(List<GetNamespaceVsphereNetwork> vsphereNetworks) {
+            if (vsphereNetworks == null) {
+              throw new MissingRequiredPropertyException("GetNamespaceResult", "vsphereNetworks");
+            }
+            this.vsphereNetworks = vsphereNetworks;
+            return this;
+        }
+        public Builder vsphereNetworks(GetNamespaceVsphereNetwork... vsphereNetworks) {
+            return vsphereNetworks(List.of(vsphereNetworks));
+        }
+        @CustomType.Setter
+        public Builder zones(List<GetNamespaceZone> zones) {
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetNamespaceResult", "zones");
+            }
+            this.zones = zones;
+            return this;
+        }
+        public Builder zones(GetNamespaceZone... zones) {
+            return zones(List.of(zones));
+        }
         public GetNamespaceResult build() {
             final var _resultValue = new GetNamespaceResult();
             _resultValue.configStatus = configStatus;
             _resultValue.cpuUsage = cpuUsage;
+            _resultValue.groups = groups;
             _resultValue.id = id;
             _resultValue.memoryUsage = memoryUsage;
             _resultValue.name = name;
             _resultValue.storagePolicies = storagePolicies;
             _resultValue.storageUsage = storageUsage;
             _resultValue.supervisor = supervisor;
+            _resultValue.users = users;
             _resultValue.vmServices = vmServices;
+            _resultValue.vpcNetworks = vpcNetworks;
+            _resultValue.vsphereNetworks = vsphereNetworks;
+            _resultValue.zones = zones;
             return _resultValue;
         }
     }

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ### S
  *
- * ### Create a namespace
+ * ### Create a Namespace
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,9 +26,50 @@ import * as utilities from "./utilities";
  *         contentLibraries: ["ca616f93-506d-4f00-98bf-7708d30f68bc"],
  *         vmClasses: ["example-vm-class"],
  *     }],
- *     storagePolicies: ["1bb87d1e-49a5-49f8-ad4a-7094be13d4a0"],
+ *     storagePolicies: [{
+ *         policy: "1bb87d1e-49a5-49f8-ad4a-7094be13d4a0",
+ *         limit: 102400,
+ *     }],
+ *     users: [{
+ *         name: "administrator",
+ *         domain: "vsphere.local",
+ *         role: "OWNER",
+ *     }],
+ *     groups: [{
+ *         name: "developers",
+ *         domain: "vsphere.local",
+ *         role: "EDIT",
+ *     }],
+ *     zones: [{
+ *         name: "zone-1",
+ *         cpuLimit: 4000,
+ *         cpuReservation: 1000,
+ *         memoryLimit: 8192,
+ *         memoryReservation: 2048,
+ *         vmClassReservations: [{
+ *             vmClass: "example-vm-class",
+ *             count: 2,
+ *         }],
+ *     }],
+ *     vpcNetwork: {
+ *         vpc: "/orgs/default/projects/example-project/vpcs/example-vpc",
+ *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * An existing vSphere Namespace can be imported into this resource by supplying
+ * its name:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/namespace:Namespace example example-namespace
+ * ```
+ *
+ * > **NOTE:** vCenter does not return the zone limits, reservations,
+ * `vmClassReservation` or `disallowUnreservedDirectPathUsage`, so they are not
+ * populated by an import. If they are set in the configuration, the next apply
+ * updates the vSphere Namespace in place to match.
  */
 export class Namespace extends pulumi.CustomResource {
     /**
@@ -70,21 +111,47 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the vSphere namespace.
+     * A group with access to the vSphere Namespace.
+     */
+    declare public readonly groups: pulumi.Output<outputs.NamespaceGroup[] | undefined>;
+    /**
+     * The name of the vSphere Namespace. Changing this forces a new resource to be created.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The list of storage policies that will be available in the vSphere Namespace.
+     * A storage policy that will be available in the vSphere Namespace.
      */
-    declare public readonly storagePolicies: pulumi.Output<string[] | undefined>;
+    declare public readonly storagePolicies: pulumi.Output<outputs.NamespaceStoragePolicy[] | undefined>;
     /**
-     * The identifier of the vSphere Supervisor managing the namespace.
+     * The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
      */
     declare public readonly supervisor: pulumi.Output<string>;
+    /**
+     * A user with access to the vSphere Namespace.
+     */
+    declare public readonly users: pulumi.Output<outputs.NamespaceUser[] | undefined>;
     /**
      * The configuration for VM Service in the vSphere Namespace.
      */
     declare public readonly vmServices: pulumi.Output<outputs.NamespaceVmService[] | undefined>;
+    /**
+     * The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+     *
+     * > **NOTE:** Requires vCenter 9.0.0 or later.
+     */
+    declare public readonly vpcNetwork: pulumi.Output<outputs.NamespaceVpcNetwork>;
+    /**
+     * The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+     *
+     * > **NOTE:** Requires vCenter 9.1.0 or later.
+     */
+    declare public readonly vsphereNetwork: pulumi.Output<outputs.NamespaceVsphereNetwork>;
+    /**
+     * A vSphere Zone to associate with the vSphere Namespace. See Zone.
+     *
+     * > **NOTE:** Requires vCenter 9.0.0 or later.
+     */
+    declare public readonly zones: pulumi.Output<outputs.NamespaceZone[]>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -99,19 +166,29 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
+            resourceInputs["groups"] = state?.groups;
             resourceInputs["name"] = state?.name;
             resourceInputs["storagePolicies"] = state?.storagePolicies;
             resourceInputs["supervisor"] = state?.supervisor;
+            resourceInputs["users"] = state?.users;
             resourceInputs["vmServices"] = state?.vmServices;
+            resourceInputs["vpcNetwork"] = state?.vpcNetwork;
+            resourceInputs["vsphereNetwork"] = state?.vsphereNetwork;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
             if (args?.supervisor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'supervisor'");
             }
+            resourceInputs["groups"] = args?.groups;
             resourceInputs["name"] = args?.name;
             resourceInputs["storagePolicies"] = args?.storagePolicies;
             resourceInputs["supervisor"] = args?.supervisor;
+            resourceInputs["users"] = args?.users;
             resourceInputs["vmServices"] = args?.vmServices;
+            resourceInputs["vpcNetwork"] = args?.vpcNetwork;
+            resourceInputs["vsphereNetwork"] = args?.vsphereNetwork;
+            resourceInputs["zones"] = args?.zones;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);
@@ -123,21 +200,47 @@ export class Namespace extends pulumi.CustomResource {
  */
 export interface NamespaceState {
     /**
-     * The name of the vSphere namespace.
+     * A group with access to the vSphere Namespace.
+     */
+    groups?: pulumi.Input<pulumi.Input<inputs.NamespaceGroup>[] | undefined>;
+    /**
+     * The name of the vSphere Namespace. Changing this forces a new resource to be created.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The list of storage policies that will be available in the vSphere Namespace.
+     * A storage policy that will be available in the vSphere Namespace.
      */
-    storagePolicies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    storagePolicies?: pulumi.Input<pulumi.Input<inputs.NamespaceStoragePolicy>[] | undefined>;
     /**
-     * The identifier of the vSphere Supervisor managing the namespace.
+     * The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
      */
     supervisor?: pulumi.Input<string | undefined>;
+    /**
+     * A user with access to the vSphere Namespace.
+     */
+    users?: pulumi.Input<pulumi.Input<inputs.NamespaceUser>[] | undefined>;
     /**
      * The configuration for VM Service in the vSphere Namespace.
      */
     vmServices?: pulumi.Input<pulumi.Input<inputs.NamespaceVmService>[] | undefined>;
+    /**
+     * The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+     *
+     * > **NOTE:** Requires vCenter 9.0.0 or later.
+     */
+    vpcNetwork?: pulumi.Input<inputs.NamespaceVpcNetwork | undefined>;
+    /**
+     * The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+     *
+     * > **NOTE:** Requires vCenter 9.1.0 or later.
+     */
+    vsphereNetwork?: pulumi.Input<inputs.NamespaceVsphereNetwork | undefined>;
+    /**
+     * A vSphere Zone to associate with the vSphere Namespace. See Zone.
+     *
+     * > **NOTE:** Requires vCenter 9.0.0 or later.
+     */
+    zones?: pulumi.Input<pulumi.Input<inputs.NamespaceZone>[] | undefined>;
 }
 
 /**
@@ -145,19 +248,45 @@ export interface NamespaceState {
  */
 export interface NamespaceArgs {
     /**
-     * The name of the vSphere namespace.
+     * A group with access to the vSphere Namespace.
+     */
+    groups?: pulumi.Input<pulumi.Input<inputs.NamespaceGroup>[] | undefined>;
+    /**
+     * The name of the vSphere Namespace. Changing this forces a new resource to be created.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The list of storage policies that will be available in the vSphere Namespace.
+     * A storage policy that will be available in the vSphere Namespace.
      */
-    storagePolicies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    storagePolicies?: pulumi.Input<pulumi.Input<inputs.NamespaceStoragePolicy>[] | undefined>;
     /**
-     * The identifier of the vSphere Supervisor managing the namespace.
+     * The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
      */
     supervisor: pulumi.Input<string>;
+    /**
+     * A user with access to the vSphere Namespace.
+     */
+    users?: pulumi.Input<pulumi.Input<inputs.NamespaceUser>[] | undefined>;
     /**
      * The configuration for VM Service in the vSphere Namespace.
      */
     vmServices?: pulumi.Input<pulumi.Input<inputs.NamespaceVmService>[] | undefined>;
+    /**
+     * The NSX VPC network configuration. Conflicts with `vsphere.getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+     *
+     * > **NOTE:** Requires vCenter 9.0.0 or later.
+     */
+    vpcNetwork?: pulumi.Input<inputs.NamespaceVpcNetwork | undefined>;
+    /**
+     * The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+     *
+     * > **NOTE:** Requires vCenter 9.1.0 or later.
+     */
+    vsphereNetwork?: pulumi.Input<inputs.NamespaceVsphereNetwork | undefined>;
+    /**
+     * A vSphere Zone to associate with the vSphere Namespace. See Zone.
+     *
+     * > **NOTE:** Requires vCenter 9.0.0 or later.
+     */
+    zones?: pulumi.Input<pulumi.Input<inputs.NamespaceZone>[] | undefined>;
 }

@@ -518,6 +518,31 @@ export interface GetAlarmStateExpression {
     yellow: string;
 }
 
+export interface GetContentLibraryItemsItem {
+    /**
+     * The creation time of the item (RFC3339).
+     */
+    creationTime: string;
+    /**
+     * The UUID of the content library item.
+     */
+    id: string;
+    /**
+     * The last modification time of the item (RFC3339).
+     */
+    lastModifiedTime: string;
+    /**
+     * Filter items by exact name. Mutually exclusive with
+     * `nameRegex`. If omitted, items of any name are returned.
+     */
+    name: string;
+    /**
+     * Filter items by type (e.g. `ovf`, `iso`, `vm-template`).
+     * If omitted, items of any type are returned.
+     */
+    type: string;
+}
+
 export interface GetGuestOsCustomizationSpec {
     /**
      * A list of DNS servers for a virtual network adapter with a static IP address.
@@ -682,6 +707,55 @@ export interface GetHostVgpuProfileVgpuProfile {
     vgpu: string;
 }
 
+export interface GetNamespaceGroup {
+    /**
+     * The domain of the identity source that owns the group.
+     */
+    domain: string;
+    /**
+     * The identifier of the identity provider.
+     */
+    identityProvider: string;
+    /**
+     * The name of the vSphere Namespace.
+     */
+    name: string;
+    /**
+     * The role of the group in the vSphere Namespace.
+     */
+    role: string;
+}
+
+export interface GetNamespaceStoragePolicy {
+    /**
+     * The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. `0` means no limit.
+     */
+    limit: number;
+    /**
+     * The identifier of the storage policy.
+     */
+    policy: string;
+}
+
+export interface GetNamespaceUser {
+    /**
+     * The domain of the identity source that owns the group.
+     */
+    domain: string;
+    /**
+     * The identifier of the identity provider.
+     */
+    identityProvider: string;
+    /**
+     * The name of the vSphere Namespace.
+     */
+    name: string;
+    /**
+     * The role of the group in the vSphere Namespace.
+     */
+    role: string;
+}
+
 export interface GetNamespaceVmService {
     /**
      * The list of content libraries associated with the VM Service.
@@ -691,6 +765,54 @@ export interface GetNamespaceVmService {
      * The list of VM Classes associated with the VM Service.
      */
     vmClasses: string[];
+}
+
+export interface GetNamespaceVpcNetwork {
+    /**
+     * An NSX subnet created outside the Supervisor that is associated with the vSphere Namespace.
+     */
+    sharedSubnets: outputs.GetNamespaceVpcNetworkSharedSubnet[];
+    /**
+     * The NSX path of the VPC.
+     */
+    vpc: string;
+}
+
+export interface GetNamespaceVpcNetworkSharedSubnet {
+    /**
+     * The NSX path of the subnet.
+     */
+    path: string;
+    /**
+     * Whether the subnet is the default network for vSphere Pods.
+     */
+    podDefault: boolean;
+    /**
+     * Whether the subnet is the default network for VMs.
+     */
+    vmDefault: boolean;
+}
+
+export interface GetNamespaceVsphereNetwork {
+    /**
+     * The name of the Supervisor network used by workloads that do not specify a network.
+     */
+    defaultWorkloadNetwork: string;
+    /**
+     * The names of the Supervisor networks associated with the vSphere Namespace. Networks that are being removed are not exported.
+     */
+    networks: string[];
+}
+
+export interface GetNamespaceZone {
+    /**
+     * The name of the vSphere Namespace.
+     */
+    name: string;
+    /**
+     * The type of the vSphere Zone.
+     */
+    type: string;
 }
 
 export interface GetNetworkFilter {
@@ -722,6 +844,48 @@ export interface GetSsoGroupMemberUser {
      * The name of the group to look up.
      */
     name: string;
+}
+
+export interface GetSupervisorWorkloadNetwork {
+    /**
+     * The gateway of the Supervisor network. Empty for NSX-backed networks.
+     */
+    gateway: string;
+    /**
+     * The IP assignment mode of the Supervisor network. Empty for NSX-backed networks.
+     */
+    ipAssignmentMode: string;
+    /**
+     * The vSphere Namespaces that use the Supervisor network.
+     */
+    namespaces: string[];
+    /**
+     * The name of the Supervisor network. Use it in the `vsphere.getNetwork` block of the [`vsphere.Namespace`](https://www.terraform.io/docs/providers/vsphere/r/namespace.html) resource.
+     */
+    network: string;
+    /**
+     * The network provider of the Supervisor network, for example `VSPHERE_NETWORK`.
+     */
+    networkProvider: string;
+    /**
+     * The ID of the distributed port group backing the Supervisor network. Empty for NSX-backed networks.
+     */
+    portgroup: string;
+    /**
+     * The subnet mask of the Supervisor network. Empty for NSX-backed networks.
+     */
+    subnetMask: string;
+}
+
+export interface GetSupervisorZone {
+    /**
+     * The IDs of the compute clusters in the vSphere Zone.
+     */
+    clusters: string[];
+    /**
+     * The ID of the vSphere Zone.
+     */
+    zone: string;
 }
 
 export interface GetVirtualMachineDisk {
@@ -1006,6 +1170,55 @@ export interface HostServiceNtpd {
     policy?: string;
 }
 
+export interface NamespaceGroup {
+    /**
+     * The domain of the identity source that owns the group.
+     */
+    domain: string;
+    /**
+     * The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+     */
+    identityProvider?: string;
+    /**
+     * The name of the group, without the domain.
+     */
+    name: string;
+    /**
+     * The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+     */
+    role: string;
+}
+
+export interface NamespaceStoragePolicy {
+    /**
+     * The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+     */
+    limit?: number;
+    /**
+     * The identifier of the storage policy.
+     */
+    policy: string;
+}
+
+export interface NamespaceUser {
+    /**
+     * The domain of the identity source that owns the user.
+     */
+    domain: string;
+    /**
+     * The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+     */
+    identityProvider?: string;
+    /**
+     * The name of the user, without the domain.
+     */
+    name: string;
+    /**
+     * The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+     */
+    role: string;
+}
+
 export interface NamespaceVmService {
     /**
      * The list of content libraries to associate with the VM Service.
@@ -1015,6 +1228,89 @@ export interface NamespaceVmService {
      * The list of VM Classes to associate with the VM Service.
      */
     vmClasses?: string[];
+}
+
+export interface NamespaceVpcNetwork {
+    /**
+     * An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+     *
+     * > **NOTE:** Requires vCenter 9.1.0 or later. `podDefault` and `vmDefault` require vCenter 9.1.1 or later.
+     */
+    sharedSubnets?: outputs.NamespaceVpcNetworkSharedSubnet[];
+    /**
+     * The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+     */
+    vpc: string;
+}
+
+export interface NamespaceVpcNetworkSharedSubnet {
+    /**
+     * The NSX path of the subnet.
+     */
+    path: string;
+    /**
+     * Whether the subnet is the default network for vSphere Pods.
+     */
+    podDefault?: boolean;
+    /**
+     * Whether the subnet is the default network for VMs.
+     */
+    vmDefault?: boolean;
+}
+
+export interface NamespaceVsphereNetwork {
+    /**
+     * The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+     */
+    defaultWorkloadNetwork: string;
+    /**
+     * The names of the Supervisor networks to associate with the vSphere Namespace, including `defaultWorkloadNetwork`. These are Supervisor network names, not port group IDs. See the `workloadNetwork` attribute of the [`vsphere.Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+     *
+     * > **NOTE:** In v2.18.0, `storagePolicy` superseded the `storagePolicies` argument. To upgrade, replace
+     */
+    networks: string[];
+}
+
+export interface NamespaceZone {
+    /**
+     * The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+     */
+    cpuLimit?: number;
+    /**
+     * The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+     */
+    cpuReservation?: number;
+    /**
+     * Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+     */
+    disallowUnreservedDirectPathUsage?: boolean;
+    /**
+     * The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+     */
+    memoryLimit?: number;
+    /**
+     * The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+     */
+    memoryReservation?: number;
+    /**
+     * The identifier of the vSphere Zone.
+     */
+    name: string;
+    /**
+     * A reservation of VM class instances for the vSphere Namespace in the zone.
+     */
+    vmClassReservations?: outputs.NamespaceZoneVmClassReservation[];
+}
+
+export interface NamespaceZoneVmClassReservation {
+    /**
+     * The number of VM class instances to reserve.
+     */
+    count: number;
+    /**
+     * The name of the VM class.
+     */
+    vmClass: string;
 }
 
 export interface NetworkProtocolProfileIpv4 {

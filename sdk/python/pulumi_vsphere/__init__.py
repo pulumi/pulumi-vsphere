@@ -35,6 +35,7 @@ from .get_compute_cluster_host_group import *
 from .get_configuration_profile import *
 from .get_content_library import *
 from .get_content_library_item import *
+from .get_content_library_items import *
 from .get_custom_attribute import *
 from .get_datacenter import *
 from .get_datastore import *
@@ -58,6 +59,7 @@ from .get_resource_pool import *
 from .get_role import *
 from .get_sso_group import *
 from .get_sso_user import *
+from .get_supervisor import *
 from .get_tag import *
 from .get_tag_category import *
 from .get_vapp_container import *

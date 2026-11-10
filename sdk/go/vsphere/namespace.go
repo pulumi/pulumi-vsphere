@@ -18,7 +18,7 @@ import (
 //
 // ### S
 //
-// ### Create a namespace
+// ### Create a Namespace
 //
 // ```go
 // package main
@@ -45,8 +45,43 @@ import (
 //						},
 //					},
 //				},
-//				StoragePolicies: pulumi.StringArray{
-//					pulumi.String("1bb87d1e-49a5-49f8-ad4a-7094be13d4a0"),
+//				StoragePolicies: vsphere.NamespaceStoragePolicyArray{
+//					&vsphere.NamespaceStoragePolicyArgs{
+//						Policy: pulumi.String("1bb87d1e-49a5-49f8-ad4a-7094be13d4a0"),
+//						Limit:  pulumi.Int(102400),
+//					},
+//				},
+//				Users: vsphere.NamespaceUserArray{
+//					&vsphere.NamespaceUserArgs{
+//						Name:   pulumi.String("administrator"),
+//						Domain: pulumi.String("vsphere.local"),
+//						Role:   pulumi.String("OWNER"),
+//					},
+//				},
+//				Groups: vsphere.NamespaceGroupArray{
+//					&vsphere.NamespaceGroupArgs{
+//						Name:   pulumi.String("developers"),
+//						Domain: pulumi.String("vsphere.local"),
+//						Role:   pulumi.String("EDIT"),
+//					},
+//				},
+//				Zones: vsphere.NamespaceZoneArray{
+//					&vsphere.NamespaceZoneArgs{
+//						Name:              pulumi.String("zone-1"),
+//						CpuLimit:          pulumi.Int(4000),
+//						CpuReservation:    pulumi.Int(1000),
+//						MemoryLimit:       pulumi.Int(8192),
+//						MemoryReservation: pulumi.Int(2048),
+//						VmClassReservations: vsphere.NamespaceZoneVmClassReservationArray{
+//							&vsphere.NamespaceZoneVmClassReservationArgs{
+//								VmClass: pulumi.String("example-vm-class"),
+//								Count:   pulumi.Int(2),
+//							},
+//						},
+//					},
+//				},
+//				VpcNetwork: &vsphere.NamespaceVpcNetworkArgs{
+//					Vpc: pulumi.String("/orgs/default/projects/example-project/vpcs/example-vpc"),
 //				},
 //			})
 //			if err != nil {
@@ -57,17 +92,47 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// An existing vSphere Namespace can be imported into this resource by supplying
+// its name:
+//
+// ```sh
+// $ pulumi import vsphere:index/namespace:Namespace example example-namespace
+// ```
+//
+// > **NOTE:** vCenter does not return the zone limits, reservations,
+// `vmClassReservation` or `disallowUnreservedDirectPathUsage`, so they are not
+// populated by an import. If they are set in the configuration, the next apply
+// updates the vSphere Namespace in place to match.
 type Namespace struct {
 	pulumi.CustomResourceState
 
-	// The name of the vSphere namespace.
+	// A group with access to the vSphere Namespace.
+	Groups NamespaceGroupArrayOutput `pulumi:"groups"`
+	// The name of the vSphere Namespace. Changing this forces a new resource to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of storage policies that will be available in the vSphere Namespace.
-	StoragePolicies pulumi.StringArrayOutput `pulumi:"storagePolicies"`
-	// The identifier of the vSphere Supervisor managing the namespace.
+	// A storage policy that will be available in the vSphere Namespace.
+	StoragePolicies NamespaceStoragePolicyArrayOutput `pulumi:"storagePolicies"`
+	// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
 	Supervisor pulumi.StringOutput `pulumi:"supervisor"`
+	// A user with access to the vSphere Namespace.
+	Users NamespaceUserArrayOutput `pulumi:"users"`
 	// The configuration for VM Service in the vSphere Namespace.
 	VmServices NamespaceVmServiceArrayOutput `pulumi:"vmServices"`
+	// The NSX VPC network configuration. Conflicts with `getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	VpcNetwork NamespaceVpcNetworkOutput `pulumi:"vpcNetwork"`
+	// The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+	//
+	// > **NOTE:** Requires vCenter 9.1.0 or later.
+	VsphereNetwork NamespaceVsphereNetworkOutput `pulumi:"vsphereNetwork"`
+	// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	Zones NamespaceZoneArrayOutput `pulumi:"zones"`
 }
 
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
@@ -103,25 +168,57 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
-	// The name of the vSphere namespace.
+	// A group with access to the vSphere Namespace.
+	Groups []NamespaceGroup `pulumi:"groups"`
+	// The name of the vSphere Namespace. Changing this forces a new resource to be created.
 	Name *string `pulumi:"name"`
-	// The list of storage policies that will be available in the vSphere Namespace.
-	StoragePolicies []string `pulumi:"storagePolicies"`
-	// The identifier of the vSphere Supervisor managing the namespace.
+	// A storage policy that will be available in the vSphere Namespace.
+	StoragePolicies []NamespaceStoragePolicy `pulumi:"storagePolicies"`
+	// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
 	Supervisor *string `pulumi:"supervisor"`
+	// A user with access to the vSphere Namespace.
+	Users []NamespaceUser `pulumi:"users"`
 	// The configuration for VM Service in the vSphere Namespace.
 	VmServices []NamespaceVmService `pulumi:"vmServices"`
+	// The NSX VPC network configuration. Conflicts with `getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	VpcNetwork *NamespaceVpcNetwork `pulumi:"vpcNetwork"`
+	// The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+	//
+	// > **NOTE:** Requires vCenter 9.1.0 or later.
+	VsphereNetwork *NamespaceVsphereNetwork `pulumi:"vsphereNetwork"`
+	// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	Zones []NamespaceZone `pulumi:"zones"`
 }
 
 type NamespaceState struct {
-	// The name of the vSphere namespace.
+	// A group with access to the vSphere Namespace.
+	Groups NamespaceGroupArrayInput
+	// The name of the vSphere Namespace. Changing this forces a new resource to be created.
 	Name pulumi.StringPtrInput
-	// The list of storage policies that will be available in the vSphere Namespace.
-	StoragePolicies pulumi.StringArrayInput
-	// The identifier of the vSphere Supervisor managing the namespace.
+	// A storage policy that will be available in the vSphere Namespace.
+	StoragePolicies NamespaceStoragePolicyArrayInput
+	// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
 	Supervisor pulumi.StringPtrInput
+	// A user with access to the vSphere Namespace.
+	Users NamespaceUserArrayInput
 	// The configuration for VM Service in the vSphere Namespace.
 	VmServices NamespaceVmServiceArrayInput
+	// The NSX VPC network configuration. Conflicts with `getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	VpcNetwork NamespaceVpcNetworkPtrInput
+	// The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+	//
+	// > **NOTE:** Requires vCenter 9.1.0 or later.
+	VsphereNetwork NamespaceVsphereNetworkPtrInput
+	// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	Zones NamespaceZoneArrayInput
 }
 
 func (NamespaceState) ElementType() reflect.Type {
@@ -135,26 +232,58 @@ func NamespaceExists(ctx *pulumi.Context,
 }
 
 type namespaceArgs struct {
-	// The name of the vSphere namespace.
+	// A group with access to the vSphere Namespace.
+	Groups []NamespaceGroup `pulumi:"groups"`
+	// The name of the vSphere Namespace. Changing this forces a new resource to be created.
 	Name *string `pulumi:"name"`
-	// The list of storage policies that will be available in the vSphere Namespace.
-	StoragePolicies []string `pulumi:"storagePolicies"`
-	// The identifier of the vSphere Supervisor managing the namespace.
+	// A storage policy that will be available in the vSphere Namespace.
+	StoragePolicies []NamespaceStoragePolicy `pulumi:"storagePolicies"`
+	// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
 	Supervisor string `pulumi:"supervisor"`
+	// A user with access to the vSphere Namespace.
+	Users []NamespaceUser `pulumi:"users"`
 	// The configuration for VM Service in the vSphere Namespace.
 	VmServices []NamespaceVmService `pulumi:"vmServices"`
+	// The NSX VPC network configuration. Conflicts with `getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	VpcNetwork *NamespaceVpcNetwork `pulumi:"vpcNetwork"`
+	// The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+	//
+	// > **NOTE:** Requires vCenter 9.1.0 or later.
+	VsphereNetwork *NamespaceVsphereNetwork `pulumi:"vsphereNetwork"`
+	// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	Zones []NamespaceZone `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
-	// The name of the vSphere namespace.
+	// A group with access to the vSphere Namespace.
+	Groups NamespaceGroupArrayInput
+	// The name of the vSphere Namespace. Changing this forces a new resource to be created.
 	Name pulumi.StringPtrInput
-	// The list of storage policies that will be available in the vSphere Namespace.
-	StoragePolicies pulumi.StringArrayInput
-	// The identifier of the vSphere Supervisor managing the namespace.
+	// A storage policy that will be available in the vSphere Namespace.
+	StoragePolicies NamespaceStoragePolicyArrayInput
+	// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
 	Supervisor pulumi.StringInput
+	// A user with access to the vSphere Namespace.
+	Users NamespaceUserArrayInput
 	// The configuration for VM Service in the vSphere Namespace.
 	VmServices NamespaceVmServiceArrayInput
+	// The NSX VPC network configuration. Conflicts with `getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	VpcNetwork NamespaceVpcNetworkPtrInput
+	// The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+	//
+	// > **NOTE:** Requires vCenter 9.1.0 or later.
+	VsphereNetwork NamespaceVsphereNetworkPtrInput
+	// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+	//
+	// > **NOTE:** Requires vCenter 9.0.0 or later.
+	Zones NamespaceZoneArrayInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {
@@ -244,24 +373,55 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
-// The name of the vSphere namespace.
+// A group with access to the vSphere Namespace.
+func (o NamespaceOutput) Groups() NamespaceGroupArrayOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceGroupArrayOutput { return v.Groups }).(NamespaceGroupArrayOutput)
+}
+
+// The name of the vSphere Namespace. Changing this forces a new resource to be created.
 func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of storage policies that will be available in the vSphere Namespace.
-func (o NamespaceOutput) StoragePolicies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Namespace) pulumi.StringArrayOutput { return v.StoragePolicies }).(pulumi.StringArrayOutput)
+// A storage policy that will be available in the vSphere Namespace.
+func (o NamespaceOutput) StoragePolicies() NamespaceStoragePolicyArrayOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceStoragePolicyArrayOutput { return v.StoragePolicies }).(NamespaceStoragePolicyArrayOutput)
 }
 
-// The identifier of the vSphere Supervisor managing the namespace.
+// The identifier of the vSphere Supervisor managing the vSphere Namespace. Changing this forces a new resource to be created.
 func (o NamespaceOutput) Supervisor() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Supervisor }).(pulumi.StringOutput)
+}
+
+// A user with access to the vSphere Namespace.
+func (o NamespaceOutput) Users() NamespaceUserArrayOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceUserArrayOutput { return v.Users }).(NamespaceUserArrayOutput)
 }
 
 // The configuration for VM Service in the vSphere Namespace.
 func (o NamespaceOutput) VmServices() NamespaceVmServiceArrayOutput {
 	return o.ApplyT(func(v *Namespace) NamespaceVmServiceArrayOutput { return v.VmServices }).(NamespaceVmServiceArrayOutput)
+}
+
+// The NSX VPC network configuration. Conflicts with `getNetwork`. If omitted, the Supervisor creates a VPC with its default settings for the vSphere Namespace, and its network configuration is exported. To customize the VPC, manage it with the NSX Terraform provider and set its path in `vpc`.
+//
+// > **NOTE:** Requires vCenter 9.0.0 or later.
+func (o NamespaceOutput) VpcNetwork() NamespaceVpcNetworkOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceVpcNetworkOutput { return v.VpcNetwork }).(NamespaceVpcNetworkOutput)
+}
+
+// The vSphere networking configuration. Conflicts with `vpcNetwork`. If omitted, the network configuration chosen by the Supervisor is exported. See vSphere Networking.
+//
+// > **NOTE:** Requires vCenter 9.1.0 or later.
+func (o NamespaceOutput) VsphereNetwork() NamespaceVsphereNetworkOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceVsphereNetworkOutput { return v.VsphereNetwork }).(NamespaceVsphereNetworkOutput)
+}
+
+// A vSphere Zone to associate with the vSphere Namespace. See Zone.
+//
+// > **NOTE:** Requires vCenter 9.0.0 or later.
+func (o NamespaceOutput) Zones() NamespaceZoneArrayOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceZoneArrayOutput { return v.Zones }).(NamespaceZoneArrayOutput)
 }
 
 type NamespaceArrayOutput struct{ *pulumi.OutputState }

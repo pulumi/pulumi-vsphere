@@ -69,8 +69,24 @@ __all__ = [
     'HostServiceArgsDict',
     'HostServiceNtpdArgs',
     'HostServiceNtpdArgsDict',
+    'NamespaceGroupArgs',
+    'NamespaceGroupArgsDict',
+    'NamespaceStoragePolicyArgs',
+    'NamespaceStoragePolicyArgsDict',
+    'NamespaceUserArgs',
+    'NamespaceUserArgsDict',
     'NamespaceVmServiceArgs',
     'NamespaceVmServiceArgsDict',
+    'NamespaceVpcNetworkArgs',
+    'NamespaceVpcNetworkArgsDict',
+    'NamespaceVpcNetworkSharedSubnetArgs',
+    'NamespaceVpcNetworkSharedSubnetArgsDict',
+    'NamespaceVsphereNetworkArgs',
+    'NamespaceVsphereNetworkArgsDict',
+    'NamespaceZoneArgs',
+    'NamespaceZoneArgsDict',
+    'NamespaceZoneVmClassReservationArgs',
+    'NamespaceZoneVmClassReservationArgsDict',
     'NetworkProtocolProfileIpv4Args',
     'NetworkProtocolProfileIpv4ArgsDict',
     'NetworkProtocolProfileIpv6Args',
@@ -2708,6 +2724,226 @@ class HostServiceNtpdArgs:
         pulumi.set(self, "policy", value)
 
 
+class NamespaceGroupArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The domain of the identity source that owns the group.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the group, without the domain.
+    """
+    role: pulumi.Input[_builtins.str]
+    """
+    The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+    """
+    identity_provider: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+    """
+
+@pulumi.input_type
+class NamespaceGroupArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 role: pulumi.Input[_builtins.str],
+                 identity_provider: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] domain: The domain of the identity source that owns the group.
+        :param pulumi.Input[_builtins.str] name: The name of the group, without the domain.
+        :param pulumi.Input[_builtins.str] role: The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        :param pulumi.Input[_builtins.str] identity_provider: The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+        if identity_provider is not None:
+            pulumi.set(__self__, "identity_provider", identity_provider)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The domain of the identity source that owns the group.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the group, without the domain.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[_builtins.str]:
+        """
+        The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "role", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        return pulumi.get(self, "identity_provider")
+
+    @identity_provider.setter
+    def identity_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identity_provider", value)
+
+
+class NamespaceStoragePolicyArgsDict(TypedDict):
+    policy: pulumi.Input[_builtins.str]
+    """
+    The identifier of the storage policy.
+    """
+    limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+    """
+
+@pulumi.input_type
+class NamespaceStoragePolicyArgs:
+    def __init__(__self__, *,
+                 policy: pulumi.Input[_builtins.str],
+                 limit: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The identifier of the storage policy.
+        :param pulumi.Input[_builtins.int] limit: The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+        """
+        pulumi.set(__self__, "policy", policy)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier of the storage policy.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+
+class NamespaceUserArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The domain of the identity source that owns the user.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the user, without the domain.
+    """
+    role: pulumi.Input[_builtins.str]
+    """
+    The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+    """
+    identity_provider: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+    """
+
+@pulumi.input_type
+class NamespaceUserArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 role: pulumi.Input[_builtins.str],
+                 identity_provider: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] domain: The domain of the identity source that owns the user.
+        :param pulumi.Input[_builtins.str] name: The name of the user, without the domain.
+        :param pulumi.Input[_builtins.str] role: The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        :param pulumi.Input[_builtins.str] identity_provider: The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+        if identity_provider is not None:
+            pulumi.set(__self__, "identity_provider", identity_provider)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The domain of the identity source that owns the user.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the user, without the domain.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[_builtins.str]:
+        """
+        The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "role", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        return pulumi.get(self, "identity_provider")
+
+    @identity_provider.setter
+    def identity_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identity_provider", value)
+
+
 class NamespaceVmServiceArgsDict(TypedDict):
     content_libraries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -2755,6 +2991,376 @@ class NamespaceVmServiceArgs:
     @vm_classes.setter
     def vm_classes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vm_classes", value)
+
+
+class NamespaceVpcNetworkArgsDict(TypedDict):
+    vpc: pulumi.Input[_builtins.str]
+    """
+    The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+    """
+    shared_subnets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVpcNetworkSharedSubnetArgsDict']]]]]
+    """
+    An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+
+    > **NOTE:** Requires vCenter 9.1.0 or later. `pod_default` and `vm_default` require vCenter 9.1.1 or later.
+    """
+
+@pulumi.input_type
+class NamespaceVpcNetworkArgs:
+    def __init__(__self__, *,
+                 vpc: pulumi.Input[_builtins.str],
+                 shared_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVpcNetworkSharedSubnetArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] vpc: The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceVpcNetworkSharedSubnetArgs']]] shared_subnets: An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+               
+               > **NOTE:** Requires vCenter 9.1.0 or later. `pod_default` and `vm_default` require vCenter 9.1.1 or later.
+        """
+        pulumi.set(__self__, "vpc", vpc)
+        if shared_subnets is not None:
+            pulumi.set(__self__, "shared_subnets", shared_subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def vpc(self) -> pulumi.Input[_builtins.str]:
+        """
+        The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "vpc")
+
+    @vpc.setter
+    def vpc(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "vpc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sharedSubnets")
+    def shared_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVpcNetworkSharedSubnetArgs']]]]:
+        """
+        An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+
+        > **NOTE:** Requires vCenter 9.1.0 or later. `pod_default` and `vm_default` require vCenter 9.1.1 or later.
+        """
+        return pulumi.get(self, "shared_subnets")
+
+    @shared_subnets.setter
+    def shared_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceVpcNetworkSharedSubnetArgs']]]]):
+        pulumi.set(self, "shared_subnets", value)
+
+
+class NamespaceVpcNetworkSharedSubnetArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    The NSX path of the subnet.
+    """
+    pod_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the subnet is the default network for vSphere Pods.
+    """
+    vm_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the subnet is the default network for VMs.
+    """
+
+@pulumi.input_type
+class NamespaceVpcNetworkSharedSubnetArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[_builtins.str],
+                 pod_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_default: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] path: The NSX path of the subnet.
+        :param pulumi.Input[_builtins.bool] pod_default: Whether the subnet is the default network for vSphere Pods.
+        :param pulumi.Input[_builtins.bool] vm_default: Whether the subnet is the default network for VMs.
+        """
+        pulumi.set(__self__, "path", path)
+        if pod_default is not None:
+            pulumi.set(__self__, "pod_default", pod_default)
+        if vm_default is not None:
+            pulumi.set(__self__, "vm_default", vm_default)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        The NSX path of the subnet.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="podDefault")
+    def pod_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the subnet is the default network for vSphere Pods.
+        """
+        return pulumi.get(self, "pod_default")
+
+    @pod_default.setter
+    def pod_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "pod_default", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmDefault")
+    def vm_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the subnet is the default network for VMs.
+        """
+        return pulumi.get(self, "vm_default")
+
+    @vm_default.setter
+    def vm_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "vm_default", value)
+
+
+class NamespaceVsphereNetworkArgsDict(TypedDict):
+    default_workload_network: pulumi.Input[_builtins.str]
+    """
+    The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+    """
+    networks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The names of the Supervisor networks to associate with the vSphere Namespace, including `default_workload_network`. These are Supervisor network names, not port group IDs. See the `workload_network` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+
+    > **NOTE:** In v2.18.0, `storage_policy` superseded the `storage_policies` argument. To upgrade, replace
+    """
+
+@pulumi.input_type
+class NamespaceVsphereNetworkArgs:
+    def __init__(__self__, *,
+                 default_workload_network: pulumi.Input[_builtins.str],
+                 networks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] default_workload_network: The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: The names of the Supervisor networks to associate with the vSphere Namespace, including `default_workload_network`. These are Supervisor network names, not port group IDs. See the `workload_network` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+               
+               > **NOTE:** In v2.18.0, `storage_policy` superseded the `storage_policies` argument. To upgrade, replace
+        """
+        pulumi.set(__self__, "default_workload_network", default_workload_network)
+        pulumi.set(__self__, "networks", networks)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultWorkloadNetwork")
+    def default_workload_network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "default_workload_network")
+
+    @default_workload_network.setter
+    def default_workload_network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "default_workload_network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The names of the Supervisor networks to associate with the vSphere Namespace, including `default_workload_network`. These are Supervisor network names, not port group IDs. See the `workload_network` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+
+        > **NOTE:** In v2.18.0, `storage_policy` superseded the `storage_policies` argument. To upgrade, replace
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "networks", value)
+
+
+class NamespaceZoneArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The identifier of the vSphere Zone.
+    """
+    cpu_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+    """
+    cpu_reservation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+    """
+    disallow_unreserved_direct_path_usage: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+    """
+    memory_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+    """
+    memory_reservation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+    """
+    vm_class_reservations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneVmClassReservationArgsDict']]]]]
+    """
+    A reservation of VM class instances for the vSphere Namespace in the zone.
+    """
+
+@pulumi.input_type
+class NamespaceZoneArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 cpu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 disallow_unreserved_direct_path_usage: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_reservation: pulumi.Input[Optional[_builtins.int]] = None,
+                 vm_class_reservations: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneVmClassReservationArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The identifier of the vSphere Zone.
+        :param pulumi.Input[_builtins.int] cpu_limit: The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        :param pulumi.Input[_builtins.int] cpu_reservation: The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        :param pulumi.Input[_builtins.bool] disallow_unreserved_direct_path_usage: Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+        :param pulumi.Input[_builtins.int] memory_limit: The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        :param pulumi.Input[_builtins.int] memory_reservation: The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceZoneVmClassReservationArgs']]] vm_class_reservations: A reservation of VM class instances for the vSphere Namespace in the zone.
+        """
+        pulumi.set(__self__, "name", name)
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_reservation is not None:
+            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+        if disallow_unreserved_direct_path_usage is not None:
+            pulumi.set(__self__, "disallow_unreserved_direct_path_usage", disallow_unreserved_direct_path_usage)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_reservation is not None:
+            pulumi.set(__self__, "memory_reservation", memory_reservation)
+        if vm_class_reservations is not None:
+            pulumi.set(__self__, "vm_class_reservations", vm_class_reservations)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier of the vSphere Zone.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        """
+        return pulumi.get(self, "cpu_limit")
+
+    @cpu_limit.setter
+    def cpu_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cpu_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuReservation")
+    def cpu_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        """
+        return pulumi.get(self, "cpu_reservation")
+
+    @cpu_reservation.setter
+    def cpu_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cpu_reservation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disallowUnreservedDirectPathUsage")
+    def disallow_unreserved_direct_path_usage(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+        """
+        return pulumi.get(self, "disallow_unreserved_direct_path_usage")
+
+    @disallow_unreserved_direct_path_usage.setter
+    def disallow_unreserved_direct_path_usage(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disallow_unreserved_direct_path_usage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        """
+        return pulumi.get(self, "memory_limit")
+
+    @memory_limit.setter
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "memory_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryReservation")
+    def memory_reservation(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        """
+        return pulumi.get(self, "memory_reservation")
+
+    @memory_reservation.setter
+    def memory_reservation(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "memory_reservation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmClassReservations")
+    def vm_class_reservations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneVmClassReservationArgs']]]]:
+        """
+        A reservation of VM class instances for the vSphere Namespace in the zone.
+        """
+        return pulumi.get(self, "vm_class_reservations")
+
+    @vm_class_reservations.setter
+    def vm_class_reservations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NamespaceZoneVmClassReservationArgs']]]]):
+        pulumi.set(self, "vm_class_reservations", value)
+
+
+class NamespaceZoneVmClassReservationArgsDict(TypedDict):
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of VM class instances to reserve.
+    """
+    vm_class: pulumi.Input[_builtins.str]
+    """
+    The name of the VM class.
+    """
+
+@pulumi.input_type
+class NamespaceZoneVmClassReservationArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[_builtins.int],
+                 vm_class: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] count: The number of VM class instances to reserve.
+        :param pulumi.Input[_builtins.str] vm_class: The name of the VM class.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "vm_class", vm_class)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of VM class instances to reserve.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmClass")
+    def vm_class(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the VM class.
+        """
+        return pulumi.get(self, "vm_class")
+
+    @vm_class.setter
+    def vm_class(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "vm_class", value)
 
 
 class NetworkProtocolProfileIpv4ArgsDict(TypedDict):

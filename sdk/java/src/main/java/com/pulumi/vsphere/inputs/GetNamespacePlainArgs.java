@@ -14,14 +14,14 @@ public final class GetNamespacePlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetNamespacePlainArgs Empty = new GetNamespacePlainArgs();
 
     /**
-     * The name of the vSphere namespace.
+     * The name of the vSphere Namespace.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the vSphere namespace.
+     * @return The name of the vSphere Namespace.
      * 
      */
     public String name() {
@@ -53,7 +53,7 @@ public final class GetNamespacePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param name The name of the vSphere namespace.
+         * @param name The name of the vSphere Namespace.
          * 
          * @return builder
          * 

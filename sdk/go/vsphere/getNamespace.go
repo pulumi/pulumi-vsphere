@@ -11,13 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source can be used to read the properties of a vSphere Namespace.
+// This data source can be used to read the properties of a vSphere Namespace. It requires vCenter 8.0.0.1 or later.
 //
 // ## Example Usage
 //
 // ### S
 //
-// ### Create a Namespace
+// ### Read a Namespace
 //
 // ```go
 // package main
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// ### Read the storage policies of a Namespace
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
@@ -54,25 +56,40 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 
 // A collection of arguments for invoking getNamespace.
 type LookupNamespaceArgs struct {
-	// The name of the vSphere namespace.
+	// The name of the vSphere Namespace.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getNamespace.
 type LookupNamespaceResult struct {
+	// The configuration status of the vSphere Namespace.
 	ConfigStatus string `pulumi:"configStatus"`
-	CpuUsage     int    `pulumi:"cpuUsage"`
+	// The CPU usage of the vSphere Namespace in MHz.
+	CpuUsage int `pulumi:"cpuUsage"`
+	// A group with access to the vSphere Namespace.
+	Groups []GetNamespaceGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	MemoryUsage int    `pulumi:"memoryUsage"`
-	Name        string `pulumi:"name"`
-	// The list of storage policies that are available in the vSphere Namespace.
-	StoragePolicies []string `pulumi:"storagePolicies"`
-	StorageUsage    int      `pulumi:"storageUsage"`
+	Id string `pulumi:"id"`
+	// The memory usage of the vSphere Namespace in MiB.
+	MemoryUsage int `pulumi:"memoryUsage"`
+	// The identifier of the vSphere Zone.
+	Name string `pulumi:"name"`
+	// A storage policy assigned to the vSphere Namespace.
+	StoragePolicies []GetNamespaceStoragePolicy `pulumi:"storagePolicies"`
+	// The storage usage of the vSphere Namespace in MiB.
+	StorageUsage int `pulumi:"storageUsage"`
 	// The identifier of the vSphere Supervisor managing the namespace.
 	Supervisor string `pulumi:"supervisor"`
+	// A user with access to the vSphere Namespace.
+	Users []GetNamespaceUser `pulumi:"users"`
 	// The configuration for VM Service in the vSphere Namespace.
 	VmServices []GetNamespaceVmService `pulumi:"vmServices"`
+	// The NSX VPC network configuration.
+	VpcNetworks []GetNamespaceVpcNetwork `pulumi:"vpcNetworks"`
+	// The vSphere networking configuration.
+	VsphereNetworks []GetNamespaceVsphereNetwork `pulumi:"vsphereNetworks"`
+	// A vSphere Zone assigned to the vSphere Namespace.
+	Zones []GetNamespaceZone `pulumi:"zones"`
 }
 
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
@@ -82,7 +99,7 @@ func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, 
 
 // A collection of arguments for invoking getNamespace.
 type LookupNamespaceOutputArgs struct {
-	// The name of the vSphere namespace.
+	// The name of the vSphere Namespace.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -105,12 +122,19 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 	return o
 }
 
+// The configuration status of the vSphere Namespace.
 func (o LookupNamespaceResultOutput) ConfigStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.ConfigStatus }).(pulumi.StringOutput)
 }
 
+// The CPU usage of the vSphere Namespace in MHz.
 func (o LookupNamespaceResultOutput) CpuUsage() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) int { return v.CpuUsage }).(pulumi.IntOutput)
+}
+
+// A group with access to the vSphere Namespace.
+func (o LookupNamespaceResultOutput) Groups() GetNamespaceGroupArrayOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) []GetNamespaceGroup { return v.Groups }).(GetNamespaceGroupArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -118,19 +142,22 @@ func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The memory usage of the vSphere Namespace in MiB.
 func (o LookupNamespaceResultOutput) MemoryUsage() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) int { return v.MemoryUsage }).(pulumi.IntOutput)
 }
 
+// The identifier of the vSphere Zone.
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of storage policies that are available in the vSphere Namespace.
-func (o LookupNamespaceResultOutput) StoragePolicies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) []string { return v.StoragePolicies }).(pulumi.StringArrayOutput)
+// A storage policy assigned to the vSphere Namespace.
+func (o LookupNamespaceResultOutput) StoragePolicies() GetNamespaceStoragePolicyArrayOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) []GetNamespaceStoragePolicy { return v.StoragePolicies }).(GetNamespaceStoragePolicyArrayOutput)
 }
 
+// The storage usage of the vSphere Namespace in MiB.
 func (o LookupNamespaceResultOutput) StorageUsage() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) int { return v.StorageUsage }).(pulumi.IntOutput)
 }
@@ -140,9 +167,29 @@ func (o LookupNamespaceResultOutput) Supervisor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Supervisor }).(pulumi.StringOutput)
 }
 
+// A user with access to the vSphere Namespace.
+func (o LookupNamespaceResultOutput) Users() GetNamespaceUserArrayOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) []GetNamespaceUser { return v.Users }).(GetNamespaceUserArrayOutput)
+}
+
 // The configuration for VM Service in the vSphere Namespace.
 func (o LookupNamespaceResultOutput) VmServices() GetNamespaceVmServiceArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) []GetNamespaceVmService { return v.VmServices }).(GetNamespaceVmServiceArrayOutput)
+}
+
+// The NSX VPC network configuration.
+func (o LookupNamespaceResultOutput) VpcNetworks() GetNamespaceVpcNetworkArrayOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) []GetNamespaceVpcNetwork { return v.VpcNetworks }).(GetNamespaceVpcNetworkArrayOutput)
+}
+
+// The vSphere networking configuration.
+func (o LookupNamespaceResultOutput) VsphereNetworks() GetNamespaceVsphereNetworkArrayOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) []GetNamespaceVsphereNetwork { return v.VsphereNetworks }).(GetNamespaceVsphereNetworkArrayOutput)
+}
+
+// A vSphere Zone assigned to the vSphere Namespace.
+func (o LookupNamespaceResultOutput) Zones() GetNamespaceZoneArrayOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) []GetNamespaceZone { return v.Zones }).(GetNamespaceZoneArrayOutput)
 }
 
 func init() {

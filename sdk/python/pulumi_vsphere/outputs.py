@@ -43,7 +43,15 @@ __all__ = [
     'HostPortGroupPort',
     'HostService',
     'HostServiceNtpd',
+    'NamespaceGroup',
+    'NamespaceStoragePolicy',
+    'NamespaceUser',
     'NamespaceVmService',
+    'NamespaceVpcNetwork',
+    'NamespaceVpcNetworkSharedSubnet',
+    'NamespaceVsphereNetwork',
+    'NamespaceZone',
+    'NamespaceZoneVmClassReservation',
     'NetworkProtocolProfileIpv4',
     'NetworkProtocolProfileIpv6',
     'OfflineSoftwareDepotComponent',
@@ -126,15 +134,25 @@ __all__ = [
     'GetAlarmMetricExpressionResult',
     'GetAlarmSnmpActionResult',
     'GetAlarmStateExpressionResult',
+    'GetContentLibraryItemsItemResult',
     'GetGuestOsCustomizationSpecResult',
     'GetGuestOsCustomizationSpecLinuxOptionResult',
     'GetGuestOsCustomizationSpecNetworkInterfaceResult',
     'GetGuestOsCustomizationSpecWindowsOptionResult',
     'GetHostVgpuProfileVgpuProfileResult',
+    'GetNamespaceGroupResult',
+    'GetNamespaceStoragePolicyResult',
+    'GetNamespaceUserResult',
     'GetNamespaceVmServiceResult',
+    'GetNamespaceVpcNetworkResult',
+    'GetNamespaceVpcNetworkSharedSubnetResult',
+    'GetNamespaceVsphereNetworkResult',
+    'GetNamespaceZoneResult',
     'GetNetworkFilterResult',
     'GetSsoGroupMemberGroupResult',
     'GetSsoGroupMemberUserResult',
+    'GetSupervisorWorkloadNetworkResult',
+    'GetSupervisorZoneResult',
     'GetVirtualMachineDiskResult',
     'GetVirtualMachineNetworkInterfaceResult',
     'GetVirtualMachineVappResult',
@@ -2168,6 +2186,174 @@ class HostServiceNtpd(dict):
 
 
 @pulumi.output_type
+class NamespaceGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProvider":
+            suggest = "identity_provider"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 name: _builtins.str,
+                 role: _builtins.str,
+                 identity_provider: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: The domain of the identity source that owns the group.
+        :param _builtins.str name: The name of the group, without the domain.
+        :param _builtins.str role: The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        :param _builtins.str identity_provider: The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+        if identity_provider is not None:
+            pulumi.set(__self__, "identity_provider", identity_provider)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The domain of the identity source that owns the group.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the group, without the domain.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The role of the group in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> Optional[_builtins.str]:
+        """
+        The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        return pulumi.get(self, "identity_provider")
+
+
+@pulumi.output_type
+class NamespaceStoragePolicy(dict):
+    def __init__(__self__, *,
+                 policy: _builtins.str,
+                 limit: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str policy: The identifier of the storage policy.
+        :param _builtins.int limit: The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+        """
+        pulumi.set(__self__, "policy", policy)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        The identifier of the storage policy.
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        """
+        The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. Unset or `0` means no limit.
+        """
+        return pulumi.get(self, "limit")
+
+
+@pulumi.output_type
+class NamespaceUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProvider":
+            suggest = "identity_provider"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceUser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 name: _builtins.str,
+                 role: _builtins.str,
+                 identity_provider: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: The domain of the identity source that owns the user.
+        :param _builtins.str name: The name of the user, without the domain.
+        :param _builtins.str role: The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        :param _builtins.str identity_provider: The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+        if identity_provider is not None:
+            pulumi.set(__self__, "identity_provider", identity_provider)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The domain of the identity source that owns the user.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the user, without the domain.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The role of the user in the vSphere Namespace. One of `OWNER`, `EDIT` or `VIEW`.
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> Optional[_builtins.str]:
+        """
+        The identifier of the identity provider. If unset, vCenter Single Sign-On is used.
+        """
+        return pulumi.get(self, "identity_provider")
+
+
+@pulumi.output_type
 class NamespaceVmService(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2215,6 +2401,331 @@ class NamespaceVmService(dict):
         The list of VM Classes to associate with the VM Service.
         """
         return pulumi.get(self, "vm_classes")
+
+
+@pulumi.output_type
+class NamespaceVpcNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sharedSubnets":
+            suggest = "shared_subnets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceVpcNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceVpcNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceVpcNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vpc: _builtins.str,
+                 shared_subnets: Optional[Sequence['outputs.NamespaceVpcNetworkSharedSubnet']] = None):
+        """
+        :param _builtins.str vpc: The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+        :param Sequence['NamespaceVpcNetworkSharedSubnetArgs'] shared_subnets: An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+               
+               > **NOTE:** Requires vCenter 9.1.0 or later. `pod_default` and `vm_default` require vCenter 9.1.1 or later.
+        """
+        pulumi.set(__self__, "vpc", vpc)
+        if shared_subnets is not None:
+            pulumi.set(__self__, "shared_subnets", shared_subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def vpc(self) -> _builtins.str:
+        """
+        The NSX path of an existing VPC, for example `/orgs/default/projects/<project>/vpcs/<vpc>`. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "vpc")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedSubnets")
+    def shared_subnets(self) -> Optional[Sequence['outputs.NamespaceVpcNetworkSharedSubnet']]:
+        """
+        An NSX subnet created outside the Supervisor to associate with the vSphere Namespace.
+
+        > **NOTE:** Requires vCenter 9.1.0 or later. `pod_default` and `vm_default` require vCenter 9.1.1 or later.
+        """
+        return pulumi.get(self, "shared_subnets")
+
+
+@pulumi.output_type
+class NamespaceVpcNetworkSharedSubnet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podDefault":
+            suggest = "pod_default"
+        elif key == "vmDefault":
+            suggest = "vm_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceVpcNetworkSharedSubnet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceVpcNetworkSharedSubnet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceVpcNetworkSharedSubnet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 pod_default: Optional[_builtins.bool] = None,
+                 vm_default: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str path: The NSX path of the subnet.
+        :param _builtins.bool pod_default: Whether the subnet is the default network for vSphere Pods.
+        :param _builtins.bool vm_default: Whether the subnet is the default network for VMs.
+        """
+        pulumi.set(__self__, "path", path)
+        if pod_default is not None:
+            pulumi.set(__self__, "pod_default", pod_default)
+        if vm_default is not None:
+            pulumi.set(__self__, "vm_default", vm_default)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The NSX path of the subnet.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="podDefault")
+    def pod_default(self) -> Optional[_builtins.bool]:
+        """
+        Whether the subnet is the default network for vSphere Pods.
+        """
+        return pulumi.get(self, "pod_default")
+
+    @_builtins.property
+    @pulumi.getter(name="vmDefault")
+    def vm_default(self) -> Optional[_builtins.bool]:
+        """
+        Whether the subnet is the default network for VMs.
+        """
+        return pulumi.get(self, "vm_default")
+
+
+@pulumi.output_type
+class NamespaceVsphereNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultWorkloadNetwork":
+            suggest = "default_workload_network"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceVsphereNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceVsphereNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceVsphereNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_workload_network: _builtins.str,
+                 networks: Sequence[_builtins.str]):
+        """
+        :param _builtins.str default_workload_network: The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+        :param Sequence[_builtins.str] networks: The names of the Supervisor networks to associate with the vSphere Namespace, including `default_workload_network`. These are Supervisor network names, not port group IDs. See the `workload_network` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+               
+               > **NOTE:** In v2.18.0, `storage_policy` superseded the `storage_policies` argument. To upgrade, replace
+        """
+        pulumi.set(__self__, "default_workload_network", default_workload_network)
+        pulumi.set(__self__, "networks", networks)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultWorkloadNetwork")
+    def default_workload_network(self) -> _builtins.str:
+        """
+        The name of the Supervisor network used by workloads that do not specify a network. It must be one of `networks`. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "default_workload_network")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Sequence[_builtins.str]:
+        """
+        The names of the Supervisor networks to associate with the vSphere Namespace, including `default_workload_network`. These are Supervisor network names, not port group IDs. See the `workload_network` attribute of the [`Supervisor`](https://www.terraform.io/docs/providers/vsphere/d/supervisor.html) data source.
+
+        > **NOTE:** In v2.18.0, `storage_policy` superseded the `storage_policies` argument. To upgrade, replace
+        """
+        return pulumi.get(self, "networks")
+
+
+@pulumi.output_type
+class NamespaceZone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuLimit":
+            suggest = "cpu_limit"
+        elif key == "cpuReservation":
+            suggest = "cpu_reservation"
+        elif key == "disallowUnreservedDirectPathUsage":
+            suggest = "disallow_unreserved_direct_path_usage"
+        elif key == "memoryLimit":
+            suggest = "memory_limit"
+        elif key == "memoryReservation":
+            suggest = "memory_reservation"
+        elif key == "vmClassReservations":
+            suggest = "vm_class_reservations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceZone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceZone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceZone.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 cpu_limit: Optional[_builtins.int] = None,
+                 cpu_reservation: Optional[_builtins.int] = None,
+                 disallow_unreserved_direct_path_usage: Optional[_builtins.bool] = None,
+                 memory_limit: Optional[_builtins.int] = None,
+                 memory_reservation: Optional[_builtins.int] = None,
+                 vm_class_reservations: Optional[Sequence['outputs.NamespaceZoneVmClassReservation']] = None):
+        """
+        :param _builtins.str name: The identifier of the vSphere Zone.
+        :param _builtins.int cpu_limit: The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        :param _builtins.int cpu_reservation: The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        :param _builtins.bool disallow_unreserved_direct_path_usage: Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+        :param _builtins.int memory_limit: The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        :param _builtins.int memory_reservation: The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        :param Sequence['NamespaceZoneVmClassReservationArgs'] vm_class_reservations: A reservation of VM class instances for the vSphere Namespace in the zone.
+        """
+        pulumi.set(__self__, "name", name)
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_reservation is not None:
+            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+        if disallow_unreserved_direct_path_usage is not None:
+            pulumi.set(__self__, "disallow_unreserved_direct_path_usage", disallow_unreserved_direct_path_usage)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_reservation is not None:
+            pulumi.set(__self__, "memory_reservation", memory_reservation)
+        if vm_class_reservations is not None:
+            pulumi.set(__self__, "vm_class_reservations", vm_class_reservations)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The identifier of the vSphere Zone.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[_builtins.int]:
+        """
+        The CPU limit, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        """
+        return pulumi.get(self, "cpu_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuReservation")
+    def cpu_reservation(self) -> Optional[_builtins.int]:
+        """
+        The CPU reservation, in megahertz (MHz), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        """
+        return pulumi.get(self, "cpu_reservation")
+
+    @_builtins.property
+    @pulumi.getter(name="disallowUnreservedDirectPathUsage")
+    def disallow_unreserved_direct_path_usage(self) -> Optional[_builtins.bool]:
+        """
+        Whether workloads that do not use a reserved VM class are disallowed from using a DirectPath device. Defaults to `false`.
+        """
+        return pulumi.get(self, "disallow_unreserved_direct_path_usage")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[_builtins.int]:
+        """
+        The memory limit, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no zone limit.
+        """
+        return pulumi.get(self, "memory_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryReservation")
+    def memory_reservation(self) -> Optional[_builtins.int]:
+        """
+        The memory reservation, in mebibytes (MiB), for the vSphere Namespace in the zone. Unset or `0` means no reservation.
+        """
+        return pulumi.get(self, "memory_reservation")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClassReservations")
+    def vm_class_reservations(self) -> Optional[Sequence['outputs.NamespaceZoneVmClassReservation']]:
+        """
+        A reservation of VM class instances for the vSphere Namespace in the zone.
+        """
+        return pulumi.get(self, "vm_class_reservations")
+
+
+@pulumi.output_type
+class NamespaceZoneVmClassReservation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vmClass":
+            suggest = "vm_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespaceZoneVmClassReservation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespaceZoneVmClassReservation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespaceZoneVmClassReservation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: _builtins.int,
+                 vm_class: _builtins.str):
+        """
+        :param _builtins.int count: The number of VM class instances to reserve.
+        :param _builtins.str vm_class: The name of the VM class.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "vm_class", vm_class)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The number of VM class instances to reserve.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClass")
+    def vm_class(self) -> _builtins.str:
+        """
+        The name of the VM class.
+        """
+        return pulumi.get(self, "vm_class")
 
 
 @pulumi.output_type
@@ -7472,6 +7983,72 @@ class GetAlarmStateExpressionResult(dict):
 
 
 @pulumi.output_type
+class GetContentLibraryItemsItemResult(dict):
+    def __init__(__self__, *,
+                 creation_time: _builtins.str,
+                 id: _builtins.str,
+                 last_modified_time: _builtins.str,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str creation_time: The creation time of the item (RFC3339).
+        :param _builtins.str id: The UUID of the content library item.
+        :param _builtins.str last_modified_time: The last modification time of the item (RFC3339).
+        :param _builtins.str name: Filter items by exact name. Mutually exclusive with
+               `name_regex`. If omitted, items of any name are returned.
+        :param _builtins.str type: Filter items by type (e.g. `ovf`, `iso`, `vm-template`).
+               If omitted, items of any type are returned.
+        """
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> _builtins.str:
+        """
+        The creation time of the item (RFC3339).
+        """
+        return pulumi.get(self, "creation_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The UUID of the content library item.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> _builtins.str:
+        """
+        The last modification time of the item (RFC3339).
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Filter items by exact name. Mutually exclusive with
+        `name_regex`. If omitted, items of any name are returned.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Filter items by type (e.g. `ovf`, `iso`, `vm-template`).
+        If omitted, items of any type are returned.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetGuestOsCustomizationSpecResult(dict):
     def __init__(__self__, *,
                  dns_server_lists: Sequence[_builtins.str],
@@ -7914,6 +8491,137 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
 
 
 @pulumi.output_type
+class GetNamespaceGroupResult(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 identity_provider: _builtins.str,
+                 name: _builtins.str,
+                 role: _builtins.str):
+        """
+        :param _builtins.str domain: The domain of the identity source that owns the group.
+        :param _builtins.str identity_provider: The identifier of the identity provider.
+        :param _builtins.str name: The name of the vSphere Namespace.
+        :param _builtins.str role: The role of the group in the vSphere Namespace.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "identity_provider", identity_provider)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The domain of the identity source that owns the group.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> _builtins.str:
+        """
+        The identifier of the identity provider.
+        """
+        return pulumi.get(self, "identity_provider")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the vSphere Namespace.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The role of the group in the vSphere Namespace.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetNamespaceStoragePolicyResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 policy: _builtins.str):
+        """
+        :param _builtins.int limit: The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. `0` means no limit.
+        :param _builtins.str policy: The identifier of the storage policy.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        The maximum storage, in mebibytes (MiB), that the vSphere Namespace can use for the storage policy. `0` means no limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        The identifier of the storage policy.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
+class GetNamespaceUserResult(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 identity_provider: _builtins.str,
+                 name: _builtins.str,
+                 role: _builtins.str):
+        """
+        :param _builtins.str domain: The domain of the identity source that owns the group.
+        :param _builtins.str identity_provider: The identifier of the identity provider.
+        :param _builtins.str name: The name of the vSphere Namespace.
+        :param _builtins.str role: The role of the group in the vSphere Namespace.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "identity_provider", identity_provider)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The domain of the identity source that owns the group.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> _builtins.str:
+        """
+        The identifier of the identity provider.
+        """
+        return pulumi.get(self, "identity_provider")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the vSphere Namespace.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The role of the group in the vSphere Namespace.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
 class GetNamespaceVmServiceResult(dict):
     def __init__(__self__, *,
                  content_libraries: Sequence[_builtins.str],
@@ -7940,6 +8648,133 @@ class GetNamespaceVmServiceResult(dict):
         The list of VM Classes associated with the VM Service.
         """
         return pulumi.get(self, "vm_classes")
+
+
+@pulumi.output_type
+class GetNamespaceVpcNetworkResult(dict):
+    def __init__(__self__, *,
+                 shared_subnets: Sequence['outputs.GetNamespaceVpcNetworkSharedSubnetResult'],
+                 vpc: _builtins.str):
+        """
+        :param Sequence['GetNamespaceVpcNetworkSharedSubnetArgs'] shared_subnets: An NSX subnet created outside the Supervisor that is associated with the vSphere Namespace.
+        :param _builtins.str vpc: The NSX path of the VPC.
+        """
+        pulumi.set(__self__, "shared_subnets", shared_subnets)
+        pulumi.set(__self__, "vpc", vpc)
+
+    @_builtins.property
+    @pulumi.getter(name="sharedSubnets")
+    def shared_subnets(self) -> Sequence['outputs.GetNamespaceVpcNetworkSharedSubnetResult']:
+        """
+        An NSX subnet created outside the Supervisor that is associated with the vSphere Namespace.
+        """
+        return pulumi.get(self, "shared_subnets")
+
+    @_builtins.property
+    @pulumi.getter
+    def vpc(self) -> _builtins.str:
+        """
+        The NSX path of the VPC.
+        """
+        return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class GetNamespaceVpcNetworkSharedSubnetResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 pod_default: _builtins.bool,
+                 vm_default: _builtins.bool):
+        """
+        :param _builtins.str path: The NSX path of the subnet.
+        :param _builtins.bool pod_default: Whether the subnet is the default network for vSphere Pods.
+        :param _builtins.bool vm_default: Whether the subnet is the default network for VMs.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "pod_default", pod_default)
+        pulumi.set(__self__, "vm_default", vm_default)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The NSX path of the subnet.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="podDefault")
+    def pod_default(self) -> _builtins.bool:
+        """
+        Whether the subnet is the default network for vSphere Pods.
+        """
+        return pulumi.get(self, "pod_default")
+
+    @_builtins.property
+    @pulumi.getter(name="vmDefault")
+    def vm_default(self) -> _builtins.bool:
+        """
+        Whether the subnet is the default network for VMs.
+        """
+        return pulumi.get(self, "vm_default")
+
+
+@pulumi.output_type
+class GetNamespaceVsphereNetworkResult(dict):
+    def __init__(__self__, *,
+                 default_workload_network: _builtins.str,
+                 networks: Sequence[_builtins.str]):
+        """
+        :param _builtins.str default_workload_network: The name of the Supervisor network used by workloads that do not specify a network.
+        :param Sequence[_builtins.str] networks: The names of the Supervisor networks associated with the vSphere Namespace. Networks that are being removed are not exported.
+        """
+        pulumi.set(__self__, "default_workload_network", default_workload_network)
+        pulumi.set(__self__, "networks", networks)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultWorkloadNetwork")
+    def default_workload_network(self) -> _builtins.str:
+        """
+        The name of the Supervisor network used by workloads that do not specify a network.
+        """
+        return pulumi.get(self, "default_workload_network")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Sequence[_builtins.str]:
+        """
+        The names of the Supervisor networks associated with the vSphere Namespace. Networks that are being removed are not exported.
+        """
+        return pulumi.get(self, "networks")
+
+
+@pulumi.output_type
+class GetNamespaceZoneResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str name: The name of the vSphere Namespace.
+        :param _builtins.str type: The type of the vSphere Zone.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the vSphere Namespace.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the vSphere Zone.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -8021,6 +8856,119 @@ class GetSsoGroupMemberUserResult(dict):
         The name of the group to look up.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetSupervisorWorkloadNetworkResult(dict):
+    def __init__(__self__, *,
+                 gateway: _builtins.str,
+                 ip_assignment_mode: _builtins.str,
+                 namespaces: Sequence[_builtins.str],
+                 network: _builtins.str,
+                 network_provider: _builtins.str,
+                 portgroup: _builtins.str,
+                 subnet_mask: _builtins.str):
+        """
+        :param _builtins.str gateway: The gateway of the Supervisor network. Empty for NSX-backed networks.
+        :param _builtins.str ip_assignment_mode: The IP assignment mode of the Supervisor network. Empty for NSX-backed networks.
+        :param Sequence[_builtins.str] namespaces: The vSphere Namespaces that use the Supervisor network.
+        :param _builtins.str network: The name of the Supervisor network. Use it in the `get_network` block of the [`Namespace`](https://www.terraform.io/docs/providers/vsphere/r/namespace.html) resource.
+        :param _builtins.str network_provider: The network provider of the Supervisor network, for example `VSPHERE_NETWORK`.
+        :param _builtins.str portgroup: The ID of the distributed port group backing the Supervisor network. Empty for NSX-backed networks.
+        :param _builtins.str subnet_mask: The subnet mask of the Supervisor network. Empty for NSX-backed networks.
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ip_assignment_mode", ip_assignment_mode)
+        pulumi.set(__self__, "namespaces", namespaces)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_provider", network_provider)
+        pulumi.set(__self__, "portgroup", portgroup)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> _builtins.str:
+        """
+        The gateway of the Supervisor network. Empty for NSX-backed networks.
+        """
+        return pulumi.get(self, "gateway")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAssignmentMode")
+    def ip_assignment_mode(self) -> _builtins.str:
+        """
+        The IP assignment mode of the Supervisor network. Empty for NSX-backed networks.
+        """
+        return pulumi.get(self, "ip_assignment_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Sequence[_builtins.str]:
+        """
+        The vSphere Namespaces that use the Supervisor network.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        The name of the Supervisor network. Use it in the `get_network` block of the [`Namespace`](https://www.terraform.io/docs/providers/vsphere/r/namespace.html) resource.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="networkProvider")
+    def network_provider(self) -> _builtins.str:
+        """
+        The network provider of the Supervisor network, for example `VSPHERE_NETWORK`.
+        """
+        return pulumi.get(self, "network_provider")
+
+    @_builtins.property
+    @pulumi.getter
+    def portgroup(self) -> _builtins.str:
+        """
+        The ID of the distributed port group backing the Supervisor network. Empty for NSX-backed networks.
+        """
+        return pulumi.get(self, "portgroup")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> _builtins.str:
+        """
+        The subnet mask of the Supervisor network. Empty for NSX-backed networks.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+
+@pulumi.output_type
+class GetSupervisorZoneResult(dict):
+    def __init__(__self__, *,
+                 clusters: Sequence[_builtins.str],
+                 zone: _builtins.str):
+        """
+        :param Sequence[_builtins.str] clusters: The IDs of the compute clusters in the vSphere Zone.
+        :param _builtins.str zone: The ID of the vSphere Zone.
+        """
+        pulumi.set(__self__, "clusters", clusters)
+        pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def clusters(self) -> Sequence[_builtins.str]:
+        """
+        The IDs of the compute clusters in the vSphere Zone.
+        """
+        return pulumi.get(self, "clusters")
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> _builtins.str:
+        """
+        The ID of the vSphere Zone.
+        """
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type
