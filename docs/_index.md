@@ -17,7 +17,8 @@ The Vsphere provider is available as a package in all Pulumi languages:
 
 ## Overview
 
-<img src="https://raw.githubusercontent.com/vmware/pulumi-provider-vsphere/main/docs/images/icon-color.svg" alt="VMware vSphere" width="150">
+<img src="https://raw.githubusercontent.com/vmware/terraform-provider-vsphere/main/docs/images/icon-color.svg" alt="VMware vSphere" width="150">
+
 This provider gives Pulumi the ability to work with VMware vSphere. This
 provider can be used to manage many aspects of a vSphere environment, including
 virtual machines, standard and distributed switches, datastores, content
@@ -40,12 +41,12 @@ hypervisor.
 
 The following abridged example demonstrates basic usage of the provider to
 provision a virtual machine using the
-[`vsphere.VirtualMachine`](https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html) resource.
+[`vsphere.VirtualMachine`](https://www.pulumi.com/registry/packages/vsphere/api-docs/virtualmachine/) resource.
 The datacenter, datastore, resource pool, and network are discovered using the
-[`vsphere.Datacenter`](https://www.terraform.io/docs/providers/vsphere/d/datacenter.html),
-[`vsphere.getDatastore`](https://www.terraform.io/docs/providers/vsphere/d/datastore.html),
-[`vsphere.ResourcePool`](https://www.terraform.io/docs/providers/vsphere/d/resource_pool.html), and
-[`vsphere.getNetwork`](https://www.terraform.io/docs/providers/vsphere/d/network.html) functions respectively.
+[`vsphere.getDatacenter`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getdatacenter/),
+[`vsphere.getDatastore`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getdatastore/),
+[`vsphere.getResourcePool`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getresourcepool/), and
+[`vsphere.getNetwork`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getnetwork/) functions respectively.
 
 {{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
@@ -621,11 +622,11 @@ minimizing the issues that can arise from the flexibility in how an individual
 object's name or inventory path can be supplied.
 
 There are several functions (such as
-[`vsphere.Datacenter`](https://www.terraform.io/docs/providers/vsphere/d/datacenter.html),
-[`vsphere.Host`](https://www.terraform.io/docs/providers/vsphere/d/host.html),
-[`vsphere.ResourcePool`](https://www.terraform.io/docs/providers/vsphere/d/resource_pool.html),
-[`vsphere.getDatastore`](https://www.terraform.io/docs/providers/vsphere/d/datastore.html), and
-[`vsphere.getNetwork`](https://www.terraform.io/docs/providers/vsphere/d/network.html)) that assist with searching for a
+[`vsphere.getDatacenter`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getdatacenter/),
+[`vsphere.getHost`](https://www.pulumi.com/registry/packages/vsphere/api-docs/gethost/),
+[`vsphere.getResourcePool`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getresourcepool/),
+[`vsphere.getDatastore`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getdatastore/), and
+[`vsphere.getNetwork`](https://www.pulumi.com/registry/packages/vsphere/api-docs/getnetwork/)) that assist with searching for a
 specific resource. For usage details on a specific function, look for a
 link in the provider documentation. In addition, most vSphere
 resources in Pulumi supply the managed object ID (or UUID, when it makes

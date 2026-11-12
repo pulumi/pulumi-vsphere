@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"path"
 	"regexp"
+	"strings"
 
 	_ "embed" // Allow embedding state
 
@@ -166,5 +167,54 @@ func editRules(defaults []info.DocsEdit) []info.DocsEdit {
 		stripLink, // Strip labeled markdown linkes of the form [<something>][docs-import]
 		textReplace("\n[docs-import]: https://www.terraform.io/docs/import/index.html\n", "\n"),
 		textReplace("\nAll information will be added to the Terraform state after import.\n", "\n"),
+		fixOverviewLogo,
+		linkOverviewToAPIDocs,
 	)
 }
+
+// The bridge's default edit rules replace "terraform" with "pulumi" throughout the prose, which breaks the logo
+// URL, and removing the page title leaves the paragraph after the logo inside the <img> HTML block.
+var fixOverviewLogo = info.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		content = bytes.ReplaceAll(content,
+			[]byte("vmware/pulumi-provider-vsphere/"), []byte("vmware/terraform-provider-vsphere/"))
+		return overviewLogoTag.ReplaceAll(content, []byte("$1\n\n")), nil
+	},
+	Phase: info.PostCodeTranslation,
+}
+
+var overviewLogoTag = regexp.MustCompile(`(<img [^>]*alt="VMware vSphere"[^>]*>)\n+`)
+
+// Upstream links resources and data sources to their Terraform docs through reference-style links. Replace each
+// with an inline link to the Pulumi API docs, named after the Pulumi resource or function it leads to; the bridge
+// would otherwise name a data source after the resource of the same name.
+var linkOverviewToAPIDocs = info.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		links := map[string][]byte{}
+		for _, m := range terraformDocsLinkDef.FindAllSubmatch(content, -1) {
+			name := ""
+			for _, part := range strings.Split(string(m[3]), "_") {
+				name += strings.ToUpper(part[:1]) + part[1:]
+			}
+			if string(m[2]) == "d" {
+				name = "get" + name
+			}
+			links[string(m[1])] = fmt.Appendf(nil,
+				"[`vsphere.%s`](https://www.pulumi.com/registry/packages/vsphere/api-docs/%s/)",
+				name, strings.ToLower(name))
+		}
+		return terraformDocsLinkUse.ReplaceAllFunc(content, func(use []byte) []byte {
+			if link, ok := links[string(terraformDocsLinkUse.FindSubmatch(use)[1])]; ok {
+				return link
+			}
+			return use
+		}), nil
+	},
+}
+
+var (
+	terraformDocsLinkDef = regexp.MustCompile(`(?m)^\[([\w-]+)\]: /docs/providers/vsphere/(r|d)/([a-z_]+)\.html$`)
+	terraformDocsLinkUse = regexp.MustCompile("\\[`vsphere_[a-z_]+`\\]\\[([\\w-]+)\\]")
+)
