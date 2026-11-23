@@ -167,6 +167,11 @@ func editRules(defaults []info.DocsEdit) []info.DocsEdit {
 		stripLink, // Strip labeled markdown linkes of the form [<something>][docs-import]
 		textReplace("\n[docs-import]: https://www.terraform.io/docs/import/index.html\n", "\n"),
 		textReplace("\nAll information will be added to the Terraform state after import.\n", "\n"),
+		// Broadcom moved this page; the upstream docs still link to the old location, which returns 404.
+		textReplace(
+			"https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html",
+			"https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes.html",
+		),
 		fixOverviewLogo,
 		linkOverviewToAPIDocs,
 	)

@@ -591,7 +591,7 @@ There are a some notable exceptions to keep in mind when setting up a restricted
 provisioning user:
 ### Tags
 
-The provider will always attempt to read [tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html) from a
+The provider will always attempt to read [tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes.html) from a
 resource, even if you do not have any tags defined. Ensure that your user has
 access to read tags.
 ### Events
