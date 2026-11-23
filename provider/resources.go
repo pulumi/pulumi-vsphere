@@ -170,7 +170,8 @@ func editRules(defaults []info.DocsEdit) []info.DocsEdit {
 		// Broadcom moved this page; the upstream docs still link to the old location, which returns 404.
 		textReplace(
 			"https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html",
-			"https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes.html",
+			"https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/"+
+				"vcenter-and-host-management-8-0/vsphere-tags-and-attributes.html",
 		),
 		fixOverviewLogo,
 		linkOverviewToAPIDocs,
